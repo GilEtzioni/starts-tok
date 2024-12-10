@@ -2,7 +2,7 @@ import "dotenv/config";
 import {db} from "./drizzle/db";
 import { UserTable } from "./drizzle/schema";
 import { and, between, eq, gt, gte, ilike, inArray, isNotNull, isNull, like, lt, lte, ne, not, notBetween, notInArray, notLike, or } from "drizzle-orm";
-
+//////
 async function main() {
     await db.insert(UserTable).values({
         fullName: 'gil',

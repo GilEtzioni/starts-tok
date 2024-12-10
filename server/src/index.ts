@@ -3,7 +3,7 @@ import { db } from "./drizzle/db";
 import { CourseNames , Words } from "./drizzle/schema";
 import "dotenv/config";
 import cors from "cors";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 const app = express();
 
@@ -14,9 +14,9 @@ app.use(cors({ origin: '*' })); // Allow all origins for testing
 app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
     try {
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
-        console.log(`Fetching courses for level: ${userLevel}`); // Log the requested user level
+        // console.log(`Fetching courses for level: ${userLevel}`); // Log the requested user level
         const coursesSubjects = await db.select().from(CourseNames).where(eq(CourseNames.level_english, userLevel));
-        console.log("Fetched coursesSubjects:", coursesSubjects); // Log fetched data for debugging
+        // console.log("Fetched coursesSubjects:", coursesSubjects); // Log fetched data for debugging
         res.json(coursesSubjects);
     } catch (err) {
         console.error("Error fetching courses:", err);
@@ -47,6 +47,22 @@ app.get("/", async (req: Request, res: Response) => {
         res.status(500).send("Error fetching courses");
     }
 });
+
+// /main/course/A1/Colors
+app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
+    try {
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+        const course = req.params.course;
+
+        const lesson = await db.select().from(Words).where(and(eq(Words.level_english, userLevel), eq(Words.courseName, course)));
+
+        res.json(lesson);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+});
+
 
 const PORT: number = Number(process.env.PORT) || 3000;
 
