@@ -1,0 +1,154 @@
+{
+  "id": "45bd5008-1041-4b4c-bebd-1aa1e03fc567",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.courses": {
+      "name": "courses",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "level_english": {
+          "name": "level_english",
+          "type": "level_english",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "level_hebrew": {
+          "name": "level_hebrew",
+          "type": "level_hebrew",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "courseName": {
+          "name": "courseName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.words": {
+      "name": "words",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "level_hebrew": {
+          "name": "level_hebrew",
+          "type": "level_hebrew",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "level_english": {
+          "name": "level_english",
+          "type": "level_english",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "courseName": {
+          "name": "courseName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "german_word": {
+          "name": "german_word",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hebrew_word": {
+          "name": "hebrew_word",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "words_course_id_courses_id_fk": {
+          "name": "words_course_id_courses_id_fk",
+          "tableFrom": "words",
+          "tableTo": "courses",
+          "columnsFrom": [
+            "course_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.level_english": {
+      "name": "level_english",
+      "schema": "public",
+      "values": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ]
+    },
+    "public.level_hebrew": {
+      "name": "level_hebrew",
+      "schema": "public",
+      "values": [
+        "מבוא",
+        "בסיסי",
+        "בינוני",
+        "מתקדם",
+        "מתקדם מאוד",
+        "שפת אם"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
