@@ -3,7 +3,6 @@ import { Table } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import DictionaryIcons from './DictionaryIcons';
 import LevelButtonsContainer from './LevelButtonsContainer';
-import SettingsButton from './SettingsButton';
 
 interface DataType {
   key: string;
@@ -55,8 +54,30 @@ const App: React.FC = () => {
 
   return (
     <>
-      <SettingsButton />
-      <LevelButtonsContainer />
+    <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}
+>
+      <div
+        style={{
+          height: '120px', // Adjust the height as needed
+          width: '800px',  // Adjust the width as needed
+          padding: '16px', // Add padding inside the container
+          border: '1px solid hsl(240, 5%, 64.9%)',
+          borderRadius: '8px',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          transition: 'transform 0.3s ease, background-color 0.3s ease',
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+          <DictionaryIcons />
+        </div>
+        <LevelButtonsContainer />
+      </div>
+      </div>
       <Table<DataType>
         columns={columns}
         dataSource={data}

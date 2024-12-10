@@ -13,12 +13,13 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttName }) => {
     <Button
       onClick={() => setIsClicked(!isClicked)}
       style={{
-        backgroundColor: isClicked ? 'black' : 'grey',
-        color: 'white',
+        backgroundColor: isClicked ? 'grey' : "#000",
+        color: "#fff",
         border: 'none',
         padding: '8px 16px',
-        fontSize: '14px',
+        fontSize: '16px',
         fontWeight: 'bold',
+        transition: "background-color 0.3s ease",
       }}
     >
       {buttName}
@@ -27,3 +28,4 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttName }) => {
 };
 
 export default LevelButton;
+
