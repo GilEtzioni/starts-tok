@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import NextButton from '../components/Main/NextButton';
 import ProgressBar from '../components/Main/ProgressBar';
 import BackButton from '../components/Main/BackButton';
-import LessonOneFront from './Lessons/LessonOne/LessonOneFront';
 import ErrorMessage from "./Lessons/ErrorMessage";
 import {fetchCourseData} from "./Lessons/MainClass";
+
+// import LessonOneFront from './Lessons/LessonOne/LessonOneFront';
+import LessonTwoFront from './Lessons/LessonTwo/LessonTwoFront';
 
 const MainLearn: React.FC = () => {
     const [currentId, setCurrentId] = useState<number>(1);
@@ -36,12 +38,19 @@ const MainLearn: React.FC = () => {
                 </div>
             </div>
 
+            {/* 
             <LessonOneFront
                 finished={finished}
                 setFinished={setFinished}
                 error={error}
                 setError={setError}
             />
+            */}
+            
+            
+            <LessonTwoFront 
+            />
+            
 
             <div
                 style={{
