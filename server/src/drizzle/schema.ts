@@ -21,5 +21,19 @@ export const Words = pgTable("words", {
     courseName: text("courseName"),
     GermanWord: text("german_word"),
     HebrewWord: text("hebrew_word"),
+    knowlage: text("knowlage"),
 });
 
+// "lessons" table
+export const Lessons = pgTable("lessons", {
+    id: serial("id").primaryKey(),
+    level_hebrew: levelHebrew("level_hebrew"),
+    level_english: levelEnglish("level_english"),
+    courseId: integer("course_id").references(() => CourseNames.id), // foreign key
+    lessonId: integer("lessonId"),
+    gameId: integer("gameId"),
+    courseName: text("courseName"),
+    GermanWord: text("german_word"),
+    HebrewWord: text("hebrew_word"),
+    knowlage: text("knowlage"),
+});

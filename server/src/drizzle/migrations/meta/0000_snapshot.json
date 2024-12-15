@@ -1,5 +1,5 @@
 {
-  "id": "45bd5008-1041-4b4c-bebd-1aa1e03fc567",
+  "id": "a6484545-cd24-4bca-b565-4bb5da53b623",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -37,6 +37,95 @@
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.lessons": {
+      "name": "lessons",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "level_hebrew": {
+          "name": "level_hebrew",
+          "type": "level_hebrew",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "level_english": {
+          "name": "level_english",
+          "type": "level_english",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lessonId": {
+          "name": "lessonId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gameId": {
+          "name": "gameId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "courseName": {
+          "name": "courseName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "german_word": {
+          "name": "german_word",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hebrew_word": {
+          "name": "hebrew_word",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "knowlage": {
+          "name": "knowlage",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "lessons_course_id_courses_id_fk": {
+          "name": "lessons_course_id_courses_id_fk",
+          "tableFrom": "lessons",
+          "tableTo": "courses",
+          "columnsFrom": [
+            "course_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
@@ -87,6 +176,12 @@
         },
         "hebrew_word": {
           "name": "hebrew_word",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "knowlage": {
+          "name": "knowlage",
           "type": "text",
           "primaryKey": false,
           "notNull": false

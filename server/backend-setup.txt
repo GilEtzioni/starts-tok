@@ -266,10 +266,11 @@ npx drizzle-kit drop
 npx tsx src/drizzle/migrate.ts
 
 --------- delete the tables ---------
-rm -rf ./src/drizzle/migrations/*
+rm -rf ./src/drizzle/migrations
 psql -U postgres -d development_db
 DROP TABLE IF EXISTS "words" CASCADE;
 DROP TABLE IF EXISTS "courses" CASCADE;
+DROP TABLE IF EXISTS "lessons" CASCADE;
 DROP TYPE IF EXISTS level_english CASCADE;
 DROP TYPE IF EXISTS level_hebrew CASCADE;
 \q

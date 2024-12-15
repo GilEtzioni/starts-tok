@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { db } from "./drizzle/db";
-import { CourseNames , Words } from "./drizzle/schema";
+import { CourseNames , Words , Lessons} from "./drizzle/schema";
 import "dotenv/config";
 import cors from "cors";
 import { eq, and } from "drizzle-orm";
@@ -54,7 +54,7 @@ app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) =
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
         const course = req.params.course;
 
-        const lesson = await db.select().from(Words).where(and(eq(Words.level_english, userLevel), eq(Words.courseName, course)));
+        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.courseName, course)));
 
         res.json(lesson);
     } catch (err) {
