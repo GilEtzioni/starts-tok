@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import NextButton from '../components/Main/NextButton';
 import ProgressBar from '../components/Main/ProgressBar';
 import BackButton from '../components/Main/BackButton';
 import ErrorMessage from "./Lessons/ErrorMessage";
-import {fetchCourseData} from "./Lessons/MainClass";
 
-// import LessonOneFront from './Lessons/LessonOne/LessonOneFront';
-import LessonTwoFront from './Lessons/LessonTwo/LessonTwoFront';
+import { GlobalClickedProvider } from './Lessons/GlobalClickedContext';
+import LessonOneFront from './Lessons/LessonOne/LessonOneFront';
+import LessonTwoFront from "./Lessons/LessonTwo/LessonTwoFront";
+import LessonThreeFront from './Lessons/LessonThree/LessonThreeFront';
 
 const MainLearn: React.FC = () => {
     const [currentId, setCurrentId] = useState<number>(1);
@@ -15,65 +15,79 @@ const MainLearn: React.FC = () => {
     const [finished, setFinished] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
 
+    // Render the current lesson based on currentId
+    const renderCurrentLesson = () => {
+        switch (currentId) {
+            case 1:
+            case 4:
+                return (
+                    <LessonOneFront setFinished={setFinished} setError={setError} />
+                );
+            case 2:
+            case 5:
+                return (
+                    <LessonTwoFront setFinished={setFinished} setError={setError} />
+                );
+            case 3:
+            case 6:
+                return <LessonThreeFront setFinished={setFinished} setError={setError}/>;
+            default:
+                return <div>No lesson found.</div>;
+        }
+    };
+
+    // Handle progress bar updates
     const handleProgress = () => {
         setNum((prevNum) => Math.min(prevNum + 1, 5));
     };
 
     return (
-        <div>
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    margin: "20px 0",
-                    gap: "20px",
-                }}
-            >
-                <div style={{ marginLeft: "20px" }}>
-                    <BackButton />
-                </div>
-                <div style={{ flexGrow: 1 }}>
-                    <ProgressBar num={num} />
-                </div>
-            </div>
-
-            {/* 
-            <LessonOneFront
-                finished={finished}
-                setFinished={setFinished}
-                error={error}
-                setError={setError}
-            />
-            */}
-            
-            
-            <LessonTwoFront 
-            />
-            
-
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center", 
-                    height: "150px", 
-                }}
-            >
-                {error && (
-                    <div style={{ marginBottom: "10px", textAlign: "center" }}>
-                        <ErrorMessage />
+        <GlobalClickedProvider>
+            <div>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        margin: "20px 0",
+                        gap: "20px",
+                    }}
+                >
+                    <div style={{ marginLeft: "20px" }}>
+                        <BackButton />
                     </div>
-                )}
+                    <div style={{ flexGrow: 1 }}>
+                        <ProgressBar num={num} />
+                    </div>
+                </div>
 
-                <NextButton
-                    currentId={currentId}
-                    setCurrentId={setCurrentId}
-                    onClick={handleProgress}
-                />
+                <div>{renderCurrentLesson()}</div>
+
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        height: "150px",
+                    }}
+                >
+                    {error && (
+                        <div style={{ marginBottom: "10px", textAlign: "center" }}>
+                            <ErrorMessage />
+                        </div>
+                    )}
+
+                    <NextButton
+                        error={error}
+                        finished={finished}
+                        currentId={currentId}
+                        setCurrentId={setCurrentId}
+                        onClick={handleProgress}
+                    />
+                </div>
             </div>
-        </div>
+        </GlobalClickedProvider>
     );
 };
 

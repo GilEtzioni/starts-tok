@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Col, Row } from 'antd';
-import { fetchCourseData } from "../MainClass";
+import { fetchCourseData } from "../LessonsData";
 import ErrorMessage from "../ErrorMessage";
+
+interface LessonOneFrontProps {
+    setFinished: React.Dispatch<React.SetStateAction<boolean>>;
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const fetchDataExample = async () => {
     const { initialHebrew, initialGerman } = await fetchCourseData('default-level', 'default-lesson');
@@ -12,12 +17,6 @@ const fetchDataExample = async () => {
 
 fetchDataExample();
 
-interface LessonOneFrontProps {
-    finished: boolean;
-    setFinished: React.Dispatch<React.SetStateAction<boolean>>;
-    error: boolean;
-    setError: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 // shuffle an array
 const shuffleArray = (array: any[]) => {
@@ -27,7 +26,7 @@ const shuffleArray = (array: any[]) => {
         .map(({ value }) => value);
 };
 
-const LessonOneFront: React.FC<LessonOneFrontProps> = ({ finished, setFinished, error, setError }) => {
+const LessonOneFront: React.FC<LessonOneFrontProps> = ({ setFinished, setError }) => {
     const [shuffledHebrew, setShuffledHebrew] = useState<any[]>([]);
     const [shuffledGerman, setShuffledGerman] = useState<any[]>([]);
     const [currentBlackHebrewId, setCurrentBlackHebrewId] = useState<string | null>(null);
@@ -43,6 +42,7 @@ const LessonOneFront: React.FC<LessonOneFrontProps> = ({ finished, setFinished, 
             setShuffledGerman(shuffleArray(initialGerman));
         };
         fetchData();
+        setError(false);
     }, []);
 
     const handleMatchCheck = () => {
@@ -61,6 +61,9 @@ const LessonOneFront: React.FC<LessonOneFrontProps> = ({ finished, setFinished, 
                     )
                 );
                 setSuccessCount((prev) => prev + 1);
+
+                if (successCount === 5)
+                    setFinished(true);
 
             // wrong match - add red background
             } else {

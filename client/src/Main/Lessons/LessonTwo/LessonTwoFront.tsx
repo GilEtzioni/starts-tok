@@ -1,10 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Card } from 'antd';
+import { useGlobalClicked } from "../GlobalClickedContext";
+import React, { useEffect, useState, useCallback } from "react";
+import { Card } from "antd";
+import { fetchCourseData } from "../LessonsData";
 
-import { fetchCourseData } from "../MainClass";
+interface LessonTwoFrontProps {
+  setFinished: React.Dispatch<React.SetStateAction<boolean>>;
+  setError: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-
-// shuffle an array
+// Shuffle an array
 const shuffleArray = (array: any[]) => {
   return array
     .map(value => ({ value, sort: Math.random() }))
@@ -12,23 +16,26 @@ const shuffleArray = (array: any[]) => {
     .map(({ value }) => value);
 };
 
-export default function LessonTwoFront() {
+const LessonTwoFront: React.FC<LessonTwoFrontProps> = ({ setFinished, setError }) => {
+  const { isClicked } = useGlobalClicked();
   const [cardsContainer, setCardsContainer] = useState<any[]>([]);
   const [upperContainer, setUpperContainer] = useState<any[]>([]);
   const [midContainer, setMidContainer] = useState<any[]>([]);
   const [upperCapacity, setUpperCapacity] = useState<number>(3);
   const sentence = "לבן ירוק שחור";
+  const [combined, setCombined] = useState("");
 
   const CARD_WIDTH = 100;
   const CONTAINER_WIDTH = 800;
 
-  // calculate capacity of the upper container
+  // Calculate capacity of the upper container
   const calculateUpperCapacity = useCallback(() => {
     const maxCapacity = Math.floor(CONTAINER_WIDTH / CARD_WIDTH);
     setUpperCapacity(maxCapacity);
-  }, []);
+    setError(false);
+  }, [setError]);
 
-  // reload the data when the file is opened
+  // Fetch data when the component is mounted
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,17 +49,18 @@ export default function LessonTwoFront() {
     fetchData();
   }, [calculateUpperCapacity]);
 
-  let combined = "";
-  // log combined items in upperContainer and midContainer as a string
+  // Log combined items in upperContainer and midContainer as a string
   const logCombinedContainers = useCallback(() => {
-    combined = [...upperContainer, ...midContainer].map(([name]) => name).join(" ");
-    console.log('Combined items in upper and mid containers:', combined);
+    const newCombined = [...upperContainer, ...midContainer]
+      .map(([name]) => name)
+      .join(" ");
+    setCombined(newCombined);
+    console.log('Combined items in upper and mid containers:', newCombined);
   }, [upperContainer, midContainer]);
 
-  // move the cards between containers
+  // Move the cards between containers
   const handleCardClick = (card: any, from: string) => {
     if (from === "cardsContainer") {
-      // cards-container --> upper/mid-container
       if (upperContainer.length < upperCapacity) {
         setUpperContainer((prev) => [...prev, card]);
       } else {
@@ -60,34 +68,32 @@ export default function LessonTwoFront() {
       }
       setCardsContainer((prev) => prev.filter(([_, id]) => id !== card[1]));
     } else if (from === "upperContainer") {
-      // upper-container --> mid-container
       setUpperContainer((prev) => prev.filter(([_, id]) => id !== card[1]));
       setCardsContainer((prev) => [...prev, card]);
     } else if (from === "midContainer") {
-      // mid-container --> cards-container
       setMidContainer((prev) => prev.filter(([_, id]) => id !== card[1]));
       setCardsContainer((prev) => [...prev, card]);
     }
-    logCombinedContainers(); // log updated combined items
+    logCombinedContainers();
   };
 
-
+  // Check if combined matches the sentence when isClicked is true
   useEffect(() => {
-    const handleNext = async () => {
-        if (combined === sentence) {
-            console.log("equal");
-        }
-        else {
-            console.log("not equal");
-        }
-    };
-    handleNext();
-    }, []);
+    if (isClicked) {
+      if (combined === sentence) {
+        console.log("equal");
+        setFinished(true);
+      } else {
+        console.log("not equal");
+        setError(true);
+      }
+    }
+  }, [isClicked, combined, sentence, setFinished, setError]);
 
   return (
     <div style={{ textAlign: 'center', color: 'black' }}>
       <h1 style={{ textAlign: 'right', color: 'black' }}>תרגמו את המשפט</h1>
-      <p style={{ color: 'black' }}> {sentence} </p>
+      <p style={{ color: 'black' }}>{sentence}</p>
 
       {/* Upper container */}
       <div
@@ -96,7 +102,6 @@ export default function LessonTwoFront() {
           position: 'relative',
           width: '80%',
           height: '50px',
-          // backgroundColor: 'red',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -106,38 +111,26 @@ export default function LessonTwoFront() {
         }}
       >
         {upperContainer.map(([name, id, status], index) => (
-          <React.Fragment key={id}>
-            <Card
-              onClick={() => handleCardClick([name, id, status], "upperContainer")}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '1px solid hsl(240, 5%, 64.9%)',
-                borderRadius: '8px',
-                height: '40px',
-                padding: '0 16px',
-                margin: '5px',
-                backgroundColor: 'white',
-                color: 'black',
-              }}
-            >
-              {name}
-            </Card>
-          </React.Fragment>
+          <Card
+            key={id}
+            onClick={() => handleCardClick([name, id, status], "upperContainer")}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid hsl(240, 5%, 64.9%)',
+              borderRadius: '8px',
+              height: '40px',
+              padding: '0 16px',
+              margin: '5px',
+              backgroundColor: 'white',
+              color: 'black',
+            }}
+          >
+            {name}
+          </Card>
         ))}
       </div>
-
-      {/* First line */}
-      <div
-        className="first-line"
-        style={{
-          height: '1px',
-          backgroundColor: 'grey',
-          width: '80%',
-          margin: '15px auto',
-        }}
-      />
 
       {/* Mid container */}
       <div
@@ -146,7 +139,6 @@ export default function LessonTwoFront() {
           position: 'relative',
           width: '80%',
           height: '50px',
-          // backgroundColor: 'orange',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -156,45 +148,32 @@ export default function LessonTwoFront() {
         }}
       >
         {midContainer.map(([name, id, status], index) => (
-          <React.Fragment key={id}>
-            <Card
-              onClick={() => handleCardClick([name, id, status], "midContainer")}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '1px solid hsl(240, 5%, 64.9%)',
-                borderRadius: '8px',
-                height: '40px',
-                padding: '0 16px',
-                margin: '5px',
-                backgroundColor: 'white',
-                color: 'black',
-              }}
-            >
-              {name}
-            </Card>
-          </React.Fragment>
+          <Card
+            key={id}
+            onClick={() => handleCardClick([name, id, status], "midContainer")}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid hsl(240, 5%, 64.9%)',
+              borderRadius: '8px',
+              height: '40px',
+              padding: '0 16px',
+              margin: '5px',
+              backgroundColor: 'white',
+              color: 'black',
+            }}
+          >
+            {name}
+          </Card>
         ))}
       </div>
-
-      {/* Second line */}
-      <div
-        className="second-line"
-        style={{
-          height: '1px',
-          backgroundColor: 'grey',
-          width: '80%',
-          margin: '20px auto',
-        }}
-      />
 
       {/* Cards container */}
       <div
         className="cards-container"
         style={{
           width: '80%',
-          // backgroundColor: 'green',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -204,27 +183,28 @@ export default function LessonTwoFront() {
         }}
       >
         {cardsContainer.map(([name, id, status], index) => (
-          <React.Fragment key={id}>
-            <Card
-              onClick={() => handleCardClick([name, id, status], "cardsContainer")}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '1px solid hsl(240, 5%, 64.9%)',
-                borderRadius: '8px',
-                height: '40px',
-                padding: '0 16px',
-                margin: '5px',
-                backgroundColor: 'white',
-                color: 'black',
-              }}
-            >
-              {name}
-            </Card>
-          </React.Fragment>
+          <Card
+            key={id}
+            onClick={() => handleCardClick([name, id, status], "cardsContainer")}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid hsl(240, 5%, 64.9%)',
+              borderRadius: '8px',
+              height: '40px',
+              padding: '0 16px',
+              margin: '5px',
+              backgroundColor: 'white',
+              color: 'black',
+            }}
+          >
+            {name}
+          </Card>
         ))}
       </div>
     </div>
   );
-}
+};
+
+export default LessonTwoFront;

@@ -1,16 +1,25 @@
+import { useGlobalClicked } from "../../Main/Lessons/GlobalClickedContext";
 import React from "react";
 import { Button } from "antd";
 
 interface NextButtonProps {
   currentId: number;
   setCurrentId: React.Dispatch<React.SetStateAction<number>>;
-  onClick: () => void; // Callback for additional actions
+  onClick: () => void;
+  finished: boolean;
+  error: boolean;
 }
 
-const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClick }) => {
+const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClick, finished, error }) => {
+  const { setIsClicked } = useGlobalClicked();
+
   const handleNextId = () => {
-    setCurrentId((prevId) => prevId + 1); // Increment ID
-    onClick(); // Trigger additional actions (e.g., progress)
+    setIsClicked(true); // Trigger global clicked state
+    if (finished || error) {
+      setCurrentId((prevId) => prevId + 1);
+    }
+    onClick(); // Trigger additional actions
+    setTimeout(() => setIsClicked(false), 0); // Reset global clicked state
   };
 
   return (
@@ -26,8 +35,8 @@ const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClic
       <Button
         onClick={handleNextId}
         style={{
-          width: "200px", 
-          backgroundColor: "#000", 
+          width: "200px",
+          backgroundColor: "#000",
           color: "#fff",
           border: "none",
           fontSize: "16px",
@@ -48,4 +57,3 @@ const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClic
 };
 
 export default NextButton;
-
