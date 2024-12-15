@@ -1,43 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+export const fetchCourseData = async (levelName: string, lessonName: string) => {
+  try {
+    // change the URL!
+    const response = await fetch(`http://localhost:3000/main/course/${levelName}/${lessonName}`);
+    const data = await response.json();
 
-const MainClass: React.FC = () => {
-  const { name } = useParams<{ name?: string }>();
-  const levelName = name ?? 'default-level';
+    let uniqueId = 1;
+    const hebrewArray = data.map((course: any) => {
+      const item = [course.HebrewWord, uniqueId.toString(), "notSelected"];
+      uniqueId++;
+      return item;
+    });
 
-  const { lesson } = useParams<{ lesson?: string }>();
-  const lessonName = lesson ?? 'default-level';
+    uniqueId = 1;
+    const germanArray = data.map((course: any) => {
+      const item = [course.GermanWord, uniqueId.toString(), "notSelected"];
+      uniqueId++;
+      return item;
+    });
 
-  const [courses, setCourses] = useState<{ id: number; courseName: string; level_english: string, GermanWord: string, HebrewWord: string }[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/main/course/${levelName}/${lessonName}`);
-        const data = await response.json();
-        console.log('Fetched data in React:', data);
-        setCourses(data);
-      } catch (error) {
-        console.error('Error fetching data in React:', error);
-      }
-    };
-
-    fetchData();
-  }, [levelName, lessonName]);
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
-      {courses.length > 0 ? (
-        courses.map((course) => (
-          <p key={course.id}>
-            Germany: {course.GermanWord} || Hebrew: {course.HebrewWord}
-          </p>
-        ))
-      ) : (
-        <p> no data yet... </p>
-      )}
-    </div>
-  );
+    return { initialHebrew: hebrewArray, initialGerman: germanArray };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { initialHebrew: [], initialGerman: [] }; 
+  }
 };
-
-export default MainClass;

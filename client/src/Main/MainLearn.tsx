@@ -3,52 +3,67 @@ import { useParams } from 'react-router-dom';
 import NextButton from '../components/Main/NextButton';
 import ProgressBar from '../components/Main/ProgressBar';
 import BackButton from '../components/Main/BackButton';
-import MainClass from './Lessons/MainClass';
-
+import LessonOneFront from './Lessons/LessonOne/LessonOneFront';
+import ErrorMessage from "./Lessons/ErrorMessage";
+import {fetchCourseData} from "./Lessons/MainClass";
 
 const MainLearn: React.FC = () => {
-    const [currentId, setCurrentId] = useState(1); 
-    const [num, setNum] = useState(0); 
-
-    const { lesson } = useParams<{ lesson?: string }>();
-    const courseLesson = lesson || 'default-lesson';
+    const [currentId, setCurrentId] = useState<number>(1);
+    const [num, setNum] = useState<number>(0);
+    const [finished, setFinished] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
 
     const handleProgress = () => {
-        setNum((prevNum) => Math.min(prevNum + 1, 5)); 
+        setNum((prevNum) => Math.min(prevNum + 1, 5));
     };
 
     return (
         <div>
-            {/* Flex container for Back Button and Progress Bar */}
             <div
                 style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     margin: "20px 0",
-                    gap: "20px", // Add spacing between components
+                    gap: "20px",
                 }}
             >
                 <div style={{ marginLeft: "20px" }}>
-                    {/* Move BackButton to the right */}
                     <BackButton />
                 </div>
                 <div style={{ flexGrow: 1 }}>
-                    {/* Ensure ProgressBar takes up available space */}
                     <ProgressBar num={num} />
-                    {/* <MainClass /> */}
                 </div>
             </div>
 
-            {/* Next Button */}
-            <NextButton
-                currentId={currentId}
-                setCurrentId={setCurrentId}
-                onClick={handleProgress}
+            <LessonOneFront
+                finished={finished}
+                setFinished={setFinished}
+                error={error}
+                setError={setError}
             />
 
-            {/* Course ID from URL */}
-            {courseLesson !== undefined && <p> lesson name: {courseLesson}</p>}
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center", 
+                    height: "150px", 
+                }}
+            >
+                {error && (
+                    <div style={{ marginBottom: "10px", textAlign: "center" }}>
+                        <ErrorMessage />
+                    </div>
+                )}
+
+                <NextButton
+                    currentId={currentId}
+                    setCurrentId={setCurrentId}
+                    onClick={handleProgress}
+                />
+            </div>
         </div>
     );
 };

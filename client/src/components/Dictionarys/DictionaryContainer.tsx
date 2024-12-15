@@ -13,6 +13,16 @@ interface DataType {
 const App: React.FC = () => {
   const [words, setWords] = useState<{ id: number; GermanWord: string }[]>([]);
   const [data, setData] = useState<DataType[]>([]);
+  const [isA1, setIsA1] = useState("false");
+  const [isA2, setIsA2] = useState("false");
+  const [isA3, setIsA3] = useState("false");
+  const [isA4, setIsA4] = useState("false");
+  const [isA5, setIsA5] = useState("false");
+  const [isA6, setIsA6] = useState("false");
+
+  const [isEx, setIsEx] = useState("false");                     // X
+  const [isVee, setIsVee] = useState("false");                   // V
+  const [isQuestionMark, SetIsQuestionMark] = useState("false"); // ?
 
   // Fetch data on mount
   useEffect(() => {
@@ -81,10 +91,10 @@ const App: React.FC = () => {
       <Table<DataType>
         columns={columns}
         dataSource={data}
-        pagination={false} // Disable pagination
+        pagination={false} 
         components={{
           header: {
-            wrapper: () => null, // Remove the header row
+            wrapper: () => null, 
           },
         }}
         rowClassName={(record, index) => {
