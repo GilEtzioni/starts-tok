@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 const CourseContainer: React.FC = () => {
   const { name } = useParams<{ name?: string }>();
-  const levelName = name ?? 'default-level';
+  const level_name = name ?? 'default-level';
 
-  const [courses, setCourses] = useState<{ id: number; courseName: string; level_english: string }[]>([]);
+  const [courses, setCourses] = useState<{ id: number; course_name: string; level_english: string }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/main/course/${levelName}`);
+        const response = await fetch(`http://localhost:3000/main/course/${level_name}`);
         const data = await response.json();
         console.log('Fetched data in React:', data); // console log the fetched data
         setCourses(data);
@@ -40,11 +40,11 @@ const CourseContainer: React.FC = () => {
                 <Col span={4} key={course.id}>
                   {/* /main/course/A1/Weather */}
                   <Link
-                    to={`/main/course/${course.level_english}/${course.courseName}`}
+                    to={`/main/course/${course.level_english}/${course.course_name}`}
                     style={{ textDecoration: 'none' }} // Prevent underline
                   >
                     <Card
-                      title={course.courseName}
+                      title={course.course_name}
                       bordered={true}
                       style={{
                         border: '1px solid hsl(240, 5%, 64.9%)',

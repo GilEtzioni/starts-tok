@@ -1,5 +1,5 @@
 {
-  "id": "a6484545-cd24-4bca-b565-4bb5da53b623",
+  "id": "e116bbb7-371e-492d-8e6c-1ec898d39e9c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -28,8 +28,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "courseName": {
-          "name": "courseName",
+        "course_name": {
+          "name": "course_name",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -67,65 +67,243 @@
           "primaryKey": false,
           "notNull": false
         },
+        "course_name": {
+          "name": "course_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
         "course_id": {
           "name": "course_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "lessonId": {
-          "name": "lessonId",
+        "lesson_id": {
+          "name": "lesson_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "gameId": {
-          "name": "gameId",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "courseName": {
-          "name": "courseName",
+        "sentence_one_german": {
+          "name": "sentence_one_german",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "german_word": {
-          "name": "german_word",
+        "sentence_one_hebrew": {
+          "name": "sentence_one_hebrew",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "hebrew_word": {
-          "name": "hebrew_word",
+        "sentence_two_german": {
+          "name": "sentence_two_german",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "knowlage": {
-          "name": "knowlage",
+        "sentence_two_hebrew": {
+          "name": "sentence_two_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_sentence_one_german": {
+          "name": "missing_sentence_one_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_sentence_one_hebrew": {
+          "name": "missing_sentence_one_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_word_one_german": {
+          "name": "missing_word_one_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_word_one_hebrew": {
+          "name": "missing_word_one_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_sentence_two_german": {
+          "name": "missing_sentence_two_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_sentence_two_hebrew": {
+          "name": "missing_sentence_two_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_word_two_german": {
+          "name": "missing_word_two_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "missing_word_two_hebrew": {
+          "name": "missing_word_two_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_one_german": {
+          "name": "word_one_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_one_hebrew": {
+          "name": "word_one_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_two_german": {
+          "name": "word_two_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_two_hebrew": {
+          "name": "word_two_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_three_german": {
+          "name": "word_three_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_three_hebrew": {
+          "name": "word_three_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_four_german": {
+          "name": "word_four_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_four_hebrew": {
+          "name": "word_four_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_five_german": {
+          "name": "word_five_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_five_hebrew": {
+          "name": "word_five_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_six_german": {
+          "name": "word_six_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_six_hebrew": {
+          "name": "word_six_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_seven_german": {
+          "name": "word_seven_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_seven_hebrew": {
+          "name": "word_seven_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_eight_german": {
+          "name": "word_eight_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_eight_hebrew": {
+          "name": "word_eight_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_nine_german": {
+          "name": "word_nine_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_nine_hebrew": {
+          "name": "word_nine_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_ten_german": {
+          "name": "word_ten_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_ten_hebrew": {
+          "name": "word_ten_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_eleven_german": {
+          "name": "word_eleven_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_eleven_hebrew": {
+          "name": "word_eleven_hebrew",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_twelve_german": {
+          "name": "word_twelve_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "word_twelve_hebrew": {
+          "name": "word_twelve_hebrew",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "lessons_course_id_courses_id_fk": {
-          "name": "lessons_course_id_courses_id_fk",
-          "tableFrom": "lessons",
-          "tableTo": "courses",
-          "columnsFrom": [
-            "course_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
@@ -162,8 +340,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "courseName": {
-          "name": "courseName",
+        "course_name": {
+          "name": "course_name",
           "type": "text",
           "primaryKey": false,
           "notNull": false

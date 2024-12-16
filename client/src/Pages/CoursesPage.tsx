@@ -9,7 +9,7 @@ const CoursesPage: React.FC = () => {
 
   return (
     <div>
-      <MainLayout levelName={levelName} courseName='' myComponent={<CourseContainer />} />
+      <MainLayout levelName={levelName} course_name='' myComponent={<CourseContainer />} />
     </div>
   );
 };

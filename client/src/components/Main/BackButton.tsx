@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
 
 const BackButton: React.FC = () => {
   const navigate = useNavigate();
@@ -10,7 +9,7 @@ const BackButton: React.FC = () => {
   };
 
   return (
-    <Button
+    <button
       onClick={handleBack}
       style={{
         backgroundColor: "#000", // Black background
@@ -29,7 +28,7 @@ const BackButton: React.FC = () => {
       }}
     >
       חזור
-    </Button>
+    </button>
   );
 };
 

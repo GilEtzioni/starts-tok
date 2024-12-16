@@ -1,6 +1,5 @@
 import { useGlobalClicked } from "../../Main/Lessons/GlobalClickedContext";
 import React from "react";
-import { Button } from "antd";
 
 interface NextButtonProps {
   currentId: number;
@@ -8,18 +7,32 @@ interface NextButtonProps {
   onClick: () => void;
   finished: boolean;
   error: boolean;
+  setError: React.Dispatch<React.SetStateAction<boolean>>;
+  setFinished: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClick, finished, error }) => {
+const NextButton: React.FC<NextButtonProps> = ({
+  setError,
+  setFinished,
+  currentId,
+  setCurrentId,
+  onClick,
+  finished,
+  error,
+}) => {
   const { setIsClicked } = useGlobalClicked();
 
   const handleNextId = () => {
-    setIsClicked(true); // Trigger global clicked state
+    setIsClicked(true); // global clicked
     if (finished || error) {
       setCurrentId((prevId) => prevId + 1);
+      onClick(); // call next id function
     }
-    onClick(); // Trigger additional actions
-    setTimeout(() => setIsClicked(false), 0); // Reset global clicked state
+    setTimeout(() => {
+      setIsClicked(false); // give it time (without it, it won't work)
+      //setError(false);
+      // setFinished(false);
+    }, 0);
   };
 
   return (
@@ -32,7 +45,7 @@ const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClic
         textAlign: "center",
       }}
     >
-      <Button
+      <button
         onClick={handleNextId}
         style={{
           width: "200px",
@@ -44,14 +57,14 @@ const NextButton: React.FC<NextButtonProps> = ({ currentId, setCurrentId, onClic
           transition: "background-color 0.3s ease",
         }}
         onMouseEnter={(e) => {
-          (e.target as HTMLElement).style.backgroundColor = "#333"; // Hover effect
+          (e.target as HTMLElement).style.backgroundColor = "#333";
         }}
         onMouseLeave={(e) => {
-          (e.target as HTMLElement).style.backgroundColor = "#000"; // Reset hover
+          (e.target as HTMLElement).style.backgroundColor = "#000";
         }}
       >
         הבא
-      </Button>
+      </button>
     </div>
   );
 };

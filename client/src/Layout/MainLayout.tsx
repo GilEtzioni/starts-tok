@@ -41,10 +41,10 @@ const items2: MenuProps['items'] = [
 interface MainLayoutProps {
   myComponent: React.ReactNode;
   levelName: string,
-  courseName: string,
+  course_name: string,
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_name }) => {
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
@@ -68,7 +68,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
               { title: 'גרמנית' },
               { title: <Link to="/main">מסך הבית</Link> },
               ...(levelName !== '' ? [{ title: levelName }] : []),
-              ...(courseName !== '' ? [{ title: courseName }] : []),
+              ...(course_name !== '' ? [{ title: course_name }] : []),
             ]}
             style={{ margin: '16px 0',textAlign: 'left', }} // RTL support for Hebrew text
           />

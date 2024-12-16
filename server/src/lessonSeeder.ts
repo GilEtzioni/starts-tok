@@ -7,15 +7,33 @@ async function seed() {
     console.log("Seeding database...");
 
     const items = await db.insert(Lessons).values([
-    // Colors - lesson 1
-    // game 1
-    { level_hebrew: "מבוא", level_english: "A1", courseId: 1, lessonId:1, gameId: 1, courseName: "Colors", GermanWord: "rot", HebrewWord: "אדום", knowlage: "X" },
-    { level_hebrew: "מבוא", level_english: "A1", courseId: 1, lessonId:1, gameId: 1, courseName: "Colors", GermanWord: "blau", HebrewWord: "כחול", knowlage: "X" },
-    { level_hebrew: "מבוא", level_english: "A1", courseId: 1, lessonId:1, gameId: 1, courseName: "Colors", GermanWord: "grün", HebrewWord: "ירוק", knowlage: "X" },
-    { level_hebrew: "מבוא", level_english: "A1", courseId: 1, lessonId:1, gameId: 1, courseName: "Colors", GermanWord: "gelb", HebrewWord: "צהוב", knowlage: "X" },
-    { level_hebrew: "מבוא", level_english: "A1", courseId: 1, lessonId:1, gameId: 1, courseName: "Colors", GermanWord: "schwarz", HebrewWord: "שחור" },
-    { level_hebrew: "מבוא", level_english: "A1", courseId: 1, lessonId:1, gameId: 1, courseName: "Colors", GermanWord: "weiß", HebrewWord: "לבן", knowlage: "X" },
-    
+    // level: A1-מבוא , course: Greetings-6 , lesson: 1 
+    { level_hebrew: "מבוא", level_english: "A1",course_name: "Greetings", course_id: 6, lesson_id: 1,
+
+      // sentece game 
+      sentence_one_german: "hallo wie gehts", sentence_one_hebrew: "היי מה שלומך",
+      sentence_two_german: "guten morgen", sentence_two_hebrew: "בוקר טוב",
+
+      // missing words game
+      missing_sentence_one_german: "Hallo! Ich bin Gil", missing_sentence_one_hebrew: "שלום! קוראים לי גיל",
+      missing_word_one_german: "hallo", missing_word_one_hebrew: "שלום",
+      missing_sentence_two_german: "Guten morgen, wie gehts", missing_sentence_two_hebrew: "בוקר טוב, מה שלומך?",
+      missing_word_two_german: "morgen", missing_word_two_hebrew: "בוקר",
+
+      // word couples game
+      word_one_german: "hallo", word_one_hebrew: "שלום",
+      word_two_german: "wie geths", word_two_hebrew: "מה שלומך",
+      word_three_german: "rot", word_three_hebrew: "אדום",
+      word_four_german: "blau", word_four_hebrew: "כחול",
+      word_five_german: "vater", word_five_hebrew: "אבא",
+      word_six_german: "muter", word_six_hebrew: "אמא",
+      word_seven_german: "gelb", word_seven_hebrew: "צהוב",
+      word_eight_german: "grün", word_eight_hebrew: "ירוק",
+      word_nine_german: "sohn", word_nine_hebrew: "בן",
+      word_ten_german: "onkel", word_ten_hebrew: "דוד",
+      word_eleven_german: "morgen", word_eleven_hebrew: "טוב",
+      word_twelve_german: "guten", word_twelve_hebrew: "בוקר",
+    },
     ]).returning({ id: Lessons.id });
 
     console.log("Seeding complete. Inserted items:", items);

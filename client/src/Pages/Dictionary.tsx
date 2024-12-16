@@ -6,7 +6,7 @@ import LevelButtonsContainer from '../components/Dictionarys/LevelButtonsContain
 const Dictionary: React.FC = () => {
   return (
     <div>
-      <MainLayout levelName='' courseName='' myComponent={<DictionaryContainer />} />
+      <MainLayout levelName='' course_name='' myComponent={<DictionaryContainer />} />
     </div>
   );
 };

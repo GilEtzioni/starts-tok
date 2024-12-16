@@ -6,7 +6,7 @@ import MainPage from './MainPage';
 const Main: React.FC = () => {
   return (
     <div>
-      <MainLayout levelName='' courseName='' myComponent={<MainPage />} />
+      <MainLayout levelName='' course_name='' myComponent={<MainPage />} />
     </div>
   );
 };

@@ -18,19 +18,12 @@ const MainLearn: React.FC = () => {
     // Render the current lesson based on currentId
     const renderCurrentLesson = () => {
         switch (currentId) {
-            case 1:
-            case 4:
-                return (
-                    <LessonOneFront setFinished={setFinished} setError={setError} />
-                );
-            case 2:
-            case 5:
-                return (
-                    <LessonTwoFront setFinished={setFinished} setError={setError} />
-                );
-            case 3:
-            case 6:
-                return <LessonThreeFront setFinished={setFinished} setError={setError}/>;
+            case 1: return ( <LessonOneFront setFinished={setFinished} setError={setError} order={"first"} /> );
+            case 2: return ( <LessonTwoFront setFinished={setFinished} setError={setError} order={"second"} /> );
+            case 3: return ( <LessonThreeFront setFinished={setFinished} setError={setError} order={"third"} /> );
+            case 4: return ( <LessonOneFront setFinished={setFinished} setError={setError} order={"forth"} /> );
+            case 5: return ( <LessonTwoFront setFinished={setFinished} setError={setError} order={"fifth"} /> );
+            case 6: return ( <LessonThreeFront setFinished={setFinished} setError={setError} order={"sith"} />);
             default:
                 return <div>No lesson found.</div>;
         }
@@ -79,6 +72,8 @@ const MainLearn: React.FC = () => {
                     )}
 
                     <NextButton
+                        setError={setError}
+                        setFinished={setFinished}
                         error={error}
                         finished={finished}
                         currentId={currentId}

@@ -8,7 +8,7 @@ import { eq, and } from "drizzle-orm";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: '*' })); // Allow all origins for testing
+app.use(cors({ origin: '*' })); //allow all origins for testing
 
 // e.g: /main/course/A2
 app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
@@ -48,13 +48,13 @@ app.get("/", async (req: Request, res: Response) => {
     }
 });
 
-// /main/course/A1/Colors
+// /main/course/A1/Greeting
 app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
     try {
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
         const course = req.params.course;
 
-        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.courseName, course)));
+        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.course_name, course)));
 
         res.json(lesson);
     } catch (err) {
