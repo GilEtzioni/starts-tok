@@ -1,8 +1,8 @@
-export const filterByOrder = (data: any[], order: string) => {
-    if (order === "first") {
+export const filterByOrder = (data: any[], order: number) => {
+    if (order === 1) {
         return data.slice(0, 6);
     }
-    if (order === "forth") {
+    if (order === 4) {
         return data.slice(6, 12);
     }
     return data;

@@ -1,44 +1,54 @@
+// react + redux + ant
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setRunning, setSuccess, setFailure, resetOrder, addOneOrder, changeOrder, resetClicks, addOneClick } from "../../LessonsSlice";
+import { RootState } from "../../../app/store";
 import { Row } from 'antd';
+
+// helping functions + data
 import { fetchCourseData } from "../LessonsData";
 import LessonOneCards from "./LessonOneCards";
 import { filterByOrder, shuffleArray } from "./LessonOneHelper";
 
-interface LessonOneFrontProps {
-    setFinished: React.Dispatch<React.SetStateAction<boolean>>;
-    setError: React.Dispatch<React.SetStateAction<boolean>>;
-    order: string;
-}
 
-const LessonOneFront: React.FC<LessonOneFrontProps> = ({ setFinished, setError, order }) => {
+const LessonOneFront: React.FC= () => {
+
+    const status = useSelector((state: RootState) => state.lessons.status);
+    const order = useSelector((state: RootState) => state.lessons.order);
+    const dispatch = useDispatch();
+
     const [shuffledHebrew, setShuffledHebrew] = useState<any[]>([]);
     const [shuffledGerman, setShuffledGerman] = useState<any[]>([]);
     const [currentBlackHebrewId, setCurrentBlackHebrewId] = useState<string | null>(null);
     const [currentBlackGermanId, setCurrentBlackGermanId] = useState<string | null>(null);
+
+    //
     const [errorCount, setErrorCount] = useState(0);
     const [successCount, setSuccessCount] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const { initialHebrewWords, initialGermanWords } = await fetchCourseData('A1', 'Greetings');
+          try {
+            const { initialHebrewWords, initialGermanWords } = await fetchCourseData('A1', 'Greetings');
 
-                const filteredHebrewWords = filterByOrder(initialHebrewWords, order);
-                const filteredGermanWords = filterByOrder(initialGermanWords, order);
-
-                setShuffledHebrew(shuffleArray(filteredHebrewWords));
-                setShuffledGerman(shuffleArray(filteredGermanWords));
-            } catch (error) {
-                console.error('Error fetching course data:', error);
-                setError(true);
-            }
+            const filteredHebrewWords = filterByOrder(initialHebrewWords, order);
+            const filteredGermanWords = filterByOrder(initialGermanWords, order);
+    
+            setShuffledHebrew(shuffleArray(filteredHebrewWords));
+            setShuffledGerman(shuffleArray(filteredGermanWords));
+          } catch (error) {
+            console.error('error fetch data:', error);
+          }
         };
-
+    
         fetchData();
-        setError(false);
-    }, [order, setError]);
+        // dispatch(setRunning());
+      }, [dispatch, order]);
+    
+      
 
     const handleMatchCheck = () => {
+        console.log("status: ",status)
         if (currentBlackHebrewId && currentBlackGermanId) {
             if (currentBlackHebrewId === currentBlackGermanId) {
                 setShuffledHebrew((prev) =>
@@ -52,9 +62,12 @@ const LessonOneFront: React.FC<LessonOneFrontProps> = ({ setFinished, setError, 
                     )
                 );
                 setSuccessCount((prev) => {
-                    if (prev + 1 === 6) setFinished(true);
+                    if (prev + 1 === 6) {
+                        dispatch(setSuccess());
+                        console.log("here")
+                    }
                     return prev + 1;
-                });
+                });                
             } else {
                 setShuffledHebrew((prev) =>
                     prev.map((card) =>
@@ -66,7 +79,8 @@ const LessonOneFront: React.FC<LessonOneFrontProps> = ({ setFinished, setError, 
                         card[1] === currentBlackGermanId ? [card[0], card[1], "wrongSelected"] : card
                     )
                 );
-                setError(true);
+                // setError(true);
+                dispatch(setFailure());
                 setErrorCount((prev) => prev + 1);
             }
 

@@ -37,7 +37,7 @@ app.get("/main", async (req: Request, res: Response) => {
 });
 
 // I will cahnge the pwd later...
-app.get("/", async (req: Request, res: Response) => {
+app.get("/dictionary", async (req: Request, res: Response) => {
     try {
         const allWords = await db.select().from(Words);
         // console.log("Fetched coursesSubjects:", allWords); 
@@ -46,6 +46,19 @@ app.get("/", async (req: Request, res: Response) => {
         console.error("Error fetching courses:", err);
         res.status(500).send("Error fetching courses");
     }
+});
+
+app.patch("/dictionary", async (req: Request, res: Response) => {
+    /*
+    try {
+        const allWords = await db.select().from(Words);
+        // console.log("Fetched coursesSubjects:", allWords); 
+        res.json(allWords);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+    */
 });
 
 // /main/course/A1/Greeting

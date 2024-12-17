@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useGlobalClicked } from "../GlobalClickedContext";
 import { fetchCourseData } from "../LessonsData";
 import { filterByOrder, splitTheSentence } from "./LessonThreeHelper";
 
-interface LessonThreeFrontProps {
-  setFinished: React.Dispatch<React.SetStateAction<boolean>>;
-  setError: React.Dispatch<React.SetStateAction<boolean>>;
-  order: string;
-}
+import { useSelector, useDispatch } from 'react-redux';
+import { setRunning, setSuccess, setFailure, resetOrder, addOneOrder, changeOrder, resetClicks, addOneClick } from "../../LessonsSlice";
+import { RootState } from "../../../app/store";
 
-const LessonThreeFront: React.FC<LessonThreeFrontProps> = ({ setFinished, setError, order }) => {
+const LessonThreeFront: React.FC = () => {
+
+  const status = useSelector((state: RootState) => state.lessons.status);
+  const order = useSelector((state: RootState) => state.lessons.order);
+  const clicks = useSelector((state: RootState) => state.lessons.clicks);
+  const dispatch = useDispatch();
+
   const [germanSentence, setGermanSentence] = useState<string>("");
   const [hebrewSentence, setHebrewSentence] = useState<string>("");
   const [germanWord, setGermanWord] = useState<string>("");
@@ -20,7 +23,6 @@ const LessonThreeFront: React.FC<LessonThreeFrontProps> = ({ setFinished, setErr
   const [hebrewSentenceFirstPart, setHebrewSentenceFirstPart] = useState<string>("");
   const [hebrewSentenceSecondPart, setHebrewSentenceSecondPart] = useState<string>("");
 
-  const { isClicked } = useGlobalClicked();
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -37,6 +39,7 @@ const LessonThreeFront: React.FC<LessonThreeFrontProps> = ({ setFinished, setErr
           initialMissingHebrewWords,
         } = await fetchCourseData("A1", "Greetings");
 
+        
         const filteredHebrewSentences = filterByOrder(initialMissingHebrewSentences, order);
         const filteredGermanSentences = filterByOrder(initialMissingGermanSentences, order);
         const filteredGermanWords = filterByOrder(initialMissingHebrewWords, order);
@@ -55,30 +58,31 @@ const LessonThreeFront: React.FC<LessonThreeFrontProps> = ({ setFinished, setErr
         setGermanSentenceFirstPart(germanSplit.firstArrayPart);
         setGermanSentenceSecondPart(germanSplit.secondArrayPart);
       } catch (error) {
-        console.log(error);
-        setError(true);
+        console.error('error fetch data:', error);
       }
     };
-
-    setError(false);
     fetchData();
-  }, [order, setError]);
+  }, [dispatch, order]);
+
+
+
 
   useEffect(() => {
-    if (isClicked) {
-      if (inputValue === germanWord) {
-        console.log("equal in three");
-        setFinished(true);
-      } else {
-        console.log("not equal in three");
-        setError(true);
-      }
+    if (inputValue === "" && clicks === 1) {
+      dispatch(resetClicks());
+      console.log("do nothing in 3")
     }
-    
-  }, [isClicked, inputValue, germanWord, setFinished, setError]);
+    else if (inputValue === germanWord && clicks === 1) {
+      console.log("equal in three");
+      dispatch(setSuccess());
+    } else if (clicks === 1) {
+      console.log("not equal in three");
+      dispatch(setFailure());
+    }
+  }, [dispatch, clicks, inputValue, germanWord]);
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center",height: "400px"}}>
       <h1>השלימו את המשפט</h1>
   
       {/* hebrew */}
@@ -88,7 +92,7 @@ const LessonThreeFront: React.FC<LessonThreeFrontProps> = ({ setFinished, setErr
       <p style={{ 
           display: "inline-block", 
           position: "relative", 
-          top: "100px"
+          top: "100px",
         }}
       >
         {germanSentenceFirstPart}
@@ -102,7 +106,9 @@ const LessonThreeFront: React.FC<LessonThreeFrontProps> = ({ setFinished, setErr
             outline: "none",
             fontSize: "16px",
             textAlign: "center",
-            width: `${germanWord.length * 10}px`,
+            width: `${ germanWord.length * 10 }px`,
+            marginLeft: "8px", 
+            marginRight: "8px", 
           }}
         />
         {germanSentenceSecondPart}

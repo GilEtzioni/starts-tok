@@ -1,17 +1,26 @@
-import { useGlobalClicked } from "../GlobalClickedContext";
 import React, { useEffect, useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setRunning,
+  setSuccess,
+  setFailure,
+  resetOrder,
+  addOneOrder,
+  changeOrder,
+  resetClicks,
+  addOneClick,
+} from "../../LessonsSlice";
+import { RootState } from "../../../app/store";
 import { fetchCourseData } from "../LessonsData";
 import { shuffleArray, filterByOrder } from "./LessonTwoHelper";
 import LessonOneCards from "./LessonTwoCards";
 
-interface LessonTwoFrontProps {
-  setFinished: React.Dispatch<React.SetStateAction<boolean>>;
-  setError: React.Dispatch<React.SetStateAction<boolean>>;
-  order: string;
-}
+const LessonTwoFront: React.FC = () => {
+  const status = useSelector((state: RootState) => state.lessons.status);
+  const order = useSelector((state: RootState) => state.lessons.order);
+  const clicks = useSelector((state: RootState) => state.lessons.clicks);
+  const dispatch = useDispatch();
 
-const LessonTwoFront: React.FC<LessonTwoFrontProps> = ({ setFinished, setError, order }) => {
-  const { isClicked } = useGlobalClicked();
   const [cardsContainer, setCardsContainer] = useState<any[]>([]);
   const [germanSentence, setGermanSentence] = useState<string>("");
   const [hebrewSentence, setHebrewSentence] = useState<string>("");
@@ -26,13 +35,13 @@ const LessonTwoFront: React.FC<LessonTwoFrontProps> = ({ setFinished, setError, 
   const calculateUpperCapacity = useCallback(() => {
     const maxCapacity = Math.floor(CONTAINER_WIDTH / CARD_WIDTH);
     setUpperCapacity(maxCapacity);
-    setError(false);
-  }, [setError]);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { initialGermanWords, initialGermanSentences, initialHebrewSentences } = await fetchCourseData("A1", "Greetings");
+        const { initialGermanWords, initialGermanSentences, initialHebrewSentences } =
+          await fetchCourseData("A1", "Greetings");
         setCardsContainer(shuffleArray(initialGermanWords));
 
         const filteredHebrew = filterByOrder(initialHebrewSentences, order);
@@ -43,22 +52,24 @@ const LessonTwoFront: React.FC<LessonTwoFrontProps> = ({ setFinished, setError, 
 
         calculateUpperCapacity();
       } catch (error) {
-        console.error(error);
+        console.error("error fetch data:", error);
       }
     };
     fetchData();
-  }, [order, calculateUpperCapacity]);
+    console.log("in second", status);
+  }, [order, dispatch, calculateUpperCapacity]);
 
-  const logCombinedContainers = useCallback(() => {
+  // recalculate combined string
+  useEffect(() => {
     const newCombined = [...upperContainer, ...midContainer]
       .map(([name]) => name)
       .join(" ");
     setCombined(newCombined);
-    console.log("Combined items in upper and mid containers:", newCombined);
+    console.log("Combined items in upper and mid containers:", combined);
   }, [upperContainer, midContainer]);
 
   const handleCardClick = (card: any, from: string) => {
-    if (from === "cardsContainer") {
+    if (from === "cardsContainer" && (status !== "failure" && status !== "success") ) {
       if (upperContainer.length < upperCapacity) {
         setUpperContainer((prev) => [...prev, card]);
       } else {
@@ -72,24 +83,21 @@ const LessonTwoFront: React.FC<LessonTwoFrontProps> = ({ setFinished, setError, 
       setMidContainer((prev) => prev.filter(([_, id]) => id !== card[1]));
       setCardsContainer((prev) => [...prev, card]);
     }
-    logCombinedContainers();
   };
 
   useEffect(() => {
-    if (isClicked) {
-      if (combined === germanSentence[0]) {
-        // console.log("equal");
-        console.log("combined in two - ", combined);
-        console.log("germanSentence  in two - ", germanSentence[0]);
-        setFinished(true);
-      } else {
-        console.log("not equal");
-        console.log("combined - ", combined);
-        console.log("germanSentence - ", germanSentence[0]);
-        setError(true);
-      }
+    if (combined === "" && clicks === 1) {
+      dispatch(resetClicks());
+      console.log("do nothing in 2")
     }
-  }, [isClicked, combined, germanSentence]);
+    else if (combined === germanSentence && clicks === 1) {
+      console.log("equal in two");
+      dispatch(setSuccess());
+    } else if (clicks === 1) {
+      console.log("not equal in two");
+      dispatch(setFailure());
+    }
+  }, [dispatch, clicks, combined, germanSentence]);
 
   return (
     <div style={{ textAlign: "center", color: "black" }}>

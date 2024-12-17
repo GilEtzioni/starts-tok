@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
 
 interface LevelButtonProps {
   buttName: string;
@@ -10,7 +9,7 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttName }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   return (
-    <Button
+    <button
       onClick={() => setIsClicked(!isClicked)}
       style={{
         backgroundColor: isClicked ? 'grey' : "#000",
@@ -23,7 +22,7 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttName }) => {
       }}
     >
       {buttName}
-    </Button>
+    </button>
   );
 };
 

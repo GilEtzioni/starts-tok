@@ -24,7 +24,7 @@ const App: React.FC = () => {
   const [isVee, setIsVee] = useState("false");                   // V
   const [isQuestionMark, SetIsQuestionMark] = useState("false"); // ?
 
-  // Fetch data on mount
+  // fetch data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,7 +33,7 @@ const App: React.FC = () => {
         console.log('Fetched data in React:', allData); // Log the fetched data
         setWords(allData);
 
-        // Transform `words` into `data` for the table
+        // transform `words` into `data` for the table
         const transformedData = allData.map((word: { id: number; GermanWord: string }) => ({
           key: word.id.toString(),
           first: word.GermanWord,
@@ -48,7 +48,7 @@ const App: React.FC = () => {
     fetchData();
   }, []);
 
-  // Define columns for the Ant Design Table
+  // table
   const columns: ColumnsType<DataType> = [
     {
       dataIndex: 'first',
@@ -73,9 +73,9 @@ const App: React.FC = () => {
 >
       <div
         style={{
-          height: '120px', // Adjust the height as needed
-          width: '800px',  // Adjust the width as needed
-          padding: '16px', // Add padding inside the container
+          height: '120px', 
+          width: '800px',  
+          padding: '16px',
           border: '1px solid hsl(240, 5%, 64.9%)',
           borderRadius: '8px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -98,8 +98,8 @@ const App: React.FC = () => {
           },
         }}
         rowClassName={(record, index) => {
-          if (index === 0) return 'table-row-first'; // First row
-          if (index === data.length - 1) return 'table-row-last'; // Last row
+          if (index === 0) return 'table-row-first'; // first row
+          if (index === data.length - 1) return 'table-row-last'; // last row
           return '';
         }}
       />

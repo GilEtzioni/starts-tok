@@ -31,8 +31,8 @@ async function seed() {
       word_eight_german: "grün", word_eight_hebrew: "ירוק",
       word_nine_german: "sohn", word_nine_hebrew: "בן",
       word_ten_german: "onkel", word_ten_hebrew: "דוד",
-      word_eleven_german: "morgen", word_eleven_hebrew: "טוב",
-      word_twelve_german: "guten", word_twelve_hebrew: "בוקר",
+      word_eleven_german: "morgen", word_eleven_hebrew: "בוקר",
+      word_twelve_german: "guten", word_twelve_hebrew: "טוב",
     },
     ]).returning({ id: Lessons.id });
 

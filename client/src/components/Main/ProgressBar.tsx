@@ -7,7 +7,7 @@ type ProgressBarProps = {
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ num }) => {
-  const percentage = Math.min(num * 20, 100); // Calculate percentage based on `num`
+  const percentage = Math.min((num-1) * 20, 100); // calculate percentage based on `num`
 
   return (
     <div

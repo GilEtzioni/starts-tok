@@ -1,9 +1,9 @@
 // Filter data by order
-export const filterByOrder = (data: any[], order: string) => {
-    if (order === "third") {
+export const filterByOrder = (data: any[], order: number) => {
+    if (order === 3) {
       return data[0][0]; // only the sentence of the first item
     }
-    if (order === "sith") {
+    if (order === 6) {
       return data[1][0]; // only the sentence of the second item
     }
     return data; // return all items
