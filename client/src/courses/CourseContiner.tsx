@@ -7,7 +7,7 @@ const CourseContainer: React.FC = () => {
   const { name } = useParams<{ name?: string }>();
   const level_name = name ?? 'default-level';
 
-  const [courses, setCourses] = useState<{ id: number; course_name: string; level_english: string }[]>([]);
+  const [courses, setCourses] = useState<{ id: number; course_name: string; level_english: string; lesson_completed: number }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +23,7 @@ const CourseContainer: React.FC = () => {
 
     fetchData();
   }, []);
+
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
@@ -40,8 +41,8 @@ const CourseContainer: React.FC = () => {
                 <Col span={4} key={course.id}>
                   {/* /main/course/A1/Weather */}
                   <Link
-                    to={`/main/course/${course.level_english}/${course.course_name}`}
-                    style={{ textDecoration: 'none' }} // Prevent underline
+                    to={`/main/course/${course.level_english}/${course.course_name}/${course.lesson_completed}`}
+                    style={{ textDecoration: 'none' }} 
                   >
                     <Card
                       title={course.course_name}
@@ -64,7 +65,9 @@ const CourseContainer: React.FC = () => {
                         cardElement.style.backgroundColor = '#fff'; // Reset background color
                       }}
                     >
-                      סיימת 0/6
+                      סיימת{" "}
+                      {course.lesson_completed}
+                       /6
                     </Card>
                   </Link>
                 </Col>

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCourseData } from "../LessonsData";
 import { filterByOrder, splitTheSentence } from "./LessonThreeHelper";
+import { Row } from 'antd';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setRunning, setSuccess, setFailure, resetOrder, addOneOrder, changeOrder, resetClicks, addOneClick } from "../../LessonsSlice";
 import { RootState } from "../../../app/store";
 
-const LessonThreeFront: React.FC = () => {
+interface LessonThreeCardsProps {
+  levelName: string,
+  courseName: string,
+  completedLessons: number,
+}
+
+const LessonThreeFront: React.FC<LessonThreeCardsProps> =  ({levelName, courseName, completedLessons}) => {
 
   const status = useSelector((state: RootState) => state.lessons.status);
   const order = useSelector((state: RootState) => state.lessons.order);
@@ -37,7 +44,7 @@ const LessonThreeFront: React.FC = () => {
           initialMissingHebrewSentences,
           initialMissingGermanWords,
           initialMissingHebrewWords,
-        } = await fetchCourseData("A1", "Greetings");
+        } = await await fetchCourseData(levelName, courseName, completedLessons);
 
         
         const filteredHebrewSentences = filterByOrder(initialMissingHebrewSentences, order);
@@ -83,7 +90,10 @@ const LessonThreeFront: React.FC = () => {
 
   return (
     <div style={{ textAlign: "center",height: "400px"}}>
-      <h1>השלימו את המשפט</h1>
+
+      <Row justify="center" style={{ marginBottom: '0px' }}>
+      <h1 style={{ textAlign: 'center' }}>השלימו את המשפט</h1>
+     </Row>
   
       {/* hebrew */}
       <p style={{ fontSize: "18px", color: "black", margin: "10px 0" }}>{hebrewSentence}</p>

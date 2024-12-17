@@ -1,8 +1,15 @@
-export const fetchCourseData = async (levelName: string, lessonName: string) => {
+export const fetchCourseData = async (levelName: string, lessonName: string, completedLessons: number) => {
   try {
-    // URL construction
-    const response = await fetch(`http://localhost:3000/main/course/${levelName}/${lessonName}`);
+    // const completedLessonsAsString = completedLessons.toString();
+    console.log("Type of completedLessons:", typeof completedLessons, completedLessons);
+    const response = await fetch(`http://localhost:3000/main/course/${levelName}/${lessonName}/${completedLessons}`);
     const data = await response.json();
+
+        // Check for errors
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+    
 
     /* ----------------------------------------------------------------------------- */
 

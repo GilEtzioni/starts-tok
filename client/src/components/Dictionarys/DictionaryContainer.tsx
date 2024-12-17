@@ -28,7 +28,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/`);
+        const response = await fetch(`http://localhost:3000/dictionary`);
         const allData = await response.json();
         console.log('Fetched data in React:', allData); // Log the fetched data
         setWords(allData);

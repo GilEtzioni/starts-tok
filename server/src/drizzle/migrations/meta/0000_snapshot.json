@@ -1,5 +1,5 @@
 {
-  "id": "ce719950-37e9-4f35-bd0f-3748e8fde6b8",
+  "id": "54a7d361-c899-4064-a772-94008a64a2a0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -33,6 +33,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "lesson_completed": {
+          "name": "lesson_completed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},

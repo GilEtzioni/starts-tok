@@ -4,6 +4,8 @@ import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Link } from 'react-router-dom';
 
+import { useParams } from 'react-router-dom';
+
 const { Content, Sider } = Layout;
 
 const items2: MenuProps['items'] = [
@@ -45,6 +47,9 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_name }) => {
+  const { name } = useParams<{ name?: string }>(); 
+  const currName = name ?? 'default-level';    
+
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
@@ -57,16 +62,17 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_
           { title: 'גיל עציוני' },
           { title: 'גרמנית' },
           { title: <Link to="/main">מסך הבית</Link> },
-          ...(levelName !== '' ? [{ title: levelName }] : []),
+          ...(levelName !== '' ? [{ title: currName }] : []),
+          // ...(levelName !== '' ? [{ title: levelName }] : []),
           ...(course_name !== '' ? [{ title: course_name }] : []),
         ]}
-        style={{ margin: '16px 0', textAlign: 'right', direction: 'rtl' }} // Adjusted for RTL alignment
+        style={{ margin: '16px 0', textAlign: 'right', direction: 'rtl' }} 
       />
         <Content
           style={{
             padding: 24,
             margin: 0,
-            background: 'white', // Updated background color
+            background: 'white',
             borderRadius: borderRadiusLG,
             overflow: 'auto',
           }}
@@ -79,7 +85,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_
           mode="inline"
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['dictionary']}
-          style={{ height: '100%', borderLeft: '1px solid #e8e8e8' }} // Add a border for better separation
+          style={{ height: '100%', borderLeft: '1px solid #e8e8e8' }}
           items={items2}
         />
       </Sider>

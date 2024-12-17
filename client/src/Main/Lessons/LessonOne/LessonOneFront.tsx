@@ -10,8 +10,13 @@ import { fetchCourseData } from "../LessonsData";
 import LessonOneCards from "./LessonOneCards";
 import { filterByOrder, shuffleArray } from "./LessonOneHelper";
 
+interface LessonOneCardsProps {
+    levelName: string,
+    courseName: string,
+    completedLessons: number,
+}
 
-const LessonOneFront: React.FC= () => {
+const LessonOneFront: React.FC<LessonOneCardsProps> = ({levelName, courseName, completedLessons}) => {
 
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
@@ -22,14 +27,14 @@ const LessonOneFront: React.FC= () => {
     const [currentBlackHebrewId, setCurrentBlackHebrewId] = useState<string | null>(null);
     const [currentBlackGermanId, setCurrentBlackGermanId] = useState<string | null>(null);
 
-    //
     const [errorCount, setErrorCount] = useState(0);
     const [successCount, setSuccessCount] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const { initialHebrewWords, initialGermanWords } = await fetchCourseData('A1', 'Greetings');
+            // const { initialHebrewWords, initialGermanWords } = await fetchCourseData(levelName, courseName, completedLessons);
+            const { initialHebrewWords, initialGermanWords } = await fetchCourseData(levelName, courseName, completedLessons);
 
             const filteredHebrewWords = filterByOrder(initialHebrewWords, order);
             const filteredGermanWords = filterByOrder(initialGermanWords, order);
@@ -42,9 +47,7 @@ const LessonOneFront: React.FC= () => {
         };
     
         fetchData();
-        // dispatch(setRunning());
-      }, [dispatch, order]);
-    
+      }, [order,levelName, courseName, completedLessons]);
       
 
     const handleMatchCheck = () => {
@@ -105,7 +108,6 @@ const LessonOneFront: React.FC= () => {
 
     return (
         <>
-            {/* Centered Title */}
             <Row justify="center" style={{ marginBottom: '0px' }}>
                 <h1 style={{ textAlign: 'center' }}>התאימו את הזוגות</h1>
             </Row>

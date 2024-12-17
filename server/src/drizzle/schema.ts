@@ -1,4 +1,5 @@
-import { pgTable, varchar, serial, text, integer, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, varchar, serial, text, integer, pgEnum} from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm/sql";
 
 // enums
 export const levelEnglish = pgEnum("level_english", ["A1", "A2", "B1", "B2", "C1", "C2"]);
@@ -10,6 +11,7 @@ export const CourseNames = pgTable("courses", {
     level_english: levelEnglish("level_english"),
     level_hebrew: levelHebrew("level_hebrew"),
     course_name: text("course_name"),
+    lesson_completed: integer("lesson_completed").notNull().$default(() => 0), // 0-5
 });
 
 // "words" table

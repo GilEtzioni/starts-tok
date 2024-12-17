@@ -13,21 +13,17 @@ import Login from './Pages/Login';
 import CoursesPage from './Pages/CoursesPage';
 import MainLearn from './Main/MainLearn';
 
-
-// now:  /main/course/Weather/learn/7
-// fix:  /main/course/A1/Weather/1  OR /main/course/A1/Weather/2 OR /main/course/A1/Weather/3
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Login />} />                          {/* "/" */}
-        <Route path="dictionary" element={<Dictionary />} />         {/* "/dictionary" */}
-        <Route path="main" element={<Main />} />                     {/* "/main" */}
-        <Route path="main/course" element={<CoursesLayout />}>       
-          <Route path=":name" element={<CoursesPage />} />           {/* "/main/course/A1 */}
-          <Route path=":name" element={<LearnLayout />}>       
-            <Route path=":lesson" element={<MainLearn />} />             {/* "/main/course/A1/:id" */}
-          </Route>
+        <Route index element={<Login />} />                         {/* "/" */}
+        <Route path="dictionary" element={<Dictionary />} />        {/* "/dictionary" */}
+        <Route path="main" element={<Main />} />                    {/* "/main" */}
+        <Route path="main/course" element={<CoursesLayout />}>      
+          <Route path=":name" element={<CoursesPage />} />          {/* "/main/course/A1" */}
+          <Route path=":name/:lesson/:completed" element={<MainLearn />} /> 
+          {/* "/main/course/A1/Greetings/1" */}
         </Route>
       </Route>
     </>

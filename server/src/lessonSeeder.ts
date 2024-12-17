@@ -7,7 +7,7 @@ async function seed() {
     console.log("Seeding database...");
 
     const items = await db.insert(Lessons).values([
-    // level: A1-מבוא , course: Greetings-6 , lesson: 1 
+    /* level: A1-מבוא , course: Greetings-6 , lesson: 1 */
     { level_hebrew: "מבוא", level_english: "A1",course_name: "Greetings", course_id: 6, lesson_id: 1,
 
       // sentece game 
@@ -33,6 +33,34 @@ async function seed() {
       word_ten_german: "onkel", word_ten_hebrew: "דוד",
       word_eleven_german: "morgen", word_eleven_hebrew: "בוקר",
       word_twelve_german: "guten", word_twelve_hebrew: "טוב",
+    },
+
+    /* level: A1-מבוא , course: Greetings-6 , lesson: 2 */
+    { level_hebrew: "מבוא", level_english: "A1",course_name: "Greetings", course_id: 6, lesson_id: 2,
+
+      // sentece game 
+      sentence_one_german: "Tschüss, Bis bald", sentence_one_hebrew: "ביי, נתראה בקרוב",
+      sentence_two_german: "Guten Abend. Prost!", sentence_two_hebrew: "ערב טוב. לחיים!",
+
+      // missing words game
+      missing_sentence_one_german: "Hallo! Ich bin Noam", missing_sentence_one_hebrew: "שלום! קוראים לי נעם",
+      missing_word_one_german: "Ich bin", missing_word_one_hebrew: "קוראים לי",
+      missing_sentence_two_german: "Guten Abend, Bis morgen", missing_sentence_two_hebrew: "ערב טוב, נתראה מחר",
+      missing_word_two_german: "Guten Abend", missing_word_two_hebrew: "ערב טוב",
+
+      // word couples game
+      word_one_german: "Ich bin", word_one_hebrew: "קוראים לי",
+      word_two_german: "Guten Abend", word_two_hebrew: "ערב טוב",
+      word_three_german: "Bis morgen", word_three_hebrew: "נתראה  מחר",
+      word_four_german: "Schwester", word_four_hebrew: "אחות",
+      word_five_german: "Tante", word_five_hebrew: "דודה",
+      word_six_german: "Großvater", word_six_hebrew: "סבא רבא",
+      word_seven_german: "weiß", word_seven_hebrew: "לבן",
+      word_eight_german: "rosa", word_eight_hebrew: "ורוד",
+      word_nine_german: "orange", word_nine_hebrew: "כתום",
+      word_ten_german: "gelb", word_ten_hebrew: "צהוב",
+      word_eleven_german: "vier", word_eleven_hebrew: "ארבע",
+      word_twelve_german: "zehn", word_twelve_hebrew: "עשר",
     },
     ]).returning({ id: Lessons.id });
 

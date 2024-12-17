@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS "courses" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"level_english" "level_english",
 	"level_hebrew" "level_hebrew",
-	"course_name" text
+	"course_name" text,
+	"lesson_completed" integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "lessons" (

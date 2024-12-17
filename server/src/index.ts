@@ -62,12 +62,16 @@ app.patch("/dictionary", async (req: Request, res: Response) => {
 });
 
 // /main/course/A1/Greeting
-app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
+app.get("/main/course/:userLevel/:course/:completed", async (req: Request, res: Response) => {
     try {
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
         const course = req.params.course;
+        const completed = Number(req.params.completed);
 
-        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.course_name, course)));
+        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.course_name, course)))
+        .limit(1)                   // get only 1 row
+        .offset(completed);   // Skip the first 3 rows (4th row starts at index 3)
+
 
         res.json(lesson);
     } catch (err) {
@@ -75,6 +79,11 @@ app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) =
         res.status(500).send("Error fetching courses");
     }
 });
+
+// /main/course/A1/Greeting
+
+  
+  
 
 
 const PORT: number = Number(process.env.PORT) || 3000;
