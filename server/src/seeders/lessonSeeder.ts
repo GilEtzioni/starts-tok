@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/node-postgres";
-import { Lessons} from "./drizzle/schema";
-import { db } from "./drizzle/db";
+import { Lessons} from "../drizzle/schema";
+import { db } from "../drizzle/db";
 
 async function seed() {
   try {

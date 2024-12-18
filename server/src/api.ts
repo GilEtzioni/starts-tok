@@ -1,14 +1,16 @@
 import express, { Request, Response } from "express";
 import { db } from "./drizzle/db";
-import { CourseNames , Words , Lessons} from "./drizzle/schema";
+import { CourseNames, Words, Lessons } from "./drizzle/schema";
 import "dotenv/config";
 import cors from "cors";
 import { eq, and } from "drizzle-orm";
 
+// express
 const app = express();
-
+const PORT: number = Number(process.env.PORT) || 3000;
 app.use(express.json());
-app.use(cors({ origin: '*' })); //allow all origins for testing
+app.use(cors({ origin: '*' }));
+
 
 // e.g: /main/course/A2
 app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
@@ -30,18 +32,6 @@ app.get("/main", async (req: Request, res: Response) => {
         const coursesSubjects = await db.select().from(CourseNames);
         // console.log("Fetched coursesSubjects:", coursesSubjects); 
         res.json(coursesSubjects);
-    } catch (err) {
-        console.error("Error fetching courses:", err);
-        res.status(500).send("Error fetching courses");
-    }
-});
-
-// I will cahnge the pwd later...
-app.get("/dictionary", async (req: Request, res: Response) => {
-    try {
-        const allWords = await db.select().from(Words);
-        // console.log("Fetched coursesSubjects:", allWords); 
-        res.json(allWords);
     } catch (err) {
         console.error("Error fetching courses:", err);
         res.status(500).send("Error fetching courses");
@@ -80,13 +70,19 @@ app.get("/main/course/:userLevel/:course/:completed", async (req: Request, res: 
     }
 });
 
-// /main/course/A1/Greeting
+/* ------------------------------------------------------------------------------------------------------------------- */
 
-  
-  
+// GET all words
+app.get("/dictionary", async (req: Request, res: Response) => {
+    try {
+        const allWords = await db.select().from(Words);
+        res.json(allWords);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+});
 
-
-const PORT: number = Number(process.env.PORT) || 3000;
 
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);

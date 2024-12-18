@@ -1,6 +1,10 @@
 import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
+// react query
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+
 // Layouts
 import RootLayout from './Layout/RootLayout';
 import CoursesLayout from './Layout/CoursesLayout';
@@ -30,10 +34,14 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient(); // react query
+
 const App: React.FC = () => {
 
   return (
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 };
 
