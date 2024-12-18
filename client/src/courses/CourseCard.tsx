@@ -15,7 +15,7 @@ const CourseCard: React.FC = () => {
           {gridItems.slice(rowIndex * 5, rowIndex * 5 + 5).map((item) => (
             <Col span={4} key={item.id}>
               <Card title={item.title} bordered={false}>
-                {item.content}
+                 {item.content}
               </Card>
             </Col>
           ))}
@@ -23,6 +23,6 @@ const CourseCard: React.FC = () => {
       ))}
     </div>
   );
-};
+}
 
 export default CourseCard;

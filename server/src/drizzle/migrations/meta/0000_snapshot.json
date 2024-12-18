@@ -1,5 +1,5 @@
 {
-  "id": "54a7d361-c899-4064-a772-94008a64a2a0",
+  "id": "efc2f083-8640-48f5-8772-dca06f200341",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -28,8 +28,20 @@
           "primaryKey": false,
           "notNull": false
         },
-        "course_name": {
-          "name": "course_name",
+        "course_name_english": {
+          "name": "course_name_english",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_name_german": {
+          "name": "course_name_german",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_name_hebrew": {
+          "name": "course_name_hebrew",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -73,8 +85,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "course_name": {
-          "name": "course_name",
+        "course_name_english": {
+          "name": "course_name_english",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -346,8 +358,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "course_name": {
-          "name": "course_name",
+        "course_name_english": {
+          "name": "course_name_english",
           "type": "text",
           "primaryKey": false,
           "notNull": false

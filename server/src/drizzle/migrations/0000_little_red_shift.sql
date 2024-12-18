@@ -4,7 +4,9 @@ CREATE TABLE IF NOT EXISTS "courses" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"level_english" "level_english",
 	"level_hebrew" "level_hebrew",
-	"course_name" text,
+	"course_name_english" text,
+	"course_name_german" text,
+	"course_name_hebrew" text,
 	"lesson_completed" integer NOT NULL
 );
 --> statement-breakpoint
@@ -12,7 +14,7 @@ CREATE TABLE IF NOT EXISTS "lessons" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"level_hebrew" "level_hebrew",
 	"level_english" "level_english",
-	"course_name" text,
+	"course_name_english" text,
 	"course_id" integer,
 	"lesson_id" integer,
 	"sentence_one_german" text,
@@ -58,7 +60,7 @@ CREATE TABLE IF NOT EXISTS "words" (
 	"level_hebrew" "level_hebrew",
 	"level_english" "level_english",
 	"course_id" integer,
-	"course_name" text,
+	"course_name_english" text,
 	"german_word" text,
 	"hebrew_word" text,
 	"knowlage" text

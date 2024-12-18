@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import OneCard from './OneCard';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
+// left to right antd
+import { ConfigProvider } from 'antd';
+
 const CardContainer: React.FC = () => {
   const totalCards = 6;
   const initialCards = [1, 2, 3, 4];
   const [visibleCards, setVisibleCards] = useState<number[]>(initialCards);
 
   const cardNames = [
-    "מבוא A1",
-    "בסיסי A2",
-    "בינוני B1",
-    "מתקדם B2",
-    "מתקדם מאוד C1",
-    "שפת אם C2",
+    "מבוא (A1)",
+    "בסיסי (A2)",
+    "בינוני (B1)",
+    "מתקדם (B2)",
+    "מתקדם מאוד (C1)",
+    "שפת אם (C2)",
   ];
 
   const links = [

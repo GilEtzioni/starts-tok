@@ -7,17 +7,17 @@ const CourseContainer: React.FC = () => {
   const { name } = useParams<{ name?: string }>();
   const level_name = name ?? 'default-level';
 
-  const [courses, setCourses] = useState<{ id: number; course_name: string; level_english: string; lesson_completed: number }[]>([]);
+  const [courses, setCourses] = useState<{ id: number; course_name_english: string; course_name_hebrew: string; level_english: string; lesson_completed: number }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3000/main/course/${level_name}`);
         const data = await response.json();
-        console.log('Fetched data in React:', data); // console log the fetched data
+        console.log('Fetched data in React:', data); 
         setCourses(data);
       } catch (error) {
-        console.error('Error fetching data in React:', error); // log errors
+        console.error('error fetching data:', error); 
       }
     };
 
@@ -41,11 +41,15 @@ const CourseContainer: React.FC = () => {
                 <Col span={4} key={course.id}>
                   {/* /main/course/A1/Weather */}
                   <Link
-                    to={`/main/course/${course.level_english}/${course.course_name}/${course.lesson_completed}`}
+                    to={`/main/course/${course.level_english}/${course.course_name_english}/${course.lesson_completed}`}
                     style={{ textDecoration: 'none' }} 
                   >
                     <Card
-                      title={course.course_name}
+                      title={
+                        <div style={{ direction: 'ltr', textAlign: 'right' }}>
+                          {course.course_name_hebrew}
+                        </div>
+                      }
                       bordered={true}
                       style={{
                         border: '1px solid hsl(240, 5%, 64.9%)',
@@ -56,18 +60,19 @@ const CourseContainer: React.FC = () => {
                       }}
                       onMouseEnter={(e) => {
                         const cardElement = e.currentTarget as HTMLElement;
-                        cardElement.style.transform = 'translateY(-5px)'; // Move up slightly
-                        cardElement.style.backgroundColor = 'hsl(220, 13%, 91%)'; // Change background color
+                        cardElement.style.transform = 'translateY(-5px)';
+                        cardElement.style.backgroundColor = 'hsl(220, 13%, 91%)'; 
                       }}
                       onMouseLeave={(e) => {
                         const cardElement = e.currentTarget as HTMLElement;
-                        cardElement.style.transform = 'translateY(0px)'; // Reset position
-                        cardElement.style.backgroundColor = '#fff'; // Reset background color
+                        cardElement.style.transform = 'translateY(0px)';
+                        cardElement.style.backgroundColor = '#fff';
                       }}
                     >
-                      סיימת{" "}
-                      {course.lesson_completed}
-                       /6
+                      <div style={{ direction: 'rtl', textAlign: 'right' }}>
+                        סיימת{"  "}
+                        {course.lesson_completed}/6
+                      </div>
                     </Card>
                   </Link>
                 </Col>

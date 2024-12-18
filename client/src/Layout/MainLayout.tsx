@@ -15,7 +15,7 @@ const items2: MenuProps['items'] = [
     label: 'מילון',
     children: [
       { key: 'my-dictionary', label: <Link to="/dictionary">המילון שלי</Link> },
-      { key: 'add-your-word', label: 'הוספת מילה חדשה' },
+      { key: 'add-your-word', label: 'הוספת מילה חדשה'}, 
       { key: 'dictionary-stats', label: 'סטטיסטיקות' },
     ],
   },
@@ -80,14 +80,17 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_
           {myComponent}
         </Content>
       </Layout>
-      <Sider width={200} style={{ background: '#f0f2f5' }}>
+      <Sider width={200} style={{ background: 'white' }}>
+
+      <div style={{ direction: 'ltr', textAlign: 'right'}}>
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['dictionary']}
-          style={{ height: '100%', borderLeft: '1px solid #e8e8e8' }}
+          style={{ height: '100%', borderLeft: '1px solid #e8e8e8'}}
           items={items2}
         />
+       </div>
       </Sider>
     </Layout>
   );

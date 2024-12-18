@@ -10,7 +10,9 @@ export const CourseNames = pgTable("courses", {
     id: serial("id").primaryKey(),
     level_english: levelEnglish("level_english"),
     level_hebrew: levelHebrew("level_hebrew"),
-    course_name: text("course_name"),
+    course_name_english: text("course_name_english"),
+    course_name_german: text("course_name_german"),
+    course_name_hebrew: text("course_name_hebrew"),
     lesson_completed: integer("lesson_completed").notNull().$default(() => 0), // 0-5
 });
 
@@ -20,7 +22,7 @@ export const Words = pgTable("words", {
     level_hebrew: levelHebrew("level_hebrew"),
     level_english: levelEnglish("level_english"),
     courseId: integer("course_id").references(() => CourseNames.id), // foreign key
-    course_name: text("course_name"),
+    course_name_english: text("course_name_english"),
     GermanWord: text("german_word"),
     HebrewWord: text("hebrew_word"),
     knowlage: text("knowlage"),
@@ -34,7 +36,7 @@ export const Lessons = pgTable("lessons", {
     level_hebrew: levelHebrew("level_hebrew"),     // ״מתחילים״
     level_english: levelEnglish("level_english"),  // A1
 
-    course_name: text("course_name"),              // Greeting
+    course_name_english: text("course_name_english"),              // Greeting
     course_id: integer("course_id"),               // 1-25
 
     lesson_id: integer("lesson_id"),               // 1-6

@@ -8,7 +8,7 @@ async function seed() {
 
     const items = await db.insert(Lessons).values([
     /* level: A1-מבוא , course: Greetings-6 , lesson: 1 */
-    { level_hebrew: "מבוא", level_english: "A1",course_name: "Greetings", course_id: 6, lesson_id: 1,
+    { level_hebrew: "מבוא", level_english: "A1",course_name_english: "Greetings", course_id: 6, lesson_id: 1,
 
       // sentece game 
       sentence_one_german: "hallo wie gehts", sentence_one_hebrew: "היי מה שלומך",
@@ -36,7 +36,7 @@ async function seed() {
     },
 
     /* level: A1-מבוא , course: Greetings-6 , lesson: 2 */
-    { level_hebrew: "מבוא", level_english: "A1",course_name: "Greetings", course_id: 6, lesson_id: 2,
+    { level_hebrew: "מבוא", level_english: "A1",course_name_english: "Greetings", course_id: 6, lesson_id: 2,
 
       // sentece game 
       sentence_one_german: "Tschüss, Bis bald", sentence_one_hebrew: "ביי, נתראה בקרוב",

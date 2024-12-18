@@ -68,7 +68,7 @@ app.get("/main/course/:userLevel/:course/:completed", async (req: Request, res: 
         const course = req.params.course;
         const completed = Number(req.params.completed);
 
-        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.course_name, course)))
+        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.level_english, userLevel), eq(Lessons.course_name_english, course)))
         .limit(1)                   // get only 1 row
         .offset(completed);   // Skip the first 3 rows (4th row starts at index 3)
 
