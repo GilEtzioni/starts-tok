@@ -1,5 +1,5 @@
-import React from 'react';
-import LevelButton from './LevelButton';
+import React, { useState } from 'react';
+import LevelButton from './TopLevelButton';
 
 const buttonLabels = [
     'המילים שהוספתי',
@@ -12,6 +12,7 @@ const buttonLabels = [
   ];
   
   const LevelButtonsContainer: React.FC = () => {
+    
     return (
       <div style={{
         display: 'flex',
@@ -21,7 +22,7 @@ const buttonLabels = [
         flexWrap: 'wrap',
       }}>
         {buttonLabels.map((label) => (
-          <LevelButton key={label} buttName={label} />
+          <LevelButton key={label} buttName={label}  />
         ))}
       </div>
     );

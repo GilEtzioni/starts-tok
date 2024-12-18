@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "./axiosInstance";
 import { WordsType } from "./types/wordType";
@@ -21,7 +21,6 @@ const DictionaryList: React.FC = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  // Toggle level selection
   const toggleLevel = (level: string) => {
     setSelectedLevels((prev) =>
       prev.includes(level)
@@ -29,6 +28,7 @@ const DictionaryList: React.FC = () => {
         : [...prev, level] // Add level if not selected
     );
   };
+
 
   // Filter items based on selected levels
   const filteredItems = items?.filter((item) =>

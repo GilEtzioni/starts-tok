@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 
-interface LevelButtonProps {
+interface FilterLevelButtonProps {
   buttName: string;
-  label: string;
 }
 
-const LevelButton: React.FC<LevelButtonProps> = ({ label, buttName}) => {
+const FilterLevelButton : React.FC<FilterLevelButtonProps> = ({ buttName }) => {
     
   const [isClicked, setIsClicked] = useState(false);
+
   return (
     <button
       onClick={() => setIsClicked(!isClicked)}
-      
       style={{
         backgroundColor: isClicked ? 'grey' : "#000",
         color: "#fff",
@@ -27,5 +26,5 @@ const LevelButton: React.FC<LevelButtonProps> = ({ label, buttName}) => {
   );
 };
 
-export default LevelButton;
+export default FilterLevelButton ;
 

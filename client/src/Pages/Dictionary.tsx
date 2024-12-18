@@ -1,8 +1,6 @@
 import React from 'react';
 import MainLayout from "../Layout/MainLayout";
-import DictionaryContainer from "../Dictionarys/dicComponents/DictionaryContainer";
-import LevelButtonsContainer from '../Dictionarys/dicComponents/LevelButtonsContainer';
-import DictioText from "../Dictionarys/DictioText";
+import MainDictionary from "../Dictionarys/dicComponents/MainDictionary";
 
 const Dictionary: React.FC = () => {
   return (
@@ -11,7 +9,7 @@ const Dictionary: React.FC = () => {
       <DictioText />
       */}
       {/*   */}
-      <MainLayout levelName='' course_name='' myComponent={<DictionaryContainer />} />
+      <MainLayout levelName='' course_name='' myComponent={<MainDictionary />} />
       
     </div>
   );
