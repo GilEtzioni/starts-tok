@@ -83,6 +83,17 @@ app.get("/dictionary", async (req: Request, res: Response) => {
     }
 });
 
+app.patch("/dictionary", async (req: Request, res: Response) => {
+    try {
+        const allWords = await db.select().from(Words);
+        // console.log("Fetched coursesSubjects:", allWords); 
+        res.json(allWords);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);

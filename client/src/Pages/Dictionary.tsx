@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from "../Layout/MainLayout";
-import MainDictionary from "../Dictionarys/dicComponents/MainDictionary";
+import MainDictionary from "../Dictionarys/MainDictionary";
 
 const Dictionary: React.FC = () => {
   return (

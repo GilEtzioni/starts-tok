@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // axios & react-query
 import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '../axiosInstance';
-import { WordsType } from '../types/wordType';
+import axiosInstance from './axiosInstance';
+import { WordsType } from './types/wordType';
 
 // components
-import DictionaryIcons from './DictionaryIcons';
-import LevelButtonsContainer from './LevelButtonsContainer';
-import TableDictionary from './TableDictionary';
+import DictionaryIcons from './dicComponents/DictionaryIcons';
+import LevelButtonsContainer from './dicComponents/LevelButtonsContainer';
+import TableDictionary from './dicComponents/TableDictionary';
+
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from "../app/store";
+
 
 const MainDictionary: React.FC = () => {
+
+  const levelFilter = useSelector((state: RootState) => state.dictionay.levelFilter);
+  const knowlageFilter = useSelector((state: RootState) => state.dictionay.knowlageFilter);
+  const clicks = useSelector((state: RootState) => state.dictionay.clickFilter);
+
   const fetchItems = async (): Promise<WordsType[]> => {
     const { data } = await axiosInstance.get('/dictionary');
     return data;
   };
 
-  const { data: words, isLoading, error } = useQuery(['dictionary'], fetchItems);
+  const { data: words } = useQuery(['dictionary'], fetchItems);
   const [translateArray, setTranslateArray] = useState<[number, string][]>([]);
 
+  
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

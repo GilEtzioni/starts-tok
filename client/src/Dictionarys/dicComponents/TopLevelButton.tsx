@@ -4,31 +4,35 @@ import { Row } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { addLevel, removeLevel } from "../DictionarySlice";
+import { addLevel, removeLevel, addOneClick } from "../DictionarySlice";
 import { RootState } from "../../app/store";
 
 interface LevelButtonProps {
-  buttName: string;
+  buttNameHebrew: string;
+  buttNameEnglish: string;
 }
 
-const LevelButton: React.FC<LevelButtonProps> = ({ buttName }) => {
+const LevelButton: React.FC<LevelButtonProps> = ({ buttNameHebrew, buttNameEnglish }) => {
   const levelFilter = useSelector((state: RootState) => state.dictionay.levelFilter);
+  const clicks = useSelector((state: RootState) => state.dictionay.clickFilter);
   const dispatch = useDispatch();
   
-  const isClicked = levelFilter.includes(buttName);
+  const isClicked = levelFilter.includes(buttNameEnglish);
 
-  /*
+/*
   useEffect(() => {
     console.log("Updated level filter:", levelFilter);
-  }, [levelFilter]);
-  */
+    console.log("clicks:", clicks);
+  }, [levelFilter, clicks]);
+*/
 
   const handleClick = () => {
     if (isClicked) {
-      dispatch(removeLevel(buttName));
+      dispatch(removeLevel(buttNameEnglish));
     } else {
-      dispatch(addLevel(buttName));
+      dispatch(addLevel(buttNameEnglish));
     }
+      dispatch(addOneClick());
   };
 
 
@@ -45,7 +49,7 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttName }) => {
         transition: "background-color 0.3s ease",
       }}
     >
-      {buttName}
+      {buttNameHebrew}
     </button>
   );
 };

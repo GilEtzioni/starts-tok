@@ -5,6 +5,7 @@ export const dictionarySlice = createSlice({
   initialState: {
     levelFilter: [] as string[],
     knowlageFilter: "",
+    clickFilter: 0,
   },
 
   reducers: {
@@ -35,11 +36,20 @@ export const dictionarySlice = createSlice({
     resetKnowlage: (state) => {
       state.knowlageFilter = "";
     },
+
+    /* click filter */
+    resetClick: (state) => {
+      state.clickFilter = 0;
+    },
+
+    addOneClick: (state) => {
+      state.clickFilter += 1;
+    },
   },
 });
 
 export const { 
-  addLevel, removeLevel, clearLevels, setVy, setEx, setQuestionMark, resetKnowlage
+  addLevel, removeLevel, clearLevels, setVy, setEx, setQuestionMark, resetKnowlage, resetClick, addOneClick
 } = dictionarySlice.actions;
 
 export default dictionarySlice.reducer;
