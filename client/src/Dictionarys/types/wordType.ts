@@ -27,3 +27,9 @@ export interface WordsType {
   HebrewWord: string; 
   knowlage: string;
 }
+
+export type KnowlageType = {
+  isEx: boolean;
+  isVy: boolean;
+  isQueistion: boolean;
+};

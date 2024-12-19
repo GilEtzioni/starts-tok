@@ -1,0 +1,107 @@
+// react + antd
+import React, { useEffect, useState } from 'react';
+import { Table } from 'antd';
+import { handleClickedRow } from '../HelpingFunctionsDictionary';
+
+// redux
+import { useSelector } from 'react-redux';
+import { RootState } from "../../../app/store";
+
+// word Type
+import { WordsType } from "../../types/wordType";
+import { knowlageDataArray } from "../HelpingFunctionsDictionary"
+
+interface TableProps {
+  words: any[];
+}
+
+
+const TableDictionary: React.FC<TableProps> = ({ words }) => {
+  // redux
+  const clicksRedux = useSelector((state: RootState) => state.dictionay.clickFilter);
+  const levelRedux = useSelector((state: RootState) => state.dictionay.levelFilter);
+  const knowlageRedux = useSelector((state: RootState) => state.dictionay.knowlageFilter);
+
+  const [filteredWords, setFilteredWords] = useState<WordsType[]>([]); // filter the data (with the bttns)
+  const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]); // save the clicked words (the table)
+
+
+  useEffect(() => {
+    setTranslatedWords([]); // on click - reset the translates
+    const filterdKnowlage = knowlageDataArray(knowlageRedux); // filter by knowlage ("X" / "V" / "?")
+ 
+    // if nothing is selected -> show all data
+    if (levelRedux.length === 0 && filterdKnowlage.length === 0) {
+      setFilteredWords([...words]);
+      return;
+    }
+
+    let filtered = words;
+
+    // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "`C2"
+    if (levelRedux.length !== 0) {
+      filtered = words.filter((item) => levelRedux.includes(item.level_english)); // filter by level
+    }
+
+    // if the user click on "V" / "?" / "X" 
+    if (filterdKnowlage.length !== 0) {
+    filtered = filtered.filter((item) => filterdKnowlage.includes(item.knowlage)); // Use `filterdKnowlage` directly
+    }
+
+    setFilteredWords(filtered);
+  }, [words, levelRedux, clicksRedux, knowlageRedux]);
+  
+
+  return (
+    <Table
+      columns={[
+        // first column
+        {
+          title: 'סינון',
+          dataIndex: 'knowlage',
+          key: 'knowlage',
+        },
+        // mid column
+        {
+          title: '',
+          dataIndex: 'HebreWord',
+          key: 'HebreWord',
+          align: 'center' as const,
+          render: (item, row) => {
+            // Check if the current row is in the translatedWords array
+            const matchingEntry = translatedWords.find(([wordId]) => wordId === row.id);
+            return matchingEntry ? row.HebrewWord : null;
+          },
+        },
+        // last column
+        {
+          title: 'מילה',
+          dataIndex: 'GermanWord',
+          key: 'GermanWord',
+          align: 'right' as const,
+        },
+      ]}
+      dataSource={filteredWords?.map((item) => ({
+        key: item.id,
+        id: item.id,
+        HebrewWord: item.HebrewWord,
+        GermanWord: item.GermanWord,
+        course_name_english: item.course_name_english,
+        knowlage: item.knowlage,
+        level_hebrew: item.level_hebrew,
+        level_english: item.level_english,
+      }))}
+      pagination={false} // for css
+      // when user click on the row
+      onRow={(row) => ({
+        onClick: () => {
+          const filteredClicked = handleClickedRow(row.id ?? 0, filteredWords, translatedWords);
+          setTranslatedWords(filteredClicked);
+          console.log(translatedWords);
+        },
+      })}
+    />
+  );
+};
+
+export default TableDictionary;

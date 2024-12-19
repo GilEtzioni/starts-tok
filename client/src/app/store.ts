@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import lessonReducer from "../Main/LessonsSlice";
-import dictionaryReducer from "../Dictionarys/DictionarySlice";
+import dictionaryReducer from "../Dictionarys/dataDictionary/DictionarySlice";
 
 export const store = configureStore({
   reducer: {

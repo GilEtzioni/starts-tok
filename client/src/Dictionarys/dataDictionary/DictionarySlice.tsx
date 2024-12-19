@@ -4,7 +4,11 @@ export const dictionarySlice = createSlice({
   name: 'dictinary',
   initialState: {
     levelFilter: [] as string[],
-    knowlageFilter: "",
+    knowlageFilter: { 
+      isEx: false, 
+      isVy: false, 
+      isQueistion: false 
+    },
     clickFilter: 0,
   },
 
@@ -21,22 +25,15 @@ export const dictionarySlice = createSlice({
     },
 
     /* knowlage filter */
-    setVy: (state) => {
-      state.knowlageFilter = "vy";
+    setExBoolean: (state, action: PayloadAction<boolean>) => {
+      state.knowlageFilter.isEx = action.payload;
     },
-
-    setEx: (state) => {
-      state.knowlageFilter = "ex";
+    setVyBoolean: (state, action: PayloadAction<boolean>) => {
+      state.knowlageFilter.isVy = action.payload;
     },
-
-    setQuestionMark: (state) => {
-      state.knowlageFilter = "questionMark";
+    setQuestionBoolean: (state, action: PayloadAction<boolean>) => {
+      state.knowlageFilter.isQueistion = action.payload;
     },
-
-    resetKnowlage: (state) => {
-      state.knowlageFilter = "";
-    },
-
     /* click filter */
     resetClick: (state) => {
       state.clickFilter = 0;
@@ -49,7 +46,7 @@ export const dictionarySlice = createSlice({
 });
 
 export const { 
-  addLevel, removeLevel, clearLevels, setVy, setEx, setQuestionMark, resetKnowlage, resetClick, addOneClick
+  addLevel, removeLevel, clearLevels, setVyBoolean, setExBoolean, setQuestionBoolean, resetClick, addOneClick
 } = dictionarySlice.actions;
 
 export default dictionarySlice.reducer;

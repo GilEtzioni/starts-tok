@@ -1,17 +1,40 @@
-export function handleClickedRow(
-    id: number,
-    word: string,
-    translateArray: [number, string][],
-    setTranslateArray: React.Dispatch<React.SetStateAction<[number, string][]>>
-  ) {
-    const existingIndex = translateArray.findIndex(([existingId]) => existingId === id); // find the item by id
-  
-    // remove the item (if it's already in the list)
-    if (existingIndex !== -1) {
-      setTranslateArray((prev) => prev.filter(([existingId]) => existingId !== id));
+import { WordsType, KnowlageType } from "../types/wordType";
+
+export function handleClickedRow(id: number, wordsArray: WordsType[], translatedWords: Array<[number, string]>): Array<[number, string]> {
+  const result: Array<[number, string]> = [...translatedWords];
+
+  // find the word
+  const filtered = wordsArray.find((item: WordsType) => item.id === id);
+
+  // check if the word is already in the translatedWords array
+  if (filtered) {
+    const existsIndex = result.findIndex(([wordId]) => wordId === filtered.id);
+
+    if (existsIndex === -1) {
+      // new word - add it to the array
+      result.push([filtered.id ?? 0, filtered.HebrewWord]);
     } else {
-      // add the new item (if it's not in the list)
-      setTranslateArray((prev) => [...prev, [id, word]]);
+      // old word - remove it from the array
+      result.splice(existsIndex, 1);
     }
   }
-  
+
+  return result;
+}
+
+
+  // make the redux boolean to strings array
+  export const knowlageDataArray = (knowlageFilter: KnowlageType): string[] => {
+    const knowlageArray: string[] = [];
+    
+    if (knowlageFilter.isEx === true) {
+      knowlageArray.push('X');
+    }
+    if (knowlageFilter.isVy === true) {
+      knowlageArray.push('V');
+    }
+    if (knowlageFilter.isQueistion === true) {
+      knowlageArray.push('?');
+    }
+    return knowlageArray;
+  }

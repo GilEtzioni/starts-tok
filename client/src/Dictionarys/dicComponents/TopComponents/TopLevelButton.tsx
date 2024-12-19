@@ -1,11 +1,7 @@
-// react + antd
-import React, { useState, useEffect } from 'react';
-import { Row } from 'antd';
-
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { addLevel, removeLevel, addOneClick } from "../DictionarySlice";
-import { RootState } from "../../app/store";
+import { addLevel, removeLevel, addOneClick } from "../../dataDictionary/DictionarySlice";
+import { RootState } from "../../../app/store";
 
 interface LevelButtonProps {
   buttNameHebrew: string;
@@ -14,17 +10,9 @@ interface LevelButtonProps {
 
 const LevelButton: React.FC<LevelButtonProps> = ({ buttNameHebrew, buttNameEnglish }) => {
   const levelFilter = useSelector((state: RootState) => state.dictionay.levelFilter);
-  const clicks = useSelector((state: RootState) => state.dictionay.clickFilter);
   const dispatch = useDispatch();
   
   const isClicked = levelFilter.includes(buttNameEnglish);
-
-/*
-  useEffect(() => {
-    console.log("Updated level filter:", levelFilter);
-    console.log("clicks:", clicks);
-  }, [levelFilter, clicks]);
-*/
 
   const handleClick = () => {
     if (isClicked) {
@@ -47,6 +35,7 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttNameHebrew, buttNameEngli
         fontSize: '16px',
         fontWeight: 'bold',
         transition: "background-color 0.3s ease",
+        borderRadius: "20px",
       }}
     >
       {buttNameHebrew}

@@ -12,13 +12,13 @@ const buttonLabelsHebrew = [
 ];
 
 const buttonLabelsEnglish = [
-    'A1',
-    'A2',
-    'B1',
-    'B2',
-    'C1',
-    'C2',
     'etc',
+    'C2',
+    'C1',
+    'B2',
+    'B1',
+    'A2',
+    'A1',
 ];
 
 const LevelButtonsContainer: React.FC = () => {

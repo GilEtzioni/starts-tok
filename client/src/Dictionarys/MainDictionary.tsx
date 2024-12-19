@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
-
 // axios & react-query
 import { useQuery } from '@tanstack/react-query';
-import axiosInstance from './axiosInstance';
+import axiosInstance from './dataDictionary/axiosInstance';
 import { WordsType } from './types/wordType';
 
 // components
-import DictionaryIcons from './dicComponents/DictionaryIcons';
-import LevelButtonsContainer from './dicComponents/LevelButtonsContainer';
-import TableDictionary from './dicComponents/TableDictionary';
-
-// redux
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from "../app/store";
-
+import TopIcons from './dicComponents/TopComponents/TopIcons';
+import ButtonsContainer from './dicComponents/TopComponents/ButtonsContainer';
+import TableDictionary from './dicComponents/midComponents/TableDictionary';
 
 const MainDictionary: React.FC = () => {
-
-  const levelFilter = useSelector((state: RootState) => state.dictionay.levelFilter);
-  const knowlageFilter = useSelector((state: RootState) => state.dictionay.knowlageFilter);
-  const clicks = useSelector((state: RootState) => state.dictionay.clickFilter);
 
   const fetchItems = async (): Promise<WordsType[]> => {
     const { data } = await axiosInstance.get('/dictionary');
@@ -27,9 +16,7 @@ const MainDictionary: React.FC = () => {
   };
 
   const { data: words } = useQuery(['dictionary'], fetchItems);
-  const [translateArray, setTranslateArray] = useState<[number, string][]>([]);
 
-  
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -45,13 +32,13 @@ const MainDictionary: React.FC = () => {
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <DictionaryIcons />
+            <TopIcons />
           </div>
-          <LevelButtonsContainer />
+          <ButtonsContainer />
         </div>
       </div>
 
-      <TableDictionary words={words || []} translateArray={translateArray} setTranslateArray={setTranslateArray} />
+      <TableDictionary words={words || []} />
     </>
   );
 };
