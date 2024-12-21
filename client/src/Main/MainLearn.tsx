@@ -25,9 +25,6 @@ const MainLearn: React.FC = () => {
     const levelName = name ?? 'default-level';         
     const courseName = lesson ?? 'default-completed';
     const completedLessons = completed ? parseInt(completed, 10) : 1;
-    console.log("levelName", levelName);
-    console.log("courseName", courseName);
-    console.log("completedLessons", completedLessons);
 
 
     // react nav (go back)

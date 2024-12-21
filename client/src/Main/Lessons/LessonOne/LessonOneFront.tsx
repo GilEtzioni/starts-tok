@@ -1,9 +1,9 @@
 // react + redux + ant
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setRunning, setSuccess, setFailure, resetOrder, addOneOrder, changeOrder, resetClicks, addOneClick } from "../../LessonsSlice";
+import { setSuccess, setFailure } from "../../LessonsSlice";
 import { RootState } from "../../../app/store";
-import { Row } from 'antd';
+import { Row, Typography } from 'antd';
 
 // helping functions + data
 import { fetchCourseData } from "../LessonsData";
@@ -18,7 +18,6 @@ interface LessonOneCardsProps {
 
 const LessonOneFront: React.FC<LessonOneCardsProps> = ({levelName, courseName, completedLessons}) => {
 
-    const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
 
@@ -27,13 +26,14 @@ const LessonOneFront: React.FC<LessonOneCardsProps> = ({levelName, courseName, c
     const [currentBlackHebrewId, setCurrentBlackHebrewId] = useState<string | null>(null);
     const [currentBlackGermanId, setCurrentBlackGermanId] = useState<string | null>(null);
 
+    const { Title } = Typography;
+
     const [errorCount, setErrorCount] = useState(0);
     const [successCount, setSuccessCount] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
           try {
-            // const { initialHebrewWords, initialGermanWords } = await fetchCourseData(levelName, courseName, completedLessons);
             const { initialHebrewWords, initialGermanWords } = await fetchCourseData(levelName, courseName, completedLessons);
 
             const filteredHebrewWords = filterByOrder(initialHebrewWords, order);
@@ -41,22 +41,27 @@ const LessonOneFront: React.FC<LessonOneCardsProps> = ({levelName, courseName, c
     
             setShuffledHebrew(shuffleArray(filteredHebrewWords));
             setShuffledGerman(shuffleArray(filteredGermanWords));
-          } catch (error) {
+
+        } catch (error) {
             console.error('error fetch data:', error);
           }
         };
     
         fetchData();
       }, [order,levelName, courseName, completedLessons]);
-      
+
+      // example the logic of card array:
+      // card[0] שלום 
+      // card[1] 1 
+      // card[2] notSelected
 
     const handleMatchCheck = () => {
-        console.log("status: ",status)
         if (currentBlackHebrewId && currentBlackGermanId) {
             if (currentBlackHebrewId === currentBlackGermanId) {
                 setShuffledHebrew((prev) =>
                     prev.map((card) =>
                         card[1] === currentBlackHebrewId ? [card[0], card[1], "rightSelected"] : card
+                
                     )
                 );
                 setShuffledGerman((prev) =>
@@ -67,7 +72,6 @@ const LessonOneFront: React.FC<LessonOneCardsProps> = ({levelName, courseName, c
                 setSuccessCount((prev) => {
                     if (prev + 1 === 6) {
                         dispatch(setSuccess());
-                        console.log("here")
                     }
                     return prev + 1;
                 });                
@@ -109,7 +113,7 @@ const LessonOneFront: React.FC<LessonOneCardsProps> = ({levelName, courseName, c
     return (
         <>
             <Row justify="center" style={{ marginBottom: '0px' }}>
-                <h1 style={{ textAlign: 'center' }}>התאימו את הזוגות</h1>
+                <Title level={3} style={{ textAlign: 'center' }}>התאימו את הזוגות</Title>
             </Row>
     
             {/* Cards */}

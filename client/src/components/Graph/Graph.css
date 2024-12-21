@@ -1,0 +1,21 @@
+.line-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .chart-title {
+    text-align: right;
+    direction: rtl;
+    margin-bottom: 20px;
+  }
+  
+  .chart-wrapper {
+    width: 500px;
+    border: 1px solid hsl(240, 5%, 64.9%);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background: #fff;
+  }
+  

@@ -1,7 +1,7 @@
+import { LessonType } from "../../Dictionarys/types/wordType";
+
 export const fetchCourseData = async (levelName: string, lessonName: string, completedLessons: number) => {
   try {
-    // const completedLessonsAsString = completedLessons.toString();
-    console.log("Type of completedLessons:", typeof completedLessons, completedLessons);
     const response = await fetch(`http://localhost:3000/main/course/${levelName}/${lessonName}/${completedLessons}`);
     const data = await response.json();
 
@@ -9,23 +9,22 @@ export const fetchCourseData = async (levelName: string, lessonName: string, com
         if (!response.ok) {
           throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
-    
 
     /* ----------------------------------------------------------------------------- */
 
     // hebrew sentences
     let uniqueId = 1;
-    const hebrewSentenceArray = data.map((course: any) => [
-      [course.sentence_one_hebrew, uniqueId.toString(), "notSelected"],
-      [course.sentence_two_hebrew, (uniqueId + 1).toString(), "notSelected"]
+    const hebrewSentenceArray = data.map((course: LessonType) => [
+      [course.sentenceOneHebrew, uniqueId.toString(), "notSelected"],
+      [course.sentenceTwoHebrew, (uniqueId + 1).toString(), "notSelected"]
     ]).flat();
     uniqueId += hebrewSentenceArray.length;
 
     // german sentences
     uniqueId = 1;
-    const germanSentenceArray = data.map((course: any) => [
-      [course.sentence_one_german, uniqueId.toString(), "notSelected"],
-      [course.sentence_two_german, (uniqueId + 1).toString(), "notSelected"]
+    const germanSentenceArray = data.map((course: LessonType) => [
+      [course.sentenceOneGerman, uniqueId.toString(), "notSelected"],
+      [course.sentenceTwoGerman, (uniqueId + 1).toString(), "notSelected"]
     ]).flat();
     uniqueId += germanSentenceArray.length;
 
@@ -33,33 +32,33 @@ export const fetchCourseData = async (levelName: string, lessonName: string, com
 
     // german missing sentences
     uniqueId = 1;
-    const germanMissingSentenceArray = data.map((course: any) => [
-      [course.missing_sentence_one_german, uniqueId.toString(), "notSelected"],
-      [course.missing_sentence_two_german, (uniqueId + 1).toString(), "notSelected"]
+    const germanMissingSentenceArray = data.map((course: LessonType) => [
+      [course.missingSentenceOneGerman, uniqueId.toString(), "notSelected"],
+      [course.missingSentenceTwoGerman, (uniqueId + 1).toString(), "notSelected"]
     ]).flat();
     uniqueId += germanMissingSentenceArray.length;
 
     // hebrew missing sentences
     uniqueId = 1;
-    const hebrewMissingSentenceArray = data.map((course: any) => [
-      [course.missing_sentence_one_hebrew, uniqueId.toString(), "notSelected"],
-      [course.missing_sentence_two_hebrew, (uniqueId + 1).toString(), "notSelected"]
+    const hebrewMissingSentenceArray = data.map((course: LessonType) => [
+      [course.missingSentenceOneHebrew, uniqueId.toString(), "notSelected"],
+      [course.missingSentenceTwoHebrew, (uniqueId + 1).toString(), "notSelected"]
     ]).flat();
     uniqueId += hebrewMissingSentenceArray.length;
 
     // german missing words
     uniqueId = 1;
-    const germanMissingWordsArray = data.map((course: any) => [
-      [course.missing_word_one_german, uniqueId.toString(), "notSelected"],
-      [course.missing_word_two_german, (uniqueId + 1).toString(), "notSelected"]
+    const germanMissingWordsArray = data.map((course: LessonType) => [
+      [course.missingWordOneGerman, uniqueId.toString(), "notSelected"],
+      [course.missingWordTwoGerman, (uniqueId + 1).toString(), "notSelected"]
     ]).flat();
     uniqueId += germanMissingWordsArray.length;
 
     // hebrew missing words
     uniqueId = 1;
-    const hebrewMissingWordsArray = data.map((course: any) => [
-      [course.missing_word_one_hebrew, uniqueId.toString(), "notSelected"],
-      [course.missing_word_two_hebrew, (uniqueId + 1).toString(), "notSelected"]
+    const hebrewMissingWordsArray = data.map((course: LessonType) => [
+      [course.missingWordOneHebrew, uniqueId.toString(), "notSelected"],
+      [course.missingWordTwoHebrew, (uniqueId + 1).toString(), "notSelected"]
     ]).flat();
     uniqueId += hebrewMissingWordsArray.length;
 
@@ -67,52 +66,41 @@ export const fetchCourseData = async (levelName: string, lessonName: string, com
 
     // hebrew words
     uniqueId = 1;
-    const hebrewWordsArray = data.map((course: any) => [
-      [course.word_one_hebrew, uniqueId.toString(), "notSelected"],
-      [course.word_two_hebrew, (uniqueId + 1).toString(), "notSelected"],
-      [course.word_three_hebrew, (uniqueId + 2).toString(), "notSelected"],
-      [course.word_four_hebrew, (uniqueId + 3).toString(), "notSelected"],
-      [course.word_five_hebrew, (uniqueId + 4).toString(), "notSelected"],
-      [course.word_six_hebrew, (uniqueId + 5).toString(), "notSelected"],
-      [course.word_seven_hebrew, (uniqueId + 6).toString(), "notSelected"],
-      [course.word_eight_hebrew, (uniqueId + 7).toString(), "notSelected"],
-      [course.word_nine_hebrew, (uniqueId + 8).toString(), "notSelected"],
-      [course.word_ten_hebrew, (uniqueId + 9).toString(), "notSelected"],
-      [course.word_eleven_hebrew, (uniqueId + 10).toString(), "notSelected"],
-      [course.word_twelve_hebrew, (uniqueId + 11).toString(), "notSelected"],
+    const hebrewWordsArray = data.map((course: LessonType) => [
+      [course.wordOneHebrew, uniqueId.toString(), "notSelected"],
+      [course.wordTwoHebrew, (uniqueId + 1).toString(), "notSelected"],
+      [course.wordThreeHebrew, (uniqueId + 2).toString(), "notSelected"],
+      [course.wordFourHebrew, (uniqueId + 3).toString(), "notSelected"],
+      [course.wordFiveHebrew, (uniqueId + 4).toString(), "notSelected"],
+      [course.wordSixHebrew, (uniqueId + 5).toString(), "notSelected"],
+      [course.wordSevenHebrew, (uniqueId + 6).toString(), "notSelected"],
+      [course.wordEightHebrew, (uniqueId + 7).toString(), "notSelected"],
+      [course.wordNineHebrew, (uniqueId + 8).toString(), "notSelected"],
+      [course.wordTenHebrew, (uniqueId + 9).toString(), "notSelected"],
+      [course.wordElevenHebrew, (uniqueId + 10).toString(), "notSelected"],
+      [course.wordTwelveHebrew, (uniqueId + 11).toString(), "notSelected"],
     ]).flat();
     uniqueId += hebrewWordsArray.length;
 
     // german words
     uniqueId = 1;
-    const germanWordsArray = data.map((course: any) => [
-      [course.word_one_german, uniqueId.toString(), "notSelected"],
-      [course.word_two_german, (uniqueId + 1).toString(), "notSelected"],
-      [course.word_three_german, (uniqueId + 2).toString(), "notSelected"],
-      [course.word_four_german, (uniqueId + 3).toString(), "notSelected"],
-      [course.word_five_german, (uniqueId + 4).toString(), "notSelected"],
-      [course.word_six_german, (uniqueId + 5).toString(), "notSelected"],
-      [course.word_seven_german, (uniqueId + 6).toString(), "notSelected"],
-      [course.word_eight_german, (uniqueId + 7).toString(), "notSelected"],
-      [course.word_nine_german, (uniqueId + 8).toString(), "notSelected"],
-      [course.word_ten_german, (uniqueId + 9).toString(), "notSelected"],
-      [course.word_eleven_german, (uniqueId + 10).toString(), "notSelected"],
-      [course.word_twelve_german, (uniqueId + 11).toString(), "notSelected"],
+    const germanWordsArray = data.map((course: LessonType) => [
+      [course.wordOneGerman, uniqueId.toString(), "notSelected"],
+      [course.wordTwoGerman, (uniqueId + 1).toString(), "notSelected"],
+      [course.wordThreeGerman, (uniqueId + 2).toString(), "notSelected"],
+      [course.wordFourGerman, (uniqueId + 3).toString(), "notSelected"],
+      [course.wordFiveGerman, (uniqueId + 4).toString(), "notSelected"],
+      [course.wordSixGerman, (uniqueId + 5).toString(), "notSelected"],
+      [course.wordSevenGerman, (uniqueId + 6).toString(), "notSelected"],
+      [course.wordEightGerman, (uniqueId + 7).toString(), "notSelected"],
+      [course.wordNineGerman, (uniqueId + 8).toString(), "notSelected"],
+      [course.wordTenGerman, (uniqueId + 9).toString(), "notSelected"],
+      [course.wordElevenGerman, (uniqueId + 10).toString(), "notSelected"],
+      [course.wordTwelveGerman, (uniqueId + 11).toString(), "notSelected"],
     ]).flat();
       uniqueId += hebrewWordsArray.length;
 
     /* ----------------------------------------------------------------------------- */
-
-    /*
-    console.log("german words array:", germanWordsArray);
-    console.log("hebrew words array:", hebrewWordsArray);
-    console.log("german missing sentences array:", germanMissingSentenceArray);
-    console.log("hebrew missing sentences array:", hebrewMissingSentenceArray);
-    console.log("german missing words array:", germanMissingWordsArray);
-    console.log("hebrew missing words array:", hebrewMissingWordsArray);
-    console.log("hebrew senteces", hebrewSentenceArray);
-    console.log("german senteces", germanSentenceArray);
-    */
    
     return { 
       // sentences

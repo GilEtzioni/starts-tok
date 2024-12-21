@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Col } from 'antd';
 import './LessonOneCards.css';
-
 interface LessonOneCardsProps {
     shuffledHebrew: any[];
     shuffledGerman: any[];

@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 const { Content, Sider } = Layout;
 
-const items2: MenuProps['items'] = [
+const itemsMenu: MenuProps['items'] = [
   {
     key: 'dictionary',
     icon: React.createElement(BookOutlined),
@@ -43,10 +43,10 @@ const items2: MenuProps['items'] = [
 interface MainLayoutProps {
   myComponent: React.ReactNode;
   levelName: string,
-  course_name: string,
+  courseName: string,
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_name }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
   const { name } = useParams<{ name?: string }>(); 
   const currName = name ?? 'default-level';    
 
@@ -63,8 +63,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_
           { title: 'גרמנית' },
           { title: <Link to="/main">מסך הבית</Link> },
           ...(levelName !== '' ? [{ title: currName }] : []),
-          // ...(levelName !== '' ? [{ title: levelName }] : []),
-          ...(course_name !== '' ? [{ title: course_name }] : []),
+          ...(courseName !== '' ? [{ title: courseName }] : []),
         ]}
         style={{ margin: '16px 0', textAlign: 'right', direction: 'rtl' }} 
       />
@@ -88,7 +87,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, course_
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['dictionary']}
           style={{ height: '100%', borderLeft: '1px solid #e8e8e8'}}
-          items={items2}
+          items={itemsMenu}
         />
        </div>
       </Sider>

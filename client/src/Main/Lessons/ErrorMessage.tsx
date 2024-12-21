@@ -18,7 +18,7 @@ const App: React.FC = () => (
             top: '30px',
         }}
     >
-        טעות!
+        !טעות
     </Card>
 );
 

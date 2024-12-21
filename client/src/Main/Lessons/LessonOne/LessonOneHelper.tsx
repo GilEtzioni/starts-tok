@@ -1,4 +1,10 @@
-export const filterByOrder = (data: any[], order: number) => {
+interface Word {
+    text: string;
+    id: string;
+    isSelected: "rightSelected" | "wrongSelected" | null;
+  }
+
+export const filterByOrder = (data: Array<Word>, order: number) => {
     if (order === 1) {
         return data.slice(0, 6);
     }
@@ -8,7 +14,7 @@ export const filterByOrder = (data: any[], order: number) => {
     return data;
 };
 
-export const shuffleArray = (array: any[]) => {
+export const shuffleArray = (array: Array<Word>) => {
     return array
         .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)

@@ -37,11 +37,11 @@ export const lessonsSlice = createSlice({
 
     /* clicks */
     resetClicks: (state) => {
-      state.clicks = 0; // Fixed to reset 'clicks'
+      state.clicks = 0;
     },
 
     addOneClick: (state) => {
-      state.clicks += 1; // Fixed to increment 'clicks'
+      state.clicks += 1;
     },
   },
 });

@@ -1,0 +1,37 @@
+.layout-container {
+    min-height: 100vh;
+  }
+  
+  .layout-content {
+    padding: 0 24px 24px;
+  }
+  
+  .breadcrumb-container {
+    margin: 16px 0;
+    text-align: right;
+    direction: rtl;
+  }
+  
+  .content-container {
+    padding: 24px;
+    margin: 0;
+    background: white;
+    border-radius: var(--ant-border-radius-lg);
+    overflow: auto;
+  }
+  
+  .sider-container {
+    width: 200px;
+    background: white;
+  }
+  
+  .menu-container {
+    direction: ltr;
+    text-align: right;
+  }
+  
+  .menu-style {
+    height: 100%;
+    border-left: 1px solid #e8e8e8;
+  }
+  

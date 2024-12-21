@@ -1,6 +1,5 @@
 export const fetchData = async (id: number) => {
   try {
-    // Send PATCH request to update the lesson_completed column
     const response = await fetch(`http://localhost:3000/main/course`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -12,7 +11,6 @@ export const fetchData = async (id: number) => {
     }
 
     const result = await response.json();
-    console.log('Course updated successfully:', result);
   } catch (error) {
     console.error('Error in fetchData:', error);
   }

@@ -12,11 +12,10 @@ import { WordsType } from "../../types/wordType";
 import { knowlageDataArray } from "../HelpingFunctionsDictionary"
 
 interface TableProps {
-  words: any[];
+  words?: Array<WordsType>;
 }
 
-
-const TableDictionary: React.FC<TableProps> = ({ words }) => {
+const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
   // redux
   const clicksRedux = useSelector((state: RootState) => state.dictionay.clickFilter);
   const levelRedux = useSelector((state: RootState) => state.dictionay.levelFilter);
@@ -24,7 +23,6 @@ const TableDictionary: React.FC<TableProps> = ({ words }) => {
 
   const [filteredWords, setFilteredWords] = useState<WordsType[]>([]); // filter the data (with the bttns)
   const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]); // save the clicked words (the table)
-
 
   useEffect(() => {
     setTranslatedWords([]); // on click - reset the translates
@@ -36,22 +34,21 @@ const TableDictionary: React.FC<TableProps> = ({ words }) => {
       return;
     }
 
-    let filtered = words;
+    let filtered = [...words];
 
     // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "`C2"
     if (levelRedux.length !== 0) {
-      filtered = words.filter((item) => levelRedux.includes(item.level_english)); // filter by level
+      filtered = filtered.filter((item) => levelRedux.includes(item.levelEnglish)); // filter by level
+      console.log("fff", filtered);
     }
 
     // if the user click on "V" / "?" / "X" 
     if (filterdKnowlage.length !== 0) {
-    filtered = filtered.filter((item) => filterdKnowlage.includes(item.knowlage)); // Use `filterdKnowlage` directly
+      filtered = filtered.filter((item) => filterdKnowlage.includes(item.knowlage)); // Use `filterdKnowlage` directly
     }
 
     setFilteredWords(filtered);
   }, [words, levelRedux, clicksRedux, knowlageRedux]);
-  
-
   return (
     <Table
       columns={[
@@ -86,10 +83,10 @@ const TableDictionary: React.FC<TableProps> = ({ words }) => {
         id: item.id,
         HebrewWord: item.HebrewWord,
         GermanWord: item.GermanWord,
-        course_name_english: item.course_name_english,
+        courseNameEnglish: item.courseNameEnglish,
         knowlage: item.knowlage,
-        level_hebrew: item.level_hebrew,
-        level_english: item.level_english,
+        levelHebrew: item.levelHebrew,
+        levelEnglish: item.levelEnglish,
       }))}
       pagination={false} // for css
       // when user click on the row
@@ -97,7 +94,6 @@ const TableDictionary: React.FC<TableProps> = ({ words }) => {
         onClick: () => {
           const filteredClicked = handleClickedRow(row.id ?? 0, filteredWords, translatedWords);
           setTranslatedWords(filteredClicked);
-          console.log(translatedWords);
         },
       })}
     />

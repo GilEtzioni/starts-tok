@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const dictionarySlice = createSlice({
-  name: 'dictinary',
+  name: 'dictionary',
   initialState: {
     levelFilter: [] as string[],
     knowlageFilter: { 

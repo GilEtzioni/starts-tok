@@ -14,7 +14,7 @@ const dbCredentials = {
 const connectionString = `postgresql://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
 
 const config = {
-    schema: "./src/drizzle/schema.ts", // Include the .ts extension
+    schema: "./src/drizzle/schema.ts",
     out: "./src/drizzle/migrations",
     dialect: "postgresql",
     dbCredentials: {

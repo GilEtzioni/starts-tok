@@ -13,20 +13,15 @@ interface LoginFormValues {
 
 const LoginContainer: React.FC<LoginFormProps> = ({ onLogin }) => {
   const onFinish = (values: LoginFormValues) => {
-    console.log('Form values:', values);
     onLogin(values);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.error('Form submission failed:', errorInfo);
-  };
 
   return (
     <Form
       name="login"
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       style={{ maxWidth: 400, margin: 'auto', marginTop: '50px' }}
     >
       <Form.Item

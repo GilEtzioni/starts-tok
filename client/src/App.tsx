@@ -4,11 +4,9 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 // react query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-
 // Layouts
 import RootLayout from './Layout/RootLayout';
 import CoursesLayout from './Layout/CoursesLayout';
-import LearnLayout from './Layout/LearnLayout';
 
 // Pages
 import Main from './Pages/Main';
@@ -21,13 +19,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Login />} />                         {/* "/" */}
-        <Route path="dictionary" element={<Dictionary />} />        {/* "/dictionary" */}
-        <Route path="main" element={<Main />} />                    {/* "/main" */}
+        <Route index element={<Login />} />                                 {/* "/" */}
+        <Route path="dictionary" element={<Dictionary />} />                {/* "/dictionary" */}
+        <Route path="main" element={<Main />} />                            {/* "/main" */}
         <Route path="main/course" element={<CoursesLayout />}>      
-          <Route path=":name" element={<CoursesPage />} />          {/* "/main/course/A1" */}
-          <Route path=":name/:lesson/:completed" element={<MainLearn />} /> 
-          {/* "/main/course/A1/Greetings/1" */}
+          <Route path=":name" element={<CoursesPage />} />                   {/* e.g:   "/main/course/A1" */}
+          <Route path=":name/:lesson/:completed" element={<MainLearn />} />  {/* e.g:   "/main/course/A1/Greetings/1" */}
         </Route>
       </Route>
     </>

@@ -29,11 +29,11 @@ const LessonTwoObject: React.FC<LessonTwoFrontProps> = ({
 
     // match words with IDs and their translations
     return cleanWords.map((word, index) => {
-      // Find the matching German word object
+      // Find the matching german word object
       const germanWord = germanWords.find(([german]) => german === word);
 
       if (germanWord) {
-        const wordId = germanWord[1]; // Extract ID
+        const wordId = germanWord[1];
         const hebrewWord = hebrewWords.find(([_, id]) => id === wordId);
 
         return [index + 1, word, hebrewWord ? hebrewWord[0] : ''];
@@ -45,8 +45,6 @@ const LessonTwoObject: React.FC<LessonTwoFrontProps> = ({
 
   // generate sentence words array
   const result = sentenceWordsArray(germanSentence, germanWords, hebrewWords);
-
-  console.log('Sentence Words Array:', result);
 
   return (
     <div style={{ textAlign: 'center' }}>

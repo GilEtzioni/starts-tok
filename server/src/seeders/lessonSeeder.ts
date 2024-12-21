@@ -8,59 +8,59 @@ async function seed() {
 
     const items = await db.insert(Lessons).values([
     /* level: A1-מבוא , course: Greetings-6 , lesson: 1 */
-    { level_hebrew: "מבוא", level_english: "A1",course_name_english: "Greetings", course_id: 6, lesson_id: 1,
+    { levelHebrew: "מבוא", levelEnglish: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 1,
 
       // sentece game 
-      sentence_one_german: "hallo wie gehts", sentence_one_hebrew: "היי מה שלומך",
-      sentence_two_german: "guten morgen", sentence_two_hebrew: "בוקר טוב",
+      sentenceOneGerman: "hallo wie gehts", sentenceOneHebrew: "היי מה שלומך",
+      sentenceTwoGerman: "guten morgen", sentenceTwoHebrew: "בוקר טוב",
 
       // missing words game
-      missing_sentence_one_german: "Hallo! Ich bin Gil", missing_sentence_one_hebrew: "שלום! קוראים לי גיל",
-      missing_word_one_german: "hallo", missing_word_one_hebrew: "שלום",
-      missing_sentence_two_german: "Guten morgen, wie gehts", missing_sentence_two_hebrew: "בוקר טוב, מה שלומך?",
-      missing_word_two_german: "morgen", missing_word_two_hebrew: "בוקר",
+      missingSentenceOneGerman: "Hallo! Ich bin Gil", missingSentenceOneHebrew: "שלום! קוראים לי גיל",
+      missingWordOneGerman: "hallo", missingWordOneHebrew: "שלום",
+      missingSentenceTwoGerman: "Guten morgen, wie gehts", missingSentenceTwoHebrew: "בוקר טוב, מה שלומך?",
+      missingWordTwoGerman: "morgen", missingWordTwoHebrew: "בוקר",
 
       // word couples game
-      word_one_german: "hallo", word_one_hebrew: "שלום",
-      word_two_german: "wie geths", word_two_hebrew: "מה שלומך",
-      word_three_german: "rot", word_three_hebrew: "אדום",
-      word_four_german: "blau", word_four_hebrew: "כחול",
-      word_five_german: "vater", word_five_hebrew: "אבא",
-      word_six_german: "muter", word_six_hebrew: "אמא",
-      word_seven_german: "gelb", word_seven_hebrew: "צהוב",
-      word_eight_german: "grün", word_eight_hebrew: "ירוק",
-      word_nine_german: "sohn", word_nine_hebrew: "בן",
-      word_ten_german: "onkel", word_ten_hebrew: "דוד",
-      word_eleven_german: "morgen", word_eleven_hebrew: "בוקר",
-      word_twelve_german: "guten", word_twelve_hebrew: "טוב",
+      wordOneGerman: "hallo", wordOneHebrew: "שלום",
+      wordTwoGerman: "wie geths", wordTwoHebrew: "מה שלומך",
+      wordThreeGerman: "rot", wordThreeHebrew: "אדום",
+      wordFourGerman: "blau", wordFourHebrew: "כחול",
+      wordFiveGerman: "vater", wordFiveHebrew: "אבא",
+      wordSixGerman: "muter", wordSixHebrew: "אמא",
+      wordSevenGerman: "gelb", wordSevenHebrew: "צהוב",
+      wordEightGerman: "grün", wordEightHebrew: "ירוק",
+      wordNineGerman: "sohn", wordNineHebrew: "בן",
+      wordTenGerman: "onkel", wordTenHebrew: "דוד",
+      wordElevenGerman: "morgen", wordElevenHebrew: "בוקר",
+      wordTwelveGerman: "guten", wordTwelveHebrew: "טוב",
     },
 
     /* level: A1-מבוא , course: Greetings-6 , lesson: 2 */
-    { level_hebrew: "מבוא", level_english: "A1",course_name_english: "Greetings", course_id: 6, lesson_id: 2,
+    { levelHebrew: "מבוא", levelEnglish: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 2,
 
       // sentece game 
-      sentence_one_german: "Tschüss, Bis bald", sentence_one_hebrew: "ביי, נתראה בקרוב",
-      sentence_two_german: "Guten Abend. Prost!", sentence_two_hebrew: "ערב טוב. לחיים!",
+      sentenceOneGerman: "Tschüss, Bis bald", sentenceOneHebrew: "ביי, נתראה בקרוב",
+      sentenceTwoGerman: "Guten Abend. Prost!", sentenceTwoHebrew: "ערב טוב. לחיים!",
 
       // missing words game
-      missing_sentence_one_german: "Hallo! Ich bin Noam", missing_sentence_one_hebrew: "שלום! קוראים לי נעם",
-      missing_word_one_german: "Ich bin", missing_word_one_hebrew: "קוראים לי",
-      missing_sentence_two_german: "Guten Abend, Bis morgen", missing_sentence_two_hebrew: "ערב טוב, נתראה מחר",
-      missing_word_two_german: "Guten Abend", missing_word_two_hebrew: "ערב טוב",
+      missingSentenceOneGerman: "Hallo! Ich bin Noam", missingSentenceOneHebrew: "שלום! קוראים לי נעם",
+      missingWordOneGerman: "Ich bin", missingWordOneHebrew: "קוראים לי",
+      missingSentenceTwoGerman: "Guten Abend, Bis morgen", missingSentenceTwoHebrew: "ערב טוב, נתראה מחר",
+      missingWordTwoGerman: "Guten Abend", missingWordTwoHebrew: "ערב טוב",
 
       // word couples game
-      word_one_german: "Ich bin", word_one_hebrew: "קוראים לי",
-      word_two_german: "Guten Abend", word_two_hebrew: "ערב טוב",
-      word_three_german: "Bis morgen", word_three_hebrew: "נתראה  מחר",
-      word_four_german: "Schwester", word_four_hebrew: "אחות",
-      word_five_german: "Tante", word_five_hebrew: "דודה",
-      word_six_german: "Großvater", word_six_hebrew: "סבא רבא",
-      word_seven_german: "weiß", word_seven_hebrew: "לבן",
-      word_eight_german: "rosa", word_eight_hebrew: "ורוד",
-      word_nine_german: "orange", word_nine_hebrew: "כתום",
-      word_ten_german: "gelb", word_ten_hebrew: "צהוב",
-      word_eleven_german: "vier", word_eleven_hebrew: "ארבע",
-      word_twelve_german: "zehn", word_twelve_hebrew: "עשר",
+      wordOneGerman: "Ich bin", wordOneHebrew: "קוראים לי",
+      wordTwoGerman: "Guten Abend", wordTwoHebrew: "ערב טוב",
+      wordThreeGerman: "Bis morgen", wordThreeHebrew: "נתראה  מחר",
+      wordFourGerman: "Schwester", wordFourHebrew: "אחות",
+      wordFiveGerman: "Tante", wordFiveHebrew: "דודה",
+      wordSixGerman: "Großvater", wordSixHebrew: "סבא רבא",
+      wordSevenGerman: "weiß", wordSevenHebrew: "לבן",
+      wordEightGerman: "rosa", wordEightHebrew: "ורוד",
+      wordNineGerman: "orange", wordNineHebrew: "כתום",
+      wordTenGerman: "gelb", wordTenHebrew: "צהוב",
+      wordElevenGerman: "vier", wordElevenHebrew: "ארבע",
+      wordTwelveGerman: "zehn", wordTwelveHebrew: "עשר",
     },
     ]).returning({ id: Lessons.id });
 

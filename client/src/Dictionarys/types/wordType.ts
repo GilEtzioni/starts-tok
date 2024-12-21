@@ -19,10 +19,10 @@ export enum LevelHebrew {
 // type
 export interface WordsType {
   id?: number; 
-  level_hebrew: LevelHebrew; 
-  level_english: LevelEnglish; 
+  levelHebrew: LevelHebrew; 
+  levelEnglish: LevelEnglish; 
   courseId: number;
-  course_name_english: string; 
+  courseNameEnglish: string; 
   GermanWord: string;
   HebrewWord: string; 
   knowlage: string;
@@ -33,3 +33,48 @@ export type KnowlageType = {
   isVy: boolean;
   isQueistion: boolean;
 };
+
+export type LessonType = {
+  id: number,
+  levelHebrew: string,
+  levelEnglish: string,
+  courseNameEnglish: string,
+  courseId: number,
+  lessonId: string,
+  sentenceOneGerman: string,
+  sentenceOneHebrew: string,
+  sentenceTwoGerman: string, 
+  sentenceTwoHebrew: string,
+  missingSentenceOneGerman: string,
+  missingSentenceOneHebrew: string,
+  missingWordOneGerman: string,
+  missingWordOneHebrew: string,
+  missingSentenceTwoGerman: string,
+  missingSentenceTwoHebrew: string,
+  missingWordTwoGerman: string,
+  missingWordTwoHebrew: string,
+  wordOneGerman: string,
+  wordOneHebrew: string,
+  wordTwoGerman: string,
+  wordTwoHebrew: string,
+  wordThreeGerman: string,
+  wordThreeHebrew: string,
+  wordFourGerman: string,
+  wordFourHebrew: string,
+  wordFiveGerman: string,
+  wordFiveHebrew: string,
+  wordSixGerman: string,
+  wordSixHebrew: string,
+  wordSevenGerman: string,
+  wordSevenHebrew: string,
+  wordEightGerman: string,
+  wordEightHebrew: string,
+  wordNineGerman: string,
+  wordNineHebrew: string,
+  wordTenGerman: string,
+  wordTenHebrew: string,
+  wordElevenGerman: string,
+  wordElevenHebrew: string,
+  wordTwelveGerman: string,
+  wordTwelveHebrew: string,
+}

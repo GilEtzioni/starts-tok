@@ -1,22 +1,16 @@
+// react + antd
+import { Row, Typography } from 'antd';
 import React, { useEffect, useState, useCallback } from "react";
+
+// redux
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setRunning,
-  setSuccess,
-  setFailure,
-  resetOrder,
-  addOneOrder,
-  changeOrder,
-  resetClicks,
-  addOneClick,
-} from "../../LessonsSlice";
+import { setSuccess, setFailure, resetClicks } from "../../LessonsSlice";
 import { RootState } from "../../../app/store";
+
+// data + components
 import { fetchCourseData } from "../LessonsData";
 import { shuffleArray, filterByOrder } from "./LessonTwoHelper";
 import LessonOneCards from "./LessonTwoCards";
-import { Row } from 'antd';
-
-// import LessonTwoObject from "./LessonTwoObject";
 
 interface LessonTwoCardsProps {
   levelName: string,
@@ -40,6 +34,9 @@ const LessonTwoFront: React.FC<LessonTwoCardsProps> = ({levelName, courseName, c
   const [germanWords, setGermanWords] = useState<any[]>([]);
   const [hebrewWords, setHebrewWords] = useState<any[]>([]);
 
+  const { Title } = Typography;
+
+
   const CARD_WIDTH = 100;
   const CONTAINER_WIDTH = 800;
 
@@ -55,16 +52,11 @@ const LessonTwoFront: React.FC<LessonTwoCardsProps> = ({levelName, courseName, c
           await fetchCourseData(levelName, courseName, completedLessons);
         setCardsContainer(shuffleArray(initialGermanWords));
 
-        console.log(initialGermanWords);
-        console.log(initialHebrewWords);
         setGermanWords(initialGermanWords);
         setHebrewWords(initialHebrewWords);
 
         const filteredHebrew = filterByOrder(initialHebrewSentences, order);
         const filteredGerman = filterByOrder(initialGermanSentences, order);
-
-        console.log(filteredHebrew);
-        console.log(filteredGerman);
 
         setHebrewSentence(filteredHebrew);
         setGermanSentence(filteredGerman);
@@ -75,7 +67,6 @@ const LessonTwoFront: React.FC<LessonTwoCardsProps> = ({levelName, courseName, c
       }
     };
     fetchData();
-    console.log("in second", status);
   }, [order, dispatch, calculateUpperCapacity]);
 
   // recalculate combined string
@@ -84,7 +75,6 @@ const LessonTwoFront: React.FC<LessonTwoCardsProps> = ({levelName, courseName, c
       .map(([name]) => name)
       .join(" ");
     setCombined(newCombined);
-    console.log("Combined items in upper and mid containers:", combined);
   }, [upperContainer, midContainer]);
 
   const handleCardClick = (card: any, from: string) => {
@@ -107,29 +97,19 @@ const LessonTwoFront: React.FC<LessonTwoCardsProps> = ({levelName, courseName, c
   useEffect(() => {
     if (combined === "" && clicks === 1) {
       dispatch(resetClicks());
-      console.log("do nothing in 2")
     }
     else if (combined === germanSentence && clicks === 1) {
-      console.log("equal in two");
       dispatch(setSuccess());
     } else if (clicks === 1) {
-      console.log("not equal in two");
       dispatch(setFailure());
     }
   }, [dispatch, clicks, combined, germanSentence]);
 
   return (
-    <div style={{ textAlign: "center", color: "black" }}>
-      {/* 
-      <LessonTwoObject 
-      germanWords={germanWords}
-      hebrewWords={hebrewWords}
-      germanSentence={germanSentence}
-      />
-      */}
+    <div >
 
     <Row justify="center" style={{ marginBottom: '0px' }}>
-        <h1 style={{ textAlign: 'center' }}> תרגמו את המשפט </h1>
+      <Title level={3} style={{ textAlign: 'center' }}>תרגמו את המשפט</Title>
     </Row>
 
       <p style={{ color: "black" }}>{hebrewSentence}</p>

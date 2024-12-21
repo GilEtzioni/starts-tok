@@ -1,21 +1,21 @@
-// axios & react-query
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './dataDictionary/axiosInstance';
 import { WordsType } from './types/wordType';
 
-// components
 import TopIcons from './dicComponents/TopComponents/TopIcons';
 import ButtonsContainer from './dicComponents/TopComponents/ButtonsContainer';
 import TableDictionary from './dicComponents/midComponents/TableDictionary';
 
 const MainDictionary: React.FC = () => {
-
   const fetchItems = async (): Promise<WordsType[]> => {
     const { data } = await axiosInstance.get('/dictionary');
     return data;
   };
 
-  const { data: words } = useQuery(['dictionary'], fetchItems);
+  const { data: words, isLoading, error } = useQuery(['dictionary'], fetchItems);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
 
   return (
     <>
@@ -38,7 +38,7 @@ const MainDictionary: React.FC = () => {
         </div>
       </div>
 
-      <TableDictionary words={words || []} />
+      <TableDictionary words={words} />
     </>
   );
 };

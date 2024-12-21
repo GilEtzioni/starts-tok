@@ -5,11 +5,7 @@ import MainDictionary from "../Dictionarys/MainDictionary";
 const Dictionary: React.FC = () => {
   return (
     <div>
-      {/* 
-      <DictioText />
-      */}
-      {/*   */}
-      <MainLayout levelName='' course_name='' myComponent={<MainDictionary />} />
+      <MainLayout levelName='' courseName='' myComponent={<MainDictionary />} />
       
     </div>
   );

@@ -1,11 +1,15 @@
+// react + antd
 import React, { useState, useEffect } from 'react';
+import { Row, Typography } from 'antd';
+
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setSuccess, setFailure, resetClicks } from "../../LessonsSlice";
+import { RootState } from "../../../app/store";
+
+// data + components
 import { fetchCourseData } from "../LessonsData";
 import { filterByOrder, splitTheSentence } from "./LessonThreeHelper";
-import { Row } from 'antd';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { setRunning, setSuccess, setFailure, resetOrder, addOneOrder, changeOrder, resetClicks, addOneClick } from "../../LessonsSlice";
-import { RootState } from "../../../app/store";
 
 interface LessonThreeCardsProps {
   levelName: string,
@@ -15,7 +19,6 @@ interface LessonThreeCardsProps {
 
 const LessonThreeFront: React.FC<LessonThreeCardsProps> =  ({levelName, courseName, completedLessons}) => {
 
-  const status = useSelector((state: RootState) => state.lessons.status);
   const order = useSelector((state: RootState) => state.lessons.order);
   const clicks = useSelector((state: RootState) => state.lessons.clicks);
   const dispatch = useDispatch();
@@ -30,6 +33,7 @@ const LessonThreeFront: React.FC<LessonThreeCardsProps> =  ({levelName, courseNa
   const [hebrewSentenceFirstPart, setHebrewSentenceFirstPart] = useState<string>("");
   const [hebrewSentenceSecondPart, setHebrewSentenceSecondPart] = useState<string>("");
 
+  const { Title } = Typography;
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -71,19 +75,13 @@ const LessonThreeFront: React.FC<LessonThreeCardsProps> =  ({levelName, courseNa
     fetchData();
   }, [dispatch, order]);
 
-
-
-
   useEffect(() => {
     if (inputValue === "" && clicks === 1) {
       dispatch(resetClicks());
-      console.log("do nothing in 3")
     }
     else if (inputValue === germanWord && clicks === 1) {
-      console.log("equal in three");
       dispatch(setSuccess());
     } else if (clicks === 1) {
-      console.log("not equal in three");
       dispatch(setFailure());
     }
   }, [dispatch, clicks, inputValue, germanWord]);
@@ -91,9 +89,9 @@ const LessonThreeFront: React.FC<LessonThreeCardsProps> =  ({levelName, courseNa
   return (
     <div style={{ textAlign: "center",height: "400px"}}>
 
-      <Row justify="center" style={{ marginBottom: '0px' }}>
-      <h1 style={{ textAlign: 'center' }}>השלימו את המשפט</h1>
-     </Row>
+    <Row justify="center" style={{ marginBottom: '0px' }}>
+      <Title level={3} style={{ textAlign: 'center' }} >השלימו את המשפט </Title>
+    </Row>
   
       {/* hebrew */}
       <p style={{ fontSize: "18px", color: "black", margin: "10px 0" }}>{hebrewSentence}</p>
