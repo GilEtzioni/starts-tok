@@ -22,7 +22,6 @@ const LessonOneCards: React.FC<LessonOneCardsProps> = ({
         <>
             {shuffledHebrew.map(([name, id, status], index) => (
                 <React.Fragment key={id}>
-                    <Col span={10} style={{ marginRight: '5%' }}>
                         <Card
                             onClick={() => handleHebrewClick(id)}
                             className={`card ${
@@ -37,8 +36,8 @@ const LessonOneCards: React.FC<LessonOneCardsProps> = ({
                         >
                             {name}
                         </Card>
-                    </Col>
-                    <Col span={10}>
+
+
                         <Card
                             onClick={() => handleGermanClick(shuffledGerman[index][1])}
                             className={`card ${
@@ -53,7 +52,6 @@ const LessonOneCards: React.FC<LessonOneCardsProps> = ({
                         >
                             {shuffledGerman[index][0]}
                         </Card>
-                    </Col>
                 </React.Fragment>
             ))}
         </>

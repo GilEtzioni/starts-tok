@@ -15,7 +15,6 @@ const CourseContainer: React.FC = () => {
       try {
         const response = await fetch(`http://localhost:3000/main/course/${levelName}`);
         const data = await response.json();
-        console.log('Fetched data in React:', data); 
         setCourses(data);
       } catch (error) {
         console.error('error fetching data:', error); 
