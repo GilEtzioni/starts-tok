@@ -1,6 +1,6 @@
 import { LessonType } from '../types/lessonType';
 
-export function getHebrewWords(lessons: LessonType):Array<[number, string]> {
+export function getHebrewWords(lessons: LessonType):Array<[number, string, string]> {
     const hebrewWordsArray: Array<string> = [];
 
     // First lesson - only first six words
@@ -27,19 +27,20 @@ export function getHebrewWords(lessons: LessonType):Array<[number, string]> {
     }
 
     // 2d array - [ [coupleId] , [hebrewWord] ]
-    const combinedWordsArray: Array<[number, string]> = [];
+    const combinedWordsArray: Array<[number, string, string]> = [];
     for (let i = 0; i < hebrewWordsArray.length; i++) {
         const coupleId = i + 1;
         const hebrewWord = hebrewWordsArray[i];
+        let isEqual: string = ""; 
         if (hebrewWord) {
-            combinedWordsArray.push([coupleId, hebrewWord]);
+            combinedWordsArray.push([coupleId, hebrewWord, isEqual]);
         }
     }
 
     return combinedWordsArray;
 }
 
-export function getGermanWords(lessons: LessonType):Array<[number, string]> {
+export function getGermanWords(lessons: LessonType):Array<[number, string, string]> {
     const germanWordsArray: Array<string> = [];
 
     // first lesson - only first six words
@@ -67,19 +68,20 @@ export function getGermanWords(lessons: LessonType):Array<[number, string]> {
     }
 
     // 2d array - [ [coupleId] , [germanWord] ]
-    const combinedWordsArray: Array<[number, string]> = [];
+    const combinedWordsArray: Array<[number, string, string]> = [];
     for (let i = 0; i < germanWordsArray.length; i++) {
         const coupleId = i + 1;
         const germanWord = germanWordsArray[i];
+        const isEqual = "";
         if (germanWord) {
-            combinedWordsArray.push([coupleId, germanWord]);
+            combinedWordsArray.push([coupleId, germanWord, isEqual]);
         }
     }
 
     return combinedWordsArray;
 }
 
-export function shuffleArray (wordsArray: Array<[number, string]>): Array<[number, string]> {
+export function shuffleArray (wordsArray: Array<[number, string, string]>): Array<[number, string, string]> {
     for (let i = wordsArray.length - 1; i > 0; i--) {
         const random = Math.floor(Math.random() * (i + 1));
         [wordsArray[i], wordsArray[random]] = [wordsArray[random], wordsArray[i]]; // swap item with random
@@ -87,10 +89,3 @@ export function shuffleArray (wordsArray: Array<[number, string]>): Array<[numbe
     return wordsArray;
 };
 
-export function checkCouples (firstId: number, secondId: number): boolean {
-    if(firstId === secondId){
-        return true;
-        console.log("true");   
-    }
-    return false;
-}
