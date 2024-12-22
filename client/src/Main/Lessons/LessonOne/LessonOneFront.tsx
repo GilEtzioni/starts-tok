@@ -1,7 +1,7 @@
 // react + redux + ant
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSuccess, setFailure } from "../../LessonsSlice";
+import { setSuccess, setFailure } from "../../../NewLessons/LessonsSlice";
 import { RootState } from "../../../app/store";
 import { Row, Typography } from 'antd';
 

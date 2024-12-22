@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from "react";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { setSuccess, setFailure, resetClicks } from "../../LessonsSlice";
+import { setSuccess, setFailure, resetClicks } from "../../../NewLessons/LessonsSlice";
 import { RootState } from "../../../app/store";
 
 // data + components

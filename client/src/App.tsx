@@ -13,8 +13,8 @@ import Main from './Pages/Main';
 import Dictionary from './Pages/Dictionary';
 import Login from './Pages/Login';
 import CoursesPage from './Pages/CoursesPage';
-// import MainLearn from './Main/MainLearn';
 import MainFirst from './NewLessons/FirstLesson/MainFirst';
+import  MainLearn from "./NewLessons/MainLearn";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
         <Route path="main" element={<Main />} />                            {/* "/main" */}
         <Route path="main/course" element={<CoursesLayout />}>      
           <Route path=":name" element={<CoursesPage />} />                   {/* e.g:   "/main/course/A1" */}
-          <Route path=":name/:lesson/:completed" element={<MainFirst />} />  {/* e.g:   "/main/course/A1/Greetings/1" */}
+          <Route path=":name/:lesson/:completed" element={<MainLearn />} />  {/* e.g:   "/main/course/A1/Greetings/1" */}
         </Route>
       </Route>
     </>

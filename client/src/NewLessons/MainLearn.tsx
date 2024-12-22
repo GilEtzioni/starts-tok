@@ -2,33 +2,29 @@ import React, { useEffect, useState } from 'react';
 import NextButton from '../components/Main/NextButton';
 import ProgressBar from '../components/Main/ProgressBar';
 import BackButton from '../components/Main/BackButton';
-import ErrorMessage from "./Lessons/ErrorMessage";
+import ErrorMessage from "./Components/ErrorMessage";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
 import { resetOrder  } from "../NewLessons/LessonsSlice";
 
-import LessonOneFront from './Lessons/LessonOne/LessonOneFront';
-import LessonTwoFront from "./Lessons/LessonTwo/LessonTwoFront";
-import LessonThreeFront from './Lessons/LessonThree/LessonThreeFront';
+import MainFirst from "./FirstLesson/MainFirst";
+// import LessonTwoFront from "./Lessons/LessonTwo/LessonTwoFront";
+// import LessonThreeFront from './Lessons/LessonThree/LessonThreeFront';
 import { useNavigate } from "react-router-dom";
 
 import { useParams } from 'react-router-dom';
 
-interface MainLearnProps {
-    myLevel: string;
-    myCourse: string;
-    myCompleted: number;
-}
 
-const MainLearn: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  }) => {
+
+const MainLearn: React.FC = () => {
     // params
     const dispatch = useDispatch();
     const { name, lesson, completed } = useParams<{ name?: string; lesson?: string; completed?: string }>(); 
 
-    const levelName = name ?? 'default-level';         
-    const courseName = lesson ?? 'default-completed';
-    const completedLessons = completed ? parseInt(completed, 10) : 1;
+    const myLevel = name ?? 'default-level';         
+    const myCourse = lesson ?? 'default-completed';
+    const myCompleted = completed ? parseInt(completed, 10) : 1;
 
 
     // react nav (go back)
@@ -43,7 +39,7 @@ const MainLearn: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  })
 
     const handleFinishLesson = () => {
         dispatch(resetOrder());
-        navigate(`/main/course/${levelName}`);
+        navigate(`/main/course/${myLevel}`);
     };
 
     useEffect(() => {
@@ -57,17 +53,17 @@ const MainLearn: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  })
     const renderCurrentLesson = () => {
         switch (order) {
             case 1:
-                return <LessonOneFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
-            case 2: 
-                return <LessonTwoFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
-            case 3:
-                return <LessonThreeFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
-            case 4:
-                return <LessonOneFront levelName={levelName} courseName={courseName} completedLessons={completedLessons} />;
-            case 5: 
-                return <LessonTwoFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;                
-            case 6:
-                return <LessonThreeFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
+                return <MainFirst myLevel={myLevel} myCourse={myCourse} myCompleted={myCompleted}/>;
+            // case 2: 
+            //     return <LessonTwoFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
+            // case 3:
+            //     return <LessonThreeFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
+            // case 4:
+            //     return <LessonOneFront levelName={levelName} courseName={courseName} completedLessons={completedLessons} />;
+            // case 5: 
+            //     return <LessonTwoFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;                
+            // case 6:
+            //     return <LessonThreeFront levelName={levelName} courseName={courseName} completedLessons={completedLessons}/>;
         
             default:
                 handleFinishLesson();

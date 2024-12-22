@@ -5,7 +5,15 @@ import axiosInstance from "../dataLessons/axiosInstance";
 import { LessonType } from '../types/lessonType';
 import FirstCardContainer from './FirstCardContainer';
 
-const FirstFront: React.FC = () => {
+
+interface MainLearnProps {
+    myLevel: string;
+    myCourse: string;
+    myCompleted: number;
+}
+
+const FirstFront: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  }) => {
+
     const { name, lesson, completed } = useParams<{ name?: string; lesson?: string; completed?: string }>();
 
     const fetchItems = async (name?: string, lesson?: string, completed?: string): Promise<LessonType[]> => {

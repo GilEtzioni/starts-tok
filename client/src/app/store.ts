@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import lessonReducer from "../Main/LessonsSlice";
+import lessonReducer from "../NewLessons/LessonsSlice";
 import dictionaryReducer from "../Dictionarys/dataDictionary/DictionarySlice";
 
 export const store = configureStore({
