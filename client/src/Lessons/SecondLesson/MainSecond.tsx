@@ -3,16 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from "../dataLessons/axiosInstance";
 import { LessonType } from '../types/lessonType';
-import FirstCardContainer from './FirstCardContainer';
+import SecondCardContainer from './SecondCardContainer';
 
 
-interface MainLearnProps {
-    myLevel: string;
-    myCourse: string;
-    myCompleted: number;
-}
-
-const FirstFront: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  }) => {
+const MainSecond: React.FC = () => {
 
     const { name, lesson, completed } = useParams<{ name?: string; lesson?: string; completed?: string }>();
 
@@ -21,8 +15,8 @@ const FirstFront: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  }
         return data;
     };
 
-    const { data: lessons = [], isLoading, error } = useQuery(
-        ['lessons', name, lesson, completed],
+    const { data: lessonsData = [], isLoading, error } = useQuery(
+        ['lessonsData', name, lesson, completed],
         () => fetchItems(name, lesson, completed)
     );
 
@@ -31,9 +25,9 @@ const FirstFront: React.FC <MainLearnProps>= ({ myLevel,myCourse ,myCompleted  }
 
     return (
         <div>
-            <FirstCardContainer lessons={lessons} />
+           <SecondCardContainer lessonsData={lessonsData} /> 
         </div>
     );
 };
 
-export default FirstFront;
+export default MainSecond;

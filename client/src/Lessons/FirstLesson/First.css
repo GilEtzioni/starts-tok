@@ -1,0 +1,41 @@
+.success {
+  background-color: hsl(142.1, 70.6%, 45.3%);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  transition: background-color 0.5s ease; 
+}
+
+.failure {
+  background-color: hsl(0, 70%, 50%);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  transition: background-color 0.5s ease;
+}
+
+.notSelected {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  transition: background-color 0.5s ease;
+}
+
+.clicked {
+  background-color: black;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  transition: background-color 0.5s ease; 
+}

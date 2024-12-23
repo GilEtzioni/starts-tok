@@ -1,10 +1,11 @@
+// types
 import { LessonType } from '../types/lessonType';
 
-export function getHebrewWords(lessons: LessonType):Array<[number, string, string]> {
+export function getHebrewWords(lessons: LessonType, order: number):Array<[number, string, string]> {
     const hebrewWordsArray: Array<string> = [];
 
     // First lesson - only first six words
-    if (lessons.lessonId === 1) {
+    if (order === 1) {
         hebrewWordsArray.push(
             lessons.wordOneHebrew,
             lessons.wordTwoHebrew,
@@ -15,7 +16,7 @@ export function getHebrewWords(lessons: LessonType):Array<[number, string, strin
         );
     }
     // Second lesson - only last six words
-    if (lessons.lessonId === 4) {
+    if (order === 4) {
         hebrewWordsArray.push(
             lessons.wordSevenHebrew,
             lessons.wordEightHebrew,
@@ -40,11 +41,11 @@ export function getHebrewWords(lessons: LessonType):Array<[number, string, strin
     return combinedWordsArray;
 }
 
-export function getGermanWords(lessons: LessonType):Array<[number, string, string]> {
+export function getGermanWords(lessons: LessonType, order: number):Array<[number, string, string]> {
     const germanWordsArray: Array<string> = [];
 
     // first lesson - only first six words
-    if (lessons.lessonId === 1) {
+    if (order === 1) {
         germanWordsArray.push(
             lessons.wordOneGerman,
             lessons.wordTwoGerman,
@@ -56,7 +57,7 @@ export function getGermanWords(lessons: LessonType):Array<[number, string, strin
     }
 
     // second lesson - only last six words
-    if (lessons.lessonId === 4) {
+    if (order === 4) {
         germanWordsArray.push(
             lessons.wordSevenGerman,
             lessons.wordEightGerman,
@@ -88,4 +89,3 @@ export function shuffleArray (wordsArray: Array<[number, string, string]>): Arra
     }
     return wordsArray;
 };
-

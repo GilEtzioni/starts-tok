@@ -13,8 +13,8 @@ import Main from './Pages/Main';
 import Dictionary from './Pages/Dictionary';
 import Login from './Pages/Login';
 import CoursesPage from './Pages/CoursesPage';
-import MainFirst from './NewLessons/FirstLesson/MainFirst';
-import  MainLearn from "./NewLessons/MainLearn";
+import MainFirst from './Lessons/FirstLesson/MainFirst';
+import  MainLearn from "./Lessons/MainLearn";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

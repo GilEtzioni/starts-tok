@@ -22,7 +22,7 @@ const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
 
   const handleClick = () => {
     // game 1
-    if (order === 1 || order === 4) {
+    if (order === 2 || order === 4) {
       if (status === "success" || status === "failure") {
         dispatch(resetClicks());
         dispatch(addOneOrder());
@@ -39,6 +39,7 @@ const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
         dispatch(addOneOrder());
         setNextPage(true);
         dispatch(setRunning());
+        
         // failure -> get error card, and after one click continue
       } else {
         if (clicks === 0) {

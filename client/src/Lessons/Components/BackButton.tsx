@@ -10,18 +10,7 @@ const BackButton: React.FC = () => {
     navigate(-1); // nav to the previous page
   };
 
-  return (
-    <div className="back-button-container">
-      <div className="back-button-wrapper">
-        <Button
-          className="back-button" 
-          onClick={handleBack}
-        >
-          חזור
-        </Button>
-      </div>
-    </div>
-  );
+  return ( <Button className="back-button" onClick={handleBack} > חזור </Button> );
 };
 
 export default BackButton;

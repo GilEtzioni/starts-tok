@@ -22,11 +22,12 @@ async function seed() {
 
       // word couples game
       wordOneGerman: "hallo", wordOneHebrew: "שלום",
-      wordTwoGerman: "wie geths", wordTwoHebrew: "מה שלומך",
+      wordTwoGerman: "wie gehts", wordTwoHebrew: "מה שלומך",
       wordThreeGerman: "rot", wordThreeHebrew: "אדום",
       wordFourGerman: "blau", wordFourHebrew: "כחול",
       wordFiveGerman: "vater", wordFiveHebrew: "אבא",
       wordSixGerman: "muter", wordSixHebrew: "אמא",
+      
       wordSevenGerman: "gelb", wordSevenHebrew: "צהוב",
       wordEightGerman: "grün", wordEightHebrew: "ירוק",
       wordNineGerman: "sohn", wordNineHebrew: "בן",
