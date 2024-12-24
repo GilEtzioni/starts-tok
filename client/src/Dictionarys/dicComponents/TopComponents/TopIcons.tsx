@@ -6,6 +6,8 @@ import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icon
 import { setVyBoolean, setExBoolean, setQuestionBoolean, addOneClick } from "../../dataDictionary/DictionarySlice";
 import { useDispatch } from 'react-redux';
 
+import "./Top.css";
+
 type IconItem = {
   id: number;
   isClicked: boolean;
@@ -52,31 +54,12 @@ const DictionaryIconsTop: React.FC = () => {
 
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'start', alignItems: 'center', gap: '8px' }}>
+    <div className='top-icons-buttns'>
       {activeIcon.map(({ id, isClicked,  defaultColor, activeColor, icon }) => (
-        <div
-          key={id}
-          onClick={() => handleIconsClicked(activeIcon, id)}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '36px',
-            height: '36px',
-            borderRadius: '50%',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s',
-          }}
-          className="icon-container"
-        >
-          {React.cloneElement(icon, {
-            style: {
-              fontSize: '24px',
-              color: isClicked ? activeColor : defaultColor,
-              transition: 'color 0.3s',
-            },
-          })}
-        </div>
+      <div key={id} onClick={() => handleIconsClicked(activeIcon, id)} className="top-icon-container"  >
+        {React.cloneElement(icon, {style: { fontSize: '24px', color: isClicked ? activeColor : defaultColor, transition: 'color 0.3s'},
+        })}
+      </div>
       ))}
     </div>
   );

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './dataDictionary/axiosInstance';
 import { WordsType } from './types/wordType';
+import "./MainDictionary.css";
 
 import TopIcons from './dicComponents/TopComponents/TopIcons';
 import ButtonsContainer from './dicComponents/TopComponents/ButtonsContainer';
@@ -19,26 +20,17 @@ const MainDictionary: React.FC = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div
-          style={{
-            height: '120px',
-            width: '800px',
-            padding: '16px',
-            border: '1px solid hsl(240, 5%, 64.9%)',
-            borderRadius: '8px',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            transition: 'transform 0.3s ease, background-color 0.3s ease',
-          }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+      <div className='main-container'>
+        <div className='second-container' >
+          <div  className='third-container'>
             <TopIcons />
           </div>
           <ButtonsContainer />
         </div>
       </div>
-
+      <div className='table-container'>
       <TableDictionary words={words} />
+      </div>
     </>
   );
 };

@@ -9,7 +9,7 @@ import { eq, and } from "drizzle-orm";
 const app = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 app.use(express.json());
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*', methods: ['GET', 'PATCH'] }));
 
 
 // e.g: /main/course/A2
@@ -69,15 +69,54 @@ app.get("/dictionary", async (req: Request, res: Response) => {
     }
 });
 
-app.patch("/dictionary", async (req: Request, res: Response) => {
+// GET one word
+app.get("/dictionary/:id", async (req: Request, res: Response) => {
     try {
-        const allWords = await db.select().from(Words);
-        res.json(allWords);
+        const wordID = parseInt(req.params.id, 10); 
+        if (isNaN(wordID)) {
+            res.status(400).send("Invalid word ID");
+        }
+
+        const myWord = await db.select().from(Words).where(eq(Words.id, wordID));
+        if (myWord.length === 0) {
+            res.status(404).send("Word not found");
+        }
+
+        res.json(myWord[0]); 
     } catch (err) {
-        console.error("Error fetching courses:", err);
-        res.status(500).send("Error fetching courses");
+        console.error("Error fetching word:", err);
+        res.status(500).send("Error fetching word");
     }
 });
+
+
+// PATCH a specific word
+app.patch("/dictionary/:id", async (req: Request, res: Response) => {
+    const { id } = req.params; 
+    const { knowlage } = req.body; 
+
+    if (!knowlage) {
+        res.status(400).send("Missing 'knowlage' in request body");
+    }
+
+    try {
+        const updatedRows = await db
+            .update(Words)
+            .set({ knowlage }) 
+            .where(eq(Words.id, parseInt(id, 10)))
+            .returning();
+
+        if (updatedRows.length === 0) {
+            res.status(404).send("Word not found");
+        }
+
+        res.json(updatedRows[0]); 
+    } catch (err) {
+        console.error("Error updating knowledge:", err);
+        res.status(500).send("Error updating knowledge");
+    }
+});
+
 
 
 app.listen(PORT, () => {

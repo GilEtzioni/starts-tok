@@ -1,7 +1,7 @@
 // react + antd
 import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
-import { handleClickedRow } from '../HelpingFunctionsDictionary';
+import { handleClickedRow, sortWordsById } from '../HelpingFunctionsDictionary';
 
 // redux
 import { useSelector } from 'react-redux';
@@ -10,6 +10,8 @@ import { RootState } from "../../../app/store";
 // word Type
 import { WordsType } from "../../types/wordType";
 import { knowlageDataArray } from "../HelpingFunctionsDictionary"
+
+import MidIcons from "./MidIconds";
 
 interface TableProps {
   words?: Array<WordsType>;
@@ -30,7 +32,7 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
  
     // if nothing is selected -> show all data
     if (levelRedux.length === 0 && filterdKnowlage.length === 0) {
-      setFilteredWords([...words]);
+      setFilteredWords(sortWordsById([...words]));
       return;
     }
 
@@ -39,7 +41,6 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
     // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "`C2"
     if (levelRedux.length !== 0) {
       filtered = filtered.filter((item) => levelRedux.includes(item.levelEnglish)); // filter by level
-      console.log("fff", filtered);
     }
 
     // if the user click on "V" / "?" / "X" 
@@ -47,9 +48,11 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
       filtered = filtered.filter((item) => filterdKnowlage.includes(item.knowlage)); // Use `filterdKnowlage` directly
     }
 
-    setFilteredWords(filtered);
+    // show the filtered data by the id order
+    setFilteredWords(sortWordsById(filtered));
   }, [words, levelRedux, clicksRedux, knowlageRedux]);
   return (
+    <div className="table-wrapper">
     <Table
       columns={[
         // first column
@@ -57,6 +60,10 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
           title: 'סינון',
           dataIndex: 'knowlage',
           key: 'knowlage',
+          render: (knowlage, row) => {
+            const id = row.id ?? -1;
+            return <MidIcons knowlage={knowlage} id={id} />;
+          },
         },
         // mid column
         {
@@ -97,6 +104,7 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
         },
       })}
     />
+    </div>
   );
 };
 

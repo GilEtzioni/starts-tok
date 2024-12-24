@@ -38,3 +38,23 @@ export function handleClickedRow(id: number, wordsArray: WordsType[], translated
     }
     return knowlageArray;
   }
+
+  export function isExTrue (icon: string): boolean {
+    return icon === "X";
+  };
+
+  export function isVyTrue (icon: string): boolean {
+    return icon === "V";
+  }
+
+  export function isQuesttionTrue (icon: string): boolean {
+    return icon === "?";
+  }
+
+  export function sortWordsById(words: WordsType[]): WordsType[] {
+    return [...words].sort((a, b) => {
+      const idA = a.id ?? Number.MAX_SAFE_INTEGER;
+      const idB = b.id ?? Number.MAX_SAFE_INTEGER;
+      return idA - idB;
+    });
+  }

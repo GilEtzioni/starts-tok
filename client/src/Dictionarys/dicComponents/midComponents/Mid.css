@@ -1,0 +1,26 @@
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+  }
+
+  .icon-main-container {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 8px;
+  }
+
+  .top-icon-container:hover {
+    background-color: #f0f0f0; 
+  }
+
+  .table-wrapper {
+    width: 80%; 
+    margin: 0 auto; 
+  }

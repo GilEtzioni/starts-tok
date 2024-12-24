@@ -1,0 +1,102 @@
+.Level-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+.filter-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--default-color); 
+}
+
+.filter-icons[data-active="true"] {
+  color: var(--active-color);
+}
+
+.icon {
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.custom-button {
+  background-color: #000 !important;
+  color: #fff !important; 
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; 
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #333 !important; 
+  color: #fff !important; 
+  transform: translateY(-2px); 
+}
+
+
+.custom-button:active {
+  background-color: #444 !important;
+  color: #fff !important;
+  transform: translateY(0);
+}
+
+.custom-button-clicked {
+  background-color: #a8a8a8 !important; 
+  color: #fff !important;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.custom-button-clicked:hover {
+  background-color: #c0c0c0 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.custom-button-clicked:active {
+  background-color: #d0d0d0 !important; 
+  color: #fff !important;
+  transform: translateY(0);
+}
+
+.top-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+.top-icon-container:hover {
+  background-color: #f0f0f0; 
+}
+
+.top-icons-buttns {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center; 
+  gap: 8px; 
+}
+.icon-container:hover {
+  background-color: #f0f0f0; 
+}

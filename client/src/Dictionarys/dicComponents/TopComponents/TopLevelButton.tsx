@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addLevel, removeLevel, addOneClick } from "../../dataDictionary/DictionarySlice";
 import { RootState } from "../../../app/store";
 
+import { Button } from 'antd';
+
 interface LevelButtonProps {
   buttNameHebrew: string;
   buttNameEnglish: string;
@@ -20,26 +22,16 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttNameHebrew, buttNameEngli
     } else {
       dispatch(addLevel(buttNameEnglish));
     }
-      dispatch(addOneClick());
+    dispatch(addOneClick());
   };
 
-
   return (
-    <button
+    <Button
       onClick={handleClick}
-      style={{
-        backgroundColor: isClicked ? 'grey' : "#000",
-        color: "#fff",
-        border: 'none',
-        padding: '8px 16px',
-        fontSize: '16px',
-        fontWeight: 'bold',
-        transition: "background-color 0.3s ease",
-        borderRadius: "20px",
-      }}
+      className={`custom-button ${isClicked ? 'custom-button-clicked' : ''}`}
     >
       {buttNameHebrew}
-    </button>
+    </Button>
   );
 };
 

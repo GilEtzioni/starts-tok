@@ -15,13 +15,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <Card
-            bordered={false}
-            className="error-m"
-            style={{
-                top: `${topCss(order)}px`,
-            }}
-        >
+        <Card bordered={false} className="error-m" style={{top: `${topCss(order)}px` }} >
             !טעות
         </Card>
     );
