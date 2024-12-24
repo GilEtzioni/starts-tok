@@ -6,6 +6,7 @@ import "./MainDictionary.css";
 import TopIcons from './dicComponents/TopComponents/TopIcons';
 import ButtonsContainer from './dicComponents/TopComponents/ButtonsContainer';
 import TableDictionary from './dicComponents/midComponents/TableDictionary';
+import { useEffect } from 'react';
 
 const MainDictionary: React.FC = () => {
   const fetchItems = async (): Promise<WordsType[]> => {

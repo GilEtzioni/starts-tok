@@ -1,4 +1,4 @@
-import { pgTable, varchar, serial, text, integer, pgEnum} from "drizzle-orm/pg-core";
+import { pgTable, varchar, serial, text, integer, pgEnum, boolean} from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm/sql";
 
 // enums
@@ -84,4 +84,5 @@ export const Lessons = pgTable("lessons", {
     wordElevenHebrew: text("wordElevenHebrew"),
     wordTwelveGerman: text("wordTwelveGerman"),
     wordTwelveHebrew: text("wordTwelveHebrew"),
+    finished: boolean("finished"),
 });

@@ -8,16 +8,16 @@ import ThirdCardContainer from "./ThirdCardContainer";
 
 const MainThird: React.FC = () => {
 
-    const { name, lesson, completed } = useParams<{ name?: string; lesson?: string; completed?: string }>();
+    const { name, lesson } = useParams<{ name?: string; lesson?: string; }>();
 
-    const fetchItems = async (name?: string, lesson?: string, completed?: string): Promise<LessonType[]> => {
-        const { data } = await axiosInstance.get(`/main/course/${name ?? 'default-level'}/${lesson ?? 'default-completed'}/${completed ? parseInt(completed, 10) : 1}`);
+    const fetchItems = async (name?: string, lesson?: string): Promise<LessonType[]> => {
+        const { data } = await axiosInstance.get(`/main/course/${name ?? 'default-level'}/${lesson ?? 'default-completed'}`);
         return data;
     };
 
     const { data: lessons = [], isLoading, error } = useQuery(
-        ['lessons', name, lesson, completed],
-        () => fetchItems(name, lesson, completed)
+        ['lessons', name, lesson],
+        () => fetchItems(name, lesson)
     );
 
     if (isLoading) return <div>Loading...</div>;

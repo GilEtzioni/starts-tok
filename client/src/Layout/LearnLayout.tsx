@@ -6,7 +6,7 @@ const LearnLayout: React.FC = () => {
     <div> 
       <nav>
         <NavLink to=":name"></NavLink>
-        <NavLink to=":lesson/:completed"></NavLink>
+        <NavLink to=":lesson/"></NavLink>
       </nav>
       <Outlet />
     </div>

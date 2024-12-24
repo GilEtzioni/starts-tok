@@ -1,5 +1,5 @@
 {
-  "id": "1f0947cb-b190-4549-9830-ad34f7715d33",
+  "id": "0639bd2e-4c74-4691-a767-40e42100a78b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -316,6 +316,12 @@
         "wordTwelveHebrew": {
           "name": "wordTwelveHebrew",
           "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "finished": {
+          "name": "finished",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": false
         }

@@ -3,7 +3,7 @@ import { db } from "./drizzle/db";
 import { CourseNames, Words, Lessons } from "./drizzle/schema";
 import "dotenv/config";
 import cors from "cors";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 
 // express
 const app = express();
@@ -11,17 +11,6 @@ const PORT: number = Number(process.env.PORT) || 3000;
 app.use(express.json());
 app.use(cors({ origin: '*', methods: ['GET', 'PATCH'] }));
 
-
-// e.g: /main/course/A2
-app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
-    try {
-        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
-        const coursesSubjects = await db.select().from(CourseNames).where(eq(CourseNames.levelEnglish, userLevel));
-        res.json(coursesSubjects);
-    } catch (err) {
-        res.status(500).send("Error fetching courses");
-    }
-});
 
 
 app.get("/main", async (req: Request, res: Response) => {
@@ -34,27 +23,102 @@ app.get("/main", async (req: Request, res: Response) => {
     }
 });
 
-app.patch("/dictionary", async (req: Request, res: Response) => {
+
+// /main/course/A1/Greetings
+app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
+    try {
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2"; // string
+        const course = req.params.course;                                                  // string
+
+        // Step 1: Find the first not completed lesson
+        const currLesson = await db.select().from(Lessons).where(
+                and(
+                    eq(Lessons.levelEnglish, userLevel),
+                    eq(Lessons.courseNameEnglish, course),
+                    eq(Lessons.finished, false) // find lessons where finished is false
+                )
+            )
+            .orderBy(Lessons.id) // order by ID
+            .limit(1); // only the first completed lesson
+
+            res.json(currLesson);
+
+    } catch (err) {
+        console.error("Error updating lesson:", err);
+        res.status(500).json({ message: "Error updating the lesson" });
+    }
 });
 
-// /main/course/A1/Greeting
-app.get("/main/course/:userLevel/:course/:completed", async (req: Request, res: Response) => {
+
+
+// e.g: /main/course/A2
+app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
     try {
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
-        const course = req.params.course;
-        const completed = Number(req.params.completed);
-
-        const lesson = await db.select().from(Lessons).where(and(eq(Lessons.levelEnglish, userLevel), eq(Lessons.courseNameEnglish, course)))
-        .limit(1)                   // get only 1 row
-        .offset(completed);   // Skip the first 3 rows (4th row starts at index 3)
-
-
-        res.json(lesson);
+        const coursesSubjects = await db.select().from(CourseNames).where(eq(CourseNames.levelEnglish, userLevel)).orderBy(CourseNames.courseId);
+        res.json(coursesSubjects);
     } catch (err) {
-        console.error("Error fetching courses:", err);
         res.status(500).send("Error fetching courses");
     }
 });
+
+
+app.patch("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
+    try {
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2"; // string
+        const course = req.params.course;                                                  // string
+
+        // step 1 - find the first completed lesson (table lessons)
+        const [lessonToUpdate] = await db
+            .select()
+            .from(Lessons)
+            .where(
+                and(
+                    eq(Lessons.levelEnglish, userLevel),
+                    eq(Lessons.courseNameEnglish, course),
+                    eq(Lessons.finished, false)      // find lessons that - finished is false
+                )
+            )
+            .orderBy(Lessons.id) // order by ID
+            .limit(1);           // only the first completed lesson
+
+        if (!lessonToUpdate) {
+            res.status(404).json({ message: "No completed lessons found for the specified course and level." });
+        }
+
+        // step 2 - patch the lesson as finished (table lessons)
+        const updatedLesson = await db
+            .update(Lessons)
+            .set({ finished: true }) // set finished to false
+            .where(eq(Lessons.id, lessonToUpdate.id))
+            .returning(); 
+
+
+        // step 3 - find the course (table courses)
+        const [coursesToUpdate] = await db
+        .select()
+        .from(CourseNames)
+        .where(and(eq(CourseNames.levelEnglish, userLevel), eq(CourseNames.courseNameEnglish, course)))
+
+
+        // step 4 - patch the course (table courses)
+        const updatedCourse = await db
+        .update(CourseNames)
+        .set({ lessonCompleted: coursesToUpdate.lessonCompleted +1 }) // set completed courses to +1
+        .where(eq(CourseNames.courseId, coursesToUpdate.courseId))
+        .returning(); 
+
+        res.json({
+            lesson: updatedLesson,
+            course: updatedCourse
+        });
+    } catch (err) {
+        console.error("Error updating lesson:", err);
+        res.status(500).json({ message: "Error updating the lesson" });
+    }
+});
+
+
 
 /* ------------------------------------------------------------------------------------------------------------------- */
 
@@ -88,6 +152,7 @@ app.get("/dictionary/:id", async (req: Request, res: Response) => {
         res.status(500).send("Error fetching word");
     }
 });
+
 
 
 // PATCH a specific word

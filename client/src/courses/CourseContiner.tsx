@@ -1,52 +1,52 @@
-import React, { useEffect, useState } from 'react';
+// react + antd
 import { Card, Col, Row } from 'antd';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import "./Course.css";
 
+// fetch
+import { useQuery } from '@tanstack/react-query';
+import axiosInstance from "./data/axiosInstance";
+import { CourseType } from "./data/courseTypes";
+
 const CourseContainer: React.FC = () => {
   const { name } = useParams<{ name?: string }>();
   const levelName = name ?? 'default-level';
 
-  const [courses, setCourses] = useState<{ id: number; courseNameEnglish: string; courseNameHebrew: string; levelEnglish: string; lessonCompleted: number }[]>([]);
+  const fetchItems = async (): Promise<CourseType[]> => {
+    const { data } = await axiosInstance.get(`/main/course/${levelName}`);
+    return data;
+  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/main/course/${levelName}`);
-        const data = await response.json();
-        setCourses(data);
-      } catch (error) {
-        console.error('error fetching data:', error); 
-      }
-    };
+  const { data: coursesData = [], isLoading, error } = useQuery(
+    ['coursesData', name],
+    fetchItems
+  );
 
-    fetchData();
-  }, []);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error instanceof Error ? error.message : 'Unknown error'}</div>;
 
   return (
     <div className="course-container">
       <div className="course-wrapper">
-        {Array.from({ length: Math.ceil(courses.length / 5) }).map((_, rowIndex) => (
-          <Row gutter={[24, 24]} justify="center" key={rowIndex} className="course-row" >
-            {courses
+        {Array.from({ length: Math.ceil(coursesData.length / 5) }).map((_, rowIndex) => (
+          <Row gutter={[24, 24]} justify="center" key={rowIndex} className="course-row">
+            {coursesData
               .slice(rowIndex * 5, rowIndex * 5 + 5)
-              .map((course) => (
-                <Col span={4} key={course.id} className="course-col">
+              .map((course: CourseType) => (
+                <Col span={4} key={course.courseId} className="course-col">
                   <Link
-                    to={`/main/course/${course.levelEnglish}/${course.courseNameEnglish}/${course.lessonCompleted}`}
+                    to={`/main/course/${course.levelEnglish}/${course.courseNameEnglish}`}
                     className="course-link"
                   >
-                    <Card title={
-                      <div className="course-title">
-                        {course.courseNameHebrew}
-                      </div>
-                      }
-                      bordered={true} hoverable={true}  className="course-card"
+                    <Card
+                      title={<div className="course-title">{course.courseNameHebrew}</div>}
+                      bordered={true}
+                      hoverable={true}
+                      className="course-card"
                     >
-                      <div className="course-completion">
-                        סיימת {course.lessonCompleted}/6
-                      </div>
+                      <div className="course-completion">סיימת {course.lessonCompleted}/6</div>
                     </Card>
                   </Link>
                 </Col>

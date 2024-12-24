@@ -1,14 +1,10 @@
 // react
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { useParams } from 'react-router-dom';
+import React from 'react';
 
-// redux
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from "../app/store";
-import { resetOrder  } from "./LessonsSlice";
+// custom hook
+import { useMainLearnHelper } from './MainLearnHelper';
 
-// lessosns components
+// lessons components
 import MainFirst from "./FirstLesson/MainFirst";
 import MainSecond from './SecondLesson/MainSecond';
 import MainThird from "./ThirdLesson/MainThird";
@@ -18,37 +14,10 @@ import NextButton from '../components/Main/NextButton';
 import ProgressBar from '../components/Main/ProgressBar';
 import BackButton from '../components/Main/BackButton';
 import ErrorMessage from "./Components/ErrorMessage";
-import "./MainLearn.css"
-
+import "./MainLearn.css";
 
 const MainLearn: React.FC = () => {
-    // params
-    const dispatch = useDispatch();
-    const { name} = useParams<{ name?: string; lesson?: string; completed?: string }>(); 
-    const myLevel = name ?? 'default-level';         
-
-    // react nav (go back)
-    const navigate = useNavigate();
-
-    // redux
-    const status = useSelector((state: RootState) => state.lessons.status);
-    const order = useSelector((state: RootState) => state.lessons.order);
-    
-    // show failure 
-    const [showError, setShowError] = useState<boolean>(false);
-
-    const handleFinishLesson = () => {
-        dispatch(resetOrder());
-        navigate(`/main/course/${myLevel}`);
-    };
-
-    useEffect(() => {
-        if (status === "failure") {
-            setShowError(true);
-        } else {
-            setShowError(false);
-        }
-    }, [status]);
+    const { order, showError, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
 
     const renderCurrentLesson = () => {
         switch (order) {
@@ -59,21 +28,19 @@ const MainLearn: React.FC = () => {
             case 3:
                 return <MainThird />;
             case 4:
-                 return <MainFirst />;
+                return <MainFirst />;
             case 5: 
                 return <MainSecond />;                
             case 6:
-                return <MainThird/>;
-        
+                return <MainThird />;
             default:
-                handleFinishLesson();
+                finishLesson({ name: myLevel, lesson: myLesson }); // patch
+                handleFinishLesson();                              // go to main course page
         }
-    }
+    };
 
-
-    
     const errorMessageDisplay = (
-        <div >
+        <div>
             <ErrorMessage />
         </div>
     );
@@ -89,7 +56,6 @@ const MainLearn: React.FC = () => {
                 </div>
             </div>
             
-
             {/* render the current lesson */}
             <div>{renderCurrentLesson()}</div>
     
@@ -100,6 +66,6 @@ const MainLearn: React.FC = () => {
             </div>
         </>
     );
-}
+};
 
 export default MainLearn;

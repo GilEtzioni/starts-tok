@@ -52,7 +52,8 @@ CREATE TABLE IF NOT EXISTS "lessons" (
 	"wordElevenGerman" text,
 	"wordElevenHebrew" text,
 	"wordTwelveGerman" text,
-	"wordTwelveHebrew" text
+	"wordTwelveHebrew" text,
+	"finished" boolean
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "words" (

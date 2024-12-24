@@ -7,16 +7,16 @@ import FirstCardContainer from './FirstCardContainer';
 
 const FirstFront: React.FC= () => {
 
-    const { name, lesson, completed } = useParams<{ name?: string; lesson?: string; completed?: string }>();
+    const { name, lesson } = useParams<{ name?: string; lesson?: string; }>();
 
     const fetchItems = async (name?: string, lesson?: string, completed?: string): Promise<LessonType[]> => {
-        const { data } = await axiosInstance.get(`/main/course/${name ?? 'default-level'}/${lesson ?? 'default-completed'}/${completed ? parseInt(completed, 10) : 1}`);
+        const { data } = await axiosInstance.get(`/main/course/${name ?? 'default-level'}/${lesson ?? 'default-completed'}/`);
         return data;
     };
 
     const { data: lessonsData = [], isLoading, error } = useQuery(
-        ['lessonsData', name, lesson, completed],
-        () => fetchItems(name, lesson, completed)
+        ['lessonsData', name, lesson],
+        () => fetchItems(name, lesson)
     );
 
     if (isLoading) return <div>Loading...</div>;
