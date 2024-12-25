@@ -27,7 +27,6 @@ export function getHebrewWords(lessons: LessonType, order: number):Array<[number
         );
     }
 
-    // 2d array - [ [coupleId] , [hebrewWord] ]
     const combinedWordsArray: Array<[number, string, string]> = [];
     for (let i = 0; i < hebrewWordsArray.length; i++) {
         const coupleId = i + 1;
@@ -68,7 +67,6 @@ export function getGermanWords(lessons: LessonType, order: number):Array<[number
         );
     }
 
-    // 2d array - [ [coupleId] , [germanWord] ]
     const combinedWordsArray: Array<[number, string, string]> = [];
     for (let i = 0; i < germanWordsArray.length; i++) {
         const coupleId = i + 1;

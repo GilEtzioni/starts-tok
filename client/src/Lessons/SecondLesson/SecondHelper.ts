@@ -134,8 +134,5 @@ export function areStringsEqual(str1: string, str2: string): boolean {
     const cleanedStr1 = cleanString(str1);
     const cleanedStr2 = cleanString(str2);
 
-    console.log("Cleaned userAnswer:", cleanedStr1);
-    console.log("Cleaned rightAnswer:", cleanedStr2);
-
     return cleanedStr1 === cleanedStr2;
 }

@@ -8,27 +8,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
 import { resetOrder } from "./LessonsSlice";
 
-// patch
+// fetch data
 import { usePatchLessons } from "./dataLessons/patchAxios";
 
 export const useMainLearnHelper = () => {
-    // patch
-    const { mutate: finishLesson } = usePatchLessons();
 
-    // params
+    const { mutate: finishLesson } = usePatchLessons();
     const dispatch = useDispatch();
     const { name, lesson } = useParams<{ name?: string; lesson?: string; }>(); 
+
     const myLesson = lesson ?? 'default-lesson';  
     const myLevel = name ?? 'default-level';         
-
-    // react nav (go back)
     const navigate = useNavigate();
 
-    // redux
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
     
-    // show failure 
     const [showError, setShowError] = useState<boolean>(false);
 
     const handleFinishLesson = () => {

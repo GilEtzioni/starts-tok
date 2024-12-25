@@ -7,7 +7,7 @@ const BackButton: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1); // nav to the previous page
+    navigate(-1);
   };
 
   return (

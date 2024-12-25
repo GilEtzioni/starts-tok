@@ -175,6 +175,5 @@ async function seed() {
 }
 
 seed().catch((error) => {
-  console.error("Error during seeding:", error);
-  process.exit(1);
+  throw error;
 });

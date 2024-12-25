@@ -59,7 +59,6 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
                 );
                 setHebrewArray(updatedHebrewArray);
 
-                // reset the useState
                 setGermanID(0);
                 setHebrewId(0);
                 
@@ -70,7 +69,7 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
             }
             // failure
             else {
-                dispatch(setFailure()); // redux
+                dispatch(setFailure());
 
                 // update german array
                 const updatedGermanArray = germanArray.map((item) =>
@@ -84,7 +83,6 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
                 );
                 setHebrewArray(updatedHebrewArray);
 
-                // reset the useState
                 setGermanID(0);
                 setHebrewId(0);
             }

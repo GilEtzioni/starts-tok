@@ -26,7 +26,7 @@ async function main() {
     const db = drizzle(pool); 
     
     await migrate(db, {
-        migrationsFolder: "./src/drizzle/migrations", // Path to your migrations folder
+        migrationsFolder: "./src/drizzle/migrations",
     });
     
     console.log("Migration ended...");
@@ -34,6 +34,5 @@ async function main() {
 }
 
 main().catch((error) => {
-    console.error("Migration failed:", error);
-    process.exit(1);
+    throw error;
 });

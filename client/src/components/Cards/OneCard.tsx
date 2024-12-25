@@ -14,7 +14,7 @@ const OneCard: React.FC<OneCardProps> = ({ level, content, link }) => (
     <Card
       title={level}
       bordered={true}
-      hoverable={true} /* ant design hover */
+      hoverable={true}
       className="custom-card"
     >
       <p>{content}</p>

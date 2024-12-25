@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icons';
 import "./Mid.css";
 
-// Icons status
 import { isExTrue, isVyTrue, isQuesttionTrue } from '../HelpingFunctionsDictionary';
-
-// Patch
 import usePatchItem from '../../dataDictionary/patchAxios';
 
 type IconItem = {
@@ -31,9 +28,8 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowlage, id }) => {
   const [activeIcon, setActiveIcon] = useState<IconItem[]>(icons);
   const { mutate: updateItem } = usePatchItem();
 
-  // ButtonIconType: {1 = X, 2 = V, 3 = ?}
   const handleIconsClicked = ( myIcons: IconItem[], buttonIconType: number, event: React.MouseEvent<HTMLDivElement> ) => {
-    event.stopPropagation(); // prevent the row click h
+    event.stopPropagation(); // prevent the row click
 
     const updatedIcons = myIcons.map((iconTupple) => {
       if (iconTupple.id === buttonIconType) {

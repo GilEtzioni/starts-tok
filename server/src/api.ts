@@ -17,9 +17,8 @@ app.get("/main", async (req: Request, res: Response) => {
     try {
         const coursesSubjects = await db.select().from(CourseNames);
         res.json(coursesSubjects);
-    } catch (err) {
-        console.error("Error fetching courses:", err);
-        res.status(500).send("Error fetching courses");
+    } catch (error) {
+        throw error;
     }
 });
 
@@ -43,9 +42,8 @@ app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) =
 
             res.json(currLesson);
 
-    } catch (err) {
-        console.error("Error updating lesson:", err);
-        res.status(500).json({ message: "Error updating the lesson" });
+    } catch (error) {
+        throw error;
     }
 });
 
@@ -112,9 +110,8 @@ app.patch("/main/course/:userLevel/:course", async (req: Request, res: Response)
             lesson: updatedLesson,
             course: updatedCourse
         });
-    } catch (err) {
-        console.error("Error updating lesson:", err);
-        res.status(500).json({ message: "Error updating the lesson" });
+    } catch (error) {
+        throw error;
     }
 });
 
@@ -127,9 +124,8 @@ app.get("/dictionary", async (req: Request, res: Response) => {
     try {
         const allWords = await db.select().from(Words);
         res.json(allWords);
-    } catch (err) {
-        console.error("Error fetching courses:", err);
-        res.status(500).send("Error fetching courses");
+    } catch (error) {
+        throw error;
     }
 });
 
@@ -147,9 +143,8 @@ app.get("/dictionary/:id", async (req: Request, res: Response) => {
         }
 
         res.json(myWord[0]); 
-    } catch (err) {
-        console.error("Error fetching word:", err);
-        res.status(500).send("Error fetching word");
+    } catch (error) {
+        throw error;
     }
 });
 
@@ -176,9 +171,8 @@ app.patch("/dictionary/:id", async (req: Request, res: Response) => {
         }
 
         res.json(updatedRows[0]); 
-    } catch (err) {
-        console.error("Error updating knowledge:", err);
-        res.status(500).send("Error updating knowledge");
+    } catch (error) {
+        throw error;
     }
 });
 

@@ -40,7 +40,7 @@ const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
         setNextPage(true);
         dispatch(setRunning());
         
-        // failure -> get error card, and after one click continue
+      // failure -> get error card, and after one click continue
       } else {
         if (clicks === 0) {
           dispatch(addOneClick());

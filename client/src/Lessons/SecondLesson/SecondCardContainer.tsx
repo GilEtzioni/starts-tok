@@ -26,21 +26,16 @@ interface CardItem {
 
 const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData }) => {
 
-    const { Title } = Typography; // antd title
+    const { Title } = Typography;
 
-    // redux
     const order = useSelector((state: RootState) => state.lessons.order);
     const clicks = useSelector((state: RootState) => state.lessons.clicks);
     const dispatch = useDispatch();
 
-    // conatain the data
     const [germanArray, setGermanArray] = useState<CardItem[]>([]);
     const hebrewSentence = getHebrewSentence(lessonsData[0], order);
 
-    // custom hook - get and set the relevant the data
     useGetData({ lessonsData, order, setGermanArray });
-
-    // custom hook - handle click on next button
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, germanArray, order });
 
     const handleClick = (card: CardItem) => {
@@ -67,7 +62,6 @@ const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData }
             setGermanArray(updatedArray);
         }
     }
-
 
     return (
         <>

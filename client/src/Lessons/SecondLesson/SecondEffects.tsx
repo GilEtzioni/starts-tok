@@ -45,18 +45,12 @@ export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFa
     const userAnswer = getUserAnswer(lessonsData[0], germanArray, order);  // user answer
     const rightAnswer = getGermanSentence(lessonsData[0], order);          // right answer
     const isUserRight: boolean = areStringsEqual(userAnswer, rightAnswer); 
-    console.log("isUserRight", isUserRight);
 
-    console.log("userAnswer", userAnswer);
-    console.log("rightAnswer", rightAnswer);
-
-    // first click
     if(clicks === 1) {
         // the user click before enter data - reset
         if (userAnswer === "" ) {
             dispatch(resetClicks());
         }
-        // if the user enter data
         else {
             // right answer
             if (isUserRight) {

@@ -23,12 +23,13 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
   const levelRedux = useSelector((state: RootState) => state.dictionay.levelFilter);
   const knowlageRedux = useSelector((state: RootState) => state.dictionay.knowlageFilter);
 
-  const [filteredWords, setFilteredWords] = useState<WordsType[]>([]); // filter the data (with the bttns)
-  const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]); // save the clicked words (the table)
+  const [filteredWords, setFilteredWords] = useState<WordsType[]>([]);
+  const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]);
+
 
   useEffect(() => {
-    setTranslatedWords([]); // on click - reset the translates
-    const filterdKnowlage = knowlageDataArray(knowlageRedux); // filter by knowlage ("X" / "V" / "?")
+    setTranslatedWords([]); 
+    const filterdKnowlage = knowlageDataArray(knowlageRedux);
  
     // if nothing is selected -> show all data
     if (levelRedux.length === 0 && filterdKnowlage.length === 0) {

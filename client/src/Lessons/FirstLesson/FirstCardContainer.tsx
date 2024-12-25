@@ -17,31 +17,25 @@ interface FirstCardContainerProps {
 }
 
 const FirstCardContainer: React.FC<FirstCardContainerProps> = ({ lessonsData }) => {
-    // redux
+
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
     
-    // states for handle click
     const [germanId, setGermanID] = useState(0);
     const [hebrewId, setHebrewId] = useState(0);
     const [counter, setCounter] = useState(0);
 
-    // contain the data
     const [germanArray, setGermanArray] = useState<Array<{ id: number; word: string; isSelected: string }>>([]);
     const [hebrewArray, setHebrewArray] = useState<Array<{ id: number; word: string; isSelected: string }>>([]);
 
-    const { Title } = Typography; // antd title
+    const { Title } = Typography;
 
-    // custom hook - get the data
     useGetData({lessonsData, order,germanId,hebrewId, germanArray, hebrewArray, counter, setGermanID, setHebrewId,
         setCounter, setGermanArray, setHebrewArray, dispatch,  status });
-
-    // custom hook - manage the game
     useHandleClick({ lessonsData, order,germanId,hebrewId, germanArray, hebrewArray, counter, setGermanID, setHebrewId,
         setCounter, setGermanArray, setHebrewArray, dispatch,  status });
 
-        // handle the clicks
         const handleClick = (id: number, language: string) => {
             // update german        
             if (status === "running" && language === "german") {
@@ -54,10 +48,8 @@ const FirstCardContainer: React.FC<FirstCardContainerProps> = ({ lessonsData }) 
                     if (item.isSelected === "clicked") {
                         return { ...item, isSelected: "" };
                     }
-                    // else
                     return item;
                 });
-                // update the array and the ID
                 setGermanArray(updatedGermanArray);
                         const selectedCard = updatedGermanArray.find((item) => item.id === id);
                 setGermanID(selectedCard?.isSelected === "clicked" ? id : 0);
@@ -77,11 +69,9 @@ const FirstCardContainer: React.FC<FirstCardContainerProps> = ({ lessonsData }) 
                     if (item.isSelected === "false" || item.isSelected === "true" ) {
                         return { ...item };
                     }
-                    // else
                     return item;
                 }
             );
-                // update the array and the ID
                 setHebrewArray(updatedHebrewArray);
                         const selectedCard = updatedHebrewArray.find((item) => item.id === id);
                 setHebrewId(selectedCard?.isSelected === "clicked" ? id : 0);
