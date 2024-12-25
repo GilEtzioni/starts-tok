@@ -26,8 +26,11 @@ const MainDictionary: React.FC = () => {
     <>
       <div className='main-container'>
         <div className='second-container' >
-          <div  className='third-container'>
+        <div className="main-add-word-wrapper">
             <MainAddWord />
+          </div>
+          <div  className='third-container'>
+           
             <TopIcons />
           </div>
           <ButtonsContainer />

@@ -10,9 +10,6 @@
   }
   
   .table-wrapper {
-    border: 1px solid hsl(240, 5%, 64.9%);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     background: #fff;
   }

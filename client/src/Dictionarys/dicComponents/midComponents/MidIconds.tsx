@@ -3,7 +3,7 @@ import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icon
 import "./Mid.css";
 
 import { isExTrue, isVyTrue, isQuesttionTrue } from '../HelpingFunctionsDictionary';
-import usePatchItem from '../../dataDictionary/patchAxios';
+import { usePatchItem } from '../../dataDictionary/patchAxios';
 
 type IconItem = {
   id: number;

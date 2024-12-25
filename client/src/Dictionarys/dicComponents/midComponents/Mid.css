@@ -21,6 +21,10 @@
   }
 
   .table-wrapper {
-    width: 80%; 
+    width: 60%; 
     margin: 0 auto; 
+  }
+
+  .main-add-word-wrapper {
+    margin-bottom: 20px;
   }

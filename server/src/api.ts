@@ -5,13 +5,11 @@ import "dotenv/config";
 import cors from "cors";
 import { eq, and, sql, desc } from "drizzle-orm";
 
-
 // express
 const app = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 app.use(express.json());
 app.use(cors({ origin: '*', methods: ['GET', 'PATCH', 'POST'] }));
-
 
 
 app.get("/main", async (req: Request, res: Response) => {
@@ -22,7 +20,6 @@ app.get("/main", async (req: Request, res: Response) => {
         throw error;
     }
 });
-
 
 // /main/course/A1/Greetings
 app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
@@ -47,7 +44,6 @@ app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) =
         throw error;
     }
 });
-
 
 
 // e.g: /main/course/A2
@@ -223,8 +219,6 @@ app.post("/dictionary/new", async (req: Request, res: Response) => {
     }
   });
   
-
-
 
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);

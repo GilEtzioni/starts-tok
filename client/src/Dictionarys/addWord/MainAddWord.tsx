@@ -1,15 +1,42 @@
 import React, { useState } from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, Alert, Spin } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import { styles } from "./StyleAddWord";
+
+import { usePatchNewItem } from "../dataDictionary/patchAxios";
 
 const MainAddWord: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [germanWord, setGemanWord] = useState<string>('');
   const [translatedWord, setTranslatedWord] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleGetData = () => {
-    console.log('germanWord:', germanWord);
-    console.log('translatedWord:', translatedWord);
+  const patchNewItem = usePatchNewItem();
+
+  const handleGetData = (germanWord: string, translatedWord: string) => {
+
+    console.log("german word: ", germanWord);
+    console.log("translatedWord word: ", translatedWord);
+
+    if (!germanWord || !translatedWord) {
+      setErrorMessage("עליך למלא את שני השדות");
+      return;
+    }
+
+    setErrorMessage(null);
+    patchNewItem.mutate(
+      { germanWord, translatedWord },
+      {
+        onSuccess: () => {
+          setGemanWord('');
+          setTranslatedWord('');
+          setOpen(false); // close the component
+        },
+        onError: (error) => {
+          throw error;
+        },
+      }
+    );
   };
 
   return (
@@ -18,40 +45,43 @@ const MainAddWord: React.FC = () => {
         הוסף מילה למילון
       </Button>
 
-      {/* overlay and container */}
       {open && (
         <div style={styles.overlay}>
           <div style={styles.container}>
-            {/* Close button */}
             <div style={styles.header}>
-              <Button
-                type="text"
-                icon={<CloseOutlined />}
-                onClick={() => setOpen(false)}
-                style={styles.closeButton}
-              />
+              <Button type="text" icon={<CloseOutlined />} onClick={() => setOpen(false)} style={styles.closeButton} />
             </div>
 
-            {/* Inputs */}
             <div style={styles.body}>
+              {errorMessage && <Alert message={errorMessage} type="error" />}
               <Input
-                placeholder="Input 1"
+                placeholder="המילה בגרמנית"
                 value={germanWord}
                 onChange={(e) => setGemanWord(e.target.value)}
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  borderColor: !germanWord && errorMessage ? 'red' : undefined,
+                }}
               />
               <Input
-                placeholder="Input 2"
+                placeholder="תרגום בעברית"
                 value={translatedWord}
                 onChange={(e) => setTranslatedWord(e.target.value)}
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  borderColor: !translatedWord && errorMessage ? 'red' : undefined,
+                }}
               />
             </div>
 
-            {/* Get Data Button */}
             <div style={styles.footer}>
-              <Button type="primary" onClick={handleGetData} style={styles.getDataButton}>
-                Get the Data
+              <Button
+                type="primary"
+                onClick={() => handleGetData(germanWord, translatedWord)}
+                disabled={patchNewItem.isLoading}
+                style={styles.getDataButton}
+              >
+                {patchNewItem.isLoading ? <Spin /> : 'הוסף'}
               </Button>
             </div>
           </div>
@@ -59,56 +89,6 @@ const MainAddWord: React.FC = () => {
       )}
     </>
   );
-};
-
-// Styles for the components
-const styles: { [key: string]: React.CSSProperties } = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'hsla(220, 14.3%, 95.9%, 0.8)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-  },
-  container: {
-    width: '400px',
-    backgroundColor: 'white',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  header: {
-    backgroundColor: '#f5f5f5',
-    padding: '10px',
-    textAlign: 'right',
-    borderBottom: '1px solid #ddd',
-  },
-  closeButton: {
-    fontSize: '16px',
-  },
-  body: {
-    padding: '20px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  footer: {
-    padding: '10px',
-    borderTop: '1px solid #ddd',
-    textAlign: 'center',
-  },
-  getDataButton: {
-    width: '100%',
-  },
-  input: {
-    width: '100%',
-  },
 };
 
 export default MainAddWord;
