@@ -8,12 +8,12 @@ async function seed() {
 
   const items = await db.insert(CourseNames).values([
   // A1
-  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Colors", courseNameGerman: "Farben", courseNameHebrew: "צבעים", lessonCompleted: 0 },  
-  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Numbers", courseNameGerman: "Zahlen", courseNameHebrew: "מספרים", lessonCompleted: 0 }, 
-  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Family members", courseNameGerman: "Familienmitglieder", courseNameHebrew: "בני משפחה", lessonCompleted: 0 }, 
-  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Days of the week", courseNameGerman: "Wochentage", courseNameHebrew: "ימי השבוע", lessonCompleted: 0 }, 
-  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Months", courseNameGerman: "Monate", courseNameHebrew: "חודשים", lessonCompleted: 0 }, 
-  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Greetings", courseNameGerman: "Grüße", courseNameHebrew: "ברכות", lessonCompleted: 0 }, 
+  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Colors", courseNameGerman: "Farben", courseNameHebrew: "צבעים", lessonCompleted: 6 },  
+  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Numbers", courseNameGerman: "Zahlen", courseNameHebrew: "מספרים", lessonCompleted: 6 }, 
+  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Family members", courseNameGerman: "Familienmitglieder", courseNameHebrew: "בני משפחה", lessonCompleted: 6 }, 
+  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Days of the week", courseNameGerman: "Wochentage", courseNameHebrew: "ימי השבוע", lessonCompleted: 6 }, 
+  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Months", courseNameGerman: "Monate", courseNameHebrew: "חודשים", lessonCompleted: 6 }, 
+  { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Greetings", courseNameGerman: "Grüße", courseNameHebrew: "ברכות", lessonCompleted: 3 }, 
   { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Weather", courseNameGerman: "Wetter", courseNameHebrew: "מזג האוויר", lessonCompleted: 0 }, 
   { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Basic clothing", courseNameGerman: "Grundkleidung", courseNameHebrew: "בגדים בסיסיים", lessonCompleted: 0 }, 
   { levelEnglish: "A1", levelHebrew: "מבוא", courseNameEnglish: "Common food items", courseNameGerman: "Häufige Lebensmittel", courseNameHebrew: "מוצרי מזון נפוצים", lessonCompleted: 0 }, 
