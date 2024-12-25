@@ -11,6 +11,7 @@ import CoursesLayout from './Layout/CoursesLayout';
 // Pages
 import Main from './Pages/Main';
 import Dictionary from './Pages/Dictionary';
+import MainHangman from './Games/hangman/MainHangman';
 import Login from './Pages/Login';
 import CoursesPage from './Pages/CoursesPage';
 import  MainLearn from "./Lessons/MainLearn";
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Login />} />                                 {/* "/" */}
         <Route path="dictionary" element={<Dictionary />} />                {/* "/dictionary" */}
+        <Route path="hangman" element={<MainHangman />} />                  {/* "/hangman" */}
         <Route path="main" element={<Main />} />                            {/* "/main" */}
         <Route path="main/course" element={<CoursesLayout />}>      
           <Route path=":name" element={<CoursesPage />} />                  {/* e.g:   "/main/course/A1" */}

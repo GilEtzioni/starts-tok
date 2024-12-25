@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
-import { resetOrder } from "./LessonsSlice";
+import { resetOrder } from './LessonsSlice';
 
 // patch
 import { usePatchLessons } from "./dataLessons/patchAxios";

@@ -1,0 +1,60 @@
+/* Left Column Styles */
+.main-hangman-left-column {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 10px;
+    position: relative;
+  }
+  
+  /* Header Container Styles */
+  .header-container {
+    display: flex;
+    justify-content: flex-start; /* Align BackButton to the left */
+    margin-bottom: 20px;
+  }
+  
+  /* Center Container Styles for CourseName and WordsLines */
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    gap: 20px; /* Space between CourseName and WordsLines */
+    height: 0%; /* Adjust height for centering */
+  }
+  
+  /* WordsLines Styles */
+  .words-lines-container {
+    width: 100%; /* Take full width for proper alignment */
+    text-align: center;
+  }
+  
+  /* WordsGrid Styles */
+  .words-grid-container {
+    position: absolute;
+    top: calc(60%); /* Center it between WordsLines and the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+  }
+  
+  /* Right Column Styles */
+  .main-hangman-right-column {
+    background-color: #d3d3d3;
+    height: 100vh;
+  }
+  
+  /* Photos Container Styles */
+  .photos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  /* Success Message Styles */
+  .success-message {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  

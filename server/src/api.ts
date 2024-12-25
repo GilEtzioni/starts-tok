@@ -11,17 +11,26 @@ const PORT: number = Number(process.env.PORT) || 3000;
 app.use(express.json());
 app.use(cors({ origin: '*', methods: ['GET', 'PATCH'] }));
 
-
-
 app.get("/main", async (req: Request, res: Response) => {
     try {
-        const coursesSubjects = await db.select().from(CourseNames);
+        const allWords = await db.select().from(Words);
+        res.json(allWords);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+});
+
+app.get("/hangman", async (req: Request, res: Response) => {
+    try {
+        const coursesSubjects = await db.select().from(Words);
         res.json(coursesSubjects);
     } catch (err) {
         console.error("Error fetching courses:", err);
         res.status(500).send("Error fetching courses");
     }
 });
+
 
 
 // /main/course/A1/Greetings

@@ -1,3 +1,4 @@
+// 
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './dataDictionary/axiosInstance';
 import { WordsType } from './types/wordType';

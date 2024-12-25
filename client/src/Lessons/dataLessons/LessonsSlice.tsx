@@ -6,6 +6,7 @@ export const lessonsSlice = createSlice({
     status: "running",
     order: 1,
     clicks: 0,
+    finished: 0,
   },
 
   reducers: {
@@ -54,7 +55,7 @@ export const {
   addOneOrder, 
   changeOrder, 
   resetClicks, 
-  addOneClick 
+  addOneClick ,
 } = lessonsSlice.actions;
 
 export default lessonsSlice.reducer;
