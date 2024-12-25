@@ -3,13 +3,14 @@ import { db } from "./drizzle/db";
 import { CourseNames, Words, Lessons } from "./drizzle/schema";
 import "dotenv/config";
 import cors from "cors";
-import { eq, and, sql } from "drizzle-orm";
+import { eq, and, sql, desc } from "drizzle-orm";
+
 
 // express
 const app = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 app.use(express.json());
-app.use(cors({ origin: '*', methods: ['GET', 'PATCH'] }));
+app.use(cors({ origin: '*', methods: ['GET', 'PATCH', 'POST'] }));
 
 
 
@@ -175,6 +176,56 @@ app.patch("/dictionary/:id", async (req: Request, res: Response) => {
         throw error;
     }
 });
+
+// add new word
+app.post("/dictionary/new", async (req: Request, res: Response) => {
+    const { GermanWord, HebrewWord } = req.body;
+  
+    try {
+      // find the last word index
+      const [lastCourseIndex] = await db
+        .select()
+        .from(Words)
+        .orderBy(desc(Words.id))
+        .limit(1);
+  
+      if (!lastCourseIndex) {
+        res.status(400).json({ error: "No entries found in the Words table." });
+        return;
+      }
+  
+      const courseId = lastCourseIndex.courseId;
+  
+      // insert the new word
+      const newWord = await db
+        .insert(Words)
+        .values({
+          levelHebrew: "המילים שהוספתי",
+          levelEnglish: "A1",
+          courseId,
+          courseNameEnglish: "userWords",
+          GermanWord,
+          HebrewWord,
+          knowlage: "?",
+        })
+        .returning({
+          id: Words.id,
+          GermanWord: Words.GermanWord,
+          HebrewWord: Words.HebrewWord,
+          levelHebrew: Words.levelHebrew,
+          levelEnglish: Words.levelEnglish,
+          courseId: Words.courseId,
+          courseNameEnglish: Words.courseNameEnglish,
+          knowlage: Words.knowlage,
+        });
+  
+      res.json(newWord[0]); // Send the new record
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Failed to add the new word." });
+    }
+  });
+  
 
 
 

@@ -2,8 +2,8 @@ import { pgTable, varchar, serial, text, integer, pgEnum, boolean} from "drizzle
 import { sql } from "drizzle-orm/sql";
 
 // enums
-export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2"]);
-export const levelHebrewEnum = pgEnum("levelHebrew", ["מבוא", "בסיסי", "בינוני", "מתקדם", "מתקדם מאוד", "שפת אם"]);
+export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
+export const levelHebrewEnum = pgEnum("levelHebrew", ["מבוא", "בסיסי", "בינוני", "מתקדם", "מתקדם מאוד", "שפת אם", "המילים שהוספתי"]);
 
 // "courses" table
 export const CourseNames = pgTable("courses", {

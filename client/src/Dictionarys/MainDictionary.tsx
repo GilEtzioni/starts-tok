@@ -6,7 +6,8 @@ import "./MainDictionary.css";
 import TopIcons from './dicComponents/TopComponents/TopIcons';
 import ButtonsContainer from './dicComponents/TopComponents/ButtonsContainer';
 import TableDictionary from './dicComponents/midComponents/TableDictionary';
-import { useEffect } from 'react';
+
+import MainAddWord from './addWord/MainAddWord';
 
 const MainDictionary: React.FC = () => {
   const fetchItems = async (): Promise<WordsType[]> => {
@@ -24,6 +25,7 @@ const MainDictionary: React.FC = () => {
       <div className='main-container'>
         <div className='second-container' >
           <div  className='third-container'>
+            <MainAddWord />
             <TopIcons />
           </div>
           <ButtonsContainer />

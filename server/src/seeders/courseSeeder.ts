@@ -171,6 +171,9 @@ async function seed() {
   { levelEnglish: "C2", levelHebrew: "שפת אם", courseNameEnglish: "Ethical dilemmas in modern society", courseNameGerman: "Ethische Dilemmata in der modernen Gesellschaft", courseNameHebrew: "דילמות אתיות בחברה המודרנית", lessonCompleted: 0 }, 
   { levelEnglish: "C2", levelHebrew: "שפת אם", courseNameEnglish: "Cross-cultural communication", courseNameGerman: "Interkulturelle Kommunikation", courseNameHebrew: "תקשורת בין-תרבותית", lessonCompleted: 0 }, 
   { levelEnglish: "C2", levelHebrew: "שפת אם", courseNameEnglish: "Advanced storytelling", courseNameGerman: "Fortgeschrittenes Geschichtenerzählen", courseNameHebrew: "סיפור סיפורים מתקדם", lessonCompleted: 0 }, 
+
+  { levelEnglish: "userWords", levelHebrew: "המילים שהוספתי", courseNameEnglish: "no course", courseNameGerman: "no course", courseNameHebrew: "לא קורס", lessonCompleted: 0 }, 
+
   ]).returning({ id: CourseNames.courseId });
 }
 
