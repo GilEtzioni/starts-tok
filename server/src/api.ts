@@ -27,7 +27,7 @@ app.get("/main", async (req: Request, res: Response) => {
 // /main/course/A1/Greetings
 app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
     try {
-        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2"; // string
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" | "userWords"; // string
         const course = req.params.course;                                                  // string
 
         // Step 1: Find the first not completed lesson
@@ -53,7 +53,7 @@ app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) =
 // e.g: /main/course/A2
 app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
     try {
-        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" | "userWords";
         const coursesSubjects = await db.select().from(CourseNames).where(eq(CourseNames.levelEnglish, userLevel)).orderBy(CourseNames.courseId);
         res.json(coursesSubjects);
     } catch (err) {
@@ -64,7 +64,7 @@ app.get("/main/course/:userLevel", async (req: Request, res: Response) => {
 
 app.patch("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
     try {
-        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2"; // string
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" | "userWords"; // string
         const course = req.params.course;                                                  // string
 
         // step 1 - find the first completed lesson (table lessons)
@@ -185,23 +185,20 @@ app.post("/dictionary/new", async (req: Request, res: Response) => {
       // find the last word index
       const [lastCourseIndex] = await db
         .select()
-        .from(Words)
-        .orderBy(desc(Words.id))
+        .from(CourseNames)
+        .orderBy(desc(CourseNames.courseId))
         .limit(1);
-  
-      if (!lastCourseIndex) {
-        res.status(400).json({ error: "No entries found in the Words table." });
-        return;
-      }
-  
-      const courseId = lastCourseIndex.courseId;
+   
+      const courseId = lastCourseIndex.courseId !== null && lastCourseIndex.courseId !== undefined
+      ? parseInt(lastCourseIndex.courseId.toString()) : 1;
+
   
       // insert the new word
       const newWord = await db
         .insert(Words)
         .values({
           levelHebrew: "המילים שהוספתי",
-          levelEnglish: "A1",
+          levelEnglish: "userWords",
           courseId,
           courseNameEnglish: "userWords",
           GermanWord,
@@ -219,7 +216,7 @@ app.post("/dictionary/new", async (req: Request, res: Response) => {
           knowlage: Words.knowlage,
         });
   
-      res.json(newWord[0]); // Send the new record
+      res.json(newWord[0]); 
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Failed to add the new word." });

@@ -13,7 +13,7 @@ const buttonLabelsHebrew = [
 ];
 
 const buttonLabelsEnglish = [
-    'etc',
+    'userWords',
     'C2',
     'C1',
     'B2',

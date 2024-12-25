@@ -37,12 +37,14 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
       return;
     }
 
+
     let filtered = [...words];
 
-    // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "`C2"
+    // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "C2" / "userWords"
     if (levelRedux.length !== 0) {
       filtered = filtered.filter((item) => levelRedux.includes(item.levelEnglish)); // filter by level
     }
+    console.log("filtered", filtered);
 
     // if the user click on "V" / "?" / "X" 
     if (filterdKnowlage.length !== 0) {

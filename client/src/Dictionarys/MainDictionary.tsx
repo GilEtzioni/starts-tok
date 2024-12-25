@@ -17,6 +17,8 @@ const MainDictionary: React.FC = () => {
 
   const { data: words, isLoading, error } = useQuery(['dictionary'], fetchItems);
 
+  console.log("words: ", words);
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
