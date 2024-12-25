@@ -13,7 +13,7 @@ const CourseCard: React.FC = () => {
         <Row gutter={[16, 32]} key={rowIndex}>
           {gridItems.slice(rowIndex * 5, rowIndex * 5 + 5).map((item) => (
             <Col span={4} key={item.id}>
-              <Card title={item.title} bordered={false}>
+              <Card title={item.title} bordered={false}>                
                  {item.content}
               </Card>
             </Col>

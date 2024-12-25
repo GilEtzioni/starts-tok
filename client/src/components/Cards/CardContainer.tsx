@@ -25,9 +25,10 @@ const CardContainer: React.FC = () => {
   }
 
   return (
+    
     <div className="card-container">
       <h1 className="card-title">קורסים</h1>
-
+      
       <div className="card-row">
         <LeftOutlined onClick={handleBackwardClick} className="card-arrow"  />
         {visibleCards.map((card) => (

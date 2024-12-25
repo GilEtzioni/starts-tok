@@ -1,8 +1,11 @@
 // react + antd
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Flex, Progress } from 'antd';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+// icons
 import "./Course.css";
+import CourseIcons from "./CourseIcons"
 
 // fetch
 import { useQuery } from '@tanstack/react-query';
@@ -23,9 +26,15 @@ const CourseContainer: React.FC = () => {
     fetchItems
   );
 
-
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error instanceof Error ? error.message : 'Unknown error'}</div>;
+
+  function cardBackround (lessonsCompleted: number) {
+    if (lessonsCompleted!== 0 )
+      return "green";
+    return "grey";
+  }
+  
 
   return (
     <div className="course-container">
@@ -40,14 +49,20 @@ const CourseContainer: React.FC = () => {
                     to={`/main/course/${course.levelEnglish}/${course.courseNameEnglish}`}
                     className="course-link"
                   >
-                    <Card
-                      title={<div className="course-title">{course.courseNameHebrew}</div>}
+                    <Card 
+                      title={<div className={`course-title-${cardBackround(course.lessonCompleted)}`}>{course.courseNameHebrew}</div>}
                       bordered={true}
                       hoverable={true}
-                      className="course-card"
+                      className={`course-card-${cardBackround(course.lessonCompleted)}`}
                     >
-                      <div className="course-completion">סיימת {course.lessonCompleted}/6</div>
-                    </Card>
+                      <CourseIcons courseId={course.courseId} />
+                      <Progress
+                        className="progress"
+                        percent={(course.lessonCompleted / 6) * 100}
+                        showInfo={false}
+                        strokeColor="#ffffff" 
+                      />
+                      </Card>
                   </Link>
                 </Col>
               ))}
