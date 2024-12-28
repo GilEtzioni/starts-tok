@@ -6,7 +6,6 @@ import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icon
 import { setVyBoolean, setExBoolean, setQuestionBoolean, addOneClick } from "../../dataDictionary/DictionarySlice";
 import { useDispatch } from 'react-redux';
 
-import "./Top.css";
 
 type IconItem = {
   id: number;
@@ -54,9 +53,9 @@ const DictionaryIconsTop: React.FC = () => {
 
 
   return (
-    <div className='top-icons-buttns'>
+    <div className="flex items-center gap-2">
       {activeIcon.map(({ id, isClicked,  defaultColor, activeColor, icon }) => (
-      <div key={id} onClick={() => handleIconsClicked(activeIcon, id)} className="top-icon-container"  >
+      <div key={id} onClick={() => handleIconsClicked(activeIcon, id)} className="flex justify-center items-center w-9 h-9 rounded-full cursor-pointer transition-colors hover:bg-gray-200"  >
         {React.cloneElement(icon, {style: { fontSize: '24px', color: isClicked ? activeColor : defaultColor, transition: 'color 0.3s'},
         })}
       </div>

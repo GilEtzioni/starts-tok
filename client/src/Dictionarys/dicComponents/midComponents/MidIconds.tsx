@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icons';
-import "./Mid.css";
-
 import { isExTrue, isVyTrue, isQuesttionTrue } from '../HelpingFunctionsDictionary';
 import usePatchItem from '../../dataDictionary/patchAxios';
 
@@ -47,12 +45,12 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowlage, id }) => {
   };
 
   return (
-    <div className='icon-main-container'>
+    <div className="flex justify-start items-center gap-2">
       {activeIcon.map(({ id, isClicked, defaultColor, activeColor, icon }) => (
-        <div
+        <div 
+          className="flex justify-center items-center w-9 h-9 rounded-full cursor-pointer transition-colors duration-300"
           key={id}
           onClick={(event) => handleIconsClicked(activeIcon, id, event)}
-          className="icon-container"
         >
           {React.cloneElement(icon, { style: { fontSize: '24px', color: isClicked ? activeColor : defaultColor, transition: 'color 0.3s'}})}
         </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import LevelButton from './TopLevelButton';
-import "./Top.css";
 
 const buttonLabelsHebrew = [
     'המילים שהוספתי',
@@ -24,7 +23,7 @@ const buttonLabelsEnglish = [
 
 const LevelButtonsContainer: React.FC = () => {
     return (
-        <div className='Level-buttons-container'>
+        <div className="flex justify-center items-center gap-4 flex-wrap">
             {buttonLabelsHebrew.map((labelHebrew, index) => (
                 <LevelButton
                     key={index}

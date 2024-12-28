@@ -53,7 +53,7 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
     setFilteredWords(sortWordsById(filtered));
   }, [words, levelRedux, clicksRedux, knowlageRedux]);
   return (
-    <div className="table-wrapper">
+    <div className="w-4/5 mx-auto">
     <Table
       columns={[
         // first column

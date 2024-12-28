@@ -64,29 +64,28 @@ const CardContainer: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
-
-
   return (
-    <div className="card-container">
-      <h1 className="card-title">קורסים</h1>
-      
-      <div className="card-row">
-        <LeftOutlined onClick={handleBackwardClick} className="card-arrow" />
-        {visibleCards.map((card) => (
-          <OneCard
-            key={card}
-            levelHebrew={cardNamesHebrew[card - 1]}
-            levelGerman={cardNamesGerman[card - 1]}
-            content={finished[card - 1].toString()}
-            cardDetails={cardDetails[card-1]}
-            link={links[card - 1]}
-            number={cardId[card - 1]}
-            image={images[card-1]}
-          />
-        ))}
-        <RightOutlined onClick={handleForwardClick} className="card-arrow" />
-      </div>
-    </div>
+<div className="flex flex-col justify-between items-end gap-7 mt-5 w-full box-border">
+  <h1 className="self-end text-3xl text-right mr-12 mb-0">קורסים</h1>
+  
+  <div className="flex items-center justify-center w-full gap-4 box-border">
+    <LeftOutlined onClick={handleBackwardClick} className="cursor-pointer" />
+    {visibleCards.map((card) => (
+      <OneCard
+        key={card}
+        levelHebrew={cardNamesHebrew[card - 1]}
+        levelGerman={cardNamesGerman[card - 1]}
+        content={finished[card - 1].toString()}
+        cardDetails={cardDetails[card-1]}
+        link={links[card - 1]}
+        number={cardId[card - 1]}
+        image={images[card-1]}
+      />
+    ))}
+    <RightOutlined onClick={handleForwardClick} className="cursor-pointer" />
+  </div>
+</div>
+
   );
 };
 

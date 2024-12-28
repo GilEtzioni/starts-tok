@@ -1,67 +1,9 @@
-.card-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 30px;
-  margin-top: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.card-title {
-  align-self: flex-end;
-  margin-right: 60px;
-  margin-bottom: 0px;
-}
-
-.card-row {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 15px;
-  box-sizing: border-box;
-}
-
-.card-row-languages {
-  justify-content: space-between;
-}
-
-.level-hebrew {
-  margin-left: auto;
-  color: white;
-  font-size: 20px;
-}
-
-.level-german {
-  margin-right: auto; 
-  color: white;
-  font-size: 12px;
-}
-
-.card-row-details {
-  color: white;
-  direction: rtl; 
-  justify-content: flex-end; 
-  width: 100%;
-}
-
-.progress-container {
-  position: absolute;
-  bottom: 0; 
-  padding-left: 60%;
-  transform: translateX(-50%); 
-  display: flex;
-  justify-content: center;
-  padding-bottom: 15px;
-  width: 100%;
-}
 
 /* ------------------------- */
 
 .custom-card-one {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -81,8 +23,8 @@
 /* ------------------------- */
 
 .custom-card-two {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -102,8 +44,8 @@
 /* ------------------------- */
 
 .custom-card-three {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -123,8 +65,8 @@
 /* ------------------------- */
 
 .custom-card-four {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -144,8 +86,8 @@
 /* ------------------------- */
 
 .custom-card-five {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -165,8 +107,8 @@
 /* ------------------------- */
 
 .custom-card-six {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Graph.css";
+import "../../index.css";
 
 const LineChart: React.FC = () => {
   const data = [
@@ -29,9 +29,9 @@ const LineChart: React.FC = () => {
     .join(' ');
 
   return (
-    <div className="line-chart-container">
-      <h1 className="chart-title">סטטיסטיקה שבועית</h1>
-      <div className="chart-wrapper">
+    <div className="flex flex-col items-end">
+      <h1 className="text-right rtl mb-5">סטטיסטיקה שבועית</h1>
+      <div className="w-[500px] border border-gray-400 rounded-lg shadow-md p-3 bg-white">
         <svg width={width} height={height}>
           <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#000" />
           <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#000" />
@@ -42,10 +42,23 @@ const LineChart: React.FC = () => {
 
             return (
               <g key={value}>
-                <text x={padding - 10} y={y + 5} textAnchor="end" fontSize="12">
+                <text
+                  x={padding - 10}
+                  y={y + 5}
+                  textAnchor="end"
+                  fontSize="12"
+                  className="fill-black"
+                >
                   {value}
                 </text>
-                <line x1={padding} y1={y} x2={width - padding} y2={y} stroke="hsl(240, 5%, 64.9%)" strokeDasharray="5,5" />
+                <line
+                  x1={padding}
+                  y1={y}
+                  x2={width - padding}
+                  y2={y}
+                  stroke="hsl(240, 5%, 64.9%)"
+                  strokeDasharray="5,5"
+                />
               </g>
             );
           })}
@@ -57,6 +70,7 @@ const LineChart: React.FC = () => {
               y={height - padding + 20}
               textAnchor="middle"
               fontSize="12"
+              className="fill-black"
             >
               {d.month}
             </text>

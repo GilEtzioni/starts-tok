@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card, Progress } from 'antd';
 import { Link } from 'react-router-dom';
-import './Card.css';
-
 
 interface OneCardProps {
   levelHebrew: string;
@@ -14,35 +12,22 @@ interface OneCardProps {
   image: string;
 }
 
-const OneCard: React.FC<OneCardProps> = ({
-  levelHebrew,
-  levelGerman,
-  content,
-  link,
-  number,
-  cardDetails,
-  image
-}) => (
-  <Link to={link} className="card-link">
-    <Card
-      /* cover={<img alt="example" src={image} />} */
-      bordered={true}
-      hoverable={true}
-      className={`custom-card custom-card-${number}`}
-    >
-      {/* hebre + german level */}
-      <div className="card-row card-row-languages">
-        <div className="level-german">{levelGerman}</div>
-        <div className="level-hebrew">{levelHebrew}</div>
-      </div>
+const OneCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, link, number, cardDetails }) => (
+  <Link to={link}>
+  <Card bordered={true} hoverable={true} className={`custom-card custom-card-${number} relative w-300px h-300px p-4`}>
+    {/* Level German */}
+    <div className="absolute top-3 left-3 text-left">
+      {levelGerman}
+    </div>
 
-      {/* details */}
-      <div className="card-row card-row-details">
-        <div className="card-details">{cardDetails}</div>
-      </div>
+    {/* Details + Level Hebrew */}
+    <div className="absolute right-3 bottom-16 text-right">
+      <div className="level-hebrew rtl text-2xl ">{levelHebrew}</div>
+      <div className="card-details">{cardDetails}</div>
+    </div>
 
-      {/* progress bar */}
-      <div className="progress-container">
+    {/* Progress Bar */}
+    <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
       <Progress
         percentPosition={{ align: 'end', type: 'inner' }}
         percent={(parseInt(content.toString()) / 25) * 100}
@@ -50,8 +35,8 @@ const OneCard: React.FC<OneCardProps> = ({
         strokeColor="white"
         showInfo={parseInt(content.toString()) !== 0}
       />
-      </div>
-    </Card>
+    </div>
+  </Card>
   </Link>
 );
 

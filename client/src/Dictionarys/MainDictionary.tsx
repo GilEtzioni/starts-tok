@@ -1,12 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './dataDictionary/axiosInstance';
 import { WordsType } from './types/wordType';
-import "./MainDictionary.css";
 
 import TopIcons from './dicComponents/TopComponents/TopIcons';
 import ButtonsContainer from './dicComponents/TopComponents/ButtonsContainer';
 import TableDictionary from './dicComponents/midComponents/TableDictionary';
-import { useEffect } from 'react';
 
 const MainDictionary: React.FC = () => {
   const fetchItems = async (): Promise<WordsType[]> => {
@@ -21,16 +19,16 @@ const MainDictionary: React.FC = () => {
 
   return (
     <>
-      <div className='main-container'>
-        <div className='second-container' >
-          <div  className='third-container'>
+      <div className="flex justify-center items-center">
+        <div className="h-[120px] w-[800px] p-4 border border-gray-400 rounded-lg shadow-lg transition-transform duration-300">
+          <div className="flex justify-center mb-4">
             <TopIcons />
           </div>
           <ButtonsContainer />
         </div>
       </div>
-      <div className='table-container'>
-      <TableDictionary words={words} />
+      <div className="mt-5">
+        <TableDictionary words={words} />
       </div>
     </>
   );

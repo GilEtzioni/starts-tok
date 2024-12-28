@@ -25,20 +25,13 @@ import FestivalIcon from '@mui/icons-material/Festival'; // 23
 import AttractionsIcon from '@mui/icons-material/Attractions'; // 24
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'; // 25
 
-import "./Course.css";
 
 interface CourseIconsProps {
   courseId: number;
 }
 
-const iconsCss = (): React.CSSProperties => {
-  return {
-    fontSize: '35px',
-    position: 'absolute',
-    top: '55%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  };
+const iconsCss = (): string => {
+  return 'text-[35px] absolute top-[55%] left-[50%] transform -translate-x-1/2 -translate-y-1/2';
 };
 
 
@@ -46,55 +39,55 @@ const CourseIcons: React.FC<CourseIconsProps> = ({ courseId }) => {
   const currIcon = (courseId: number) => {
     switch (courseId) {
       case 1:
-        return <PaletteIcon style={iconsCss()} />;
+        return <PaletteIcon className={iconsCss()}/>
       case 2:
-        return <LooksOneIcon  style={iconsCss()} />;
+        return <LooksOneIcon  className={iconsCss()}/>
       case 3:
-        return <FamilyRestroomIcon  style={iconsCss()} />;
+        return <FamilyRestroomIcon  className={iconsCss()}/>
       case 4:
-        return <TodayIcon  style={iconsCss()} />;
+        return <TodayIcon  className={iconsCss()}/>
       case 5:
-        return <CalendarTodayIcon  style={iconsCss()} />;
+        return <CalendarTodayIcon  className={iconsCss()}/>
       case 6:
-        return <WavingHandIcon  style={iconsCss()} />;
+        return <WavingHandIcon  className={iconsCss()}/>
       case 7:
-        return <AcUnitIcon  style={iconsCss()} />;
+        return <AcUnitIcon  className={iconsCss()}/>
       case 8:
-        return <CheckroomIcon  style={iconsCss()} />;
+        return <CheckroomIcon  className={iconsCss()}/>
       case 9:
-        return <FastfoodIcon  style={iconsCss()} />;
+        return <FastfoodIcon  className={iconsCss()}/>
       case 10:
-        return <HouseSidingIcon  style={iconsCss()} />;
+        return <HouseSidingIcon  className={iconsCss()}/>
       case 11:
-        return <PetsIcon  style={iconsCss()} />;
+        return <PetsIcon  className={iconsCss()}/>
       case 12:
-        return <SentimentVerySatisfiedIcon  style={iconsCss()} />;
+        return <SentimentVerySatisfiedIcon  className={iconsCss()}/>
       case 13:
-        return <DirectionsBusIcon  style={iconsCss()} />;
+        return <DirectionsBusIcon  className={iconsCss()}/>
       case 14:
-        return <SchoolIcon  style={iconsCss()} />;
+        return <SchoolIcon  className={iconsCss()}/>
       case 15:
-        return <WorkIcon  style={iconsCss()} />;
+        return <WorkIcon  className={iconsCss()}/>
       case 16:
-        return <DirectionsWalkIcon  style={iconsCss()} />;
+        return <DirectionsWalkIcon  className={iconsCss()}/>
       case 17:
-        return <NordicWalkingIcon  style={iconsCss()} />;
+        return <NordicWalkingIcon  className={iconsCss()}/>
       case 18:
-        return <ChairIcon  style={iconsCss()} />;
+        return <ChairIcon  className={iconsCss()}/>
       case 19:
-        return <SportsBasketballIcon  style={iconsCss()} />;
+        return <SportsBasketballIcon  className={iconsCss()}/>
       case 20:
-        return <HexagonIcon  style={iconsCss()} />;
+        return <HexagonIcon  className={iconsCss()}/>
       case 21:
-        return <AccessTimeIcon  style={iconsCss()} />;
+        return <AccessTimeIcon  className={iconsCss()}/>
       case 22:
-        return <CastleIcon  style={iconsCss()} />;
+        return <CastleIcon  className={iconsCss()}/>
       case 23:
-        return <FestivalIcon  style={iconsCss()} />;
+        return <FestivalIcon  className={iconsCss()}/>
       case 24:
-        return <AttractionsIcon  style={iconsCss()} />;
+        return <AttractionsIcon  className={iconsCss()}/>
       case 25:
-        return <PhoneIphoneIcon  style={iconsCss()} />;
+        return <PhoneIphoneIcon  className={iconsCss()}/>
       default:
         return null;
     }

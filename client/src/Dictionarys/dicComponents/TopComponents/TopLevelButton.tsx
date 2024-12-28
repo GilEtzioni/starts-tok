@@ -5,6 +5,8 @@ import { RootState } from "../../../app/store";
 
 import { Button } from 'antd';
 
+import "./Top.css";
+
 interface LevelButtonProps {
   buttNameHebrew: string;
   buttNameEnglish: string;

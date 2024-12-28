@@ -1,31 +1,4 @@
-.Level-buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
 
-.filter-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  color: var(--default-color); 
-}
-
-.filter-icons[data-active="true"] {
-  color: var(--active-color);
-}
-
-.icon {
-  font-size: 24px;
-  transition: color 0.3s;
-}
 
 .custom-button {
   background-color: #000 !important;
@@ -74,29 +47,4 @@
   background-color: #d0d0d0 !important; 
   color: #fff !important;
   transform: translateY(0);
-}
-
-.top-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
-}
-
-.top-icon-container:hover {
-  background-color: #f0f0f0; 
-}
-
-.top-icons-buttns {
-  display: flex;
-  justify-content: flex-start; 
-  align-items: center; 
-  gap: 8px; 
-}
-.icon-container:hover {
-  background-color: #f0f0f0; 
 }

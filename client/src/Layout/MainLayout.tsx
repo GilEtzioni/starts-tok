@@ -15,41 +15,20 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
   return (
     <Layout>
-      <Header
-        style={{
-          position: 'fixed',
-          top: 0,
-          width: '100%',
-          zIndex: 1000,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          backgroundColor: 'white',
-          color: 'white',
-          padding: '0 20px',
-          borderBottom: '1px solid hsl(220, 13%, 91%)',
-        }}
-      >
-        <div style={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>Learning</div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <Button style={{ margin: '0 10px' }}>מילון</Button>
-        <Button style={{ margin: '0 10px' }}>בית</Button>
-
-
-          <DownOutlined style={{ fontSize: '15px', color: 'black' }} />
-          <p style={{ margin: 0, fontSize: '16px', color: 'black' }}> גיל</p>
+      <Header 
+        className="fixed top-0 left-0 w-full bg-white shadow-md z-50 flex justify-between items-center px-5 py-3 border-b border-gray-300">
+        <div className="text-xl font-bold text-black">Learning</div>
+        <div className="flex items-center gap-4">
+        <Button >מילון</Button>
+        <Button >בית</Button>
+          <DownOutlined className="w-4 h-4 text-black" />
+          <p className="w-4 h-4 text-black"> גיל</p>
           <Badge
             count={
               <img
                 src="https://www.svgrepo.com/show/131993/germany.svg"
                 alt="German Flag"
-                style={{
-                  width: 30,
-                  height: 18,
-                  borderRadius: 2,
-                  marginRight: 1,
-                  marginTop: 2,
-                }}
+                style={{ width: 30, height: 18, borderRadius: 2, marginRight: 1, marginTop: 2 }}
               />
             }
           >
@@ -57,8 +36,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
           </Badge>
         </div>
       </Header>
-      <div style={{ paddingTop: '64px' }}>
-        {/* Content starts below the navbar */}
+      <div className="pt-16">
         {myComponent}
       </div>
     </Layout>
