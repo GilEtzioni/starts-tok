@@ -6,14 +6,9 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from "../data/axiosInstance";
 
-import './Card.css';
+import './MainCourses.css';
 import { getArray } from "./Helper";
-
-import image1 from './image1.png';
-import image2 from './image2.png';
-import image3 from './image3.png';
-
-import OneCard from './OneCard';
+import CourseCard from './CourseCard';
 
 const CardContainer: React.FC = () => {
   const fetchItems = async ()  => {
@@ -34,7 +29,6 @@ const CardContainer: React.FC = () => {
 
   const cardNamesHebrew = [ "קורס ראשן",  "קורס שני",  "קורס שלישי", "קורס רביעי", "קורס חמישי",  "קורס שישי" ];
   const cardNamesGerman = [ "A1",  "A2",  "B1", "B2", "C1",  "C2" ];
-  const images = [image1, image2, image3, image1, image2, image3];
 
   const cardDetails = [
     "ביטויים יומיומיים בסיסיים",
@@ -65,13 +59,13 @@ const CardContainer: React.FC = () => {
   if (error) return <div>Error loading data</div>;
 
   return (
-<div className="flex flex-col justify-between items-end gap-7 mt-5 w-full box-border">
-  <h1 className="self-end text-3xl text-right mr-12 mb-0">קורסים</h1>
+<div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
+  <h1 className="self-end text-right rtl text-2xl font-bold mr-20"> קורסים</h1>
   
   <div className="flex items-center justify-center w-full gap-4 box-border">
     <LeftOutlined onClick={handleBackwardClick} className="cursor-pointer" />
     {visibleCards.map((card) => (
-      <OneCard
+      <CourseCard
         key={card}
         levelHebrew={cardNamesHebrew[card - 1]}
         levelGerman={cardNamesGerman[card - 1]}
@@ -79,7 +73,6 @@ const CardContainer: React.FC = () => {
         cardDetails={cardDetails[card-1]}
         link={links[card - 1]}
         number={cardId[card - 1]}
-        image={images[card-1]}
       />
     ))}
     <RightOutlined onClick={handleForwardClick} className="cursor-pointer" />

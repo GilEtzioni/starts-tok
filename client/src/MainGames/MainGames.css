@@ -1,7 +1,7 @@
 
 /* ------------------------- */
 
-.custom-card-one {
+.custom-card-seven {
   height: 300px;
   width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
@@ -9,20 +9,20 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, background-color 0.5s ease;
 
-  background-image: url('image1.png');
+  background-image: url('./image7.png');
   background-size: cover;
   background-position: center;
   color: white;
 }
 
-.custom-card-one:hover {
+.custom-card-seven:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------------------- */
 
-.custom-card-two {
+.custom-card-eight {
   height: 300px;
   width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
@@ -30,20 +30,20 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, background-color 0.5s ease;
 
-  background-image: url('image2.png');
+  background-image: url('./image8.png');
   background-size: cover;
   background-position: center;
   color: white;
 }
 
-.custom-card-two:hover {
+.custom-card-eight:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------------------- */
 
-.custom-card-three {
+.custom-card-nine {
   height: 300px;
   width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
@@ -51,20 +51,20 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, background-color 0.5s ease;
 
-  background-image: url('image3.png');
+  background-image: url('./image9.png');
   background-size: cover;
   background-position: center;
   color: white;
 }
 
-.custom-card-three:hover {
+.custom-card-nine:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------------------- */
 
-.custom-card-four {
+.custom-card-ten {
   height: 300px;
   width: 300px;
   border: 1px solid hsl(240, 5%, 64.9%);
@@ -72,55 +72,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, background-color 0.5s ease;
 
-  background-image: url('image4.png');
+  background-image: url('./image10.png');
   background-size: cover;
   background-position: center;
   color: white;
 }
 
-.custom-card-four:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* ------------------------- */
-
-.custom-card-five {
-  height: 300px;
-  width: 300px;
-  border: 1px solid hsl(240, 5%, 64.9%);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease, background-color 0.5s ease;
-
-  background-image: url('image5.png');
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-
-.custom-card-five:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* ------------------------- */
-
-.custom-card-six {
-  height: 300px;
-  width: 300px;
-  border: 1px solid hsl(240, 5%, 64.9%);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease, background-color 0.5s ease;
-
-  background-image: url('image6.png');
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-
-.custom-card-six:hover {
+.custom-card-ten:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }

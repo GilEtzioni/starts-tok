@@ -13,7 +13,7 @@ const LineChart: React.FC = () => {
   ];
 
   const width = 500;
-  const height = 300;
+  const height = 290;
   const padding = 50;
 
   const maxValue = Math.ceil(Math.max(...data.map((d) => d.value)) / 15) * 15;
@@ -30,8 +30,8 @@ const LineChart: React.FC = () => {
 
   return (
     <div className="flex flex-col items-end">
-      <h1 className="text-right rtl mb-5">סטטיסטיקה שבועית</h1>
-      <div className="w-[500px] border border-gray-400 rounded-lg shadow-md p-3 bg-white">
+      <h1 className="text-right rtl mb-5 text-2xl font-bold">סטטיסטיקה שבועית</h1>
+      <div className="w-[610px] border border-gray-400 rounded-lg shadow-md p-3 bg-white flex justify-center items-center">
         <svg width={width} height={height}>
           <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#000" />
           <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#000" />

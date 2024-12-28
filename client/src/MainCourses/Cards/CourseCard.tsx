@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Progress } from 'antd';
 import { Link } from 'react-router-dom';
 
+import "./MainCourses.css";
+
 interface OneCardProps {
   levelHebrew: string;
   levelGerman: string;
@@ -9,10 +11,9 @@ interface OneCardProps {
   link: string;
   number: string;
   cardDetails: string;
-  image: string;
 }
 
-const OneCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, link, number, cardDetails }) => (
+const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, link, number, cardDetails }) => (
   <Link to={link}>
   <Card bordered={true} hoverable={true} className={`custom-card custom-card-${number} relative w-300px h-300px p-4`}>
     {/* Level German */}
@@ -40,4 +41,4 @@ const OneCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, li
   </Link>
 );
 
-export default OneCard;
+export default CourseCard;
