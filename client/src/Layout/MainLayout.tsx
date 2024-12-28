@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Layout, Badge, Avatar } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
+import "../index.css";
 
 const { Header } = Layout;
+
 
 interface MainLayoutProps {
   myComponent: React.ReactNode;
@@ -32,6 +34,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <Button style={{ margin: '0 10px' }}>מילון</Button>
         <Button style={{ margin: '0 10px' }}>בית</Button>
+
 
           <DownOutlined style={{ fontSize: '15px', color: 'black' }} />
           <p style={{ margin: 0, fontSize: '16px', color: 'black' }}> גיל</p>
