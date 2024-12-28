@@ -1,12 +1,15 @@
 import React from 'react';
 import Graph from "../components/Graph/Graph";
-import CardContainer from '../components/Cards/CardContainer';
+import CardContainer from '../MainCourses/Cards/CardContainer';
 import Table from '../components/Table/Table';
 
 export default function MainPage() {
   return (
     <div>
+      <div style={{ width: '90%', marginLeft: '5%' }}>
       <CardContainer />
+      <CardContainer />
+      </div>
       
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
         
