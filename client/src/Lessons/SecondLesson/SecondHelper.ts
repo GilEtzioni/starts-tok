@@ -1,5 +1,4 @@
 import { LessonType } from '../types/lessonType';
-
 interface CardItem {
     id: number;
     containerOrder: number;

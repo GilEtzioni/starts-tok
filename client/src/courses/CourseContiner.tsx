@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Row, Progress } from 'antd';
+import { Card, Col, Row } from 'antd';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './data/axiosInstance';
@@ -7,6 +7,7 @@ import { CourseType } from './data/courseTypes';
 import CourseIcons from './CourseIcons';
 
 import "../index.css"
+import CourseProgressBar from './CourseProgressBar';
 
 const CourseContainer: React.FC = () => {
   const { name } = useParams<{ name?: string }>();
@@ -33,9 +34,18 @@ const CourseContainer: React.FC = () => {
   const cardBackground = (lessonsCompleted: number) =>
     lessonsCompleted !== 0 ? 'bg-green-500 text-white' : 'bg-gray-400 text-gray-500';
 
+  const levelHebrew = coursesData[0].levelHebrew;
+  const levelEnglish = coursesData[0].levelEnglish;
+  
+
   return (
     <div className="flex justify-center items-center p-5">
       <div className="max-w-screen-xl w-full">
+      <div className="flex justify-center items-center space-x-4 mb-6">
+      <h1 className="text-xl">{levelEnglish}</h1>
+      <h1 className="text-xl"> - </h1>
+      <h1 className="text-xl">קורס {levelHebrew} </h1>
+    </div>
         {Array.from({ length: Math.ceil(coursesData.length / 5) }).map((_, rowIndex) => (
           <Row gutter={[24, 24]} justify="center" key={rowIndex} className="mb-6" >
             {coursesData
@@ -62,16 +72,8 @@ const CourseContainer: React.FC = () => {
                     {course.courseNameHebrew}
                   </p>
 
-                  {/* icons */}
                   <CourseIcons courseId={course.courseId} />
-
-                  {/* progress Bar */}
-                  <Progress
-                    percent={(course.lessonCompleted / 6) * 100}
-                    showInfo={false}
-                    strokeColor="#ffffff"
-                    className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-3/5"
-                  />
+                  <CourseProgressBar num={course.lessonCompleted} />
                 </Card>
                   </Link>
                 </Col>

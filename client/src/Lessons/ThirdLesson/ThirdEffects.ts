@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setFailure } from "../LessonsSlice";
+import { setFailure } from "../dataLessons/LessonsSlice";
 import { getGermanSentence, getHebrewSentence, getGermanWord, splitTheSentence } from './ThirdHelper';
 import { LessonType } from '../types/lessonType';
 
@@ -33,6 +33,7 @@ export const useGetData = ({ lessonsData, order, setHebrewSentence , setGermanWo
 
             const germanSentence = getGermanSentence(lesson, order);
             const hebrewSentence = getHebrewSentence(lesson, order);
+
             const germanWord = getGermanWord(lesson, order);
             
             setHebrewSentence(hebrewSentence);

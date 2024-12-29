@@ -1,8 +1,9 @@
-// react
-import React from 'react';
-
 // custom hook
 import { useMainLearnHelper } from './MainLearnHelper';
+
+// redux
+import { useSelector } from 'react-redux';
+import { RootState } from "../app/store";
 
 // lessons components
 import MainFirst from "./FirstLesson/MainFirst";
@@ -10,14 +11,18 @@ import MainSecond from './SecondLesson/MainSecond';
 import MainThird from "./ThirdLesson/MainThird";
 
 // components
-import NextButton from '../components/Main/NextButton';
-import ProgressBar from '../components/Main/ProgressBar';
+import NextButton from "../components/Main/NextButton"
 import BackButton from '../components/Main/BackButton';
-import ErrorMessage from "./Components/ErrorMessage";
+import ProgressBar from '../components/Main/ProgressBar'; 
+import ErrorMessage from '../components/Main/ErrorMessage';
+import SuccessMessage from '../components/Main/SuccessMessage';
+
 import "./MainLearn.css";
 
 const MainLearn: React.FC = () => {
-    const { order, showError, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
+    const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
+
+    const status = useSelector((state: RootState) => state.lessons.status);
 
     const renderCurrentLesson = () => {
         switch (order) {
@@ -39,11 +44,6 @@ const MainLearn: React.FC = () => {
         }
     };
 
-    const errorMessageDisplay = (
-        <div>
-            <ErrorMessage />
-        </div>
-    );
 
     return (
         <>
@@ -58,8 +58,11 @@ const MainLearn: React.FC = () => {
             
             {/* render the current lesson */}
             <div>{renderCurrentLesson()}</div>
+
+            {status === "failure" && <ErrorMessage />}
     
-            {showError && errorMessageDisplay}
+            {status === "success" && <SuccessMessage />}
+           
     
             <div className="next-button-container">
                 <NextButton />

@@ -1,10 +1,10 @@
 // react + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Typography } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setSuccess, setFailure, resetClicks } from "../LessonsSlice";
+import { setRightAnswer, resetClicks, setSuccess } from "../dataLessons/LessonsSlice";
 import { RootState } from "../../app/store";
 
 // components
@@ -40,6 +40,13 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ lessons }) => {
 
     // handle the input
     useHandleInput({ lessonsData: lessons, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
+
+    useEffect(() => {
+      if (germanWord) {
+        dispatch(setRightAnswer(germanWord));
+      }
+    }, [dispatch, germanWord, hebrewSentence]);
+  
 
       return (
         <div className="sentence-container">

@@ -20,11 +20,11 @@ export function getGermanWord(lessons: LessonType, order: number): string {
     let sentence: string = "";
     // first lesson - only first sentence
     if (order=== 3) {
-        sentence = lessons.missingWordOneGerman;
+      sentence = lessons.missingWordOneGerman;
     }
-    // second lesson - only last sentence
+    // second lexsson - only last sentence
     if (order === 6) {
-        sentence = lessons.missingWordTwoGerman
+      sentence = lessons.missingWordTwoGerman
     }
 
     return sentence;
@@ -34,14 +34,13 @@ export function getHebrewSentence(lessons: LessonType, order: number): string {
 
     let sentence: string = "";
     // first lesson - only first sentence
-    if (lessons.lessonId === 1) {
-        sentence = lessons.sentenceOneHebrew;
+    if (order === 3) {
+        sentence = lessons.missingSentenceOneHebrew;
     }
     // second lesson - only last sentence
-    if (lessons.lessonId === 4) {
-        sentence = lessons.sentenceTwoHebrew
+    if (order === 6) {
+        sentence = lessons.missingSentenceTwoHebrew;
     }
-
     return sentence;
 }
 

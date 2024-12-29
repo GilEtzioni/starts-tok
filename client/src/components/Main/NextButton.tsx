@@ -5,7 +5,7 @@ import { Button } from "antd";
 import "./Main.css";
 
 // redux
-import { setRunning, addOneOrder, resetClicks, addOneClick } from "../../Lessons/LessonsSlice";
+import { setRunning, addOneOrder, resetClicks, addOneClick } from "../../Lessons/dataLessons/LessonsSlice";
 import { RootState } from "../../app/store";
 
 interface NextButtonProps {

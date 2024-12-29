@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSuccess, setFailure } from "../LessonsSlice";
+import { setSuccess, setFailure } from "../dataLessons/LessonsSlice";
 import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
 import { LessonType } from '../types/lessonType';
 

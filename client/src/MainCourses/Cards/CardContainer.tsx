@@ -27,7 +27,7 @@ const CardContainer: React.FC = () => {
   const initialCards = [1, 2, 3, 4];
   const [visibleCards, setVisibleCards] = useState<number[]>(initialCards);
 
-  const cardNamesHebrew = [ "קורס ראשן",  "קורס שני",  "קורס שלישי", "קורס רביעי", "קורס חמישי",  "קורס שישי" ];
+  const cardNamesHebrew = [ "קורס ראשון - מבוא",  "קורס שני - בסיסי",  "קורס שלישי - בינוני", "קורס רביעי - מתקדם", "קורס חמישי -  מתקדם מאוד",  "קורס שישי - שפת אם" ];
   const cardNamesGerman = [ "A1",  "A2",  "B1", "B2", "C1",  "C2" ];
 
   const cardDetails = [

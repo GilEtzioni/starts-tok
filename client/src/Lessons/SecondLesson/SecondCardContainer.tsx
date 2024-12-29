@@ -1,15 +1,15 @@
 // react  + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Card, Typography } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setSuccess, setFailure, resetClicks } from "../LessonsSlice";
+import { setSuccess, setFailure, setRightAnswer, resetClicks } from '../dataLessons/LessonsSlice';
 import { RootState } from "../../app/store";
 
 // components
 import { LessonType } from '../types/lessonType';
-import { findMaxIndex, getHebrewSentence , getUserAnswer} from './SecondHelper';
+import { findMaxIndex, getGermanSentence, getHebrewSentence} from './SecondHelper';
 import { useGetData , useHandleNext} from "./SecondEffects";
 import "./Second.css";
 
@@ -34,9 +34,16 @@ const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData }
 
     const [germanArray, setGermanArray] = useState<CardItem[]>([]);
     const hebrewSentence = getHebrewSentence(lessonsData[0], order);
+    const germanSentence = getGermanSentence(lessonsData[0], order);
 
     useGetData({ lessonsData, order, setGermanArray });
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, germanArray, order });
+
+    useEffect(() => {
+        if (germanSentence) {
+            dispatch(setRightAnswer(germanSentence));
+        }
+      }, [dispatch, germanSentence]);
 
     const handleClick = (card: CardItem) => {
 

@@ -1,12 +1,11 @@
 // react
-import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
-import { resetOrder } from "./LessonsSlice";
+import { resetOrder } from "./dataLessons/LessonsSlice";
 
 // fetch data
 import { usePatchLessons } from "./dataLessons/patchAxios";
@@ -23,21 +22,12 @@ export const useMainLearnHelper = () => {
 
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
-    
-    const [showError, setShowError] = useState<boolean>(false);
 
     const handleFinishLesson = () => {
         dispatch(resetOrder());
         navigate(`/main/course/${myLevel}`);
     };
 
-    useEffect(() => {
-        if (status === "failure") {
-            setShowError(true);
-        } else {
-            setShowError(false);
-        }
-    }, [status]);
 
-    return { order, status, showError, finishLesson, handleFinishLesson, myLesson, myLevel };
+    return { order, status, finishLesson, handleFinishLesson, myLesson, myLevel };
 };

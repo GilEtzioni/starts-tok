@@ -1,16 +1,16 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
-import "./Main.css";
+// import React from "react";
+// import { useNavigate } from "react-router-dom";
+// import { Button } from "antd";
+// import "./Main.css";
 
-const BackButton: React.FC = () => {
-  const navigate = useNavigate();
+// const BackButton: React.FC = () => {
+//   const navigate = useNavigate();
 
-  const handleBack = () => {
-    navigate(-1);
-  };
+//   const handleBack = () => {
+//     navigate(-1);
+//   };
 
-  return ( <Button className="back-button" onClick={handleBack} > חזור </Button> );
-};
+//   return ( <Button className="back-button" onClick={handleBack} > חזור </Button> );
+// };
 
-export default BackButton;
+// export default BackButton;
