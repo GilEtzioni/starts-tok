@@ -60,7 +60,7 @@ const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
   };
 
   return (
-    <div className="next-button-container">
+    <div className="flex justify-center items-center p-5">
       <Button className="next-button" onClick={handleClick}>
         הבא
       </Button>

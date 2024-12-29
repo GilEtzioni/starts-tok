@@ -11,8 +11,8 @@ const BackButton: React.FC = () => {
   };
 
   return (
-    <div className="back-button-container">
-      <div className="back-button-wrapper">
+    <div className="flex justify-center items-center p-5">
+      <div >
         <Button
           className="back-button" 
           onClick={handleBack}

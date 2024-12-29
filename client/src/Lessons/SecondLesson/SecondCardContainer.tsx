@@ -11,7 +11,6 @@ import { RootState } from "../../app/store";
 import { LessonType } from '../types/lessonType';
 import { findMaxIndex, getGermanSentence, getHebrewSentence} from './SecondHelper';
 import { useGetData , useHandleNext} from "./SecondEffects";
-import "./Second.css";
 
 interface SecondCardContainerProps {
     lessonsData: LessonType[];
@@ -72,47 +71,49 @@ const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData }
 
     return (
         <>
-            <Row justify="center" style={{ marginBottom: '10px' }}>
-                <Title level={3} style={{ textAlign: 'center' }}>תרגמו את המשפט</Title>
+
+            <Row className="flex justify-center mb-2.5">
+            <Title level={3} className="text-center">תרגמו את המשפט</Title>
             </Row>
-    
-            <p style={{ color: "black", textAlign: 'center' }}> {hebrewSentence} </p>
+
+            <p className="text-black text-center">{hebrewSentence}</p>
     
             {/* up container */}
-            <div className="container up-container">
+            <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
                 {germanArray
                     .filter(item => item.container === "up")
                     .sort((a, b) => a.containerOrder - b.containerOrder)
                     .map(item => (
-                        <div style={{ height: '50px' }}>
-                        <Card     
-                            bodyStyle={{ padding: '12px' }}
-                            key={item.containerOrder}
-                            onClick={() => handleClick(item)}
-                            hoverable
-                        >
-                            {item.word}
-                        </Card>
+                        <div className="h-[50px]">
+                            <Card
+                                bodyStyle={{ padding: '12px' }}
+                                key={item.containerOrder}
+                                onClick={() => handleClick(item)}
+                                hoverable
+                            >
+                                {item.word}
+                            </Card>
                         </div>
                     ))}
             </div>
 
-            {/* down container */}
-            <div className="container down-container">
-                {germanArray
-                    .filter(item => item.container === "down")
-                    .sort((a, b) => a.containerOrder - b.containerOrder)
-                    .map(item => (
-                        <Card
-                            bodyStyle={{ padding: '12px' }}
-                            key={item.containerOrder}
-                            onClick={() => handleClick(item)}
-                            hoverable
-                        >
-                            {item.word}
-                        </Card>
-                    ))}
-            </div>
+    {/* down container */}
+    <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
+        {germanArray
+            .filter(item => item.container === "down")
+            .sort((a, b) => a.containerOrder - b.containerOrder)
+            .map(item => (
+                <Card
+                    bodyStyle={{ padding: '12px' }}
+                    key={item.containerOrder}
+                    onClick={() => handleClick(item)}
+                    hoverable
+                >
+                    {item.word}
+                </Card>
+            ))}
+    </div>
+
         </>
     );
 }    

@@ -17,8 +17,6 @@ import ProgressBar from '../components/Main/ProgressBar';
 import ErrorMessage from '../components/Main/ErrorMessage';
 import SuccessMessage from '../components/Main/SuccessMessage';
 
-import "./MainLearn.css";
-
 const MainLearn: React.FC = () => {
     const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
 
@@ -47,16 +45,15 @@ const MainLearn: React.FC = () => {
 
     return (
         <>
-            <div className="header-container">
-                <div className="back-button-wrapper">
+            <div className="flex items-center justify-between my-5 gap-5">
+                <div className="ml-5">
                     <BackButton />
                 </div>
-                <div className="progress-bar-wrapper">
+                <div className="flex-grow">
                     <ProgressBar num={order} />
                 </div>
             </div>
             
-            {/* render the current lesson */}
             <div>{renderCurrentLesson()}</div>
 
             {status === "failure" && <ErrorMessage />}
@@ -64,7 +61,7 @@ const MainLearn: React.FC = () => {
             {status === "success" && <SuccessMessage />}
            
     
-            <div className="next-button-container">
+            <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-[1000]">
                 <NextButton />
             </div>
         </>

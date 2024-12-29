@@ -10,7 +10,6 @@ import { RootState } from "../../app/store";
 // components
 import { LessonType } from '../types/lessonType';
 import { useGetData , useHandleInput} from "./ThirdEffects"
-import "./Third.css";
 
 interface ThirdCardContainerProps {
     lessons: LessonType[];
@@ -49,24 +48,25 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ lessons }) => {
   
 
       return (
-        <div className="sentence-container">
+        <div className="text-center h-[400px]">
           
-        <Row justify="center" style={{ marginBottom: '10px' }}>
-            <Title level={3} style={{ textAlign: 'center' }}  > השלימו את המשפט </Title>
+        <Row justify="center" className="mb-2.5">
+          <Title level={3} className="text-center"> השלימו את המשפט </Title>
         </Row>
       
           {/* hebrew */}
-          <p className="hebrew-sentence">{hebrewSentence}</p>
+          <p className="text-[18px] text-black my-2.5">{hebrewSentence}</p>
       
           {/* german */}
-          <p className="german-sentence">
+          <p className="inline-block relative top-[100px]">
             {firstPartGerman}
             <input
               type="text"
               value={inputValue}
               onChange={handleInputChange}
-              className="german-input"
+              className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0"
               style={{ width: `${germanWord.length * 10}px` }}
+              placeholder=" "
             />
             {secondPartGerman}
           </p>

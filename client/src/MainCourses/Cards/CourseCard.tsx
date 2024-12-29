@@ -23,8 +23,8 @@ const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content,
 
     {/* Details + Level Hebrew */}
     <div className="absolute right-3 bottom-16 text-right">
-      <div className="level-hebrew rtl text-2xl ">{levelHebrew}</div>
-      <div className="card-details">{cardDetails}</div>
+      <div className="rtl text-2xl ">{levelHebrew}</div>
+      <div >{cardDetails}</div>
     </div>
 
     {/* Progress Bar */}
