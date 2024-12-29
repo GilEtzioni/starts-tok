@@ -13,9 +13,6 @@ export const usePatchLessons = () => {
           onSuccess: () => {
               queryClient.invalidateQueries(['lessons']);
           },
-          onError: (error) => {
-              throw error;
-          },
       }
   );
 };

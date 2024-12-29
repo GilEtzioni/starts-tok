@@ -19,9 +19,6 @@ const usePatchItem = () => {
       onSuccess: () => {
         queryClient.invalidateQueries(['dictionary']);
       },
-      onError: (error) => {
-        throw error;
-      },
     }
   );
 };

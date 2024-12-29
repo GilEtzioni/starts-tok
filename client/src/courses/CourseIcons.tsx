@@ -36,7 +36,7 @@ const iconsCss = (): string => {
 
 
 const CourseIcons: React.FC<CourseIconsProps> = ({ courseId }) => {
-  const currIcon = (courseId: number) => {
+  const icons = (courseId: number) => {
     switch (courseId) {
       case 1:
         return <PaletteIcon className={iconsCss()}/>
@@ -95,7 +95,7 @@ const CourseIcons: React.FC<CourseIconsProps> = ({ courseId }) => {
 
   return (
     <div>
-      {currIcon(courseId)}
+      {icons(courseId)}
     </div>
   );
 }
