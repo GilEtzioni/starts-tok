@@ -136,44 +136,71 @@ export function areStringsEqual(str1: string, str2: string): boolean {
     return cleanedStr1 === cleanedStr2;
 }
 
-export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsType[]) {
-    const resultArray: { hebrewString: string; germanString: string }[] = [];
-    const tempArray: string[] = hebrewSentence.split(' ');
 
-    // Helper function to find and push matching phrases
-    const findAndPushMatches = (phrase: string) => {
+function cleanHebrewSentence (hebrewSentence: string): string {
+    const cleanString = (str: string) =>
+        str.replace(/[\s.,;!?]/g, ' ').toLowerCase(); 
+
+    const cleanedString = cleanString(hebrewSentence);
+
+    return cleanedString;
+}
+
+
+export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsType[]) {
+    const cleanSentence: string = cleanHebrewSentence(hebrewSentence);
+    const resultArray: { hebrewString: string; germanString: string | null }[] = [];
+    const tempArray: string[] = cleanSentence.split(' ');
+
+    // find and push matching words
+    const findAndPushMatches = (phrase: string): boolean => {
         const matchingWord = wordsArray.find(item => item.HebrewWord === phrase);
         if (matchingWord) {
             resultArray.push({
                 hebrewString: matchingWord.HebrewWord,
-                germanString: matchingWord.GermanWord
+                germanString: matchingWord.GermanWord,
             });
             return true;
         }
         return false;
     };
 
-    // Map one word - e.g. "hi"
-    const unmatchedWords = tempArray.filter(word => !findAndPushMatches(word));
+    // map one word - e.g. "hi"
+    let remainingWords = tempArray.filter(word => !findAndPushMatches(word));
 
-    // Map two words - e.g. "hello world"
-    let remainingWords = unmatchedWords;
+    // map two words that have one meaning - e.g. "bis bald"
     for (let i = 0; i < remainingWords.length - 1; i++) {
         const twoWordPhrase = `${remainingWords[i]} ${remainingWords[i + 1]}`;
         if (findAndPushMatches(twoWordPhrase)) {
-            remainingWords.splice(i, 2); // Remove the matched words
-            i--; // Adjust index after removal
+            remainingWords.splice(i, 2); // remove the matched words
+            i--;
         }
     }
 
-    // Map three words - e.g. "good morning everyone"
+    // map three words that have one meaning - e.g. "Ich habe Hunger"
     for (let i = 0; i < remainingWords.length - 2; i++) {
         const threeWordPhrase = `${remainingWords[i]} ${remainingWords[i + 1]} ${remainingWords[i + 2]}`;
         if (findAndPushMatches(threeWordPhrase)) {
-            remainingWords.splice(i, 3); // Remove the matched words
-            i--; // Adjust index after removal
+            remainingWords.splice(i, 3); // remove the matched words
+            i--; 
         }
     }
+
+// Map punctuation in the Hebrew sentence
+const punctuation = [',', '.', '-', '?', '...', '!'];
+for (let i = 0; i < hebrewSentence.length; i++) {
+    if (punctuation.includes(hebrewSentence[i])) {
+        // find the position in resultArray to insert the words
+        const precedingText = hebrewSentence.substring(0, i).trimEnd();
+        const position = resultArray.findIndex(item => precedingText.endsWith(item.hebrewString));
+        
+        // insert the word to the correct position
+        resultArray.splice(position + 1, 0, {
+            hebrewString: hebrewSentence[i],
+            germanString: null,
+        });
+    }
+}
 
     return resultArray;
 }
