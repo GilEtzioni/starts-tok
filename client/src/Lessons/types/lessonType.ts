@@ -61,3 +61,14 @@ export type LessonType = {
   wordTwelveGerman: string,
   wordTwelveHebrew: string,
 }
+
+export interface WordsType {
+  id?: number; 
+  levelHebrew: LevelHebrew; 
+  levelEnglish: LevelEnglish; 
+  courseId: number;
+  courseNameEnglish: string; 
+  GermanWord: string;
+  HebrewWord: string; 
+  knowlage: string;
+}

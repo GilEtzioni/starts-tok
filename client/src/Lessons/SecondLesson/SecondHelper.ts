@@ -1,4 +1,4 @@
-import { LessonType } from '../types/lessonType';
+import { LessonType, WordsType } from '../types/lessonType';
 interface CardItem {
     id: number;
     containerOrder: number;
@@ -134,4 +134,46 @@ export function areStringsEqual(str1: string, str2: string): boolean {
     const cleanedStr2 = cleanString(str2);
 
     return cleanedStr1 === cleanedStr2;
+}
+
+export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsType[]) {
+    const resultArray: { hebrewString: string; germanString: string }[] = [];
+    const tempArray: string[] = hebrewSentence.split(' ');
+
+    // Helper function to find and push matching phrases
+    const findAndPushMatches = (phrase: string) => {
+        const matchingWord = wordsArray.find(item => item.HebrewWord === phrase);
+        if (matchingWord) {
+            resultArray.push({
+                hebrewString: matchingWord.HebrewWord,
+                germanString: matchingWord.GermanWord
+            });
+            return true;
+        }
+        return false;
+    };
+
+    // Map one word - e.g. "hi"
+    const unmatchedWords = tempArray.filter(word => !findAndPushMatches(word));
+
+    // Map two words - e.g. "hello world"
+    let remainingWords = unmatchedWords;
+    for (let i = 0; i < remainingWords.length - 1; i++) {
+        const twoWordPhrase = `${remainingWords[i]} ${remainingWords[i + 1]}`;
+        if (findAndPushMatches(twoWordPhrase)) {
+            remainingWords.splice(i, 2); // Remove the matched words
+            i--; // Adjust index after removal
+        }
+    }
+
+    // Map three words - e.g. "good morning everyone"
+    for (let i = 0; i < remainingWords.length - 2; i++) {
+        const threeWordPhrase = `${remainingWords[i]} ${remainingWords[i + 1]} ${remainingWords[i + 2]}`;
+        if (findAndPushMatches(threeWordPhrase)) {
+            remainingWords.splice(i, 3); // Remove the matched words
+            i--; // Adjust index after removal
+        }
+    }
+
+    return resultArray;
 }

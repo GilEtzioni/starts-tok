@@ -8,12 +8,14 @@ import { setSuccess, setFailure, setRightAnswer, resetClicks } from '../dataLess
 import { RootState } from "../../app/store";
 
 // components
-import { LessonType } from '../types/lessonType';
-import { findMaxIndex, getGermanSentence, getHebrewSentence} from './SecondHelper';
+import { LessonType, WordsType } from '../types/lessonType';
+import { findMaxIndex, getGermanSentence, getHebrewSentence } from './SecondHelper';
 import { useGetData , useHandleNext} from "./SecondEffects";
+import HebrewSentence from "./HebrewSentence";
 
 interface SecondCardContainerProps {
     lessonsData: LessonType[];
+    wordsData: WordsType[];
 }
 
 interface CardItem {
@@ -23,7 +25,8 @@ interface CardItem {
     container: string;
 }
 
-const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData }) => {
+const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData, wordsData }) => {
+    // console.log("words: ", wordsData);
 
     const { Title } = Typography;
 
@@ -71,12 +74,13 @@ const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData }
 
     return (
         <>
-
-            <Row className="flex justify-center mb-2.5">
-            <Title level={3} className="text-center">תרגמו את המשפט</Title>
+            <Row className="flex justify-center">
+                <Title level={3} className="text-center">תרגמו את המשפט</Title>
             </Row>
 
-            <p className="text-black text-center">{hebrewSentence}</p>
+            <HebrewSentence wordsData={wordsData} lessonsData={lessonsData} hebrewSentence={hebrewSentence} />
+            {/* <p className="text-black text-center">{hebrewSentence}</p> */}
+            
     
             {/* up container */}
             <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
