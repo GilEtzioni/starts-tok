@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icons';
 import { isExTrue, isVyTrue, isQuesttionTrue } from '../HelpingFunctionsDictionary';
-import usePatchItem from '../../dataDictionary/patchAxios';
+import { usePatchItem } from '../../dataDictionary/patchAxios';
 
 type IconItem = {
   id: number;

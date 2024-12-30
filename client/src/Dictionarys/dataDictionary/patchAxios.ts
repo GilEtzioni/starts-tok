@@ -6,7 +6,12 @@ export interface UpdatedWord {
   knowlage: string;
 }
 
-const usePatchItem = () => {
+export interface AddNewWord {
+  germanWord: string; 
+  translatedWord: string;
+}
+
+export const usePatchItem = () => {
   const queryClient = useQueryClient();
 
   return useMutation(
@@ -19,8 +24,31 @@ const usePatchItem = () => {
       onSuccess: () => {
         queryClient.invalidateQueries(['dictionary']);
       },
+      onError: (error) => {
+        throw error;
+      },
     }
   );
 };
 
-export default usePatchItem;
+
+
+export const usePatchNewItem = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    async (userWord: { germanWord: string; translatedWord: string }) => {
+      const payload = { GermanWord: userWord.germanWord, HebrewWord: userWord.translatedWord };
+      const response = await axiosInstance.post(`/dictionary/new`, payload);
+      return response.data; 
+    },
+    {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries(['dictionaryNew']); 
+      },
+      onError: (error) => {
+        throw error;
+      },
+    }
+  );
+};

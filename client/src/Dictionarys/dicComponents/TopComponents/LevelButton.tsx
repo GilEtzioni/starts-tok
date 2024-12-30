@@ -4,10 +4,9 @@ import "./Top.css";
 
 interface LevelButtonProps {
   buttName: string;
-  label: string;
 }
 
-const LevelButton: React.FC<LevelButtonProps> = ({ label, buttName}) => {
+const LevelButton: React.FC<LevelButtonProps> = ({buttName}) => {
     
   const [isClicked, setIsClicked] = useState(false);
   return (

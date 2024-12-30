@@ -1,57 +1,19 @@
 // react + antd
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Table } from 'antd';
-import { handleClickedRow, sortWordsById } from '../HelpingFunctionsDictionary';
 
-// redux
-import { useSelector } from 'react-redux';
-import { RootState } from "../../../app/store";
-
-// word Type
+import { handleClickedRow } from '../HelpingFunctionsDictionary';
 import { WordsType } from "../../types/wordType";
-import { knowlageDataArray } from "../HelpingFunctionsDictionary"
-
 import MidIcons from "./MidIconds";
+import useFilteredWords from './dataEffect';
 
 interface TableProps {
   words?: Array<WordsType>;
 }
 
 const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
-  // redux
-  const clicksRedux = useSelector((state: RootState) => state.dictionay.clickFilter);
-  const levelRedux = useSelector((state: RootState) => state.dictionay.levelFilter);
-  const knowlageRedux = useSelector((state: RootState) => state.dictionay.knowlageFilter);
+  const { filteredWords, translatedWords, setTranslatedWords } = useFilteredWords(words);
 
-  const [filteredWords, setFilteredWords] = useState<WordsType[]>([]);
-  const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]);
-
-
-  useEffect(() => {
-    setTranslatedWords([]); 
-    const filterdKnowlage = knowlageDataArray(knowlageRedux);
- 
-    // if nothing is selected -> show all data
-    if (levelRedux.length === 0 && filterdKnowlage.length === 0) {
-      setFilteredWords(sortWordsById([...words]));
-      return;
-    }
-
-    let filtered = [...words];
-
-    // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "`C2"
-    if (levelRedux.length !== 0) {
-      filtered = filtered.filter((item) => levelRedux.includes(item.levelEnglish)); // filter by level
-    }
-
-    // if the user click on "V" / "?" / "X" 
-    if (filterdKnowlage.length !== 0) {
-      filtered = filtered.filter((item) => filterdKnowlage.includes(item.knowlage)); // Use `filterdKnowlage` directly
-    }
-
-    // show the filtered data by the id order
-    setFilteredWords(sortWordsById(filtered));
-  }, [words, levelRedux, clicksRedux, knowlageRedux]);
   return (
     <div className="w-4/5 mx-auto">
     <Table

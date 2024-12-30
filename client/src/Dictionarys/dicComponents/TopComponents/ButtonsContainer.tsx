@@ -1,25 +1,9 @@
 import React from 'react';
 import LevelButton from './TopLevelButton';
 
-const buttonLabelsHebrew = [
-    'המילים שהוספתי',
-    'שפת אם',
-    'מתקדם מאוד',
-    'מתקדם',
-    'בסיסי',
-    'מתחילים',
-    'מבוא',
-];
+const buttonLabelsHebrew = [ 'המילים שהוספתי', 'שפת אם', 'מתקדם מאוד', 'מתקדם', 'בסיסי', 'מתחילים', 'מבוא' ];
 
-const buttonLabelsEnglish = [
-    'etc',
-    'C2',
-    'C1',
-    'B2',
-    'B1',
-    'A2',
-    'A1',
-];
+const buttonLabelsEnglish = [ 'userWords', 'C2', 'C1', 'B2', 'B1', 'A2', 'A1' ];
 
 const LevelButtonsContainer: React.FC = () => {
     return (

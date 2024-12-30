@@ -1,0 +1,19 @@
+
+
+.buttons {
+  background-color: hsl(213.1, 93.9%, 67.8%);
+  color: #fff !important; 
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; 
+  cursor: pointer;
+}
+
+.buttons:hover {
+  background-color: hsl(201.3, 96.3%, 32.2%);
+  color: #fff !important; 
+  transform: translateY(-2px); 
+}
