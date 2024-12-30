@@ -20,6 +20,20 @@ app.get("/main", async (req: Request, res: Response) => {
         throw error;
     }
 });
+app.get("/main/finished", async (req: Request, res: Response) => {
+    try {
+        const coursesSubjects = await db.select({
+            level: CourseNames.levelEnglish,
+            totalLessonsCompleted: sql`SUM(${CourseNames.lessonCompleted}) / 6`
+        })
+        .from(CourseNames)
+        .groupBy(CourseNames.levelEnglish);
+
+        res.json(coursesSubjects);
+    } catch (error) {
+        res.status(500).json({ error: "error" });
+    }
+});
 
 // /main/course/A1/Greetings
 app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
