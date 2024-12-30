@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { LessonType, WordsType } from '../types/lessonType';
-import { splitSentenceToWords } from './SecondHelper';
+import { splitSentenceToWords } from '../SecondLesson/SecondHelper';
 import { Tooltip } from 'antd';
-// import { movePunctuationToFront } from "./SecondHelper"
 
 interface HebrewSentenceProps {
     wordsData: WordsType[];
@@ -12,6 +11,8 @@ interface HebrewSentenceProps {
 const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const wordsArray = splitSentenceToWords(hebrewSentence, wordsData);
+    console.log("hebrew sentene: ", hebrewSentence)
+    console.log("wordsArray: ", wordsArray)
 
     return (
         <div className="text-center my-5">
@@ -47,7 +48,7 @@ const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSenten
                                 >
                                     {item.hebrewString}
                                 </span>
-                                {(item.germanString !== null && item.germanString !== "notInTheDictioanry") && (
+                                {item.germanString !== null && (
                                     <div
                                         className={`border-t-2 w-full absolute top-4 left-0 ${
                                             hoveredIndex === index ? 'border-black' : 'border-dashed border-black'

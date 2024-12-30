@@ -11,10 +11,6 @@ interface OneCardProps {
 
 const OneCard: React.FC<OneCardProps> = ({ game, link, number}) => {
 
-  useEffect(() => {
-    console.log(number);
-  }, [number]);
-
 return (
   <Link to={link}>
     <Card bordered={true} hoverable={true} className={`custom-card custom-card-${number} relative w-300px h-300px p-4`}>

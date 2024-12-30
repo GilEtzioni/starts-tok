@@ -26,7 +26,6 @@ interface CardItem {
 }
 
 const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData, wordsData }) => {
-    // console.log("words: ", wordsData);
 
     const { Title } = Typography;
 
@@ -78,7 +77,7 @@ const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData, 
                 <Title level={3} className="text-center">תרגמו את המשפט</Title>
             </Row>
 
-            <HebrewSentence wordsData={wordsData} lessonsData={lessonsData} hebrewSentence={hebrewSentence} />
+            <HebrewSentence wordsData={wordsData}  hebrewSentence={hebrewSentence} />
             {/* <p className="text-black text-center">{hebrewSentence}</p> */}
             
     

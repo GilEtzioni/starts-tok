@@ -8,14 +8,16 @@ import { setRightAnswer, resetClicks, setSuccess } from "../dataLessons/LessonsS
 import { RootState } from "../../app/store";
 
 // components
-import { LessonType } from '../types/lessonType';
-import { useGetData , useHandleInput} from "./ThirdEffects"
+import { LessonType, WordsType } from '../types/lessonType';
+import { useGetData , useHandleInput} from "./ThirdEffects";
+import HebrewSentence from './HebrewSentence';
 
 interface ThirdCardContainerProps {
-    lessons: LessonType[];
+  lessonsData: LessonType[];
+    wordsData: WordsType[];
 }
 
-const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ lessons }) => {
+const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ wordsData, lessonsData }) => {
 
     // redux
     const order = useSelector((state: RootState) => state.lessons.order);
@@ -35,10 +37,10 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ lessons }) => {
     const { Title } = Typography; // antd title
 
     // get and set the data
-    useGetData({ lessonsData: lessons, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman});
+    useGetData({ lessonsData, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman});
 
     // handle the input
-    useHandleInput({ lessonsData: lessons, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
+    useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
 
     useEffect(() => {
       if (germanWord) {
@@ -49,10 +51,10 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ lessons }) => {
 
       return (
         <div className="text-center h-[400px]">
-          
-        <Row justify="center" className="mb-2.5">
+            <HebrewSentence wordsData={wordsData} hebrewSentence={hebrewSentence} />
+            {/* <Row justify="center" className="mb-2.5">
           <Title level={3} className="text-center"> השלימו את המשפט </Title>
-        </Row>
+        </Row> */}
       
           {/* hebrew */}
           <p className="text-[18px] text-black my-2.5">{hebrewSentence}</p>

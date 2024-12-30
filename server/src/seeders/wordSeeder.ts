@@ -150,6 +150,9 @@ async function seed() {
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 5, courseNameEnglish: "Months", GermanWord: "Dezember", HebrewWord: "דצמבר", knowlage: "X" },
 
     // Greetings
+    { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Wie heißen Sie", HebrewWord: "איך קוראים לך", knowlage: "X" },
+    { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "ich", HebrewWord: "אני", knowlage: "X" },
+    { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "heiße", HebrewWord: "קוראים", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Hallo", HebrewWord: "שלום", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Guten Morgen", HebrewWord: "בוקר טוב", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Guten Tag", HebrewWord: "צהריים טובים", knowlage: "X" },

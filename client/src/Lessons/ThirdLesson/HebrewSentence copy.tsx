@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LessonType, WordsType } from '../types/lessonType';
-import { splitSentenceToWords } from './SecondHelper';
+import { splitSentenceToWords } from '../SecondLesson/SecondHelper';
 import { Tooltip } from 'antd';
 // import { movePunctuationToFront } from "./SecondHelper"
 
@@ -12,6 +12,9 @@ interface HebrewSentenceProps {
 const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const wordsArray = splitSentenceToWords(hebrewSentence, wordsData);
+
+    console.log("wordsArray", wordsArray);
+    console.log("hebrewSentence", hebrewSentence);
 
     return (
         <div className="text-center my-5">
