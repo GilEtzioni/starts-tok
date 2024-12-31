@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFailure } from "../dataLessons/LessonsSlice";
 import { getGermanSentence, getHebrewSentence, getGermanWord, splitTheSentence } from './ThirdHelper';
@@ -28,22 +28,22 @@ interface useHandleInputProps {
 
 export const useGetData = ({ lessonsData, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman}: useGetDataProps) => {
     useEffect(() => {
-        if (lessonsData.length > 0) {
-            const lesson = lessonsData[0];
+      if (lessonsData.length > 0) {
+        const lesson = lessonsData[0];
+        const germanSentence = getGermanSentence(lesson, order);
+        const hebrewSentence = getHebrewSentence(lesson, order);
+        const germanWord = getGermanWord(lesson, order);
 
-            const germanSentence = getGermanSentence(lesson, order);
-            const hebrewSentence = getHebrewSentence(lesson, order);
+        setHebrewSentence(hebrewSentence);
+        setGermanWord(germanWord);
 
-            const germanWord = getGermanWord(lesson, order);
-            
-            setHebrewSentence(hebrewSentence);
-            setGermanWord(germanWord);
 
-            const { firstArrayPart, secondArrayPart } = splitTheSentence(germanSentence, germanWord);
-            setFirstPartGerman(firstArrayPart);
-            setSecondPartGerman(secondArrayPart);
-        }
-    }, [lessonsData]);
+        // split the German sentence
+        const { firstPart, secondPart } = splitTheSentence(germanSentence, germanWord);
+        setFirstPartGerman(firstPart);
+        setSecondPartGerman(secondPart);
+    }
+  }, [lessonsData, order, setHebrewSentence, setGermanWord, setFirstPartGerman, setSecondPartGerman]);
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
@@ -53,7 +53,7 @@ export const useHandleInput = ({ dispatch, resetClicks, setSuccess, germanWord, 
         if (inputValue === "" && clicks === 1) {
           dispatch(resetClicks());
         }
-        else if (inputValue === germanWord && clicks === 1) {
+        else if (inputValue === germanWord.toLocaleLowerCase() && clicks === 1) {
           dispatch(setSuccess());
         } else if (clicks === 1) {
           dispatch(setFailure());

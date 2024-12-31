@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { getGermanWords, shuffleArray, getUserAnswer, getGermanSentence, areStringsEqual } from './SecondHelper';
+import { getGermanWords, shuffleArray, getUserAnswer, getGermanSentence, areStringsEqual, splitSentenceToWords } from './SecondHelper';
 import { LessonType } from '../types/lessonType';
 import { useDispatch } from 'react-redux';
+import { WordsType } from '../types/lessonType';
 
 interface UseGetDataProps {
   lessonsData: LessonType[];
@@ -18,6 +19,13 @@ interface UseHandleNextProps {
   lessonsData: LessonType[];
   germanArray: Array<{ id: number; containerOrder: number; word: string; container: string }>;
   order: number;
+}
+
+interface useHandleDataProps {
+  hebrewSentence: string;  
+  wordsData: WordsType[];
+  setWords: any;
+  splitSentenceToWords: any;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
@@ -63,4 +71,26 @@ export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFa
         }
     }
   },[clicks])
+};
+
+/* ------------------------------------------------------------------------------------------------------------------------------ */
+
+export const useHandleData = ({ splitSentenceToWords, hebrewSentence, wordsData, setWords   }: useHandleDataProps) => { 
+  useEffect(() => {
+    const punctuation = [',', '.', '-', '?', '...', '!'];
+    const wordsArray = splitSentenceToWords(hebrewSentence, wordsData);
+    const copiedArray = [...wordsArray];
+    const firstItem = copiedArray.shift(); // remove the first item
+    const lastItemIndex = copiedArray.length - 1;
+
+    // if last item is punctuation
+    if (firstItem && punctuation.includes(firstItem.hebrewString) && lastItemIndex >= 0) {
+        copiedArray[lastItemIndex].hebrewString =
+            firstItem.hebrewString + copiedArray[lastItemIndex].hebrewString;
+    } 
+    else if (firstItem) {
+        copiedArray.unshift(firstItem);
+    }
+    setWords(copiedArray);
+  }, [hebrewSentence, wordsData]);
 };

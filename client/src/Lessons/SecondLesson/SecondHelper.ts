@@ -45,6 +45,7 @@ export function getGermanWords(lessons: LessonType, order: number):Array<[number
         );
     }
 
+
     // 2d array - [ [coupleId] , [germanWord], [container] ]
     const combinedWordsArray: Array<[number, number, string, string]> = [];
     for (let i = 0; i < germanWordsArray.length; i++) {
@@ -140,17 +141,6 @@ export function areStringsEqual(str1: string, str2: string): boolean {
 
 const punctuation = [',', '.', '-', '?', '...', '!'];
 
-function swapWords(input: string): string {
-    // Split the input string into an array of words
-    const words = input.trim().split(/\s+/);
-    
-    // Reverse the order of the words
-    const reversedWords = words.reverse();
-    
-    // Join the reversed words back into a string
-    return reversedWords.join(' ');
-}
-
 function stringWithoutSpaces (str: string) {
     return str.replace(/ /g, '');
 }
@@ -219,7 +209,8 @@ export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsTy
     remainingWords.forEach(word => {
         resultArray.push({
             hebrewString: word,
-            germanString: "notInTheDictionary",
+            germanString: "לא במילון",
+
         });
     });
 
@@ -269,9 +260,5 @@ export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsTy
         }
     }
 
-    // console.log("final array 1", finalArray);
-
-    // console.log("noSpaceString", noSpaceString);
-    
     return finalArray;
 }

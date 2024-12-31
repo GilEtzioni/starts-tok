@@ -10,8 +10,7 @@ import { RootState } from "../../app/store";
 // components
 import { LessonType, WordsType } from '../types/lessonType';
 import { useGetData , useHandleInput} from "./ThirdEffects";
-import HebrewSentence from './HebrewSentence';
-
+import HebrewSentenceThird from './HebrewSentenceThird';
 interface ThirdCardContainerProps {
   lessonsData: LessonType[];
     wordsData: WordsType[];
@@ -29,15 +28,12 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ wordsData, less
     const [germanWord, setGermanWord] = useState<string>("");
     const [firstPartGerman, setFirstPartGerman] = useState<string>("");
     const [secondPartGerman, setSecondPartGerman] = useState<string>("");
-
+  
     // input
     const [inputValue, setInputValue] = useState<string>("");
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
-
-    const { Title } = Typography; // antd title
-
     // get and set the data
-    useGetData({ lessonsData, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman});
+    useGetData({ lessonsData, order, setHebrewSentence, setGermanWord, setFirstPartGerman, setSecondPartGerman});
 
     // handle the input
     useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
@@ -47,17 +43,10 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ wordsData, less
         dispatch(setRightAnswer(germanWord));
       }
     }, [dispatch, germanWord, hebrewSentence]);
-  
 
       return (
         <div className="text-center h-[400px]">
-            <HebrewSentence wordsData={wordsData} hebrewSentence={hebrewSentence} />
-            {/* <Row justify="center" className="mb-2.5">
-          <Title level={3} className="text-center"> השלימו את המשפט </Title>
-        </Row> */}
-      
-          {/* hebrew */}
-          <p className="text-[18px] text-black my-2.5">{hebrewSentence}</p>
+            <HebrewSentenceThird wordsData={wordsData} hebrewSentence={hebrewSentence} />
       
           {/* german */}
           <p className="inline-block relative top-[100px]">

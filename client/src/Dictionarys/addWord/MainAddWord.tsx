@@ -16,9 +16,6 @@ const MainAddWord: React.FC = () => {
 
   const handleGetData = (germanWord: string, translatedWord: string) => {
 
-    console.log("german word: ", germanWord);
-    console.log("translatedWord word: ", translatedWord);
-
     if (!germanWord || !translatedWord) {
       setErrorMessage("עליך למלא את שני השדות");
       return;

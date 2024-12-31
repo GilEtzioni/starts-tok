@@ -16,11 +16,11 @@ const SuccessMessage: React.FC = () => {
     return (
         <Card
             bordered={false}
-            className="relative mx-auto flex h-24 w-72 flex-col items-center justify-center rounded-lg bg-green-600 text-white shadow-md text-base text-center"
+            className="relative mx-auto flex h-24 w-72 flex-col items-center justify-center rounded-lg bg-[hsl(142.1,70.6%,45.3%)] text-white shadow-md text-base text-center"
             style={{ top: `${topCss(order)}px`, direction: 'rtl' }}
         >
             <p className="mb-0">כל הכבוד!</p>
-            <p className="mt-0">gut gemacht!</p>
+            <p className="mt-0">!gut gemacht</p>
         </Card>
     );
 };

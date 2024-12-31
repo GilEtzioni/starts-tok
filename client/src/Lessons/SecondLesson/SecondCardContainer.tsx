@@ -11,7 +11,7 @@ import { RootState } from "../../app/store";
 import { LessonType, WordsType } from '../types/lessonType';
 import { findMaxIndex, getGermanSentence, getHebrewSentence } from './SecondHelper';
 import { useGetData , useHandleNext} from "./SecondEffects";
-import HebrewSentence from "./HebrewSentence";
+import HebrewSentenceTwo from "./HebrewSentenceTwo";
 
 interface SecondCardContainerProps {
     lessonsData: LessonType[];
@@ -77,7 +77,7 @@ const SecondCardContainer: React.FC<SecondCardContainerProps> = ({ lessonsData, 
                 <Title level={3} className="text-center">תרגמו את המשפט</Title>
             </Row>
 
-            <HebrewSentence wordsData={wordsData}  hebrewSentence={hebrewSentence} />
+            <HebrewSentenceTwo wordsData={wordsData}  hebrewSentence={hebrewSentence} />
             {/* <p className="text-black text-center">{hebrewSentence}</p> */}
             
     

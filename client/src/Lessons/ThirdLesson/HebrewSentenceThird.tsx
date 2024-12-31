@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { LessonType, WordsType } from '../types/lessonType';
+import React, { useEffect, useState } from 'react';
+import { WordsType } from '../types/lessonType';
 import { splitSentenceToWords } from '../SecondLesson/SecondHelper';
 import { Tooltip } from 'antd';
-// import { movePunctuationToFront } from "./SecondHelper"
+import { useHandleData } from '../SecondLesson/SecondEffects';
 
 interface HebrewSentenceProps {
     wordsData: WordsType[];
     hebrewSentence: string;
 }
 
-const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence }) => {
+const HebrewSentenceThird: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence }) => {
+
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const wordsArray = splitSentenceToWords(hebrewSentence, wordsData);
 
-    console.log("wordsArray", wordsArray);
-    console.log("hebrewSentence", hebrewSentence);
+    const [words, setWords] = useState<Array<{ hebrewString: string; germanString: string | null }>>([]);
+
+    useHandleData({ splitSentenceToWords, hebrewSentence, wordsData, setWords  });
 
     return (
         <div className="text-center my-5">
             <div className="inline-block">
-                {wordsArray
+                {[...words] 
                     .reverse() // map from last index
                     .map((item, index) => (
                         <Tooltip
@@ -37,10 +39,9 @@ const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSenten
                             }}
                         >
                             {/* add spaces based on the word /commas / etc */}
-                            
                             <span
                                 className={`inline-block text-center relative ${
-                                    item.germanString === null ? '' : 'mr-2'
+                                    item.germanString === null  ? '' : 'mr-2'
                                 }`}
                             >
                                 <span
@@ -50,12 +51,13 @@ const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSenten
                                 >
                                     {item.hebrewString}
                                 </span>
-                                {(item.germanString !== null && item.germanString !== "notInTheDictioanry") && (
+                                {item.germanString !== null && (
                                     <div
                                         className={`border-t-2 w-full absolute top-4 left-0 ${
                                             hoveredIndex === index ? 'border-black' : 'border-dashed border-black'
                                         }`}
-                                    ></div>
+                                    >
+                                    </div>
                                 )}
                             </span>
                         </Tooltip>
@@ -65,4 +67,4 @@ const HebrewSentence: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSenten
     );
 };
 
-export default HebrewSentence;
+export default HebrewSentenceThird;
