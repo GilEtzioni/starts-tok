@@ -21,43 +21,58 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSen
     return (
         <div className="text-center my-5">
             <div className="inline-block">
-                {[...words] 
+                {[...words]
                     .reverse() // map from last index
                     .map((item, index) => (
                         <Tooltip
                             key={index}
-                            title={item.germanString}
+                            title={
+                                Array.isArray(item.germanString) && item.germanString.length > 0
+                                    ? item.germanString.map((str: string, strIndex: number) => (
+                                          <div key={`${index}-${strIndex}`} className="text-center">
+                                              {str}
+                                          </div>
+                                      ))
+                                    : ''
+                            }
                             placement="top"
                             overlayClassName="bg-white bg-opacity-80 shadow-md text-sm"
                             overlayInnerStyle={{ padding: '4px 8px', whiteSpace: 'nowrap' }}
                             onVisibleChange={(visible) => {
-                                if (visible && item.germanString !== null) {
+                                if (
+                                    visible &&
+                                    Array.isArray(item.germanString) &&
+                                    item.germanString[0] !== null
+                                ) {
                                     setHoveredIndex(index);
                                 } else {
                                     setHoveredIndex(null);
                                 }
                             }}
                         >
-                            {/* add spaces based on the word /commas / etc */}
+                            {/* Add spaces based on the word / commas / etc */}
                             <span
                                 className={`inline-block text-center relative ${
-                                    item.germanString === null  ? '' : 'mr-2'
+                                    !Array.isArray(item.germanString) || item.germanString[0] === null
+                                        ? '' // no margin or hover for null
+                                        : 'mr-2'
                                 }`}
                             >
                                 <span
                                     className={`block ${
-                                        item.germanString === null ? '' : 'hover:cursor-pointer'
+                                        !Array.isArray(item.germanString) || item.germanString[0] === null
+                                            ? '' // disable hover behavior
+                                            : 'hover:cursor-pointer'
                                     }`}
                                 >
                                     {item.hebrewString}
                                 </span>
-                                {item.germanString !== null && (
+                                {Array.isArray(item.germanString) && item.germanString[0] !== null && (
                                     <div
                                         className={`border-t-2 w-full absolute top-4 left-0 ${
                                             hoveredIndex === index ? 'border-black' : 'border-dashed border-black'
                                         }`}
-                                    >
-                                    </div>
+                                    ></div>
                                 )}
                             </span>
                         </Tooltip>
@@ -65,6 +80,7 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSen
             </div>
         </div>
     );
-};
+}
+
 
 export default HebrewSentenceTwo;

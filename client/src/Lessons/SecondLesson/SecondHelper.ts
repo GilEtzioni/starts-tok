@@ -138,7 +138,6 @@ export function areStringsEqual(str1: string, str2: string): boolean {
 }
 
 /* ---------------------------------------- */
-
 const punctuation = [',', '.', '-', '?', '...', '!'];
 
 function stringWithoutSpaces (str: string) {
@@ -167,17 +166,23 @@ function sentenceWithoutPunctuations(hebrewSentence: string): string {
 export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsType[]) {
     let fixedString: string = movePunctuationToFront(hebrewSentence);               // make the last '?' as the first index
     const noPunctionsSentence: string = sentenceWithoutPunctuations(fixedString);   // no punctions
-    const resultArray: { hebrewString: string; germanString: string | null }[] = [];
+    const resultArray: { hebrewString: string; germanString: Array<string | null> }[] = [];
     const tempArray: string[] = noPunctionsSentence.split(' ');
 
     // find and push matching words
     const findAndPushMatches = (word: string): boolean => {
-        const matchingWord = wordsArray.find(item => item.HebrewWord === word);
-        if (matchingWord) {
-            resultArray.push({
-                hebrewString: matchingWord.HebrewWord,
-                germanString: matchingWord.GermanWord,
-            });
+        const matchingWords = wordsArray.filter(item => item.HebrewWord === word);
+        if (matchingWords.length > 0) {
+            const germanStrings = matchingWords.map(item => item.GermanWord);
+            const existingEntry = resultArray.find(entry => entry.hebrewString === word);
+            if (existingEntry) {
+                existingEntry.germanString.push(...germanStrings);
+            } else {
+                resultArray.push({
+                    hebrewString: word,
+                    germanString: germanStrings,
+                });
+            }
             return true;
         }
         return false;
@@ -207,11 +212,15 @@ export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsTy
 
     // push words that dont in the dictionary
     remainingWords.forEach(word => {
-        resultArray.push({
-            hebrewString: word,
-            germanString: "לא במילון",
-
-        });
+        const existingEntry = resultArray.find(entry => entry.hebrewString === word);
+        if (existingEntry) {
+            existingEntry.germanString.push("לא במילון");
+        } else {
+            resultArray.push({
+                hebrewString: word,
+                germanString: ["לא במילון"],
+            });
+        }
     });
 
     // remove empty cells
@@ -222,43 +231,48 @@ export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsTy
     }
 
     // map punctuation in the Hebrew sentence
-    let noSpaceString = stringWithoutSpaces(fixedString)
+    let noSpaceString = stringWithoutSpaces(fixedString);
     for (const mark of punctuation) {
         for (let i = 0; i < noSpaceString.length; i++) {
             if (noSpaceString.charAt(i) === mark) {
-                resultArray.push({
-                    hebrewString: mark,
-                    germanString: null,
-                });
+                const existingEntry = resultArray.find(entry => entry.hebrewString === mark);
+                if (existingEntry) {
+                    existingEntry.germanString.push(null);
+                } else {
+                    resultArray.push({
+                        hebrewString: mark,
+                        germanString: [null],
+                    });
+                }
             }
         }
     }
 
-
     // put the items in their right positions
-    const finalArray: { hebrewString: string; germanString: string | null }[] = [];
+    const finalArray: { hebrewString: string; germanString: (string | null)[] }[] = [];
     let start_index = 0;
     
     const normalizeHebrew = (str: string): string => {
-        // Normalize string to remove spaces and ensure consistent encoding
         return str.replace(/\s+/g, "").normalize("NFC");
     };
     
-    const normalizedNoSpaceString = normalizeHebrew(noSpaceString); // Normalize input
+    const normalizedNoSpaceString = normalizeHebrew(noSpaceString); 
     
     for (let i = start_index; i <= normalizedNoSpaceString.length; i++) {
         for (const wordObj of resultArray) {
-            const word = wordObj.hebrewString; // Extract the Hebrew string
-            const normalizedWord = normalizeHebrew(word); // Normalize the word
-            const substring = normalizedNoSpaceString.substring(start_index, i); // Extract substring
+            const word = wordObj.hebrewString;
+            const normalizedWord = normalizeHebrew(word);
+            const substring = normalizedNoSpaceString.substring(start_index, i); 
     
             if (normalizedWord === substring) {
-                finalArray.push(wordObj); // Add to final array
-                start_index = i; // Update starting index
-                break; // Exit inner loop on match
+                finalArray.push({
+                    hebrewString: wordObj.hebrewString,
+                    germanString: wordObj.germanString
+                });
+                start_index = i;
+                break; 
             }
         }
     }
-
     return finalArray;
 }

@@ -8,6 +8,9 @@ async function seed() {
 
     const items = await db.insert(Words).values([
     // Colors
+    { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 1, courseNameEnglish: "Colors", GermanWord: "es tut mir leid", HebrewWord: "סליחה", knowlage: "?" },
+    { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 1, courseNameEnglish: "Colors", GermanWord: "entschuldigung", HebrewWord: "סליחה", knowlage: "?" },
+
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 1, courseNameEnglish: "Colors", GermanWord: "rot", HebrewWord: "אדום", knowlage: "?" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 1, courseNameEnglish: "Colors", GermanWord: "blau", HebrewWord: "כחול", knowlage: "?" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 1, courseNameEnglish: "Colors", GermanWord: "grün", HebrewWord: "ירוק", knowlage: "?" },
@@ -154,6 +157,7 @@ async function seed() {
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "ich", HebrewWord: "אני", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "heiße", HebrewWord: "קוראים", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Hallo", HebrewWord: "שלום", knowlage: "X" },
+    { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Servus", HebrewWord: "שלום", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Guten Morgen", HebrewWord: "בוקר טוב", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Guten Tag", HebrewWord: "צהריים טובים", knowlage: "X" },
     { levelHebrew: "מבוא", levelEnglish: "A1", courseId: 6, courseNameEnglish: "Greetings", GermanWord: "Guten Abend", HebrewWord: "ערב טוב", knowlage: "X" },

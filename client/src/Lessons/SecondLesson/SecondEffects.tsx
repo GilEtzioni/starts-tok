@@ -75,15 +75,14 @@ export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFa
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useHandleData = ({ splitSentenceToWords, hebrewSentence, wordsData, setWords   }: useHandleDataProps) => { 
+export const useHandleData = ({ splitSentenceToWords, hebrewSentence, wordsData, setWords }: useHandleDataProps) => { 
   useEffect(() => {
     const punctuation = [',', '.', '-', '?', '...', '!'];
     const wordsArray = splitSentenceToWords(hebrewSentence, wordsData);
     const copiedArray = [...wordsArray];
-    const firstItem = copiedArray.shift(); // remove the first item
+    const firstItem = copiedArray.shift();
     const lastItemIndex = copiedArray.length - 1;
 
-    // if last item is punctuation
     if (firstItem && punctuation.includes(firstItem.hebrewString) && lastItemIndex >= 0) {
         copiedArray[lastItemIndex].hebrewString =
             firstItem.hebrewString + copiedArray[lastItemIndex].hebrewString;
@@ -91,6 +90,8 @@ export const useHandleData = ({ splitSentenceToWords, hebrewSentence, wordsData,
     else if (firstItem) {
         copiedArray.unshift(firstItem);
     }
+
     setWords(copiedArray);
   }, [hebrewSentence, wordsData]);
 };
+

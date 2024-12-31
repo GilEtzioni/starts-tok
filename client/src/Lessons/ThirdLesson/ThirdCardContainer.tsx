@@ -38,6 +38,8 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ wordsData, less
     // handle the input
     useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
 
+    const { Title } = Typography;
+
     useEffect(() => {
       if (germanWord) {
         dispatch(setRightAnswer(germanWord));
@@ -46,6 +48,11 @@ const ThirdCardContainer: React.FC<ThirdCardContainerProps> = ({ wordsData, less
 
       return (
         <div className="text-center h-[400px]">
+          
+            <Row className="flex justify-center">
+              <Title level={3} className="text-center">תרגמו את המשפט</Title>
+            </Row>
+            
             <HebrewSentenceThird wordsData={wordsData} hebrewSentence={hebrewSentence} />
       
           {/* german */}
