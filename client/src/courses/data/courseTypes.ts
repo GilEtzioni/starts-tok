@@ -1,4 +1,4 @@
-export enum LevelEnglish {
+export enum EnglishLevel {
     A1 = "A1",
     A2 = "A2",
     B1 = "B1",
@@ -7,7 +7,7 @@ export enum LevelEnglish {
     C2 = "C2",
 }
 
-export enum LevelHebrew {
+export enum HebrewLevel {
     מבוא = "מבוא",
     בסיסי = "בסיסי",
     בינוני = "בינוני",

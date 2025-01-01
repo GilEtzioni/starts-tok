@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "antd";
 import useFilteredWords from "../dicComponents/midComponents/dataEffect";
 import { WordsType } from "../types/wordType";
 
@@ -9,7 +10,7 @@ interface MainStaticsProps {
 const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
   const { filteredWords } = useFilteredWords(data);
 
-  const titles = [ "A1 - מבוא", "A2 - מתחילים", "B1 - בסיסי", "B2 - מתקדם", "C1 - מתקדם מאוד", "C2 - שפת אם", "המילים שהוספתי" ];
+  const titles = ["A1 - מבוא", "A2 - מתחילים", "B1 - בסיסי", "B2 - מתקדם", "C1 - מתקדם מאוד", "C2 - שפת אם", "המילים שהוספתי"];
   const levelEnglish = ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"];
 
   const getCountsForLevel = (level: string) => {
@@ -30,11 +31,13 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
       counts,
       dataSource: [
         {
+          key: "1",
           X: totalCount ? `${((counts.X / totalCount) * 100).toFixed(2)}%` : "0%",
           V: totalCount ? `${((counts.V / totalCount) * 100).toFixed(2)}%` : "0%",
           "?": totalCount ? `${((counts["?"] / totalCount) * 100).toFixed(2)}%` : "0%",
         },
         {
+          key: "2",
           X: `${counts.X}/${totalCount}`,
           V: `${counts.V}/${totalCount}`,
           "?": `${counts["?"]}/${totalCount}`,
@@ -54,38 +57,51 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
     { X: 0, V: 0, "?": 0 }
   );
 
-  const renderTable = (data: any[]) => (
-    <table className="w-full text-center">
-      <thead>
-        <tr className="text-gray-600">
-          <th className="p-2" style={{ color: "red" }}>X</th>
-          <th className="p-2 border-l border-gray-300" style={{ color: "green" }}>V</th>
-          <th className="p-2 border-l border-gray-300" style={{ color: "blue" }}>?</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row, idx) => (
-          <tr key={idx}>
-            <td className="p-2 text-gray-700">{row.X}</td>
-            <td className="p-2 text-gray-700 border-l border-gray-300">{row.V}</td>
-            <td className="p-2 text-gray-700 border-l border-gray-300">{row["?"]}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+  const columns = [
+    {
+      title: <span style={{ color: "red" }}>X</span>,
+      dataIndex: "X",
+      key: "X",
+      render: (text: string) => <span style={{ color: "black" }}>{text}</span>,
+    },
+    {
+      title: <span style={{ color: "green" }}>V</span>,
+      dataIndex: "V",
+      key: "V",
+      render: (text: string) => <span style={{ color: "black" }}>{text}</span>,
+    },
+    {
+      title: <span style={{ color: "blue" }}>?</span>,
+      dataIndex: "?",
+      key: "?",
+      render: (text: string) => <span style={{ color: "black" }}>{text}</span>,
+    },
+  ];
 
   return (
     <div className="p-4 bg-gray-50">
       {/* total card */}
       <div className="rounded shadow-sm bg-white p-6 mb-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">סה״כ</h2>
-        {renderTable([
-          { X: `${((totalCounts.X / (totalCounts.X + totalCounts.V + totalCounts["?"])) * 100).toFixed(2)}%`,
-            V: `${((totalCounts.V / (totalCounts.X + totalCounts.V + totalCounts["?"])) * 100).toFixed(2)}%`,
-            "?": `${((totalCounts["?"] / (totalCounts.X + totalCounts.V + totalCounts["?"])) * 100).toFixed(2)}%` },
-            { X: totalCounts.X, V: totalCounts.V, "?": totalCounts["?"] }
-        ])}
+        <Table
+          columns={columns}
+          dataSource={[
+            {
+              key: "1",
+              X: `${((totalCounts.X / (totalCounts.X + totalCounts.V + totalCounts["?"])) * 100).toFixed(2)}%`,
+              V: `${((totalCounts.V / (totalCounts.X + totalCounts.V + totalCounts["?"])) * 100).toFixed(2)}%`,
+              "?": `${((totalCounts["?"] / (totalCounts.X + totalCounts.V + totalCounts["?"])) * 100).toFixed(2)}%`,
+            },
+            {
+              key: "2",
+              X: totalCounts.X,
+              V: totalCounts.V,
+              "?": totalCounts["?"],
+            },
+          ]}
+          pagination={false}
+          bordered
+        />
       </div>
 
       {/* levels cards */}
@@ -95,7 +111,7 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
           return (
             <div key={level} className="rounded shadow-sm bg-white p-6">
               <h3 className="text-lg font-medium text-gray-800 mb-2 text-center">{titles[index]}</h3>
-              {renderTable(dataSource)}
+              <Table columns={columns} dataSource={dataSource} pagination={false} bordered />
             </div>
           );
         })}

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { WordsType } from '../types/lessonType';
 import { splitSentenceToWords } from './SecondHelper';
 import { Tooltip } from 'antd';
 import { useHandleData } from './SecondEffects';
+const classNames = require('classnames');
 
 interface HebrewSentenceProps {
     wordsData: WordsType[];
@@ -16,7 +17,7 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSen
 
     const [words, setWords] = useState<Array<{ hebrewString: string; germanString: string | null }>>([]);
 
-    useHandleData({ splitSentenceToWords, hebrewSentence, wordsData, setWords  });
+    useHandleData({ splitSentenceToWords, hebrewSentence, wordsData, setWords });
 
     return (
         <div className="text-center my-5">
@@ -69,9 +70,13 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSen
                                 </span>
                                 {Array.isArray(item.germanString) && item.germanString[0] !== null && (
                                     <div
-                                        className={`border-t-2 w-full absolute top-4 left-0 ${
-                                            hoveredIndex === index ? 'border-black' : 'border-dashed border-black'
-                                        }`}
+                                        className={classNames(
+                                            'border-t-2 w-full absolute top-4 left-0',
+                                            {
+                                                'border-black': hoveredIndex === index,
+                                                'border-dashed border-black': hoveredIndex !== index,
+                                            }
+                                        )}
                                     ></div>
                                 )}
                             </span>
@@ -81,6 +86,5 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSen
         </div>
     );
 }
-
 
 export default HebrewSentenceTwo;

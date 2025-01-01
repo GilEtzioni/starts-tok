@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Button, Input, Alert, Spin } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { styles } from "./StyleAddWord";
-import "./buttns.css";
-
 import { usePatchNewItem } from "../dataDictionary/patchAxios";
 
 const MainAddWord: React.FC = () => {
@@ -39,7 +37,9 @@ const MainAddWord: React.FC = () => {
 
   return (
     <>
-      <Button className='buttons' type="primary" onClick={() => setOpen(true)}>
+      <Button className="bg-[hsl(213.1,93.9%,67.8%)] text-white border-none px-4 py-2 text-base 
+      font-bold rounded-full transition-all duration-300 ease-in-out hover:bg-[hsl(201.3,96.3%,32.2%)] hover:-translate-y-0.5" 
+      type="primary" onClick={() => setOpen(true)}>
         הוסף מילה למילון
       </Button>
 

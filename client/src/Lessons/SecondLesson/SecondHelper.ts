@@ -6,7 +6,7 @@ interface CardItem {
     container: string;
 }
 
-export function getGermanWords(lessons: LessonType, order: number):Array<[number, number, string, string]> {
+export const getGermanWords = (lessons: LessonType, order: number):Array<[number, number, string, string]> => {
     const germanWordsArray: Array<string> = [];
 
     // first lesson - all 12 words
@@ -61,7 +61,7 @@ export function getGermanWords(lessons: LessonType, order: number):Array<[number
     return combinedWordsArray;
 }
 
-export function shuffleArray (wordsArray: Array<[number, number, string, string]>): Array<[number, number, string, string]> {
+export const shuffleArray = (wordsArray: Array<[number, number, string, string]>): Array<[number, number, string, string]> => {
     for (let i = wordsArray.length - 1; i > 0; i--) {
         const random = Math.floor(Math.random() * (i + 1));
         [wordsArray[i], wordsArray[random]] = [wordsArray[random], wordsArray[i]]; // swap item with random
@@ -69,7 +69,7 @@ export function shuffleArray (wordsArray: Array<[number, number, string, string]
     return wordsArray;
 };
 
-export function findMaxIndex(germanArray: CardItem[], cardId: number): number {
+export const findMaxIndex = (germanArray: CardItem[], cardId: number): number => {
     let maxContainerOrder = 0; 
 
     // find the card
@@ -90,7 +90,7 @@ export function findMaxIndex(germanArray: CardItem[], cardId: number): number {
     return maxContainerOrder; 
 }
 
-export function getHebrewSentence (lessons: LessonType, order: number): string { 
+export const getHebrewSentence = (lessons: LessonType, order: number): string => { 
     if (order === 2) {
         return lessons.sentenceOneHebrew;
     }
@@ -100,7 +100,7 @@ export function getHebrewSentence (lessons: LessonType, order: number): string {
     return "";
 }
 
-export function getGermanSentence (lessons: LessonType, order: number): string { 
+export const getGermanSentence = (lessons: LessonType, order: number): string => { 
     if (order === 2) {
         return lessons.sentenceOneGerman;
     }
@@ -111,7 +111,7 @@ export function getGermanSentence (lessons: LessonType, order: number): string {
 }
 
 
-export function getUserAnswer (lessons: LessonType, germanArray: CardItem[], order: number): string { 
+export const getUserAnswer = (lessons: LessonType, germanArray: CardItem[], order: number): string => { 
     let answer = "";
     germanArray
         .filter(item => item.container === "up") 
@@ -127,7 +127,7 @@ export function getUserAnswer (lessons: LessonType, germanArray: CardItem[], ord
     return answer;
 }
 
-export function areStringsEqual(str1: string, str2: string): boolean {
+export const areStringsEqual = (str1: string, str2: string): boolean => {
     const cleanString = (str: string) =>
         str.replace(/[\s.,;!?]/g, '').toLowerCase(); 
 
@@ -154,7 +154,7 @@ function movePunctuationToFront(str: string): string {
     return str;
 }
 
-function sentenceWithoutPunctuations(hebrewSentence: string): string {
+const sentenceWithoutPunctuations = (hebrewSentence: string): string => {
     const cleanString = (str: string) =>
         str.replace(/[\s.,;!?]/g, ' ').toLowerCase();
 
@@ -163,7 +163,7 @@ function sentenceWithoutPunctuations(hebrewSentence: string): string {
     return cleanedString;
 }
 
-export function splitSentenceToWords(hebrewSentence: string, wordsArray: WordsType[]) {
+export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsType[]) => {
     let fixedString: string = movePunctuationToFront(hebrewSentence);               // make the last '?' as the first index
     const noPunctionsSentence: string = sentenceWithoutPunctuations(fixedString);   // no punctions
     const resultArray: { hebrewString: string; germanString: Array<string | null> }[] = [];

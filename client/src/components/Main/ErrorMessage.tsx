@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
+import classNames from 'classnames';
 
 // redux
 import { useSelector } from 'react-redux';
@@ -10,8 +11,7 @@ const ErrorMessage: React.FC = () => {
     const order = useSelector((state: RootState) => state.lessons.order);
 
     const topCss = (order: number): string => {
-        if (order === 1 || order === 4) return 'top-10';
-        return 'top-4';
+        return order === 1 || order === 4 ? 'top-10' : 'top-4';
     };
 
     const rightAnswer = (order: number, answer: string) => {
@@ -31,10 +31,11 @@ const ErrorMessage: React.FC = () => {
     };
 
     return (
-        <Card 
-            bordered={false} 
-            className={`bg-red-600 text-white text-center flex items-center justify-center h-24 w-72 mx-auto rounded-lg relative shadow-md ${topCss(order)}`}
-        >
+        <Card
+            bordered={false}
+            className={classNames('bg-red-600', 'text-white', 'text-center', 'flex', 'items-center', 'justify-center', 
+                'h-24', 'w-72', 'mx-auto', 'rounded-lg', 'relative', 'shadow-md', topCss(order) )}
+            >
             {rightAnswer(order, answer)}
         </Card>
     );

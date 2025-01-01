@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import axiosInstance from "../data/axiosInstance";
 
 import './MainCourses.css';
-import { getArray } from "./Helper";
+import { getNumberOfLessonsCompleted } from "./Helper";
 import CourseCard from './CourseCard';
 
 const CardContainer: React.FC = () => {
@@ -21,7 +21,7 @@ const CardContainer: React.FC = () => {
     fetchItems
   );
 
-  const finished: Array<number> = getArray(coursesData);
+  const finished: Array<number> = getNumberOfLessonsCompleted(coursesData);
 
   const totalCards = 6;
   const initialCards = [1, 2, 3, 4];

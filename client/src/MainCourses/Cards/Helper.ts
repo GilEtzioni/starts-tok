@@ -3,7 +3,7 @@ type FinishedType = {
     totalLessonsCompleted: number;
 };
 
-export const getArray = (arr: FinishedType[]): Array<number> => {
+export const getNumberOfLessonsCompleted = (arr: FinishedType[]): Array<number> => {
     const newArray = [0, 1, 2, 3, 4, 5];
 
     arr.forEach((item) => {
