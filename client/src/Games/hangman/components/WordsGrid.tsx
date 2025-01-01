@@ -2,6 +2,8 @@
 import React from 'react';
 import { Button , Image } from 'antd';
 
+import "../../../index.css";
+
 // redux
 import { addOneWrongCounter, addOneSuccesssCounter } from "../dataHangman/HangmanSlice"
 import { useDispatch } from 'react-redux';
@@ -18,13 +20,10 @@ interface WordsGridProps {
 
 const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,gameArray ,setgameArray }) => {
 
-  // redux
-  const dispatch = useDispatch();
+    // redux
+    const dispatch = useDispatch();
 
-  // const letters = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל',
-  //    'מ', 'ם', 'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת' ];
-
-  const handleClick = (selectedLetter: string) => {
+    const handleClick = (selectedLetter: string) => {
     const userAnswer: boolean | null = isAnswerTrue(lettersArray ,selectedLetter);
 
     const updatedLettersArray = handleArray(lettersArray, selectedLetter);
@@ -44,28 +43,21 @@ const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,ga
   return (
     <div className="grid grid-cols-6 gap-2">
       {lettersArray.map((item) => (
-        <Button
-          key={item.letter}
-          type="primary"
-          style={{
-            color: item.selected ? '#fff' : '#6b7280',
-            backgroundColor: item.selected ? '#f87171' : '#f3f4f6',
-            border: '1px solid #e5e7eb',
-            borderRadius: '8px', 
-            transition: 'all 0.3s ease',
-            padding: '16px 24px', 
-            fontSize: '1rem',
-          }}
-          className={`px-4 py-2 cursor-pointer font-medium rounded-lg text-lg p-3 inline-flex items-center ${item.selected ? 'hover:bg-red-500' : 'hover:translate-y-[-2px] hover:bg-blue-500 hover:text-white'}`}
-          onClick={() => handleClick(item.letter)}
-        >
-          {item.letter}
-        </Button>
+      <Button
+        key={item.letter}
+        type="primary"
+        className={`!border !border-gray-200 !rounded-lg !transition-all !duration-300 !ease-in-out !px-6 !py-4 !text-base ${
+          item.selected
+            ? '!text-white !bg-red-400 hover:!bg-red-400'
+            : '!text-gray-500 !bg-gray-100 hover:!bg-gray-300 hover:!-translate-y-1'
+        }`}
+        onClick={() => !item.selected && handleClick(item.letter)}
+      >
+        {item.letter}
+      </Button>
       ))}
     </div>
   );
-  
-  
-  
+
 }
 export default WordsGrid;

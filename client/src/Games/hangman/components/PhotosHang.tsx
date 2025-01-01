@@ -29,7 +29,7 @@ const PhotosHang: React.FC = () => {
 
   return (
     <div>
-      <img src={currImage} alt="Hangman" style={{ maxWidth: '100%', height: 'auto' }} />
+      <img src={currImage} alt="Hangman" className="max-w-full h-auto" />
     </div>
   );
 };
