@@ -7,9 +7,9 @@ import { sortWordsById, knowlageDataArray } from '../HelpingFunctionsDictionary'
 const useFilteredWords = (words: WordsType[]) => {
     
   // 
-  const clicks = useSelector((state: RootState) => state.dictionary.clickFilter);
-  const level = useSelector((state: RootState) => state.dictionary.levelFilter);
-  const knowlage = useSelector((state: RootState) => state.dictionary.knowlageFilter);
+  const clicks = useSelector((state: RootState) => state.dictionay.clickFilter);
+  const knowlage = useSelector((state: RootState) => state.dictionay.knowlageFilter);
+  const level = useSelector((state: RootState) => state.dictionay.levelFilter);
 
   const [filteredWords, setFilteredWords] = useState<WordsType[]>([]);
   const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]);

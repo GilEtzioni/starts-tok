@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import lessonReducer from "../Lessons/dataLessons/LessonsSlice";
 import dictionaryReducer from "../Dictionarys/dataDictionary/DictionarySlice";
+import hangmanReducer from "../Games/hangman/dataHangman/HangmanSlice";
 
 export const store = configureStore({
   reducer: {
     lessons: lessonReducer,
-    dictionary: dictionaryReducer,
+    dictionay: dictionaryReducer,
+    hangman: hangmanReducer,
   },
 });
 

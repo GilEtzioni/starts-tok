@@ -250,7 +250,7 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
 
     // put the items in their right positions
     const finalArray: { hebrewString: string; germanString: (string | null)[] }[] = [];
-    let start_index = 0;
+    let startIndex = 0;
     
     const normalizeHebrew = (str: string): string => {
         return str.replace(/\s+/g, "").normalize("NFC");
@@ -258,18 +258,18 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
     
     const normalizedNoSpaceString = normalizeHebrew(noSpaceString); 
     
-    for (let i = start_index; i <= normalizedNoSpaceString.length; i++) {
+    for (let i = startIndex; i <= normalizedNoSpaceString.length; i++) {
         for (const wordObj of resultArray) {
             const word = wordObj.hebrewString;
             const normalizedWord = normalizeHebrew(word);
-            const substring = normalizedNoSpaceString.substring(start_index, i); 
+            const substring = normalizedNoSpaceString.substring(startIndex, i); 
     
             if (normalizedWord === substring) {
                 finalArray.push({
                     hebrewString: wordObj.hebrewString,
                     germanString: wordObj.germanString
                 });
-                start_index = i;
+                startIndex = i;
                 break; 
             }
         }

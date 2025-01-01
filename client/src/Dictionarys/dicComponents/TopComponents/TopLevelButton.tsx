@@ -13,7 +13,7 @@ interface LevelButtonProps {
 }
 
 const LevelButton: React.FC<LevelButtonProps> = ({ buttNameHebrew, buttNameEnglish }) => {
-  const levelFilter = useSelector((state: RootState) => state.dictionary.levelFilter);
+  const levelFilter = useSelector((state: RootState) => state.dictionay.levelFilter);
   const dispatch = useDispatch();
   
   const isClicked = levelFilter.includes(buttNameEnglish);

@@ -35,6 +35,16 @@ app.get("/main/finished", async (req: Request, res: Response) => {
     }
 });
 
+app.get("/hangman", async (req: Request, res: Response) => {
+    try {
+        const coursesSubjects = await db.select().from(Words);
+        res.json(coursesSubjects);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+});
+
 // /main/course/A1/Greetings
 app.get("/main/course/:userLevel/:course", async (req: Request, res: Response) => {
     try {
