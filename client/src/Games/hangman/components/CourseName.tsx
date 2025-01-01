@@ -1,15 +1,25 @@
 import React from 'react';
 import { WordsType } from "../../../Dictionarys/types/wordType";
+import { Row, Typography } from 'antd';
 
 interface CourseNameProps {
   randomWord: WordsType[];
 }
 
 const CourseName: React.FC<CourseNameProps> = ({ randomWord }) => {
+  const { Title } = Typography;
+  
   return (
-    <div>
+    <div className="flex justify-center mb-4">
       {randomWord.length > 0 && (
-        <p>{randomWord[0].HebrewWord}</p>
+        <Row justify="center" className="mb-2">
+          <Title
+            level={3}
+            className="text-3xl font-semibold text-center antialiased"
+          >
+            {randomWord[0].courseNameEnglish}
+          </Title>
+        </Row>
       )}
     </div>
   );

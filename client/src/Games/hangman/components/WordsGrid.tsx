@@ -1,50 +1,71 @@
 // react + antd
-import React, { useState } from 'react';
-import { Button } from 'antd';
+import React from 'react';
+import { Button , Image } from 'antd';
 
 // redux
-import { addOneWrongCounter } from '../dataHangman/HangmanSlice'; 
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from "../../../app/store";
+import { addOneWrongCounter, addOneSuccesssCounter } from "../dataHangman/HangmanSlice"
+import { useDispatch } from 'react-redux';
+import { hangmanType } from '../types/hangmanType';
 
-// helping functions
-import { manageGame, isAnwerTrue } from "../HangHelper";
+import { handleArray, isAnswerTrue } from "../HangHelper";
 
 interface WordsGridProps {
-  // setLettersArray: (array: Array<{ letter: string; isSelected: boolean; }>) => void;
   setLettersArray: any;
-  lettersArray: Array<[string, boolean]>;
+  setgameArray: any
+  gameArray: Array<hangmanType>
+  lettersArray: Array<hangmanType>;
 }
 
-const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray }) => {
+const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,gameArray ,setgameArray }) => {
 
-    // redux
-    const wrongCounter = useSelector((state: RootState) => state.hangman.wrongCounter);
-    const dispatch = useDispatch();
+  // redux
+  const dispatch = useDispatch();
 
-    const [anwser, setAnswer] = useState(false);
-
-  const letters = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל',
-     'מ', 'ם', 'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת' ];
+  // const letters = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל',
+  //    'מ', 'ם', 'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת' ];
 
   const handleClick = (selectedLetter: string) => {
-    const userAnswer = isAnwerTrue(lettersArray ,selectedLetter);
-    setAnswer(userAnswer);
+    const userAnswer: boolean | null = isAnswerTrue(lettersArray ,selectedLetter);
 
-    const updatedArray = manageGame(lettersArray, selectedLetter);
-    setLettersArray(updatedArray);  
+    const updatedLettersArray = handleArray(lettersArray, selectedLetter);
+    setLettersArray(updatedLettersArray);
 
-    if (anwser === false) {
+    const updatedGameArray = handleArray(gameArray, selectedLetter);
+    setgameArray(updatedGameArray);
+
+    if (userAnswer === false) {
       dispatch(addOneWrongCounter());
+    }
+    if (userAnswer === true) {
+      dispatch(addOneSuccesssCounter());
     }
   }
 
   return (
-    <div> 
-      {letters.map((item) => (
-        <Button onClick={() => handleClick(item)}> {item} </Button> ))}
+    <div className="grid grid-cols-6 gap-2">
+      {lettersArray.map((item) => (
+        <Button
+          key={item.letter}
+          type="primary"
+          style={{
+            color: item.selected ? '#fff' : '#6b7280',
+            backgroundColor: item.selected ? '#f87171' : '#f3f4f6',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px', 
+            transition: 'all 0.3s ease',
+            padding: '16px 24px', 
+            fontSize: '1rem',
+          }}
+          className={`px-4 py-2 cursor-pointer font-medium rounded-lg text-lg p-3 inline-flex items-center ${item.selected ? 'hover:bg-red-500' : 'hover:translate-y-[-2px] hover:bg-blue-500 hover:text-white'}`}
+          onClick={() => handleClick(item.letter)}
+        >
+          {item.letter}
+        </Button>
+      ))}
     </div>
   );
-};
-
+  
+  
+  
+}
 export default WordsGrid;

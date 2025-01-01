@@ -4,7 +4,7 @@ import { Col, Row } from 'antd';
 
 // fetch 
 import { useQuery } from '@tanstack/react-query';
-import axiosInstance from "./dataHangman/axiosInstance";
+import axiosInstance from './dataHangman/axiosInstance';
 import { WordsType } from "../../Dictionarys/types/wordType";
 
 // components
@@ -13,10 +13,23 @@ import CourseName from './components/CourseName';
 import WordsLines from './components/WordsLines';
 import WordsGrid from './components/WordsGrid';
 import PhotosHang from './components/PhotosHang';
-import { getRandomWord, createArray } from "./HangHelper";
 import './MainHangman.css';
+import { hangmanType } from './types/hangmanType'; 
+import MainMessages from "./messages/MainMessages";
+import { useStartGame } from './HangEffects';
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { getRandomWord } from './HangHelper';
+import { useDispatch } from 'react-redux';
+import { setSelectedWord } from './dataHangman/HangmanSlice';
+import { getSelectedWord } from './HangHelper';
 
 const MainHangman: React.FC = () => {
+
+    const gameWord = useSelector((state: RootState) => state.hangman.selectedWord);
+    const resetGame = useSelector((state: RootState) => state.hangman.succcessCounter);
+
+
     const fetchItems = async (): Promise<WordsType[]> => {
       const { data } = await axiosInstance.get('/hangman');
       return data;
@@ -24,25 +37,25 @@ const MainHangman: React.FC = () => {
   
     const { data: words = [], isLoading, error } = useQuery(['hangman'], fetchItems);
   
-    const [radomWord, setRandomWord] = useState<Array<WordsType>>([]);
-    const [lettersArray, setLettersArray] = useState<Array<[string, boolean]>>([]);
-    
+    const [randomWord, setRandomWord] = useState<Array<WordsType>>([]);
+    const [lettersArray, setLettersArray] = useState<Array<hangmanType>>([]);
+    const [gameArray, setgameArray] = useState<Array<hangmanType>>([]);
+
+    const dispatch = useDispatch();
+
+    // first start game
     useEffect(() => {
       if (words.length > 0) {
-        // get a random word
-        const selectedWord = getRandomWord(words);
-        setRandomWord([selectedWord]); // Wrap it in an array
-    
-        // create array of letters
-        const lettersRandomArray = createArray(selectedWord);
-        console.log("lettersRandomArray: ", lettersRandomArray);
-        setLettersArray(lettersRandomArray);
+          const selectedWord = getRandomWord(words);
+          dispatch(setSelectedWord([selectedWord]));
       }
-    }, [words]);
-  
+  }, [words, dispatch]);
+
+    // next start games
+    useStartGame({ words , gameWord, setRandomWord, setLettersArray, setgameArray});
+
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading data</div>;
-
   
     return (
       <Row>
@@ -51,19 +64,20 @@ const MainHangman: React.FC = () => {
           {/* BackButton */}
           <div className="header-container">
             <BackButton />
+            <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words}/>
           </div>
   
           {/* CourseName and WordsLines */}
           <div className="center-container">
-          <CourseName randomWord={radomWord} />
+          <CourseName randomWord={randomWord} />
             <div className="words-lines-container">
-              <WordsLines lettersArray={lettersArray} />
+              <WordsLines lettersArray={lettersArray} gameArray={gameArray}/>
             </div>
           </div>
-  
+
           {/* WordsGrid */}
           <div className="words-grid-container">
-            <WordsGrid lettersArray={lettersArray} setLettersArray={setLettersArray}/>
+            <WordsGrid lettersArray={lettersArray} setLettersArray={setLettersArray} gameArray={gameArray} setgameArray={setgameArray}/>
           </div>
         </Col>
   
