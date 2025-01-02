@@ -8,7 +8,7 @@ export interface useStartGameProps {
   setRandomWord: (array: Array<WordsType>) => void;
   setLettersArray: (array: Array<hangmanType>) => void;
   setGameArray: (array: Array<hangmanType>) => void;
-  gameWord: any;
+  gameWord:any;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
@@ -19,6 +19,8 @@ export const useStartGame = ({gameWord, setRandomWord, words, setLettersArray, s
         const randomIndex = Math.floor(Math.random() * gameWord.length);
         const selectedWord = gameWord[randomIndex];
         setRandomWord([selectedWord]);
+
+        console.log("selectedWord: ", selectedWord);
           
         // create abc-letters array
         const lettersRandomArray = createLettersArray(selectedWord);

@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
 import { db } from "./drizzle/db";
-import { CourseNames, Words, Lessons } from "./drizzle/schema";
+import { CourseNames, Words, Lessons, Games } from "./drizzle/schema";
 import "dotenv/config";
 import cors from "cors";
-import { eq, and, sql, desc } from "drizzle-orm";
+import { eq, and, sql, desc, max } from "drizzle-orm";
 
 // express
 const app = express();
@@ -32,16 +32,6 @@ app.get("/main/finished", async (req: Request, res: Response) => {
         res.json(coursesSubjects);
     } catch (error) {
         res.status(500).json({ error: "error" });
-    }
-});
-
-app.get("/hangman", async (req: Request, res: Response) => {
-    try {
-        const coursesSubjects = await db.select().from(Words);
-        res.json(coursesSubjects);
-    } catch (err) {
-        console.error("Error fetching courses:", err);
-        res.status(500).send("Error fetching courses");
     }
 });
 
@@ -238,10 +228,71 @@ app.post("/dictionary/new", async (req: Request, res: Response) => {
   
       res.json(newWord[0]); 
     } catch (error) {
-      console.error(error);
       res.status(500).json({ error: "Failed to add the new word." });
     }
   });
+
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+app.get("/hangman", async (req: Request, res: Response) => {
+    try {
+        const coursesSubjects = await db.select().from(Words);
+        res.json(coursesSubjects);
+    } catch (err) {
+        res.status(500).send("Error fetching courses");
+    }
+});
+
+app.get("/hangman/allScore", async (req: Request, res: Response) => {
+    try {
+        const score = await db
+            .select().from(Games)
+            .where(eq(Games.gameName, "hangmanGame"));
+
+        res.json(score);
+    } catch (err) {
+        res.status(500).send("Error fetching game score");
+    }
+});
+
+app.get("/hangman/maxScore", async (req: Request, res: Response) => {
+    try {
+        const [highestScore] = await db
+            .select({ maxScore: max(Games.gameScore) })
+            .from(Games)
+            .where(eq(Games.gameName, "hangmanGame"));
+
+        res.json(highestScore);
+    } catch (err) {
+        res.status(500).send("Error fetching game score");
+    }
+});
+
+app.post("/hangman/score", async (req: Request, res: Response) => {
+    const { score } = req.body; 
+
+    if (score === undefined || score === null) {
+        res.status(400).send("Missing 'score' in request body");
+    }
+
+    try {
+        const newScore = await db
+            .insert(Games)
+            .values({
+                gameName: "hangmanGame",
+                gameScore: score,
+            }).returning({
+                gameId: Games.gameId,
+                gameName: Games.gameName,
+                gameScore: Games.gameScore,
+            });
+
+        res.status(201).json(newScore);
+    } catch (error) {
+        res.status(500).send("An error occurred while saving the score");
+    }    
+});
   
 
 app.listen(PORT, () => {

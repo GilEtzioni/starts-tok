@@ -18,16 +18,14 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
 
     const wrongCounter = useSelector((state: RootState) => state.hangman.wrongCounter);
 
-    console.log("randomWord: ", randomWord);
-
     const isEndGame = (wrongCounter: number, lettersArray: Array<hangmanType>) => {
 
-        const uniqueLettersLength = randomWord[0]?.HebrewWord
+        const uniqueLettersLength = randomWord[0]?.GermanWord
         .replace(/\s/g, '') // remove spaces
         .split('')
         .filter((value, index, self) => self.indexOf(value) === index) // unique letters
         .length;
-        
+
         if (wrongCounter === 6) {
             return <FailMesssage words={words} />;
         }
@@ -49,7 +47,7 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
     
     return (
         <div>
-            <p> {isEndGame(wrongCounter, lettersArray)} </p>
+            {isEndGame(wrongCounter, lettersArray)}
         </div>
     );
 };

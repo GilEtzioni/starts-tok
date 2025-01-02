@@ -5,7 +5,7 @@ export const hangmanSlice = createSlice({
   name: 'hangman',
   initialState: {
     wrongCounter: 0,
-    succcessCounter: 0,
+    successCounter: 0,
     selectedWord:  [] as Array<WordsType>,
   },
 
@@ -20,10 +20,10 @@ export const hangmanSlice = createSlice({
 
     /* success counter */
     addOneSuccesssCounter: (state) => {
-      state.succcessCounter += 1;
+      state.successCounter += 1;
     },
     resetSuccesssCounter: (state) => {
-      state.succcessCounter = 0;
+      state.successCounter = 0;
     },
 
     /* selected word */

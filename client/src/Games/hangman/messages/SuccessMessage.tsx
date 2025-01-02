@@ -1,25 +1,40 @@
 import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 // redux
-import { useDispatch } from 'react-redux';
-import { resetWrongCounter, addOneSuccesssCounter, setSelectedWord } from '../dataHangman/HangmanSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetWrongCounter, addOneSuccesssCounter, setSelectedWord, resetSuccesssCounter } from '../dataHangman/HangmanSlice';
 import { getSelectedWord } from '../HangHelper';
 import { WordsType } from '../../../Dictionarys/types/wordType'; 
+import { RootState } from '../../../app/store';
+
 
 interface SuccessMessageProps {
   words: Array<WordsType>;
 }
 
 const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
+
+  const successCounter = useSelector((state: RootState) => state.hangman.successCounter);
+  
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function restartGame() {
     dispatch(resetWrongCounter());
     dispatch(addOneSuccesssCounter());
     const selectedWord = getSelectedWord(words); 
-    console.log("+1");
     dispatch(setSelectedWord(selectedWord));
+  }
+
+  async function handleBack() {
+    const payload = { score: successCounter + 1 ?? 0 };
+    const response = await axios.post('http://localhost:3000/hangman/score', payload);
+    dispatch(resetWrongCounter());
+    dispatch(resetSuccesssCounter());
+    navigate('/main');
   }
 
   return (
@@ -40,7 +55,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
           <h1 className="text-2xl font-bold text-gray-800 mb-4"> !כל הכבוד </h1>
           <div className="flex flex-col gap-4">
             <Link to="/main">
-              <Button type="primary" 
+              <Button onClick={() => handleBack()} type="primary" 
               className="w-full py-2 text-lg font-semibold bg-blue-500 hover:bg-blue-600 border-none shadow-md hover:shadow-lg rounded-md"
               >
                 חזרה לדף הבית

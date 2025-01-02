@@ -5,7 +5,12 @@ import { Col, Row } from 'antd';
 // fetch 
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './dataHangman/axiosInstance';
-import { WordsType } from "../../Dictionarys/types/wordType";
+
+//redux
+import { useDispatch } from 'react-redux';
+import { setSelectedWord} from './dataHangman/HangmanSlice';
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 // components
 import BackButton from './components/BackButton';
@@ -13,18 +18,15 @@ import CourseName from './components/CourseName';
 import WordsLines from './components/WordsLines';
 import WordsGrid from './components/WordsGrid';
 import PhotosHang from './components/PhotosHang';
-import { hangmanType } from './types/hangmanType'; 
 import MainMessages from "./messages/MainMessages";
+
+// functions + types
+import { hangmanType } from './types/hangmanType'; 
+import { WordsType } from "../../Dictionarys/types/wordType";
 import { useStartGame } from './HangEffects';
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
 import { getRandomWord } from './HangHelper';
-import { useDispatch } from 'react-redux';
-import { setSelectedWord , resetSuccesssCounter} from './dataHangman/HangmanSlice';
 
 const MainHangman: React.FC = () => {
-
-  const successCounter = useSelector((state: RootState) => state.hangman.succcessCounter);
 
     const fetchItems = async (): Promise<WordsType[]> => {
       const { data } = await axiosInstance.get('/hangman');
@@ -37,6 +39,7 @@ const MainHangman: React.FC = () => {
     const [lettersArray, setLettersArray] = useState<Array<hangmanType>>([]);
     const [gameArray, setGameArray] = useState<Array<hangmanType>>([]);
 
+    const successCounter = useSelector((state: RootState) => state.hangman.successCounter);
     const gameWord = useSelector((state: RootState) => state.hangman.selectedWord);
     const dispatch = useDispatch();
 
@@ -75,7 +78,7 @@ const MainHangman: React.FC = () => {
 
       <Col span={10} className="bg-[#d3d3d3] h-screen">
         <div className="flex flex-col items-center mt-12">
-          <p className="mb-5 text-lg"> הצלחת ברצף {successCounter} משחקים </p>
+          <p className="mb-5 text-lg"> הצלחת {successCounter} משחקים ברצף </p>
           <PhotosHang />
         </div>
       </Col>

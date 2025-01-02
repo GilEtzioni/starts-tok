@@ -1,5 +1,5 @@
 {
-  "id": "4f58bf6c-8eb2-4fed-a010-456863e7413d",
+  "id": "1752453e-1b0c-4945-8cef-fd044e8cd350",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -51,6 +51,38 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.games": {
+      "name": "games",
+      "schema": "",
+      "columns": {
+        "gameId": {
+          "name": "gameId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "gameName": {
+          "name": "gameName",
+          "type": "gameName",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gameScore": {
+          "name": "gameScore",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -427,6 +459,15 @@
     }
   },
   "enums": {
+    "public.gameName": {
+      "name": "gameName",
+      "schema": "public",
+      "values": [
+        "speedGame",
+        "hangmanGame",
+        "rowGame"
+      ]
+    },
     "public.levelEnglish": {
       "name": "levelEnglish",
       "schema": "public",

@@ -9,17 +9,17 @@ export const getRandomWord = (wordsArray: WordsType[]): WordsType => {
     return wordsArray[selected_word_index];
 };
 
+const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
+    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß'];
+
 export const createLettersArray = (word: WordsType): Array<hangmanType> => {
     const result: Array<hangmanType> = [];
 
-    const letters = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל',
-        'מ', 'ם', 'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת'];
-
-    const wordLetters = new Set(word.HebrewWord.split(''));
+    const wordLetters = new Set(word.GermanWord.toLowerCase().split(''));
 
     letters.forEach((letter) => {
         result.push({
-            letter,
+            letter: letter.toLowerCase(),
             inGame: wordLetters.has(letter),
             selected: false,
         });
@@ -29,23 +29,24 @@ export const createLettersArray = (word: WordsType): Array<hangmanType> => {
 
 export const createGameArray = (word: WordsType): Array<hangmanType> => {
     const array: Array<hangmanType> = [];
-
-    word.HebrewWord.split('').forEach((letter) => {
+  
+    word.GermanWord.toLowerCase().split('').forEach((letter) => {
+      if (letters.includes(letter)) { 
         array.push({
-            letter,
-            inGame: letter !== " ",
-            selected: false,
+          letter: letter.toLowerCase(),
+          inGame: letter !== " ",
+          selected: false,
         });
+      }
     });
     return array;
-};
+  };
 
 // set true if the letter is selected
 export const handleArray = (wordsArray: Array<hangmanType>, letter: string) => {
     const array = [...wordsArray];
-    // check if the letter is in the array
     for (const word of wordsArray) {
-        if (word.letter === letter && word.selected === false) {
+        if (word.letter.toLowerCase() === letter.toLowerCase() && word.selected === false) {
             word.selected = true;
         }
     }
@@ -55,7 +56,7 @@ export const handleArray = (wordsArray: Array<hangmanType>, letter: string) => {
 // check if the answer is true
 export const isAnswerTrue = (wordsArray: Array<hangmanType>, letter: string): boolean | null => {
     for (const word of wordsArray) {
-        if (word.letter === letter) {
+        if (word.letter.toLowerCase() === letter.toLowerCase()) {
             if (word.inGame) {
                 return word.selected ? null : true;
             }

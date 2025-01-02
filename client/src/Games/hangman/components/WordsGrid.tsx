@@ -24,17 +24,17 @@ const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,ga
     const dispatch = useDispatch();
 
     const handleClick = (selectedLetter: string) => {
-    const userAnswer: boolean | null = isAnswerTrue(lettersArray ,selectedLetter);
+      const userAnswer: boolean | null = isAnswerTrue(lettersArray ,selectedLetter);
 
-    const updatedLettersArray = handleArray(lettersArray, selectedLetter);
-    setLettersArray(updatedLettersArray);
+      const updatedLettersArray = handleArray(lettersArray, selectedLetter);
+      setLettersArray(updatedLettersArray);
 
-    const updatedGameArray = handleArray(gameArray, selectedLetter);
-    setGameArray(updatedGameArray);
+      const updatedGameArray = handleArray(gameArray, selectedLetter);
+      setGameArray(updatedGameArray);
 
-    if (userAnswer === false) {
-      dispatch(addOneWrongCounter());
-    }
+      if (userAnswer === false) {
+        dispatch(addOneWrongCounter());
+      }
   }
 
   return (

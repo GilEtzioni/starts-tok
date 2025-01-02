@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { resetSuccesssCounter} from "../dataHangman/HangmanSlice";
 import { useDispatch } from 'react-redux';
-
+import "../../../components/Main/Main.css";
 
 const BackButton: React.FC = () => {
 
@@ -18,11 +18,7 @@ const BackButton: React.FC = () => {
   return (
     <div className="flex justify-center items-center p-5">
       <div >
-        <Button
-          onClick={handleBack}
-        >
-          חזור
-        </Button>
+        <Button className="back-button"  onClick={handleBack} > חזור </Button>
       </div>
     </div>
   );

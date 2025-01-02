@@ -9,7 +9,6 @@ interface WordsLinesProps {
 const WordsLines: React.FC<WordsLinesProps> = ({ lettersArray, gameArray }) => {
 	return (
 		<div className="text-lg leading-6">
-			<span className="text-[2.2rem] text-[#f0f0f0] mx-2">א</span>
 			{gameArray.map((item, index) => (
 				<span
 					key={index}
@@ -26,7 +25,6 @@ const WordsLines: React.FC<WordsLinesProps> = ({ lettersArray, gameArray }) => {
 						: '_'}
 				</span>
 			))}
-			<span className="text-[2.2rem] text-[#f0f0f0] mx-[10px]">א</span>
 		</div>
 	);
 };

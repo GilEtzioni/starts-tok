@@ -1,3 +1,4 @@
+CREATE TYPE "public"."gameName" AS ENUM('speedGame', 'hangmanGame', 'rowGame');--> statement-breakpoint
 CREATE TYPE "public"."levelEnglish" AS ENUM('A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'userWords');--> statement-breakpoint
 CREATE TYPE "public"."levelHebrew" AS ENUM('מבוא', 'בסיסי', 'בינוני', 'מתקדם', 'מתקדם מאוד', 'שפת אם', 'המילים שהוספתי');--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "courses" (
@@ -8,6 +9,12 @@ CREATE TABLE IF NOT EXISTS "courses" (
 	"courseNameGerman" text,
 	"courseNameHebrew" text,
 	"lessonCompleted" integer NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "games" (
+	"gameId" serial PRIMARY KEY NOT NULL,
+	"gameName" "gameName",
+	"gameScore" integer
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "lessons" (

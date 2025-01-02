@@ -1,12 +1,15 @@
 // react + antd
 import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-
 import './MainGames.css';
-
 import OneCard from './OneCard';
+import { useHangmanMaxScore } from './GameData'; 
 
 const CardContainer: React.FC = () => {
+
+  const { data } = useHangmanMaxScore();
+  const hangmanScore = data?.maxScore ?? 0;
+
 
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];
@@ -17,6 +20,9 @@ const CardContainer: React.FC = () => {
   const links = [ "/dictionary", "/hangman", "/game3",  "/game4" ];
 
   const cardId = ["seven", "eight", "nine", "ten"];
+
+  const gameScore = [-1, hangmanScore, 8, 11];
+  // console.log("hangman Score", hangmanScore);
 
   function handleForwardClick() {
     setVisibleCards((prev) =>
@@ -42,6 +48,7 @@ const CardContainer: React.FC = () => {
         game={cardNames[card - 1]}
         link={links[card - 1]}
         number={cardId[card - 1]}
+        score={gameScore[card-1]}
       />
     ))}
     <RightOutlined onClick={handleForwardClick} className="cursor-pointer" />
