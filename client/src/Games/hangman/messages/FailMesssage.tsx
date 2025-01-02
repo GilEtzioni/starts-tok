@@ -5,21 +5,31 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { resetWrongCounter, resetSuccesssCounter, setSelectedWord } from '../dataHangman/HangmanSlice';
 import { getSelectedWord } from '../HangHelper';
+import { WordsType } from '../../../Dictionarys/types/wordType';
+import { useNavigate } from "react-router-dom";
+
 
 interface FailMessagesProps {
-  words: any;
+  words: Array<WordsType>;
 }
 
 const FailMesssage: React.FC<FailMessagesProps> = ({ words }) => {
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function restartGame() {
     dispatch(resetWrongCounter());
     dispatch(resetSuccesssCounter());
-
     const selectedWord = getSelectedWord(words); 
     dispatch(setSelectedWord(selectedWord));
   }
+
+  const handleBack = () => {
+    dispatch(resetWrongCounter());
+    dispatch(resetSuccesssCounter());
+    navigate(-1);
+  };
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -39,7 +49,7 @@ const FailMesssage: React.FC<FailMessagesProps> = ({ words }) => {
           <h1 className="text-2xl font-bold text-gray-800 mb-4">המשחק נגמר</h1>
           <div className="flex flex-col gap-4">
             <Link to="/main">
-              <Button type="primary" 
+              <Button onClick={handleBack} type="primary" 
               className="w-full py-2 text-lg font-semibold bg-blue-500 hover:bg-blue-600 border-none shadow-md hover:shadow-lg rounded-md"
               >
                 חזרה לדף הבית

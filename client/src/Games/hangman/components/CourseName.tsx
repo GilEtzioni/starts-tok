@@ -3,7 +3,7 @@ import { WordsType } from "../../../Dictionarys/types/wordType";
 import { Row, Typography } from 'antd';
 
 interface CourseNameProps {
-  randomWord: WordsType[];
+  randomWord: Array<WordsType>;
 }
 
 const CourseName: React.FC<CourseNameProps> = ({ randomWord }) => {

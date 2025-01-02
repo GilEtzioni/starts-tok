@@ -8,7 +8,7 @@ import axiosInstance from './dataHangman/axiosInstance';
 import { WordsType } from "../../Dictionarys/types/wordType";
 
 // components
-import BackButton from "../../components/Main/BackButton";
+import BackButton from './components/BackButton';
 import CourseName from './components/CourseName';
 import WordsLines from './components/WordsLines';
 import WordsGrid from './components/WordsGrid';
@@ -20,10 +20,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { getRandomWord } from './HangHelper';
 import { useDispatch } from 'react-redux';
-import { setSelectedWord } from './dataHangman/HangmanSlice';
+import { setSelectedWord , resetSuccesssCounter} from './dataHangman/HangmanSlice';
 
 const MainHangman: React.FC = () => {
 
+  const successCounter = useSelector((state: RootState) => state.hangman.succcessCounter);
 
     const fetchItems = async (): Promise<WordsType[]> => {
       const { data } = await axiosInstance.get('/hangman');
@@ -34,7 +35,7 @@ const MainHangman: React.FC = () => {
   
     const [randomWord, setRandomWord] = useState<Array<WordsType>>([]);
     const [lettersArray, setLettersArray] = useState<Array<hangmanType>>([]);
-    const [gameArray, setgameArray] = useState<Array<hangmanType>>([]);
+    const [gameArray, setGameArray] = useState<Array<hangmanType>>([]);
 
     const gameWord = useSelector((state: RootState) => state.hangman.selectedWord);
     const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const MainHangman: React.FC = () => {
       }
   }, [words, dispatch]);
 
-    useStartGame({ words , gameWord, setRandomWord, setLettersArray, setgameArray});
+    useStartGame({ words , gameWord, setRandomWord, setLettersArray, setGameArray});
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading data</div>;
@@ -68,13 +69,13 @@ const MainHangman: React.FC = () => {
         </div>
 
         <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-auto">
-          <WordsGrid lettersArray={lettersArray} setLettersArray={setLettersArray} gameArray={gameArray} setgameArray={setgameArray} />
+          <WordsGrid lettersArray={lettersArray} setLettersArray={setLettersArray} gameArray={gameArray} setGameArray={setGameArray} />
         </div>
       </Col>
 
       <Col span={10} className="bg-[#d3d3d3] h-screen">
         <div className="flex flex-col items-center mt-12">
-          <p className="mb-5 text-lg"> הצלחת ברצף 0 משחקים </p>
+          <p className="mb-5 text-lg"> הצלחת ברצף {successCounter} משחקים </p>
           <PhotosHang />
         </div>
       </Col>

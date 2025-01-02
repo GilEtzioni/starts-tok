@@ -13,12 +13,12 @@ import { handleArray, isAnswerTrue } from "../HangHelper";
 
 interface WordsGridProps {
   setLettersArray: any;
-  setgameArray: any
+  setGameArray: any
   gameArray: Array<hangmanType>
   lettersArray: Array<hangmanType>;
 }
 
-const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,gameArray ,setgameArray }) => {
+const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,gameArray ,setGameArray }) => {
 
     // redux
     const dispatch = useDispatch();
@@ -30,13 +30,10 @@ const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,ga
     setLettersArray(updatedLettersArray);
 
     const updatedGameArray = handleArray(gameArray, selectedLetter);
-    setgameArray(updatedGameArray);
+    setGameArray(updatedGameArray);
 
     if (userAnswer === false) {
       dispatch(addOneWrongCounter());
-    }
-    if (userAnswer === true) {
-      dispatch(addOneSuccesssCounter());
     }
   }
 
