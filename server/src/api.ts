@@ -232,6 +232,20 @@ app.post("/dictionary/new", async (req: Request, res: Response) => {
       res.status(500).json({ error: "Failed to add the new word." });
     }
   });
+
+  /* ------------------------------------------------------------------------------------------------------------------- */
+
+// GET all words
+app.get("/speedGame", async (req: Request, res: Response) => {
+    try {
+        const coursesSubjects = await db.select().from(Words);
+        res.json(coursesSubjects);
+    } catch (err) {
+        console.error("Error fetching courses:", err);
+        res.status(500).send("Error fetching courses");
+    }
+});
+
   
 
 app.listen(PORT, () => {
