@@ -23,7 +23,7 @@ export const createGameArray = (wordsArray: Array<WordsType>) => {
   const newGermanArray: Array<speedGameType> = [];
   const newHebrewArray: Array<speedGameType> = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 10; i++) {
     if (wordsArray.length > 0) {
       const word = wordsArray.splice(0, 1)[0]; // remove the first item and get it
       newGermanArray.push({

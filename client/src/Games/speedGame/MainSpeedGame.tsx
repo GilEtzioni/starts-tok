@@ -6,6 +6,8 @@ import { Spin, Row, Col, Typography } from 'antd';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './dataSpeedGame/axiosInstance';
 import GameCard from './GameCard';
+import BackButton from './components/BackButton';
+import ModalMessage from './components/ModalMessage';
 
 // functions + types
 import { shuffleAllWords, } from './speedHelper';
@@ -13,7 +15,14 @@ import { useGetData, useHandleCouples, useHandleTimer } from './SpeedGameEffects
 import { WordsType } from "../../Dictionarys/types/wordType";
 import { speedGameType, Language } from './types/speedGameTypes';
 
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from "../../app/store";
+
 const MainSpeedGame: React.FC = () => {
+
+    const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
+    const dispatch = useDispatch();
     
     const fetchItems = async (): Promise<WordsType[]> => {
         const { data } = await axiosInstance.get('/speedGame');
@@ -25,9 +34,9 @@ const MainSpeedGame: React.FC = () => {
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<speedGameType[]>([]);
 
-    useGetData({ words, setGermanArray, setHebrewArray })
-    useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray });
-    useHandleTimer({words, hebrewArray, germanArray, setGermanArray, setHebrewArray });
+    useGetData({ words, setGermanArray, setHebrewArray });
+    useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
+    useHandleTimer({words, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
 
     const handleClick = (card: Array<speedGameType>, id: number) => {
         if (card[id].language === Language.GermanWord) {
@@ -56,13 +65,21 @@ const MainSpeedGame: React.FC = () => {
     if (isLoading) return <Spin tip="Loading..." />;
     if (error) return <div>Error loading data</div>;
 
-
     return (
-        <div className=''>
+        <div>
+        {wrongCounter === germanArray.length ? <ModalMessage words={words} setGermanArray={setGermanArray} setHebrewArray={setHebrewArray}/> : null}
+        <div className="flex items-center justify-between mb-5">
             
-            <Row justify="center" className="mb-4 mt-8">
-                <Title level={3} className="text-center"> התאימו את הזוגות </Title>
-            </Row>
+            <div className="flex-none">
+                <BackButton />
+            </div>
+
+            <div className="flex-grow text-center">
+                <Row justify="center" className="mb-4 mt-8">
+                    <Title level={3} className="text-center"> התאימו את הזוגות </Title>
+                </Row>
+            </div>
+        </div>
 
         <div className="w-4/5 mx-auto">
             <Row gutter={[4, 4]}>
