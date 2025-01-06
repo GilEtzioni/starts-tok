@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function FailureMesssage() {
-  return (
-    <div>FailMesssage</div>
-  )
+  return <div>FailMesssage</div>;
 }

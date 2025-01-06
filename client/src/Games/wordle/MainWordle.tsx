@@ -14,10 +14,10 @@ import AnswerGrid from './components/AnswerGrid';
 import LoadingComponents from './components/LoadingComponents';
 
 // messages
-import FailureMesssage from './components/Messages/FailureMesssage';
-import SuccessMessage from './components/Messages/SuccessMessage';
-import NotWordMessage from './components/Messages/NotWordMessage';
-import TooShortMessage from './components/Messages/TooShortMessage';
+import FailureMesssage from './Messages/FailureMesssage';
+import SuccessMessage from './Messages/SuccessMessage';
+import NotWordMessage from './Messages/NotWordMessage';
+import TooShortMessage from './Messages/TooShortMessage';
 
 // redux
 import { useStartGame } from './utilts/WordelEffects';
