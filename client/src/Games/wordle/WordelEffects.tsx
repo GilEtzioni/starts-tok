@@ -64,9 +64,6 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, words,
         const userAnswerLength: number = gridAnswer[clicksCounter]?.filter((item) => item !== null).length || 0;
         const answerLength = correctAnswer.length;
 
-        console.log("userAnswerLength: ", userAnswerLength);
-        console.log("answerLength: ", answerLength);
-        
         // success message
         if (wordFound && userAnswerLength === answerLength) {
             result[clicksCounter - 1] = result[clicksCounter - 1]?.map((item) => {

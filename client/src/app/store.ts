@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import lessonReducer from "../Lessons/dataLessons/LessonsSlice";
-import dictionaryReducer from "../Dictionarys/dataDictionary/DictionarySlice";
-import WordleSlice from '../Games/wordle/dataWordle/WordleSlice';
+import lessonReducer from '../Lessons/dataLessons/LessonsSlice';
+import dictionaryReducer from '../Dictionarys/dataDictionary/DictionarySlice';
+import WordleSlice from '../Games/wordle/slices/WordleSlice';
 
 export const store = configureStore({
   reducer: {

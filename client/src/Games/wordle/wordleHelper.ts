@@ -73,9 +73,6 @@ export const createLettersGrid = (): Array<{letter: string, letterColor: letterC
 
 export const getLetterColor = (letter: string, columnIndex: number, correctAnswerArray: Array<wordleType>): letterColor => {
 
-    console.log("correctAnswerArray[columnIndex]?.letter : ", correctAnswerArray[columnIndex]?.letter);
-    console.log("letter: ", letter);
-
     // correct position + correct letter
     if (correctAnswerArray[columnIndex]?.letter === letter) {
         return letterColor.green;
