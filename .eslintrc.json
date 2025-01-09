@@ -1,0 +1,35 @@
+{
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",             // Basic recommended rules
+      "plugin:react/recommended",       // React-specific rules
+      "plugin:@typescript-eslint/recommended", // TypeScript rules
+      "plugin:prettier/recommended"     // Integrates Prettier with ESLint
+    ],
+    "parser": "@typescript-eslint/parser", // Parse TypeScript files
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true                      // Enable JSX parsing
+      },
+      "ecmaVersion": "latest",           // Latest JavaScript version
+      "sourceType": "module"             // Use ES Modules
+    },
+    "plugins": [
+      "react",                           // React plugin
+      "@typescript-eslint",              // TypeScript plugin
+      "prettier"                         // Prettier plugin
+    ],
+    "rules": {
+      "prettier/prettier": "error"       // Show Prettier issues as ESLint errors
+    },
+    "settings": {
+      "react": {
+        "version": "detect"              // Automatically detect React version
+      }
+    }
+  }
+  

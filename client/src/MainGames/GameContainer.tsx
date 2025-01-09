@@ -17,7 +17,7 @@ const CardContainer: React.FC = () => {
 
   const cardNames = [ "מילון",  "איש תלוי",  "משחק מהירות", "משחק מילוי שורות",];
 
-  const links = [ "/dictionary", "/hangman", "/speedGame",  "/game4" ];
+  const links = [ "/dictionary", "/hangman", "/speedGame",  "/wordle" ];
 
   const cardId = ["seven", "eight", "nine", "ten"];
 

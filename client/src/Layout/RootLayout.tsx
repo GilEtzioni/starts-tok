@@ -7,6 +7,7 @@ const RootLayout: React.FC = () => {
       <nav>
         <NavLink to="/"></NavLink>
         <NavLink to="dictionary"></NavLink>
+        <NavLink to="wordle"></NavLink>
         <NavLink to="maincourse"></NavLink>
         <NavLink to="speedGame"></NavLink>
         <NavLink to="hangman"></NavLink>
