@@ -3,6 +3,8 @@ import { Button, Layout, Badge, Avatar, Image } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import "../index.css";
+import { SignedIn } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 
 const { Header } = Layout;
 
@@ -13,6 +15,12 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
+  const { signOut } = useAuth();
+
+  const handleSignOut = () => {
+    signOut();
+  };
+
   return (
     <Layout>
       <Header
@@ -26,6 +34,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
           <Link to="/main">
             <Button>בית</Button>
           </Link>
+
+          <SignedIn>
+            <Button type="primary" danger onClick={handleSignOut}>
+              Log Out
+            </Button>
+          </SignedIn>
 
           <Badge
             count={
