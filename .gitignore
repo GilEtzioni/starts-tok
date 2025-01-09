@@ -23,6 +23,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/server/.env
+/client/.env
 .env
 .vscode
 .vscode/settings.json

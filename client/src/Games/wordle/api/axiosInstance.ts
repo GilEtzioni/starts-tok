@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { WordsType } from '../../hangman/types/types';
+import { WordsType } from '../../../Dictionarys/types/wordType';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:3000/', // ROOT URL
+  withCredentials: true,
 });
 
 // fetch function

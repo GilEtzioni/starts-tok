@@ -13,6 +13,7 @@ import CourseCard from './CourseCard';
 const CardContainer: React.FC = () => {
   const fetchItems = async ()  => {
     const { data } = await axiosInstance.get("/main/finished");
+    console.log("Fetched data:", data);
     return data;
   };
 
