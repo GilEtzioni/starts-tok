@@ -1,5 +1,4 @@
-import { pgTable, varchar, serial, text, integer, pgEnum, boolean} from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm/sql";
+import { pgTable, serial, text, integer, pgEnum, boolean} from "drizzle-orm/pg-core";
 
 // enums
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
@@ -7,6 +6,7 @@ export const levelHebrewEnum = pgEnum("levelHebrew", ["מבוא", "בסיסי", 
 
 // "courses" table
 export const CourseNames = pgTable("courses", {
+    clerkUserId: text("clerkUserId").notNull(),
     courseId: serial("courseId").primaryKey(),
     levelEnglish: levelEnglishEnum("levelEnglish"),
     levelHebrew: levelHebrewEnum("levelHebrew"),
@@ -18,6 +18,7 @@ export const CourseNames = pgTable("courses", {
 
 // "words" table
 export const Words = pgTable("words", {
+    clerkUserId: text("clerkUserId").notNull(),
     id: serial("id").primaryKey(),
     levelHebrew: levelHebrewEnum("levelHebrew"),
     levelEnglish: levelEnglishEnum("levelEnglish"),
@@ -31,6 +32,7 @@ export const Words = pgTable("words", {
 // "lessons" table
 // no primary key --> add later if needed!
 export const Lessons = pgTable("lessons", {
+    clerkUserId: text("clerkUserId").notNull(),
     id: serial("id").primaryKey(),               // 1-150
 
     levelHebrew: levelHebrewEnum("levelHebrew"),     // ״מתחילים״

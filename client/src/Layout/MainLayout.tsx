@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Layout, Badge, Avatar, Image } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
@@ -16,10 +16,25 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
   const { signOut } = useAuth();
+  const { getToken } = useAuth();
+
 
   const handleSignOut = () => {
     signOut();
   };
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await getToken();
+        console.log("Token: ", token);
+      } catch (error) {
+        console.error("Error fetching token:", error);
+      }
+    };
+
+    fetchToken();
+  }, [getToken]);
 
   return (
     <Layout>

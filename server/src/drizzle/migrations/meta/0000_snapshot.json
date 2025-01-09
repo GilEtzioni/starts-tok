@@ -1,5 +1,5 @@
 {
-  "id": "4f58bf6c-8eb2-4fed-a010-456863e7413d",
+  "id": "b097b2f8-3961-4e09-a139-4dc62d9ac428",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -8,6 +8,12 @@
       "name": "courses",
       "schema": "",
       "columns": {
+        "clerkUserId": {
+          "name": "clerkUserId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "courseId": {
           "name": "courseId",
           "type": "serial",
@@ -65,6 +71,12 @@
       "name": "lessons",
       "schema": "",
       "columns": {
+        "clerkUserId": {
+          "name": "clerkUserId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "id": {
           "name": "id",
           "type": "serial",
@@ -352,6 +364,12 @@
       "name": "words",
       "schema": "",
       "columns": {
+        "clerkUserId": {
+          "name": "clerkUserId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "id": {
           "name": "id",
           "type": "serial",
