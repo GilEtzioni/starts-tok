@@ -15,6 +15,7 @@ import Login from './Pages/Login';
 import CoursesPage from './Pages/CoursesPage';
 import  MainLearn from "./Lessons/MainLearn";
 import MainHangman from './Games/hangman/MainHangman';
+import MainSpeedGame from './Games/speedGame/MainSpeedGame';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,7 +23,10 @@ const router = createBrowserRouter(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Login />} />                                 {/* "/" */}
         <Route path="dictionary" element={<Dictionary />} />                {/* "/dictionary" */}
+
+        <Route path="speedGame" element={<MainSpeedGame />} />                
         <Route path="hangman" element={<MainHangman />} />                  {/* "/hangman" */}
+
         <Route path="main" element={<Main />} />                            {/* "/main" */}
         <Route path="main/course" element={<CoursesLayout />}>      
           <Route path=":name" element={<CoursesPage />} />                  {/* e.g:   "/main/course/A1" */}
