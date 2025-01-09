@@ -29,7 +29,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         const token = await getToken();
         console.log("Token: ", token);
       } catch (error) {
-        console.error("Error fetching token:", error);
+        error("Error fetching token:", error);
       }
     };
 

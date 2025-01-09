@@ -4,7 +4,7 @@ import { CourseNames, Lessons } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { and, eq, sql } from "drizzle-orm";
 
-export const getCourses = async (req: Request, res: Response): Promise<any> => {
+export const getCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
 
   if (!userId) {
@@ -24,7 +24,7 @@ export const getCourses = async (req: Request, res: Response): Promise<any> => {
   }
 };
 
-export const getFinishedCourses = async (req: Request, res: Response): Promise<any> => {
+export const getFinishedCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
 
   if (!userId) {
@@ -47,7 +47,7 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<a
   }
 };
 
-export const getLevelLessons = async (req: Request, res: Response): Promise<any> => {
+export const getLevelLessons = async (req: Request, res: Response): Promise<void> => {
 
   const { userId } = getAuth(req);
 
@@ -72,7 +72,7 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<any>
   }
 }
 
-export const getCourseLessons = async (req: Request, res: Response): Promise<any> => {
+export const getCourseLessons = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
 
   if (!userId) {
@@ -102,7 +102,7 @@ export const getCourseLessons = async (req: Request, res: Response): Promise<any
   }
 };
 
-export const updateLesson = async (req: Request, res: Response): Promise<any> => {
+export const updateLesson = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
 
   if (!userId) {

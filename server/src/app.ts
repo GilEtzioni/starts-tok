@@ -31,11 +31,6 @@ app.use(
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
 
-console.log("dotenv: ", dotenv);
-console.log("Environment Variables:");
-console.log("CLERK_PUBLISHABLE_KEY:", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);
-
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

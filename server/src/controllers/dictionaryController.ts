@@ -4,7 +4,7 @@ import { Words, CourseNames } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, desc } from "drizzle-orm";
 
-export const getAllWords = async (req: Request, res: Response): Promise<any> => {
+export const getAllWords = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
   if (!userId) {
     res.status(401).json({ error: "Unauthorized" });
@@ -19,7 +19,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<any> => 
   }
 };
 
-export const getWordById = async (req: Request, res: Response): Promise<any> => {
+export const getWordById = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
   const wordID = parseInt(req.params.id, 10);
 
@@ -52,7 +52,7 @@ export const getWordById = async (req: Request, res: Response): Promise<any> => 
   }
 };
 
-export const addNewWord = async (req: Request, res: Response): Promise<any> => {
+export const addNewWord = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
 
   if (!userId) {
@@ -107,7 +107,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<any> => {
   }
 };
 
-export const editWord = async (req: Request, res: Response): Promise<any> => {
+export const editWord = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params; 
   const { knowlage } = req.body; 
 
