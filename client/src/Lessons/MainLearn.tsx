@@ -11,11 +11,11 @@ import MainSecond from './SecondLesson/MainSecond';
 import MainThird from "./ThirdLesson/MainThird";
 
 // components
-import NextButton from "../components/Main/NextButton"
+import NextButton from "./Messages/NextButton"
 import BackButton from '../components/Main/BackButton';
-import ProgressBar from '../components/Main/ProgressBar'; 
-import ErrorMessage from '../components/Main/ErrorMessage';
-import SuccessMessage from '../components/Main/SuccessMessage';
+import ProgressBar from './Messages/ProgressBar'; 
+import ErrorMessage from './Messages/ErrorMessage';
+import SuccessMessage from './Messages/SuccessMessage';
 
 const MainLearn: React.FC = () => {
     const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
@@ -55,6 +55,7 @@ const MainLearn: React.FC = () => {
             </div>
             
             <div>{renderCurrentLesson()}</div>
+
 
             {status === "failure" && <ErrorMessage />}
     

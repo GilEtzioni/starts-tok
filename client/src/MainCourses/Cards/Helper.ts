@@ -22,3 +22,15 @@ export const getNumberOfLessonsCompleted = (arr: FinishedType[]): Array<number> 
     });
     return newArray;
 };
+
+export const generateRandomBubbles = (count: number) => {
+    const bubbles = [];
+    for (let i = 0; i < count; i++) {
+      const size = Math.floor(Math.random() * 40) + 20;
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const opacity = Math.random() * 0.3 + 0.1;
+      bubbles.push({ size, top, left, opacity });
+    }
+    return bubbles;
+  };

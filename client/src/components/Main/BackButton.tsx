@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import './Main.css';
+import "../../Lessons/Messages/Main.css";
 
 const BackButton: React.FC = () => {
   const navigate = useNavigate();

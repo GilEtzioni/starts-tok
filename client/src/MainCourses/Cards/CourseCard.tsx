@@ -1,44 +1,90 @@
-import React from 'react';
-import { Card, Progress } from 'antd';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import "./MainCourses.css";
-
+import { Badge, Progress } from 'antd';
+import { generateRandomBubbles } from './Helper';
 interface OneCardProps {
   levelHebrew: string;
   levelGerman: string;
   content: string;
   link: string;
-  number: string;
+  number: number;
   cardDetails: string;
 }
 
-const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, link, number, cardDetails }) => (
-  <Link to={link}>
-  <Card bordered={true} hoverable={true} className={`custom-card custom-card-${number} relative w-300px h-300px p-4`}>
-    {/* Level German */}
-    <div className="absolute top-3 left-3 text-left">
-      {levelGerman}
-    </div>
+const cardColors = [
+  "bg-gradient-to-r from-lime-300 to-emerald-400", 
+  "bg-gradient-to-r from-amber-200 to-yellow-400",
+  "bg-gradient-to-r from-violet-200 to-purple-400",
+  "bg-gradient-to-r from-sky-200 to-blue-400",
+  "bg-gradient-to-r from-indigo-200 to-indigo-400",
+  "bg-gradient-to-r from-rose-200 to-pink-400",
+];
 
-    {/* Details + Level Hebrew */}
-    <div className="absolute right-3 bottom-16 text-right">
-      <div className="rtl text-2xl ">{levelHebrew}</div>
-      <div >{cardDetails}</div>
-    </div>
+const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, link, number, cardDetails }) => {
+  const [bubbles, setBubbles] = useState<{ size: number; top: number; left: number; opacity: number }[]>([]);
 
-    {/* Progress Bar */}
-    <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
-      <Progress
-        percentPosition={{ align: 'end', type: 'inner' }}
-        percent={(parseInt(content.toString()) / 25) * 100}
-        size={[200, 20]}
-        strokeColor="white"
-        showInfo={parseInt(content.toString()) !== 0}
-      />
-    </div>
-  </Card>
-  </Link>
-);
+  useEffect(() => {
+    setBubbles(generateRandomBubbles(5));
+  }, []);
+
+  return (
+    <Link to={link}>
+      <div
+        className={`relative w-[320px] h-[240px] p-6 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`}
+      >
+      {bubbles.map((bubble, index) => (
+        <div
+          key={index}
+          className={`absolute rounded-full bg-white`}
+          style={{
+            width: `${bubble.size}px`,
+            height: `${bubble.size}px`,
+            top: `${bubble.top}%`,
+            left: `${bubble.left}%`,
+            opacity: bubble.opacity,
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      ))}
+
+        <div className="absolute top-4 left-4 flex justify-between w-[90%] rtl">
+          <Badge
+            count={levelGerman}
+            style={{
+              backgroundColor: '#ffffff',
+              color: '#000000',
+              fontWeight: 'bold',
+              fontSize: '16px',
+              borderRadius: '12px',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.15)',
+            }}
+          />
+
+          <span className="text-sm text-white text-right">{cardDetails}</span>
+        </div>
+
+        <div className="absolute right-4 bottom-20 text-center">
+          <div className="text-2xl font-bold text-white">{levelHebrew}</div>
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[85%] text-center">
+          <div style={{ position: 'relative', width: '100%' }}>
+            <Progress
+              percent={(parseInt(content.toString()) / 25) * 100}
+              strokeColor="white" 
+              trailColor="rgba(255, 255, 255, 0.2)"
+              strokeWidth={16} 
+              showInfo={false} 
+              style={{ borderRadius: '4px', overflow: 'hidden' }}
+            />
+    <p className="absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
+      {content} / 25
+    </p>
+  </div>
+  </div>
+</div>
+    </Link>
+  );
+};
 
 export default CourseCard;

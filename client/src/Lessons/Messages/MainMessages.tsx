@@ -4,15 +4,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from "antd"; 
 import "./Main.css";
 
+// buttons + messages
+import NextButton from './NextButton';
+import SuccessMessage from '../../Games/wordle/Messages/SuccessMessage';
+
 // redux
-import { setRunning, addOneOrder, resetClicks, addOneClick } from "../../Lessons/dataLessons/LessonsSlice";
+import { setRunning, addOneOrder, resetClicks, addOneClick } from "../dataLessons/LessonsSlice";
 import { RootState } from "../../app/store";
 
-interface NextButtonProps {
+interface MainMessagesProps {
   onClick?: () => void;
 }
 
-const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
+const MainMessages: React.FC<MainMessagesProps> = ({ onClick }) => {
   const [nextPage, setNextPage] = useState(false);
 
   const status = useSelector((state: RootState) => state.lessons.status);
@@ -68,4 +72,4 @@ const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
   );
 };
 
-export default NextButton;
+export default MainMessages;

@@ -284,8 +284,6 @@ DROP TABLE IF EXISTS "levelHebrew" CASCADE;
 DROP TABLE IF EXISTS "levelHebrew" CASCADE;
 DROP TYPE IF EXISTS "gameNameEnum" CASCADE;
 
-// gameNameEnum
-// Games
 \q
 
 npx drizzle-kit generate

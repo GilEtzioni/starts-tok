@@ -1,5 +1,5 @@
 import Graph from "../components/Graph/Graph";
-import CardContainer from '../MainCourses/Cards/CardContainer';
+import CardContainer from '../MainCourses/Cards/CourseContainer';
 import GameContainer from "../MainGames/GameContainer";
 import Table from '../components/Table/Table';
 

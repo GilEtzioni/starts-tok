@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { resetSuccesssCounter} from "../dataHangman/HangmanSlice";
 import { useDispatch } from 'react-redux';
-import "../../../components/Main/Main.css";
+import "../../../Lessons/Messages/Main.css";
 
 const BackButton: React.FC = () => {
 
