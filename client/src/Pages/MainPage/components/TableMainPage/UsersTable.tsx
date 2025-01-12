@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table as AntTable, TableProps } from 'antd';
+import { Table as AntTable, TableProps, Typography, Row } from 'antd';
 
 const UsersTable: React.FC = () => {
   const columns: TableProps<{ key: string; name: string; points: number }>['columns'] = [
@@ -14,9 +14,14 @@ const UsersTable: React.FC = () => {
     { key: '4', name: 'נדב', points: 51 },
   ];
 
+  const { Title } = Typography;
+
   return (
-    <div className="flex flex-col items-start">
-      <h1 className="self-end text-right rtl mb-5 text-2xl font-bold mr-20">דירוג שבועי</h1>
+    <div >
+      <Row className="mb-2 mt-2 mr-24 flex justify-end">
+        <Title level={3} className="text-right">דירוג שבועי</Title>
+      </Row> 
+
       <div className="w-[620px] border border-gray-400 rounded-lg shadow-md p-5 bg-white">
         <AntTable
           columns={columns}

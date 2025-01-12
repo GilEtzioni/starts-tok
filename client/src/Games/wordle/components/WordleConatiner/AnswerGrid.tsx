@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 
 // types + functions
-import { wordleType, letterColor } from '../../ types/WordelType';
+import { wordleType, LetterColor } from '../../ types/WordelType';
 import { useEnterClick } from '../../utilts/WordelEffects';
 import { WordsType } from "../../../../types/types";
 
@@ -30,9 +30,9 @@ const AnswerGrid: React.FC<AnswerGridProps> = ({ gridAnswer, setGridAnswer, corr
     if (!cell) return '';
 
     if (cell?.isInGame === false) return 'bg-gray-200';
-    else if (cell?.letterColor === letterColor.gray) return 'bg-gray-500';
-    else if (cell?.letterColor === letterColor.green) return 'bg-green-400';
-    else if (cell?.letterColor === letterColor.yellow) return 'bg-yellow-400';
+    else if (cell?.letterColor === LetterColor.Gray) return 'bg-gray-500';
+    else if (cell?.letterColor === LetterColor.Green) return 'bg-green-400';
+    else if (cell?.letterColor === LetterColor.Yellow) return 'bg-yellow-400';
 
     return '';
   };

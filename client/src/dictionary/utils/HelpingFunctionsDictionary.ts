@@ -13,7 +13,7 @@ export function handleClickedRow(id: number, wordsArray: WordsType[], translated
 
     if (existsIndex === -1) {
       // new word - add it to the array
-      result.push([filtered.id ?? 0, filtered.HebrewWord]);
+      result.push([filtered.id ?? 0, filtered.hebrewWord]);
     } else {
       // old word - remove it from the array
       result.splice(existsIndex, 1);

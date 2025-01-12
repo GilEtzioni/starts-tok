@@ -16,11 +16,11 @@ import BackButton from "./component/BackButton";
 import ProgressBar from './component/ProgressBar'; 
 import ErrorMessage from './component/ErrorMessage';
 import SuccessMessage from './component/SuccessMessage';
+import { LessonStatus } from './types/LessonType';
 
 const MainLearn: React.FC = () => {
 
     const status = useSelector((state: RootState) => state.lessons.status);
-
     const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
 
     const renderCurrentLesson = () => {
@@ -43,7 +43,6 @@ const MainLearn: React.FC = () => {
         }
     };
 
-
     return (
         <>
             <div className="flex items-center justify-between my-5 gap-5">
@@ -58,9 +57,9 @@ const MainLearn: React.FC = () => {
             <div>{renderCurrentLesson()}</div>
 
 
-            {status === "failure" && <ErrorMessage />}
+            {status === LessonStatus.Failure && <ErrorMessage />}
     
-            {status === "success" && <SuccessMessage />}
+            {status === LessonStatus.Success && <SuccessMessage />}
            
     
             <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-[1000]">

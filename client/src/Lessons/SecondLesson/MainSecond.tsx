@@ -1,10 +1,10 @@
 // react  + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Card, Typography } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setSuccess, setFailure, resetClicks } from '../slices/LessonsSlice';
+import { setSuccess, setFailure, resetClicks, setRightAnswer } from '../slices/LessonsSlice';
 import { RootState } from "../../app/store";
 
 // components
@@ -33,7 +33,7 @@ const MainSecond: React.FC = () => {
     const [germanArray, setGermanArray] = useState<CardType[]>([]);
     const [hebrewSentence, setHebrewSentence] = useState("");
 
-    useGetData({ lessonsData, order, setGermanArray, setHebrewSentence });
+    useGetData({ lessonsData, order, setGermanArray, setHebrewSentence, dispatch });
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, germanArray, order });
 
     const handleClick = (card: CardType) => {

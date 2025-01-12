@@ -12,10 +12,10 @@ interface FirstCardProps {
 const FirstCard: React.FC<FirstCardProps> = ({ language, word, id, isSelected, onClick }) => {
 
 const cardBackround = (() => {
-  if (isSelected === IsSelected.notSelected) return "text-center flex justify-center items-center h-12 transition ease-linear hover:bg-gray-200 hover:cursor-pointer";
-  if (isSelected ===  IsSelected.clicked) return "bg-black text-white text-center flex justify-center items-center h-12 transition ease-linear";
-  if (isSelected === IsSelected.true) return "bg-green-500 text-white text-center flex justify-center items-center h-12 transition ease-linear";
-  if (isSelected === IsSelected.false) return "bg-red-500 text-white text-center flex justify-center items-center h-12 transition ease-linear";
+  if (isSelected === IsSelected.NotSelected) return "text-center flex justify-center items-center h-12 transition ease-linear hover:bg-gray-200 hover:cursor-pointer";
+  if (isSelected ===  IsSelected.Clicked) return "bg-black text-white text-center flex justify-center items-center h-12 transition ease-linear";
+  if (isSelected === IsSelected.True) return "bg-green-500 text-white text-center flex justify-center items-center h-12 transition ease-linear";
+  if (isSelected === IsSelected.False) return "bg-red-500 text-white text-center flex justify-center items-center h-12 transition ease-linear";
 })();
 
   return (

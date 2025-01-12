@@ -11,12 +11,12 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
   const { filteredWords } = useFilteredWords(data);
 
   const titles = ["A1 - מבוא", "A2 - מתחילים", "B1 - בסיסי", "B2 - מתקדם", "C1 - מתקדם מאוד", "C2 - שפת אם", "המילים שהוספתי"];
-  const levelEnglish = ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"];
+  const englishLevel = ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"];
 
   const getCountsForLevel = (level: string) => {
     const counts = filteredWords.reduce(
       (acc, item) => {
-        if (item.levelEnglish === level) {
+        if (item.englishLevel === level) {
           if (item.knowlage === "X") acc.X += 1;
           if (item.knowlage === "V") acc.V += 1;
           if (item.knowlage === "?") acc["?"] += 1;
@@ -46,7 +46,7 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
     };
   };
 
-  const totalCounts = levelEnglish.reduce(
+  const totalCounts = englishLevel.reduce(
     (total, level) => {
       const { counts } = getCountsForLevel(level);
       total.X += counts.X;
@@ -106,7 +106,7 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
 
       {/* levels cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {levelEnglish.map((level, index) => {
+        {englishLevel.map((level, index) => {
           const { dataSource } = getCountsForLevel(level);
           return (
             <div key={level} className="rounded shadow-sm bg-white p-6">

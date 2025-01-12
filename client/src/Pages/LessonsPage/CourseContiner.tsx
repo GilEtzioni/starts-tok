@@ -8,7 +8,7 @@ import { useFetchCoursesCardsData } from "./api/fetchingLessonsPage";
 
 // components
 import CourseProgressBar from "./components/CourseProgressBar"
-import { CourseType } from "./types/courseTypes";
+import { CourseType } from "../../types/types";
 import CourseIcons from "./components/CourseIcons";
 
 const CourseContainer: React.FC = () => {
@@ -24,8 +24,8 @@ const CourseContainer: React.FC = () => {
 
   const mappedData =
     coursesCardsData?.map((course: CourseType) => ({
-      levelHebrew: course.levelHebrew,
-      levelEnglish: course.levelEnglish,
+      hebrewLevel: course.hebrewLevel,
+      englishLevel: course.englishLevel,
       courseID: course?.courseId - coursesCardsData[0]?.courseId + 1
     })) || [];
 
@@ -36,7 +36,7 @@ const CourseContainer: React.FC = () => {
 
       <Row justify="center" className="mb-2.5"> 
             <Title level={3} className="text-center"> 
-            {mappedData[0]?.levelEnglish} - {mappedData[0]?.levelHebrew}
+            {mappedData[0]?.englishLevel} - {mappedData[0]?.hebrewLevel}
             </Title>
         </Row>
 
@@ -59,7 +59,7 @@ const CourseContainer: React.FC = () => {
                       className="flex justify-center"
                     >
                       <Link
-                        to={`/main/course/${course.levelEnglish}/${course.courseNameEnglish}`}
+                        to={`/main/course/${course.englishLevel}/${course.courseNameEnglish}`}
                         className="no-underline"
                       >
                     <Card

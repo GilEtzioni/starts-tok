@@ -1,13 +1,13 @@
 export enum Language {
-    GermanWord = "GermanWord",
-    HebrewWord = "HebrewWord"
+    GermanWord = "germanWord",
+    HebrewWord = "hebrewWord"
 }
 
 export enum SelectedCard {
-    notSelected = "notSelected",
-    clicked = "clicked",
-    success = "success",
-    failure = "failure"
+    NotSelected = "notSelected",
+    Clicked = "clicked",
+    Success = "success",
+    Failure = "failure"
 }
 
 export type speedGameType = {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFailure } from "../slices/LessonsSlice";
 import { getGermanSentence, getHebrewSentence, getGermanWord, splitTheSentence } from './ThirdHelper';
-import { LessonType } from '../types/LessonType';
+import { LessonType } from "../../types/types";
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 
 interface useGetDataProps {

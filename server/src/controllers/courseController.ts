@@ -34,12 +34,12 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
 
   try {
       const coursesSubjects = await db.select({
-          level: CourseNames.levelEnglish,
+          level: CourseNames.englishLevel,
           totalLessonsCompleted: sql`SUM(${CourseNames.lessonCompleted}) / 6`
       })
       .from(CourseNames)
       .where(eq(CourseNames.userId, userId))
-      .groupBy(CourseNames.levelEnglish);
+      .groupBy(CourseNames.englishLevel);
 
       res.json(coursesSubjects);
   } catch (error) {
@@ -62,7 +62,7 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
       .select().
       from(CourseNames).
       where(and(
-          eq(CourseNames.levelEnglish, userLevel),
+          eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.userId, userId)
       ))
           .orderBy(CourseNames.courseId);
@@ -87,7 +87,7 @@ export const getCourseLessons = async (req: Request, res: Response): Promise<voi
       // Step 1: Find the first not completed lesson
       const currLesson = await db.select().from(Lessons).where(
               and(
-                  eq(Lessons.levelEnglish, userLevel),
+                  eq(Lessons.englishLevel, userLevel),
                   eq(Lessons.courseNameEnglish, course),
                   eq(Lessons.finished, false), // find lessons where finished is false
                   eq(Lessons.userId, userId))
@@ -121,14 +121,14 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
       .innerJoin(
           CourseNames,
           and(
-              eq(Lessons.levelEnglish, CourseNames.levelEnglish),
+              eq(Lessons.englishLevel, CourseNames.englishLevel),
               eq(Lessons.courseNameEnglish, CourseNames.courseNameEnglish),
               eq(CourseNames.userId, userId)
           )
       )
       .where(
           and(
-              eq(Lessons.levelEnglish, userLevel),
+              eq(Lessons.englishLevel, userLevel),
               eq(Lessons.courseNameEnglish, course),
               eq(Lessons.finished, false) // find lessons that - finished is false
           )
@@ -153,7 +153,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
       .from(CourseNames)
       .where(
           and(
-              eq(CourseNames.levelEnglish, userLevel), 
+              eq(CourseNames.englishLevel, userLevel), 
               eq(CourseNames.courseNameEnglish, course),
               eq(CourseNames.userId, userId)
           ))

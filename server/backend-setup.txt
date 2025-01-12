@@ -289,3 +289,9 @@ DROP TYPE IF EXISTS "gameName" CASCADE;
 
 npx drizzle-kit generate
 npx tsx src/drizzle/migrate.ts
+
+
+ts-node src/seeders/courseSeeder.ts
+ts-node src/seeders/gameSeeder.ts
+ts-node src/seeders/lessonSeeder.ts
+ts-node src/seeders/wordSeeder.ts

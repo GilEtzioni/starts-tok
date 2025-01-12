@@ -12,7 +12,6 @@ interface SuccessMessageProps {
 }
 
 const SuccessMessage: React.FC<SuccessMessageProps> = ({ onClick }) => {
-    const answer = useSelector((state: RootState) => state.lessons.anwser);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
 
@@ -24,7 +23,6 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ onClick }) => {
     
     return (
         <Card
-            onClick={handleClick}
             bordered={false}
             className={classNames(
                 "bg-green-100 text-white text-center flex items-center justify-center w-72 h-24 mx-auto rounded-lg relative shadow-md",

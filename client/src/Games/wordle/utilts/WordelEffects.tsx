@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 // types
 import { WordsType } from "../../../types/types";
-import { wordleType, letterColor } from '../ types/WordelType';
+import { wordleType, LetterColor } from '../ types/WordelType';
 
 // functions + redux
 import { randomWordsArray, getRandomWord, createLettersGrid } from './wordleHelper';
-import { CurrentMode, addOneSuccess, minusOneClick, setCurrentMode } from '../slices/WordleSlice';
+import { addOneSuccess, minusOneClick, setCurrentMode } from '../slices/WordleSlice';
 import { useDispatch } from 'react-redux';
+import { CurrentMode } from '../ types/WordelType';
 
 export interface useStartGameProps {
   words: WordsType[] | undefined;
   setCorrectAnswer: (array: wordleType[]) => void;
   setGridAnswer: (array: wordleType[][]) => void;
-  setGridLetters: (array: { letter: string; letterColor: letterColor }[]) => void;
+  setGridLetters: (array: { letter: string; letterColor: LetterColor }[]) => void;
   setAllWords: (array: WordsType[]) => void;
 }
 
@@ -58,8 +59,8 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
     const currentWord = gridAnswer[clicksCounter - 1]?.map((item) => item?.letter).join('') || '';
     const result = [...gridAnswer];
 
-    const isWordInDataBase: boolean = allWords.some((item) => item.GermanWord.toLowerCase() === currentWord.toLowerCase());
-    const numOfLettersSucces: number = gridAnswer[clicksCounter - 1]?.filter((item) => item?.letterColor === letterColor.green).length || 0;
+    const isWordInDataBase: boolean = allWords.some((item) => item.germanWord.toLowerCase() === currentWord.toLowerCase());
+    const numOfLettersSucces: number = gridAnswer[clicksCounter - 1]?.filter((item) => item?.letterColor === LetterColor.Green).length || 0;
     const userAnswerLength: number = gridAnswer[clicksCounter - 1]?.filter((item) => item !== null).length || 0;
     const answerLength = correctAnswer.length;
     const correctAnswerString = correctAnswer.map((item) => item?.letter).join('').toLowerCase();
@@ -75,22 +76,22 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
         return item;
       });
       setGridAnswer(result);
-      dispatch(setCurrentMode('success'));
+      dispatch(setCurrentMode(CurrentMode.Success));
     }
 
     // too short word message
     if (userAnswerLength < answerLength) {
-      dispatch(setCurrentMode('notEnoughLetters'));
+      dispatch(setCurrentMode(CurrentMode.NotInDictionary));
     }
 
     // not a vlid word message
     else if (!isWordInDataBase && clicksCounter !== 0) {
-      dispatch(setCurrentMode('notInDictionary'));
+      dispatch(setCurrentMode(CurrentMode.NotInDictionary));
     }
 
     // failure message
     if (clicksCounter === 5 && numOfLettersSucces !== correctAnswer.length) {
-      dispatch(setCurrentMode('failure'));
+      dispatch(setCurrentMode(CurrentMode.Failure));
     }
   }, [clicksCounter]);
 };

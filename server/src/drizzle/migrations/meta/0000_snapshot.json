@@ -1,5 +1,5 @@
 {
-  "id": "3b08e9c0-523e-4558-9e48-a84764f7286f",
+  "id": "1e736179-a23f-4d73-ba2b-e4b402651891",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -20,15 +20,15 @@
           "primaryKey": true,
           "notNull": true
         },
-        "levelEnglish": {
-          "name": "levelEnglish",
+        "englishLevel": {
+          "name": "englishLevel",
           "type": "levelEnglish",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
-        "levelHebrew": {
-          "name": "levelHebrew",
+        "hebrewLevel": {
+          "name": "hebrewLevel",
           "type": "levelHebrew",
           "typeSchema": "public",
           "primaryKey": false,
@@ -121,15 +121,15 @@
           "primaryKey": true,
           "notNull": true
         },
-        "levelHebrew": {
-          "name": "levelHebrew",
+        "hebrewLevel": {
+          "name": "hebrewLevel",
           "type": "levelHebrew",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
-        "levelEnglish": {
-          "name": "levelEnglish",
+        "englishLevel": {
+          "name": "englishLevel",
           "type": "levelEnglish",
           "typeSchema": "public",
           "primaryKey": false,
@@ -414,15 +414,15 @@
           "primaryKey": true,
           "notNull": true
         },
-        "levelHebrew": {
-          "name": "levelHebrew",
+        "hebrewLevel": {
+          "name": "hebrewLevel",
           "type": "levelHebrew",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
-        "levelEnglish": {
-          "name": "levelEnglish",
+        "englishLevel": {
+          "name": "englishLevel",
           "type": "levelEnglish",
           "typeSchema": "public",
           "primaryKey": false,
@@ -440,14 +440,14 @@
           "primaryKey": false,
           "notNull": false
         },
-        "GermanWord": {
-          "name": "GermanWord",
+        "germanWord": {
+          "name": "germanWord",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "HebrewWord": {
-          "name": "HebrewWord",
+        "hebrewWord": {
+          "name": "hebrewWord",
           "type": "text",
           "primaryKey": false,
           "notNull": false

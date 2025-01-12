@@ -20,7 +20,7 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
 
     const isEndGame = (wrongCounter: number, lettersArray: HangmanType[]) => {
 
-        const uniqueLettersLength = randomWord[0]?.GermanWord
+        const uniqueLettersLength = randomWord[0]?.germanWord
         .replace(/\s/g, '') // remove spaces
         .split('')
         .filter((value, index, self) => self.indexOf(value) === index) // unique letters

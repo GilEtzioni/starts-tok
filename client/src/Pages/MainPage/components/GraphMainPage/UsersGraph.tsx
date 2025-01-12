@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Typography } from 'antd';
 
 const UsersGraph: React.FC = () => {
   const data = [
@@ -27,9 +28,13 @@ const UsersGraph: React.FC = () => {
     .map((point, i) => (i === 0 ? `M${point.x},${point.y}` : `L${point.x},${point.y}`))
     .join(' ');
 
+    const { Title } = Typography;
+
   return (
     <div className="flex flex-col items-end">
-      <h1 className="text-right rtl mb-5 text-2xl font-bold">סטטיסטיקה שבועית</h1>
+        <Row className="mb-2 mt-2 mr-18 flex justify-end">
+          <Title level={3} className="text-right"> סטטיסטיקה שבועית</Title>
+        </Row> 
       <div className="w-[610px] border border-gray-400 rounded-lg shadow-md p-3 bg-white flex justify-center items-center">
         <svg width={width} height={height}>
           <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#000" />

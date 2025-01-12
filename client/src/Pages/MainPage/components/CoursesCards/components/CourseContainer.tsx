@@ -3,7 +3,7 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { getNumberOfLessonsCompleted } from "./Helper"
 import CourseCard from "./CourseCard";
 import { useFetchLessonData } from '../../../api/fetchingMainPage';
-
+import { Typography, Row } from 'antd';
 const CardContainer: React.FC = () => {
 
   const { data: coursesData, isLoading, error } = useFetchLessonData();
@@ -51,9 +51,14 @@ const CardContainer: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
   
+  const { Title } = Typography;
+
   return (
     <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
-      <h1 className="self-end text-right rtl text-2xl font-bold mr-14">קורסים</h1>
+        <Row className="mr-16 flex justify-end">
+          <Title level={3} className="text-right"> קורסים </Title>
+        </Row> 
+
       <div className="flex items-center justify-center w-full gap-4 box-border">
 
         <div className="relative flex items-center justify-center group">

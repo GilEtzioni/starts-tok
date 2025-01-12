@@ -4,6 +4,7 @@ import { minusOneClick, setCurrentMode } from '../../slices/WordleSlice';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../app/store';
+import { CurrentMode } from '../../ types/WordelType';
 
 const TooShortMessage: React.FC = () => {
   const clicksCounter = useSelector(
@@ -14,7 +15,7 @@ const TooShortMessage: React.FC = () => {
   useEffect(() => {
     // wait 1 second before dispatch
     const timeoutId = setTimeout(() => {
-      dispatch(setCurrentMode('running'));
+      dispatch(setCurrentMode(CurrentMode.Running));
       dispatch(minusOneClick());
     }, 1000);
 

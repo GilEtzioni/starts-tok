@@ -58,15 +58,13 @@ const MainThird: React.FC = () => {
         <p className="inline-block relative top-[100px]">
           {firstPartGerman}
           <input
-  type="text"
-  value={inputValue}
-  onChange={handleInputChange}
-  className={classNames(
-    "border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0",
-    `w-[${germanWord.length * 10}px]`
-  )}
-  placeholder=" "
-/>
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0"
+              style={{ width: `${germanWord.length * 10}px` }}
+              placeholder=" "
+            />
           {secondPartGerman}
         </p>
       </div> 

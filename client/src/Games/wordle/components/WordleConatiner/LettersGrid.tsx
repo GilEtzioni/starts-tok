@@ -3,16 +3,17 @@ import { Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { addOneClick } from '../../slices/WordleSlice';
-import { wordleType, letterColor } from '../../ types/WordelType';
+import { wordleType, LetterColor } from '../../ types/WordelType';
 import { WordsType } from "../../../../types/types";
 import { getLetterColor } from '../../utilts/wordleHelper';
+import { GridLetters } from '../../ types/WordelType';
 
 interface WordsGridProps {
   correctAnswer: wordleType[];
   gridAnswer: wordleType[][];
   setGridAnswer: React.Dispatch<React.SetStateAction<wordleType[][]>>;
-  gridLetters: Array<{ letter: string; letterColor: letterColor }>;
-  setGridLetters: React.Dispatch<React.SetStateAction<Array<{ letter: string; letterColor: letterColor }>>>;
+  gridLetters: GridLetters[];
+  setGridLetters: React.Dispatch<React.SetStateAction<GridLetters[]>>;
   allWords: WordsType[];
 }
 
@@ -66,10 +67,10 @@ const LettersGrid: React.FC<WordsGridProps> = ({
 
   const letterStyle = (item: any) => {
     if (!item) return '';
-    if (item.letterColor === letterColor.notSelected) return 'bg-gray-200';
-    if (item.letterColor === letterColor.gray) return 'bg-gray-400';
-    if (item.letterColor === letterColor.green) return 'bg-green-400';
-    if (item.letterColor === letterColor.yellow) return 'bg-yellow-400';
+    if (item.letterColor === LetterColor.NotSelected) return 'bg-gray-200';
+    if (item.letterColor === LetterColor.Gray) return 'bg-gray-400';
+    if (item.letterColor === LetterColor.Green) return 'bg-green-400';
+    if (item.letterColor === LetterColor.Yellow) return 'bg-yellow-400';
     return '';
   };
 

@@ -12,6 +12,7 @@ import { useGetData , useHandleClick} from '../utils/FirstEffects';
 import { useFetchLessonData } from '../api/fetchingLessons';
 import { useParams } from 'react-router-dom';
 import { FirstLessonType, IsSelected } from "../types/FirstLessonType";
+import { LessonStatus } from '../types/LessonType';
 
 const FirstCardContainer: React.FC = () => {
 
@@ -41,25 +42,25 @@ const FirstCardContainer: React.FC = () => {
 
         const handleClick = (id: number, language: string) => {
             // Update german array
-            if (status === "running" && language === "german") {
+            if (status === LessonStatus.Running && language === "german") {
                 const updatedGermanArray = germanArray.map((item) => {
                 // if it's a new card, select it. if re-clicked, reset it
                 if (
                     item.coupleId === id &&
-                    item.isSelected !== IsSelected.false &&
-                    item.isSelected !== IsSelected.true
+                    item.isSelected !== IsSelected.False &&
+                    item.isSelected !== IsSelected.True
                 ) {
                     return {
                     ...item,
                     isSelected:
-                        item.isSelected === IsSelected.clicked
-                        ? IsSelected.notSelected
-                        : IsSelected.clicked,
+                        item.isSelected === IsSelected.Clicked
+                        ? IsSelected.NotSelected
+                        : IsSelected.Clicked,
                     };
                 }
                 // reset the clicked state if re-clicked
-                if (item.isSelected === IsSelected.clicked) {
-                    return { ...item, isSelected: IsSelected.notSelected };
+                if (item.isSelected === IsSelected.Clicked) {
+                    return { ...item, isSelected: IsSelected.NotSelected };
                 }
                 return item;
                 });
@@ -67,21 +68,21 @@ const FirstCardContainer: React.FC = () => {
                 setGermanArray(updatedGermanArray);
             
                 const selectedCard = updatedGermanArray.find((item) => item.coupleId === id);
-                setGermanID(selectedCard?.isSelected === IsSelected.clicked ? id : 0);
+                setGermanID(selectedCard?.isSelected === IsSelected.Clicked ? id : 0);
             }
 
             // update hebrew
-            if (status === "running" && language === "hebrew") {
+            if (status === LessonStatus.Running && language === "hebrew") {
                 const updatedHebrewArray = hebrewArray.map((item) => {
                     // if it's a new card select it, if it re-click reset it
-                    if (item.coupleId === id && item.isSelected !== IsSelected.false && item.isSelected !== IsSelected.true) {
-                        return { ...item, isSelected: item.isSelected === IsSelected.clicked ? IsSelected.notSelected : IsSelected.clicked };
+                    if (item.coupleId === id && item.isSelected !== IsSelected.False && item.isSelected !== IsSelected.True) {
+                        return { ...item, isSelected: item.isSelected === IsSelected.Clicked ? IsSelected.NotSelected : IsSelected.Clicked };
                     }
                     // reset the clicked
-                    if (item.isSelected === IsSelected.clicked) {
-                        return { ...item, isSelected: IsSelected.notSelected };
+                    if (item.isSelected === IsSelected.Clicked) {
+                        return { ...item, isSelected: IsSelected.NotSelected };
                     }
-                    if (item.isSelected === IsSelected.false || item.isSelected === IsSelected.true ) {
+                    if (item.isSelected === IsSelected.False || item.isSelected === IsSelected.True ) {
                         return { ...item };
                     }
                     return item;
@@ -89,7 +90,7 @@ const FirstCardContainer: React.FC = () => {
             );
                 setHebrewArray(updatedHebrewArray);
                         const selectedCard = updatedHebrewArray.find((item) => item.coupleId === id);
-                setHebrewId(selectedCard?.isSelected === IsSelected.clicked ? id : 0);
+                setHebrewId(selectedCard?.isSelected === IsSelected.Clicked ? id : 0);
             }
         };
 

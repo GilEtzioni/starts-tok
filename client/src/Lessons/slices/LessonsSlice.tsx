@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LessonStatus } from '../types/LessonType';
 
 export const lessonsSlice = createSlice({
   name: 'lessons',
   initialState: {
-    status: "running",
+    status: LessonStatus.Running,
     order: 1,
     clicks: 0,
     anwser: "",
@@ -12,15 +13,15 @@ export const lessonsSlice = createSlice({
   reducers: {
     /* status */
     setRunning: (state) => {
-      state.status = "running";
+      state.status = LessonStatus.Running;
     },
 
     setSuccess: (state) => {
-      state.status = "success";
+      state.status = LessonStatus.Success;
     },
 
     setFailure: (state) => {
-      state.status = "failure";
+      state.status = LessonStatus.Failure;
     },
 
     /* order */

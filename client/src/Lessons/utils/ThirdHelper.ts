@@ -1,4 +1,4 @@
-import { LessonType } from '../types/LessonType';
+import { LessonType } from "../../types/types";
 
 export function getGermanMissingSentence(lessons: LessonType, order: number): string {
 

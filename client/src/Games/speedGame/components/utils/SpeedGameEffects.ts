@@ -4,6 +4,7 @@ import { speedGameType } from "../../types/speedGameTypes"
 import { addOneWrongCounter, addOneSuccesssCounter } from "../../slices/SpeedGameSlice";
 import { WordsType } from "../../../../types/types"
 import { useDispatch } from "react-redux";
+import { LessonStatus } from "../../../../lessons/types/LessonType";
 
 interface UseCardEffectsProps {
     words: WordsType[] | undefined;
@@ -88,8 +89,8 @@ export const useHandleTimer = ({
         if (wrongCounter === germanArray.length || words === undefined) return;
 
         const interval = setInterval(() => {
-            const germanIsSuccess = germanArray.some((item) => item.isSelected === "success");
-            const hebrewIsSuccess = hebrewArray.some((item) => item.isSelected === "success");
+            const germanIsSuccess = germanArray.some((item) => item.isSelected === LessonStatus.Success);
+            const hebrewIsSuccess = hebrewArray.some((item) => item.isSelected === LessonStatus.Success);
 
             const removedWord = words.pop();
 

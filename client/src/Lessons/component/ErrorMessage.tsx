@@ -6,7 +6,7 @@ import { setRunning, addOneOrder, resetClicks } from "../slices/LessonsSlice";
 
 
 const ErrorMessage: React.FC = () => {
-    const answer = useSelector((state: RootState) => state.lessons.anwser);
+    const rightAnswer = useSelector((state: RootState) => state.lessons.anwser);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const ErrorMessage: React.FC = () => {
         dispatch(setRunning());
     };
 
-    const rightAnswer = (order: number, answer: string) => {
+    const erroMessageCard = (order: number, answrightAnswerer: string) => {
         if (order === 1 || order === 4) {
             return (
                 <Card
@@ -58,7 +58,7 @@ const ErrorMessage: React.FC = () => {
 
                         <div>
                             <p className="rtl mr-1 text-red-600 mb-0.5">:התשובה הנכונה היא</p>
-                            <p className="ltr mr-1 text-red-600 mt-0.5">{` ${answer}`}</p>
+                            <p className="ltr mr-1 text-red-600 mt-0.5">{` ${rightAnswer}`}</p>
                         </div>
                     </div>
                 </Card>
@@ -66,7 +66,7 @@ const ErrorMessage: React.FC = () => {
         }
     };
 
-    return <>{rightAnswer(order, answer)}</>;
+    return <>{erroMessageCard(order, rightAnswer)}</>;
 };
 
 export default ErrorMessage;

@@ -29,7 +29,7 @@ const useFilteredWords = (words: WordsType[] | undefined) => {
 
     // if the user click on "A1" / "A2" / "B1" / "B2" / "C1" / "C2"
     if (level.length !== 0) {
-      filtered = filtered.filter((item) => level.includes(item.levelEnglish)); // filter by level
+      filtered = filtered.filter((item) => level.includes(item.englishLevel)); // filter by level
     }
 
     // if the user click on "V" / "?" / "X" 

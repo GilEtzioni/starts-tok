@@ -1,11 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { resetOrder } from "../slices/LessonsSlice";
 import { Button } from 'antd';
 
 const BackButton: React.FC = () => {
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleBack = () => {
+    dispatch(resetOrder());
     navigate(-1);
   };
 

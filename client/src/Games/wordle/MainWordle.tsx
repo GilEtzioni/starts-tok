@@ -4,7 +4,7 @@ import { Row, Typography } from 'antd';
 
 // fetch data + types
 import { WordsType } from "../../types/types";
-import { wordleType, letterColor } from './ types/WordelType';
+import { wordleType, LetterColor } from './ types/WordelType';
 
 // components
 import BackButton from './components/WordleConatiner/BackButton';
@@ -23,6 +23,7 @@ import { useStartGame } from './utilts/WordelEffects';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { useFetchWordsData } from '../api/fetchingGame';
+import { CurrentMode } from './ types/WordelType';
 
 const MainWordle: React.FC = () => {
 
@@ -33,7 +34,7 @@ const MainWordle: React.FC = () => {
 
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
-    const [gridLetters, setGridLetters] = useState<{ letter: string; letterColor: letterColor }[]>([]);
+    const [gridLetters, setGridLetters] = useState<{ letter: string; letterColor: LetterColor }[]>([]);
     const [allWords, setAllWords] = useState<WordsType[]>([]);
 
   useStartGame({ words, setAllWords, setGridAnswer, setCorrectAnswer, setGridLetters });
@@ -44,15 +45,15 @@ const MainWordle: React.FC = () => {
 
   const Message = () => {
     switch (currentMode) {
-      case 'running':
+      case CurrentMode.Running:
         return null;
-      case 'failure':
+      case CurrentMode.Failure:
         return <FailureMesssage />;
-      case 'success':
+      case CurrentMode.Success:
         return <SuccessMessage />;
-      case 'notInDictionary':
+      case CurrentMode.NotInDictionary:
         return <NotWordMessage />;
-      case 'notEnoughLetters':
+      case CurrentMode.NotEnoughLetters:
         return <TooShortMessage />;
       default:
         return null;
@@ -69,8 +70,7 @@ const MainWordle: React.FC = () => {
         <div className="w-full">
           <Row justify="center" className="mt-8">
             <Title level={3} className="text-center">
-              {' '}
-              הצלחת 0 משחקים ברצף{' '}
+              הצלחת 0 משחקים ברצף
             </Title>
           </Row>
         </div>

@@ -5,11 +5,11 @@ async function seed() {
 
     console.log("Seeding database...");
 
-    const userId = "user_2rLdvxl8OaqqsqX1Jv72KhuGq32"; 
+    const userId = "user_2rOAI6Ru0mmOHXm3X2z4EOO9INI"; 
 
     await db.insert(Lessons).values([
     /* level: A1-מבוא , course: Greetings-6 , lesson: 1 */
-    { userId: userId , levelHebrew: "מבוא", levelEnglish: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 1,
+    { userId: userId , hebrewLevel: "מבוא", englishLevel: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 1,
 
       // sentece game 
       sentenceOneGerman: "hallo wie gehts", sentenceOneHebrew: "היי מה שלומך",
@@ -39,7 +39,7 @@ async function seed() {
     },
 
     /* level: A1-מבוא , course: Greetings-6 , lesson: 2 */
-    { userId: userId , levelHebrew: "מבוא", levelEnglish: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 2,
+    { userId: userId , hebrewLevel: "מבוא", englishLevel: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 2,
 
       // sentece game 
       sentenceOneGerman: "Tschüss, Bis bald", sentenceOneHebrew: "ביי, נתראה בקרוב",
@@ -68,7 +68,7 @@ async function seed() {
     },
 
     /* level: A1-מבוא , course: Greetings-6 , lesson: 3 */
-  { userId: userId , levelHebrew: "מבוא", levelEnglish: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 3,
+  { userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 3,
 
     // sentence game 
     sentenceOneGerman: "Guten Tag, wie heißt du?", sentenceOneHebrew: "צהריים טובים, איך קוראים לך?",
@@ -97,7 +97,7 @@ async function seed() {
   },
 
   /* level: A1-מבוא , course: Greetings-6 , lesson: 4 */
-{ userId: userId , levelHebrew: "מבוא", levelEnglish: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 4,
+{ userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 4,
 
   // sentence game 
   sentenceOneGerman: "Entschuldigung, wie spät ist es?", sentenceOneHebrew: "סליחה, מה השעה?",
@@ -127,7 +127,7 @@ async function seed() {
 
 
 /* level: A1-מבוא , course: Greetings-6 , lesson: 5 */
-{ userId: userId , levelHebrew: "מבוא", levelEnglish: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 5,
+{ userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 5,
 
   // sentence game 
   sentenceOneGerman: "Wo wohnst du?", sentenceOneHebrew: "איפה אתה גר?",
@@ -156,7 +156,7 @@ async function seed() {
 },
 
 /* level: A1-מבוא , course: Greetings-6 , lesson: 6 */
-{ userId: userId , levelHebrew: "מבוא", levelEnglish: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 6,
+{ userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 6,
 
   // sentence game 
   sentenceOneGerman: "Wie heißt das auf Deutsch?", sentenceOneHebrew: "איך קוראים לזה בגרמנית?",

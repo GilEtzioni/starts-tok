@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
 import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
-import { LessonType } from '../types/LessonType';
+import { LessonType } from "../../types/types";
 
 interface UseCardEffectsProps {
     lessonsData: LessonType[] | undefined;
@@ -52,13 +52,13 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
 
                 // update german array
                 const updatedGermanArray = germanArray.map((item) =>
-                    item.coupleId === germanId ? { ...item, isSelected: IsSelected.true } : { ...item }
+                    item.coupleId === germanId ? { ...item, isSelected: IsSelected.True } : { ...item }
                  );
                 setGermanArray(updatedGermanArray);
     
                 // update hebrew array
                 const updatedHebrewArray = hebrewArray.map((item) =>
-                    item.coupleId === hebrewId ? { ...item, isSelected: IsSelected.true } : { ...item }
+                    item.coupleId === hebrewId ? { ...item, isSelected: IsSelected.True } : { ...item }
                 );
                 setHebrewArray(updatedHebrewArray);
 
@@ -76,13 +76,13 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
 
                 // update german array
                 const updatedGermanArray = germanArray.map((item) =>
-                    item.coupleId === germanId ? { ...item, isSelected: IsSelected.false } : { ...item }
+                    item.coupleId === germanId ? { ...item, isSelected: IsSelected.False } : { ...item }
                 );
                 setGermanArray(updatedGermanArray);
         
                 // update hebrew array
                 const updatedHebrewArray = hebrewArray.map((item) =>
-                    item.coupleId === hebrewId ? { ...item, isSelected: IsSelected.false } : { ...item }
+                    item.coupleId === hebrewId ? { ...item, isSelected: IsSelected.False } : { ...item }
                 );
                 setHebrewArray(updatedHebrewArray);
 

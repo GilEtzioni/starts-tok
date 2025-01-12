@@ -1,4 +1,4 @@
-import { LessonType } from "../types/LessonType";
+import { LessonType } from '../../types/types'; 
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
 export function getHebrewWords(lessons: LessonType, order: number): FirstLessonType[] {
@@ -35,7 +35,7 @@ export function getHebrewWords(lessons: LessonType, order: number): FirstLessonT
             combinedWordsArray.push({
                 coupleId: coupleId, 
                 word: hebrewWord, 
-                isSelected: IsSelected.notSelected,
+                isSelected: IsSelected.NotSelected,
             });
         }
     }
@@ -78,7 +78,7 @@ export function getGermanWords(lessons: LessonType, order: number): FirstLessonT
             combinedWordsArray.push({
                 coupleId: coupleId, 
                 word: germanWord, 
-                isSelected: IsSelected.notSelected,
+                isSelected: IsSelected.NotSelected,
             });
         }
     }

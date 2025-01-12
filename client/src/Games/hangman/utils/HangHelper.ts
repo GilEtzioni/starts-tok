@@ -13,7 +13,7 @@ const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 export const createLettersArray = (word: WordsType): HangmanType[] => {
     const result: HangmanType[] = [];
 
-    const wordLetters = new Set(word.GermanWord.toLowerCase().split(''));
+    const wordLetters = new Set(word.germanWord.toLowerCase().split(''));
 
     letters.forEach((letter) => {
         result.push({
@@ -28,7 +28,7 @@ export const createLettersArray = (word: WordsType): HangmanType[] => {
 export const createGameArray = (word: WordsType): HangmanType[] => {
     const array: HangmanType[] = [];
   
-    word.GermanWord.toLowerCase().split('').forEach((letter) => {
+    word.germanWord.toLowerCase().split('').forEach((letter) => {
       if (letters.includes(letter)) { 
         array.push({
           letter: letter.toLowerCase(),

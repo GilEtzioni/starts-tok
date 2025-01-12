@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import GameCard from './GameCard';
 import { useHangmanMaxScore } from '../../../api/fetchingMainPage'; 
+import { Typography, Row } from 'antd';
 
 const GameContainer: React.FC = () => {
 
@@ -31,9 +32,14 @@ const GameContainer: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
+
+  const { Title } = Typography;
+
   return (
     <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
-      <h1 className="self-end text-right rtl text-2xl font-bold mr-14">תרגול</h1>
+        <Row className="mr-16 flex justify-end">
+          <Title level={3} className="text-right"> תרגול </Title>
+        </Row> 
       <div className="flex items-center justify-center w-full gap-4 box-border">
 
         <div className="relative flex items-center justify-center group">

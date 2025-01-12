@@ -1,3 +1,4 @@
+import { LessonStatus } from "../../../../lessons/types/LessonType";
 import { WordsType } from "../../../../types/types";
 import { speedGameType } from "../../types/speedGameTypes";
 import { Language, SelectedCard } from "../../types/speedGameTypes";
@@ -34,16 +35,16 @@ export const createGameArray = (wordsArray: WordsType[] | undefined) => {
       const word = wordsArray.splice(0, 1)[0]; // remove the first item and get it
       newGermanArray.push({
         id: word.id || 0,
-        language: "GermanWord",
-        word: word?.GermanWord,
-        isSelected: SelectedCard.notSelected,
+        language: Language.GermanWord,
+        word: word?.germanWord,
+        isSelected: SelectedCard.NotSelected,
       });
 
       newHebrewArray.push({
         id: word.id || 0,
-        language: "HebrewWord",
-        word: word?.HebrewWord,
-        isSelected: SelectedCard.notSelected,
+        language: Language.HebrewWord,
+        word: word?.hebrewWord,
+        isSelected: SelectedCard.NotSelected,
       });
     }
   }
@@ -74,7 +75,7 @@ const getRandomIndex = (hebrewArray: speedGameType[], germanArray: speedGameType
 
 export const replaceOldCard = (newWord: WordsType[], hebrewArray: speedGameType[], germanArray: speedGameType[]) => {
 
-  const {hebrewIndex, germanIndex} = getRandomIndex(hebrewArray, germanArray, "success");
+  const {hebrewIndex, germanIndex} = getRandomIndex(hebrewArray, germanArray, LessonStatus.Success);
 
   const newHebrewArray = [...hebrewArray];
   const newGermanArray = [...germanArray];
@@ -82,15 +83,15 @@ export const replaceOldCard = (newWord: WordsType[], hebrewArray: speedGameType[
   newHebrewArray[hebrewIndex] = {
     id: newWord[0]?.id || 0,
     language: Language.HebrewWord,
-    word: newWord[0]?.HebrewWord || "",
-    isSelected: SelectedCard.notSelected,
+    word: newWord[0]?.hebrewWord || "",
+    isSelected: SelectedCard.NotSelected,
   };
 
   newGermanArray[germanIndex] = {
     id: newWord[0]?.id || 0,
     language: Language.GermanWord,
-    word: newWord[0]?.GermanWord || "",
-    isSelected: SelectedCard.notSelected,
+    word: newWord[0]?.germanWord || "",
+    isSelected: SelectedCard.NotSelected,
   };
 
   return { newHebrewArray, newGermanArray };
@@ -106,15 +107,15 @@ export const deleteOldCards = (newWord: WordsType[], hebrewArray: speedGameType[
   newHebrewArray[hebrewIndex] = {
     id: newWord[0]?.id || 0,
     language: Language.HebrewWord,
-    word: newWord[0]?.HebrewWord || "",
-    isSelected: SelectedCard.failure,
+    word: newWord[0]?.hebrewWord || "",
+    isSelected: SelectedCard.Failure,
   };
 
   newGermanArray[germanIndex] = {
     id: newWord[0]?.id || 0,
     language: Language.GermanWord,
-    word: newWord[0]?.GermanWord || "",
-    isSelected: SelectedCard.failure,
+    word: newWord[0]?.germanWord || "",
+    isSelected: SelectedCard.Failure,
   };
 
   return { newHebrewArray, newGermanArray };

@@ -1,18 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export type CurrentMode =
-  | 'running'
-  | 'failure'
-  | 'success'
-  | 'notInDictionary'
-  | 'notEnoughLetters';
+import { CurrentMode } from '../ types/WordelType';
 
 export const WordleSlice = createSlice({
   name: 'wordel',
   initialState: {
     clicksCounter: 0,
     successCounter: 0,
-    currentMode: 'running' as CurrentMode,
+    currentMode: CurrentMode.Running,
   },
 
   reducers: {

@@ -5,7 +5,7 @@ import {db} from "../drizzle/db";
 async function seed() {
   console.log("Seeding database...");
 
-  const userId = "user_2rLdvxl8OaqqsqX1Jv72KhuGq32"; 
+  const userId = "user_2rOAI6Ru0mmOHXm3X2z4EOO9INI"; 
 
   await db.insert(Games).values([
     // hangman

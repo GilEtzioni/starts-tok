@@ -60,7 +60,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
       return;
   }
 
-  const { GermanWord, HebrewWord } = req.body;
+  const { germanWord, hebrewWord } = req.body;
 
   try {
     // find the last word index
@@ -82,20 +82,20 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
       .insert(Words)
       .values({
         userId: userId,
-        levelHebrew: "המילים שהוספתי",
-        levelEnglish: "userWords",
+        hebrewLevel: "המילים שהוספתי",
+        englishLevel: "userWords",
         courseId,
         courseNameEnglish: "userWords",
-        GermanWord,
-        HebrewWord,
+        germanWord,
+        hebrewWord,
         knowlage: "?",
       })
       .returning({
         id: Words.id,
-        GermanWord: Words.GermanWord,
-        HebrewWord: Words.HebrewWord,
-        levelHebrew: Words.levelHebrew,
-        levelEnglish: Words.levelEnglish,
+        germanWord: Words.germanWord,
+        hebrewWord: Words.hebrewWord,
+        hebrewLevel: Words.hebrewLevel,
+        englishLevel: Words.englishLevel,
         courseId: Words.courseId,
         courseNameEnglish: Words.courseNameEnglish,
         knowlage: Words.knowlage,

@@ -1,5 +1,5 @@
 import { WordsType } from "../../../types/types"
-import { wordleType, letterColor } from '../ types/WordelType';
+import { wordleType, LetterColor, GridLetters } from '../ types/WordelType';
 
 export const shuffleAllWords = (wordsArray: WordsType[]) => {
   for (let i = wordsArray?.length - 1; i > 0; i--) {
@@ -16,7 +16,7 @@ export const randomWordsArray = (words: WordsType[]): WordsType[] => {
 
   const suffeledArray = shuffleAllWords([...words]);
   const result: WordsType[] = suffeledArray.filter(
-    (item) => item.GermanWord?.length === gridSize
+    (item) => item.germanWord?.length === gridSize
   );
 
   return result;
@@ -24,13 +24,13 @@ export const randomWordsArray = (words: WordsType[]): WordsType[] => {
 
 export const getRandomWord = (words: WordsType[]): wordleType[] => {
   const index = Math.floor(Math.random() * words?.length);
-  const sentence = words[index]?.GermanWord;
+  const sentence = words[index]?.germanWord;
 
   const result: wordleType[] = [];
 
   for (let i = 0; i < sentence?.length; i++) {
     result.push({
-      letterColor: letterColor.notSelected,
+      letterColor: LetterColor.NotSelected,
       letter: sentence.charAt(i).toLowerCase(),
       isInGame: false,
     });
@@ -53,8 +53,8 @@ export const createGameGrid = (correctAnswer: wordleType[]) => {
   return result;
 };
 
-export const createLettersGrid = (): Array<{letter: string; letterColor: letterColor }> => {
-  const result: Array<{ letter: string; letterColor: letterColor }> = [];
+export const createLettersGrid = (): GridLetters[] => {
+  const result: GridLetters[] = [];
   const lettersArray = [
     'a',
     'ä',
@@ -91,17 +91,17 @@ export const createLettersGrid = (): Array<{letter: string; letterColor: letterC
   lettersArray?.map((item) => {
     result.push({
       letter: item,
-      letterColor: letterColor.notSelected,
+      letterColor: LetterColor.NotSelected,
     });
   });
 
   return result;
 };
 
-export const getLetterColor = ( letter: string, columnIndex: number, correctAnswerArray: wordleType[]): letterColor => {
+export const getLetterColor = ( letter: string, columnIndex: number, correctAnswerArray: wordleType[]): LetterColor => {
   // correct position + correct letter
   if (correctAnswerArray[columnIndex]?.letter === letter) {
-    return letterColor.green;
+    return LetterColor.Green;
   }
 
   // correct letter + wrong possition
@@ -109,9 +109,9 @@ export const getLetterColor = ( letter: string, columnIndex: number, correctAnsw
     (item) => item?.letter === letter
   );
   if (isLetterInArray) {
-    return letterColor.yellow;
+    return LetterColor.Yellow;
   }
 
   // wrong letter + wrong possition
-  return letterColor.gray;
+  return LetterColor.Gray;
 };

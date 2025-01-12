@@ -1,26 +1,26 @@
-export enum LevelEnglish {
-    A1 = "A1",
-    A2 = "A2",
-    B1 = "B1",
-    B2 = "B2",
-    C1 = "C1",
-    C2 = "C2",
-  }
-  
-  export enum LevelHebrew {
-    מבוא = "מבוא",
-    בסיסי = "בסיסי",
-    בינוני = "בינוני",
-    מתקדם = "מתקדם",
-    מתקדםמאוד = "מתקדם מאוד",
-    שפתאם = "שפת אם",
-  }
-  
+export enum EnglishLevel {
+  A1 = "A1",
+  A2 = "A2",
+  B1 = "B1",
+  B2 = "B2",
+  C1 = "C1",
+  C2 = "C2",
+}
+
+export enum HebrewLevel {
+  מבוא = "מבוא",
+  בסיסי = "בסיסי",
+  בינוני = "בינוני",
+  מתקדם = "מתקדם",
+  מתקדםמאוד = "מתקדם מאוד",
+  שפתאם = "שפת אם",
+}
+
   export type LessonType = {
     userId: string,
     id: number,
-    levelHebrew: string,
-    levelEnglish: string,
+    hebrewLevel: HebrewLevel,
+    englishLevel: EnglishLevel,
     courseNameEnglish: string,
     courseId: number,
     lessonId: number,
@@ -61,16 +61,27 @@ export enum LevelEnglish {
     wordTwelveGerman: string,
     wordTwelveHebrew: string,
   }
+
+  export type CourseType = {
+    userId: string,
+    courseId: number;
+    englishLevel: EnglishLevel;
+    hebrewLevel: HebrewLevel;
+    courseNameEnglish: string;
+    courseNameGerman: string;
+    courseNameHebrew: string;
+    lessonCompleted: number;
+};
   
   export interface WordsType {
     userId: string,
     id?: number,
-    levelHebrew: LevelHebrew,
-    levelEnglish: LevelEnglish,
+    hebrewLevel: HebrewLevel,
+    englishLevel: EnglishLevel,
     courseId: number,
     courseNameEnglish: string,
-    GermanWord: string,
-    HebrewWord: string, 
+    germanWord: string,
+    hebrewWord: string, 
     knowlage: string,
   }
 

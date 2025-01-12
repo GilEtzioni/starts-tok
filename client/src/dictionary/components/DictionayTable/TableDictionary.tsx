@@ -37,26 +37,26 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
           render: (item, row) => {
             // Check if the current row is in the translatedWords array
             const matchingEntry = translatedWords.find(([wordId]) => wordId === row.id);
-            return matchingEntry ? row.HebrewWord : null;
+            return matchingEntry ? row.hebrewWord : null;
           },
         },
         // last column
         {
           title: 'מילה',
-          dataIndex: 'GermanWord',
-          key: 'GermanWord',
+          dataIndex: 'germanWord',
+          key: 'germanWord',
           align: 'right' as const,
         },
       ]}
       dataSource={filteredWords?.map((item) => ({
         key: item.id,
         id: item.id,
-        HebrewWord: item.HebrewWord,
-        GermanWord: item.GermanWord,
+        hebrewWord: item.hebrewWord,
+        germanWord: item.germanWord,
         courseNameEnglish: item.courseNameEnglish,
         knowlage: item.knowlage,
-        levelHebrew: item.levelHebrew,
-        levelEnglish: item.levelEnglish,
+        hebrewLevel: item.hebrewLevel,
+        englishLevel: item.englishLevel,
       }))}
       pagination={false} // for css
       // when user click on the row

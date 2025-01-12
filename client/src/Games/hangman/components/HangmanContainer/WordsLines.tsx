@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { HangmanType } from '../../types/hangmanType';
 
 interface WordsLinesProps {
@@ -11,11 +12,15 @@ const WordsLines: React.FC<WordsLinesProps> = ({ gameArray }) => {
 			{gameArray.map((item, index) => (
 				<span
 					key={index}
-					className={`${
-						item.letter === ' ' ? 'mr-[30px]' : 'mr-[10px]'
-					} text-[1.8rem] font-bold ${
-						item.selected ? 'text-[#333333]' : 'text-[#4A4A4A]'
-					}`}
+					className={classNames(
+						'text-[1.8rem] font-bold',
+						{
+							'mr-[30px]': item.letter === ' ',
+							'mr-[10px]': item.letter !== ' ',
+							'text-[#333333]': item.selected,
+							'text-[#4A4A4A]': !item.selected,
+						}
+					)}
 				>
 					{item.selected
 						? item.letter

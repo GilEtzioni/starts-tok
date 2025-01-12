@@ -9,8 +9,8 @@ export const gameNameEnum = pgEnum("gameName", ["speedGame", "hangmanGame", "row
 export const CourseNames = pgTable("courses", {
     userId: text("userId").notNull(),
     courseId: serial("courseId").primaryKey(),
-    levelEnglish: levelEnglishEnum("levelEnglish"),
-    levelHebrew: levelHebrewEnum("levelHebrew"),
+    englishLevel: levelEnglishEnum("englishLevel"),
+    hebrewLevel: levelHebrewEnum("hebrewLevel"),
     courseNameEnglish: text("courseNameEnglish"),
     courseNameGerman: text("courseNameGerman"),
     courseNameHebrew: text("courseNameHebrew"),
@@ -21,12 +21,12 @@ export const CourseNames = pgTable("courses", {
 export const Words = pgTable("words", {
     userId: text("userId").notNull(),
     id: serial("id").primaryKey(),
-    levelHebrew: levelHebrewEnum("levelHebrew"),
-    levelEnglish: levelEnglishEnum("levelEnglish"),
+    hebrewLevel: levelHebrewEnum("hebrewLevel"),
+    englishLevel: levelEnglishEnum("englishLevel"),
     courseId: integer("courseId").references(() => CourseNames.courseId), // foreign key
     courseNameEnglish: text("courseNameEnglish"),
-    GermanWord: text("GermanWord"),
-    HebrewWord: text("HebrewWord"),
+    germanWord: text("germanWord"),
+    hebrewWord: text("hebrewWord"),
     knowlage: text("knowlage"),
 });
 
@@ -36,8 +36,8 @@ export const Lessons = pgTable("lessons", {
     userId: text("userId").notNull(),
     id: serial("id").primaryKey(),               // 1-150
 
-    levelHebrew: levelHebrewEnum("levelHebrew"),     // ״מתחילים״
-    levelEnglish: levelEnglishEnum("levelEnglish"),  // A1
+    hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
+    englishLevel: levelEnglishEnum("englishLevel"),  // A1
 
     courseNameEnglish: text("courseNameEnglish"), // Greeting
     courseId: integer("courseId").references(() => CourseNames.courseId), // foreign key

@@ -4,8 +4,8 @@ CREATE TYPE "public"."levelHebrew" AS ENUM('מבוא', 'בסיסי', 'בינונ
 CREATE TABLE IF NOT EXISTS "courses" (
 	"userId" text NOT NULL,
 	"courseId" serial PRIMARY KEY NOT NULL,
-	"levelEnglish" "levelEnglish",
-	"levelHebrew" "levelHebrew",
+	"englishLevel" "levelEnglish",
+	"hebrewLevel" "levelHebrew",
 	"courseNameEnglish" text,
 	"courseNameGerman" text,
 	"courseNameHebrew" text,
@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS "games" (
 CREATE TABLE IF NOT EXISTS "lessons" (
 	"userId" text NOT NULL,
 	"id" serial PRIMARY KEY NOT NULL,
-	"levelHebrew" "levelHebrew",
-	"levelEnglish" "levelEnglish",
+	"hebrewLevel" "levelHebrew",
+	"englishLevel" "levelEnglish",
 	"courseNameEnglish" text,
 	"courseId" integer,
 	"lessonId" integer,
@@ -69,12 +69,12 @@ CREATE TABLE IF NOT EXISTS "lessons" (
 CREATE TABLE IF NOT EXISTS "words" (
 	"userId" text NOT NULL,
 	"id" serial PRIMARY KEY NOT NULL,
-	"levelHebrew" "levelHebrew",
-	"levelEnglish" "levelEnglish",
+	"hebrewLevel" "levelHebrew",
+	"englishLevel" "levelEnglish",
 	"courseId" integer,
 	"courseNameEnglish" text,
-	"GermanWord" text,
-	"HebrewWord" text,
+	"germanWord" text,
+	"hebrewWord" text,
 	"knowlage" text
 );
 --> statement-breakpoint

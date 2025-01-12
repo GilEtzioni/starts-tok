@@ -51,7 +51,7 @@ const fetchWords = async (): Promise<WordsType[]> => {
   
     return useMutation(
       async (userWord: { germanWord: string; translatedWord: string }) => {
-        const payload = { GermanWord: userWord.germanWord, HebrewWord: userWord.translatedWord };
+        const payload = { germanWord: userWord.germanWord, hebrewWord: userWord.translatedWord };
         const response = await axiosInstance.post(`/dictionary/new`, payload);
         return response.data; 
       },

@@ -1,4 +1,4 @@
-import { LessonType, WordsType } from '../types/LessonType';
+import { LessonType, WordsType } from "../../types/types";
 import { CardType } from '../types/SecondLessonType';
 import { TranslatedArray } from '../types/SecondLessonType';
 
@@ -165,16 +165,16 @@ const sentenceWithoutPunctuations = (hebrewSentence: string): string => {
 
 export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsType[]) => {
 
-    let fixedString: string = movePunctuationToFront(hebrewSentence);               // make the last '?' as the first index
+    const fixedString: string = movePunctuationToFront(hebrewSentence);               // make the last '?' as the first index
     const noPunctionsSentence: string = sentenceWithoutPunctuations(fixedString);   // no punctions
     const resultArray :TranslatedArray[] = [];
     const tempArray: string[] = noPunctionsSentence.split(' ');
     
     // find and push matching words
     const findAndPushMatches = (word: string): boolean => {
-        const matchingWords = wordsArray.filter(item => item.HebrewWord === word);
+        const matchingWords = wordsArray.filter(item => item.hebrewWord === word);
         if (matchingWords.length > 0) {
-            const germanStrings = matchingWords.map(item => item.GermanWord);
+            const germanStrings = matchingWords.map(item => item.germanWord);
             const existingEntry = resultArray.find(entry => entry.hebrewString === word);
             if (existingEntry) {
                 existingEntry.germanString.push(...germanStrings);

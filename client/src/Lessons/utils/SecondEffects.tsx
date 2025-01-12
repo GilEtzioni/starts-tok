@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { getGermanWords, shuffleArray, getUserAnswer, getGermanSentence, areStringsEqual, splitSentenceToWords, getHebrewSentence } from './SecondHelper';
 import { useDispatch } from 'react-redux';
-import { WordsType, LessonType } from '../types/LessonType';
+import { WordsType, LessonType } from "../../types/types"
 import { TranslatedArray, germanArrayType } from '../types/SecondLessonType';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
+import { setRightAnswer } from '../slices/LessonsSlice';
 
 interface UseGetDataProps {
   lessonsData: LessonType[] | undefined;
   order: number;
   setGermanArray: (array: germanArrayType[]) => void;
   setHebrewSentence: (str: string) => void;
+  dispatch: ReturnType<typeof useDispatch>;
 }
 
 interface UseHandleNextProps {
@@ -31,7 +33,7 @@ interface useHandleDataProps {
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewSentence }: UseGetDataProps) => { 
+export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewSentence, dispatch }: UseGetDataProps) => { 
   useEffect(() => {
 
     if(lessonsData === undefined) return;
@@ -39,10 +41,12 @@ export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewSenten
       // get the data
       const originalGermanArray = getGermanWords(lessonsData[0], order);
       const hebrewSentence = getHebrewSentence(lessonsData[0], order);
+      const germanSentence = getGermanSentence(lessonsData[0], order);
       const shuffledGerman = shuffleArray(originalGermanArray);
 
       setGermanArray(shuffledGerman);
       setHebrewSentence(hebrewSentence);
+      dispatch(setRightAnswer(germanSentence));
 
   }, [lessonsData, order, setGermanArray]);
 };

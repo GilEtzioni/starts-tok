@@ -1,8 +1,8 @@
 export enum IsSelected {
-    true = "true",
-    false = "false",
-    clicked = "clicked",
-    notSelected = "notSelected",
+    True = "true",
+    False = "false",
+    Clicked = "clicked",
+    NotSelected = "notSelected",
   }
 
   export interface FirstLessonType {
