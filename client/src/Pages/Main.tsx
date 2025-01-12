@@ -1,6 +1,7 @@
 import React from 'react';
-import MainLayout from "../Layout/MainLayout";
+import MainLayout from "../layout/MainLayout";
 import MainPage from './MainPage';
+import "../index.css";
 
 const Main: React.FC = () => {
   return (

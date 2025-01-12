@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 // types
-import { WordsType } from '../../hangman/types/types';
+import { WordsType } from "../../../types/types";
 import { wordleType, letterColor } from '../ types/WordelType';
 
 // functions + redux
 import { randomWordsArray, getRandomWord, createLettersGrid } from './wordleHelper';
 import { CurrentMode, addOneSuccess, minusOneClick, setCurrentMode } from '../slices/WordleSlice';
+import { useDispatch } from 'react-redux';
 
 export interface useStartGameProps {
-  words:any;
+  words: WordsType[] | undefined;
   setCorrectAnswer: (array: wordleType[]) => void;
   setGridAnswer: (array: wordleType[][]) => void;
   setGridLetters: (array: { letter: string; letterColor: letterColor }[]) => void;
@@ -20,7 +21,7 @@ export interface useEnterClickProps {
   setGridAnswer: (array: wordleType[][]) => void;
   gridAnswer: wordleType[][];
   allWords: WordsType[];
-  dispatch: any;
+  dispatch: ReturnType<typeof useDispatch>;
   correctAnswer: wordleType[];
 }
 

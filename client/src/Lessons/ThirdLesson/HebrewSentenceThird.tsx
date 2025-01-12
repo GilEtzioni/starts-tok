@@ -1,39 +1,33 @@
 import React, { useState } from 'react';
-import { WordsType } from '../types/lessonType';
-import { splitSentenceToWords } from '../SecondLesson/SecondHelper';
+import { WordsType } from "../../types/types";
 import { Tooltip } from 'antd';
-import { useHandleData } from '../SecondLesson/SecondEffects';
+import { useHandleData } from '../utils/SecondEffects';
+import { TranslatedArray } from '../types/SecondLessonType';
 
 interface HebrewSentenceProps {
-    wordsData: WordsType[];
+    wordsData: WordsType[] | undefined;
     hebrewSentence: string;
 }
 
 const HebrewSentenceThird: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence }) => {
 
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const [words, setWords] = useState<Array<{ hebrewString: string; germanString: string | null | string[] }>>([]);
+    const [translatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
 
-    useHandleData({ splitSentenceToWords, hebrewSentence, wordsData, setWords });
-
-    function printGermanWords(wordsArray: Array<string>) {
-        for (const item of wordsArray) {
-            <p> {item} </p>;
-        }
-    }
+    useHandleData({ hebrewSentence, wordsData, setTranslatedWords });
 
     return (
         <div className="text-center my-5">
             <div className="inline-block">
-                {[...words]
+                {[...translatedWords]
                     .reverse() // map from last index
                     .map((item, index) => (
                         <Tooltip
                             key={index}
                             title={
                                 Array.isArray(item.germanString) && item.germanString.length > 0
-                                    ? item.germanString.map((str: string, strIndex: number) => (
-                                          <div key={`${index}-${strIndex}`} className="text-center">
+                                    ? item.germanString.map((str: string | null, strIndex: number) => (
+                                          <div key='strIndex' className="text-center">
                                               {str}
                                           </div>
                                       ))
@@ -54,7 +48,7 @@ const HebrewSentenceThird: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewS
                                 }
                             }}
                         >
-                            {/* Add spaces based on the word / commas / etc */}
+                            {/* add spaces based on the word / commas / etc */}
                             <span
                                 className={`inline-block text-center relative ${
                                     !Array.isArray(item.germanString) || item.germanString[0] === null

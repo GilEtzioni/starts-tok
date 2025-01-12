@@ -87,7 +87,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
                 width={20}
                 height={18}
                 preview={false}
-                style={{ borderRadius: 2, marginRight: 20, marginTop: 2 }}
+                className="rounded-sm mr-5 mt-0.5"
               />
             }
           >

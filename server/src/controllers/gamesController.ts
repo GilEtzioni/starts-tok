@@ -17,7 +17,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
         .select()
         .from(Words)
         .where(
-            eq(Words.clerkUserId, userId)
+            eq(Words.userId, userId)
         );
         res.json(coursesSubjects);
 
@@ -26,28 +26,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
     }
 }
 
-export const getHangmanScore = async (req: Request, res: Response): Promise<void> => {
-    const { userId } = getAuth(req);
-
-    if (!userId) {
-      res.status(401).json({ error: "Unauthorized" });
-      return;
-    } 
-
-    try {
-        const score = await db
-            .select().from(Games)
-            .where(
-                and(
-                eq(Games.gameName, "hangmanGame"),
-                eq(Games.clerkUserId, userId)
-            ));
-
-        res.json(score);
-    } catch (error) {
-        res.status(500).json({ message: "An error occurred while ", error });
-    }
-}
+/* ------------------------------------------------------------------------------------ */
 
 export const getHangmanMaxScore = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -64,7 +43,7 @@ export const getHangmanMaxScore = async (req: Request, res: Response): Promise<v
             .where(
                 and(
                     eq(Games.gameName, "hangmanGame"),
-                    eq(Games.clerkUserId, userId),
+                    eq(Games.userId, userId),
                 ));
 
         res.json(highestScore);
@@ -91,7 +70,7 @@ export const addHangmanScore = async (req: Request, res: Response): Promise<void
         const newScore = await db
             .insert(Games)
             .values({
-                clerkUserId: userId,
+                userId: userId,
                 gameName: "hangmanGame",
                 gameScore: score,
             }).returning({
@@ -105,3 +84,5 @@ export const addHangmanScore = async (req: Request, res: Response): Promise<void
         res.status(500).json({ message: "An error occurred while ", error });
     }    
 }
+
+/* ------------------------------------------------------------------------------------ */

@@ -1,5 +1,5 @@
 {
-  "id": "861e5a99-c844-4b79-9070-bbb7d0aa7b43",
+  "id": "3b08e9c0-523e-4558-9e48-a84764f7286f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -8,8 +8,8 @@
       "name": "courses",
       "schema": "",
       "columns": {
-        "clerkUserId": {
-          "name": "clerkUserId",
+        "userId": {
+          "name": "userId",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -71,8 +71,8 @@
       "name": "games",
       "schema": "",
       "columns": {
-        "clerkUserId": {
-          "name": "clerkUserId",
+        "userId": {
+          "name": "userId",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -109,8 +109,8 @@
       "name": "lessons",
       "schema": "",
       "columns": {
-        "clerkUserId": {
-          "name": "clerkUserId",
+        "userId": {
+          "name": "userId",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -402,8 +402,8 @@
       "name": "words",
       "schema": "",
       "columns": {
-        "clerkUserId": {
-          "name": "clerkUserId",
+        "userId": {
+          "name": "userId",
           "type": "text",
           "primaryKey": false,
           "notNull": true

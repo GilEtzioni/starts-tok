@@ -1,52 +1,76 @@
-import React from 'react';
+// react + antd
+import React, { useEffect, useState } from 'react';
+import { Row, Typography } from 'antd';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import axiosInstance from "../dataLessons/axiosInstance";
-import { LessonType, WordsType } from '../types/lessonType';
-import ThirdCardContainer from "./ThirdCardContainer";
+import classNames from 'classnames';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setRightAnswer, resetClicks, setSuccess } from "../slices/LessonsSlice";
+import { RootState } from "../../app/store";
 
+// components
+import { useGetData , useHandleInput} from "../utils/ThirdEffects";
+import HebrewSentenceThird from './HebrewSentenceThird';
+import { useFetchLessonData, useFetchWordsData } from '../api/fetchingLessons';
 
 const MainThird: React.FC = () => {
-    const { name, lesson } = useParams<{ name?: string; lesson?: string; }>();
 
-    // lessons data
-    const fetchLessons = async (name?: string, lesson?: string): Promise<LessonType[]> => {
-        const { data } = await axiosInstance.get(`/main/course/${name ?? 'default-level'}/${lesson ?? 'default-completed'}`);
-        return data;
-    };
+  const { name, lesson } = useParams<{ name: string; lesson: string }>();
+  const { data: lessonsData } = useFetchLessonData(name || '', lesson || '');
+  const { data: wordsData} = useFetchWordsData();
 
-    const {
-        data: lessonsData = [],
-        isLoading: lessonsLoading,
-        error: lessonsError,
-    } = useQuery(['lessonsData', name, lesson], () => fetchLessons(name, lesson));
+    // redux
+  const order = useSelector((state: RootState) => state.lessons.order);
+  const clicks = useSelector((state: RootState) => state.lessons.clicks);
+  const dispatch = useDispatch();
 
-    // words data
-    const fetchWords = async (): Promise<WordsType[]> => {
-        const { data } = await axiosInstance.get(`/dictionary`);
-        return data;
-    };
+  // states
+  const [hebrewSentence, setHebrewSentence] = useState<string>("");
+  const [germanWord, setGermanWord] = useState<string>("");
+  const [firstPartGerman, setFirstPartGerman] = useState<string>("");
+  const [secondPartGerman, setSecondPartGerman] = useState<string>("");
+  
+  // input
+  const [inputValue, setInputValue] = useState<string>("");
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
 
-    const {
-        data: wordsData = [],
-        isLoading: wordsLoading,
-        error: wordsError,
-    } = useQuery(['wordsData'], fetchWords);
+  useGetData({ lessonsData, order, setHebrewSentence, setGermanWord, setFirstPartGerman, setSecondPartGerman});
+  useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
 
-    if (lessonsLoading || wordsLoading) return <div>Loading...</div>;
-    if (lessonsError || wordsError)
-        return (
-            <div>
-                Error: {lessonsError instanceof Error ? lessonsError.message : 'Unknown error'} <br />
-                {wordsError instanceof Error ? wordsError.message : ''}
-            </div>
-        );
+  const { Title } = Typography;
 
-    return (
-        <div>
-            <ThirdCardContainer wordsData={wordsData} lessonsData={lessonsData} />
-        </div>
+  useEffect(() => {
+    if (germanWord) {
+      dispatch(setRightAnswer(germanWord));
+    }
+  }, [dispatch, germanWord, hebrewSentence]);
+
+  return (
+    <div className="text-center h-[400px]">
+
+    <Row className="flex justify-center">
+      <Title level={3} className="text-center">תרגמו את המשפט</Title>
+    </Row>
+             
+    <HebrewSentenceThird wordsData={wordsData} hebrewSentence={hebrewSentence} />
+      
+      {/* german */}
+        <p className="inline-block relative top-[100px]">
+          {firstPartGerman}
+          <input
+  type="text"
+  value={inputValue}
+  onChange={handleInputChange}
+  className={classNames(
+    "border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0",
+    `w-[${germanWord.length * 10}px]`
+  )}
+  placeholder=" "
+/>
+          {secondPartGerman}
+        </p>
+      </div> 
     );
-};
+  }
 
 export default MainThird;

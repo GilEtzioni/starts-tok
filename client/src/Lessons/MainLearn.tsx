@@ -8,19 +8,20 @@ import { RootState } from "../app/store";
 // lessons components
 import MainFirst from "./FirstLesson/MainFirst";
 import MainSecond from './SecondLesson/MainSecond';
-import MainThird from "./ThirdLesson/MainThird";
+import MainThird from './ThirdLesson/MainThird';
 
 // components
-import NextButton from "./Messages/NextButton"
-import BackButton from '../components/Main/BackButton';
-import ProgressBar from './Messages/ProgressBar'; 
-import ErrorMessage from './Messages/ErrorMessage';
-import SuccessMessage from './Messages/SuccessMessage';
+import NextButton from "./component/NextButton"
+import BackButton from "./component/BackButton";
+import ProgressBar from './component/ProgressBar'; 
+import ErrorMessage from './component/ErrorMessage';
+import SuccessMessage from './component/SuccessMessage';
 
 const MainLearn: React.FC = () => {
-    const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
 
     const status = useSelector((state: RootState) => state.lessons.status);
+
+    const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
 
     const renderCurrentLesson = () => {
         switch (order) {

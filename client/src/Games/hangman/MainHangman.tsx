@@ -2,42 +2,34 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'antd';
 
-// fetch 
-import { useQuery } from '@tanstack/react-query';
-import axiosInstance from './dataHangman/axiosInstance';
-
 //redux
 import { useDispatch } from 'react-redux';
-import { setSelectedWord} from './dataHangman/HangmanSlice';
+import { setSelectedWord} from './slices/HangmanSlice';
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
 // components
-import BackButton from './components/BackButton';
-import CourseName from './components/CourseName';
-import WordsLines from './components/WordsLines';
-import WordsGrid from './components/WordsGrid';
-import PhotosHang from './components/PhotosHang';
-import MainMessages from "./messages/MainMessages";
+import BackButton from './components/HangmanContainer/BackButton';
+import CourseName from './components/HangmanContainer/CourseName';
+import WordsLines from './components/HangmanContainer/WordsLines';
+import WordsGrid from './components/HangmanContainer/WordsGrid';
+import PhotosHang from './components/HangmanContainer/PhotosHang';
+import MainMessages from './components/Messages/MainMessages';
 
 // functions + types
-import { hangmanType } from './types/hangmanType'; 
-import { WordsType } from "../../Dictionarys/types/wordType";
-import { useStartGame } from './HangEffects';
-import { getRandomWord } from './HangHelper';
+import { HangmanType } from './types/hangmanType'; 
+import { WordsType } from "../../types/types";
+import { useStartGame } from './utils/HangEffects';
+import { getRandomWord } from './utils/HangHelper';
+import { useFetchWordsData } from '../api/fetchingGame';
 
 const MainHangman: React.FC = () => {
 
-    const fetchItems = async (): Promise<WordsType[]> => {
-      const { data } = await axiosInstance.get('/hangman');
-      return data;
-    };
+  const { data: words, isLoading, error } = useFetchWordsData();
   
-    const { data: words = [], isLoading, error } = useQuery(['hangman'], fetchItems);
-  
-    const [randomWord, setRandomWord] = useState<Array<WordsType>>([]);
-    const [lettersArray, setLettersArray] = useState<Array<hangmanType>>([]);
-    const [gameArray, setGameArray] = useState<Array<hangmanType>>([]);
+    const [randomWord, setRandomWord] = useState<WordsType[]>([]);
+    const [lettersArray, setLettersArray] = useState<HangmanType[]>([]);
+    const [gameArray, setGameArray] = useState<HangmanType[]>([]);
 
     const successCounter = useSelector((state: RootState) => state.hangman.successCounter);
     const gameWord = useSelector((state: RootState) => state.hangman.selectedWord);
@@ -45,7 +37,7 @@ const MainHangman: React.FC = () => {
 
     // the word of the firat game
     useEffect(() => {
-      if (words.length > 0) {
+      if (words !== undefined) {
           const selectedWord = getRandomWord(words);
           dispatch(setSelectedWord([selectedWord]));
       }
@@ -67,7 +59,7 @@ const MainHangman: React.FC = () => {
         <div className="flex flex-col items-center justify-center gap-5 h-0">
           <CourseName randomWord={randomWord} />
           <div className="w-full text-center">
-            <WordsLines lettersArray={lettersArray} gameArray={gameArray} />
+            <WordsLines gameArray={gameArray} />
           </div>
         </div>
 
@@ -76,7 +68,7 @@ const MainHangman: React.FC = () => {
         </div>
       </Col>
 
-      <Col span={10} className="bg-[#d3d3d3] h-screen">
+      <Col span={10} className="bg-[#f0f0f0] h-screen">
         <div className="flex flex-col items-center mt-12">
           <p className="mb-5 text-lg"> הצלחת {successCounter} משחקים ברצף </p>
           <PhotosHang />

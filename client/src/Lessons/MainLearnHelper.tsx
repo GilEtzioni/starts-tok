@@ -5,14 +5,15 @@ import { useParams } from 'react-router-dom';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
-import { resetOrder } from "./dataLessons/LessonsSlice";
+import { resetOrder } from "./slices/LessonsSlice";
 
 // fetch data
-import { usePatchLessons } from "./dataLessons/patchAxios";
+import { usePatchFinishLesson } from "./api/fetchingLessons";
 
 export const useMainLearnHelper = () => {
 
-    const { mutate: finishLesson } = usePatchLessons();
+    const { mutate: finishLesson } = usePatchFinishLesson();
+
     const dispatch = useDispatch();
     const { name, lesson } = useParams<{ name?: string; lesson?: string; }>(); 
 
@@ -27,7 +28,5 @@ export const useMainLearnHelper = () => {
         dispatch(resetOrder());
         navigate(`/main/course/${myLevel}`);
     };
-
-
     return { order, status, finishLesson, handleFinishLesson, myLesson, myLevel };
 };

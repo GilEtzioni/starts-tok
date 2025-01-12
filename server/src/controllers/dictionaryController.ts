@@ -12,7 +12,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
   } 
 
   try {
-    const allWords = await db.select().from(Words).where(eq(Words.clerkUserId, userId));
+    const allWords = await db.select().from(Words).where(eq(Words.userId, userId));
     res.json(allWords);
   } catch (error) {
     res.status(500).json({ message: "An error occurred while ", error });
@@ -38,7 +38,7 @@ export const getWordById = async (req: Request, res: Response): Promise<void> =>
       .from(Words)
       .where(and(
         eq(Words.id, wordID),
-        eq(Words.clerkUserId, userId)
+        eq(Words.userId, userId)
     ));
 
     if (!word.length){
@@ -68,7 +68,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
       .select()
       .from(CourseNames)
       .where(
-          eq(CourseNames.clerkUserId, userId)
+          eq(CourseNames.userId, userId)
       )
       .orderBy(desc(CourseNames.courseId))
       .limit(1);
@@ -81,7 +81,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
     const newWord = await db
       .insert(Words)
       .values({
-        clerkUserId: userId,
+        userId: userId,
         levelHebrew: "המילים שהוספתי",
         levelEnglish: "userWords",
         courseId,

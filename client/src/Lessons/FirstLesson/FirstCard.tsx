@@ -1,5 +1,5 @@
 import { Card } from "antd";
-import "./First.css"
+import { IsSelected } from "../types/FirstLessonType";
 
 interface FirstCardProps {
   language: string;
@@ -11,23 +11,23 @@ interface FirstCardProps {
 
 const FirstCard: React.FC<FirstCardProps> = ({ language, word, id, isSelected, onClick }) => {
 
-  
-  const currName = (() => {
-    if (isSelected === "") return "notSelected";
-    if (isSelected === "clicked") return "clicked";
-    if (isSelected === "true") return "success";
-    if (isSelected === "false") return "failure";
-  })();
+const cardBackround = (() => {
+  if (isSelected === IsSelected.notSelected) return "text-center flex justify-center items-center h-12 transition ease-linear hover:bg-gray-200 hover:cursor-pointer";
+  if (isSelected ===  IsSelected.clicked) return "bg-black text-white text-center flex justify-center items-center h-12 transition ease-linear";
+  if (isSelected === IsSelected.true) return "bg-green-500 text-white text-center flex justify-center items-center h-12 transition ease-linear";
+  if (isSelected === IsSelected.false) return "bg-red-500 text-white text-center flex justify-center items-center h-12 transition ease-linear";
+})();
 
   return (
     <div className="card">
-      <Card onClick={() => onClick(id, language)} 
-        hoverable={isSelected === ""} 
-        className={currName}
+      <Card
+        onClick={() => onClick(id, language)}
+        hoverable={isSelected === ""}
+        className={cardBackround}
       >
         <p>{word}</p>
       </Card>
-      </div>
+    </div>
   );
 };
 

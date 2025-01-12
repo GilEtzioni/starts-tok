@@ -16,7 +16,7 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
       const coursesSubjects = await db
       .select().from(CourseNames)
       .where(
-          eq(CourseNames.clerkUserId, userId)
+          eq(CourseNames.userId, userId)
       );
       res.json(coursesSubjects);
   } catch (error) {
@@ -38,7 +38,7 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
           totalLessonsCompleted: sql`SUM(${CourseNames.lessonCompleted}) / 6`
       })
       .from(CourseNames)
-      .where(eq(CourseNames.clerkUserId, userId))
+      .where(eq(CourseNames.userId, userId))
       .groupBy(CourseNames.levelEnglish);
 
       res.json(coursesSubjects);
@@ -63,7 +63,7 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
       from(CourseNames).
       where(and(
           eq(CourseNames.levelEnglish, userLevel),
-          eq(CourseNames.clerkUserId, userId)
+          eq(CourseNames.userId, userId)
       ))
           .orderBy(CourseNames.courseId);
       res.json(coursesSubjects);
@@ -90,7 +90,7 @@ export const getCourseLessons = async (req: Request, res: Response): Promise<voi
                   eq(Lessons.levelEnglish, userLevel),
                   eq(Lessons.courseNameEnglish, course),
                   eq(Lessons.finished, false), // find lessons where finished is false
-                  eq(Lessons.clerkUserId, userId))
+                  eq(Lessons.userId, userId))
               )
           .orderBy(Lessons.id) // order by ID
           .limit(1); // only the first completed lesson
@@ -123,7 +123,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           and(
               eq(Lessons.levelEnglish, CourseNames.levelEnglish),
               eq(Lessons.courseNameEnglish, CourseNames.courseNameEnglish),
-              eq(CourseNames.clerkUserId, userId)
+              eq(CourseNames.userId, userId)
           )
       )
       .where(
@@ -155,7 +155,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           and(
               eq(CourseNames.levelEnglish, userLevel), 
               eq(CourseNames.courseNameEnglish, course),
-              eq(CourseNames.clerkUserId, userId)
+              eq(CourseNames.userId, userId)
           ))
 
 

@@ -3,34 +3,26 @@ import React, { useState } from 'react';
 import { Spin, Row, Col, Typography } from 'antd';
 
 // fetch data + components
-import { useQuery } from '@tanstack/react-query';
-import axiosInstance from './dataSpeedGame/axiosInstance';
-import GameCard from './GameCard';
-import BackButton from './components/BackButton';
-import ModalMessage from './components/ModalMessage';
+import GameCard from './components/SpeedGameContainer/SpeedGameCard';
+import BackButton from './components/SpeedGameContainer/BackButton';
+import ModalMessage from './components/ModalMessage/ModalMessage';
 
 // functions + types
-import { shuffleAllWords, } from './speedHelper';
-import { useGetData, useHandleCouples, useHandleTimer } from './SpeedGameEffects';
-import { WordsType } from "../../Dictionarys/types/wordType";
-import { speedGameType, Language } from './types/speedGameTypes';
+import { useGetData, useHandleCouples, useHandleTimer } from "./components/utils/SpeedGameEffects"
+import { speedGameType, Language } from "./types/speedGameTypes";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../app/store";
+import { useFetchWordsData } from "../api/fetchingGame";
 
 const MainSpeedGame: React.FC = () => {
+
+    const { data: words, isLoading, error } = useFetchWordsData();
 
     const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
     const dispatch = useDispatch();
     
-    const fetchItems = async (): Promise<WordsType[]> => {
-        const { data } = await axiosInstance.get('/speedGame');
-        const shuffledData = shuffleAllWords(data);
-        return shuffledData;
-    };
-
-    const { data: words = [], isLoading, error } = useQuery(['speedGame'], fetchItems);
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<speedGameType[]>([]);
 
@@ -38,7 +30,7 @@ const MainSpeedGame: React.FC = () => {
     useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
     useHandleTimer({words, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
 
-    const handleClick = (card: Array<speedGameType>, id: number) => {
+    const handleClick = (card: speedGameType[], id: number) => {
         if (card[id].language === Language.GermanWord) {
             const updatedGermanArray = germanArray.map((item, index) => {
                 if (index === id && (item.isSelected === "notSelected" || item.isSelected === "clicked")) {

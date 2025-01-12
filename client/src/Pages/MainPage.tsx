@@ -1,24 +1,23 @@
-import Graph from "../components/Graph/Graph";
-import CardContainer from '../MainCourses/Cards/CourseContainer';
-import GameContainer from "../MainGames/GameContainer";
-import Table from '../components/Table/Table';
+import UsersGraph from "./MainPage/components/GraphMainPage/UsersGraph";
+import CardContainer from "./MainPage/components/CoursesCards/components/CourseContainer";
+import GameContainer from "./MainPage/components/GamesCards/components/GameContainer";
+import UsersTable from "./MainPage/components/TableMainPage/UsersTable";
 
 export default function MainPage() {
   return (
     <div className="w-full">
-      {/* Main Card and Game Section */}
+
       <div className="w-full px-5">
         <CardContainer />
         <GameContainer />
       </div>
 
-      {/* Graph and Table Section */}
       <div className="flex justify-between w-full p-5">
         <div className="flex-1 mr-2">
-          <Graph />
+          <UsersGraph />
         </div>
         <div className="flex-1 ml-2">
-          <Table />
+          <UsersTable />
         </div>
       </div>
     </div>

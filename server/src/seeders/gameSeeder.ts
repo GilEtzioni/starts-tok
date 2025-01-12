@@ -9,20 +9,20 @@ async function seed() {
 
   await db.insert(Games).values([
     // hangman
-    {clerkUserId: userId, gameName: "hangmanGame", gameScore: 5 },
-    {clerkUserId: userId, gameName: "hangmanGame", gameScore: 3 },
-    {clerkUserId: userId, gameName: "hangmanGame", gameScore: 7 },
-    {clerkUserId: userId, gameName: "hangmanGame", gameScore: 8 },
+    {userId: userId, gameName: "hangmanGame", gameScore: 5 },
+    {userId: userId, gameName: "hangmanGame", gameScore: 3 },
+    {userId: userId, gameName: "hangmanGame", gameScore: 7 },
+    {userId: userId, gameName: "hangmanGame", gameScore: 8 },
 
     // speed-game
-    {clerkUserId: userId, gameName: "speedGame", gameScore: 5 },
-    {clerkUserId: userId, gameName: "speedGame", gameScore: 3 },
-    {clerkUserId: userId, gameName: "speedGame", gameScore: 7 },
+    {userId: userId, gameName: "speedGame", gameScore: 5 },
+    {userId: userId, gameName: "speedGame", gameScore: 3 },
+    {userId: userId, gameName: "speedGame", gameScore: 7 },
 
     // row-game
-    {clerkUserId: userId, gameName: "rowGame", gameScore: 5 },
-    {clerkUserId: userId, gameName: "rowGame", gameScore: 3 },
-    {clerkUserId: userId, gameName: "rowGame", gameScore: 2 },
+    {userId: userId, gameName: "rowGame", gameScore: 5 },
+    {userId: userId, gameName: "rowGame", gameScore: 3 },
+    {userId: userId, gameName: "rowGame", gameScore: 2 },
     
   ]).returning({ id: Games.gameId });
 }

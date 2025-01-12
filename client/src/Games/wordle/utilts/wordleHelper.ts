@@ -1,4 +1,4 @@
-import { WordsType } from '../../hangman/types/types';
+import { WordsType } from "../../../types/types"
 import { wordleType, letterColor } from '../ types/WordelType';
 
 export const shuffleAllWords = (wordsArray: WordsType[]) => {
@@ -43,10 +43,10 @@ export const createGameGrid = (correctAnswer: wordleType[]) => {
   const rowLength = correctAnswer?.length;
   const columnLength = 5;
 
-  const result: Array<Array<any>> = [];
+  const result: (null | string)[][] = [];
 
   for (let i = 0; i < rowLength; i++) {
-    const row: Array<any> = Array(columnLength).fill(null);
+    const row: (null | string)[] = Array(columnLength).fill(null);
     result.push(row);
   }
 

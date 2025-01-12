@@ -7,23 +7,23 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // layouts
-import RootLayout from './Layout/RootLayout';
-import CoursesLayout from './Layout/CoursesLayout';
+import RootLayout from './layout/RootLayout';
+import CoursesLayout from './layout/CoursesLayout';
 
 // pages
-import Main from './Pages/Main';
-import Dictionary from './Pages/Dictionary';
-import CoursesPage from './Pages/CoursesPage';
-import  MainLearn from "./Lessons/MainLearn";
+import Main from './pages/Main';
+import Dictionary from './pages/DictionaryPage';
+import CoursesPage from './pages/LessonsPage';
+import  MainLearn from "./lessons/MainLearn";
 
 // login
-import SignUpContainer from './components/LogIn/SignUpContainer';
-import SignInContainer from './components/LogIn/ֿSignInContainer';
+import SignUpContainer from './pages/LogInPage/SignUpContainer';
+import SignInContainer from './pages/LogInPage/ֿSignInContainer';
 
 // games
-import MainWordle from './Games/wordle/MainWordle';
-import MainHangman from './Games/hangman/MainHangman';
-import MainSpeedGame from './Games/speedGame/MainSpeedGame';
+import MainWordle from './games/wordle/MainWordle';
+import MainHangman from './games/hangman/MainHangman';
+import MainSpeedGame from './games/speedGame/MainSpeedGame';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,12 +46,12 @@ const router = createBrowserRouter(
         <Route path="sign-in" element={<SignInContainer />} />
         <Route path="/sign-up" element={<SignUpContainer />} />
 
-        <Route path="wordle" element={<MainWordle />} />                  {/* "/hangman" */}
+        <Route path="wordle" element={<MainWordle />} />                  
         <Route path="speedGame" element={<MainSpeedGame />} />                
         <Route path="hangman" element={<MainHangman />} />  
 
-        <Route path="dictionary" element={<Dictionary />} />                {/* "/dictionary" */}
-        <Route path="main" element={<Main />} />                            {/* "/main" */}
+        <Route path="dictionary" element={<Dictionary />} />                
+        <Route path="main" element={<Main />} />                            
         <Route path="main/course" element={<CoursesLayout />}>      
           <Route path=":name" element={<CoursesPage />} />                  {/* e.g:   "/main/course/A1" */}
           <Route path=":name/:lesson/" element={<MainLearn />} />           {/* e.g:   "/main/course/A1/Greetings" */}

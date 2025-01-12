@@ -3,26 +3,26 @@ import React, { useState } from 'react';
 import { Row, Typography } from 'antd';
 
 // fetch data + types
-import { useFetchWordsData } from './api/axiosInstance';
-import { WordsType } from '../hangman/types/types'; 
+import { WordsType } from "../../types/types";
 import { wordleType, letterColor } from './ types/WordelType';
 
 // components
-import BackButton from './components/BackButton';
-import LettersGrid from './components/LettersGrid';
-import AnswerGrid from './components/AnswerGrid';
-import LoadingComponents from './components/LoadingComponents';
+import BackButton from './components/WordleConatiner/BackButton';
+import LettersGrid from './components/WordleConatiner/LettersGrid';
+import AnswerGrid from './components/WordleConatiner/AnswerGrid';
+import LoadingComponents from './components/WordleConatiner/LoadingComponents';
 
 // messages
-import FailureMesssage from './Messages/FailureMesssage';
-import SuccessMessage from './Messages/SuccessMessage';
-import NotWordMessage from './Messages/NotWordMessage';
-import TooShortMessage from './Messages/TooShortMessage';
+import FailureMesssage from './components/Messages/FailureMesssage';
+import SuccessMessage from './components//Messages/SuccessMessage';
+import NotWordMessage from './components//Messages/NotWordMessage';
+import TooShortMessage from './components//Messages/TooShortMessage';
 
 // redux
 import { useStartGame } from './utilts/WordelEffects';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
+import { useFetchWordsData } from '../api/fetchingGame';
 
 const MainWordle: React.FC = () => {
 
