@@ -12,7 +12,7 @@ import { resetSuccesssCounter, resetWrongCounter } from '../../slices/SpeedGameS
 // types + functions
 import { speedGameType } from '../../types/speedGameTypes';
 import { WordsType } from "../../../../types/types";
-import { shuffleAllWords, createGameArray } from '../utils/speedHelper';
+import { shuffleAllWords, createGameArray } from "../../utils/speedHelper";
 
 interface ModalProps {
   words: WordsType[] | undefined;

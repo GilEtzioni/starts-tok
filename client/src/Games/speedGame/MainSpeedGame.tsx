@@ -8,45 +8,48 @@ import BackButton from './components/SpeedGameContainer/BackButton';
 import ModalMessage from './components/ModalMessage/ModalMessage';
 
 // functions + types
-import { useGetData, useHandleCouples, useHandleTimer } from "./components/utils/SpeedGameEffects"
-import { speedGameType, Language } from "./types/speedGameTypes";
+import { useGetData, useHandleCouples, useHandleTimer } from "./utils/SpeedGameEffects";
+import { speedGameType, Language, SelectedCard } from "./types/speedGameTypes";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../app/store";
 import { useFetchWordsData } from "../api/fetchingGame";
+import { WordsType } from '../../types/types';
 
 const MainSpeedGame: React.FC = () => {
 
     const { data: words, isLoading, error } = useFetchWordsData();
 
     const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
+    const succcessCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
     const dispatch = useDispatch();
     
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<speedGameType[]>([]);
+    const [wordsCoppy, setWordsCoppy]  = useState<WordsType[] | undefined>([]);
 
-    useGetData({ words, setGermanArray, setHebrewArray });
+    useGetData({ words, setGermanArray, setHebrewArray, setWordsCoppy });
     useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
-    useHandleTimer({words, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
+    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
 
     const handleClick = (card: speedGameType[], id: number) => {
         if (card[id].language === Language.GermanWord) {
             const updatedGermanArray = germanArray.map((item, index) => {
-                if (index === id && (item.isSelected === "notSelected" || item.isSelected === "clicked")) {
-                    return { ...item, isSelected: item.isSelected === "notSelected" ? "clicked" : "notSelected" };
+                if (index === id && (item.isSelected === SelectedCard.NotSelected || item.isSelected === SelectedCard.Clicked)) {
+                    return { ...item, isSelected: item.isSelected === SelectedCard.NotSelected ? SelectedCard.Clicked : SelectedCard.NotSelected };
                 }
-                return { ...item, isSelected: item.isSelected === "clicked" ? "notSelected" : item.isSelected };
+                return { ...item, isSelected: item.isSelected === SelectedCard.Clicked ? SelectedCard.NotSelected : item.isSelected };
             });
             setGermanArray(updatedGermanArray);
         }
     
         if (card[id].language === Language.HebrewWord) {
             const updatedHebrewArray = hebrewArray.map((item, index) => {
-                if (index === id && (item.isSelected === "notSelected" || item.isSelected === "clicked")) {
-                    return { ...item, isSelected: item.isSelected === "notSelected" ? "clicked" : "notSelected" };
+                if (index === id && (item.isSelected === SelectedCard.NotSelected || item.isSelected === SelectedCard.Clicked)) {
+                    return { ...item, isSelected: item.isSelected === SelectedCard.NotSelected ? SelectedCard.Clicked : SelectedCard.NotSelected };
                 }
-                return { ...item, isSelected: item.isSelected === "clicked" ? "notSelected" : item.isSelected };
+                return { ...item, isSelected: item.isSelected === SelectedCard.Clicked ? SelectedCard.NotSelected : item.isSelected };
             });
             setHebrewArray(updatedHebrewArray);
         }
