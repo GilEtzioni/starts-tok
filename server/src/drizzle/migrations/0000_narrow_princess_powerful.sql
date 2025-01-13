@@ -3,29 +3,30 @@ CREATE TYPE "public"."levelEnglish" AS ENUM('A1', 'A2', 'B1', 'B2', 'C1', 'C2', 
 CREATE TYPE "public"."levelHebrew" AS ENUM('מבוא', 'בסיסי', 'בינוני', 'מתקדם', 'מתקדם מאוד', 'שפת אם', 'המילים שהוספתי');--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "courses" (
 	"userId" text NOT NULL,
-	"courseId" serial PRIMARY KEY NOT NULL,
+	"courseId" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"englishLevel" "levelEnglish",
 	"hebrewLevel" "levelHebrew",
 	"courseNameEnglish" text,
 	"courseNameGerman" text,
 	"courseNameHebrew" text,
-	"lessonCompleted" integer NOT NULL
+	"lessonCompleted" integer NOT NULL,
+	"createdAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "games" (
 	"userId" text NOT NULL,
-	"gameId" serial PRIMARY KEY NOT NULL,
+	"gameId" uuid NOT NULL,
 	"gameName" "gameName",
-	"gameScore" integer
+	"gameScore" integer,
+	"createdAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "lessons" (
 	"userId" text NOT NULL,
-	"id" serial PRIMARY KEY NOT NULL,
 	"hebrewLevel" "levelHebrew",
 	"englishLevel" "levelEnglish",
 	"courseNameEnglish" text,
-	"courseId" integer,
+	"courseId" uuid NOT NULL,
 	"lessonId" integer,
 	"sentenceOneGerman" text,
 	"sentenceOneHebrew" text,
@@ -63,19 +64,21 @@ CREATE TABLE IF NOT EXISTS "lessons" (
 	"wordElevenHebrew" text,
 	"wordTwelveGerman" text,
 	"wordTwelveHebrew" text,
-	"finished" boolean
+	"finished" boolean,
+	"createdAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "words" (
 	"userId" text NOT NULL,
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"hebrewLevel" "levelHebrew",
 	"englishLevel" "levelEnglish",
-	"courseId" integer,
+	"courseId" uuid NOT NULL,
 	"courseNameEnglish" text,
 	"germanWord" text,
 	"hebrewWord" text,
-	"knowlage" text
+	"knowlage" text,
+	"createdAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 DO $$ BEGIN

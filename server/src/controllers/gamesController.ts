@@ -56,33 +56,55 @@ export const addHangmanScore = async (req: Request, res: Response): Promise<void
     const { userId } = getAuth(req);
 
     if (!userId) {
-      res.status(401).json({ error: "Unauthorized" });
-      return;
-    } 
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+    }
 
-    const { score } = req.body; 
+    const { score } = req.body;
 
     if (score === undefined || score === null) {
         res.status(400).send("Missing 'score' in request body");
+        return;
     }
 
     try {
+        const userGame = await db
+            .select()
+            .from(Games)
+            .where(
+                and(
+                    eq(Games.gameName, "hangmanGame"),
+                    eq(Games.userId, userId)
+                )
+            )
+            .limit(1);
+
+        const userGameId = userGame[0]?.gameId;
+        if (!userGameId) {
+            res.status(404).json({ error: "Game not found for user" });
+            return;
+        }
+
         const newScore = await db
             .insert(Games)
             .values({
                 userId: userId,
+                gameId: userGameId,
                 gameName: "hangmanGame",
                 gameScore: score,
-            }).returning({
-                gameId: Games.gameId,
+            })
+            .returning({
                 gameName: Games.gameName,
                 gameScore: Games.gameScore,
+                createdAt: Games.createdAt,
             });
 
         res.status(201).json(newScore);
     } catch (error) {
-        res.status(500).json({ message: "An error occurred while ", error });
-    }    
-}
+        console.error("Error adding hangman score:", error);
+        res.status(500).json({ message: "An error occurred while adding the score", error });
+    }
+};
+
 
 /* ------------------------------------------------------------------------------------ */

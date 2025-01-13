@@ -1,5 +1,5 @@
 {
-  "id": "1e736179-a23f-4d73-ba2b-e4b402651891",
+  "id": "f84dbe5c-1392-4c53-aa0c-2971e3d15af7",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -16,9 +16,10 @@
         },
         "courseId": {
           "name": "courseId",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "englishLevel": {
           "name": "englishLevel",
@@ -57,6 +58,13 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -79,8 +87,8 @@
         },
         "gameId": {
           "name": "gameId",
-          "type": "serial",
-          "primaryKey": true,
+          "type": "uuid",
+          "primaryKey": false,
           "notNull": true
         },
         "gameName": {
@@ -95,6 +103,13 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -113,12 +128,6 @@
           "name": "userId",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
-        },
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
           "notNull": true
         },
         "hebrewLevel": {
@@ -143,9 +152,9 @@
         },
         "courseId": {
           "name": "courseId",
-          "type": "integer",
+          "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "lessonId": {
           "name": "lessonId",
@@ -374,6 +383,13 @@
           "type": "boolean",
           "primaryKey": false,
           "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -410,9 +426,10 @@
         },
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "hebrewLevel": {
           "name": "hebrewLevel",
@@ -430,9 +447,9 @@
         },
         "courseId": {
           "name": "courseId",
-          "type": "integer",
+          "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "courseNameEnglish": {
           "name": "courseNameEnglish",
@@ -457,6 +474,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},

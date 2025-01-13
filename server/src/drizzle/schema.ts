@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, pgEnum, boolean} from "drizzle-orm/pg-core";
+import { uuid, timestamp, pgTable, text, integer, pgEnum, boolean } from "drizzle-orm/pg-core";
 
 // enums
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
@@ -8,41 +8,41 @@ export const gameNameEnum = pgEnum("gameName", ["speedGame", "hangmanGame", "row
 // "courses" table
 export const CourseNames = pgTable("courses", {
     userId: text("userId").notNull(),
-    courseId: serial("courseId").primaryKey(),
+    courseId: uuid("courseId").primaryKey().defaultRandom(), 
     englishLevel: levelEnglishEnum("englishLevel"),
     hebrewLevel: levelHebrewEnum("hebrewLevel"),
     courseNameEnglish: text("courseNameEnglish"),
     courseNameGerman: text("courseNameGerman"),
     courseNameHebrew: text("courseNameHebrew"),
     lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0), // 0-5
+    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
-// "words" table
 export const Words = pgTable("words", {
     userId: text("userId").notNull(),
-    id: serial("id").primaryKey(),
+    wordId: uuid("id").primaryKey().defaultRandom(), 
     hebrewLevel: levelHebrewEnum("hebrewLevel"),
     englishLevel: levelEnglishEnum("englishLevel"),
-    courseId: integer("courseId").references(() => CourseNames.courseId), // foreign key
+    courseId: uuid("courseId").notNull().references(() => CourseNames.courseId), // foreign key
     courseNameEnglish: text("courseNameEnglish"),
     germanWord: text("germanWord"),
     hebrewWord: text("hebrewWord"),
     knowlage: text("knowlage"),
+    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
 // "lessons" table
-// no primary key --> add later if needed!
 export const Lessons = pgTable("lessons", {
     userId: text("userId").notNull(),
-    id: serial("id").primaryKey(),               // 1-150
+    // courseId: uuid("id").primaryKey().defaultRandom(),    // 1-150
 
     hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
     englishLevel: levelEnglishEnum("englishLevel"),  // A1
 
     courseNameEnglish: text("courseNameEnglish"), // Greeting
-    courseId: integer("courseId").references(() => CourseNames.courseId), // foreign key
+    courseId: uuid("courseId").notNull().references(() => CourseNames.courseId), // foreign key
 
-    lessonId: integer("lessonId"),               // 1-6
+    lessonOneToSix: integer("lessonId"),               // 1-6
 
     // sentences
     sentenceOneGerman: text("sentenceOneGerman"), // "hallo wie gehts",
@@ -88,12 +88,14 @@ export const Lessons = pgTable("lessons", {
     wordTwelveGerman: text("wordTwelveGerman"),
     wordTwelveHebrew: text("wordTwelveHebrew"),
     finished: boolean("finished"),
+    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
 // "games" table
 export const Games = pgTable("games", {
     userId: text("userId").notNull(),
-    gameId: serial("gameId").primaryKey(),
+    gameId: uuid("gameId").notNull(),
     gameName: gameNameEnum("gameName"),
     gameScore: integer("gameScore"),
+    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });

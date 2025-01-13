@@ -92,7 +92,7 @@ export const getCourseLessons = async (req: Request, res: Response): Promise<voi
                   eq(Lessons.finished, false), // find lessons where finished is false
                   eq(Lessons.userId, userId))
               )
-          .orderBy(Lessons.id) // order by ID
+          .orderBy(Lessons.createdAt) // order by id (createdAt)
           .limit(1); // only the first completed lesson
 
           res.json(currLesson);
@@ -133,7 +133,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
               eq(Lessons.finished, false) // find lessons that - finished is false
           )
       )
-      .orderBy(Lessons.id)
+      .orderBy(Lessons.createdAt) // order by id (createdAt)
       .limit(1);
 
       if (!lessonToUpdate) {
@@ -144,7 +144,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
       const updatedLesson = await db
           .update(Lessons)
           .set({ finished: true }) // set finished to false
-          .where(eq(Lessons.id, lessonToUpdate.lessons.id))
+          .where(eq(Lessons.courseId, lessonToUpdate.lessons.courseId))
           .returning(); 
 
       // step 3 - find the course (table courses)

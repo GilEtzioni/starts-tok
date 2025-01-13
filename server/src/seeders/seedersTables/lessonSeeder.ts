@@ -1,13 +1,14 @@
-import { Lessons} from "../drizzle/schema";
-import { db } from "../drizzle/db";
+import { Lessons } from "../../drizzle/schema"; 
+import { db } from "../../drizzle/db";
+import { Lesson } from "../type/seedersType";
 
-export async function lessonSeeder(userId: string) {
+export const lessonSeeder = async (userId: string, courseIds: Array<{ index: number; uuid: string; courseName: string }>) => {
 
-    console.log("Seeding database...");
+  console.log("Seeding database...");
 
-    await db.insert(Lessons).values([
+  const lessons: Lesson[] = [
     /* level: A1-מבוא , course: Greetings-6 , lesson: 1 */
-    { userId: userId , hebrewLevel: "מבוא", englishLevel: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 1,
+    { hebrewLevel: "מבוא", englishLevel: "A1",courseNameEnglish: "Greetings", lessonOneToSix: 1,
 
       // sentece game 
       sentenceOneGerman: "hallo wie gehts", sentenceOneHebrew: "היי מה שלומך",
@@ -37,7 +38,7 @@ export async function lessonSeeder(userId: string) {
     },
 
     /* level: A1-מבוא , course: Greetings-6 , lesson: 2 */
-    { userId: userId , hebrewLevel: "מבוא", englishLevel: "A1",courseNameEnglish: "Greetings", courseId: 6, lessonId: 2,
+    { hebrewLevel: "מבוא", englishLevel: "A1",courseNameEnglish: "Greetings", lessonOneToSix: 2,
 
       // sentece game 
       sentenceOneGerman: "Tschüss, Bis bald", sentenceOneHebrew: "ביי, נתראה בקרוב",
@@ -66,7 +67,7 @@ export async function lessonSeeder(userId: string) {
     },
 
     /* level: A1-מבוא , course: Greetings-6 , lesson: 3 */
-  { userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 3,
+  { hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", lessonOneToSix: 3,
 
     // sentence game 
     sentenceOneGerman: "Guten Tag, wie heißt du?", sentenceOneHebrew: "צהריים טובים, איך קוראים לך?",
@@ -95,7 +96,7 @@ export async function lessonSeeder(userId: string) {
   },
 
   /* level: A1-מבוא , course: Greetings-6 , lesson: 4 */
-{ userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 4,
+{ hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", lessonOneToSix: 4,
 
   // sentence game 
   sentenceOneGerman: "Entschuldigung, wie spät ist es?", sentenceOneHebrew: "סליחה, מה השעה?",
@@ -125,7 +126,7 @@ export async function lessonSeeder(userId: string) {
 
 
 /* level: A1-מבוא , course: Greetings-6 , lesson: 5 */
-{ userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 5,
+{ hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", lessonOneToSix: 5,
 
   // sentence game 
   sentenceOneGerman: "Wo wohnst du?", sentenceOneHebrew: "איפה אתה גר?",
@@ -154,7 +155,7 @@ export async function lessonSeeder(userId: string) {
 },
 
 /* level: A1-מבוא , course: Greetings-6 , lesson: 6 */
-{ userId: userId , hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", courseId: 6, lessonId: 6,
+{ hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Greetings", lessonOneToSix: 6,
 
   // sentence game 
   sentenceOneGerman: "Wie heißt das auf Deutsch?", sentenceOneHebrew: "איך קוראים לזה בגרמנית?",
@@ -181,6 +182,23 @@ export async function lessonSeeder(userId: string) {
   wordTwelveGerman: "Fenster", wordTwelveHebrew: "חלון",
   finished: false,
 },
+];
 
-    ]).returning({ id: Lessons.id });
-}
+const getUuidByCourseName = ( courseIds: Array<{ index: number; uuid: string; courseName: string }>, courseName: string ): string => {
+  const resultItem = courseIds.find((item) => item.courseName.toLowerCase() === courseName.toLowerCase());
+  if (!resultItem) {
+    console.error(`Course name "${courseName}" not found in courseIds`);
+    console.error("Available course names:", courseIds.map((item) => item.courseName));
+    throw new Error(`Course name "${courseName}" not found in courseIds`);
+  }
+  return resultItem.uuid;
+};
+
+const lessonData = lessons.map((lesson) => ({
+  ...lesson,
+  userId,
+  courseId: getUuidByCourseName(courseIds, lesson.courseNameEnglish),
+}));
+
+await db.insert(Lessons).values(lessonData).returning({ id: Lessons.courseId });
+};
