@@ -1,11 +1,9 @@
 import { Lessons} from "../drizzle/schema";
 import { db } from "../drizzle/db";
 
-async function seed() {
+export async function lessonSeeder(userId: string) {
 
     console.log("Seeding database...");
-
-    const userId = "user_2rOAI6Ru0mmOHXm3X2z4EOO9INI"; 
 
     await db.insert(Lessons).values([
     /* level: A1-מבוא , course: Greetings-6 , lesson: 1 */
@@ -186,5 +184,3 @@ async function seed() {
 
     ]).returning({ id: Lessons.id });
 }
-
-seed();

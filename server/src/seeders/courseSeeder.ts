@@ -1,11 +1,9 @@
 import { CourseNames } from "../drizzle/schema";
 import { db } from "../drizzle/db";
 
-async function seed() {
+export async function courseSeeder(userId: string) {
+
   console.log("Seeding database...");
-// user_2rOAI6Ru0mmOHXm3X2z4EOO9INI
-// user_2rLdvxl8OaqqsqX1Jv72KhuGq32
-  const userId = "user_2rOAI6Ru0mmOHXm3X2z4EOO9INI"; 
 
   await db.insert(CourseNames).values([
     
@@ -175,7 +173,3 @@ async function seed() {
   { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Advanced storytelling", courseNameGerman: "Fortgeschrittenes Geschichtenerzählen", courseNameHebrew: "סיפור סיפורים מתקדם", lessonCompleted: 0 , userId: userId }, 
 ]).returning({ id: CourseNames.courseId });
 }
-
-seed().catch((error) => {
-  throw error;
-});

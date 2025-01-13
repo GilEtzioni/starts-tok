@@ -1,11 +1,9 @@
 import { Words } from "../drizzle/schema";
 import { db } from "../drizzle/db";
 
-async function seed() {
+export async function wordSeeder(userId: string) {
 
     console.log("Seeding database...");
-
-    const userId = "user_2rOAI6Ru0mmOHXm3X2z4EOO9INI"; 
 
     await db.insert(Words).values([
     // Colors
@@ -477,4 +475,4 @@ async function seed() {
   ]).returning({ id: Words.id });
 }
 
-seed();
+// wordSeeder(userId)

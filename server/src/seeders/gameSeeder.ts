@@ -1,11 +1,9 @@
 import { Games } from "../drizzle/schema";
 import {db} from "../drizzle/db";
 
+export async function gameSeeder(userId: string) {
 
-async function seed() {
   console.log("Seeding database...");
-
-  const userId = "user_2rOAI6Ru0mmOHXm3X2z4EOO9INI"; 
 
   await db.insert(Games).values([
     // hangman
@@ -26,7 +24,3 @@ async function seed() {
     
   ]).returning({ id: Games.gameId });
 }
-
-seed().catch((error) => {
-  throw error;
-});
