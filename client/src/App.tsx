@@ -19,6 +19,8 @@ import  MainLearn from "./lessons/MainLearn";
 // login
 import SignUpContainer from './pages/LogInPage/SignUpContainer';
 import SignInContainer from './pages/LogInPage/ֿSignInContainer';
+import FactorOne from './pages/LogInPage/FactorOne';
+import VerifyEmailAddress from './pages/LogInPage/VerifyEmailAddress';
 
 // games
 import MainWordle from './games/wordle/MainWordle';
@@ -26,50 +28,61 @@ import MainHangman from './games/hangman/MainHangman';
 import MainSpeedGame from './games/speedGame/MainSpeedGame';
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<RootLayout />}>
-      <Route
-          index
-          element={
-            <>
-              <SignedOut>
-                <Navigate to="/sign-in" replace />
-              </SignedOut>
-              <SignedIn>
-                <Navigate to="/main" replace />
-              </SignedIn>
-            </>
-          }
-        />
+ createRoutesFromElements(
+   <>
+     <Route path="/" element={<RootLayout />}>
+     <Route
+         index
+         element={
+           <>
+             <SignedOut>
+               <Navigate to="/sign-in" replace />
+             </SignedOut>
+             <SignedIn>
+               <Navigate to="/main" replace />
+             </SignedIn>
+           </>
+         }
+       />
 
-        <Route path="sign-in" element={<SignInContainer />} />
-        <Route path="/sign-up" element={<SignUpContainer />} />
 
-        <Route path="wordle" element={<MainWordle />} />                  
-        <Route path="speedGame" element={<MainSpeedGame />} />                
-        <Route path="hangman" element={<MainHangman />} />  
+       <Route path="sign-in" element={<SignInContainer />} />
+       <Route path="/sign-up" element={<SignUpContainer />} />
 
-        <Route path="dictionary" element={<Dictionary />} />                
-        <Route path="main" element={<Main />} />                            
-        <Route path="main/course" element={<CoursesLayout />}>      
-          <Route path=":name" element={<CoursesPage />} />                  {/* e.g:   "/main/course/A1" */}
-          <Route path=":name/:lesson/" element={<MainLearn />} />           {/* e.g:   "/main/course/A1/Greetings" */}
-        </Route>
-      </Route>
-    </>
-  )
+
+       <Route path="sign-up/verify-email-address" element={<VerifyEmailAddress />} />
+       <Route path="sign-in/factor-one" element={<FactorOne />} />
+
+
+       <Route path="wordle" element={<MainWordle />} />                 
+       <Route path="speedGame" element={<MainSpeedGame />} />               
+       <Route path="hangman" element={<MainHangman />} /> 
+
+
+       <Route path="dictionary" element={<Dictionary />} />               
+       <Route path="main" element={<Main />} />                           
+       <Route path="main/course" element={<CoursesLayout />}>     
+         <Route path=":name" element={<CoursesPage />} />                  {/* e.g:   "/main/course/A1" */}
+         <Route path=":name/:lesson/" element={<MainLearn />} />           {/* e.g:   "/main/course/A1/Greetings" */}
+       </Route>
+     </Route>
+   </>
+ )
 );
+
 
 const queryClient = new QueryClient();
 
+
 const App: React.FC = () => {
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
+
+ return (
+   <QueryClientProvider client={queryClient}>
+     <RouterProvider router={router} />
+   </QueryClientProvider>
+ );
 };
+
 
 export default App;
