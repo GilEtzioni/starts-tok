@@ -26,9 +26,10 @@ const CourseContainer: React.FC = () => {
     coursesCardsData?.map((course: CourseType) => ({
       hebrewLevel: course.hebrewLevel,
       englishLevel: course.englishLevel,
-      courseID: course?.courseId - coursesCardsData[0]?.courseId + 1
+      courseID: course?.courseOrder - coursesCardsData[0]?.courseOrder,
     })) || [];
 
+    console.log("data: ", coursesCardsData);
 
   return (
     <div className="flex justify-center items-center p-5">
@@ -55,7 +56,7 @@ const CourseContainer: React.FC = () => {
                   .map((course: CourseType) => (
                     <Col
                       span={4}
-                      key={course.courseId}
+                      key={course?.courseOrder -1}
                       className="flex justify-center"
                     >
                       <Link
@@ -69,7 +70,6 @@ const CourseContainer: React.FC = () => {
                         course.lessonCompleted
                       )}`}
                     >
-                      {/* title */}
                       <p
                         className={`text-center ltr font-semibold ${
                           course.lessonCompleted !== 0
@@ -80,7 +80,7 @@ const CourseContainer: React.FC = () => {
                         {course.courseNameHebrew}
                       </p>
 
-                          <CourseIcons courseId={course?.courseId - coursesCardsData[0]?.courseId + 1} />
+                          <CourseIcons courseId={course?.courseOrder - coursesCardsData[0]?.courseOrder} />
                           <CourseProgressBar num={course.lessonCompleted} />
                         </Card>
                       </Link>

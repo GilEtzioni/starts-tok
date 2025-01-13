@@ -49,27 +49,28 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
 
 export const getLevelLessons = async (req: Request, res: Response): Promise<void> => {
 
-  const { userId } = getAuth(req);
+    const { userId } = getAuth(req);
+  
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized: User ID is missing" });
+        return;
+    }
+  
+    try {
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
+        const coursesSubjects = await db
+        .select().
+        from(CourseNames).
+        where(and(
+            eq(CourseNames.englishLevel, userLevel),
+            eq(CourseNames.userId, userId)
+        ))
+        .orderBy(CourseNames.courseOrder);
 
-  if (!userId) {
-      res.status(401).json({ error: "Unauthorized: User ID is missing" });
-      return;
-  }
-
-  try {
-      const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
-      const coursesSubjects = await db
-      .select().
-      from(CourseNames).
-      where(and(
-          eq(CourseNames.englishLevel, userLevel),
-          eq(CourseNames.userId, userId)
-      ))
-          .orderBy(CourseNames.courseId);
-      res.json(coursesSubjects);
-  } catch (error) {
-    res.status(500).json({ message: "An error occurred while ", error });
-  }
+        res.json(coursesSubjects);
+    } catch (error) {
+      res.status(500).json({ message: "An error occurred while ", error });
+    }
 }
 
 export const getCourseLessons = async (req: Request, res: Response): Promise<void> => {

@@ -71,7 +71,6 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
   }
 
   try {
-      // Find the last course index
       const [lastCourseIndex] = await db
           .select()
           .from(CourseNames)
@@ -79,17 +78,16 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
           .orderBy(desc(CourseNames.courseId))
           .limit(1);
 
-      // Fallback if no course exists
-      const courseId = lastCourseIndex?.courseId || "default-course-id"; // Replace with a valid default value
+      const courseId = lastCourseIndex?.courseId || "default-course-id"; 
 
-      // Insert the new word
       const newWord = await db
           .insert(Words)
           .values({
+              wordId: userId,
               userId: userId,
               hebrewLevel: "המילים שהוספתי",
               englishLevel: "userWords",
-              courseId, // Use courseId as a string
+              courseId,
               courseNameEnglish: "userWords",
               germanWord,
               hebrewWord,

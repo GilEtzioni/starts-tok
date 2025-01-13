@@ -36,7 +36,6 @@ export const useGetData = ({ words, setGermanArray, setHebrewArray , setWordsCop
     useEffect(() => {
         const validWords = words ?? []; 
         if (validWords.length === 0) return;
-        console.log("create new array")
 
         const shuffledArray = shuffleAllWords(validWords);
         const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
@@ -56,7 +55,6 @@ export const useHandleCouples = ({ hebrewArray, germanArray, setGermanArray, set
         const germanId = germanArray.find((item) => item.isSelected === "clicked")?.id || null;
 
         if (hebrewId && germanId) {
-            console.log("seeking couples")
             const updatedGermanArray = germanArray.map((item) =>
                 item.id === germanId ? { ...item, isSelected: hebrewId === germanId ? SelectedCard.Success : SelectedCard.Failure } : item
             );

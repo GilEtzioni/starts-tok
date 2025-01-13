@@ -173,8 +173,8 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
   const courseData = courses.map((course) => ({
     ...course,
     userId,
-    courseId: courseIds[index++]?.uuid, 
+    courseId: courseIds[index++].uuid, 
   }));
   
-  await db.insert(CourseNames).values(courseData).returning({ id: CourseNames.courseId });
+  await db.insert(CourseNames).values(courseData).returning();
 };

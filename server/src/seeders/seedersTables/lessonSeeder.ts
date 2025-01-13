@@ -200,5 +200,5 @@ const lessonData = lessons.map((lesson) => ({
   courseId: getUuidByCourseName(courseIds, lesson.courseNameEnglish),
 }));
 
-await db.insert(Lessons).values(lessonData).returning({ id: Lessons.courseId });
+await db.insert(Lessons).values(lessonData).returning();
 };

@@ -1,6 +1,6 @@
 import axiosInstance from './axiosInstance';
 import { useQuery, useQueryClient  } from '@tanstack/react-query';
-import { CourseType } from "../types/courseTypes";
+import { CourseType } from "../../../types/types";
 
 const fetchCoursesCardsData = async (name: string): Promise<CourseType[]> => {
   const { data } = await axiosInstance.get(`/main/course/${name}`);

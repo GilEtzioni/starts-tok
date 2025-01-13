@@ -18,12 +18,12 @@ export enum HebrewLevel {
 
   export type LessonType = {
     userId: string,
-    id: number,
+    courseId: string,
+    lessonId: string,
     hebrewLevel: HebrewLevel,
     englishLevel: EnglishLevel,
     courseNameEnglish: string,
-    courseId: number,
-    lessonId: number,
+    finished: boolean,
     sentenceOneGerman: string,
     sentenceOneHebrew: string,
     sentenceTwoGerman: string, 
@@ -64,21 +64,22 @@ export enum HebrewLevel {
 
   export type CourseType = {
     userId: string,
-    courseId: number;
+    courseId: string;
     englishLevel: EnglishLevel;
     hebrewLevel: HebrewLevel;
     courseNameEnglish: string;
     courseNameGerman: string;
     courseNameHebrew: string;
     lessonCompleted: number;
+    courseOrder: number,
 };
   
   export interface WordsType {
     userId: string,
-    id?: number,
+    id: string,
     hebrewLevel: HebrewLevel,
     englishLevel: EnglishLevel,
-    courseId: number,
+    courseId: string,
     courseNameEnglish: string,
     germanWord: string,
     hebrewWord: string, 
@@ -87,7 +88,7 @@ export enum HebrewLevel {
 
   export interface GamesType {
     userId: string,
-    gameId?: number,
+    gameId?: string,
     gameName: string,
     gameScore: number,
   }

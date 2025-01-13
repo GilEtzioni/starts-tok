@@ -1,5 +1,5 @@
 {
-  "id": "f84dbe5c-1392-4c53-aa0c-2971e3d15af7",
+  "id": "275db512-a7b4-47ca-a66a-2ace663e328d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -16,10 +16,9 @@
         },
         "courseId": {
           "name": "courseId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "englishLevel": {
           "name": "englishLevel",
@@ -59,6 +58,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "courseOrder": {
+          "name": "courseOrder",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
         "createdAt": {
           "name": "createdAt",
           "type": "timestamp",
@@ -87,7 +92,7 @@
         },
         "gameId": {
           "name": "gameId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -152,7 +157,7 @@
         },
         "courseId": {
           "name": "courseId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -426,10 +431,9 @@
         },
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "hebrewLevel": {
           "name": "hebrewLevel",
@@ -447,7 +451,7 @@
         },
         "courseId": {
           "name": "courseId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
