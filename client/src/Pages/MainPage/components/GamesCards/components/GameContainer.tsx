@@ -24,9 +24,9 @@ const GameContainer: React.FC = () => {
   const links = [ "/dictionary", "/hangman", "/speedGame",  "/wordle" ];
   const gameScore = [
     finishedWordsCount ?? 0, 
-    hangmanScore?.maxScore ?? 0, 
-    wordleScore?.maxScore ?? 0,  
+    hangmanScore?.maxScore ?? 0,  
     speedScore?.maxScore ?? 0,  
+    wordleScore?.maxScore ?? 0, 
   ];
 
   function handleForwardClick() {

@@ -1,32 +1,32 @@
-import React, { useEffect } from 'react';
-import { Card } from 'antd';
+import React, { useEffect, useRef } from 'react';
+import { message } from 'antd';
 import { minusOneClick, setCurrentMode } from '../../slices/WordleSlice';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../../app/store';
+import { useDispatch } from 'react-redux';
 import { CurrentMode } from '../../ types/WordelType';
 
 const TooShortMessage: React.FC = () => {
-  const clicksCounter = useSelector(
-    (state: RootState) => state.wordel.clicksCounter
-  );
+  const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
+  const hasShownMessage = useRef(false); 
 
   useEffect(() => {
-    // wait 1 second before dispatch
+    if (!hasShownMessage.current) {
+      messageApi.open({
+        type: 'error',
+        content: 'התשובה קצרה מידי ',
+      });
+      hasShownMessage.current = true; 
+    }
+
     const timeoutId = setTimeout(() => {
       dispatch(setCurrentMode(CurrentMode.Running));
       dispatch(minusOneClick());
     }, 1000);
 
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [dispatch, messageApi]);
 
-  return (
-    <>
-      <Card> התשובה קצרה מידי </Card>
-    </>
-  );
+  return <>{contextHolder}</>;
 };
 
 export default TooShortMessage;

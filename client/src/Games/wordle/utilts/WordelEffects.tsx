@@ -54,7 +54,7 @@ export const useStartGame = ({ words, setAllWords, setGridAnswer, setCorrectAnsw
 
 export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWords, dispatch, correctAnswer }: useEnterClickProps) => {
   useEffect(() => {
-    if (gridAnswer?.length === 0 || !gridAnswer[clicksCounter]?.length) return;
+    if (gridAnswer?.length === 0) return;
 
     const currentWord = gridAnswer[clicksCounter - 1]?.map((item) => item?.letter).join('') || '';
     const result = [...gridAnswer];
@@ -64,7 +64,7 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
     const userAnswerLength: number = gridAnswer[clicksCounter - 1]?.filter((item) => item !== null).length || 0;
     const answerLength = correctAnswer.length;
     const correctAnswerString = correctAnswer.map((item) => item?.letter).join('').toLowerCase();
-
+console.log("correctAnswerString", correctAnswerString);
     if (clicksCounter === 0) return;
 
     // success message
@@ -76,12 +76,13 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
         return item;
       });
       setGridAnswer(result);
+      dispatch(addOneSuccess());
       dispatch(setCurrentMode(CurrentMode.Success));
     }
 
     // too short word message
     if (userAnswerLength < answerLength) {
-      dispatch(setCurrentMode(CurrentMode.NotInDictionary));
+      dispatch(setCurrentMode(CurrentMode.NotEnoughLetters));
     }
 
     // not a vlid word message
@@ -90,7 +91,8 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
     }
 
     // failure message
-    if (clicksCounter === 5 && numOfLettersSucces !== correctAnswer.length) {
+    if (clicksCounter > 4 && numOfLettersSucces !== correctAnswer.length) {
+      console.log("here failure")
       dispatch(setCurrentMode(CurrentMode.Failure));
     }
   }, [clicksCounter]);

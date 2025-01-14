@@ -14,19 +14,28 @@ import { speedGameType } from '../../types/speedGameTypes';
 import { WordsType } from "../../../../types/types";
 import { shuffleAllWords, createGameArray } from "../../utils/speedHelper";
 
+import { useAddNewScore } from '../../../api/fetchingGame';
+import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
+
 interface ModalProps {
   words: WordsType[] | undefined;
   setGermanArray: (array: speedGameType[]) => void; 
   setHebrewArray: (array: speedGameType[]) => void; 
 }
-
 const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewArray }) => {
-
   const [isModalVisible, setIsModalVisible] = useState(true);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const successCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
+  const newScore = useAddNewScore(GameNameEnum.SpeedGame)
+
+  if (!words) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-100">
+        <p>Words not available.</p>
+      </div>
+    );
+  }
 
   function newGame() {
     // reset reudx
@@ -35,15 +44,18 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
 
     // create new game
     const shuffledArray = shuffleAllWords(words);
-    const {shuffledGermanArray, shuffledHebrewArray} = createGameArray(shuffledArray);
-    setGermanArray(shuffledGermanArray);
-    setHebrewArray(shuffledHebrewArray);
+    const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
+
+    setGermanArray(shuffledGermanArray || []);
+    setHebrewArray(shuffledHebrewArray || []);
 
     setIsModalVisible(false); // close the modal
   }
 
   function goToHomePage() {
-    // reset reudx
+    const payload = { score: successCounter ?? 0 };
+    newScore.mutate(payload );
+
     dispatch(resetSuccesssCounter());
     dispatch(resetWrongCounter());
 
@@ -55,7 +67,7 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <Modal
         visible={isModalVisible}
-        className={classNames("w-full max-w-lg", "mx-auto", "mt-20", )}
+        className={classNames("w-full max-w-lg", "mx-auto", "mt-20")}
         footer={null}
         closable={false}
         maskClosable={true}
@@ -66,7 +78,6 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
               הצלחת למצוא {successCounter} זוגות
             </h1>
             <div className="flex flex-col gap-4">
-
               <Button
                 onClick={goToHomePage}
                 type="primary"
@@ -79,10 +90,9 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
                 type="default"
                 onClick={newGame}
                 className="w-full py-3 text-lg font-semibold !bg-green-600 hover:!bg-green-500 !border-none shadow-md hover:shadow-lg rounded-lg !text-white transition-all duration-200"
-                >
+              >
                 שחק שוב
               </Button>
-
             </div>
           </div>
         </div>

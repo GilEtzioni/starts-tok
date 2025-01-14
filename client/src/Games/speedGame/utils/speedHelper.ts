@@ -28,7 +28,16 @@ export const shuffleCards = (wordsArray: speedGameType[]) => {
 
   return wordsArray;
 };
-
+// ////
+// export const getSelectedWord = (words: WordsType[] | undefined):  WordsType[] => {
+//   if (words !== undefined && words) {
+//       const selectedWord = getRandomWord(words); 
+//       const selectedWordArray = [selectedWord];
+//       return selectedWordArray;
+//   }
+//   return [];
+// }
+// ///
 export const createGameArray = (wordsArray: WordsType[] | undefined) => {
 
   if (!wordsArray || wordsArray.length === 0) {
@@ -37,6 +46,7 @@ export const createGameArray = (wordsArray: WordsType[] | undefined) => {
       shuffledHebrewArray: [],
     };
   }
+
   const newGermanArray: speedGameType[] = [];
   const newHebrewArray: speedGameType[] = [];
 
@@ -44,7 +54,7 @@ export const createGameArray = (wordsArray: WordsType[] | undefined) => {
     if (wordsArray.length > 0) {
       const word = wordsArray.splice(0, 1)[0]; // remove the first item and get it
       newGermanArray.push({
-        id: word.id || 0,
+        id: word.wordId || "",
         language: Language.GermanWord,
         word: word?.germanWord,
         isSelected: SelectedCard.NotSelected,
@@ -52,7 +62,7 @@ export const createGameArray = (wordsArray: WordsType[] | undefined) => {
       });
 
       newHebrewArray.push({
-        id: word.id || 0,
+        id: word.wordId || "",
         language: Language.HebrewWord,
         word: word?.hebrewWord,
         isSelected: SelectedCard.NotSelected,
@@ -153,7 +163,7 @@ export const deleteOldCards =
   const newGermanArray = [...germanArray];
 
   newHebrewArray[hebrewIndex] = {
-    id: newWord?.id || 0,
+    id: newWord?.wordId || "",
     index: hebrewIndex,
     language: Language.HebrewWord,
     word: newWord.hebrewWord || "",
@@ -161,7 +171,7 @@ export const deleteOldCards =
   };
 
   newGermanArray[germanIndex] = {
-    id: newWord?.id || 0,
+    id: newWord?.wordId || "",
     index: germanIndex,
     language: Language.GermanWord,
     word: newWord.germanWord || "",

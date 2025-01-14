@@ -62,6 +62,7 @@ const LettersGrid: React.FC<WordsGridProps> = ({
   }
 
   function handleEnter() {
+    console.log("clicked")
     dispatch(addOneClick());
   }
 
@@ -92,13 +93,14 @@ const LettersGrid: React.FC<WordsGridProps> = ({
           className="border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold"
           onClick={handleEnter}
         >
-          Enter
+          לחץ
         </Button>
+        
         <Button
           className="ml-2 border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold"
           onClick={handleDelete}
         >
-          Delete
+          מחיקה
         </Button>
       </div>
     </>

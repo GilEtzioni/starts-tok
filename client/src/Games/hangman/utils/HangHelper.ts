@@ -67,7 +67,6 @@ export const isAnswerTrue = (wordsArray: HangmanType[], letter: string): boolean
 export const getSelectedWord = (words: WordsType[] | undefined):  WordsType[] => {
     if (words !== undefined && words) {
         const selectedWord = getRandomWord(words); 
-        // if (!selectedWord) return; // exit if still loading
         const selectedWordArray = [selectedWord];
         return selectedWordArray;
     }

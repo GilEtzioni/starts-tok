@@ -11,7 +11,7 @@ export enum SelectedCard {
 }
 
 export type speedGameType = {
-    id: number;
+    id: string;
     language: Language,
     word: string;
     isSelected: SelectedCard;

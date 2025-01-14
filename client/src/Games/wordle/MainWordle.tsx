@@ -14,9 +14,9 @@ import LoadingComponents from './components/WordleConatiner/LoadingComponents';
 
 // messages
 import FailureMesssage from './components/Messages/FailureMesssage';
-import SuccessMessage from './components//Messages/SuccessMessage';
-import NotWordMessage from './components//Messages/NotWordMessage';
-import TooShortMessage from './components//Messages/TooShortMessage';
+import SuccessMessage from './components/Messages/SuccessMessage';
+import NotWordMessage from './components/Messages/NotWordMessage';
+import TooShortMessage from './components/Messages/TooShortMessage';
 
 // redux
 import { useStartGame } from './utilts/WordelEffects';
@@ -31,6 +31,7 @@ const MainWordle: React.FC = () => {
 
     const { Title } = Typography;
     const currentMode = useSelector((state: RootState) => state.wordel.currentMode);
+    const succesCounter = useSelector((state: RootState) => state.wordel.successCounter);
 
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
@@ -48,9 +49,9 @@ const MainWordle: React.FC = () => {
       case CurrentMode.Running:
         return null;
       case CurrentMode.Failure:
-        return <FailureMesssage />;
+        return <FailureMesssage words={words}/>;
       case CurrentMode.Success:
-        return <SuccessMessage />;
+        return <SuccessMessage words={words}/>;
       case CurrentMode.NotInDictionary:
         return <NotWordMessage />;
       case CurrentMode.NotEnoughLetters:
@@ -70,7 +71,7 @@ const MainWordle: React.FC = () => {
         <div className="w-full">
           <Row justify="center" className="mt-8">
             <Title level={3} className="text-center">
-              הצלחת 0 משחקים ברצף
+              הצלחת {succesCounter} משחקים ברצף
             </Title>
           </Row>
         </div>

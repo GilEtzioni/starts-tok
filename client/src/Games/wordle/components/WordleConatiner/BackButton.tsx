@@ -1,11 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
+import { useDispatch } from 'react-redux';
+import { setCurrentMode, resetSuccess, resetClicks } from '../../slices/WordleSlice';
+import { CurrentMode } from '../../ types/WordelType';
 
 const BackButton: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleBack = () => {
+    dispatch(setCurrentMode(CurrentMode.Running));
+    dispatch(resetSuccess());
+    dispatch(resetClicks());
+    
     navigate(-1);
   };
 
