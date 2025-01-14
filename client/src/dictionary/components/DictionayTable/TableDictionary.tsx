@@ -14,6 +14,8 @@ interface TableProps {
 const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
   const { filteredWords, translatedWords, setTranslatedWords } = useFilteredWords(words);
 
+  console.log("filteredWords: "), words
+
   return (
     <div className="w-4/5 mx-auto">
     <Table
@@ -29,17 +31,17 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
           },
         },
         // mid column
-        {
-          title: '',
-          dataIndex: 'HebreWord',
-          key: 'HebreWord',
-          align: 'center' as const,
-          render: (item, row) => {
-            // Check if the current row is in the translatedWords array
-            const matchingEntry = translatedWords.find(([wordId]) => wordId === row.id);
-            return matchingEntry ? row.hebrewWord : null;
-          },
-        },
+        // {
+        //   title: '',
+        //   dataIndex: 'HebreWord',
+        //   key: 'HebreWord',
+        //   align: 'center' as const,
+        //   render: (item, row) => {
+        //     // Check if the current row is in the translatedWords array
+        //     const matchingEntry = translatedWords.find(([wordId]) => wordId === row.id);
+        //     return matchingEntry ? row.hebrewWord : null;
+        //   },
+        // },
         // last column
         {
           title: 'מילה',
@@ -49,8 +51,8 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
         },
       ]}
       dataSource={filteredWords?.map((item) => ({
-        key: item.id,
-        id: item.id,
+        key: item.wordId,
+        id: item.wordId,
         hebrewWord: item.hebrewWord,
         germanWord: item.germanWord,
         courseNameEnglish: item.courseNameEnglish,
@@ -61,10 +63,10 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
       pagination={false} // for css
       // when user click on the row
       onRow={(row) => ({
-        onClick: () => {
-          const filteredClicked = handleClickedRow(row.id ?? 0, filteredWords, translatedWords);
-          setTranslatedWords(filteredClicked);
-        },
+        // onClick: () => {
+        //   const filteredClicked = handleClickedRow(row.id ?? 0, filteredWords, translatedWords);
+        //   setTranslatedWords(filteredClicked);
+        // },
       })}
     />
     </div>

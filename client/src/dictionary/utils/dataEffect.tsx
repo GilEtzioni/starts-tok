@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from "../../app/store";
 import { WordsType } from "../../types/types";
 import { sortWordsById, knowlageDataArray } from "./HelpingFunctionsDictionary";
+import { TranslatedWordsType } from '../types/DictionaryType';
 
 const useFilteredWords = (words: WordsType[] | undefined) => {
     
@@ -11,7 +12,7 @@ const useFilteredWords = (words: WordsType[] | undefined) => {
   const level = useSelector((state: RootState) => state.dictionary.levelFilter);
 
   const [filteredWords, setFilteredWords] = useState<WordsType[]>([]);
-  const [translatedWords, setTranslatedWords] = useState<Array<[number, string]>>([]);
+  const [translatedWords, setTranslatedWords] = useState<TranslatedWordsType[]>([]);
 
   useEffect(() => {
     if (words === undefined) return;

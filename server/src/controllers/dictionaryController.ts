@@ -3,6 +3,7 @@ import { db } from "../drizzle/db";
 import { Words, CourseNames } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, desc } from "drizzle-orm";
+import { v4 as uuidv4 } from "uuid";
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -83,7 +84,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
       const newWord = await db
           .insert(Words)
           .values({
-              wordId: userId,
+              wordId: uuidv4().toString(),
               userId: userId,
               hebrewLevel: "המילים שהוספתי",
               englishLevel: "userWords",

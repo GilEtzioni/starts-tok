@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS "words" (
 	"germanWord" text,
 	"hebrewWord" text,
 	"knowlage" text,
+	"courseOrder" serial NOT NULL,
 	"createdAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint

@@ -1,5 +1,5 @@
 {
-  "id": "275db512-a7b4-47ca-a66a-2ace663e328d",
+  "id": "b5febeea-cc28-4848-abd1-eb348e502aec",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -478,6 +478,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "courseOrder": {
+          "name": "courseOrder",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
         },
         "createdAt": {
           "name": "createdAt",

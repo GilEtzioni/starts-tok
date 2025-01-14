@@ -75,15 +75,17 @@ export enum HebrewLevel {
 };
   
   export interface WordsType {
-    userId: string,
-    id: string,
-    hebrewLevel: HebrewLevel,
-    englishLevel: EnglishLevel,
     courseId: string,
+    userId: string,
+    wordId: string,
     courseNameEnglish: string,
+    createdAt: Date,
+    englishLevel: EnglishLevel,
     germanWord: string,
-    hebrewWord: string, 
+    hebrewLevel: HebrewLevel,
     knowlage: string,
+    hebrewWord: string, 
+    wordOrder: number
   }
 
   export interface GamesType {

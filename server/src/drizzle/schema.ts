@@ -21,7 +21,7 @@ export const CourseNames = pgTable("courses", {
 
 export const Words = pgTable("words", {
     userId: text("userId").notNull(),
-    wordId: text("id").primaryKey(), 
+    wordId: text("wordId").primaryKey(), 
     hebrewLevel: levelHebrewEnum("hebrewLevel"),
     englishLevel: levelEnglishEnum("englishLevel"),
     courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
@@ -29,6 +29,7 @@ export const Words = pgTable("words", {
     germanWord: text("germanWord"),
     hebrewWord: text("hebrewWord"),
     knowlage: text("knowlage"),
+    wordOrder: serial("courseOrder"),
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 

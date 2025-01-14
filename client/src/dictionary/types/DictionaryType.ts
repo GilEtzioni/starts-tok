@@ -5,7 +5,7 @@ export type KnowlageType = {
 };
 
 export interface UpdatedWordType {
-  id: number; 
+  id: string; 
   knowlage: string;
 }
 
@@ -23,3 +23,8 @@ export interface IconItem {
   activeColor: DictionaryColors;
   icon: React.JSX.Element;
 };
+
+export interface TranslatedWordsType {
+  id: string, 
+  word: string
+}

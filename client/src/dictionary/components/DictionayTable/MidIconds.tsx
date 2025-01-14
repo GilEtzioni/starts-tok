@@ -6,7 +6,7 @@ import { DictionaryColors, IconItem } from '../../types/DictionaryType';
 
 interface MidIconsProps {
   knowlage: string;
-  id: number;
+  id: string;
 }
 
 const MidIcons: React.FC<MidIconsProps> = ({ knowlage, id }) => {
