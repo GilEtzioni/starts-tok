@@ -3,7 +3,7 @@ import { timestamp, pgTable, text, integer, pgEnum, boolean, serial } from "driz
 // enums
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
 export const levelHebrewEnum = pgEnum("levelHebrew", ["מבוא", "בסיסי", "בינוני", "מתקדם", "מתקדם מאוד", "שפת אם", "המילים שהוספתי"]);
-export const gameNameEnum = pgEnum("gameName", ["speedGame", "hangmanGame", "rowGame"]);
+export const gameNameEnum = pgEnum("gameName", ["speedGame", "hangmanGame", "wordleGame"]);
 
 // "courses" table
 export const CourseNames = pgTable("courses", {

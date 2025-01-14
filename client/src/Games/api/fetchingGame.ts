@@ -20,3 +20,20 @@ const fetchWords = async (): Promise<WordsType[]> => {
   
     return query;
   };
+
+  export const useAddNewScore = (gameName: string) => {
+    const queryClient = useQueryClient();
+  
+    return useMutation(
+      async (userNewScore: { score: number }) => {
+        const response = await axiosInstance.post(`/${gameName}/score`, userNewScore);
+        return response.data; 
+      },
+      {
+        onSuccess: (data) => {
+          queryClient.invalidateQueries(['newGameScore']); 
+        },
+      }
+    );
+  };
+

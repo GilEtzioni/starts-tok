@@ -29,8 +29,6 @@ const CourseContainer: React.FC = () => {
       courseID: course?.courseOrder - coursesCardsData[0]?.courseOrder,
     })) || [];
 
-    console.log("data: ", coursesCardsData);
-
   return (
     <div className="flex justify-center items-center p-5">
       <div className="max-w-screen-xl w-full">

@@ -1,6 +1,5 @@
 import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
-import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 // redux
@@ -10,8 +9,11 @@ import { getSelectedWord } from '../../utils/HangHelper';
 import { WordsType } from "../../../../types/types";
 import { RootState } from '../../../../app/store';
 
+import { useAddNewScore } from '../../../api/fetchingGame';
+import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
+
 interface SuccessMessageProps {
-  words: WordsType[] | undefined;
+  words: WordsType[];
 }
 
 const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
@@ -20,6 +22,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const newScore = useAddNewScore(GameNameEnum.Hangman)
 
   function restartGame() {
     dispatch(resetWrongCounter());
@@ -29,8 +32,8 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
   }
 
   async function handleBack() {
-    const payload = { score: successCounter + 1 ?? 0 };
-    const response = await axios.post('http://localhost:3000/hangman/score', payload);
+    const payload = { score: successCounter + 1};
+    newScore.mutate(payload);
     dispatch(resetWrongCounter());
     dispatch(resetSuccesssCounter());
     navigate('/main');

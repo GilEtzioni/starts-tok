@@ -16,6 +16,8 @@ interface MainMessagesProps {
 
 const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, words }) => {
 
+    // if (words === undefined) return;
+
     const wrongCounter = useSelector((state: RootState) => state.hangman.wrongCounter);
 
     const isEndGame = (wrongCounter: number, lettersArray: HangmanType[]) => {
@@ -27,7 +29,7 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
         .length;
 
         if (wrongCounter === 6) {
-            return <FailMesssage words={words} />;
+            return <FailMesssage words={words as WordsType[]}  />;
         }
     
         const uniqueLetters = new Set<string>();
@@ -40,9 +42,10 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
     
         const successLetter = uniqueLetters.size; 
     
-        if (successLetter === uniqueLettersLength && uniqueLettersLength !== 0) {
-            return <SuccessMessage words={words} />;
+        if (successLetter === uniqueLettersLength) {
+            return <SuccessMessage words={words as WordsType[]}   />;
         }
+    
     };
     
     return (

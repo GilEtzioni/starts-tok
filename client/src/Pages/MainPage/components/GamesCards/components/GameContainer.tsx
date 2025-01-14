@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import GameCard from './GameCard';
-import { useHangmanMaxScore } from '../../../api/fetchingMainPage'; 
+import { useGameMaxScore } from '../../../api/fetchingMainPage'; 
 import { Typography, Row } from 'antd';
+import { GameNameEnum } from '../types/mainPageTypes';
 
 const GameContainer: React.FC = () => {
 
-  const { data: hangmanScore, isLoading, error } = useHangmanMaxScore();
+  const { data: hangmanScore, isLoading: isLoadingHangman, error: errorHangman } = useGameMaxScore(GameNameEnum.Hangman);
+  const { data: wordleScore, isLoading: isLoadingWordle, error: errorWordle } = useGameMaxScore(GameNameEnum.Wordle);
+  const { data: speedScore, isLoading: isLoadingSpeed, error: errorSpeed } = useGameMaxScore(GameNameEnum.SpeedGame);
 
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];
@@ -17,8 +20,8 @@ const GameContainer: React.FC = () => {
   const gameScore = [
     834, 
     hangmanScore?.maxScore ?? 0, 
-    3, 
-    11
+    wordleScore?.maxScore ?? 0,  
+    speedScore?.maxScore ?? 0,  
   ];
 
   function handleForwardClick() {
@@ -29,11 +32,14 @@ const GameContainer: React.FC = () => {
     setVisibleCards((prev) => prev.map((card) => (card - 2 + totalCards) % totalCards + 1));
   }
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data</div>;
-
-
   const { Title } = Typography;
+
+  const isLoading = isLoadingHangman || isLoadingWordle || isLoadingSpeed;
+  const error = errorHangman || errorWordle || errorSpeed;
+
+  if (isLoading) return <div> Loading...</div>;
+  if (error) return <div> Error loading data </div>;
+
 
   return (
     <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">

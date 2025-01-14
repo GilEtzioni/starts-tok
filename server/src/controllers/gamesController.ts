@@ -3,6 +3,7 @@ import { db } from "../drizzle/db";
 import { Words, Games } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, max } from "drizzle-orm";
+import { GamesNamesType } from "../types/gamesTypes";
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -28,7 +29,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
 
 /* ------------------------------------------------------------------------------------ */
 
-export const getHangmanMaxScore = async (req: Request, res: Response): Promise<void> => {
+export const getGameMaxScore = async (req: Request, res: Response, gameName: GamesNamesType): Promise<void> => {
     const { userId } = getAuth(req);
 
     if (!userId) {
@@ -42,7 +43,7 @@ export const getHangmanMaxScore = async (req: Request, res: Response): Promise<v
             .from(Games)
             .where(
                 and(
-                    eq(Games.gameName, "hangmanGame"),
+                    eq(Games.gameName, gameName),
                     eq(Games.userId, userId),
                 ));
 
@@ -52,7 +53,7 @@ export const getHangmanMaxScore = async (req: Request, res: Response): Promise<v
     }
 }
 
-export const addHangmanScore = async (req: Request, res: Response): Promise<void> => {
+export const addGameScore = async (req: Request, res: Response, gameName: GamesNamesType): Promise<void> => {
     const { userId } = getAuth(req);
 
     if (!userId) {
@@ -73,7 +74,7 @@ export const addHangmanScore = async (req: Request, res: Response): Promise<void
             .from(Games)
             .where(
                 and(
-                    eq(Games.gameName, "hangmanGame"),
+                    eq(Games.gameName, gameName),
                     eq(Games.userId, userId)
                 )
             )
@@ -90,7 +91,7 @@ export const addHangmanScore = async (req: Request, res: Response): Promise<void
             .values({
                 userId: userId,
                 gameId: userGameId,
-                gameName: "hangmanGame",
+                gameName: gameName,
                 gameScore: score,
             })
             .returning({
@@ -105,6 +106,3 @@ export const addHangmanScore = async (req: Request, res: Response): Promise<void
         res.status(500).json({ message: "An error occurred while adding the score", error });
     }
 };
-
-
-/* ------------------------------------------------------------------------------------ */

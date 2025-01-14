@@ -1,5 +1,5 @@
 {
-  "id": "b5febeea-cc28-4848-abd1-eb348e502aec",
+  "id": "8620a3eb-a84f-45e0-aca4-3dff8b0ff9c4",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -429,8 +429,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "id": {
-          "name": "id",
+        "wordId": {
+          "name": "wordId",
           "type": "text",
           "primaryKey": true,
           "notNull": true
@@ -523,7 +523,7 @@
       "values": [
         "speedGame",
         "hangmanGame",
-        "rowGame"
+        "wordleGame"
       ]
     },
     "public.levelEnglish": {

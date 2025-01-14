@@ -12,7 +12,7 @@ const MainDictionary: React.FC = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
-  console.log("words: ", words);
+
   return (
     <>
       <div className="flex justify-center items-center mt-4">

@@ -64,11 +64,12 @@ export const isAnswerTrue = (wordsArray: HangmanType[], letter: string): boolean
     return null;
 };
 
-export const getSelectedWord = (words: WordsType[] | undefined) => {
-    if (words !== undefined) {
+export const getSelectedWord = (words: WordsType[] | undefined):  WordsType[] => {
+    if (words !== undefined && words) {
         const selectedWord = getRandomWord(words); 
-        if (!selectedWord) return; // exit if still loading
+        // if (!selectedWord) return; // exit if still loading
         const selectedWordArray = [selectedWord];
         return selectedWordArray;
     }
+    return [];
 }

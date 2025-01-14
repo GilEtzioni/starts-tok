@@ -14,8 +14,6 @@ interface TableProps {
 const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
   const { filteredWords, translatedWords, setTranslatedWords } = useFilteredWords(words);
 
-  console.log("filteredWords: "), words
-
   return (
     <div className="w-4/5 mx-auto">
     <Table

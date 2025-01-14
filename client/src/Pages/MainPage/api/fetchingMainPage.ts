@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient  } from '@tanstack/react-query';
 import { FinishedType } from '../components/CoursesCards/types/courseTypes';
-import { hangmanScoreType } from '../components/GamesCards/types/mainPageTypes';
+import { HangmanScoreType } from '../components/GamesCards/types/mainPageTypes';
 import axiosInstance from './axiosInstance';
 
 const fetchLesson = async (): Promise<FinishedType[]> => {
@@ -20,12 +20,12 @@ export const useFetchLessonData = () => {
   });
 };
 
-export const useHangmanMaxScore = () => {
-    return useQuery(
-      ['hangmanScore'],
-      async () => {
-        const { data } = await axiosInstance.get('/hangman/maxScore');
-        return data;
-      }
-    );
-  };
+export const useGameMaxScore = (gameName: string) => {
+  return useQuery(
+    ['gameMaxScore', gameName],
+    async () => {
+      const { data } = await axiosInstance.get(`/${gameName}/maxScore`);
+      return data;
+    },
+  );
+};

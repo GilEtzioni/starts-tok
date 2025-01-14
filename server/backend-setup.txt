@@ -290,6 +290,9 @@ DROP TYPE IF EXISTS "gameName" CASCADE;
 npx drizzle-kit generate
 npx tsx src/drizzle/migrate.ts
 
+DROP TABLE __drizzle_migrations;
+
+DELETE FROM drizzle_migrations WHERE migration_name = '__drizzle_migrations';
 
 ts-node src/seeders/courseSeeder.ts
 ts-node src/seeders/gameSeeder.ts

@@ -1,11 +1,21 @@
 import { Router } from "express";
-import { getAllWords, getHangmanMaxScore, addHangmanScore} from "../controllers/gamesController";
+import { getAllWords, getGameMaxScore, addGameScore} from "../controllers/gamesController";
 import { requireAuth } from "@clerk/express";
+import { GamesNamesType } from "../types/gamesTypes";
 
 const router = Router();
 
 router.get("/gameWords", requireAuth(), getAllWords);
-router.get("/hangman/maxScore", requireAuth(), getHangmanMaxScore);
-router.post("/hangman/score", requireAuth(), addHangmanScore);
+
+router.get("/:gameName/maxScore", requireAuth(), async (req, res) => {
+    const { gameName } = req.params;
+    await getGameMaxScore(req, res, gameName as GamesNamesType);
+});
+
+router.post("/:gameName/score", requireAuth(), async (req, res) => {
+    const { gameName } = req.params;
+    await addGameScore(req, res, gameName as GamesNamesType);
+});
+
 
 export default router;
