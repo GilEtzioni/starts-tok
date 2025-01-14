@@ -26,11 +26,11 @@ const fetchWords = async (): Promise<WordsType[]> => {
   
   export const useChangeWordKnowledge= () => {
     const queryClient = useQueryClient();
-  
+
     return useMutation(
       async (updatedWord: UpdatedWordType) => {
-        const { id, knowlage } = updatedWord; 
-        const response = await axiosInstance.patch(`/dictionary/${id}`, { knowlage });
+        const { id, knowledge } = updatedWord; 
+        const response = await axiosInstance.patch(`/dictionary/${id}`, { knowledge });
         return response.data;
       },
       {

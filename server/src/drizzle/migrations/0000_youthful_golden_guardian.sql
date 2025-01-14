@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS "words" (
 	"courseNameEnglish" text,
 	"germanWord" text,
 	"hebrewWord" text,
-	"knowlage" text,
+	"knowledge" text,
 	"courseOrder" serial NOT NULL,
 	"createdAt" timestamp DEFAULT now()
 );

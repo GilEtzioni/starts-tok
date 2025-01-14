@@ -2,26 +2,26 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'; 
 import { RootState } from "../../app/store";
 import { WordsType } from "../../types/types";
-import { sortWordsById, knowlageDataArray } from "./HelpingFunctionsDictionary";
+import { sortWordsById, knowledgeDataArray } from "./HelpingFunctionsDictionary";
 import { TranslatedWordsType } from '../types/DictionaryType';
 
 const useFilteredWords = (words: WordsType[] | undefined) => {
     
   const clicks = useSelector((state: RootState) => state.dictionary.clickFilter);
-  const knowlage = useSelector((state: RootState) => state.dictionary.knowlageFilter);
+  const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
   const level = useSelector((state: RootState) => state.dictionary.levelFilter);
 
   const [filteredWords, setFilteredWords] = useState<WordsType[]>([]);
   const [translatedWords, setTranslatedWords] = useState<TranslatedWordsType[]>([]);
 
   useEffect(() => {
-    if (words === undefined) return;
+    if (words === undefined || !words) return;
     
     setTranslatedWords([]); 
-    const filterdKnowlage = knowlageDataArray(knowlage);
+    const filterdknowledge = knowledgeDataArray(knowledge);
 
     // if nothing is selected -> show all data
-    if (level.length === 0 && filterdKnowlage.length === 0) {
+    if (level.length === 0 && filterdknowledge.length === 0 && words) {
       setFilteredWords(sortWordsById([...words]));
       return;
     }
@@ -34,13 +34,13 @@ const useFilteredWords = (words: WordsType[] | undefined) => {
     }
 
     // if the user click on "V" / "?" / "X" 
-    if (filterdKnowlage.length !== 0) {
-      filtered = filtered.filter((item) => filterdKnowlage.includes(item.knowlage)); // Use `filterdKnowlage` directly
+    if (filterdknowledge.length !== 0) {
+      filtered = filtered.filter((item) => filterdknowledge.includes(item.knowledge)); // Use `filterdKnowledge` directly
     }
 
     // show the filtered data by the id order
     setFilteredWords(sortWordsById(filtered));
-  }, [words, level, clicks, knowlage]);
+  }, [words, level, clicks, knowledge]);
 
   return { filteredWords, translatedWords, setTranslatedWords };
 };

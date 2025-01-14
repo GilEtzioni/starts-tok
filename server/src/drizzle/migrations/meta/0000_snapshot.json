@@ -1,5 +1,5 @@
 {
-  "id": "8620a3eb-a84f-45e0-aca4-3dff8b0ff9c4",
+  "id": "42ee49ee-dc97-4fab-a48d-aaa0882e8cdd",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -473,8 +473,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "knowlage": {
-          "name": "knowlage",
+        "knowledge": {
+          "name": "knowledge",
           "type": "text",
           "primaryKey": false,
           "notNull": false

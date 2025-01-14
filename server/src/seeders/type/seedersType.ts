@@ -57,5 +57,5 @@ export interface Lesson {
     courseNameEnglish: string;
     germanWord: string;
     hebrewWord: string;
-    knowlage: string;
+    knowledge: string;
   }

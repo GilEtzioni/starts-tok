@@ -1,6 +1,7 @@
-import { KnowlageType } from "../types/DictionaryType";
+import { KnowledgeType } from "../types/DictionaryType";
 import { WordsType } from "../../types/types";
 import { TranslatedWordsType } from "../types/DictionaryType";
+import { DictionaryKnowledgeType } from "../../types/types";
 
 export function handleClickedRow(id: string, wordsArray: WordsType[], translatedWords: TranslatedWordsType[]): TranslatedWordsType[] {
   const result: TranslatedWordsType[] = [...translatedWords];
@@ -24,64 +25,38 @@ export function handleClickedRow(id: string, wordsArray: WordsType[], translated
   return result;
 }
 
-
-
-// export function handleClickedRow(id: number, wordsArray: WordsType[], translatedWords: Array<{id: number, word: string}>): Array<{id: number, word: string}> {
-//   const result: Array<{id: number, word: string}> = [...translatedWords];
-
-//   // find the word
-//   const filtered = wordsArray.find((item: WordsType) => item.id === id);
-
-//   // check if the word is already in the translatedWords array
-//   if (filtered) {
-//     const existsIndex = result.findIndex(([wordId]) => wordId === filtered.id);
-
-//     if (existsIndex === -1) {
-//       // new word - add it to the array
-//       result.push([filtered.id ?? 0, filtered.hebrewWord]);
-//     } else {
-//       // old word - remove it from the array
-//       result.splice(existsIndex, 1);
-//     }
-//   }
-
-//   return result;
-// }
-
-
-
   // make the redux boolean to strings array
-  export const knowlageDataArray = (knowlageFilter: KnowlageType): string[] => {
-    const knowlageArray: string[] = [];
+  export const knowledgeDataArray = (knowledgeFilter: KnowledgeType): DictionaryKnowledgeType[] => {
+    const knowledgeArray: DictionaryKnowledgeType[] = [];
     
-    if (knowlageFilter.isEx === true) {
-      knowlageArray.push('X');
+    if (knowledgeFilter.isEx === true) {
+      knowledgeArray.push(DictionaryKnowledgeType.Ex);
     }
-    if (knowlageFilter.isVy === true) {
-      knowlageArray.push('V');
+    if (knowledgeFilter.isVy === true) {
+      knowledgeArray.push(DictionaryKnowledgeType.Vy);
     }
-    if (knowlageFilter.isQueistion === true) {
-      knowlageArray.push('?');
+    if (knowledgeFilter.isQueistion === true) {
+      knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
     }
-    return knowlageArray;
+    return knowledgeArray;
   }
 
-  export function isExTrue (icon: string): boolean {
-    return icon === "X";
+  export function isExTrue (icon: DictionaryKnowledgeType): boolean {
+    return icon === DictionaryKnowledgeType.Ex;
   };
 
   export function isVyTrue (icon: string): boolean {
-    return icon === "V";
+    return icon === DictionaryKnowledgeType.Vy;
   }
 
   export function isQuesttionTrue (icon: string): boolean {
-    return icon === "?";
+    return icon === DictionaryKnowledgeType.QuestionMark;
   }
 
   export function sortWordsById(words: WordsType[]): WordsType[] {
     return [...words].sort((a, b) => {
-      const idA = a.courseOrder ?? Number.MAX_SAFE_INTEGER;
-      const idB = b.courseOrder ?? Number.MAX_SAFE_INTEGER;
+      const idA = a.wordOrder ?? Number.MAX_SAFE_INTEGER;
+      const idB = b.wordOrder ?? Number.MAX_SAFE_INTEGER;
       return idA - idB;
     });
   }

@@ -4,7 +4,7 @@ export const dictionarySlice = createSlice({
   name: 'dictionary',
   initialState: {
     levelFilter: [] as string[],
-    knowlageFilter: { 
+    knowledgeFilter: { 
       isEx: false, 
       isVy: false, 
       isQueistion: false 
@@ -24,15 +24,15 @@ export const dictionarySlice = createSlice({
       state.levelFilter = [];
     },
 
-    /* knowlage filter */
+    /* knowledge filter */
     setExBoolean: (state, action: PayloadAction<boolean>) => {
-      state.knowlageFilter.isEx = action.payload;
+      state.knowledgeFilter.isEx = action.payload;
     },
     setVyBoolean: (state, action: PayloadAction<boolean>) => {
-      state.knowlageFilter.isVy = action.payload;
+      state.knowledgeFilter.isVy = action.payload;
     },
     setQuestionBoolean: (state, action: PayloadAction<boolean>) => {
-      state.knowlageFilter.isQueistion = action.payload;
+      state.knowledgeFilter.isQueistion = action.payload;
     },
     /* click filter */
     resetClick: (state) => {

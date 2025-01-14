@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { Words, CourseNames } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, count } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
+import { DictionaryKnowledgeType } from "../types/dictionaryType"; 
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -72,12 +73,12 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
   }
 
   try {
-      const [lastCourseIndex] = await db
-          .select()
-          .from(CourseNames)
-          .where(eq(CourseNames.userId, userId))
-          .orderBy(desc(CourseNames.courseId))
-          .limit(1);
+    const [lastCourseIndex] = await db
+    .select()
+    .from(CourseNames)
+    .where(eq(CourseNames.userId, userId))
+    .orderBy(desc(CourseNames.courseId))
+    .limit(1);
 
       const courseId = lastCourseIndex?.courseId || "default-course-id"; 
 
@@ -92,7 +93,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
               courseNameEnglish: "userWords",
               germanWord,
               hebrewWord,
-              knowlage: "?",
+              knowledge: DictionaryKnowledgeType.QuestionMark,
           })
           .returning({
               id: Words.wordId,
@@ -102,7 +103,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
               englishLevel: Words.englishLevel,
               courseId: Words.courseId,
               courseNameEnglish: Words.courseNameEnglish,
-              knowlage: Words.knowlage,
+              knowledge: Words.knowledge,
           });
 
       res.status(201).json(newWord[0]);
@@ -114,17 +115,17 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
 
 export const editWord = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params; 
-  const { knowlage } = req.body; 
+  const { knowledge } = req.body; 
 
-  if (!knowlage) {
-      res.status(400).send("Missing 'knowlage' in request body");
+  if (!knowledge) {
+      res.status(400).send("Missing 'knowledge' in request body");
       return;
   }
 
   try {
       const updatedRows = await db
           .update(Words)
-          .set({ knowlage }) 
+          .set({ knowledge }) 
           .where(eq(Words.wordId, id))
           .returning();
 
@@ -137,4 +138,37 @@ export const editWord = async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     res.status(500).json({ message: "An error occurred while ", error });
   }
+};
+
+export const getFinishedWordsCounter = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+  
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+    }
+  
+    try {
+        const [wordFinishCounter] = await db
+            .select({ count: count() })
+            .from(Words)
+            .where(
+                and(
+                    eq(Words.knowledge, DictionaryKnowledgeType.Vy),
+                    eq(Words.userId, userId)
+                )
+            );
+
+        console.log("Query result:", wordFinishCounter);
+
+        // check if no words were found
+        if (!wordFinishCounter) {
+            res.status(404).json({ error: "Words not found in /dictionary/finished" });
+            return;
+        }
+
+        res.json(wordFinishCounter.count);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred while fetching the word count", error });
+    }
 };

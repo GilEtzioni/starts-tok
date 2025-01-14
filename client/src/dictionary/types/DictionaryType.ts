@@ -1,4 +1,6 @@
-export type KnowlageType = {
+import { DictionaryKnowledgeType } from "../../types/types";
+
+export type KnowledgeType = {
   isEx: boolean;
   isVy: boolean;
   isQueistion: boolean;
@@ -6,7 +8,7 @@ export type KnowlageType = {
 
 export interface UpdatedWordType {
   id: string; 
-  knowlage: string;
+  knowledge: DictionaryKnowledgeType;
 }
 
 export enum DictionaryColors {

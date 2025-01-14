@@ -17,9 +17,9 @@ const StaticsCards: React.FC<MainStaticsProps> = ({ data }) => {
     const counts = filteredWords.reduce(
       (acc, item) => {
         if (item.englishLevel === level) {
-          if (item.knowlage === "X") acc.X += 1;
-          if (item.knowlage === "V") acc.V += 1;
-          if (item.knowlage === "?") acc["?"] += 1;
+          if (item.knowledge === "X") acc.X += 1;
+          if (item.knowledge === "V") acc.V += 1;
+          if (item.knowledge === "?") acc["?"] += 1;
         }
         return acc;
       },

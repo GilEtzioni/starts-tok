@@ -3,17 +3,18 @@ import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icon
 import { isExTrue, isVyTrue, isQuesttionTrue } from "../../utils/HelpingFunctionsDictionary";
 import { useChangeWordKnowledge } from '../../api/fetchingDictionary'; 
 import { DictionaryColors, IconItem } from '../../types/DictionaryType';
+import { DictionaryKnowledgeType } from '../../../types/types';
 
 interface MidIconsProps {
-  knowlage: string;
+  knowledge: DictionaryKnowledgeType;
   id: string;
 }
 
-const MidIcons: React.FC<MidIconsProps> = ({ knowlage, id }) => {
+const MidIcons: React.FC<MidIconsProps> = ({ knowledge, id }) => {
   const icons: IconItem[] = [
-    { id: 1, isClicked: isExTrue(knowlage), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Red, icon: <CloseOutlined /> },            // X button
-    { id: 2, isClicked: isVyTrue(knowlage), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Green, icon: <CheckOutlined /> },          // V button
-    { id: 3, isClicked: isQuesttionTrue(knowlage), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Blue, icon: <QuestionOutlined /> }, // ? button
+    { id: 1, isClicked: isExTrue(knowledge), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Red, icon: <CloseOutlined /> },            // X button
+    { id: 2, isClicked: isVyTrue(knowledge), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Green, icon: <CheckOutlined /> },          // V button
+    { id: 3, isClicked: isQuesttionTrue(knowledge), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Blue, icon: <QuestionOutlined /> }, // ? button
   ];
 
   const [activeIcon, setActiveIcon] = useState<IconItem[]>(icons);
@@ -33,8 +34,8 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowlage, id }) => {
 
     setActiveIcon(updatedIcons); 
 
-    const newKnowlage = buttonIconType === 1 ? 'X' : buttonIconType === 2 ? 'V' : '?';
-    updateItem({ id, knowlage: newKnowlage });
+    const newKnowledge = buttonIconType === 1 ? DictionaryKnowledgeType.Ex : buttonIconType === 2 ? DictionaryKnowledgeType.Vy : DictionaryKnowledgeType.QuestionMark;
+    updateItem({ id, knowledge: newKnowledge });
   };
 
   return (

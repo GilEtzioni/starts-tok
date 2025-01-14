@@ -83,7 +83,7 @@ export enum HebrewLevel {
     englishLevel: EnglishLevel,
     germanWord: string,
     hebrewLevel: HebrewLevel,
-    knowlage: string,
+    knowledge: DictionaryKnowledgeType,
     hebrewWord: string, 
     wordOrder: number
   }
@@ -94,3 +94,9 @@ export enum HebrewLevel {
     gameName: string,
     gameScore: number,
   }
+
+  export enum DictionaryKnowledgeType {
+    Vy = "V",
+    Ex = "X",
+    QuestionMark = "?",
+}

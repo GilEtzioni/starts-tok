@@ -1,7 +1,11 @@
 import { useQuery, useQueryClient  } from '@tanstack/react-query';
 import { FinishedType } from '../components/CoursesCards/types/courseTypes';
-import { HangmanScoreType } from '../components/GamesCards/types/mainPageTypes';
 import axiosInstance from './axiosInstance';
+
+export const fetchFinishedWordsCounter = async (): Promise<number> => {
+  const response = await axiosInstance.get("/finishedWords");
+  return response.data; 
+};
 
 const fetchLesson = async (): Promise<FinishedType[]> => {
   const { data } = await axiosInstance.get(`/main/finished`);
@@ -12,10 +16,10 @@ export const useFetchLessonData = () => {
   const queryClient = useQueryClient();
 
   return useQuery<FinishedType[]>({
-    queryKey: ['finishedLessons'],
+    queryKey: ['finishedWords'],
     queryFn: () => fetchLesson(),
     onSuccess: () => {
-      queryClient.invalidateQueries(['finishedLessons']);
+      queryClient.invalidateQueries(['finishedWords']);
     },
   });
 };

@@ -28,7 +28,7 @@ export const Words = pgTable("words", {
     courseNameEnglish: text("courseNameEnglish"),
     germanWord: text("germanWord"),
     hebrewWord: text("hebrewWord"),
-    knowlage: text("knowlage"),
+    knowledge: text("knowledge"),
     wordOrder: serial("courseOrder"),
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
@@ -36,8 +36,6 @@ export const Words = pgTable("words", {
 // "lessons" table
 export const Lessons = pgTable("lessons", {
     userId: text("userId").notNull(),
-    // courseId: uuid("id").primaryKey().defaultRandom(),    // 1-150
-
     hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
     englishLevel: levelEnglishEnum("englishLevel"),  // A1
 

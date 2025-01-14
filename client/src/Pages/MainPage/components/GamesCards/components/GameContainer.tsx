@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import GameCard from './GameCard';
-import { useGameMaxScore } from '../../../api/fetchingMainPage'; 
+import { fetchFinishedWordsCounter, useGameMaxScore } from '../../../api/fetchingMainPage'; 
 import { Typography, Row } from 'antd';
 import { GameNameEnum } from '../types/mainPageTypes';
+import { useQuery } from '@tanstack/react-query';
 
 const GameContainer: React.FC = () => {
 
   const { data: hangmanScore, isLoading: isLoadingHangman, error: errorHangman } = useGameMaxScore(GameNameEnum.Hangman);
   const { data: wordleScore, isLoading: isLoadingWordle, error: errorWordle } = useGameMaxScore(GameNameEnum.Wordle);
   const { data: speedScore, isLoading: isLoadingSpeed, error: errorSpeed } = useGameMaxScore(GameNameEnum.SpeedGame);
+  const { data: finishedWordsCount, isLoading: isLoadingFinishedWords, error: errorFinishedWords } = useQuery(
+    ['finishedWordsCounter'],
+    fetchFinishedWordsCounter
+  );
 
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];
@@ -18,7 +23,7 @@ const GameContainer: React.FC = () => {
   const cardNames = [ "מילון",  "איש תלוי",  "משחק מהירות", "וורדל",];
   const links = [ "/dictionary", "/hangman", "/speedGame",  "/wordle" ];
   const gameScore = [
-    834, 
+    finishedWordsCount ?? 0, 
     hangmanScore?.maxScore ?? 0, 
     wordleScore?.maxScore ?? 0,  
     speedScore?.maxScore ?? 0,  
@@ -35,7 +40,7 @@ const GameContainer: React.FC = () => {
   const { Title } = Typography;
 
   const isLoading = isLoadingHangman || isLoadingWordle || isLoadingSpeed;
-  const error = errorHangman || errorWordle || errorSpeed;
+  const error = errorHangman || errorWordle || errorSpeed ;
 
   if (isLoading) return <div> Loading...</div>;
   if (error) return <div> Error loading data </div>;

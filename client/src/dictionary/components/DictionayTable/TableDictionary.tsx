@@ -1,5 +1,5 @@
 // react + antd
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table } from 'antd';
 
 import { handleClickedRow } from "../../utils/HelpingFunctionsDictionary";
@@ -14,20 +14,23 @@ interface TableProps {
 const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
   const { filteredWords, translatedWords, setTranslatedWords } = useFilteredWords(words);
 
+  if(filteredWords === undefined) return;
+
   return (
     <div className="w-4/5 mx-auto">
     <Table
-      columns={[
-        // first column
-        {
-          title: 'סינון',
-          dataIndex: 'knowlage',
-          key: 'knowlage',
-          render: (knowlage, row) => {
-            const id = row.id ?? -1;
-            return <MidIcons knowlage={knowlage} id={id} />;
-          },
-        },
+  columns={[
+    {
+      title: 'סינון',
+      dataIndex: 'knowledge',
+      key: 'knowledge',
+      render: (text, row) => {
+        const { knowledge, id } = row;
+        if (knowledge) {
+          return <MidIcons knowledge={knowledge} id={id} />;
+        }
+      },
+    },
         // mid column
         // {
         //   title: '',
@@ -48,16 +51,17 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
           align: 'right' as const,
         },
       ]}
-      dataSource={filteredWords?.map((item) => ({
+      dataSource={filteredWords && filteredWords.length > 0 ? filteredWords.map((item) => ({
         key: item.wordId,
         id: item.wordId,
         hebrewWord: item.hebrewWord,
         germanWord: item.germanWord,
         courseNameEnglish: item.courseNameEnglish,
-        knowlage: item.knowlage,
+        knowledge: item.knowledge,
         hebrewLevel: item.hebrewLevel,
         englishLevel: item.englishLevel,
-      }))}
+        wordOrder: item.wordOrder,
+      })) : []} 
       pagination={false} // for css
       // when user click on the row
       onRow={(row) => ({
