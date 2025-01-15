@@ -3,6 +3,8 @@ import { db } from "../drizzle/db";
 import { Users} from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, sum, sql} from "drizzle-orm";
+import { DaysOfTheWeek } from "../types/userType";
+import { getTodayDate, getDayDate, getLastWeekDate, convertDateToDay } from "../utils/userHelper"
 
 export const getAllPoints = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -22,7 +24,6 @@ export const getAllPoints = async (req: Request, res: Response): Promise<void> =
                 )
             );
 
-        // check if no users were found
         if (!allPointsCounter) {
             res.status(404).json({ error: "users not found" });
             return;
@@ -36,52 +37,6 @@ export const getAllPoints = async (req: Request, res: Response): Promise<void> =
 
 /* ------------------------------------------------------------------------------------ */
 
-const getTodayDate = (): string => {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
-};
-
-export const getTodayPoints = async (req: Request, res: Response): Promise<void> => {
-    const { userId } = getAuth(req);
-    
-    if (!userId) {
-      res.status(401).json({ error: "Unauthorized" });
-      return;
-    } 
-
-    const today = getTodayDate();
-
-    try {
-        const [todayPointsCounter] = await db
-            .select({ value: sum(Users.points) })
-            .from(Users)
-            .where(
-                and(
-                    eq(Users.userId, userId),
-                    eq(Users.pointsDate, today)
-                )
-            );
-
-        // check if no users were found
-        if (!todayPointsCounter) {
-            res.status(404).json({ error: "users not found" });
-            return;
-        }
-
-        res.json(todayPointsCounter.value);
-    } catch (error) {
-        res.status(500).json({ message: "An error occurred while fetching the word count", error });
-    }
-};
-
-/* ------------------------------------------------------------------------------------ */
-
-const getLastWeekDate = (): string => {
-    const lastWeek = new Date();
-    lastWeek.setDate(lastWeek.getDate() - 7);
-    return lastWeek.toISOString().split('T')[0];
-};
-
 export const getLastWeekPoints = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
 
@@ -90,26 +45,43 @@ export const getLastWeekPoints = async (req: Request, res: Response): Promise<vo
         return;
     }
 
-    const today = getTodayDate();
-    const lastWeek = getLastWeekDate();
+    const today = getTodayDate();       // e.g. "15.01.2025"
+    const lastWeek = getLastWeekDate(); // e.g. "08.01.2025"
 
     try {
-        const [weekPointsCounter] = await db
-            .select({ value: sum(Users.points) })
+        const userRecord = await db
+            .select()
+            .from(Users)
+            .where(eq(Users.userId, userId))
+            .limit(1);
+
+        if (!userRecord.length) {
+            res.status(404).json({ error: "User not found" });
+            return;
+        }
+
+        const weekPoints = await db
+            .select({
+                date: Users.pointsDate,
+                points: sql`SUM(${Users.points})`, 
+                day: sql`TO_CHAR(${Users.pointsDate}, 'Day')`,
+            })
             .from(Users)
             .where(
                 and(
                     eq(Users.userId, userId),
-                    sql`DATE(${Users.pointsDate}) BETWEEN ${lastWeek} AND ${today}`
+                    sql`${Users.pointsDate} BETWEEN ${lastWeek} AND ${today}`
                 )
-            );
+            )
+            .groupBy(Users.pointsDate);
 
-        if (!weekPointsCounter?.value) {
-            res.status(404).json({ error: "No points found for the last week" });
-            return;
-        }
+        const formattedPoints = weekPoints.map(point => ({
+            date: point.date,
+            points: Number(point.points),
+            day: convertDateToDay(point.date),
+        }));
 
-        res.status(200).json({ lastWeekPoints: weekPointsCounter.value });
+        res.status(200).json(formattedPoints);
     } catch (error) {
         console.error("Error fetching points:", error);
         res.status(500).json({
@@ -165,5 +137,45 @@ export const addPoints = async (req: Request, res: Response): Promise<void> => {
             message: "An error occurred while POST new points",
             error: error,
         });
+    }
+};
+
+/* ------------------------------------------------------------------------------------ */
+
+export const getOneDayPoints = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+    const targetDay = req.params.day as DaysOfTheWeek;
+
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+    }
+
+    if (!Object.values(DaysOfTheWeek).includes(targetDay as DaysOfTheWeek)) {
+        res.status(400).json({ error: "Invalid day" });
+        return;
+    }
+
+    const targetDate = getDayDate(targetDay);
+
+    try {
+        const [dayPointsCounter] = await db
+            .select({ value: sum(Users.points) })
+            .from(Users)
+            .where(
+                and(
+                    eq(Users.userId, userId),
+                    eq(Users.pointsDate, targetDate)
+                )
+            );
+
+        if (!dayPointsCounter) {
+            res.status(404).json({ error: "No points found for the selected day" });
+            return;
+        }
+
+        res.json(Number(dayPointsCounter.value));
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred while fetching the points", error });
     }
 };

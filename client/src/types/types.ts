@@ -88,14 +88,14 @@ export enum HebrewLevel {
     wordOrder: number
   }
 
-  export interface GamesType {
+export interface GamesType {
     userId: string,
     gameId?: string,
     gameName: string,
     gameScore: number,
   }
 
-  export enum DictionaryKnowledgeType {
+export enum DictionaryKnowledgeType {
     Vy = "V",
     Ex = "X",
     QuestionMark = "?",
@@ -106,4 +106,10 @@ export interface UserType {
   userName: string,
   points: number,
   pointsDate: Date,
+}
+
+export type weekPointsType = {
+  date: string,
+  points: number,
+  day: string
 }

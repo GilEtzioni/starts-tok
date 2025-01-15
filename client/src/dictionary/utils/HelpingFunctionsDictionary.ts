@@ -15,7 +15,7 @@ export function handleClickedRow(id: string, wordsArray: WordsType[], translated
 
     if (existsIndex === -1) {
       // new word - add it to the array
-      result.push({ id: filtered.wordId ?? "0", word: filtered.hebrewWord });
+      result.push({ id: filtered.wordId , word: filtered.hebrewWord });
     } else {
       // old word - remove it from the array
       result.splice(existsIndex, 1);
