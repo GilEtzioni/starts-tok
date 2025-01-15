@@ -53,7 +53,7 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
   }
 
   function goToHomePage() {
-    const payload = { score: successCounter ?? 0 };
+    const payload = { score: successCounter };
     newScore.mutate(payload );
 
     dispatch(resetSuccesssCounter());

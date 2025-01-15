@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useMutation, useQuery, useQueryClient  } from '@tanstack/react-query';
 import { LessonType } from "../../types/types";
 import { WordsType } from '../../types/types';

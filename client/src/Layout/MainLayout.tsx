@@ -4,6 +4,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { SignedIn } from "@clerk/clerk-react";
 import { useAuth } from "@clerk/clerk-react";
+import { useFetchPointsData } from './api/fetchingLayout';
 
 const { Header } = Layout;
 
@@ -14,6 +15,8 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
+  const { data: points, isLoading, error } = useFetchPointsData();
+
   const { signOut } = useAuth();
   const { getToken } = useAuth();
 
@@ -75,9 +78,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         {/* Right Section: User Information */}
         <div className="flex items-center gap-6">
           <div className="flex items-center text-red-500 text-lg gap-2">
-            <span>537</span>
+            <span> { points !== undefined ? points : 0 } </span>
             <i className="fas fa-star"></i>
-  
+
           </div>
           <Badge
             count={

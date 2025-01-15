@@ -8,6 +8,7 @@ export const lessonsSlice = createSlice({
     order: 1,
     clicks: 0,
     anwser: "",
+    points: 0,
   },
 
   reducers: {
@@ -54,6 +55,15 @@ export const lessonsSlice = createSlice({
     resetAnswer: (state) => {
         state.anwser = "";
     },
+
+    /* points */
+    resetPoints: (state) => {
+      state.points = 0;
+    },
+
+    addOnePoint: (state) => {
+      state.points += 1;
+    },
   },
 });
 
@@ -67,7 +77,9 @@ export const {
   resetClicks, 
   addOneClick,
   setRightAnswer,
-  resetAnswer
+  resetAnswer,
+  resetPoints,
+  addOnePoint
 } = lessonsSlice.actions;
 
 export default lessonsSlice.reducer;

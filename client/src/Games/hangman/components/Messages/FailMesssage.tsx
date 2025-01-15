@@ -34,7 +34,7 @@ const FailMesssage: React.FC<FailMessagesProps> = ({ words}) => {
   }
 
   async function handleBack() {
-    const payload = { score: successCounter ?? 0 };
+    const payload = { score: successCounter };
     newScore.mutate(payload );
     dispatch(resetWrongCounter());
     dispatch(resetSuccesssCounter());

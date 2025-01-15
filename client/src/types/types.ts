@@ -100,3 +100,10 @@ export enum HebrewLevel {
     Ex = "X",
     QuestionMark = "?",
 }
+
+export interface UserType {
+  userId: string,
+  userName: string,
+  points: number,
+  pointsDate: Date,
+}

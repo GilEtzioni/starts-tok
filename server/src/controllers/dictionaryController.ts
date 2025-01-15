@@ -159,8 +159,6 @@ export const getFinishedWordsCounter = async (req: Request, res: Response): Prom
                 )
             );
 
-        console.log("Query result:", wordFinishCounter);
-
         // check if no words were found
         if (!wordFinishCounter) {
             res.status(404).json({ error: "Words not found in /dictionary/finished" });

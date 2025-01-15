@@ -1,8 +1,5 @@
-// custom hook
-import { useMainLearnHelper } from './MainLearnHelper';
-
 // redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
 
 // lessons components
@@ -17,11 +14,15 @@ import ProgressBar from './component/ProgressBar';
 import ErrorMessage from './component/ErrorMessage';
 import SuccessMessage from './component/SuccessMessage';
 import { LessonStatus } from './types/LessonType';
+import { useEffect } from 'react';
+import { addOnePoint } from './slices/LessonsSlice';
+import FinishLessonMessage from './component/FinishLessonMessage';
 
 const MainLearn: React.FC = () => {
 
     const status = useSelector((state: RootState) => state.lessons.status);
-    const { order, finishLesson, handleFinishLesson, myLesson, myLevel } = useMainLearnHelper();
+    const order = useSelector((state: RootState) => state.lessons.order);
+    const dispatch = useDispatch();
 
     const renderCurrentLesson = () => {
         switch (order) {
@@ -38,10 +39,16 @@ const MainLearn: React.FC = () => {
             case 6:
                 return <MainThird />;
             default:
-                finishLesson({ name: myLevel, lesson: myLesson }); // patch
-                handleFinishLesson();                              // go to main course page
+                return <FinishLessonMessage />                             // go to main course page
         }
     };
+
+    // count success
+    useEffect(() => {
+        if(status === LessonStatus.Success) {
+            dispatch(addOnePoint());
+        }
+    },[status]);
 
     return (
         <>

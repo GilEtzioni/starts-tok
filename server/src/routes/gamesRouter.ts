@@ -17,5 +17,4 @@ router.post("/:gameName/score", requireAuth(), async (req, res) => {
     await addGameScore(req, res, gameName as GamesNamesType);
 });
 
-
 export default router;

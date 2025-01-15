@@ -69,6 +69,13 @@ CREATE TABLE IF NOT EXISTS "lessons" (
 	"createdAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "users" (
+	"userId" text NOT NULL,
+	"userName" text NOT NULL,
+	"points" integer,
+	"pointsDate" date DEFAULT now()
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "words" (
 	"userId" text NOT NULL,
 	"wordId" text PRIMARY KEY NOT NULL,

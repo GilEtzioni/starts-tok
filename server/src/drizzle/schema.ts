@@ -1,4 +1,4 @@
-import { timestamp, pgTable, text, integer, pgEnum, boolean, serial } from "drizzle-orm/pg-core";
+import { timestamp, pgTable, text, integer, pgEnum, boolean, serial, date } from "drizzle-orm/pg-core";
 
 // enums
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
@@ -98,4 +98,11 @@ export const Games = pgTable("games", {
     gameName: gameNameEnum("gameName"),
     gameScore: integer("gameScore"),
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
+});
+
+export const Users = pgTable("users", {
+    userId: text("userId").notNull(),
+    userName: text("userName").notNull(),
+    points: integer("points"),
+    pointsDate: date("pointsDate").defaultNow(),
 });

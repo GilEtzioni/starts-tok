@@ -5,6 +5,7 @@ import cors from "cors";
 import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
+import usersRoutes from "./routes/usersRoutes";
 import { clerkMiddleware } from "@clerk/express";
 
 // express
@@ -29,6 +30,7 @@ app.use(
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
 app.use(gamesRoutes);
+app.use(usersRoutes);
 
 const PORT = process.env.PORT || 3000;
 
