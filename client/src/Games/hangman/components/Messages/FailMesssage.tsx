@@ -18,15 +18,16 @@ interface FailMessagesProps {
   words: WordsType[] | undefined;
 }
 
-const FailMesssage: React.FC<FailMessagesProps> = ({ words}) => {
+const FailMesssage: React.FC<FailMessagesProps> = ({ words }) => {
 
-  const successCounter = useSelector((state: RootState) => state.hangman.successCounter);
+  const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const newScore = useAddNewScore(GameNameEnum.Hangman)
 
   function restartGame() {
+    if (words === undefined) return;
     dispatch(resetWrongCounter());
     dispatch(resetSuccesssCounter());
     const selectedWord = getSelectedWord(words);
@@ -34,6 +35,7 @@ const FailMesssage: React.FC<FailMessagesProps> = ({ words}) => {
   }
 
   async function handleBack() {
+    if (words === undefined) return;
     const payload = { score: successCounter };
     newScore.mutate(payload );
     dispatch(resetWrongCounter());

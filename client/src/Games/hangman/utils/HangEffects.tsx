@@ -1,32 +1,39 @@
 import { useEffect } from "react";
 import { WordsType } from "../../../types/types";
 import { HangmanType } from "../types/hangmanType";
-import { createLettersArray, createGameArray } from "./HangHelper";
+import { createLettersArray, createGameArray, getRandomWord } from "./HangHelper";
+import { setSelectedWord } from "../slices/HangmanSlice";
 
 export interface useStartGameProps {
   words: WordsType[] | undefined;
   setRandomWord: (array: WordsType[]) => void;
   setLettersArray: (array: HangmanType[]) => void;
   setGameArray: (array: HangmanType[]) => void;
-  gameWord: WordsType[]
+  successCounter: number;
+  wrongCounter: number
+  dispatch: any;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useStartGame = ({gameWord, setRandomWord, words, setLettersArray, setGameArray }: useStartGameProps) => {
-    useEffect(() => {
-      if (gameWord.length > 0 && words !== undefined) {
-        const randomIndex = Math.floor(Math.random() * gameWord.length);
-        const selectedWord = gameWord[randomIndex];
+export const useStartGame = ({ words, setRandomWord, setLettersArray, setGameArray, successCounter, wrongCounter, dispatch }: useStartGameProps) => {
+  useEffect(() => {
+    if (words !== undefined && words.length > 0 && wrongCounter === 0) {
+
+        // reset game arrays
+        setLettersArray([]);
+        setGameArray([]);
+
+        const selectedWord = getRandomWord(words);
+        dispatch(setSelectedWord([selectedWord]));
+
         setRandomWord([selectedWord]);
-          
-        // create abc-letters array
+
         const lettersRandomArray = createLettersArray(selectedWord);
         setLettersArray(lettersRandomArray);
 
-        // create game-letters array
         const gameRandomArray = createGameArray(selectedWord);
         setGameArray(gameRandomArray);
-      }
-  }, [gameWord]);
+    }
+}, [successCounter, words, wrongCounter]);
 };

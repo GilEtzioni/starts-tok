@@ -40,7 +40,7 @@ const MainLearn: React.FC = () => {
             case 6:
                 return <MainThird />;
             default:
-                return <FinishLessonMessage />                             // go to main course page
+                return <FinishLessonMessage />
         }
     };
 
@@ -68,7 +68,6 @@ const MainLearn: React.FC = () => {
             {status === LessonStatus.Failure && <FailureMessage />}
             {status === LessonStatus.Success && <SuccessMessage />}
             {status === LessonStatus.Running && <NextButton />}
-            {/* <NextButton /> */}
             </div>
     
         </>

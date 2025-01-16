@@ -1,17 +1,26 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { Button } from "antd";
-import { resetSuccesssCounter} from "../../slices/HangmanSlice";
+import { resetSuccesssCounter, setSelectedWord} from "../../slices/HangmanSlice";
 import { useDispatch } from 'react-redux';
+import { getRandomWord } from "../../utils/HangHelper";
+import { WordsType } from "../../../../types/types";
 
-const BackButton: React.FC = () => {
+interface BackButtonProps {
+  words: WordsType[] | undefined;
+}
+
+const BackButton: React.FC<BackButtonProps> = ({ words }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleBack = () => {
+    navigate("/main");
+    if (words === undefined) return;
+    const selectedWord = getRandomWord(words);
+    setSelectedWord([selectedWord])
     dispatch(resetSuccesssCounter());
-    navigate(-1);
   };
 
   return (

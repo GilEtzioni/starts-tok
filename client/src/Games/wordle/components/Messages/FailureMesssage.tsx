@@ -21,7 +21,6 @@ interface FailMessagesProps {
 }
 
 const FailureMesssage: React.FC<FailMessagesProps> = ({ words}) => {
-console.log("in failure!")
   const successCounter = useSelector((state: RootState) => state.wordel.successCounter);
   
   const dispatch = useDispatch();

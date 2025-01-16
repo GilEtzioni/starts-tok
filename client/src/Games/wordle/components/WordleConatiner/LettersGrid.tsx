@@ -62,7 +62,6 @@ const LettersGrid: React.FC<WordsGridProps> = ({
   }
 
   function handleEnter() {
-    console.log("clicked")
     dispatch(addOneClick());
   }
 

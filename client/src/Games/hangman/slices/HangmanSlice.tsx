@@ -4,26 +4,25 @@ import { WordsType } from "../../../types/types";
 export const hangmanSlice = createSlice({
   name: 'hangman',
   initialState: {
-    wrongCounter: 0,
-    successCounter: 0,
-    selectedWord:  [] as WordsType[],
+    wrongLettersCounter: 0,
+    successGamesCounter: 0,
+    selectedWord: [] as WordsType[],
   },
-
   reducers: {
     /* wrong counter */
     addOneWrongCounter: (state) => {
-      state.wrongCounter += 1;
+      state.wrongLettersCounter += 1;
     },
     resetWrongCounter: (state) => {
-      state.wrongCounter = 0;
+      state.wrongLettersCounter = 0;
     },
 
     /* success counter */
     addOneSuccesssCounter: (state) => {
-      state.successCounter += 1;
+      state.successGamesCounter += 1;
     },
     resetSuccesssCounter: (state) => {
-      state.successCounter = 0;
+      state.successGamesCounter = 0;
     },
 
     /* selected word */

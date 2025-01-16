@@ -32,7 +32,6 @@ const FinishLessonMessage: React.FC = () => {
   const order = useSelector((state: RootState) => state.lessons.order);
 
   function goToHomePage() {
-    console.log("newPoints: ", newPoints)
     addNewPoints.mutate({ newPoints });
     finishLesson({ name: myLevel, lesson: myLesson });
 

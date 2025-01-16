@@ -1,5 +1,5 @@
 import { WordsType } from "../../../types/types";
-import { HangmanType } from '../types/hangmanType';
+import { HangmanType, SelectedLetter } from '../types/hangmanType';
 
 export const getRandomWord = (wordsArray: WordsType[]): WordsType => {
     const num_of_words: number = wordsArray.length;
@@ -12,57 +12,76 @@ const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 
 export const createLettersArray = (word: WordsType): HangmanType[] => {
     const result: HangmanType[] = [];
-
-    const wordLetters = new Set(word.germanWord.toLowerCase().split(''));
+    const wordLetters = word.germanWord.toLowerCase().split('');
 
     letters.forEach((letter) => {
         result.push({
             letter: letter.toLowerCase(),
-            inGame: wordLetters.has(letter),
-            selected: false,
+            inGame: wordLetters.includes(letter.toLowerCase()), 
+            selected: SelectedLetter.NotSelected, 
         });
     });
+
     return result;
 };
 
 export const createGameArray = (word: WordsType): HangmanType[] => {
-    const array: HangmanType[] = [];
+    const gameArray: HangmanType[] = [];
   
     word.germanWord.toLowerCase().split('').forEach((letter) => {
       if (letters.includes(letter)) { 
-        array.push({
+        gameArray.push({
           letter: letter.toLowerCase(),
           inGame: letter !== " ",
-          selected: false,
+          selected: SelectedLetter.NotSelected,
         });
       }
     });
-    return array;
+    return gameArray;
   };
 
-// set true if the letter is selected
-export const handleArray = (wordsArray: HangmanType[], letter: string) => {
-    const array = [...wordsArray];
-    for (const word of wordsArray) {
-        if (word.letter.toLowerCase() === letter.toLowerCase() && word.selected === false) {
-            word.selected = true;
+export const handleArray = (gameArray: HangmanType[], lettersArray: HangmanType[], letter: string) => {
+    const updatedLettersArray = [...lettersArray];
+    const updatedGameArray = [...gameArray];
+    let flag: boolean = false;
+
+    for (const word of updatedGameArray) {
+        if (word.letter.toLowerCase() === letter.toLowerCase() && word.selected === SelectedLetter.NotSelected) {
+            word.selected = SelectedLetter.Success;
+            flag = true;
         }
     }
-    return array;
+
+    for (const word of updatedLettersArray) {
+        if (word.letter.toLowerCase() === letter.toLowerCase()) {
+            if (flag === true) {
+                word.selected = SelectedLetter.Success;
+            }
+            else {
+                word.selected = SelectedLetter.Failure;
+            }
+        }
+    }
+
+    return {updatedLettersArray, updatedGameArray};
 };
 
 // check if the answer is true
-export const isAnswerTrue = (wordsArray: HangmanType[], letter: string): boolean | null => {
-    for (const word of wordsArray) {
-        if (word.letter.toLowerCase() === letter.toLowerCase()) {
-            if (word.inGame) {
-                return word.selected ? null : true;
-            }
-            return word.selected ? null : false;
+export const isAnswerTrue = (lettersArray: HangmanType[], letter: string): SelectedLetter | null => {
+    const updatedLettersArray = lettersArray.map((word) => ({ ...word }));
+
+    for (const word of updatedLettersArray) {
+      if (word.letter.toLowerCase() === letter.toLowerCase() && word.selected === SelectedLetter.NotSelected) {
+        if (word.inGame) {
+          word.selected = SelectedLetter.Success;
+          return SelectedLetter.Success;
         }
+        word.selected = SelectedLetter.Failure;
+        return SelectedLetter.Failure;
+      }
     }
     return null;
-};
+  };
 
 export const getSelectedWord = (words: WordsType[] | undefined):  WordsType[] => {
     if (words !== undefined && words) {

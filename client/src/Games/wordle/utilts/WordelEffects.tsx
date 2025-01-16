@@ -63,8 +63,7 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
     const numOfLettersSucces: number = gridAnswer[clicksCounter - 1]?.filter((item) => item?.letterColor === LetterColor.Green).length || 0;
     const userAnswerLength: number = gridAnswer[clicksCounter - 1]?.filter((item) => item !== null).length || 0;
     const answerLength = correctAnswer.length;
-    const correctAnswerString = correctAnswer.map((item) => item?.letter).join('').toLowerCase();
-console.log("correctAnswerString", correctAnswerString);
+    
     if (clicksCounter === 0) return;
 
     // success message
@@ -92,7 +91,6 @@ console.log("correctAnswerString", correctAnswerString);
 
     // failure message
     if (clicksCounter > 4 && numOfLettersSucces !== correctAnswer.length) {
-      console.log("here failure")
       dispatch(setCurrentMode(CurrentMode.Failure));
     }
   }, [clicksCounter]);

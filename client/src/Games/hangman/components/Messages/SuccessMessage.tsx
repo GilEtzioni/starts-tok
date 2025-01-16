@@ -1,25 +1,18 @@
 import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
-// redux
-import { useDispatch, useSelector } from 'react-redux';
-import { resetWrongCounter, addOneSuccesssCounter, setSelectedWord, resetSuccesssCounter } from '../../slices/HangmanSlice';
-import { getSelectedWord } from '../../utils/HangHelper';
-import { WordsType } from "../../../../types/types";
-import { RootState } from '../../../../app/store';
-
 import { useAddNewScore } from '../../../api/fetchingGame';
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 
-interface SuccessMessageProps {
-  words: WordsType[];
-}
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { resetWrongCounter, addOneSuccesssCounter, resetSuccesssCounter } from '../../slices/HangmanSlice';
+import { RootState } from '../../../../app/store';
 
-const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
+const SuccessMessage: React.FC = () => {
 
-  const successCounter = useSelector((state: RootState) => state.hangman.successCounter);
-  
+  const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const newScore = useAddNewScore(GameNameEnum.Hangman)
@@ -27,16 +20,15 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ words }) => {
   function restartGame() {
     dispatch(resetWrongCounter());
     dispatch(addOneSuccesssCounter());
-    const selectedWord = getSelectedWord(words); 
-    dispatch(setSelectedWord(selectedWord));
+
   }
 
   async function handleBack() {
+    navigate('/main');
     const payload = { score: successCounter + 1};
     newScore.mutate(payload);
     dispatch(resetWrongCounter());
     dispatch(resetSuccesssCounter());
-    navigate('/main');
   }
 
   return (

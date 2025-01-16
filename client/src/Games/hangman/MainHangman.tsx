@@ -1,10 +1,9 @@
 // react + antd
-import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'antd';
+import React, { useState } from 'react';
+import { Col, Row, Typography } from 'antd';
 
 //redux
 import { useDispatch } from 'react-redux';
-import { setSelectedWord} from './slices/HangmanSlice';
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
@@ -20,7 +19,6 @@ import MainMessages from './components/Messages/MainMessages';
 import { HangmanType } from './types/hangmanType'; 
 import { WordsType } from "../../types/types";
 import { useStartGame } from './utils/HangEffects';
-import { getRandomWord } from './utils/HangHelper';
 import { useFetchWordsData } from '../api/fetchingGame';
 
 const MainHangman: React.FC = () => {
@@ -31,29 +29,29 @@ const MainHangman: React.FC = () => {
     const [lettersArray, setLettersArray] = useState<HangmanType[]>([]);
     const [gameArray, setGameArray] = useState<HangmanType[]>([]);
 
-    const successCounter = useSelector((state: RootState) => state.hangman.successCounter);
-    const gameWord = useSelector((state: RootState) => state.hangman.selectedWord);
+    const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
+    const wrongCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
+    const selectedWord = useSelector((state: RootState) => state.hangman.selectedWord);
     const dispatch = useDispatch();
 
-    // the word of the firat game
-    useEffect(() => {
-      if (words !== undefined) {
-          const selectedWord = getRandomWord(words);
-          dispatch(setSelectedWord([selectedWord]));
-      }
-  }, [words, dispatch]);
+    useStartGame({ setRandomWord, words, setLettersArray, setGameArray, successCounter, wrongCounter, dispatch });
 
-    useStartGame({ words , gameWord, setRandomWord, setLettersArray, setGameArray});
+    const { Title } = Typography;
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading data</div>;
   
-    return (
+  return (
+      <>
+      {words? (
     <Row>
-      <Col span={14} className="bg-[#f0f0f0] h-screen p-2 relative">
+      <Col span={14} className="h-screen p-2 relative">
         <div className="flex justify-start mb-5">
-          <BackButton/>
-          <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} />
+          <BackButton words={words}/>
+        </div>
+
+        <div className="absolute">
+            <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} />
         </div>
 
         <div className="flex flex-col items-center justify-center gap-5 h-0">
@@ -63,20 +61,27 @@ const MainHangman: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-auto">
+        <div className="absolute top-[50%] left-1/2 -translate-x-1/2 w-auto">
           <WordsGrid lettersArray={lettersArray} setLettersArray={setLettersArray} gameArray={gameArray} setGameArray={setGameArray} />
         </div>
       </Col>
 
-      <Col span={10} className="bg-[#f0f0f0] h-screen">
+      <Col span={10} className="h-screen">
         <div className="flex flex-col items-center mt-12">
-          <p className="mb-5 text-lg !font-hebrew"> הצלחת {successCounter} משחקים ברצף </p>
+          <Title
+            level={3}
+            className="mb-5 text-3xl font-semibold text-center antialiased !font-hebrew" >
+              הצלחת {successCounter} משחקים ברצף 
+          </Title>
           <PhotosHang />
         </div>
       </Col>
+
     </Row>
+      ) : null}
+    </>
     );
-  };
+  }
   
   export default MainHangman;
   

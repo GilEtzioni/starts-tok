@@ -11,7 +11,7 @@ interface GameCardProps {
 const GameCard: React.FC<GameCardProps> = ({ card, onClick }) => {
 
     const cardClass = classNames(
-        "'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew'",
+        "text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew",
         {
             "bg-green-500 text-white border border-green-600 border-b-4 border-0": card.isSelected === SelectedCard.Success,
             "bg-red-500 text-white border border-red-600 border-b-4 border-0": card.isSelected === SelectedCard.Failure,

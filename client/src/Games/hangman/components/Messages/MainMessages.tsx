@@ -1,7 +1,7 @@
 import React from 'react';
 import SuccessMessage from './SuccessMessage';
 import FailMesssage from './FailMesssage';
-import { HangmanType } from "../../types/hangmanType";
+import { HangmanType, SelectedLetter } from "../../types/hangmanType";
 import { WordsType } from "../../../../types/types";
 
 // redux
@@ -16,9 +16,7 @@ interface MainMessagesProps {
 
 const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, words }) => {
 
-    // if (words === undefined) return;
-
-    const wrongCounter = useSelector((state: RootState) => state.hangman.wrongCounter);
+    const wrongCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
 
     const isEndGame = (wrongCounter: number, lettersArray: HangmanType[]) => {
 
@@ -29,23 +27,22 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
         .length;
 
         if (wrongCounter === 6) {
-            return <FailMesssage words={words as WordsType[]}  />;
+            return <FailMesssage words={words}  />;
         }
     
         const uniqueLetters = new Set<string>();
     
         for (const item of lettersArray) {
-            if (item.inGame && item.selected) {
+            if (item.inGame && item.selected === SelectedLetter.Success) {
                 uniqueLetters.add(item.letter); 
             }
         }
     
         const successLetter = uniqueLetters.size; 
     
-        if (successLetter === uniqueLettersLength) {
-            return <SuccessMessage words={words as WordsType[]}   />;
+        if (successLetter === uniqueLettersLength && words) {
+            return <SuccessMessage />;
         }
-    
     };
     
     return (
