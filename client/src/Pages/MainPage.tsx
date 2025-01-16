@@ -6,8 +6,7 @@ import UsersTable from "./MainPage/components/TableMainPage/UsersTable";
 export default function MainPage() {
   return (
     <div className="w-full">
-
-      <div className="w-full px-5">
+     <div className="w-full px-5">
         <CardContainer />
         <GameContainer />
       </div>

@@ -16,6 +16,7 @@ import { CardType } from '../types/SecondLessonType';
 // fetch data
 import { useParams } from 'react-router-dom';
 import { useFetchLessonData, useFetchWordsData } from '../api/fetchingLessons';
+import { LessonStatus } from '../types/LessonType';
 
 
 const MainSecond: React.FC = () => {
@@ -28,6 +29,7 @@ const MainSecond: React.FC = () => {
 
     const order = useSelector((state: RootState) => state.lessons.order);
     const clicks = useSelector((state: RootState) => state.lessons.clicks);
+    const status = useSelector((state: RootState) => state.lessons.status);
     const dispatch = useDispatch();
 
     const [germanArray, setGermanArray] = useState<CardType[]>([]);
@@ -37,37 +39,38 @@ const MainSecond: React.FC = () => {
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, germanArray, order });
 
     const handleClick = (card: CardType) => {
+        if (status === LessonStatus.Running) {
+            // from down container to up container
+            if (card.container === "down") {
+                const currMax = findMaxIndex(germanArray, card.id);
+                const nextIndex = currMax + 1;
 
-        // from down container to up container
-        if (card.container === "down") {
-            const currMax = findMaxIndex(germanArray, card.id);
-            const nextIndex = currMax + 1;
+                const updatedArray= germanArray.map((item) =>
+                    item.id === card.id ? { ...item, container: "up",containerOrder: nextIndex } : { ...item }
+                );                
+                setGermanArray(updatedArray);
+            }
 
-            const updatedArray= germanArray.map((item) =>
-                item.id === card.id ? { ...item, container: "up",containerOrder: nextIndex } : { ...item }
-            );                
-            setGermanArray(updatedArray);
-        }
+            // from up to down container
+            else {
+                const currMax = findMaxIndex(germanArray, card.id);
+                const nextIndex = currMax + 1;
 
-        // from up to down container
-        else {
-            const currMax = findMaxIndex(germanArray, card.id);
-            const nextIndex = currMax + 1;
-
-            const updatedArray= germanArray.map((item) =>
-                item.id === card.id ? { ...item, container: "down",containerOrder: nextIndex } : { ...item }
-            );                
-            setGermanArray(updatedArray);
+                const updatedArray= germanArray.map((item) =>
+                    item.id === card.id ? { ...item, container: "down",containerOrder: nextIndex } : { ...item }
+                );                
+                setGermanArray(updatedArray);
+            }
         }
     }
 
     return (
         <>
             <Row className="flex justify-center">
-                <Title level={3} className="text-center">תרגמו את המשפט</Title>
+                <Title level={3} className="text-center !font-hebrew">תרגמו את המשפט</Title>
             </Row>
 
-            <HebrewSentenceTwo wordsData={wordsData}  hebrewSentence={hebrewSentence} />            
+            <HebrewSentenceTwo wordsData={wordsData}  hebrewSentence={hebrewSentence} status={status}/>            
     
             {/* up container */}
             <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
@@ -80,7 +83,7 @@ const MainSecond: React.FC = () => {
                                 bodyStyle={{ padding: '12px' }}
                                 key={item.containerOrder}
                                 onClick={() => handleClick(item)}
-                                hoverable
+                                className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 !font-hebrew'
                             >
                                 {item.word}
                             </Card>
@@ -98,7 +101,7 @@ const MainSecond: React.FC = () => {
                     bodyStyle={{ padding: '12px' }}
                     key={item.containerOrder}
                     onClick={() => handleClick(item)}
-                    hoverable
+                    className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 !font-hebrew'
                 >
                     {item.word}
                 </Card>

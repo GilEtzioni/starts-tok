@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getGermanWords, shuffleArray, getUserAnswer, getGermanSentence, areStringsEqual, splitSentenceToWords, getHebrewSentence } from './SecondHelper';
 import { useDispatch } from 'react-redux';
-import { WordsType, LessonType } from "../../types/types"
+import { WordsType, LessonType } from "../../types/types";
 import { TranslatedArray, germanArrayType } from '../types/SecondLessonType';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 import { setRightAnswer } from '../slices/LessonsSlice';

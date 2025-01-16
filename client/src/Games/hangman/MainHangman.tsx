@@ -70,7 +70,7 @@ const MainHangman: React.FC = () => {
 
       <Col span={10} className="bg-[#f0f0f0] h-screen">
         <div className="flex flex-col items-center mt-12">
-          <p className="mb-5 text-lg"> הצלחת {successCounter} משחקים ברצף </p>
+          <p className="mb-5 text-lg !font-hebrew"> הצלחת {successCounter} משחקים ברצף </p>
           <PhotosHang />
         </div>
       </Col>

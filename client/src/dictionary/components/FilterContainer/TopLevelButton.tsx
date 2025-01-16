@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addLevel, removeLevel, addOneClick } from "../../slices/DictionarySlice";
 import { RootState } from "../../../app/store";
 
-import { Button } from 'antd';
+import { Button, Card } from 'antd';
+import classNames from 'classnames';
 
 interface LevelButtonProps {
   buttNameHebrew: string;
@@ -26,17 +27,16 @@ const LevelButton: React.FC<LevelButtonProps> = ({ buttNameHebrew, buttNameEngli
   };
 
   return (
-    <Button
+    <Card
       onClick={handleClick}
-      className={`border-none px-4 py-2 text-base font-bold rounded-full transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${
-        isClicked
-          ? '!bg-gray-400 !text-white hover:!bg-gray-600 active:!bg-gray-600'
-          : '!bg-black !text-white hover:!bg-gray-800 active:!bg-gray-700'
-      }`}
-    >
+     className={classNames("duration-300 ease-in-out hover:-translate-y-0.5 bg-green-500 text-white border border-green-600 border-b-4 border-0 h-8 text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew", {
+        'bg-green-600 hover:cursor-pointer' : isClicked,
+        'hover:bg-green-600 hover:cursor-pointer' : !isClicked
+      })}
+      >
       {buttNameHebrew}
-    </Button>
+    </Card>
   );
-}  
-
+} 
+//  duration-300 ease-in-out hover:-translate-y-0.5
 export default LevelButton;

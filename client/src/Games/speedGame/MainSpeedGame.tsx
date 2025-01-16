@@ -71,7 +71,7 @@ const MainSpeedGame: React.FC = () => {
 
             <div className="flex-grow text-center">
                 <Row justify="center" className="mb-4 mt-8">
-                    <Title level={3} className="text-center"> התאימו את הזוגות </Title>
+                    <Title level={3} className="text-center !font-hebrew"> התאימו את הזוגות </Title>
                 </Row>
             </div>
         </div>

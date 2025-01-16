@@ -11,7 +11,7 @@ const CardContainer: React.FC = () => {
   const finished: number[] | undefined = getNumberOfLessonsCompleted(coursesData);
 
   const totalCards = 6;
-  const initialCards = [1, 2, 3, 4];
+  const initialCards = [4, 3, 2, 1];
   const [visibleCards, setVisibleCards] = useState<number[]>(initialCards);
 
   const cardNamesHebrew = [
@@ -56,7 +56,7 @@ const CardContainer: React.FC = () => {
   return (
     <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
         <Row className="mr-16 flex justify-end">
-          <Title level={3} className="text-right"> קורסים </Title>
+          <Title level={3} className="font-hebrew text-right"> קורסים </Title>
         </Row> 
 
       <div className="flex items-center justify-center w-full gap-4 box-border">
@@ -66,7 +66,7 @@ const CardContainer: React.FC = () => {
           <LeftOutlined onClick={handleBackwardClick} className="cursor-pointer relative z-10" />
         </div>
   
-        {visibleCards.map((card) => (
+        {visibleCards.reverse().map((card) => (
           <CourseCard
             key={card}
             levelHebrew={cardNamesHebrew[card - 1]}

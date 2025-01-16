@@ -49,13 +49,13 @@ const MainThird: React.FC = () => {
     <div className="text-center h-[400px]">
 
     <Row className="flex justify-center">
-      <Title level={3} className="text-center">תרגמו את המשפט</Title>
+      <Title level={3} className="text-center !font-hebrew">תרגמו את המשפט</Title>
     </Row>
              
     <HebrewSentenceThird wordsData={wordsData} hebrewSentence={hebrewSentence} />
       
       {/* german */}
-        <p className="inline-block relative top-[100px]">
+        <p className="inline-block relative top-[100px] !font-hebrew">
           {firstPartGerman}
           <input
               type="text"

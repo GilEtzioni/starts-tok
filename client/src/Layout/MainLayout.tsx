@@ -111,7 +111,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
           </SignedIn>
         </div>
       </Header>
-      <div className="pt-20">
+      <div className="pt-20 bg-white">
         {myComponent}
       </div>
     </Layout>

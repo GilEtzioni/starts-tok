@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useAddNewWord } from '../../api/fetchingDictionary';
-import { Button, Input, Alert, Spin , ConfigProvider} from 'antd';
+import { Card, Input, Alert, Spin , ConfigProvider, Button} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { styles } from './StyleAddWord'; 
 import heIL from "antd/es/locale/he_IL"; // hebrew antd
@@ -40,11 +40,12 @@ const MainAddWord: React.FC = () => {
 
   return (
     <>
-      <Button className="styles-[hsl(213.1,93.9%,67.8%)] text-white border-none px-4 py-2 text-base 
-      font-bold rounded-full transition-all duration-300 ease-in-out hover:bg-[hsl(201.3,96.3%,32.2%)] hover:-translate-y-0.5" 
-      type="primary" onClick={() => setOpen(true)}>
+      <Card
+       onClick={() => setOpen(true)}
+      className="duration-300 ease-in-out hover:-translate-y-0.5 bg-[#60a5fa] text-white border border-blue-500 border-b-4 border-0 h-8 text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew hover:bg-blue-500 hover:cursor-pointer"
+        >
         הוסף מילה למילון
-      </Button>
+      </Card>
 
       {open && (
         <div style={styles.overlay}>

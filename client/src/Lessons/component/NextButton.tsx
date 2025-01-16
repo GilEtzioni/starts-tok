@@ -1,31 +1,29 @@
 // React + Ant Design
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from "antd"; 
+import { Button, Card } from "antd"; 
 
 // Redux slices
-import { setRunning, addOneOrder, resetClicks, addOneClick } from "../slices/LessonsSlice";
+import { addOneClick } from "../slices/LessonsSlice";
 import { RootState } from "../../app/store";
 
-interface NextButtonProps {
-  onClick?: () => void;
-}
-
-const NextButton: React.FC<NextButtonProps> = ({ onClick }) => {
+const NextButton: React.FC = () => {
 
   const order = useSelector((state: RootState) => state.lessons.order);
   const clicks = useSelector((state: RootState) => state.lessons.clicks);
   const dispatch = useDispatch();
 
   return (
-    <div className="flex justify-center items-center p-5">
+    <div className="flex justify-center items-center p-6">
       {(order !== 1 && order !== 4 && clicks === 0) && (
-        <Button
-          className="!bg-black !text-white hover:!bg-gray-800 active:!bg-gray-900 !border-none !flex !items-center !justify-center !w-22 !h-8 !rounded-md !shadow-md !transition-all !duration-200"
+        <Card
+          className="!flex !items-center !justify-center h-8 !w-44
+          bg-green-500 text-white border-green-600 border-b-4 border-0 hover:!bg-green-600 hover:!cursor-pointer
+          font-semibold !font-hebrew !text-white !text-center !m-0 !font-medium"
           onClick={() => dispatch(addOneClick())}
         >
-          <p className="!text-white !text-center !m-0 !font-medium">הבא</p>
-        </Button>
+          בדוק
+        </Card>
       )}
     </div>
   );

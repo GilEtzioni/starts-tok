@@ -79,11 +79,11 @@ const GameCard: React.FC<GameCardProps> = ({ game, link, number, score}) => {
             }
             className="bg-transparent shadow-none"
           />
-          <span className="text-sm text-white">{number === 1 ? "מילים שסיימתי" : "השיא שלי"}</span>
+          <span className="font-hebrew text-sm text-white">{number === 1 ? "מילים שסיימתי" : "השיא שלי"}</span>
         </div>
 
         <div className="absolute right-4 bottom-8 text-center">
-          <div className="text-2xl font-bold text-white">{ game }</div>
+          <div className="font-hebrew text-2xl font-bold text-white">{ game }</div>
         </div>
 
         <div className="fixed -bottom-0 left-0">

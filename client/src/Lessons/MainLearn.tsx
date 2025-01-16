@@ -1,6 +1,7 @@
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../app/store";
+import classNames from 'classnames';
 
 // lessons components
 import MainFirst from "./FirstLesson/MainFirst";
@@ -11,7 +12,7 @@ import MainThird from './ThirdLesson/MainThird';
 import NextButton from "./component/NextButton"
 import BackButton from "./component/BackButton";
 import ProgressBar from './component/ProgressBar'; 
-import ErrorMessage from './component/ErrorMessage';
+import FailureMessage from './component/FailureMessage';
 import SuccessMessage from './component/SuccessMessage';
 import { LessonStatus } from './types/LessonType';
 import { useEffect } from 'react';
@@ -60,20 +61,18 @@ const MainLearn: React.FC = () => {
                     <ProgressBar num={order} />
                 </div>
             </div>
-            
+    
             <div>{renderCurrentLesson()}</div>
 
-
-            {status === LessonStatus.Failure && <ErrorMessage />}
-    
+            <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+            {status === LessonStatus.Failure && <FailureMessage />}
             {status === LessonStatus.Success && <SuccessMessage />}
-           
-    
-            <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-[1000]">
-                <NextButton />
+            {status === LessonStatus.Running && <NextButton />}
+            {/* <NextButton /> */}
             </div>
+    
         </>
     );
-};
+}    
 
 export default MainLearn;

@@ -2,6 +2,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   safelist: ['fas', 'fa-envelope', 'fa-book'],
   theme: {
+    fontFamily: {
+      hebrew: ['Alef', 'sans-serif'],
+    },
     extend: {
       colors: {
         cardGreen: '#a6c8ba',

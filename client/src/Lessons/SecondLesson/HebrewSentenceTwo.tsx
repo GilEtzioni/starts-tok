@@ -3,21 +3,23 @@ import { WordsType } from "../../types/types"
 import { Tooltip } from 'antd';
 import { useHandleData } from '../utils/SecondEffects';
 import { TranslatedArray } from '../types/SecondLessonType';
+import { LessonStatus } from '../types/LessonType';
 const classNames = require('classnames');
 
 interface HebrewSentenceProps {
     wordsData: WordsType[] | undefined;
     hebrewSentence: string;
+    status: LessonStatus;
 }
 
-const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence }) => {
+const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewSentence, status }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [TranslatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
 
     useHandleData({ hebrewSentence, wordsData, setTranslatedWords });
 
     return (
-        <div className="text-center my-5">
+        <div className="text-center my-5 !font-hebrew !font-medium">
             <div className="inline-block">
                 {[...TranslatedWords]
                     .reverse() // map from last index

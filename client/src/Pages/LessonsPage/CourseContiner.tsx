@@ -20,7 +20,7 @@ const CourseContainer: React.FC = () => {
   const { Title } = Typography;
 
   const cardBackground = (lessonsCompleted: number) =>
-    lessonsCompleted !== 0 ? 'bg-green-500 text-white' : 'bg-gray-400 text-gray-500';
+    lessonsCompleted !== 0 ? 'bg-gradient-to-r from-lime-400 to-emerald-400 text-white' : 'bg-gradient-to-r from-gray-400 to-gray-500 text-gray-500';
 
   const mappedData =
     coursesCardsData?.map((course: CourseType) => ({
@@ -64,7 +64,7 @@ const CourseContainer: React.FC = () => {
                     <Card
                       bordered={false}
                       hoverable={true}
-                      className={`transition-transform duration-300 transform hover:scale-110 w-40 h-40 relative shadow-md rounded-lg ${cardBackground(
+                      className={`font-hebrew transition-transform duration-300 transform hover:scale-110 w-40 h-40 relative shadow-md rounded-lg ${cardBackground(
                         course.lessonCompleted
                       )}`}
                     >
@@ -78,7 +78,7 @@ const CourseContainer: React.FC = () => {
                         {course.courseNameHebrew}
                       </p>
 
-                          <CourseIcons courseId={course?.courseOrder - coursesCardsData[0]?.courseOrder} />
+                          <CourseIcons courseId={course?.courseOrder - coursesCardsData[0]?.courseOrder + 1} />
                           <CourseProgressBar num={course.lessonCompleted} />
                         </Card>
                       </Link>

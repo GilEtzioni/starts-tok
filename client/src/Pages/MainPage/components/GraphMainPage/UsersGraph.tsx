@@ -16,9 +16,9 @@ const UsersGraph: React.FC = () => {
   }
 
   const pointsArray: weekPointsType[] = fillMissingWeekDays(weekScore) ?? [];
-  const width = 500;
-  const height = 290;
-  const padding = 50;
+  const width = 650;
+  const height = 380;
+  const padding = 30;
 
   const maxValue = Math.ceil(Math.max(...pointsArray.map((d) => d.points)) / 15) * 15;
 
@@ -36,10 +36,10 @@ const UsersGraph: React.FC = () => {
 
   return (
     <div className="flex flex-col items-end">
-      <Row className="mb-2 mt-2 mr-18 flex justify-end">
-        <Title level={3} className="text-right">סטטיסטיקה שבועית</Title>
+      <Row className="mt-2 mr-18 flex justify-end">
+        <Title level={3} className="font-hebrew text-right"> הניקוד השבועי שלי </Title>
       </Row>
-      <div className="w-[610px] border border-gray-400 rounded-lg shadow-md p-3 bg-white flex justify-center items-center">
+      <div className="w-[660px] bg-white flex justify-center items-center">
         <svg
           width={width}
           height={height}

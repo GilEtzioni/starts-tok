@@ -90,14 +90,14 @@ const LettersGrid: React.FC<WordsGridProps> = ({
       </div>
       <div className="mt-4">
         <Button
-          className="border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold"
+          className="border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold !font-hebrew"
           onClick={handleEnter}
         >
           לחץ
         </Button>
         
         <Button
-          className="ml-2 border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold"
+          className="ml-2 border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold !font-hebrew"
           onClick={handleDelete}
         >
           מחיקה

@@ -17,7 +17,7 @@ const HebrewSentenceThird: React.FC<HebrewSentenceProps> = ({ wordsData, hebrewS
     useHandleData({ hebrewSentence, wordsData, setTranslatedWords });
 
     return (
-        <div className="text-center my-5">
+        <div className="text-center my-5 !font-hebrew !font-medium">
             <div className="inline-block">
                 {[...translatedWords]
                     .reverse() // map from last index
