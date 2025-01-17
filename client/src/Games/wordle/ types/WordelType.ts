@@ -5,11 +5,11 @@ export enum LetterColor {
   NotSelected = 'notSelected',
 }
 
-export type wordleType = {
-  letterColor: LetterColor;
-  letter: string;
-  isInGame: boolean;
-} | null;
+export enum LetterSeleceted {
+  NotSelected = 'notSelected',
+  Clicked = "clicked",
+  Selected = "selected",
+}
 
 export enum CurrentMode {
   Success = "success",
@@ -19,7 +19,8 @@ export enum CurrentMode {
   Running = "running",
 }
 
-export type GridLetters = {
-  letter: string; 
-  letterColor: LetterColor
-}
+export type wordleType = {
+  letter: string;
+  color: LetterColor;
+  selected: LetterSeleceted;
+} | null;

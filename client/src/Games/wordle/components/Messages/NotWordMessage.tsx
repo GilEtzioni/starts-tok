@@ -21,7 +21,6 @@ const NotWordMessage: React.FC = () => {
 
     const timeoutId = setTimeout(() => {
       dispatch(setCurrentMode(CurrentMode.Running));
-      dispatch(minusOneClick());
     }, 1000);
 
     return () => clearTimeout(timeoutId);

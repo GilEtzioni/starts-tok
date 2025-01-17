@@ -1,20 +1,22 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Card } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { addOneClick } from '../../slices/WordleSlice';
-import { wordleType, LetterColor } from '../../ types/WordelType';
-import { WordsType } from "../../../../types/types";
+import { wordleType, LetterColor, LetterSeleceted, CurrentMode } from '../../ types/WordelType';
 import { getLetterColor } from '../../utilts/wordleHelper';
-import { GridLetters } from '../../ types/WordelType';
+import classNames from 'classnames';
+import { useEnterClick } from '../../utilts/WordelEffects';
+import { WordsType } from '../../../../types/types';
+import { setCurrentMode } from '../../slices/WordleSlice';
 
 interface WordsGridProps {
   correctAnswer: wordleType[];
   gridAnswer: wordleType[][];
   setGridAnswer: React.Dispatch<React.SetStateAction<wordleType[][]>>;
-  gridLetters: GridLetters[];
-  setGridLetters: React.Dispatch<React.SetStateAction<GridLetters[]>>;
-  allWords: WordsType[];
+  gridLetters: wordleType[];
+  setGridLetters: React.Dispatch<React.SetStateAction<wordleType[]>>;
+  words: WordsType[] | undefined;
 }
 
 const LettersGrid: React.FC<WordsGridProps> = ({
@@ -23,27 +25,37 @@ const LettersGrid: React.FC<WordsGridProps> = ({
   setGridAnswer,
   gridLetters,
   setGridLetters,
-  allWords,
+  words
 }) => {
   const clicksCounter = useSelector(
     (state: RootState) => state.wordel.clicksCounter
   );
   const dispatch = useDispatch();
 
-  function handleLetterClick(letter: string) {
-    let columnIndex =
-      gridAnswer[clicksCounter]?.findIndex((item) => item === null) ?? -1;
-    if (columnIndex === -1) columnIndex = correctAnswer.length;
-    if (columnIndex !== correctAnswer.length) {
-      const color = getLetterColor(letter, columnIndex, correctAnswer);
-      const newLetter: wordleType = {
-        letterColor: color,
+  function handleLetterClick(letter: string | undefined, letterObject: wordleType | undefined) {
+    if (!letter || !letterObject || (letterObject.color === LetterColor.Gray && letterObject.selected === LetterSeleceted.Selected)) return;
+
+    const columnIndex = gridLetters.findIndex((item) => item?.letter === letter);
+    const rowIndex = gridAnswer[clicksCounter]?.findIndex((item) => item === null) ?? -1;
+    if (rowIndex !== correctAnswer.length) {
+      const letterColor = getLetterColor(letter, rowIndex, correctAnswer);
+      const newLetterAnswer: wordleType = {
         letter,
-        isInGame: false,
+        color: letterColor,
+        selected: LetterSeleceted.Clicked,
       };
-      const result = [...gridAnswer];
-      result[clicksCounter][columnIndex] = newLetter;
-      setGridAnswer(result);
+      const newLetterGrid: wordleType = {
+        letter,
+        color: letterObject.color,
+        selected: LetterSeleceted.Clicked,
+      };
+      const answerResult = [...gridAnswer];
+      answerResult[clicksCounter][rowIndex] = newLetterAnswer;
+      setGridAnswer(answerResult);
+
+      const letterResult = [...gridLetters];
+      letterResult[columnIndex] = newLetterGrid;
+      setGridLetters(letterResult);
     }
   }
 
@@ -62,45 +74,71 @@ const LettersGrid: React.FC<WordsGridProps> = ({
   }
 
   function handleEnter() {
-    dispatch(addOneClick());
+    if (!words) return;
+    const currentWord = gridAnswer[clicksCounter]?.map((item) => item?.letter).join('') || '';
+    const isWordInDataBase: boolean = words.some((item) => item.germanWord.toLowerCase() === currentWord.toLowerCase());
+    const userAnswerLength: number = gridAnswer[clicksCounter]?.filter((item) => item !== null).length || 0;
+    const answerLength = correctAnswer.length;
+
+    // too short word message
+    if (userAnswerLength < answerLength) {
+      dispatch(setCurrentMode(CurrentMode.NotEnoughLetters));
+    }
+
+    // not a vlid word message
+    else if (!isWordInDataBase) {
+      dispatch(setCurrentMode(CurrentMode.NotInDictionary));
+    }
+    else dispatch(addOneClick())
   }
 
-  const letterStyle = (item: any) => {
-    if (!item) return '';
-    if (item.letterColor === LetterColor.NotSelected) return 'bg-gray-200';
-    if (item.letterColor === LetterColor.Gray) return 'bg-gray-400';
-    if (item.letterColor === LetterColor.Green) return 'bg-green-400';
-    if (item.letterColor === LetterColor.Yellow) return 'bg-yellow-400';
-    return '';
-  };
+  useEnterClick({ clicksCounter, setGridAnswer, gridAnswer, dispatch, correctAnswer, words, gridLetters, setGridLetters });
 
   return (
     <>
       <div className="grid grid-cols-10 gap-2">
         {gridLetters?.map((item) => (
-          <Button
-            key={`${item.letter}-${item.letterColor}`}
-            className={`border-none !bg-gray-500 hover:!bg-gray-400 !text-white !font-bold ${letterStyle(item)}`}
-            onClick={() => handleLetterClick(item.letter)}
-          >
-            {item.letter}
-          </Button>
-        ))}
-      </div>
-      <div className="mt-4">
-        <Button
-          className="border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold !font-hebrew"
-          onClick={handleEnter}
+        <Card
+          key={item?.letter}
+          className={classNames(
+            'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew', 
+            {
+              "hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 duration-300 ease-in-out hover:-translate-y-0.5":
+                item?.selected === LetterSeleceted.NotSelected || item?.selected === LetterSeleceted.Clicked,
+
+              "hover:bg-green-500 bg-green-500 text-white border border-green-600 border-b-4 border-0 duration-300 ease-in-out hover:-translate-y-0.5":
+                item?.selected !== LetterSeleceted.NotSelected &&  item?.color === LetterColor.Green,
+
+                "hover:bg-yellow-500 bg-yellow-500 text-white border border-yellow-600 border-b-4 border-0 duration-300 ease-in-out hover:-translate-y-0.5":
+                item?.selected !== LetterSeleceted.NotSelected &&  item?.color === LetterColor.Yellow,
+
+                "hover:bg-gray-500  bg-gray-500 text-white border border-gray-600 border-b-4 border-0":
+                item?.selected !== LetterSeleceted.NotSelected &&  item?.color === LetterColor.Gray,
+            }
+          )}
+          onClick={() => handleLetterClick(item?.letter, item)}
         >
-          לחץ
-        </Button>
+          {item?.letter}
+        </Card>
+      ))}
+      </div>
+      
+      <div className="mt-4">
         
-        <Button
-          className="ml-2 border-none !bg-gray-600 hover:!bg-gray-500 !text-white !font-bold !font-hebrew"
+      <Button
+          className="!hover:bg-gray-100 !hover:cursor-pointer !border !border-gray-100 !border-b-4 !border-1 !duration-300 ease-in-out hover:-translate-y-0.5"
           onClick={handleDelete}
         >
           מחיקה
         </Button>
+        
+        <Button
+          className="!hover:bg-gray-100 !hover:cursor-pointer !border !border-gray-100 !border-b-4 !border-1 !duration-300 ease-in-out hover:-translate-y-0.5"
+          onClick={handleEnter}
+        >
+          לחץ
+        </Button>
+
       </div>
     </>
   );

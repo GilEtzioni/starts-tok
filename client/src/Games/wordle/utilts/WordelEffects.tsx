@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 // types
 import { WordsType } from "../../../types/types";
-import { wordleType, LetterColor } from '../ types/WordelType';
+import { wordleType, LetterColor, LetterSeleceted } from '../ types/WordelType';
 
 // functions + redux
-import { randomWordsArray, getRandomWord, createLettersGrid } from './wordleHelper';
-import { addOneSuccess, minusOneClick, setCurrentMode } from '../slices/WordleSlice';
+import { randomWordsArray, getRandomWord, createLettersGrid, getLetterColor } from './wordleHelper';
+import { addOneSuccess, setCurrentMode } from '../slices/WordleSlice';
 import { useDispatch } from 'react-redux';
 import { CurrentMode } from '../ types/WordelType';
 
@@ -13,22 +13,23 @@ export interface useStartGameProps {
   words: WordsType[] | undefined;
   setCorrectAnswer: (array: wordleType[]) => void;
   setGridAnswer: (array: wordleType[][]) => void;
-  setGridLetters: (array: { letter: string; letterColor: LetterColor }[]) => void;
-  setAllWords: (array: WordsType[]) => void;
+  setGridLetters: (array: wordleType[]) => void;
 }
 
 export interface useEnterClickProps {
   clicksCounter: number;
   setGridAnswer: (array: wordleType[][]) => void;
   gridAnswer: wordleType[][];
-  allWords: WordsType[];
+  words: WordsType[] | undefined;
   dispatch: ReturnType<typeof useDispatch>;
   correctAnswer: wordleType[];
+  gridLetters: wordleType[],
+  setGridLetters: (array: wordleType[]) => void,
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useStartGame = ({ words, setAllWords, setGridAnswer, setCorrectAnswer, setGridLetters }: useStartGameProps) => {
+export const useStartGame = ({ words, setGridAnswer, setCorrectAnswer, setGridLetters }: useStartGameProps) => {
   useEffect(() => {
     if (!words) return;      
       const filterArray = randomWordsArray(words);
@@ -42,7 +43,6 @@ export const useStartGame = ({ words, setAllWords, setGridAnswer, setCorrectAnsw
         Array(COLUMN_LENGTH).fill(null)
       );
 
-      setAllWords(filterArray);
       setGridAnswer(initialGrid);
       setCorrectAnswer(gameWord);
       setGridLetters(gridLetters);
@@ -52,19 +52,60 @@ export const useStartGame = ({ words, setAllWords, setGridAnswer, setCorrectAnsw
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWords, dispatch, correctAnswer }: useEnterClickProps) => {
+export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, words, dispatch, correctAnswer, gridLetters, setGridLetters }: useEnterClickProps) => {
   useEffect(() => {
-    if (gridAnswer?.length === 0) return;
+    if (gridAnswer?.length === 0 || !words || !gridLetters) return;
 
-    const currentWord = gridAnswer[clicksCounter - 1]?.map((item) => item?.letter).join('') || '';
     const result = [...gridAnswer];
-
-    const isWordInDataBase: boolean = allWords.some((item) => item.germanWord.toLowerCase() === currentWord.toLowerCase());
-    const numOfLettersSucces: number = gridAnswer[clicksCounter - 1]?.filter((item) => item?.letterColor === LetterColor.Green).length || 0;
-    const userAnswerLength: number = gridAnswer[clicksCounter - 1]?.filter((item) => item !== null).length || 0;
-    const answerLength = correctAnswer.length;
+    const numOfLettersSucces: number = gridAnswer[clicksCounter - 1]?.filter((item) => item?.color === LetterColor.Green).length || 0;
     
     if (clicksCounter === 0) return;
+
+      // set gridAnswer
+      const updatedAnswerArray = gridAnswer[clicksCounter - 1].map((item) => {
+        return { 
+          ...item, 
+          selected: LetterSeleceted.Selected,
+        };
+      }).filter(Boolean); 
+      
+      const updatedGridAnswer = [...gridAnswer];
+      updatedGridAnswer[clicksCounter - 1] = updatedAnswerArray as wordleType[];
+      setGridAnswer(updatedGridAnswer);
+
+      // set gridLetters
+      const oneRowArray = [...gridAnswer[clicksCounter - 1]];
+
+      const updatedGridLetters = gridLetters.map((firstItem) => {
+        let updatedItem = { ...firstItem };
+      
+        oneRowArray.forEach((secondItem) => {
+          if (firstItem?.selected === LetterSeleceted.Clicked && !secondItem || firstItem?.letter !== secondItem?.letter) return;
+      
+          const greenLetterCounter = oneRowArray.find(
+            (item) => item?.letter === firstItem?.letter && item?.color === LetterColor.Green
+          )?.letter.length;
+          
+          // the current letter is green (at least one time)
+          if (greenLetterCounter) {
+            updatedItem = {
+              ...updatedItem,
+              color: LetterColor.Green,
+              selected: LetterSeleceted.Selected,
+            };
+          } else {
+            updatedItem = {
+              ...updatedItem,
+              color: secondItem?.color,
+              selected: LetterSeleceted.Selected,
+            };
+          }
+        });
+      
+        return updatedItem;
+      });
+      
+      setGridLetters(updatedGridLetters as wordleType[]);
 
     // success message
     if (numOfLettersSucces === correctAnswer.length) {
@@ -79,19 +120,8 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, allWor
       dispatch(setCurrentMode(CurrentMode.Success));
     }
 
-    // too short word message
-    if (userAnswerLength < answerLength) {
-      dispatch(setCurrentMode(CurrentMode.NotEnoughLetters));
-    }
-
-    // not a vlid word message
-    else if (!isWordInDataBase && clicksCounter !== 0) {
-      dispatch(setCurrentMode(CurrentMode.NotInDictionary));
-    }
-
     // failure message
     if (clicksCounter > 4 && numOfLettersSucces !== correctAnswer.length) {
       dispatch(setCurrentMode(CurrentMode.Failure));
-    }
-  }, [clicksCounter]);
+  }}, [clicksCounter]);
 };

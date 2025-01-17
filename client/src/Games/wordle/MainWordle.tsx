@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Row, Typography } from 'antd';
 
 // fetch data + types
-import { WordsType } from "../../types/types";
-import { wordleType, LetterColor } from './ types/WordelType';
+import { wordleType } from './ types/WordelType';
 
 // components
 import BackButton from './components/WordleConatiner/BackButton';
@@ -35,11 +34,9 @@ const MainWordle: React.FC = () => {
 
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
-    const [gridLetters, setGridLetters] = useState<{ letter: string; letterColor: LetterColor }[]>([]);
-    const [allWords, setAllWords] = useState<WordsType[]>([]);
+    const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
 
-  useStartGame({ words, setAllWords, setGridAnswer, setCorrectAnswer, setGridLetters });
-
+  useStartGame({ words, setGridAnswer, setCorrectAnswer, setGridLetters });
 
   if (isLoading) return (<LoadingComponents />)
   if (error) return <div>Error:</div>;
@@ -82,17 +79,15 @@ const MainWordle: React.FC = () => {
       <div className="flex-grow flex flex-col items-center justify-center">
         <AnswerGrid
           gridAnswer={gridAnswer}
-          setGridAnswer={setGridAnswer}
-          correctAnswer={correctAnswer}
-          allWords={allWords}
         />
+
         <LettersGrid
           correctAnswer={correctAnswer}
           gridAnswer={gridAnswer}
           setGridAnswer={setGridAnswer}
           gridLetters={gridLetters}
           setGridLetters={setGridLetters}
-          allWords={allWords}
+          words={words}
         />
       </div>
     </div>

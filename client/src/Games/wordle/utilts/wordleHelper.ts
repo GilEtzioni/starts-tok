@@ -1,5 +1,5 @@
 import { WordsType } from "../../../types/types"
-import { wordleType, LetterColor, GridLetters } from '../ types/WordelType';
+import { wordleType, LetterColor, LetterSeleceted } from '../ types/WordelType';
 
 export const shuffleAllWords = (wordsArray: WordsType[]) => {
   for (let i = wordsArray?.length - 1; i > 0; i--) {
@@ -30,9 +30,9 @@ export const getRandomWord = (words: WordsType[]): wordleType[] => {
 
   for (let i = 0; i < sentence?.length; i++) {
     result.push({
-      letterColor: LetterColor.NotSelected,
+      color: LetterColor.NotSelected,
       letter: sentence.charAt(i).toLowerCase(),
-      isInGame: false,
+      selected: LetterSeleceted.NotSelected
     });
   }
 
@@ -53,8 +53,8 @@ export const createGameGrid = (correctAnswer: wordleType[]) => {
   return result;
 };
 
-export const createLettersGrid = (): GridLetters[] => {
-  const result: GridLetters[] = [];
+export const createLettersGrid = (): wordleType[] => {
+  const result: wordleType[] = [];
   const lettersArray = [
     'a',
     'ä',
@@ -91,7 +91,8 @@ export const createLettersGrid = (): GridLetters[] => {
   lettersArray?.map((item) => {
     result.push({
       letter: item,
-      letterColor: LetterColor.NotSelected,
+      color: LetterColor.NotSelected,
+      selected: LetterSeleceted.NotSelected,
     });
   });
 

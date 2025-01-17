@@ -2,40 +2,15 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd';
 
-// Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../../app/store';
-
 // types + functions
-import { wordleType, LetterColor } from '../../ types/WordelType';
-import { useEnterClick } from '../../utilts/WordelEffects';
-import { WordsType } from "../../../../types/types";
+import { wordleType, LetterColor, LetterSeleceted } from '../../ types/WordelType';
+import classNames from 'classnames';
 
 interface AnswerGridProps {
   gridAnswer: wordleType[][];
-  setGridAnswer: React.Dispatch<React.SetStateAction<wordleType[][]>>;
-  correctAnswer: wordleType[];
-  allWords: WordsType[];
 }
 
-const AnswerGrid: React.FC<AnswerGridProps> = ({ gridAnswer, setGridAnswer, correctAnswer, allWords }) => {
-  const clicksCounter = useSelector(
-    (state: RootState) => state.wordel.clicksCounter
-  );
-  const dispatch = useDispatch();
-
-  useEnterClick({ clicksCounter, setGridAnswer, gridAnswer, dispatch, correctAnswer, allWords });
-
-  const cardStyle = (cell: any) => {
-    if (!cell) return '';
-
-    if (cell?.isInGame === false) return 'bg-gray-200';
-    else if (cell?.letterColor === LetterColor.Gray) return 'bg-gray-500';
-    else if (cell?.letterColor === LetterColor.Green) return 'bg-green-400';
-    else if (cell?.letterColor === LetterColor.Yellow) return 'bg-yellow-400';
-
-    return '';
-  };
+const AnswerGrid: React.FC<AnswerGridProps> = ({ gridAnswer }) => {
 
   return (
     <div>
@@ -45,13 +20,33 @@ const AnswerGrid: React.FC<AnswerGridProps> = ({ gridAnswer, setGridAnswer, corr
           gutter={[8, 8]}
           className="flex justify-center mb-4"
         >
-          {row?.map((cell, colIndex) => (
+          {row?.map((item, colIndex) => (
             <Col key={colIndex}>
-              <Card
-                className={`p-2 bg-gray-100 border border-gray-300 ${cardStyle(cell)} flex items-center justify-center w-[50px] h-[50px] rounded-none`}
-              >
-                {cell ? cell.letter : ''}
-              </Card>
+              
+        <Card
+          key={item?.letter}
+          className={classNames(
+            'p-2 border flex items-center justify-center w-[50px] h-[50px] rounded-none !font-hebrew font-semibold', 
+            {
+              "bg-gray-300 border border-gray-300 duration-300 ease-in-out":
+                item?.selected === LetterSeleceted.NotSelected,
+
+              "border border-black border-1 text-black duration-300 ease-in-out":
+                item?.selected === LetterSeleceted.Clicked,
+
+              "bg-green-500 text-white border border-green-500 duration-300 ease-in-out transform rotate-y-180":
+                item?.selected === LetterSeleceted.Selected && item?.color === LetterColor.Green,
+
+                "bg-yellow-500 text-white border border-yellow-500 duration-300 ease-in-out transform rotate-y-180":
+                item?.selected === LetterSeleceted.Selected &&  item?.color === LetterColor.Yellow,
+
+                "bg-gray-500 text-white border border-gray-500 !duration-300 !ease-in-out !transform !rotate-y-180":
+                item?.selected === LetterSeleceted.Selected &&  item?.color === LetterColor.Gray,
+            }
+          )}
+        >
+          {item?.letter}
+        </Card>
             </Col>
           ))}
         </Row>
