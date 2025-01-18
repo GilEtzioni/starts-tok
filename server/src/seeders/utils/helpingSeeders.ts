@@ -6,7 +6,7 @@ export const rowGameId = uuidv4();
 
 export const generateCourseIds = (): Array<{index: number, uuid: string, courseName: string}> => {
   const courseIds: Array<{index: number, uuid: string, courseName: string}> = [];
-  for (let i = 0; i <= courseNamesArray.length; i++) {
+  for (let i = 0; i <= courseNamesArray.length * 4; i++) {
     courseIds.push({
       index: i,
       uuid: uuidv4(),
@@ -171,3 +171,11 @@ export const courseNamesArray = [
      "Cross-cultural communication", 
      "Advanced storytelling", 
 ];
+
+export function shuffleArray<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}

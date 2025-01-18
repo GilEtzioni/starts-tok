@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { Words, Games } from "../drizzle/schema";
+import { Games, Words } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, max } from "drizzle-orm";
 import { GamesNamesType } from "../types/gamesTypes";

@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { getGermanWords, shuffleArray, getUserAnswer, getGermanSentence, areStringsEqual, splitSentenceToWords, getHebrewSentence } from './SecondHelper';
 import { useDispatch } from 'react-redux';
-import { WordsType, LessonType } from "../../../api/common/types";
+import { WordsType } from "../../../api/common/types";
 import { TranslatedArray, germanArrayType } from '../types/SecondLessonType';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 import { setRightAnswer } from '../slices/LessonsSlice';
+import { SenteceType } from '../../../api/common/types';
 
 interface UseGetDataProps {
-  lessonsData: LessonType[] | undefined;
+  lessonsData: SenteceType[] | undefined;
+  cardsData: string[] | undefined
   order: number;
   setGermanArray: (array: germanArrayType[]) => void;
   setHebrewSentence: (str: string) => void;
@@ -20,7 +22,7 @@ interface UseHandleNextProps {
   resetClicks: ActionCreatorWithoutPayload;
   setSuccess: ActionCreatorWithoutPayload;
   setFailure: ActionCreatorWithoutPayload;
-  lessonsData: LessonType[] | undefined;
+  lessonsData: SenteceType[] | undefined;
   germanArray: germanArrayType[];
   order: number;
 }
@@ -33,22 +35,24 @@ interface useHandleDataProps {
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewSentence, dispatch }: UseGetDataProps) => { 
+export const useGetData = ({ lessonsData, cardsData, order, setGermanArray, setHebrewSentence, dispatch }: UseGetDataProps) => { 
   useEffect(() => {
 
-    if(lessonsData === undefined) return;
+    if(!lessonsData || !cardsData || cardsData.length < 23) return;
 
-      // get the data
-      const originalGermanArray = getGermanWords(lessonsData[0], order);
+      const originalGermanArray = getGermanWords(cardsData, order);
+      const shuffledGerman = shuffleArray(originalGermanArray);
+      setGermanArray(shuffledGerman);
+
       const hebrewSentence = getHebrewSentence(lessonsData[0], order);
       const germanSentence = getGermanSentence(lessonsData[0], order);
-      const shuffledGerman = shuffleArray(originalGermanArray);
 
-      setGermanArray(shuffledGerman);
+      console.log("shuffledGerman: ", shuffledGerman)
+
       setHebrewSentence(hebrewSentence);
       dispatch(setRightAnswer(germanSentence));
 
-  }, [lessonsData, order, setGermanArray]);
+  }, [lessonsData, cardsData, order, setGermanArray]);
 };
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */

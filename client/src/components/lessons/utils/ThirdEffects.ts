@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFailure } from "../slices/LessonsSlice";
 import { getGermanSentence, getHebrewSentence, getGermanWord, splitTheSentence } from './ThirdHelper';
-import { LessonType } from "../../../api/common/types";
+import { MissingWordType } from "../../../api/common/types";
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 
 interface useGetDataProps {
-    lessonsData: LessonType[] | undefined;
+    lessonsData: MissingWordType[] | undefined;
     order: number;
     setHebrewSentence: React.Dispatch<React.SetStateAction<string>>;
     setGermanWord: React.Dispatch<React.SetStateAction<string>>;
@@ -15,7 +15,7 @@ interface useGetDataProps {
 }
 
 interface useHandleInputProps {
-    lessonsData: LessonType[] | undefined;
+    lessonsData: MissingWordType[] | undefined;
     order: number;
     dispatch: ReturnType<typeof useDispatch>;
     germanWord: string;
@@ -29,7 +29,9 @@ interface useHandleInputProps {
 
 export const useGetData = ({ lessonsData, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman}: useGetDataProps) => {
     useEffect(() => {
-      if (lessonsData === undefined) return;
+      if (!lessonsData) return;
+
+      console.log("lessonsData: ", lessonsData)
 
       const lesson = lessonsData[0];
       const germanSentence = getGermanSentence(lesson, order);

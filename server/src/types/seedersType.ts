@@ -7,47 +7,63 @@ export interface Course {
     lessonCompleted: number;
   }
 
-export interface Lesson {
+export interface SentenceType {
+    hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי",
+    englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2',
+    courseNameEnglish: string,
+    lessonOneToSix: number,
+
+    sentenceOneHebrew: string,
+    sentenceTwoHebrew: string,
+
+    sentenceOneGerman: string,  
+    sentenceTwoGerman: string, 
+
+    sentenceOneItalian: string,  
+    sentenceTwoItalian: string,  
+
+    sentenceOneSpanish: string,  
+    sentenceTwoSpanish: string,  
+
+    sentenceOneFranch: string,  
+    sentenceTwoFranch: string,  
+
+    finished: boolean,
+  }
+
+  export interface MissingWordsType {
     hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי";
     englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
     courseNameEnglish: string;
     lessonOneToSix: number;
-    sentenceOneGerman: string, 
-    sentenceOneHebrew: string, 
-    sentenceTwoGerman: string, 
-    sentenceTwoHebrew: string, 
-    missingSentenceOneGerman: string, 
+
     missingSentenceOneHebrew: string, 
-    missingWordOneGerman: string, 
-    missingWordOneHebrew: string, 
-    missingSentenceTwoGerman: string,  
     missingSentenceTwoHebrew: string, 
-    missingWordTwoGerman: string, 
+    missingWordOneHebrew: string, 
     missingWordTwoHebrew: string, 
-    // wordOneGerman: string, 
-    // wordOneHebrew: string, 
-    // wordTwoGerman: string, 
-    // wordTwoHebrew: string, 
-    // wordThreeGerman: string, 
-    // wordThreeHebrew: string, 
-    // wordFourGerman: string, 
-    // wordFourHebrew: string, 
-    // wordFiveGerman: string, 
-    // wordFiveHebrew: string, 
-    // wordSixGerman: string, 
-    // wordSixHebrew: string, 
-    // wordSevenGerman: string, 
-    // wordSevenHebrew: string, 
-    // wordEightGerman: string, 
-    // wordEightHebrew: string, 
-    // wordNineGerman: string, 
-    // wordNineHebrew: string, 
-    // wordTenGerman: string, 
-    // wordTenHebrew: string, 
-    // wordElevenGerman: string, 
-    // wordElevenHebrew: string, 
-    // wordTwelveGerman: string, 
-    // wordTwelveHebrew: string, 
+
+    missingSentenceOneGerman: string, 
+    missingWordOneGerman: string, 
+    missingSentenceTwoGerman: string,  
+    missingWordTwoGerman: string, 
+
+    // Italian
+    missingSentenceOneItalian: string, 
+    missingWordOneItalian: string, 
+    missingSentenceTwoItalian: string,  
+    missingWordTwoItalian: string, 
+
+    // Spanish
+    missingSentenceOneSpanish: string, 
+    missingWordOneSpanish: string, 
+    missingSentenceTwoSpanish: string,  
+    missingWordTwoSpanish: string, 
+
+    // French
+    missingSentenceOneFrench: string, 
+    missingWordOneFrench: string, 
+    missingSentenceTwoFrench: string,  
+    missingWordTwoFrench: string, 
     finished: false,
   }
 
@@ -57,6 +73,15 @@ export interface Lesson {
     courseNameEnglish: string;
     germanWord: string;
     hebrewWord: string;
-    knowledge: string;
+    italianWord: string;
+    spanishWord: string;
+    frenchWord: string;
     courseOrder: number;
+  }
+
+  export enum CourseLangauge {
+    German = "german",
+    Italian = "italian",
+    Spanish = "spanish",
+    French = "french",
   }

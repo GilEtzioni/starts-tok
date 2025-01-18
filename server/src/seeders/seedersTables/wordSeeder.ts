@@ -6,145 +6,189 @@ import { v4 as uuidv4 } from "uuid";
 export const wordSeeder = async (userId: string, courseIds: Array<{ index: number; uuid: string; courseName: string }>) => {
 
   console.log("Seeding database...");
+  // { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "rot", hebrewWord: "אדום", knowledge: "?" },
 
   const words: Word[] = [
-    // Colors
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "rot", hebrewWord: "אדום", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "blau", hebrewWord: "כחול", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "grün", hebrewWord: "ירוק", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "gelb", hebrewWord: "צהוב", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "schwarz", hebrewWord: "שחור" , knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "weiß", hebrewWord: "לבן", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "grau", hebrewWord: "אפור", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "braun", hebrewWord: "חום" , knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "rosa", hebrewWord: "ורוד", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "orange", hebrewWord: "כתום", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "lila", hebrewWord: "סגול", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "violett", hebrewWord: "ארגמן", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "gold", hebrewWord: "זהב", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1,  germanWord: "silber", hebrewWord: "כסף", knowledge: "X" },
+  // Colors - 1
 
-    // Numbers
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "eins", hebrewWord: "אחד", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "zwei", hebrewWord: "שתיים", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "drei", hebrewWord: "שלוש", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "vier", hebrewWord: "ארבע", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "fünf", hebrewWord: "חמש", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "sechs", hebrewWord: "שש", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "sieben", hebrewWord: "שבע", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "acht", hebrewWord: "שמונה", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "neun", hebrewWord: "תשע", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "zehn", hebrewWord: "עשר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "elf", hebrewWord: "אחד עשרה", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Numbers", courseOrder: 2, germanWord: "zwölf", hebrewWord: "שתים עשרה", knowledge: "?" },
+    { hebrewWord: "אדום", germanWord: "rot", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "כחול", germanWord: "blau", italianWord: "blu", spanishWord: "azul", frenchWord: "bleu", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "ירוק", germanWord: "grün", italianWord: "verde", spanishWord: "verde", frenchWord: "vert", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "צהוב", germanWord: "gelb", italianWord: "giallo", spanishWord: "amarillo", frenchWord: "jaune", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "שחור", germanWord: "schwarz", italianWord: "nero", spanishWord: "negro", frenchWord: "noir", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "לבן", germanWord: "weiß", italianWord: "bianco", spanishWord: "blanco", frenchWord: "blanc", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "כתום", germanWord: "orange", italianWord: "arancione", spanishWord: "naranja", frenchWord: "orange", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "ורוד", germanWord: "rosa", italianWord: "rosa", spanishWord: "rosa", frenchWord: "rose", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "אפור", germanWord: "grau", italianWord: "grigio", spanishWord: "gris", frenchWord: "gris", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "חום", germanWord: "braun", italianWord: "marrone", spanishWord: "marrón", frenchWord: "marron", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "סגול", germanWord: "lila", italianWord: "viola", spanishWord: "morado", frenchWord: "violet", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
+    { hebrewWord: "תכלת", germanWord: "hellblau", italianWord: "azzurro", spanishWord: "celeste", frenchWord: "bleu clair", hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Colors", courseOrder: 1 },
 
-    // Fammily Members
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Vater", hebrewWord: "אבא", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Mutter", hebrewWord: "אמא", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Bruder", hebrewWord: "אח", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Schwester", hebrewWord: "אחות", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Opa", hebrewWord: "סבא", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Oma", hebrewWord: "סבתא", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Onkel", hebrewWord: "דוד", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Tante", hebrewWord: "דודה", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Cousin", hebrewWord: "בן דוד", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Cousine", hebrewWord: "בת דוד", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Neffe", hebrewWord: "אחיין", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Nichte", hebrewWord: "אחיינית", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Enkel", hebrewWord: "נכד", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Enkelin", hebrewWord: "נכדה", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Tochter", hebrewWord: "בת", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Großvater", hebrewWord: "סבא רבא", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Family members", courseOrder: 3, germanWord: "Großmutter", hebrewWord: "סבתא רבתא", knowledge: "V" },
+  // Numbers - 2
+  // Family Members - 3
+  // Days of the Week - 4
+  // Months - 5
+  // Introduction - 6
+  // Weather - 7
+  // Clothes - 8
+  // Food Products - 9
+  // Beverages - 10
+  // Parts of the House - 11
+  // Animals - 12
 
-    // Days of the Week
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Sonntag", hebrewWord: "יום ראשון", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Montag", hebrewWord: "יום שני", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Dienstag", hebrewWord: "יום שלישי", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Mittwoch", hebrewWord: "יום רביעי", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Donnerstag", hebrewWord: "יום חמישי", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Freitag", hebrewWord: "יום שישי", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Samstag", hebrewWord: "שבת", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Wochenende", hebrewWord: "סוף שבוע", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Ruhetag", hebrewWord: "יום מנוחה", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Gestern", hebrewWord: "אתמול", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Heute", hebrewWord: "היום", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Morgen", hebrewWord: "מחר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Früher", hebrewWord: "לפני כן", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Später", hebrewWord: "אחרי כן", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Nächste Woche", hebrewWord: "שבוע הבא", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Letzte Woche", hebrewWord: "שבוע שעבר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Days of the Week", courseOrder: 4, germanWord: "Freie Tage", hebrewWord: "ימי חופשה", knowledge: "X" },
+  // Health and Fitness - 26
+  // Intermediate Clothes - 27
+  // Intermediate Animals - 28
+  // Holidays - 29
+  // Intermediate Numbers - 30
+  // Seasons - 31
+  // Intermediate Body Parts - 32
+  // Health - 33
+  // Directions - 34
+  // Means of Communication - 35
+  // Intermediate Furniture - 36
+  // Intermediate Weather - 37
+  // Kitchen Tools - 38
+  // Musical Instruments - 39
+  // Economic Terms - 40
+  // Social Media - 41
+  // Intermediate Introduction - 42
+  // Education - 43
+  // City and Village - 44
+  // Intermediate Technology - 45
+  // Recycling - 46
+  // Intermediate Hobbies - 47
+  // Politics - 48
+  // Intermediate Family Members - 49
+  // Intermediate Shopping - 50
 
-    // Months
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Januar", hebrewWord: "ינואר", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Februar", hebrewWord: "פברואר", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "März", hebrewWord: "מרץ", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "April", hebrewWord: "אפריל", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Mai", hebrewWord: "מאי", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Juni", hebrewWord: "יוני", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Juli", hebrewWord: "יולי", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "August", hebrewWord: "אוגוסט", knowledge: "?" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "September", hebrewWord: "ספטמבר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Oktober", hebrewWord: "אוקטובר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "November", hebrewWord: "נובמבר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Months", courseOrder: 5, germanWord: "Dezember", hebrewWord: "דצמבר", knowledge: "X" },
+  // Intermediate Colors - 51
+    // { hebrewWord: "בורדו", germanWord: "bordeauxrot", italianWord: "borgogna", spanishWord: "burdeos", frenchWord: "bordeaux", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "זהב", germanWord: "gold", italianWord: "oro", spanishWord: "dorado", frenchWord: "doré", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "כסף", germanWord: "silber", italianWord: "argento", spanishWord: "plateado", frenchWord: "argenté", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "שנהב", germanWord: "elfenbein", italianWord: "avorio", spanishWord: "marfil", frenchWord: "ivoire", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "זית", germanWord: "olivgrün", italianWord: "verde oliva", spanishWord: "verde oliva", frenchWord: "vert olive", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "טורקיז", germanWord: "türkis", italianWord: "turchese", spanishWord: "turquesa", frenchWord: "turquoise", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "ארגמן", germanWord: "purpurrot", italianWord: "porpora", spanishWord: "púrpura", frenchWord: "pourpre", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "ליים", germanWord: "limettengrün", italianWord: "lime", spanishWord: "lima", frenchWord: "citron vert", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "קרם", germanWord: "cremefarben", italianWord: "crema", spanishWord: "crema", frenchWord: "crème", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+    // { hebrewWord: "פוקסיה", germanWord: "fuchsienrot", italianWord: "fucsia", spanishWord: "fucsia", frenchWord: "fuchsia", hebrewLevel: "בינוני" as const, englishLevel: "B1" as const, courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
 
-    // Greetings
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Wie heißen Sie", hebrewWord: "איך קוראים לך", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "ich", hebrewWord: "אני", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "heiße", hebrewWord: "קוראים", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Hallo", hebrewWord: "שלום", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Guten Morgen", hebrewWord: "בוקר טוב", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Guten Tag", hebrewWord: "צהריים טובים", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Guten Abend", hebrewWord: "ערב טוב", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Gute Nacht", hebrewWord: "לילה טוב", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Wie geht's", hebrewWord: "מה שלומך", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Auf Wiedersehen", hebrewWord: "להתראות", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Tschüss", hebrewWord: "ביי", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Bis bald", hebrewWord: "נתראה בקרוב", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Herzlich willkommen", hebrewWord: "ברוך הבא", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Schönen Tag noch", hebrewWord: "שיהיה לך יום נעים", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Viel Glück", hebrewWord: "בהצלחה", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Alles Gute", hebrewWord: "כל טוב", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Guten Appetit", hebrewWord: "בתיאבון", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Prost", hebrewWord: "לחיים", knowledge: "V" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Bis später", hebrewWord: "נתראה מאוחר יותר", knowledge: "X" },
-    { hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Greetings", courseOrder: 6, germanWord: "Bis morgen", hebrewWord: "נתראה מחר", knowledge: "X" },
+  // Advanced Animals - 52
+  // Cultural Diversity - 53
+  // Intermediate Professions - 54
+  // Intermediate Politics - 55
+  // Intermediate Economic Terms - 56
+  // Climate Change - 57
+  // Intermediate Transportation - 58
+  // Science - 59
+  // Social Issues - 60
+  // Intermediate Sports - 61
+  // Higher Education - 62
+  // Competitions - 63
+  // Intermediate Food Products - 64
+  // Adventures - 65
+  // Work - 66
+  // Intermediate Emotions - 67
+  // Intermediate Kitchen Tools - 68
+  // Numbers by Tens - 69
+  // Advanced Weather - 70
+  // Intermediate Shapes - 71
+  // Intermediate Directions - 72
+  // Beverages - 73
+  // Intermediate Musical Instruments - 74
+  // Intermediate Education - 75
 
-    // Weather
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist sonnig", hebrewWord: "יש שמש", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist wolkig", hebrewWord: "מעונן", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es regnet", hebrewWord: "יורד גשם", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es schneit", hebrewWord: "יורד שלג", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist windig", hebrewWord: "יש רוח", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist heiß", hebrewWord: "חם", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist kalt", hebrewWord: "קר", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist neblig", hebrewWord: "יש ערפל", knowledge: "V" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist stürmisch", hebrewWord: "סוער", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist trocken", hebrewWord: "יבש", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist nass", hebrewWord: "רטוב", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es gibt Gewitter", hebrewWord: "יש סופת רעמים", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist warm", hebrewWord: "חמים", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Weather", courseOrder: 7, germanWord: "Es ist kühl", hebrewWord: "קריר", knowledge: "X" },
+  // Advanced Colors - 76
 
-// Basic Clothing
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "das Hemd", hebrewWord: "חולצה", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Hose", hebrewWord: "מכנסיים", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "das Kleid", hebrewWord: "שמלה", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Jacke", hebrewWord: "מעיל", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Schuhe", hebrewWord: "נעליים", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Socken", hebrewWord: "גרביים", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "der Hut", hebrewWord: "כובע", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Handschuhe", hebrewWord: "כפפות", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "der Schal", hebrewWord: "צעיף", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Bluse", hebrewWord: "חולצת נשים", knowledge: "X" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Unterwäsche", hebrewWord: "תחתונים", knowledge: "?" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "das T-Shirt", hebrewWord: "טי-שירט", knowledge: "?" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Jeans", hebrewWord: "ג'ינס", knowledge: "?" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "der Pullover", hebrewWord: "סוודר", knowledge: "?" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "die Shorts", hebrewWord: "מכנסיים קצרים", knowledge: "?" },
-{ hebrewLevel: "מבוא" as const, englishLevel: "A1" as const, courseNameEnglish: "Basic Clothing", courseOrder: 8, germanWord: "der Mantel", hebrewWord: "מעיל ארוך", knowledge: "X" },
+    // { hebrewWord: "בורדו", germanWord: "bordeauxrot", italianWord: "borgogna", spanishWord: "burdeos", frenchWord: "bordeaux", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "זהב", germanWord: "gold", italianWord: "oro", spanishWord: "dorado", frenchWord: "doré", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "כסף", germanWord: "silber", italianWord: "argento", spanishWord: "plateado", frenchWord: "argenté", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "שנהב", germanWord: "elfenbein", italianWord: "avorio", spanishWord: "marfil", frenchWord: "ivoire", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "זית", germanWord: "olivgrün", italianWord: "verde oliva", spanishWord: "verde oliva", frenchWord: "vert olive", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "טורקיז", germanWord: "türkis", italianWord: "turchese", spanishWord: "turquesa", frenchWord: "turquoise", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "ארגמן", germanWord: "purpurrot", italianWord: "porpora", spanishWord: "púrpura", frenchWord: "pourpre", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "ליים", germanWord: "limettengrün", italianWord: "lime", spanishWord: "lima", frenchWord: "citron vert", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "קרם", germanWord: "cremefarben", italianWord: "crema", spanishWord: "crema", frenchWord: "crème", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 },
+    // { hebrewWord: "פוקסיה", germanWord: "fuchsienrot", italianWord: "fucsia", spanishWord: "fucsia", frenchWord: "fuchsia", hebrewLevel: "מתקדם" as const, englishLevel: "B2" as const, courseNameEnglish: "Colors", courseOrder: 76 }
+
+  // Advanced Clothes - 77
+  // Intermediate School Supplies - 78
+  // Intermediate Health - 79
+  // Intermediate Days of the Week - 80
+  // Taxes - 81
+  // Philosophical Topics - 82
+  // Intermediate Parts of the House - 83
+  // Describing People - 84
+  // Crypto - 85
+  // Advanced Politics - 86
+  // International Relations - 87
+  // Stars - 88
+  // Theatre - 89
+  // Human Rights - 90
+  // Chemistry - 91
+  // Artificial Intelligence - 92
+  // Intermediate Holidays - 93
+  // Numbers by Hundreds - 94
+  // Numbers by Thousands - 95
+  // Mathematical Topics - 96
+  // Intermediate Higher Education - 97
+  // Biology - 98
+  // Intermediate Work - 99
+  // Advanced Emotions - 100
+
+  // Digital Marketing - 101
+  // Graphic Design - 102
+  // Graphic Design - 103
+  // Classical Music - 104
+  // Museums - 105
+  // Stock Market - 106
+  // Cooking - 107
+  // Robots - 108
+  // Services - 109
+  // Christmas - 110
+  // Fruits - 111
+  // Vegetables - 112
+  // Makeup - 113
+  // Countries - 114
+  // Extreme Sports - 115
+  // Surfing - 116
+  // Camping - 117
+  // Martial Arts - 118
+  // Market - 119
+  // Gifts - 120
+  // Restaurant - 121
+  // Bank - 122
+  // News - 123
+  // Writing Tools - 124
+  // Advanced Tools - 125
+
+  // Business Communication - 126
+  // Cyber - 127
+  // Academic Writing - 128
+  // Leadership and Management - 129
+  // Legal Terms - 130
+  // Globalization - 131
+  // Topics in Psychology - 132
+  // Renewable Energy - 133
+  // Neuroscience - 134
+  // Topics in Physics - 135
+  // Topics in Architecture - 136
+  // Religions - 137
+  // Tools - 138
+  // Plants and Flowers - 139
+  // Sea - 140
+  // Office Supplies - 141
+  // Advanced Conversation Management - 142
+  // Nature Trip - 143
+  // Cars - 144
+  // Houses - 145
+  // Gym - 146
+  // Brain Research - 147
+  // Army - 148
+  // Cinema - 149
+  // Extreme Sports - 150
+
 ];
 
 const getUuidByCourseName = ( courseIds: Array<{ index: number; uuid: string; courseName: string }>, courseName: string ): string => {
@@ -160,8 +204,8 @@ const getUuidByCourseName = ( courseIds: Array<{ index: number; uuid: string; co
 const wordData = words.map((word) => ({
   ...word,
   userId,
+  knowledge: "X",
   wordId: uuidv4(),
-  // courseId: getUuidByCourseName(courseIds, lesson.courseNameEnglish),
   courseId: getUuidByCourseName(courseIds, word.courseNameEnglish),
 
 }));

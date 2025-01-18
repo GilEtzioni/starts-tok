@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
 import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
-import { LessonType, WordsType } from "../../../api/common/types";
+import { WordsType, SenteceType } from "../../../api/common/types";
 
 interface UseCardEffectsProps {
     lessonsData: WordsType[] | undefined;
@@ -27,18 +27,16 @@ interface UseCardEffectsProps {
 export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewArray }: UseCardEffectsProps) => {
     useEffect(() => {
 
-        if (lessonsData === undefined) return;
-
-        console.log("lessonsData: ", lessonsData)
+        if (!lessonsData) return;
         
         const originalGermanArray = getGermanWords(lessonsData);        
         const originalHebrewArray = getHebrewWords(lessonsData); 
 
-        // const shuffledGerman = shuffleArray(originalGermanArray);
-        // const shuffledHebrew = shuffleArray(originalHebrewArray);
+        const shuffledGerman = shuffleArray(originalGermanArray);
+        const shuffledHebrew = shuffleArray(originalHebrewArray);
 
-        setGermanArray(originalGermanArray);
-        setHebrewArray(originalHebrewArray);
+        setGermanArray(shuffledGerman);
+        setHebrewArray(shuffledHebrew);
 
     }, [lessonsData]);
 }
@@ -47,7 +45,7 @@ export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewArray 
 
 export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, counter, 
     setGermanID, setHebrewId, setCounter, setGermanArray, setHebrewArray, dispatch }: UseCardEffectsProps) => { useEffect(() => {
-        if ( germanId !== 0 && hebrewId !== 0 ) {
+        if ( germanId !== 0 && hebrewId !== 0) {
             // success
             if (germanId === hebrewId) {
                 setCounter(prev => prev + 1); // count successes

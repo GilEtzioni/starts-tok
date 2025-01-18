@@ -1,6 +1,6 @@
-import { LessonType } from "../../../api/common/types";
+import { MissingWordType } from "../../../api/common/types";
 
-export function getGermanMissingSentence(lessons: LessonType, order: number): string {
+export function getGermanMissingSentence(lessons: MissingWordType, order: number): string {
 
     let sentence: string = "";
     // first lesson - only first sentence
@@ -15,7 +15,7 @@ export function getGermanMissingSentence(lessons: LessonType, order: number): st
     return sentence;
 }
 
-export function getHebewMissingSentence(lessons: LessonType, order: number): string {
+export function getHebewMissingSentence(lessons: MissingWordType, order: number): string {
 
   let sentence: string = "";
   // first lesson - only first sentence
@@ -32,7 +32,7 @@ export function getHebewMissingSentence(lessons: LessonType, order: number): str
 
 /*  ------------------------------------------------------ */
 
-export function getGermanWord(lessons: LessonType, order: number): string {
+export function getGermanWord(lessons: MissingWordType, order: number): string {
 
     let sentence: string = "";
     // first lesson - only first sentence
@@ -47,7 +47,7 @@ export function getGermanWord(lessons: LessonType, order: number): string {
     return sentence;
 }
 
-export function getHebrewWord(lessons: LessonType, order: number): string {
+export function getHebrewWord(lessons: MissingWordType, order: number): string {
 
   let sentence: string = "";
   // first lesson - only first sentence
@@ -64,7 +64,7 @@ export function getHebrewWord(lessons: LessonType, order: number): string {
 
 /*  ------------------------------------------------------ */
 
-export function getHebrewSentence(lessons: LessonType, order: number): string {
+export function getHebrewSentence(lessons: MissingWordType, order: number): string {
     let sentence: string = "";
     // first lesson - only first sentence
     if (order === 3) {
@@ -77,7 +77,7 @@ export function getHebrewSentence(lessons: LessonType, order: number): string {
     return sentence;
 }
 
-export function getGermanSentence(lessons: LessonType, order: number): string {
+export function getGermanSentence(lessons: MissingWordType, order: number): string {
 
   let sentence: string = "";
   // first lesson - only first sentence

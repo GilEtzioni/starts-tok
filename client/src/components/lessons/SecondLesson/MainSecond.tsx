@@ -15,14 +15,15 @@ import { CardType } from '../types/SecondLessonType';
 
 // fetch data
 import { useParams } from 'react-router-dom';
-import { useFetchLessonData, useFetchWordsData } from '../api/fetchingLessons';
+import { useFetchSentence, useFetchWordsData, useFetchWordsContainer } from '../api/fetchingLessons';
 import { LessonStatus } from '../types/LessonType';
 
 
 const MainSecond: React.FC = () => {
 
     const { name, lesson } = useParams<{ name: string; lesson: string }>();
-    const { data: lessonsData } = useFetchLessonData(name || '', lesson || '');
+    const { data: lessonsData } = useFetchSentence(name || '', lesson || '');
+    const { data: cardsData } = useFetchWordsContainer(name || '', lesson || '');
     const { data: wordsData} = useFetchWordsData();
 
     const { Title } = Typography;
@@ -35,7 +36,7 @@ const MainSecond: React.FC = () => {
     const [germanArray, setGermanArray] = useState<CardType[]>([]);
     const [hebrewSentence, setHebrewSentence] = useState("");
 
-    useGetData({ lessonsData, order, setGermanArray, setHebrewSentence, dispatch });
+    useGetData({ lessonsData, cardsData , order, setGermanArray, setHebrewSentence, dispatch });
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, germanArray, order });
 
     const handleClick = (card: CardType) => {

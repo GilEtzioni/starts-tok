@@ -15,51 +15,70 @@ export enum HebrewLevel {
   מתקדםמאוד = "מתקדם מאוד",
   שפתאם = "שפת אם",
 }
-
-  export type LessonType = {
+  export type SenteceType = {
     userId: string,
     courseId: string,
     lessonId: string,
     hebrewLevel: HebrewLevel,
     englishLevel: EnglishLevel,
     courseNameEnglish: string,
-    finished: boolean,
-    sentenceOneGerman: string,
+    lessonOneToSix: number,
+
     sentenceOneHebrew: string,
-    sentenceTwoGerman: string, 
     sentenceTwoHebrew: string,
-    missingSentenceOneGerman: string,
+
+    sentenceOneGerman: string,  
+    sentenceTwoGerman: string, 
+
+    sentenceOneItalian: string,  
+    sentenceTwoItalian: string,  
+
+    sentenceOneSpanish: string,  
+    sentenceTwoSpanish: string,  
+
+    sentenceOneFranch: string,  
+    sentenceTwoFranch: string,  
+
+    finished: boolean,
+    createdAt: Date,
+  }
+  
+  export type MissingWordType = {
+    userId: string,
+    courseId: string,
+    lessonId: string,
+    hebrewLevel: HebrewLevel,
+    englishLevel: EnglishLevel,
+    courseNameEnglish: string,
+    lessonOneToSix: number,
+
     missingSentenceOneHebrew: string,
-    missingWordOneGerman: string,
     missingWordOneHebrew: string,
-    missingSentenceTwoGerman: string,
     missingSentenceTwoHebrew: string,
-    missingWordTwoGerman: string,
     missingWordTwoHebrew: string,
-    wordOneGerman: string,
-    wordOneHebrew: string,
-    wordTwoGerman: string,
-    wordTwoHebrew: string,
-    wordThreeGerman: string,
-    wordThreeHebrew: string,
-    wordFourGerman: string,
-    wordFourHebrew: string,
-    wordFiveGerman: string,
-    wordFiveHebrew: string,
-    wordSixGerman: string,
-    wordSixHebrew: string,
-    wordSevenGerman: string,
-    wordSevenHebrew: string,
-    wordEightGerman: string,
-    wordEightHebrew: string,
-    wordNineGerman: string,
-    wordNineHebrew: string,
-    wordTenGerman: string,
-    wordTenHebrew: string,
-    wordElevenGerman: string,
-    wordElevenHebrew: string,
-    wordTwelveGerman: string,
-    wordTwelveHebrew: string,
+
+    missingSentenceOneGerman: string,
+    missingWordOneGerman: string,
+    missingSentenceTwoGerman: string,
+    missingWordTwoGerman: string,
+
+    missingSentenceOneItalian: string,
+    missingWordOneItalian: string,
+    missingSentenceTwoItalian: string,
+    missingWordTwoItalian: string,
+
+    missingSentenceOneSpanish: string,
+    missingWordOneSpanish: string,
+    missingSentenceTwoSpanish: string,
+    missingWordTwoSpanish: string,
+
+    missingSentenceOneFrench: string,
+    missingWordOneFrench: string,
+    missingSentenceFrench: string,
+    missingWordTwoFrench: string,
+
+    createdAt: Date,
+    finished: boolean,
   }
 
   export type CourseType = {

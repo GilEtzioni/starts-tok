@@ -4,19 +4,20 @@ import { timestamp, pgTable, text, integer, pgEnum, boolean, serial, date } from
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
 export const levelHebrewEnum = pgEnum("levelHebrew", ["מבוא", "בסיסי", "בינוני", "מתקדם", "מתקדם מאוד", "שפת אם", "המילים שהוספתי"]);
 export const gameNameEnum = pgEnum("gameName", ["speedGame", "hangmanGame", "wordleGame"]);
+export const languagesEnum = pgEnum("languages", ["german", "italian", "spanish", "french" ]);
 
-// "courses" table
 export const CourseNames = pgTable("courses", {
     userId: text("userId").notNull(),
-    courseId: text("courseId").primaryKey(), 
+    courseId: text("courseId").unique(), 
     englishLevel: levelEnglishEnum("englishLevel"),
     hebrewLevel: levelHebrewEnum("hebrewLevel"),
     courseNameEnglish: text("courseNameEnglish"),
     courseNameGerman: text("courseNameGerman"),
     courseNameHebrew: text("courseNameHebrew"),
-    lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0), // 0-5
-    courseOrder: serial("courseOrder"),
+    lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0), // 0-5 /* --------------------------- */
+    courseOrder: integer("courseOrder"),
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
+    language: languagesEnum("language"),
 });
 
 export const Words = pgTable("words", {
@@ -26,16 +27,18 @@ export const Words = pgTable("words", {
     englishLevel: levelEnglishEnum("englishLevel"),
     courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
     courseNameEnglish: text("courseNameEnglish"),
-    germanWord: text("germanWord"),
     hebrewWord: text("hebrewWord"),
+    germanWord: text("germanWord"),
+    italianWord: text("italianWord"),
+    spanishWord: text("spanishWord"),
+    frenchWord: text("frenchWord"),
     knowledge: text("knowledge"),
     wordOrder: serial("wordOrder"),
-    courseOrder: integer("courseOrder"), ////////
+    courseOrder: integer("courseOrder"),
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
-// "lessons" table
-export const Lessons = pgTable("lessons", {
+export const Sentences = pgTable("sentences", {
     userId: text("userId").notNull(),
     hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
     englishLevel: levelEnglishEnum("englishLevel"),  // A1
@@ -46,48 +49,63 @@ export const Lessons = pgTable("lessons", {
     lessonOneToSix: integer("lessonId"),               // 1-6
 
     // sentences
-    sentenceOneGerman: text("sentenceOneGerman"), // "hallo wie gehts",
     sentenceOneHebrew: text("sentenceOneHebrew"),
-
-    sentenceTwoGerman: text("sentenceTwoGerman"), // "guten morgen"
     sentenceTwoHebrew: text("sentenceTwoHebrew"),
 
-    // missing sentences
-    missingSentenceOneGerman: text("missingSentenceOneGerman"), // hallo! _____ morgen
-    missingSentenceOneHebrew: text("missingSentenceOneHebrew"),
-    missingWordOneGerman: text("missingWordOneGerman"),         // guten
-    missingWordOneHebrew: text("missingWordOneHebrew"),
+    sentenceOneGerman: text("sentenceOneGerman"), 
+    sentenceTwoGerman: text("sentenceTwoGerman"), 
 
-    missingSentenceTwoGerman: text("missingSentenceTwoGerman"),
-    missingSentenceTwoHebrew: text("missingSentenceTwoHebrew"),
-    missingWordTwoGerman: text("missingWordTwoGerman"),
-    missingWordTwoHebrew: text("missingWordTwoHebrew"),
+    sentenceOneItalian: text("sentenceOneItalian"),
+    sentenceTwoItalian: text("sentenceTwoItalian"),
+
+    sentenceOneSpanish: text("sentenceOneSpanish"),
+    sentenceTwoSpanish: text("sentenceTwoSpanish"), 
+
+    sentenceOneFranch: text("sentenceOneFranch"),
+    sentenceTwoFranch: text("sentenceTwoFranch"), 
 
     // words
-    wordOneGerman: text("wordOneGerman"),
-    wordOneHebrew: text("wordOneHebrew"),
-    wordTwoGerman: text("wordTwoGerman"),
-    wordTwoHebrew: text("wordTwoHebrew"),
-    wordThreeGerman: text("wordThreeGerman"),
-    wordThreeHebrew: text("wordThreeHebrew"),
-    wordFourGerman: text("wordFourGerman"),
-    wordFourHebrew: text("wordFourHebrew"),
-    wordFiveGerman: text("wordFiveGerman"),
-    wordFiveHebrew: text("wordFiveHebrew"),
-    wordSixGerman: text("wordSixGerman"),
-    wordSixHebrew: text("wordSixHebrew"),
-    wordSevenGerman: text("wordSevenGerman"),
-    wordSevenHebrew: text("wordSevenHebrew"),
-    wordEightGerman: text("wordEightGerman"),
-    wordEightHebrew: text("wordEightHebrew"),
-    wordNineGerman: text("wordNineGerman"),
-    wordNineHebrew: text("wordNineHebrew"),
-    wordTenGerman: text("wordTenGerman"),
-    wordTenHebrew: text("wordTenHebrew"),
-    wordElevenGerman: text("wordElevenGerman"),
-    wordElevenHebrew: text("wordElevenHebrew"),
-    wordTwelveGerman: text("wordTwelveGerman"),
-    wordTwelveHebrew: text("wordTwelveHebrew"),
+    finished: boolean("finished"),
+    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
+});
+
+export const MissingWords = pgTable("missingWords", {
+    userId: text("userId").notNull(),
+    hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
+    englishLevel: levelEnglishEnum("englishLevel"),  // A1
+
+    courseNameEnglish: text("courseNameEnglish"), // Greeting
+    courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
+
+    lessonOneToSix: integer("lessonId"),               // 1-6
+
+    // missing sentences
+    missingSentenceOneHebrew: text("missingSentenceOneHebrew"),
+    missingWordOneHebrew: text("missingWordOneHebrew"),
+    missingSentenceTwoHebrew: text("missingSentenceTwoHebrew"),
+    missingWordTwoHebrew: text("missingWordTwoHebrew"),
+
+    missingSentenceOneGerman: text("missingSentenceOneGerman"), // hallo! _____ morgen
+    missingWordOneGerman: text("missingWordOneGerman"),         // guten
+    missingSentenceTwoGerman: text("missingSentenceTwoGerman"),
+    missingWordTwoGerman: text("missingWordTwoGerman"),
+
+    missingSentenceOneItalian: text("missingSentenceOneItalian"),
+    missingWordOneItalian: text("missingWordOneItalian"),
+    missingSentenceTwoItalian: text("missingSentenceTwoItalian"),
+    missingWordTwoItalian: text("missingWordTwoItalian"),
+
+    missingSentenceOneSpanish: text("missingSentenceOneSpanish"),
+    missingWordOneSpanish: text("missingWordOneSpanish"),
+    missingSentenceTwoSpanish: text("missingSentenceTwoSpanish"),
+    missingWordTwoSpanish: text("missingWordTwoSpanish"),
+
+    missingSentenceOneFrench: text("missingSentenceOneFrench"),
+    missingWordOneFrench: text("missingWordOneFrench"),
+    missingSentenceFrench: text("missingSentenceFrench"),
+    missingWordTwoFrench: text("missingWordTwoFrench"),
+
+    // words
     finished: boolean("finished"),
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
@@ -106,4 +124,9 @@ export const Users = pgTable("users", {
     userName: text("userName").notNull(),
     points: integer("points"),
     pointsDate: date("pointsDate").defaultNow(),
+});
+
+export const CurrentLanguage = pgTable("current_language", {
+    userId: text("userId").notNull(),
+    language: languagesEnum("language").notNull(),
 });

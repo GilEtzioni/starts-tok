@@ -1,43 +1,43 @@
-import { LessonType, WordsType } from "../../../api/common/types";
+import { WordsType, SenteceType } from "../../../api/common/types";
 import { CardType } from '../types/SecondLessonType';
 import { TranslatedArray } from '../types/SecondLessonType';
 
-export const getGermanWords = (lessons: LessonType, order: number): CardType[] => {
+export const getGermanWords = (cardsData: string[], order: number): CardType[] => {
     const germanWordsArray: string[] = [];
 
     // first lesson - all 12 words
     if (order === 2) {
         germanWordsArray.push(
-            lessons.wordOneGerman,
-            lessons.wordTwoGerman,
-            lessons.wordThreeGerman,
-            lessons.wordFourGerman,
-            lessons.wordFiveGerman,
-            lessons.wordSixGerman,
-            lessons.wordSevenGerman,
-            lessons.wordEightGerman,
-            lessons.wordNineGerman,
-            lessons.wordTenGerman,
-            lessons.wordElevenGerman,
-            lessons.wordTwelveGerman,
+            cardsData[0],
+            cardsData[1],
+            cardsData[2],
+            cardsData[3],
+            cardsData[4],
+            cardsData[5],
+            cardsData[6],
+            cardsData[7],
+            cardsData[8],
+            cardsData[9],
+            cardsData[10],
+            cardsData[11],
         );
     }
 
     // second lesson - all 12 words
     if (order === 5) {
         germanWordsArray.push(
-            lessons.wordOneGerman,
-            lessons.wordTwoGerman,
-            lessons.wordThreeGerman,
-            lessons.wordFourGerman,
-            lessons.wordFiveGerman,
-            lessons.wordSixGerman,
-            lessons.wordSevenGerman,
-            lessons.wordEightGerman,
-            lessons.wordNineGerman,
-            lessons.wordTenGerman,
-            lessons.wordElevenGerman,
-            lessons.wordTwelveGerman,
+            cardsData[12],
+            cardsData[13],
+            cardsData[14],
+            cardsData[15],
+            cardsData[16],
+            cardsData[17],
+            cardsData[18],
+            cardsData[19],
+            cardsData[20],
+            cardsData[21],
+            cardsData[22],
+            cardsData[23],
         );
     }
 
@@ -89,7 +89,7 @@ export const findMaxIndex = (germanArray: CardType[], cardId: number): number =>
     return maxContainerOrder; 
 }
 
-export const getHebrewSentence = (lessons: LessonType, order: number): string => { 
+export const getHebrewSentence = (lessons: SenteceType, order: number): string => { 
     if (order === 2) {
         return lessons.sentenceOneHebrew;
     }
@@ -99,7 +99,7 @@ export const getHebrewSentence = (lessons: LessonType, order: number): string =>
     return "";
 }
 
-export const getGermanSentence = (lessons: LessonType, order: number): string => { 
+export const getGermanSentence = (lessons: SenteceType, order: number): string => { 
     if (order === 2) {
         return lessons.sentenceOneGerman;
     }
@@ -110,7 +110,7 @@ export const getGermanSentence = (lessons: LessonType, order: number): string =>
 }
 
 
-export const getUserAnswer = (lessons: LessonType, germanArray: CardType[], order: number): string => { 
+export const getUserAnswer = (lessons: SenteceType, germanArray: CardType[], order: number): string => { 
     let answer = "";
     germanArray
         .filter(item => item.container === "up") 

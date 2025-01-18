@@ -270,7 +270,8 @@ rm -rf ./src/drizzle/migrations
 psql -U postgres -d development_db
 DROP TABLE IF EXISTS "words" CASCADE;
 DROP TABLE IF EXISTS "courses" CASCADE;
-DROP TABLE IF EXISTS "lessons" CASCADE;
+DROP TABLE IF EXISTS "missingWords" CASCADE;
+DROP TABLE IF EXISTS "sentences" CASCADE;
 DROP TABLE IF EXISTS "games" CASCADE;
 DROP TYPE IF EXISTS levelEnglishEnum CASCADE;
 DROP TYPE IF EXISTS levelHebrewEnum CASCADE;
@@ -283,9 +284,10 @@ DROP TYPE IF EXISTS "levelHebrew" CASCADE;
 DROP TABLE IF EXISTS "levelHebrew" CASCADE;
 DROP TABLE IF EXISTS "levelHebrew" CASCADE;
 DROP TYPE IF EXISTS "gameNameEnum" CASCADE;
+DROP TYPE IF EXISTS "languages" CASCADE;
 DROP TYPE IF EXISTS "gameName" CASCADE;
 DROP TABLE IF EXISTS "users" CASCADE;
-
+DROP TYPE IF EXISTS "languagesEnum" CASCADE;
 \q
 
 npx drizzle-kit generate

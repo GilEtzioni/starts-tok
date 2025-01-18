@@ -11,12 +11,12 @@ import { RootState } from "../../../app/store";
 // components
 import { useGetData , useHandleInput} from "../utils/ThirdEffects";
 import HebrewSentenceThird from './HebrewSentenceThird';
-import { useFetchLessonData, useFetchWordsData } from '../api/fetchingLessons';
+import { useFetchThirdLesson, useFetchWordsData } from '../api/fetchingLessons';
 
 const MainThird: React.FC = () => {
 
   const { name, lesson } = useParams<{ name: string; lesson: string }>();
-  const { data: lessonsData } = useFetchLessonData(name || '', lesson || '');
+  const { data: lessonsData } = useFetchThirdLesson(name || '', lesson || '');
   const { data: wordsData} = useFetchWordsData();
 
     // redux
