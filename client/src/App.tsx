@@ -7,25 +7,25 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // layouts
-import RootLayout from './layout/RootLayout';
-import CoursesLayout from './layout/CoursesLayout';
+import RootLayout from './components/layout/RootLayout';
+import CoursesLayout from './components/layout/CoursesLayout';
 
 // pages
-import Main from './pages/Main';
-import Dictionary from './pages/DictionaryPage';
-import CoursesPage from './pages/LessonsPage';
-import  MainLearn from "./lessons/MainLearn";
+import Main from './components/pages/Main';
+import Dictionary from './components/pages/DictionaryPage';
+import CoursesPage from './components/pages/LessonsPage';
+import  MainLearn from "./components/lessons/MainLearn";
 
 // login
-import SignUpContainer from './pages/LogInPage/SignUpContainer';
-import SignInContainer from './pages/LogInPage/ֿSignInContainer';
-import FactorOne from './pages/LogInPage/FactorOne';
-import VerifyEmailAddress from './pages/LogInPage/VerifyEmailAddress';
+import SignUpContainer from './components/pages/LogInPage/SignUpContainer';
+import SignInContainer from './components/pages/LogInPage/ֿSignInContainer';
+import FactorOne from './components/pages/LogInPage/FactorOne';
+import VerifyEmailAddress from './components/pages/LogInPage/VerifyEmailAddress';
 
 // games
-import MainWordle from './games/wordle/MainWordle';
-import MainHangman from './games/hangman/MainHangman';
-import MainSpeedGame from './games/speedGame/MainSpeedGame';
+import MainWordle from './components/games/wordle/MainWordle';
+import MainHangman from './components/games/hangman/MainHangman';
+import MainSpeedGame from './components/games/speedGame/MainSpeedGame';
 
 const router = createBrowserRouter(
  createRoutesFromElements(
