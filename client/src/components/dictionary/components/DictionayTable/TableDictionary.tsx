@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Table } from 'antd';
 
 import { handleClickedRow } from "../../utils/HelpingFunctionsDictionary";
-import { WordsType } from "../../../../types/types";
+import { WordsType } from "../../../../api/common/types";
 import MidIcons from "./MidIconds";
 import useFilteredWords from '../../utils/dataEffect';
 

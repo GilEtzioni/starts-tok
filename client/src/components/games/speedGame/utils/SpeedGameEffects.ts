@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { shuffleAllWords, createGameArray, replaceOldCard, deleteOldCards, getRandomIndex} from "./speedHelper";
 import { SelectedCard, speedGameType } from "../types/speedGameTypes";
 import { addOneWrongCounter, addOneSuccesssCounter } from "../slices/SpeedGameSlice";
-import { WordsType } from "../../../../types/types"
+import { WordsType } from "../../../../api/common/types"
 import { useDispatch } from "react-redux";
 
 interface UseCardEffectsProps {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'; 
 import { RootState } from "../../../app/store";
-import { WordsType } from "../../../types/types";
+import { WordsType } from "../../../api/common/types";
 import { sortWordsById, knowledgeDataArray } from "./HelpingFunctionsDictionary";
 import { TranslatedWordsType } from '../types/DictionaryType';
 

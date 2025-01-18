@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { WordsType } from "../../../../types/types";
+import { WordsType } from "../../../../api/common/types";
 import { HangmanType } from "../types/hangmanType";
 import { createLettersArray, createGameArray, getRandomWord } from "./HangHelper";
 import { setSelectedWord } from "../slices/HangmanSlice";

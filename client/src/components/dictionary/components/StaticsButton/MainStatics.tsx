@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Card } from "antd";
 import useFilteredWords from "../../utils/dataEffect";
-import { WordsType } from "../../../../types/types";
+import { WordsType } from "../../../../api/common/types";
 import StaticsCards from "./StaticsCards";
 interface MainStaticsProps {
   words?: WordsType[] | undefined;

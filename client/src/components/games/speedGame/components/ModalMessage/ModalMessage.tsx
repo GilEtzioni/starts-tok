@@ -11,7 +11,7 @@ import { resetSuccesssCounter, resetWrongCounter } from '../../slices/SpeedGameS
 
 // types + functions
 import { speedGameType } from '../../types/speedGameTypes';
-import { WordsType } from "../../../../../types/types";
+import { WordsType } from "../../../../../api/common/types";
 import { shuffleAllWords, createGameArray } from "../../utils/speedHelper";
 
 import { useAddNewScore } from '../../../api/fetchingGame';

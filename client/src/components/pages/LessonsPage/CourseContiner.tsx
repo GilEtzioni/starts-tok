@@ -8,7 +8,7 @@ import { useFetchCoursesCardsData } from "./api/fetchingLessonsPage";
 
 // components
 import CourseProgressBar from "./components/CourseProgressBar"
-import { CourseType } from "../../../types/types";
+import { CourseType } from "../../../api/common/types";
 import CourseIcons from "./components/CourseIcons";
 
 const CourseContainer: React.FC = () => {

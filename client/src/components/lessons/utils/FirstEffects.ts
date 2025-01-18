@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
 import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
-import { LessonType } from "../../../types/types";
+import { LessonType } from "../../../api/common/types";
 
 interface UseCardEffectsProps {
     lessonsData: LessonType[] | undefined;

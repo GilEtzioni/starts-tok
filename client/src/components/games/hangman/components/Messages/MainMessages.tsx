@@ -2,7 +2,7 @@ import React from 'react';
 import SuccessMessage from './SuccessMessage';
 import FailMesssage from './FailMesssage';
 import { HangmanType, SelectedLetter } from "../../types/hangmanType";
-import { WordsType } from "../../../../../types/types";
+import { WordsType } from "../../../../../api/common/types";
 
 // redux
 import { useSelector } from 'react-redux';

@@ -1,5 +1,5 @@
 import { format, subDays } from "date-fns";
-import { weekPointsType } from "../../../../../types/types";
+import { weekPointsType } from "../../../../../api/common/types";
   import { DaysOfTheWeekHebrew } from "../../type/mainPageType";
 
 export const fillMissingWeekDays = (weekScore: weekPointsType[] | undefined): (weekPointsType[] | undefined) => {

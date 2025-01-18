@@ -7,7 +7,7 @@ import { wordleType, LetterColor, LetterSeleceted, CurrentMode } from '../../ ty
 import { getLetterColor } from '../../utilts/wordleHelper';
 import classNames from 'classnames';
 import { useEnterClick } from '../../utilts/WordelEffects';
-import { WordsType } from '../../../../../types/types';
+import { WordsType } from '../../../../../api/common/types';
 import { setCurrentMode } from '../../slices/WordleSlice';
 
 interface WordsGridProps {

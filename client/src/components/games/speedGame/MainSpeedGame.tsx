@@ -15,7 +15,7 @@ import { speedGameType, Language, SelectedCard } from "./types/speedGameTypes";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../../app/store";
 import { useFetchWordsData } from "../api/fetchingGame";
-import { WordsType } from '../../../types/types';
+import { WordsType } from '../../../api/common/types';
 
 const MainSpeedGame: React.FC = () => {
 

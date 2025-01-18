@@ -1,4 +1,4 @@
-import { LessonType } from '../../../types/types'; 
+import { LessonType } from '../../../api/common/types'; 
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
 export function getHebrewWords(lessons: LessonType, order: number): FirstLessonType[] {

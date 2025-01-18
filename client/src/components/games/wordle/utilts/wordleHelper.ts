@@ -1,4 +1,4 @@
-import { WordsType } from "../../../../types/types"
+import { WordsType } from "../../../../api/common/types"
 import { wordleType, LetterColor, LetterSeleceted } from '../ types/WordelType';
 
 export const shuffleAllWords = (wordsArray: WordsType[]) => {

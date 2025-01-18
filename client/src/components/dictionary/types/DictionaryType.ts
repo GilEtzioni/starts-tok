@@ -1,4 +1,4 @@
-import { DictionaryKnowledgeType } from "../../../types/types";
+import { DictionaryKnowledgeType } from "../../../api/common/types";
 
 export type KnowledgeType = {
   isEx: boolean;

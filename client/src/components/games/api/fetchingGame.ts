@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
-import { WordsType } from "../../../types/types";
+import { WordsType } from "../../../api/common/types";
 import axiosInstance from './axiosInstance';
 
 const fetchWords = async (): Promise<WordsType[]> => {

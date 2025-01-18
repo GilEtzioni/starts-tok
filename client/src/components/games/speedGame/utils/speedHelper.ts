@@ -1,4 +1,4 @@
-import { WordsType } from "../../../../types/types";
+import { WordsType } from "../../../../api/common/types";
 import { speedGameType } from "../types/speedGameTypes";
 import { Language, SelectedCard } from "../types/speedGameTypes";
 

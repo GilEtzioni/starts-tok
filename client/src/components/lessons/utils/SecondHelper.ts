@@ -1,4 +1,4 @@
-import { LessonType, WordsType } from "../../../types/types";
+import { LessonType, WordsType } from "../../../api/common/types";
 import { CardType } from '../types/SecondLessonType';
 import { TranslatedArray } from '../types/SecondLessonType';
 

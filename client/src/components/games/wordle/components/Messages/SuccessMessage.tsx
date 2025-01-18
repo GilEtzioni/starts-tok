@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentMode, resetSuccess ,resetClicks } from '../../slices/WordleSlice';
 import { CurrentMode } from '../../ types/WordelType';
 
-import { WordsType } from '../../../../../types/types';
+import { WordsType } from '../../../../../api/common/types';
 import { RootState } from '../../../../../app/store';
 import { shuffleAllWords } from '../../utilts/wordleHelper';
 import { useAddNewScore } from '../../../api/fetchingGame';

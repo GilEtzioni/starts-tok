@@ -1,4 +1,4 @@
-import { WordsType } from "../../../../types/types";
+import { WordsType } from "../../../../api/common/types";
 import { HangmanType, SelectedLetter } from '../types/hangmanType';
 
 export const getRandomWord = (wordsArray: WordsType[]): WordsType => {

@@ -17,7 +17,7 @@ import MainMessages from './components/Messages/MainMessages';
 
 // functions + types
 import { HangmanType } from './types/hangmanType'; 
-import { WordsType } from "../../../types/types";
+import { WordsType } from "../../../api/common/types";
 import { useStartGame } from './utils/HangEffects';
 import { useFetchWordsData } from '../api/fetchingGame';
 

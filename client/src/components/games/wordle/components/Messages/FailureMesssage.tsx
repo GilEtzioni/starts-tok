@@ -11,7 +11,7 @@ import { useAddNewScore } from '../../../api/fetchingGame';
 
 // types + helping functions
 import { CurrentMode } from '../../ types/WordelType';
-import { WordsType } from '../../../../../types/types';
+import { WordsType } from '../../../../../api/common/types';
 import { shuffleAllWords } from '../../utilts/wordleHelper';
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 import classNames from 'classnames';

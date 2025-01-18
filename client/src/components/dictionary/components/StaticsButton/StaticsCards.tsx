@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "antd";
 import useFilteredWords from "../../utils/dataEffect";
-import { WordsType } from "../../../../types/types";
+import { WordsType } from "../../../../api/common/types";
 
 interface MainStaticsProps {
   data: WordsType[];

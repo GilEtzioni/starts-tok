@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useAddNewWord } from '../../api/fetchingDictionary';
+import { useAddNewWord } from '../../../../api/dictionary/mutateApi';
 import { Card, Input, Alert, Spin , ConfigProvider, Button} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { styles } from './StyleAddWord'; 
@@ -13,7 +13,7 @@ const MainAddWord: React.FC = () => {
   const [translatedWord, setTranslatedWord] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const patchNewItem = useAddNewWord();
+  const { mutate: addNewWord, isLoading, isError  } = useAddNewWord();
 
   const handleGetData = (germanWord: string, translatedWord: string) => {
 
@@ -23,20 +23,19 @@ const MainAddWord: React.FC = () => {
     }
 
     setErrorMessage(null);
-    patchNewItem.mutate(
-      { germanWord, translatedWord },
+    addNewWord({ germanWord, translatedWord },
       {
         onSuccess: () => {
           setGemanWord('');
           setTranslatedWord('');
           setOpen(false); // close the component
         },
-        onError: (error) => {
-          throw error;
-        },
       }
     );
   };
+
+  if (isLoading) return <div>Loading dictionary...</div>;
+  if (isError) return <div>Error loading dictionary.</div>;
 
   return (
     <>
@@ -92,10 +91,10 @@ const MainAddWord: React.FC = () => {
               <Button
                 type="primary"
                 onClick={() => handleGetData(germanWord, translatedWord)}
-                disabled={patchNewItem.isLoading}
+                disabled={isLoading}
                 style={styles.getDataButton}
               >
-                {patchNewItem.isLoading ? <Spin /> : 'הוסף'}
+                {isLoading? <Spin /> : 'הוסף'}
               </Button>
             </div>
           </div>

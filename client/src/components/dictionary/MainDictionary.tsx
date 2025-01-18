@@ -4,14 +4,14 @@ import TableDictionary from './components/DictionayTable/TableDictionary';
 
 import MainAddWord from './components/AddWordButton/MainAddWord';
 import MainStatics from './components/StaticsButton/MainStatics';
-import { useFetchWordsData } from './api/fetchingDictionary';
+import { useFetchDictionaryData } from "../../api/dictionary/hooks";
 
 const MainDictionary: React.FC = () => {
 
-  const { data: words, isLoading, error } = useFetchWordsData();
+  const { data: words, isLoading, isError } = useFetchDictionaryData();
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data</div>;
+  if (isError) return <div>Error loading data</div>;
 
   return (
     <>

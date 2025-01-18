@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Typography } from 'antd';
 import { useFetchOneDayUserData } from '../../api/fetchingUserData';
 import { fillMissingWeekDays } from '../TableMainPage/userTableHelper';
-import { weekPointsType } from '../../../../../types/types';
+import { weekPointsType } from '../../../../../api/common/types';
 
 const UsersGraph: React.FC = () => {
   const { data: weekScore, isLoading, error } = useFetchOneDayUserData();

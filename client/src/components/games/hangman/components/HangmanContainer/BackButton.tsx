@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { resetSuccesssCounter, setSelectedWord} from "../../slices/HangmanSlice";
 import { useDispatch } from 'react-redux';
 import { getRandomWord } from "../../utils/HangHelper";
-import { WordsType } from "../../../../../types/types";
+import { WordsType } from "../../../../../api/common/types";
 
 interface BackButtonProps {
   words: WordsType[] | undefined;

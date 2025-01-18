@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { WordsType } from '../../../../types/types';
+import { WordsType } from '../../../../api/common/types';
 
 export const hangmanSlice = createSlice({
   name: 'hangman',

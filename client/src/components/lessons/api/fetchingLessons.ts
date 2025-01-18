@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient  } from '@tanstack/react-query';
-import { LessonType } from "../../../types/types";
-import { WordsType } from '../../../types/types';
+import { LessonType } from "../../../api/common/types";
+import { WordsType } from '../../../api/common/types';
 import axiosInstance from './axiosInstance';
 
 const fetchLesson = async (name: string, lesson: string): Promise<LessonType[]> => {
