@@ -29,7 +29,8 @@ export const Words = pgTable("words", {
     germanWord: text("germanWord"),
     hebrewWord: text("hebrewWord"),
     knowledge: text("knowledge"),
-    wordOrder: serial("courseOrder"),
+    wordOrder: serial("wordOrder"),
+    courseOrder: integer("courseOrder"), ////////
     createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 

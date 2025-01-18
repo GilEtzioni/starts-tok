@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { CourseNames, Lessons } from "../drizzle/schema";
+import { CourseNames, Lessons, Words } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { and, eq, sql } from "drizzle-orm";
 
@@ -24,6 +24,8 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+/* ------------------------------------------------------------------------------------ */
+
 export const getFinishedCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
 
@@ -46,6 +48,8 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
     res.status(500).json({ message: "An error occurred while ", error });
   }
 };
+
+/* ------------------------------------------------------------------------------------ */
 
 export const getLevelLessons = async (req: Request, res: Response): Promise<void> => {
 
@@ -72,6 +76,8 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
       res.status(500).json({ message: "An error occurred while ", error });
     }
 }
+
+/* ------------------------------------------------------------------------------------ */
 
 export const getCourseLessons = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -102,6 +108,8 @@ export const getCourseLessons = async (req: Request, res: Response): Promise<voi
     res.status(500).json({ message: "An error occurred while ", error });
   }
 };
+
+/* ------------------------------------------------------------------------------------ */
 
 export const updateLesson = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -175,3 +183,34 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
     res.status(500).json({ message: "An error occurred while ", error });
   }
 };
+
+/* ------------------------------------------------------------------------------------ */
+
+export const getCourseWords = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+  
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized: User ID is missing" });
+        return;
+    }
+  
+    try {
+        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ; // string
+        const course = req.params.course;                                                  // string
+  
+        const currLesson = await db.select().from(Words).where(
+                and(
+                    eq(Words.englishLevel, userLevel),
+                    eq(Words.courseNameEnglish, course),
+                    eq(Words.userId, userId))
+                )
+                .orderBy(sql`RANDOM()`)
+                .limit(6)
+  
+            res.json(currLesson);
+
+  
+    } catch (error) {
+      res.status(500).json({ message: "An error occurred while ", error });
+    }
+  };

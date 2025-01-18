@@ -1,31 +1,17 @@
-import { LessonType } from '../../../api/common/types'; 
+import { LessonType, WordsType } from '../../../api/common/types'; 
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
-export function getHebrewWords(lessons: LessonType, order: number): FirstLessonType[] {
+export function getHebrewWords(lessons: WordsType[]): FirstLessonType[] {
     const hebrewWordsArray: string[] = [];
 
-    // First lesson - only first six words
-    if (order === 1) {
-        hebrewWordsArray.push(
-            lessons.wordOneHebrew,
-            lessons.wordTwoHebrew,
-            lessons.wordThreeHebrew,
-            lessons.wordFourHebrew,
-            lessons.wordFiveHebrew,
-            lessons.wordSixHebrew
-        );
-    }
-    // Second lesson - only last six words
-    if (order === 4) {
-        hebrewWordsArray.push(
-            lessons.wordSevenHebrew,
-            lessons.wordEightHebrew,
-            lessons.wordNineHebrew,
-            lessons.wordTenHebrew,
-            lessons.wordElevenHebrew,
-            lessons.wordTwelveHebrew
-        );
-    }
+    hebrewWordsArray.push(
+    lessons[0].hebrewWord,
+    lessons[1].hebrewWord,
+    lessons[2].hebrewWord,
+    lessons[3].hebrewWord,
+    lessons[4].hebrewWord,
+    lessons[5].hebrewWord,
+    )
 
     const combinedWordsArray: FirstLessonType[] = [];
     for (let i = 0; i < hebrewWordsArray.length; i++) {
@@ -43,32 +29,17 @@ export function getHebrewWords(lessons: LessonType, order: number): FirstLessonT
     return combinedWordsArray;
 }
 
-export function getGermanWords(lessons: LessonType, order: number): FirstLessonType[] {
+export function getGermanWords(lessons: WordsType[]): FirstLessonType[] {
     const germanWordsArray: string[] = [];
 
-    // first lesson - only first six words
-    if (order === 1) {
-        germanWordsArray.push(
-            lessons.wordOneGerman,
-            lessons.wordTwoGerman,
-            lessons.wordThreeGerman,
-            lessons.wordFourGerman,
-            lessons.wordFiveGerman,
-            lessons.wordSixGerman
-        );
-    }
-
-    // second lesson - only last six words
-    if (order === 4) {
-        germanWordsArray.push(
-            lessons.wordSevenGerman,
-            lessons.wordEightGerman,
-            lessons.wordNineGerman,
-            lessons.wordTenGerman,
-            lessons.wordElevenGerman,
-            lessons.wordTwelveGerman
-        );
-    }
+    germanWordsArray.push(
+        lessons[0].germanWord,
+        lessons[1].germanWord,
+        lessons[2].germanWord,
+        lessons[3].germanWord,
+        lessons[4].germanWord,
+        lessons[5].germanWord,
+    )
 
     const combinedWordsArray: FirstLessonType[] = [];
     for (let i = 0; i < germanWordsArray.length; i++) {

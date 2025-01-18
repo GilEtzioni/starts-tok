@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
 import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
 import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
-import { LessonType } from "../../../api/common/types";
+import { LessonType, WordsType } from "../../../api/common/types";
 
 interface UseCardEffectsProps {
-    lessonsData: LessonType[] | undefined;
+    lessonsData: WordsType[] | undefined;
     order: number;
     germanId: number;
     hebrewId: number;
@@ -28,17 +28,19 @@ export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewArray 
     useEffect(() => {
 
         if (lessonsData === undefined) return;
+
+        console.log("lessonsData: ", lessonsData)
         
-        const originalGermanArray = getGermanWords(lessonsData[0], order);        
-        const originalHebrewArray = getHebrewWords(lessonsData[0], order); 
+        const originalGermanArray = getGermanWords(lessonsData);        
+        const originalHebrewArray = getHebrewWords(lessonsData); 
 
-        const shuffledGerman = shuffleArray(originalGermanArray);
-        const shuffledHebrew = shuffleArray(originalHebrewArray);
+        // const shuffledGerman = shuffleArray(originalGermanArray);
+        // const shuffledHebrew = shuffleArray(originalHebrewArray);
 
-        setGermanArray(shuffledGerman);
-        setHebrewArray(shuffledHebrew);
+        setGermanArray(originalGermanArray);
+        setHebrewArray(originalHebrewArray);
 
-    }, [lessonsData, order, setGermanArray, setHebrewArray]);
+    }, [lessonsData]);
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */

@@ -1,18 +1,22 @@
 import { CourseNames } from "../../drizzle/schema";
 import { db } from "../../drizzle/db";
-import { Course } from "../type/seedersType";
+import { Course } from "../../types/seedersType";
 
 export const courseSeeder = async (userId: string, courseIds: Array<{ index: number; uuid: string; courseName: string }>) => {
-  const courses: Course[] = [
-    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Colors", courseNameGerman: "Farben", courseNameHebrew: "צבעים", lessonCompleted: 6 },
-    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Numbers", courseNameGerman: "Zahlen", courseNameHebrew: "מספרים", lessonCompleted: 6 }, 
+  const courses: Course[] = 
+  [
+    // A1
+    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Colors", courseNameGerman: "", courseNameHebrew: "צבעים", lessonCompleted: 6 },
+    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Numbers", courseNameGerman: "", courseNameHebrew: "מספרים", lessonCompleted: 6 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Family members", courseNameGerman: "Familienmitglieder", courseNameHebrew: "בני משפחה", lessonCompleted: 6 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Days of the week", courseNameGerman: "Wochentage", courseNameHebrew: "ימי השבוע", lessonCompleted: 6 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Months", courseNameGerman: "Monate", courseNameHebrew: "חודשים", lessonCompleted: 6 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Greetings", courseNameGerman: "Grüße", courseNameHebrew: "ברכות", lessonCompleted: 1 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Weather", courseNameGerman: "Wetter", courseNameHebrew: "מזג האוויר", lessonCompleted: 0 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Basic clothing", courseNameGerman: "Grundkleidung", courseNameHebrew: "בגדים בסיסיים", lessonCompleted: 0 }, 
-    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Common food items", courseNameGerman: "Häufige Lebensmittel", courseNameHebrew: "מוצרי מזון נפוצים", lessonCompleted: 0 }, 
+    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Common food items", courseNameGerman: "Häufige Lebensmittel", courseNameHebrew: "מוצרי מזון", lessonCompleted: 0 }, 
+    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Common drinks items", courseNameGerman: "Häufige Getränke", courseNameHebrew: "מוצרי שתייה", lessonCompleted: 0 }, 
+
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "House parts", courseNameGerman: "Hausteile", courseNameHebrew: "חלקי הבית", lessonCompleted: 0 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Animals", courseNameGerman: "Tiere", courseNameHebrew: "חיות", lessonCompleted: 0 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Basic emotions", courseNameGerman: "Grundgefühle", courseNameHebrew: "רגשות בסיסיות", lessonCompleted: 0 }, 
@@ -28,7 +32,6 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Common places", courseNameGerman: "Gemeinsame Orte", courseNameHebrew: "מקומות נפוצות", lessonCompleted: 0 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Festivals", courseNameGerman: "Feste", courseNameHebrew: "חגיגים", lessonCompleted: 0 }, 
     { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Common actions", courseNameGerman: "Häufige Aktionen", courseNameHebrew: "פעולות נפוצות", lessonCompleted: 0 }, 
-    { englishLevel: "A1" as const, hebrewLevel: "מבוא" as const, courseNameEnglish: "Technology basics", courseNameGerman: "Technologie Grundlagen", courseNameHebrew: "טכנולוגיה בסיסית", lessonCompleted: 0 }, 
   
     // A2
     { englishLevel: "A2" as const, hebrewLevel: "בסיסי" as const, courseNameEnglish: "Travel and transportation", courseNameGerman: "Reisen und Transport", courseNameHebrew: "נסיעות והובלה", lessonCompleted: 0 }, 

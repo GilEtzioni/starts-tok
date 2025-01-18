@@ -22,6 +22,22 @@ export const useFetchLessonData = (name: string, lesson: string) => {
 
 /* ------------------------------------------------------------ */
 
+const fetchWordsLessons = async (name: string, lesson: string): Promise<WordsType[]> => {
+  const { data } = await axiosInstance.get(`/main/courseWords/${name}/${lesson}/`);
+  return data;
+};
+
+export const useFetchLessonWords = (name: string, lesson: string) => {
+  const queryClient = useQueryClient();
+
+  return useQuery<WordsType[], Error>({
+    queryKey: ['lessonsWords', name, lesson] as const,
+    queryFn: () => fetchWordsLessons(name, lesson),
+  });
+};
+
+/* ------------------------------------------------------------ */
+
 const fetchWords = async (): Promise<WordsType[]> => {
   const { data } = await axiosInstance.get('/dictionary');
   return data;

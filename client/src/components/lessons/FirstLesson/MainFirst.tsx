@@ -9,7 +9,7 @@ import { RootState } from "../../../app/store";
 // components + functions
 import FirstCard from "./FirstCard"
 import { useGetData , useHandleClick} from '../utils/FirstEffects';
-import { useFetchLessonData } from '../api/fetchingLessons';
+import { useFetchLessonWords } from '../api/fetchingLessons';
 import { useParams } from 'react-router-dom';
 import { FirstLessonType, IsSelected } from "../types/FirstLessonType";
 import { LessonStatus } from '../types/LessonType';
@@ -17,7 +17,7 @@ import { LessonStatus } from '../types/LessonType';
 const FirstCardContainer: React.FC = () => {
 
     const { name, lesson } = useParams<{ name: string; lesson: string }>();
-    const { data: lessonsData, isLoading, error } = useFetchLessonData(name || '', lesson || '');
+    const { data: lessonsData, isLoading, isError } = useFetchLessonWords(name || '', lesson || '');
 
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
@@ -95,7 +95,7 @@ const FirstCardContainer: React.FC = () => {
         };
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error </div>;
+    if (isError) return <div>Error...</div>;
 
     return (
     <div className="px-[10%]">
