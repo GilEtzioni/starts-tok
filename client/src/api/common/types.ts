@@ -1,3 +1,5 @@
+import { KnowledgeType } from "../../components/dictionary/types/DictionaryType";
+
 export enum EnglishLevel {
   A1 = "A1",
   A2 = "A2",
@@ -102,9 +104,11 @@ export enum HebrewLevel {
     englishLevel: EnglishLevel,
     germanWord: string,
     hebrewLevel: HebrewLevel,
+    hebrewWord: string,
+    foreignWord: string,
     knowledge: DictionaryKnowledgeType,
-    hebrewWord: string, 
-    wordOrder: number
+    wordOrder: number,
+    courseOrder: number,
   }
 
 export interface GamesType {

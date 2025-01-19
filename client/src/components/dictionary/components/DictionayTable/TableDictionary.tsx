@@ -1,5 +1,5 @@
 // react + antd
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Table } from 'antd';
 
 import { handleClickedRow } from "../../utils/HelpingFunctionsDictionary";
@@ -46,8 +46,8 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
         // last column
         {
           title: 'מילה',
-          dataIndex: 'germanWord',
-          key: 'germanWord',
+          dataIndex: 'foreignWord',
+          key: 'foreignWord',
           align: 'right' as const,
         },
       ]}
@@ -55,7 +55,7 @@ const TableDictionary: React.FC<TableProps> = ({ words = [] }) => {
         key: item.wordId,
         id: item.wordId,
         hebrewWord: item.hebrewWord,
-        germanWord: item.germanWord,
+        foreignWord: item.foreignWord,
         courseNameEnglish: item.courseNameEnglish,
         knowledge: item.knowledge,
         hebrewLevel: item.hebrewLevel,

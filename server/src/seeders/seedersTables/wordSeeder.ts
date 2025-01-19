@@ -332,7 +332,10 @@ const getUuidByCourseName = ( courseIds: Array<{ index: number; uuid: string; co
 const wordData = words.map((word) => ({
   ...word,
   userId,
-  knowledge: "X",
+  germanKnowledge: "X",
+  italianKnowledge: "X",
+  spanishKnowledge: "X",
+  frenchKnowledge: "X",
   wordId: uuidv4(),
   courseId: getUuidByCourseName(courseIds, word.courseNameEnglish),
 }));

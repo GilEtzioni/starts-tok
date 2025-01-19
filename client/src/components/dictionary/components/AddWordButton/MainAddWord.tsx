@@ -9,21 +9,21 @@ import classNames from 'classnames';
 
 const MainAddWord: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [germanWord, setGemanWord] = useState<string>('');
+  const [foreignWord, setGemanWord] = useState<string>('');
   const [translatedWord, setTranslatedWord] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const { mutate: addNewWord, isLoading, isError  } = useAddNewWord();
 
-  const handleGetData = (germanWord: string, translatedWord: string) => {
+  const handleGetData = (foreignWord: string, translatedWord: string) => {
 
-    if (!germanWord || !translatedWord) {
+    if (!foreignWord || !translatedWord) {
       setErrorMessage("עליך למלא את שני השדות");
       return;
     }
 
     setErrorMessage(null);
-    addNewWord({ germanWord, translatedWord },
+    addNewWord({ foreignWord, translatedWord },
       {
         onSuccess: () => {
           setGemanWord('');
@@ -61,13 +61,13 @@ const MainAddWord: React.FC = () => {
               {errorMessage && <Alert message={errorMessage} type="error" />}
                 <Input
                   placeholder="המילה בגרמנית"
-                  value={germanWord}
+                  value={foreignWord}
                   onChange={(e) => setGemanWord(e.target.value)}
                   className={classNames(
                     "p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
                     {
-                      "border-red-500": !germanWord && errorMessage,
-                      "border-gray-300": germanWord || !errorMessage,
+                      "border-red-500": !foreignWord && errorMessage,
+                      "border-gray-300": foreignWord || !errorMessage,
                     }
                   )}
                 />
@@ -90,7 +90,7 @@ const MainAddWord: React.FC = () => {
             <div style={styles.footer}>
               <Button
                 type="primary"
-                onClick={() => handleGetData(germanWord, translatedWord)}
+                onClick={() => handleGetData(foreignWord, translatedWord)}
                 disabled={isLoading}
                 style={styles.getDataButton}
               >

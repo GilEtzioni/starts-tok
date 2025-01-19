@@ -47,8 +47,6 @@ export const useGetData = ({ lessonsData, cardsData, order, setGermanArray, setH
       const hebrewSentence = getHebrewSentence(lessonsData[0], order);
       const germanSentence = getGermanSentence(lessonsData[0], order);
 
-      console.log("shuffledGerman: ", shuffledGerman)
-
       setHebrewSentence(hebrewSentence);
       dispatch(setRightAnswer(germanSentence));
 

@@ -16,17 +16,17 @@ CREATE TABLE IF NOT EXISTS "courses" (
 	CONSTRAINT "courses_courseId_unique" UNIQUE("courseId")
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "current_language" (
-	"userId" text NOT NULL,
-	"language" "languages" NOT NULL
-);
---> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "games" (
 	"userId" text NOT NULL,
 	"gameId" text NOT NULL,
 	"gameName" "gameName",
 	"gameScore" integer,
 	"createdAt" timestamp DEFAULT now()
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "language" (
+	"userId" text NOT NULL,
+	"language" "languages" NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "missingWords" (
@@ -98,7 +98,10 @@ CREATE TABLE IF NOT EXISTS "words" (
 	"italianWord" text,
 	"spanishWord" text,
 	"frenchWord" text,
-	"knowledge" text,
+	"germanKnowledge" text,
+	"italianKnowledge" text,
+	"spanishKnowledge" text,
+	"frenchKnowledge" text,
 	"wordOrder" serial NOT NULL,
 	"courseOrder" integer
 );

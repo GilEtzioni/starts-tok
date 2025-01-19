@@ -1,5 +1,5 @@
 {
-  "id": "05cb629f-6577-44ef-8220-4ebbfc6d2638",
+  "id": "3a86436c-a4e7-42e4-9127-05bb217e1490",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -88,32 +88,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.current_language": {
-      "name": "current_language",
-      "schema": "",
-      "columns": {
-        "userId": {
-          "name": "userId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "language": {
-          "name": "language",
-          "type": "languages",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.games": {
       "name": "games",
       "schema": "",
@@ -149,6 +123,32 @@
           "primaryKey": false,
           "notNull": false,
           "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.language": {
+      "name": "language",
+      "schema": "",
+      "columns": {
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "languages",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},
@@ -591,8 +591,26 @@
           "primaryKey": false,
           "notNull": false
         },
-        "knowledge": {
-          "name": "knowledge",
+        "germanKnowledge": {
+          "name": "germanKnowledge",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "italianKnowledge": {
+          "name": "italianKnowledge",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "spanishKnowledge": {
+          "name": "spanishKnowledge",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "frenchKnowledge": {
+          "name": "frenchKnowledge",
           "type": "text",
           "primaryKey": false,
           "notNull": false

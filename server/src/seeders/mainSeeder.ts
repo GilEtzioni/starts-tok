@@ -5,6 +5,9 @@ import { missingWordSeeder } from "./seedersTables/missingWordSeeder";
 import { sentenceSeeder } from "./seedersTables/sentenceSeeder";
 import { userSeeder } from "./seedersTables/userSeeder";
 import { generateCourseIds, hangmanGameId, speedGameId, rowGameId } from "./utils/helpingSeeders";
+import { CourseLangauge } from "../types/seedersType";
+import { db } from "../drizzle/db";
+import { Language } from "../drizzle/schema";
 
 export const mainSeeder = async (userId: string) => {
 
@@ -34,6 +37,13 @@ export const mainSeeder = async (userId: string) => {
     console.log("\nstart seeding users...");
     await userSeeder(userId, userName);
     console.log("users seeded\n");
+
+    console.log("\nstart seeding CurrentLanguage...");
+    await db.insert(Language).values({
+      userId,
+      language: CourseLangauge.Italian,
+    });
+    console.log("CurrentLanguage seeded\n");
 
     console.log("\n\n---- seeding completed successfully ----\n\n");
 };

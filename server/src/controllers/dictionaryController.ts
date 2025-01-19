@@ -1,25 +1,67 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { Words, CourseNames } from "../drizzle/schema";
+import { Words, CourseNames, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, desc, count } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { DictionaryKnowledgeType } from "../types/dictionaryType"; 
+import { CourseLangauge } from "../types/seedersType";
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
-  const { userId } = getAuth(req);
-  if (!userId) {
-    res.status(401).json({ error: "Unauthorized" });
-    return;
-  } 
-
-  try {
-    const allWords = await db.select().from(Words).where(eq(Words.userId, userId));
-    res.json(allWords);
-  } catch (error) {
-    res.status(500).json({ message: "An error occurred while ", error });
-  }
-};
+    const { userId } = getAuth(req);
+    if (!userId) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+  
+    try {
+      const userLanguage = await db
+        .select()
+        .from(Language)
+        .where(eq(Language.userId, userId))
+        .limit(1);
+  
+      if (userLanguage.length === 0) {
+        res.status(404).json({ error: "User language not found" });
+        return;
+      }
+      const language = userLanguage[0].language;
+  
+      const allWords = await db
+        .select({
+          userId: Words.userId,
+          wordId: Words.wordId,
+          hebrewLevel: Words.hebrewLevel,
+          englishLevel: Words.englishLevel,
+          courseId: Words.courseId,
+          courseNameEnglish: Words.courseNameEnglish,
+          hebrewWord: Words.hebrewWord,
+          foreignWord: 
+            language === CourseLangauge.Spanish
+            ? Words.spanishWord
+            : language === CourseLangauge.Italian
+            ? Words.italianWord
+            : language === CourseLangauge.French
+            ? Words.frenchWord
+            : Words.germanWord,
+          knowledge: 
+            language === CourseLangauge.Spanish
+            ? Words.spanishKnowledge
+            : language === CourseLangauge.Italian
+            ? Words.italianKnowledge
+            : language === CourseLangauge.French
+            ? Words.frenchKnowledge
+            : Words.germanKnowledge,
+            courseOrder: Words.courseOrder,
+        })
+        .from(Words)
+        .where(eq(Words.userId, userId));
+  
+      res.json(allWords);
+    } catch (error) {
+      res.status(500).json({ message: "An error occurred while fetching words", error });
+    }
+  };
 
 export const getWordById = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -52,7 +94,6 @@ export const getWordById = async (req: Request, res: Response): Promise<void> =>
 
       res.json(word[0]);
   } catch (error) {
-      console.error("Error fetching word:", error);
       res.status(500).json({ message: "An error occurred while fetching the word", error });
   }
 };
@@ -61,82 +102,135 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
   const { userId } = getAuth(req);
 
   if (!userId) {
-      res.status(401).json({ error: "Unauthorized: User ID is missing" });
-      return;
+    res.status(401).json({ error: "Unauthorized: User ID is missing" });
+    return;
   }
 
-  const { germanWord, hebrewWord } = req.body;
+  const { foreignWord, hebrewWord } = req.body;
 
-  if (!germanWord || !hebrewWord) {
-      res.status(400).json({ error: "Missing 'germanWord' or 'hebrewWord' in request body" });
-      return;
+  if (!foreignWord || !hebrewWord) {
+    res.status(400).json({ error: "Missing 'foreignWord' or 'hebrewWord' in request body" });
+    return;
   }
 
   try {
+    const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(eq(Language.userId, userId))
+      .limit(1);
+
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+
+    const language = userLanguage[0].language;
+
     const [lastCourseIndex] = await db
-    .select()
-    .from(CourseNames)
-    .where(eq(CourseNames.userId, userId))
-    .orderBy(desc(CourseNames.courseId))
-    .limit(1);
+      .select()
+      .from(CourseNames)
+      .where(eq(CourseNames.userId, userId))
+      .orderBy(desc(CourseNames.courseId))
+      .limit(1);
 
-      const courseId = lastCourseIndex?.courseId || "default-course-id"; 
+    const courseId = lastCourseIndex?.courseId || "default-course-id";
 
-      const newWord = await db
-          .insert(Words)
-          .values({
-              wordId: uuidv4().toString(),
-              userId: userId,
-              hebrewLevel: "המילים שהוספתי",
-              englishLevel: "userWords",
-              courseId,
-              courseNameEnglish: "userWords",
-              germanWord,
-              hebrewWord,
-              knowledge: DictionaryKnowledgeType.QuestionMark,
-          })
-          .returning({
-              id: Words.wordId,
-              germanWord: Words.germanWord,
-              hebrewWord: Words.hebrewWord,
-              hebrewLevel: Words.hebrewLevel,
-              englishLevel: Words.englishLevel,
-              courseId: Words.courseId,
-              courseNameEnglish: Words.courseNameEnglish,
-              knowledge: Words.knowledge,
-          });
+    const newWordId = uuidv4();
+    await db.insert(Words).values({
+      wordId: newWordId,
+      userId,
+      hebrewLevel: "המילים שהוספתי",
+      englishLevel: "userWords",
+      courseId,
+      courseNameEnglish: "userWords",
+      hebrewWord,
+      spanishWord: language === CourseLangauge.Spanish ? foreignWord : null,
+      frenchWord: language === CourseLangauge.French ? foreignWord : null,
+      germanWord: language === CourseLangauge.German ? foreignWord : null,
+      italianWord: language === CourseLangauge.Italian ? foreignWord : null,
+      spanishKnowledge: language === CourseLangauge.Spanish ? DictionaryKnowledgeType.QuestionMark : null,
+      frenchKnowledge: language === CourseLangauge.French ? DictionaryKnowledgeType.QuestionMark : null,
+      germanKnowledge: language === CourseLangauge.German ? DictionaryKnowledgeType.QuestionMark : null,
+      italianKnowledge: language === CourseLangauge.Italian ? DictionaryKnowledgeType.QuestionMark : null,
+    });
 
-      res.status(201).json(newWord[0]);
+    const insertedWord = await db
+      .select()
+      .from(Words)
+      .where(eq(Words.wordId, newWordId))
+      .limit(1);
+
+    res.status(201).json(insertedWord[0]);
   } catch (error) {
-      console.error("Error adding new word:", error);
-      res.status(500).json({ message: "An error occurred while adding a new word", error });
+    res.status(500).json({ message: "An error occurred while adding a new word", error });
   }
 };
 
+
 export const editWord = async (req: Request, res: Response): Promise<void> => {
-  const { id } = req.params; 
-  const { knowledge } = req.body; 
+  const { id } = req.params;
+  const { knowledge } = req.body;
+
+  const { userId } = getAuth(req);
+
+  if (!userId) {
+    res.status(401).json({ error: "Unauthorized: User ID is missing" });
+    return;
+  }
 
   if (!knowledge) {
-      res.status(400).send("Missing 'knowledge' in request body");
-      return;
+    res.status(400).send("Missing 'knowledge' in request body");
+    return;
   }
 
   try {
-      const updatedRows = await db
-          .update(Words)
-          .set({ knowledge }) 
-          .where(eq(Words.wordId, id))
-          .returning();
+    // Fetch the user's language
+    const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(eq(Language.userId, userId))
+      .limit(1);
 
-      if (updatedRows.length === 0) {
-          res.status(404).send("Word not found");
-          return;
-      }
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+    const language = userLanguage[0].language;
 
-      res.json(updatedRows[0]);
+    const updateFields: Partial<typeof Words> = {};
+    if (language === CourseLangauge.German) {
+      updateFields.germanKnowledge = knowledge;
+    } else if (language === CourseLangauge.Italian) {
+      updateFields.italianKnowledge = knowledge;
+    } else if (language === CourseLangauge.Spanish) {
+      updateFields.spanishKnowledge = knowledge;
+    } else if (language === CourseLangauge.French) {
+      updateFields.frenchKnowledge = knowledge;
+    }
+
+    if (Object.keys(updateFields).length === 0) {
+      res.status(400).send("Invalid language for update");
+      return;
+    }
+
+    // update only the specified language
+    const updatedRows = await db
+      .update(Words)
+      .set(updateFields)
+      .where(
+        and(eq(Words.wordId, id), eq(Words.userId, userId))
+      )
+      .returning();
+
+    if (updatedRows.length === 0) {
+      res.status(404).send("Word not found");
+      return;
+    }
+
+    res.json(updatedRows[0]);
   } catch (error) {
-    res.status(500).json({ message: "An error occurred while ", error });
+    res.status(500).json({ message: "An error occurred while updating the word", error });
   }
 };
 
@@ -154,12 +248,11 @@ export const getFinishedWordsCounter = async (req: Request, res: Response): Prom
             .from(Words)
             .where(
                 and(
-                    eq(Words.knowledge, DictionaryKnowledgeType.Vy),
+                    eq(Words.germanKnowledge, DictionaryKnowledgeType.Vy),
                     eq(Words.userId, userId)
                 )
             );
 
-        // check if no words were found
         if (!wordFinishCounter) {
             res.status(404).json({ error: "Words not found in /dictionary/finished" });
             return;

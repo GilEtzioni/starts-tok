@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { CourseNames, Words, Sentences, MissingWords } from "../drizzle/schema";
+import { CourseNames, Words, Sentences, MissingWords, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { and, eq, sql, notInArray } from "drizzle-orm";
 import { shuffleArray } from "../seeders/utils/helpingSeeders";
@@ -14,15 +14,25 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
   }
 
   try {
-      const coursesSubjects = await db
-      .select().from(CourseNames)
-      .where(
-        and(
-            eq(CourseNames.userId, userId),
-            eq(CourseNames.language ,"german")
-        )
-      );
-      res.json(coursesSubjects);
+    const userLanguage = await db
+    .select().
+    from(Language)
+    .where(
+      eq(CourseNames.userId, userId),
+    )
+    .limit(1);
+
+    const coursesSubjects = await db
+    .select().
+    from(CourseNames)
+    .where(
+      and(
+          eq(CourseNames.userId, userId),
+          eq(CourseNames.language ,userLanguage[0].language)
+      )
+    );
+    res.json(coursesSubjects);
+
   } catch (error) {
     res.status(500).json({ message: "An error occurred while ", error });
   }
@@ -39,20 +49,33 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
   }
 
   try {
-      const coursesSubjects = await db.select({
-          level: CourseNames.englishLevel,
-          totalLessonsCompleted: sql`SUM(${CourseNames.lessonCompleted}) / 6`
+    const userLanguage = await db
+    .select()
+    .from(Language)
+    .where(eq(Language.userId, userId))
+    .limit(1);
+
+  if (userLanguage.length === 0) {
+    res.status(404).json({ error: "User language not found" });
+    return;
+  }
+  const language = userLanguage[0].language;
+
+    const coursesSubjects = await db.select({
+      level: CourseNames.englishLevel,
+      totalLessonsCompleted: sql`SUM(${CourseNames.lessonCompleted}) / 6`
       })
       .from(CourseNames)
       .where(
         and(
             eq(CourseNames.userId, userId),
-            eq(CourseNames.language ,"german")
+            eq(CourseNames.language ,language)
         )
       )
       .groupBy(CourseNames.englishLevel);
 
       res.json(coursesSubjects);
+
   } catch (error) {
     res.status(500).json({ message: "An error occurred while ", error });
   }
@@ -70,6 +93,18 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
     }
   
     try {
+      const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(eq(Language.userId, userId))
+      .limit(1);
+  
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+    const language = userLanguage[0].language;
+
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
         const coursesSubjects = await db
         .select().
@@ -78,7 +113,7 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
             and(
                 eq(CourseNames.englishLevel, userLevel),
                 eq(CourseNames.userId, userId),
-                eq(CourseNames.language ,"german")
+                eq(CourseNames.language ,language)
             )
           )
         .orderBy(CourseNames.courseOrder);
@@ -323,6 +358,14 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
     const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
     const course = req.params.course;
 
+    const userLanguage = await db
+    .select().
+    from(Language)
+    .where(
+      eq(CourseNames.userId, userId),
+    )
+    .limit(1);
+
     // step 1: find current lesson order
     const lessonNumber = await db
       .select()
@@ -332,7 +375,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           eq(CourseNames.userId, userId),
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
-          eq(CourseNames.language, "german")
+          eq(CourseNames.language, userLanguage[0].language)
         )
       )
       .limit(1);
@@ -361,7 +404,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
           eq(CourseNames.userId, userId),
-          eq(CourseNames.language, "german")
+          eq(CourseNames.language, userLanguage[0].language)
         )
       )
       .limit(1);
@@ -381,7 +424,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           eq(CourseNames.courseId, courseToUpdate.courseId),
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
-          eq(CourseNames.language, "german")
+          eq(CourseNames.language, userLanguage[0].language)
         )
       )
       .returning();

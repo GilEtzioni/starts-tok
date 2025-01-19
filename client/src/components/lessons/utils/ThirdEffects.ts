@@ -31,8 +31,6 @@ export const useGetData = ({ lessonsData, order, setHebrewSentence , setGermanWo
     useEffect(() => {
       if (!lessonsData) return;
 
-      console.log("lessonsData: ", lessonsData)
-
       const lesson = lessonsData[0];
       const germanSentence = getGermanSentence(lesson, order);
       const hebrewSentence = getHebrewSentence(lesson, order);

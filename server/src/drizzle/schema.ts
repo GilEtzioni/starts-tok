@@ -30,8 +30,11 @@ export const Words = pgTable("words", {
     germanWord: text("germanWord"),
     italianWord: text("italianWord"),
     spanishWord: text("spanishWord"),
-    frenchWord: text("frenchWord"),
-    knowledge: text("knowledge"),
+    frenchWord: text("frenchWord"),    
+    germanKnowledge: text("germanKnowledge"),
+    italianKnowledge: text("italianKnowledge"),
+    spanishKnowledge: text("spanishKnowledge"),
+    frenchKnowledge: text("frenchKnowledge"),
     wordOrder: serial("wordOrder"),
     courseOrder: integer("courseOrder"),
 });
@@ -122,7 +125,7 @@ export const Users = pgTable("users", {
     pointsDate: date("pointsDate").defaultNow(),
 });
 
-export const CurrentLanguage = pgTable("current_language", {
+export const Language = pgTable("language", {
     userId: text("userId").notNull(),
     language: languagesEnum("language").notNull(),
 });
