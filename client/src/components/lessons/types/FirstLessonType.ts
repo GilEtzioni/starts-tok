@@ -10,3 +10,9 @@ export enum IsSelected {
     word: string, 
     isSelected: IsSelected,
   }
+
+  export type FirstCardType = {
+    hebrewWord: string,
+    foreignWord: string,
+    coupleId: number
+  }

@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
 import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
-import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
+import { FirstCardType, FirstLessonType, IsSelected } from '../types/FirstLessonType';
 import { WordsType, SenteceType } from "../../../api/common/types";
 
 interface UseCardEffectsProps {
-    lessonsData: WordsType[] | undefined;
+    lessonsData: FirstCardType[] | undefined;
     order: number;
     germanId: number;
     hebrewId: number;

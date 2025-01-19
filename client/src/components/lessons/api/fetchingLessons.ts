@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient  } from '@tanstack/react-query';
 import { MissingWordType, SenteceType } from "../../../api/common/types";
 import { WordsType } from '../../../api/common/types';
 import axiosInstance from './axiosInstance';
+import { FirstCardType } from '../types/FirstLessonType';
 
 const FIRST_LESSON = '/main/firstLessonWords/${name}/${lesson}/'
 const SECOND_LESSON_SENTENCE = '/main/secondLessonSentence/${name}/${lesson}/'
@@ -12,7 +13,7 @@ const THIRD_LESSON = '/main/thirdLesson/${name}/${lesson}/'
 
 // first lesson data
 
-const fetchLessonWords = async ({ queryKey }: { queryKey: [string, string, string] }): Promise<SenteceType[]> => {
+const fetchLessonWords = async ({ queryKey }: { queryKey: [string, string, string] }): Promise<FirstCardType[]> => {
   const [, name, lesson] = queryKey; 
   const { data } = await axiosInstance.get(FIRST_LESSON.replace('${name}', name).replace('${lesson}', lesson));
   return data;

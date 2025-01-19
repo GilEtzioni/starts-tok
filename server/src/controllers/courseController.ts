@@ -4,6 +4,7 @@ import { CourseNames, Words, Sentences, MissingWords, Language } from "../drizzl
 import { getAuth } from "@clerk/express";
 import { and, eq, sql, notInArray } from "drizzle-orm";
 import { shuffleArray } from "../seeders/utils/helpingSeeders";
+import { CourseLangauge } from "../types/seedersType";
 
 export const getCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -15,12 +16,16 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
 
   try {
     const userLanguage = await db
-    .select().
-    from(Language)
-    .where(
-      eq(CourseNames.userId, userId),
-    )
+    .select()
+    .from(Language)
+    .where(eq(Language.userId, userId))
     .limit(1);
+
+  if (userLanguage.length === 0) {
+    res.status(404).json({ error: "User language not found" });
+    return;
+  }
+  const language = userLanguage[0].language;
 
     const coursesSubjects = await db
     .select().
@@ -28,7 +33,7 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
     .where(
       and(
           eq(CourseNames.userId, userId),
-          eq(CourseNames.language ,userLanguage[0].language)
+          eq(CourseNames.language ,language)
       )
     );
     res.json(coursesSubjects);
@@ -138,6 +143,18 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
       const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ; // string
       const course = req.params.course;                                                  // string
 
+      const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(eq(Language.userId, userId))
+      .limit(1);
+
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+    const language = userLanguage[0].language;
+
       const lessonNumber = await db.select().from(CourseNames).where(
         and(
           eq(CourseNames.englishLevel, userLevel),
@@ -159,16 +176,55 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
 
       // Step 1: Find the first not completed lesson
       const currLesson = await db.select().from(MissingWords).where(
-              and(
-                  eq(MissingWords.englishLevel, userLevel),
-                  eq(MissingWords.courseNameEnglish, course),
-                  eq(MissingWords.lessonOrder, lessonOrder),
-                  eq(MissingWords.userId, userId)),
-              )
-          .orderBy(MissingWords.lessonOrder)     // order by id (createdAt)
-          .limit(1);                             // only the first completed lesson
+        and(
+          eq(MissingWords.englishLevel, userLevel),
+          eq(MissingWords.courseNameEnglish, course),
+          eq(MissingWords.lessonOrder, lessonOrder),
+          eq(MissingWords.userId, userId)),
+        )
+        .orderBy(MissingWords.lessonOrder)     // order by id (createdAt)
+        .limit(1);                             // only the first completed lesson
 
-          res.json(currLesson);
+        const result = {
+          missingSentenceOneHebrew: currLesson[0].missingSentenceOneHebrew,
+          missingWordOneHebrew: currLesson[0].missingWordOneHebrew,
+          missingSentenceTwoHebrew: currLesson[0].missingSentenceTwoHebrew,
+          missingWordTwoHebrew: currLesson[0].missingWordTwoHebrew,
+          missingSentenceOneForeign: "",
+          missingWordOneForeign: "",
+          missingSentenceTwoForeign: "",
+          missingWordTwoForeign: "",
+        };
+        
+        if (language === CourseLangauge.German) {
+          result.missingSentenceOneForeign = currLesson[0].missingSentenceOneGerman ?? "";
+          result.missingWordOneForeign = currLesson[0].missingWordOneGerman ?? "";
+          result.missingSentenceTwoForeign = currLesson[0].missingSentenceTwoGerman ?? "";
+          result.missingWordTwoForeign = currLesson[0].missingWordTwoGerman ?? "";
+        }
+
+        if (language === CourseLangauge.French) {
+          result.missingSentenceOneForeign = currLesson[0].missingSentenceOneFrench ?? "";
+          result.missingWordOneForeign = currLesson[0].missingWordOneFrench ?? "";
+          result.missingSentenceTwoForeign = currLesson[0].missingSentenceTwoFrench ?? "";
+          result.missingWordTwoForeign = currLesson[0].missingWordTwoFrench ?? "";
+        }
+
+        if (language === CourseLangauge.Italian) {
+          result.missingSentenceOneForeign = currLesson[0].missingSentenceOneItalian ?? "";
+          result.missingWordOneForeign = currLesson[0].missingWordOneItalian ?? "";
+          result.missingSentenceTwoForeign = currLesson[0].missingSentenceTwoItalian ?? "";
+          result.missingWordTwoForeign = currLesson[0].missingWordTwoItalian ?? "";
+        }
+
+        if (language === CourseLangauge.Spanish) {
+          result.missingSentenceOneForeign = currLesson[0].missingSentenceOneSpanish ?? "";
+          result.missingWordOneForeign = currLesson[0].missingWordOneSpanish ?? "";
+          result.missingSentenceTwoForeign = currLesson[0].missingSentenceTwoSpanish ?? "";
+          result.missingWordTwoForeign = currLesson[0].missingWordTwoSpanish ?? "";
+        }
+
+      res.json(result);
 
   } catch (error) {
     res.status(500).json({ message: "An error occurred while ", error });
@@ -188,6 +244,18 @@ export const getSecondLessonWords = async (req: Request, res: Response): Promise
   try {
     const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
     const course = req.params.course;
+
+    const userLanguage = await db
+    .select()
+    .from(Language)
+    .where(eq(Language.userId, userId))
+    .limit(1);
+
+  if (userLanguage.length === 0) {
+    res.status(404).json({ error: "User language not found" });
+    return;
+  }
+  const language = userLanguage[0].language;
 
   const lessonNumber = await db.select().from(CourseNames).where(
     and(
@@ -270,11 +338,33 @@ export const getSecondLessonWords = async (req: Request, res: Response): Promise
     const result: (string[])[] = [];
 
     firstLesson.push(shuffleArray(firstWordsArray));
-    firstLesson.push(firstCourseWords.map((word) => word.germanWord).filter((word): word is string => word !== null));
+    if (language === CourseLangauge.German) {
+      firstLesson.push(firstCourseWords.map((word) => word.germanWord).filter((word): word is string => word !== null));
+    }
+    else if (language === CourseLangauge.Italian) {
+      firstLesson.push(firstCourseWords.map((word) => word.italianWord).filter((word): word is string => word !== null));
+    }
+    else if (language === CourseLangauge.French) {
+      firstLesson.push(firstCourseWords.map((word) => word.frenchWord).filter((word): word is string => word !== null));
+    }
+    else if (language === CourseLangauge.Spanish) {
+      firstLesson.push(firstCourseWords.map((word) => word.spanishWord).filter((word): word is string => word !== null));
+    }
     const firstLessonRandom = shuffleArray(firstLesson);
 
     secondLesson.push(shuffleArray(secondWordsArray));
-    secondLesson.push(secondCourseWords.map((word) => word.germanWord).filter((word): word is string => word !== null));
+    if (language === CourseLangauge.German) {
+      firstLesson.push(secondCourseWords.map((word) => word.germanWord).filter((word): word is string => word !== null));
+    }
+    else if (language === CourseLangauge.Italian) {
+      firstLesson.push(secondCourseWords.map((word) => word.italianWord).filter((word): word is string => word !== null));
+    }
+    else if (language === CourseLangauge.French) {
+      firstLesson.push(secondCourseWords.map((word) => word.frenchWord).filter((word): word is string => word !== null));
+    }
+    else if (language === CourseLangauge.Spanish) {
+      firstLesson.push(secondCourseWords.map((word) => word.spanishWord).filter((word): word is string => word !== null));
+    }
     const secondLessonRandom = shuffleArray(secondLesson);
 
     result.push(firstLessonRandom.flat());
@@ -355,16 +445,20 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
   }
 
   try {
-    const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
-    const course = req.params.course;
+    const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ; // string
+    const course = req.params.course;                                                   // string
 
     const userLanguage = await db
-    .select().
-    from(Language)
-    .where(
-      eq(CourseNames.userId, userId),
-    )
+    .select()
+    .from(Language)
+    .where(eq(Language.userId, userId))
     .limit(1);
+
+  if (userLanguage.length === 0) {
+    res.status(404).json({ error: "User language not found" });
+    return;
+  }
+  const language = userLanguage[0].language;
 
     // step 1: find current lesson order
     const lessonNumber = await db
@@ -375,7 +469,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           eq(CourseNames.userId, userId),
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
-          eq(CourseNames.language, userLanguage[0].language)
+          eq(CourseNames.language, language)
         )
       )
       .limit(1);
@@ -404,7 +498,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
           eq(CourseNames.userId, userId),
-          eq(CourseNames.language, userLanguage[0].language)
+          eq(CourseNames.language, language)
         )
       )
       .limit(1);
@@ -424,7 +518,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
           eq(CourseNames.courseId, courseToUpdate.courseId),
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
-          eq(CourseNames.language, userLanguage[0].language)
+          eq(CourseNames.language, language)
         )
       )
       .returning();
@@ -447,18 +541,73 @@ export const getFirstLessonWords = async (req: Request, res: Response): Promise<
   
     try {
         const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ; // string
-        const course = req.params.course;                                                  // string
+        const course = req.params.course;                                                   // string
+
+        const userLanguage = await db
+        .select()
+        .from(Language)
+        .where(eq(Language.userId, userId))
+        .limit(1);
+  
+      if (userLanguage.length === 0) {
+        res.status(404).json({ error: "User language not found" });
+        return;
+      }
+      const language = userLanguage[0].language;
   
         const currLesson = await db.select().from(Words).where(
-                and(
-                    eq(Words.englishLevel, userLevel),
-                    eq(Words.courseNameEnglish, course),
-                    eq(Words.userId, userId))
-                )
-                .orderBy(sql`RANDOM()`)
-                .limit(6)
-  
-            res.json(currLesson);
+          and(
+            eq(Words.englishLevel, userLevel),
+            eq(Words.courseNameEnglish, course),
+            eq(Words.userId, userId))
+        )
+        .orderBy(sql`RANDOM()`)
+        .limit(6)
+
+        const result: Array<{hebrewWord: string, foreignWord: string, coupleId: number}> = [];
+
+        if (language === CourseLangauge.German) {
+          currLesson.map((item, coupleId) => {
+            result.push({
+              hebrewWord: item.hebrewWord ?? "",
+              foreignWord: item.germanWord ?? "",
+              coupleId: coupleId + 1, 
+            });
+          });
+        }
+        
+        if (language === CourseLangauge.French) {
+          currLesson.map((item, coupleId) => {  
+            result.push({
+              hebrewWord: item.hebrewWord ?? "",
+              foreignWord: item.frenchWord ?? "",
+              coupleId: coupleId + 1, 
+            });
+          });
+        }
+        
+        if (language === CourseLangauge.Italian) {
+          currLesson.map((item, coupleId) => { 
+            result.push({
+              hebrewWord: item.hebrewWord ?? "",
+              foreignWord: item.italianWord ?? "",
+              coupleId: coupleId + 1, 
+            });
+          });
+        }
+        
+        if (language === CourseLangauge.Spanish) {
+          currLesson.map((item, coupleId) => {
+            result.push({
+              hebrewWord: item.hebrewWord ?? "",
+              foreignWord: item.spanishWord ?? "",
+              coupleId: coupleId + 1, 
+            });
+          });
+        }
+        
+        res.json(result);
+        
 
   
     } catch (error) {

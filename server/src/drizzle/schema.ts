@@ -102,7 +102,7 @@ export const MissingWords = pgTable("missingWords", {
 
     missingSentenceOneFrench: text("missingSentenceOneFrench"),
     missingWordOneFrench: text("missingWordOneFrench"),
-    missingSentenceFrench: text("missingSentenceFrench"),
+    missingSentenceTwoFrench: text("missingSentenceFrench"),
     missingWordTwoFrench: text("missingWordTwoFrench"),
 
     // words

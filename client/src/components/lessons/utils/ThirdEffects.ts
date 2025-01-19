@@ -29,16 +29,14 @@ interface useHandleInputProps {
 
 export const useGetData = ({ lessonsData, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman}: useGetDataProps) => {
     useEffect(() => {
-      if (!lessonsData) return;
+      if (!lessonsData || lessonsData.length === 0) return;
 
-      const lesson = lessonsData[0];
-      const germanSentence = getGermanSentence(lesson, order);
-      const hebrewSentence = getHebrewSentence(lesson, order);
-      const germanWord = getGermanWord(lesson, order);
+      const germanSentence = getGermanSentence(lessonsData, order);
+      const hebrewSentence = getHebrewSentence(lessonsData, order);
+      const germanWord = getGermanWord(lessonsData, order);
 
       setHebrewSentence(hebrewSentence);
       setGermanWord(germanWord);
-
 
       // split the German sentence
       const { firstPart, secondPart } = splitTheSentence(germanSentence, germanWord);

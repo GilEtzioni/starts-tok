@@ -46,41 +46,14 @@ export enum HebrewLevel {
   }
   
   export type MissingWordType = {
-    userId: string,
-    courseId: string,
-    lessonId: string,
-    hebrewLevel: HebrewLevel,
-    englishLevel: EnglishLevel,
-    courseNameEnglish: string,
-    lessonOneToSix: number,
-
     missingSentenceOneHebrew: string,
     missingWordOneHebrew: string,
     missingSentenceTwoHebrew: string,
     missingWordTwoHebrew: string,
-
-    missingSentenceOneGerman: string,
-    missingWordOneGerman: string,
-    missingSentenceTwoGerman: string,
-    missingWordTwoGerman: string,
-
-    missingSentenceOneItalian: string,
-    missingWordOneItalian: string,
-    missingSentenceTwoItalian: string,
-    missingWordTwoItalian: string,
-
-    missingSentenceOneSpanish: string,
-    missingWordOneSpanish: string,
-    missingSentenceTwoSpanish: string,
-    missingWordTwoSpanish: string,
-
-    missingSentenceOneFrench: string,
-    missingWordOneFrench: string,
-    missingSentenceFrench: string,
-    missingWordTwoFrench: string,
-
-    lessonOrder: number,
-    finished: boolean,
+    missingSentenceOneForeign: string,
+    missingWordOneForeign: string,
+    missingSentenceTwoForeign: string,
+    missingWordTwoForeign: string,
   }
 
   export type CourseType = {

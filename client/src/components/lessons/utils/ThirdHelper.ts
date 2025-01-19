@@ -3,13 +3,11 @@ import { MissingWordType } from "../../../api/common/types";
 export function getGermanMissingSentence(lessons: MissingWordType, order: number): string {
 
     let sentence: string = "";
-    // first lesson - only first sentence
     if (order === 3) {
-        sentence = lessons.missingSentenceOneGerman;
+        sentence = lessons.missingSentenceOneForeign;
     }
-    // second lesson - only last sentence
     if (order=== 6) {
-        sentence = lessons.missingSentenceTwoGerman
+        sentence = lessons.missingSentenceTwoForeign
     }
 
     return sentence;
@@ -18,11 +16,9 @@ export function getGermanMissingSentence(lessons: MissingWordType, order: number
 export function getHebewMissingSentence(lessons: MissingWordType, order: number): string {
 
   let sentence: string = "";
-  // first lesson - only first sentence
   if (order === 3) {
       sentence = lessons.missingSentenceOneHebrew;
   }
-  // second lesson - only last sentence
   if (order=== 6) {
       sentence = lessons.missingSentenceTwoHebrew;
   }
@@ -32,31 +28,29 @@ export function getHebewMissingSentence(lessons: MissingWordType, order: number)
 
 /*  ------------------------------------------------------ */
 
-export function getGermanWord(lessons: MissingWordType, order: number): string {
+export function getGermanWord(lessonsData: MissingWordType, order: number): string {
 
     let sentence: string = "";
-    // first lesson - only first sentence
     if (order=== 3) {
-      sentence = lessons.missingWordOneGerman;
+      sentence = lessonsData.missingWordOneForeign;
     }
-    // second lexsson - only last sentence
     if (order === 6) {
-      sentence = lessons.missingWordTwoGerman;
+      sentence = lessonsData.missingWordTwoForeign;
     }
 
     return sentence;
 }
 
-export function getHebrewWord(lessons: MissingWordType, order: number): string {
+export function getHebrewWord(lessonsData: MissingWordType, order: number): string {
 
   let sentence: string = "";
   // first lesson - only first sentence
   if (order=== 3) {
-    sentence = lessons.missingWordOneHebrew;
+    sentence = lessonsData.missingWordOneHebrew;
   }
   // second lexsson - only last sentence
   if (order === 6) {
-    sentence = lessons.missingWordTwoGerman;
+    sentence = lessonsData.missingWordTwoForeign;
   }
 
   return sentence;
@@ -64,30 +58,35 @@ export function getHebrewWord(lessons: MissingWordType, order: number): string {
 
 /*  ------------------------------------------------------ */
 
-export function getHebrewSentence(lessons: MissingWordType, order: number): string {
+export function getHebrewSentence(lessonsData: MissingWordType, order: number): string {
     let sentence: string = "";
     // first lesson - only first sentence
     if (order === 3) {
-        sentence = lessons.missingSentenceOneHebrew;
+        sentence = lessonsData.missingSentenceOneHebrew ?? "";
     }
     // second lesson - only last sentence
     if (order === 6) {
-        sentence = lessons.missingSentenceTwoHebrew;
+        sentence = lessonsData.missingSentenceTwoHebrew ?? "";
     }
     return sentence;
 }
 
-export function getGermanSentence(lessons: MissingWordType, order: number): string {
+export function getGermanSentence(lessonsData: MissingWordType, order: number): string {
 
   let sentence: string = "";
   // first lesson - only first sentence
   if (order === 3) {
-      sentence = lessons.missingSentenceOneGerman;
+      sentence = lessonsData.missingSentenceOneForeign ?? "";
   }
   // second lesson - only last sentence
-  if (order === 6) {
-      sentence = lessons.missingSentenceTwoGerman;
+  else if (order === 6) {
+      sentence = lessonsData.missingSentenceTwoForeign ?? "";
   }
+  else {
+  // Optionally handle cases where order is neither 3 nor 6
+    console.warn(`Unsupported order value: ${order}`);
+    sentence = ""; // or any default value you want to return for unsupported orders
+  } 
   return sentence;
 }
 

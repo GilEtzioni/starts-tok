@@ -1,7 +1,7 @@
 import { WordsType } from '../../../api/common/types'; 
-import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
+import { FirstCardType, FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
-export function getHebrewWords(lessons: WordsType[]): FirstLessonType[] {
+export function getHebrewWords(lessons: FirstCardType[]): FirstLessonType[] {
     const hebrewWordsArray: string[] = [];
 
     hebrewWordsArray.push(
@@ -29,16 +29,16 @@ export function getHebrewWords(lessons: WordsType[]): FirstLessonType[] {
     return combinedWordsArray;
 }
 
-export function getGermanWords(lessons: WordsType[]): FirstLessonType[] {
+export function getGermanWords(lessons: FirstCardType[]): FirstLessonType[] {
     const germanWordsArray: string[] = [];
 
     germanWordsArray.push(
-        lessons[0].germanWord,
-        lessons[1].germanWord,
-        lessons[2].germanWord,
-        lessons[3].germanWord,
-        lessons[4].germanWord,
-        lessons[5].germanWord,
+        lessons[0].foreignWord,
+        lessons[1].foreignWord,
+        lessons[2].foreignWord,
+        lessons[3].foreignWord,
+        lessons[4].foreignWord,
+        lessons[5].foreignWord,
     )
 
     const combinedWordsArray: FirstLessonType[] = [];
