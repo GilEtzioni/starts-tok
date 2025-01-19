@@ -37,10 +37,10 @@ export enum HebrewLevel {
     sentenceTwoSpanish: string,  
 
     sentenceOneFranch: string,  
-    sentenceTwoFranch: string,  
+    sentenceTwoFranch: string, 
 
+    lessonOrder: number,
     finished: boolean,
-    createdAt: Date,
   }
   
   export type MissingWordType = {
@@ -77,7 +77,7 @@ export enum HebrewLevel {
     missingSentenceFrench: string,
     missingWordTwoFrench: string,
 
-    createdAt: Date,
+    lessonOrder: number,
     finished: boolean,
   }
 
@@ -91,6 +91,7 @@ export enum HebrewLevel {
     courseNameHebrew: string;
     lessonCompleted: number;
     courseOrder: number,
+    language: string,
 };
   
   export interface WordsType {
@@ -98,7 +99,6 @@ export enum HebrewLevel {
     userId: string,
     wordId: string,
     courseNameEnglish: string,
-    createdAt: Date,
     englishLevel: EnglishLevel,
     germanWord: string,
     hebrewLevel: HebrewLevel,

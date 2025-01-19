@@ -14,9 +14,8 @@ export const CourseNames = pgTable("courses", {
     courseNameEnglish: text("courseNameEnglish"),
     courseNameGerman: text("courseNameGerman"),
     courseNameHebrew: text("courseNameHebrew"),
-    lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0), // 0-5 /* --------------------------- */
+    lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0), // 0-5
     courseOrder: integer("courseOrder"),
-    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
     language: languagesEnum("language"),
 });
 
@@ -35,7 +34,6 @@ export const Words = pgTable("words", {
     knowledge: text("knowledge"),
     wordOrder: serial("wordOrder"),
     courseOrder: integer("courseOrder"),
-    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
 export const Sentences = pgTable("sentences", {
@@ -46,7 +44,7 @@ export const Sentences = pgTable("sentences", {
     courseNameEnglish: text("courseNameEnglish"), // Greeting
     courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
 
-    lessonOneToSix: integer("lessonId"),               // 1-6
+    lessonOrder: integer("lessonId"),               // 0-5
 
     // sentences
     sentenceOneHebrew: text("sentenceOneHebrew"),
@@ -66,7 +64,6 @@ export const Sentences = pgTable("sentences", {
 
     // words
     finished: boolean("finished"),
-    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
 export const MissingWords = pgTable("missingWords", {
@@ -77,7 +74,7 @@ export const MissingWords = pgTable("missingWords", {
     courseNameEnglish: text("courseNameEnglish"), // Greeting
     courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
 
-    lessonOneToSix: integer("lessonId"),               // 1-6
+    lessonOrder: integer("lessonId"),               // 0-5
 
     // missing sentences
     missingSentenceOneHebrew: text("missingSentenceOneHebrew"),
@@ -107,7 +104,6 @@ export const MissingWords = pgTable("missingWords", {
 
     // words
     finished: boolean("finished"),
-    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
 });
 
 // "games" table

@@ -5,7 +5,7 @@ import axiosInstance from './axiosInstance';
 
 const FIRST_LESSON = '/main/firstLessonWords/${name}/${lesson}/'
 const SECOND_LESSON_SENTENCE = '/main/secondLessonSentence/${name}/${lesson}/'
-const SECOND_LESSON_WORDS = '/main/secondLessonMissingWords/${name}/${lesson}/'
+const SECOND_LESSON_WORDS = '/main/secondLessonWords/${name}/${lesson}/'
 const THIRD_LESSON = '/main/thirdLesson/${name}/${lesson}/'
 
 /* ------------------------------------------------------------ */

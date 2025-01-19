@@ -11,7 +11,7 @@ export interface SentenceType {
     hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי",
     englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2',
     courseNameEnglish: string,
-    lessonOneToSix: number,
+    lessonOrder: number,
 
     sentenceOneHebrew: string,
     sentenceTwoHebrew: string,
@@ -35,7 +35,7 @@ export interface SentenceType {
     hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי";
     englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
     courseNameEnglish: string;
-    lessonOneToSix: number;
+    lessonOrder: number;
 
     missingSentenceOneHebrew: string, 
     missingSentenceTwoHebrew: string, 

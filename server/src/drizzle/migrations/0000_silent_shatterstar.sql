@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS "courses" (
 	"courseNameHebrew" text,
 	"lessonCompleted" integer NOT NULL,
 	"courseOrder" integer,
-	"createdAt" timestamp DEFAULT now(),
 	"language" "languages",
 	CONSTRAINT "courses_courseId_unique" UNIQUE("courseId")
 );
@@ -57,8 +56,7 @@ CREATE TABLE IF NOT EXISTS "missingWords" (
 	"missingWordOneFrench" text,
 	"missingSentenceFrench" text,
 	"missingWordTwoFrench" text,
-	"finished" boolean,
-	"createdAt" timestamp DEFAULT now()
+	"finished" boolean
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sentences" (
@@ -78,8 +76,7 @@ CREATE TABLE IF NOT EXISTS "sentences" (
 	"sentenceTwoSpanish" text,
 	"sentenceOneFranch" text,
 	"sentenceTwoFranch" text,
-	"finished" boolean,
-	"createdAt" timestamp DEFAULT now()
+	"finished" boolean
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
@@ -103,8 +100,7 @@ CREATE TABLE IF NOT EXISTS "words" (
 	"frenchWord" text,
 	"knowledge" text,
 	"wordOrder" serial NOT NULL,
-	"courseOrder" integer,
-	"createdAt" timestamp DEFAULT now()
+	"courseOrder" integer
 );
 --> statement-breakpoint
 DO $$ BEGIN
