@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import { Button, Layout, Badge, Avatar, Image } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Button, Layout, Badge, Avatar, Image, Modal, Spin } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { SignedIn } from "@clerk/clerk-react";
 import { useAuth } from "@clerk/clerk-react";
-import { useFetchPointsData } from './api/fetchingLayout';
+import { useFetchPointsData, useFetchUserFlag } from './api/fetchingLayout';
+import Flags from './components/Flags';
+import { CourseLangauge } from '../../api/common/types';
 
 const { Header } = Layout;
-
 interface MainLayoutProps {
   myComponent: React.ReactNode;
   levelName: string;
@@ -15,7 +16,9 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
-  const { data: points, isLoading, error } = useFetchPointsData();
+  const { data: userFlag, isLoading: userFlagLoading, isError: userFlagError } = useFetchUserFlag();
+  const { data: points, isLoading: pointsLoading, isError: pointsError } = useFetchPointsData();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { signOut } = useAuth();
   const { getToken } = useAuth();
@@ -32,6 +35,40 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
 
     fetchToken();
   }, [getToken]);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const flagUrl = 
+  Array.isArray(userFlag) || userFlag === undefined
+    ? "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg" // fallback to USA flag
+    : userFlag === CourseLangauge.French
+    ? "https://www.svgrepo.com/show/401605/flag-for-france.svg"
+    : userFlag === CourseLangauge.German
+    ? "https://www.svgrepo.com/show/131993/germany.svg"
+    : userFlag === CourseLangauge.Italian
+    ? "https://www.svgrepo.com/show/401660/flag-for-italy.svg"
+    : userFlag === CourseLangauge.Spanish
+    ? "https://www.svgrepo.com/show/401755/flag-for-spain.svg"
+    : "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg";
+
+  if (userFlagLoading || pointsLoading) {
+    return (
+      <Layout>
+        <Header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-50 to-gray-100 shadow-md z-50 flex justify-between items-center px-6 py-4 border-b border-gray-200">
+          <Spin size="large" />
+        </Header>
+        <div className="pt-20 bg-white">
+          <Spin size="large" />
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -83,10 +120,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
 
           </div>
           <Badge
+            onClick={showModal}
             count={
               <Image
-                src="https://www.svgrepo.com/show/131993/germany.svg"
-                alt="German Flag"
+                src={flagUrl}
+                alt="Flag"
                 width={20}
                 height={18}
                 preview={false}
@@ -94,11 +132,27 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
               />
             }
           >
+
             <Avatar
               icon={<UserOutlined />}
               className="cursor-pointer hover:scale-105 transition-transform"
             />
           </Badge>
+
+          <Modal
+            visible={isModalVisible}
+            onCancel={handleCancel}
+            footer={null}
+            centered
+            closable={false}
+            maskClosable={true}
+            width={1000}
+            height={500}
+            className="custom-modal"
+          >
+            <Flags setIsModalVisible={setIsModalVisible} />
+          </Modal>
+
           <SignedIn>
             <Button
               type="primary"

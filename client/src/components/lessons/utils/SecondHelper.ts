@@ -101,10 +101,10 @@ export const getHebrewSentence = (lessons: SenteceType, order: number): string =
 
 export const getGermanSentence = (lessons: SenteceType, order: number): string => { 
     if (order === 2) {
-        return lessons.sentenceOneGerman;
+        return lessons.sentenceOneForeign;
     }
     if (order === 5) {
-        return lessons.sentenceTwoGerman;
+        return lessons.sentenceTwoForeign;
     }
     return "";
 }
@@ -174,7 +174,7 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
     const findAndPushMatches = (word: string): boolean => {
         const matchingWords = wordsArray.filter(item => item.hebrewWord === word);
         if (matchingWords.length > 0) {
-            const germanStrings = matchingWords.map(item => item.germanWord);
+            const germanStrings = matchingWords.map(item => item.foreignWord);
             const existingEntry = resultArray.find(entry => entry.hebrewString === word);
             if (existingEntry) {
                 existingEntry.germanString.push(...germanStrings);

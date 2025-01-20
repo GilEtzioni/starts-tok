@@ -295,13 +295,43 @@ export const getSecondLessonWords = async (req: Request, res: Response): Promise
       return;
     }
 
-    const firstWordsArray = currLesson[0].sentenceOneGerman
-    ? currLesson[0].sentenceOneGerman.replace(/[.,!?]/g, "").split(" ")
-    : [];
-  const secondWordsArray = currLesson[0].sentenceTwoGerman
-    ? currLesson[0].sentenceTwoGerman.replace(/[.,!?]/g, "").split(" ")
-    : [];
-  
+    let firstWordsArray: string[] = [];
+    if (language === CourseLangauge.Italian) {
+        firstWordsArray = currLesson[0]?.sentenceOneItalian?.replace(/[.,!?]/g, "").split(" ") || [];
+    } else if (language === CourseLangauge.Spanish) {
+        firstWordsArray = currLesson[0]?.sentenceOneSpanish?.replace(/[.,!?]/g, "").split(" ") || [];
+    } else if (language === CourseLangauge.German) {
+        firstWordsArray = currLesson[0]?.sentenceOneGerman?.replace(/[.,!?]/g, "").split(" ") || [];
+    } else if (language === CourseLangauge.French) {
+        firstWordsArray = currLesson[0]?.sentenceOneFranch?.replace(/[.,!?]/g, "").split(" ") || [];
+    }
+    
+    let secondWordsArray: string[] = [];
+    if (language === CourseLangauge.Italian) {
+        secondWordsArray = currLesson[0]?.sentenceTwoItalian?.replace(/[.,!?]/g, "").split(" ") || [];
+    } else if (language === CourseLangauge.Spanish) {
+        secondWordsArray = currLesson[0]?.sentenceTwoSpanish?.replace(/[.,!?]/g, "").split(" ") || [];
+    } else if (language === CourseLangauge.German) {
+        secondWordsArray = currLesson[0]?.sentenceTwoGerman?.replace(/[.,!?]/g, "").split(" ") || [];
+    } else if (language === CourseLangauge.French) {
+        secondWordsArray = currLesson[0]?.sentenceTwoFranch?.replace(/[.,!?]/g, "").split(" ") || [];
+    }
+    
+    const wordLanguage = (language: string) => {
+      switch (language) {
+        case CourseLangauge.German:
+          return Words.germanWord; 
+        case CourseLangauge.Italian:
+          return Words.italianWord;
+        case CourseLangauge.French:
+          return Words.frenchWord;
+        case CourseLangauge.Spanish:
+          return Words.spanishWord;
+        default:
+          return Words.germanWord; 
+      }
+    };
+
     const FIRST_FAILURE_WORDS = 12 - firstWordsArray.length;
     const SECOND_FAILURE_WORDS = 12 - secondWordsArray.length;
 
@@ -310,7 +340,7 @@ export const getSecondLessonWords = async (req: Request, res: Response): Promise
       .from(Words)
       .where(
         and(
-          notInArray(Words.germanWord, firstWordsArray),
+          notInArray(wordLanguage(language), firstWordsArray),
           eq(Words.englishLevel, userLevel),
           eq(Words.courseNameEnglish, course),
           eq(Words.userId, userId)
@@ -324,7 +354,7 @@ export const getSecondLessonWords = async (req: Request, res: Response): Promise
       .from(Words)
       .where(
         and(
-          notInArray(Words.germanWord, secondWordsArray),
+          notInArray(Words.italianWord, secondWordsArray),
           eq(Words.englishLevel, userLevel),
           eq(Words.courseNameEnglish, course),
           eq(Words.userId, userId)
@@ -397,6 +427,18 @@ export const getCourseSentence = async (req: Request, res: Response): Promise<vo
       const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ; // string
       const course = req.params.course;                                                  // string
 
+      const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(eq(Language.userId, userId))
+      .limit(1);
+  
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+    const language = userLanguage[0].language;
+
   const lessonNumber = await db.select().from(CourseNames).where(
     and(
       eq(CourseNames.englishLevel, userLevel),
@@ -416,18 +458,67 @@ export const getCourseSentence = async (req: Request, res: Response): Promise<vo
     return;
   }
 
+  const currLesson = await db.select().from(Sentences).where(
+    and(
+      eq(Sentences.englishLevel, userLevel),
+      eq(Sentences.courseNameEnglish, course),
+      eq(Sentences.lessonOrder, lessonOrder),
+      eq(Sentences.userId, userId)),
+      )
+    .orderBy(Sentences.lessonOrder)
+    .limit(1);
 
-      const currLesson = await db.select().from(Sentences).where(
-              and(
-                  eq(Sentences.englishLevel, userLevel),
-                  eq(Sentences.courseNameEnglish, course),
-                  eq(Sentences.lessonOrder, lessonOrder),
-                  eq(Sentences.userId, userId)),
-              )
-          .orderBy(Sentences.lessonOrder)
-          .limit(1);
+    const result: Array<{
+      sentenceOneHebrew: string,
+      sentenceTwoHebrew: string,
+      sentenceOneForeign: string,
+      sentenceTwoForeign: string,
+      }> = [];
 
-          res.json(currLesson);
+    if (language === CourseLangauge.German) {
+      currLesson.map((item) => {
+        result.push({
+          sentenceOneHebrew: item.sentenceOneHebrew ?? "",
+          sentenceTwoHebrew: item.sentenceTwoHebrew ?? "",
+          sentenceOneForeign: item.sentenceOneGerman ?? "",
+          sentenceTwoForeign: item.sentenceTwoGerman ?? "",
+        });
+      });
+    }
+    
+    if (language === CourseLangauge.French) {
+      currLesson.map((item) => {  
+        result.push({
+          sentenceOneHebrew: item.sentenceOneHebrew ?? "",
+          sentenceTwoHebrew: item.sentenceTwoHebrew ?? "",
+          sentenceOneForeign: item.sentenceOneFranch ?? "",
+          sentenceTwoForeign: item.sentenceTwoFranch ?? "",
+        });
+      });
+    }
+    
+    if (language === CourseLangauge.Italian) {
+      currLesson.map((item) => { 
+        result.push({
+          sentenceOneHebrew: item.sentenceOneHebrew ?? "",
+          sentenceTwoHebrew: item.sentenceTwoHebrew ?? "",
+          sentenceOneForeign: item.sentenceOneItalian ?? "",
+          sentenceTwoForeign: item.sentenceTwoItalian ?? "",
+        });
+      });
+    }
+    
+    if (language === CourseLangauge.Spanish) {
+      currLesson.map((item) => {
+        result.push({
+          sentenceOneHebrew: item.sentenceOneHebrew ?? "",
+          sentenceTwoHebrew: item.sentenceTwoHebrew ?? "",
+          sentenceOneForeign: item.sentenceOneSpanish?? "",
+          sentenceTwoForeign: item.sentenceTwoSpanish ?? "",
+        });
+      });
+    }
+    res.json(result);
 
   } catch (error) {
     res.status(500).json({ message: "An error occurred while ", error });

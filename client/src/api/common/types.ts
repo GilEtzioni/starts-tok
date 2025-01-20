@@ -18,31 +18,10 @@ export enum HebrewLevel {
   שפתאם = "שפת אם",
 }
   export type SenteceType = {
-    userId: string,
-    courseId: string,
-    lessonId: string,
-    hebrewLevel: HebrewLevel,
-    englishLevel: EnglishLevel,
-    courseNameEnglish: string,
-    lessonOneToSix: number,
-
-    sentenceOneHebrew: string,
+    sentenceOneForeign: string, 
+    sentenceTwoForeign: string, 
+    sentenceOneHebrew: string, 
     sentenceTwoHebrew: string,
-
-    sentenceOneGerman: string,  
-    sentenceTwoGerman: string, 
-
-    sentenceOneItalian: string,  
-    sentenceTwoItalian: string,  
-
-    sentenceOneSpanish: string,  
-    sentenceTwoSpanish: string,  
-
-    sentenceOneFranch: string,  
-    sentenceTwoFranch: string, 
-
-    lessonOrder: number,
-    finished: boolean,
   }
   
   export type MissingWordType = {
@@ -75,13 +54,12 @@ export enum HebrewLevel {
     wordId: string,
     courseNameEnglish: string,
     englishLevel: EnglishLevel,
-    germanWord: string,
     hebrewLevel: HebrewLevel,
     hebrewWord: string,
     foreignWord: string,
     knowledge: DictionaryKnowledgeType,
-    wordOrder: number,
     courseOrder: number,
+    wordOrder: number
   }
 
 export interface GamesType {
@@ -108,4 +86,11 @@ export type weekPointsType = {
   date: string,
   points: number,
   day: string
+}
+
+export enum CourseLangauge {
+  German = "german",
+  Italian = "italian",
+  Spanish = "spanish",
+  French = "french",
 }

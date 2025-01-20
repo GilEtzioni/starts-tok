@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table, TableProps, Typography, Row, Col, Image } from 'antd';
 
-import germanyPNG from "./germanIcon.png";
-import usaPNG from "./usaIcon.png";
-import francePNG from "./franceIcon.png";
+import germanyPNG from "../../images/germanIcon.png"
+import usaPNG from "../../images/usaIcon.png";
+import francePNG from "../../images/franceIcon.png";
 
 const UsersTable: React.FC = () => {
   const columns: TableProps<{ key: number; logo: any; name: string; points: number }>['columns'] = [

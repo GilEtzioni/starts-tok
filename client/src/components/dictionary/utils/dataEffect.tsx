@@ -39,7 +39,7 @@ const useFilteredWords = (words: WordsType[] | undefined) => {
     }
 
     // show the filtered data by the id order
-    setFilteredWords(sortWordsById(filtered));
+    setFilteredWords(filtered);
   }, [words, level, clicks, knowledge]);
 
   return { filteredWords, translatedWords, setTranslatedWords };

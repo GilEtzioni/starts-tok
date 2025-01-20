@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { Words, CourseNames, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
-import { eq, and, desc, count } from "drizzle-orm";
+import { eq, and, desc, count, isNotNull } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { DictionaryKnowledgeType } from "../types/dictionaryType"; 
 import { CourseLangauge } from "../types/seedersType";
@@ -26,7 +26,16 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
         return;
       }
       const language = userLanguage[0].language;
-  
+
+      const foreignWordColumn = 
+      language === CourseLangauge.Spanish
+        ? Words.spanishWord
+        : language === CourseLangauge.Italian
+        ? Words.italianWord
+        : language === CourseLangauge.French
+        ? Words.frenchWord
+        : Words.germanWord;
+
       const allWords = await db
         .select({
           userId: Words.userId,
@@ -55,7 +64,13 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
             courseOrder: Words.courseOrder,
         })
         .from(Words)
-        .where(eq(Words.userId, userId));
+        .where(
+          and(
+            eq(Words.userId, userId),
+            isNotNull(foreignWordColumn)
+          )
+        )
+        .orderBy(Words.wordOrder);
   
       res.json(allWords);
     } catch (error) {

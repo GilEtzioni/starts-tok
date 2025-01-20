@@ -58,10 +58,11 @@ export const useGetData = ({ lessonsData, cardsData, order, setGermanArray, setH
 export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, germanArray, order }: UseHandleNextProps) => { 
   useEffect(() => {
 
-    if (lessonsData === undefined) return;
+    if(!lessonsData) return;
 
-    const userAnswer = getUserAnswer(lessonsData[0], germanArray, order);  // user answer
-    const rightAnswer = getGermanSentence(lessonsData[0], order);          // right answer
+    const lessons = lessonsData[0]
+    const userAnswer = getUserAnswer(lessons, germanArray, order);
+    const rightAnswer = getGermanSentence(lessonsData[0], order);
     const isUserRight: boolean = areStringsEqual(userAnswer, rightAnswer); 
 
     if(clicks === 1) {

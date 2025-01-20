@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { Users} from "../drizzle/schema";
+import { Language, Users} from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, sum, sql} from "drizzle-orm";
 import { DaysOfTheWeek } from "../types/userType";
 import { getTodayDate, getDayDate, getLastWeekDate, convertDateToDay } from "../utils/userHelper"
+import { CourseLangauge } from "../types/seedersType";
 
 export const getAllPoints = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -179,3 +180,67 @@ export const getOneDayPoints = async (req: Request, res: Response): Promise<void
         res.status(500).json({ message: "An error occurred while fetching the points", error });
     }
 };
+
+/* ------------------------------------------------------------------------------------ */
+
+export const changeLanguage = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+    const { newLanguage } = req.body;
+
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+    }
+
+    if (!newLanguage) {
+        res.status(400).send("Missing 'newLanguage' in request body");
+        return;
+    }
+
+    if (!Object.values(CourseLangauge).includes(newLanguage)) {
+        res.status(400).send("Incorrect language type");
+        return;
+    }
+
+    try {
+        const updatedUser = await db
+        .update(Language)
+        .set({ language: newLanguage })
+        .where(
+            eq(Language.userId, userId)
+        )
+        .returning();
+
+
+        res.json(updatedUser[0].language);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred while fetching the language", error });
+    }
+};
+
+/* ------------------------------------------------------------------------------------ */
+
+export const getUserLanguage = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+    if (!userId) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+  
+    try {
+        const userLanguage = await db
+        .select()
+        .from(Language)
+        .where(eq(Language.userId, userId))
+        .limit(1);
+  
+      if (userLanguage.length === 0) {
+        res.status(404).json({ error: "User language not found" });
+        return;
+      }
+
+      res.json(userLanguage[0]?.language);
+    } catch (error) {
+      res.status(500).json({ message: "An error occurred while fetching words", error });
+    }
+  };
