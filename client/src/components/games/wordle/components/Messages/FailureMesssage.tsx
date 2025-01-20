@@ -7,7 +7,7 @@ import { setCurrentMode, resetSuccess ,resetClicks } from '../../slices/WordleSl
 import { RootState } from '../../../../../app/store';
 
 // fetching
-import { useAddNewScore } from '../../../api/fetchingGame';
+import { useAddNewScore } from "../../../../../api/games/mutateApi"
 
 // types + helping functions
 import { CurrentMode } from '../../ types/WordelType';

@@ -21,7 +21,7 @@ import TooShortMessage from './components/Messages/TooShortMessage';
 import { useStartGame } from './utilts/WordelEffects';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { useFetchWordsData } from '../api/fetchingGame';
+import { useFetchWordsData } from "../../../api/games/hooks"
 import { CurrentMode } from './ types/WordelType';
 
 const MainWordle: React.FC = () => {

@@ -19,7 +19,7 @@ import MainMessages from './components/Messages/MainMessages';
 import { HangmanType } from './types/hangmanType'; 
 import { WordsType } from "../../../api/common/types";
 import { useStartGame } from './utils/HangEffects';
-import { useFetchWordsData } from '../api/fetchingGame';
+import { useFetchWordsData } from "../../../api/games/hooks";
 
 const MainHangman: React.FC = () => {
 

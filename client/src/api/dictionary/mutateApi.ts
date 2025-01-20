@@ -2,7 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axiosInstance from '../common/axiosInstance';
 import { DICTIONARY, NEW_WORD } from './apiConstants';
 import { UpdatedWordType } from '../../components/dictionary/types/DictionaryType';
+
 /* ----------------------------------------------------------------- */
+
 export const useChangeWordKnowledge = () => {
   const queryClient = useQueryClient();
 
@@ -19,7 +21,9 @@ export const useChangeWordKnowledge = () => {
     }
   );
 };
+
 /* ----------------------------------------------------------------- */
+
 export const useAddNewWord = () => {
   const queryClient = useQueryClient();
 
@@ -31,7 +35,7 @@ export const useAddNewWord = () => {
     },
     {
       onSuccess: (data) => {
-        queryClient.invalidateQueries(['dictionaryNew']);
+        queryClient.invalidateQueries(['dictionary']);
       },
     }
   );

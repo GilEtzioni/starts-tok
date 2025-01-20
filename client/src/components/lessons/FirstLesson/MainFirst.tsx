@@ -9,7 +9,7 @@ import { RootState } from "../../../app/store";
 // components + functions
 import FirstCard from "./FirstCard"
 import { useGetData , useHandleClick} from '../utils/FirstEffects';
-import { useFetchLessonWords } from '../api/fetchingLessons';
+import { useFetchLessonWords } from '../../../api/lessons/hooks'; 
 import { useParams } from 'react-router-dom';
 import { FirstLessonType, IsSelected } from "../types/FirstLessonType";
 import { LessonStatus } from '../types/LessonType';

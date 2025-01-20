@@ -4,7 +4,7 @@ import { Card, Col, Row, Typography } from 'antd';
 import { useParams, Link } from 'react-router-dom';
 
 // fetch
-import { useFetchCoursesCardsData } from "./api/fetchingLessonsPage";
+import { useFetchCoursesCardsData } from "../../../api/pages/hooks";
 
 // components
 import CourseProgressBar from "./components/CourseProgressBar"

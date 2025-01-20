@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { getNumberOfLessonsCompleted } from "./Helper"
 import CourseCard from "./CourseCard";
-import { useFetchLessonData } from '../../../api/fetchingMainPage';
+import { useFetchLessonData } from '../../../../../../api/pages/hooks';
 import { Typography, Row } from 'antd';
 const CardContainer: React.FC = () => {
 

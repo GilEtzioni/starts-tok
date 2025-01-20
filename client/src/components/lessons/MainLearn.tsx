@@ -1,7 +1,6 @@
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../app/store";
-import classNames from 'classnames';
 
 // lessons components
 import MainFirst from "./FirstLesson/MainFirst";

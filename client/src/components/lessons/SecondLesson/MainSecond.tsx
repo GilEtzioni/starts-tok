@@ -15,7 +15,7 @@ import { CardType } from '../types/SecondLessonType';
 
 // fetch data
 import { useParams } from 'react-router-dom';
-import { useFetchSentence, useFetchWordsData, useFetchWordsContainer } from '../api/fetchingLessons';
+import { useFetchSentence, useFetchAllWords, useFetchWordsContainer } from '../../../api/lessons/hooks';
 import { LessonStatus } from '../types/LessonType';
 
 
@@ -24,7 +24,7 @@ const MainSecond: React.FC = () => {
     const { name, lesson } = useParams<{ name: string; lesson: string }>();
     const { data: lessonsData } = useFetchSentence(name || '', lesson || '');
     const { data: cardsData } = useFetchWordsContainer(name || '', lesson || '');
-    const { data: wordsData} = useFetchWordsData();
+    const { data: wordsData} = useFetchAllWords();
 
     const { Title } = Typography;
 

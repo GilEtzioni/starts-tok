@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Typography } from 'antd';
-import { useFetchOneDayUserData } from '../../api/fetchingUserData';
+import { useFetchOneDayUserData } from '../../../../../api/pages/hooks';
 import { fillMissingWeekDays } from '../TableMainPage/userTableHelper';
 import { weekPointsType } from '../../../../../api/common/types';
 

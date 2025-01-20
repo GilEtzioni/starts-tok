@@ -14,12 +14,12 @@ import { speedGameType, Language, SelectedCard } from "./types/speedGameTypes";
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../../app/store";
-import { useFetchWordsData } from "../api/fetchingGame";
+import { useFetchDictionaryData } from '../../../api/dictionary/hooks';
 import { WordsType } from '../../../api/common/types';
 
 const MainSpeedGame: React.FC = () => {
 
-    const { data: words, isLoading, error } = useFetchWordsData();
+    const { data: words, isLoading, error } = useFetchDictionaryData();
 
     const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
     const succcessCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);

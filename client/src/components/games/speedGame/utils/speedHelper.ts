@@ -56,7 +56,7 @@ export const createGameArray = (wordsArray: WordsType[] | undefined) => {
       newGermanArray.push({
         id: word.wordId || "",
         language: Language.GermanWord,
-        word: word?.germanWord,
+        word: word?.foreignWord,
         isSelected: SelectedCard.NotSelected,
         index: 0,
       });
@@ -149,7 +149,7 @@ export const replaceOldCard =
     id: newGermanArray[germanIndex].id,
     index: newGermanArray[germanIndex].index,
     language: Language.GermanWord,
-    word: newWord.germanWord || "",
+    word: newWord.foreignWord || "",
     isSelected: SelectedCard.NotSelected,
   };
 
@@ -174,7 +174,7 @@ export const deleteOldCards =
     id: newWord?.wordId || "",
     index: germanIndex,
     language: Language.GermanWord,
-    word: newWord.germanWord || "",
+    word: newWord.foreignWord || "",
     isSelected: SelectedCard.Failure,
   };
 

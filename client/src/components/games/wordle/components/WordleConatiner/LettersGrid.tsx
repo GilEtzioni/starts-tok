@@ -76,7 +76,7 @@ const LettersGrid: React.FC<WordsGridProps> = ({
   function handleEnter() {
     if (!words) return;
     const currentWord = gridAnswer[clicksCounter]?.map((item) => item?.letter).join('') || '';
-    const isWordInDataBase: boolean = words.some((item) => item.germanWord.toLowerCase() === currentWord.toLowerCase());
+    const isWordInDataBase: boolean = words.some((item) => item.foreignWord.toLowerCase() === currentWord.toLowerCase());
     const userAnswerLength: number = gridAnswer[clicksCounter]?.filter((item) => item !== null).length || 0;
     const answerLength = correctAnswer.length;
 

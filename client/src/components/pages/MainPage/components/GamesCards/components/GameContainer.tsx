@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import GameCard from './GameCard';
-import { fetchFinishedWordsCounter, useGameMaxScore } from '../../../api/fetchingMainPage'; 
+import { useGameMaxScore, useFetchWordsCounter } from "../../../../../../api/pages/hooks"
 import { Typography, Row } from 'antd';
 import { GameNameEnum } from '../types/mainPageTypes';
 import { useQuery } from '@tanstack/react-query';
@@ -11,10 +11,10 @@ const GameContainer: React.FC = () => {
   const { data: hangmanScore, isLoading: isLoadingHangman, error: errorHangman } = useGameMaxScore(GameNameEnum.Hangman);
   const { data: wordleScore, isLoading: isLoadingWordle, error: errorWordle } = useGameMaxScore(GameNameEnum.Wordle);
   const { data: speedScore, isLoading: isLoadingSpeed, error: errorSpeed } = useGameMaxScore(GameNameEnum.SpeedGame);
-  const { data: finishedWordsCount, isLoading: isLoadingFinishedWords, error: errorFinishedWords } = useQuery(
-    ['finishedWordsCounter'],
-    fetchFinishedWordsCounter
-  );
+  const { data: finishedWordsCount, isLoading: isLoadingFinishedWords, error: errorFinishedWords } = useFetchWordsCounter();
+  // const { data: finishedWordsCount, isLoading: isLoadingFinishedWords, error: errorFinishedWords } = useQuery(
+  //   ['finishedWordsCounter'],
+  // );
 
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];

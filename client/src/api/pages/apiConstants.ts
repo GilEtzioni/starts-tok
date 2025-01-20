@@ -1,0 +1,5 @@
+export const LESSON_PAGE = '/main/course/name'
+export const WEEKLY_POINTS = '/currentWeekPoints'
+export const FINISHED_WORDS = '/main/finished'
+export const MAX_POINTS = 'gameName/maxScore'
+export const DICTIONARY_COUNTER = '/finishedWords'

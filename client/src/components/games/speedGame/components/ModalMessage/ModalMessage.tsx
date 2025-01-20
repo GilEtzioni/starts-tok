@@ -14,7 +14,7 @@ import { speedGameType } from '../../types/speedGameTypes';
 import { WordsType } from "../../../../../api/common/types";
 import { shuffleAllWords, createGameArray } from "../../utils/speedHelper";
 
-import { useAddNewScore } from '../../../api/fetchingGame';
+import { useAddNewScore } from "../../../../../api/games/mutateApi"
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 
 interface ModalProps {

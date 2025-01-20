@@ -16,7 +16,7 @@ export const randomWordsArray = (words: WordsType[]): WordsType[] => {
 
   const suffeledArray = shuffleAllWords([...words]);
   const result: WordsType[] = suffeledArray.filter(
-    (item) => item.germanWord?.length === gridSize
+    (item) => item.foreignWord?.length === gridSize
   );
 
   return result;
@@ -24,7 +24,7 @@ export const randomWordsArray = (words: WordsType[]): WordsType[] => {
 
 export const getRandomWord = (words: WordsType[]): wordleType[] => {
   const index = Math.floor(Math.random() * words?.length);
-  const sentence = words[index]?.germanWord;
+  const sentence = words[index]?.foreignWord;
 
   const result: wordleType[] = [];
 

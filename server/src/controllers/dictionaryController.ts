@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { Words, CourseNames, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
-import { eq, and, desc, count, isNotNull } from "drizzle-orm";
+import { eq, and, desc, count, isNotNull, ilike } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { DictionaryKnowledgeType } from "../types/dictionaryType"; 
 import { CourseLangauge } from "../types/seedersType";
@@ -200,7 +200,6 @@ export const editWord = async (req: Request, res: Response): Promise<void> => {
   }
 
   try {
-    // Fetch the user's language
     const userLanguage = await db
       .select()
       .from(Language)
@@ -248,33 +247,53 @@ export const editWord = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: "An error occurred while updating the word", error });
   }
 };
-
 export const getFinishedWordsCounter = async (req: Request, res: Response): Promise<void> => {
-    const { userId } = getAuth(req);
-  
-    if (!userId) {
-        res.status(401).json({ error: "Unauthorized" });
-        return;
-    }
-  
-    try {
-        const [wordFinishCounter] = await db
-            .select({ count: count() })
-            .from(Words)
-            .where(
-                and(
-                    eq(Words.germanKnowledge, DictionaryKnowledgeType.Vy),
-                    eq(Words.userId, userId)
-                )
-            );
+  const { userId } = getAuth(req);
 
-        if (!wordFinishCounter) {
-            res.status(404).json({ error: "Words not found in /dictionary/finished" });
-            return;
-        }
+  if (!userId) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+  }
 
-        res.json(wordFinishCounter.count);
-    } catch (error) {
-        res.status(500).json({ message: "An error occurred while fetching the word count", error });
-    }
+  try {
+      const userLanguage = await db
+          .select()
+          .from(Language)
+          .where(eq(Language.userId, userId))
+          .limit(1);
+
+      if (userLanguage.length === 0) {
+          res.status(404).json({ error: "User language not found" });
+          return;
+      }
+
+      const language = userLanguage[0].language;
+
+      const wordFinishCounter = await db
+          .select({ count: count() })
+          .from(Words)
+          .where(
+              and(
+                  language === CourseLangauge.German
+                      ? ilike(Words.germanKnowledge, DictionaryKnowledgeType.Vy)
+                      : language === CourseLangauge.French
+                      ? ilike(Words.frenchKnowledge, DictionaryKnowledgeType.Vy)
+                      : language === CourseLangauge.Italian
+                      ? ilike(Words.italianKnowledge, DictionaryKnowledgeType.Vy)
+                      : language === CourseLangauge.Spanish
+                      ? ilike(Words.spanishKnowledge, DictionaryKnowledgeType.Vy)
+                      : undefined,
+                  eq(Words.userId, userId)
+              )
+          );
+
+      if (!wordFinishCounter || wordFinishCounter.length === 0) {
+          res.status(404).json({ error: "Words not found in /dictionary/finished" });
+          return;
+      }
+
+      res.json(wordFinishCounter[0].count);
+  } catch (error) {
+      res.status(500).json({ message: "An error occurred while fetching the word count", error });
+  }
 };

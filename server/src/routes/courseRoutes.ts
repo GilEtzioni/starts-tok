@@ -9,7 +9,7 @@ router.get("/main/finished", requireAuth(), getFinishedCourses);
 router.get("/main/course/:userLevel/", requireAuth(), getLevelLessons);
 router.get("/main/firstLessonWords/:userLevel/:course", requireAuth(), getFirstLessonWords);
 router.get("/main/secondLessonWords/:userLevel/:course", requireAuth(), getSecondLessonWords);
-router.get("/main/secondLessonSentence/:userLevel/:course", requireAuth(), getCourseSentence); /////
+router.get("/main/secondLessonSentence/:userLevel/:course", requireAuth(), getCourseSentence);
 router.get("/main/thirdLesson/:userLevel/:course", requireAuth(), getThirdLesson);             
 router.patch("/main/course/:userLevel/:course", requireAuth(), updateLesson);
 

@@ -12,7 +12,7 @@ import { RootState } from '../../../../../app/store';
 import { WordsType } from "../../../../../api/common/types";
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-import { useAddNewScore } from '../../../api/fetchingGame';
+import { useAddNewScore } from "../../../../../api/games/mutateApi"
 
 interface FailMessagesProps {
   words: WordsType[] | undefined;

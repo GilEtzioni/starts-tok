@@ -11,8 +11,7 @@ import { RootState } from '../../../app/store';
 import { resetOrder, resetPoints } from '../slices/LessonsSlice';
 
 // POST / PATCH
-import { usePatchFinishLesson } from "../api/fetchingLessons";
-import { useAddNewPoints } from '../api/fetchingPoints';
+import { usePatchFinishLesson, useAddNewPoints } from '../../../api/lessons/mutateApi';
 
 const FinishLessonMessage: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);

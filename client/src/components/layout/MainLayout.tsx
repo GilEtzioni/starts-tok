@@ -4,7 +4,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { SignedIn } from "@clerk/clerk-react";
 import { useAuth } from "@clerk/clerk-react";
-import { useFetchPointsData, useFetchUserFlag } from './api/fetchingLayout';
+import { useFetchPointsData, useFetchUserFlag } from "../../api/layout/hooks";
 import Flags from './components/Flags';
 import { CourseLangauge } from '../../api/common/types';
 
