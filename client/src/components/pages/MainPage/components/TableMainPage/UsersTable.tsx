@@ -53,7 +53,7 @@ const UsersTable: React.FC = () => {
   return (
     <div >
       <Row className="mb-2 mt-2 mr-16 flex justify-end">
-        <Title level={3} className="font-hebrew text-right"> המובילים השבוע</Title>
+        <Title level={3} className="text-right"> המובילים השבוע</Title>
       </Row> 
       
       <div className="w-[660px] rounded-lg bg-white">

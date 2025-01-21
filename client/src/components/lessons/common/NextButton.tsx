@@ -19,7 +19,7 @@ const NextButton: React.FC = () => {
         <Card
           className="!flex !items-center !justify-center h-8 !w-44
           bg-green-500 text-white border-green-600 border-b-4 border-0 hover:!bg-green-600 hover:!cursor-pointer
-          font-semibold !font-hebrew !text-white !text-center !m-0 !font-medium"
+          font-semibold !text-white !text-center !m-0 !font-medium"
           onClick={() => dispatch(addOneClick())}
         >
           בדוק

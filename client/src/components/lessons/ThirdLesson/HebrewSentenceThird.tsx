@@ -13,7 +13,7 @@ const HebrewSentenceThird: React.FC<HebrewSentenceProps> = ({ translatedWords })
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     
     return (
-        <div className="text-center my-5 !font-hebrew !font-medium">
+        <div className="text-center my-5 !font-medium">
             <div className="inline-block">
                 {[...translatedWords]
                     .reverse() // map from last index

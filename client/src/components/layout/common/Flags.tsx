@@ -28,7 +28,7 @@ const Flags: React.FC<FlagsProps> = ({ setIsModalVisible }) => {
     <div>
       <div className="flex-grow text-center">
         <Row justify="center" className="mb-2 mt-2">
-          <Title level={3} className="text-center !font-hebrew"> החלף שפה </Title>
+          <Title level={3} className="text-center"> החלף שפה </Title>
         </Row>
       </div>
 
@@ -40,7 +40,7 @@ const Flags: React.FC<FlagsProps> = ({ setIsModalVisible }) => {
               className="text-center p-4"
               style={{ position: "relative" }}
             >
-              <Typography.Text className="block mb-2 !font-hebrew">{icon.title}</Typography.Text>
+              <Typography.Text className="block mb-2">{icon.title}</Typography.Text>
               <div className="relative group">
                 <Image
                   onClick={() => {

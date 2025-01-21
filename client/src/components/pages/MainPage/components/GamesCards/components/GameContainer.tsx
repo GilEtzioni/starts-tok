@@ -69,7 +69,7 @@ const GameContainer: React.FC = () => {
   return (
     <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
         <Row className="mr-16 flex justify-end">
-          <Title level={3} className="font-hebrew text-right"> תרגול </Title>
+          <Title level={3} className="text-right"> תרגול </Title>
         </Row> 
       <div className="flex items-center justify-center w-full gap-4 box-border">
 

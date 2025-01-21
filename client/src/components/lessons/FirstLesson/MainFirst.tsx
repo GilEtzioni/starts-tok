@@ -118,7 +118,7 @@ const FirstCardContainer: React.FC = () => {
     return (
     <div className="px-[10%]">
         <Row justify="center" className="mb-2.5"> 
-            <Title level={3} className="text-center !font-hebrew"> 
+            <Title level={3} className="text-center"> 
             התאימו את הזוגות
             </Title>
         </Row>

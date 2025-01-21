@@ -132,7 +132,7 @@ const MainSecond: React.FC = () => {
     return (
         <>
             <Row className="flex justify-center">
-                <Title level={3} className="text-center !font-hebrew">תרגמו את המשפט</Title>
+                <Title level={3} className="text-center">תרגמו את המשפט</Title>
             </Row>
 
             <HebrewSentenceTwo TranslatedWords={TranslatedWords} />
@@ -148,7 +148,7 @@ const MainSecond: React.FC = () => {
                                 bodyStyle={{ padding: '12px' }}
                                 key={item.containerOrder}
                                 onClick={() => handleClick(item)}
-                                className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 !font-hebrew'
+                                className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
                             >
                                 {item.word}
                             </Card>
@@ -166,7 +166,7 @@ const MainSecond: React.FC = () => {
                     bodyStyle={{ padding: '12px' }}
                     key={item.containerOrder}
                     onClick={() => handleClick(item)}
-                    className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 !font-hebrew'
+                    className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
                 >
                     {item.word}
                 </Card>

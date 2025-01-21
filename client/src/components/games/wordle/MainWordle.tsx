@@ -87,7 +87,7 @@ const MainWordle: React.FC = () => {
 
         <div className="w-full">
           <Row justify="center" className="mt-8">
-            <Title level={3} className="text-center !font-hebrew">
+            <Title level={3} className="text-center">
               הצלחת {succesCounter} משחקים ברצף
             </Title>
           </Row>

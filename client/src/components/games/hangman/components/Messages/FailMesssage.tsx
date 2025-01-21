@@ -1,5 +1,5 @@
 // react + antd
-import { Button, Modal } from 'antd';
+import { Button, Modal, Typography } from 'antd';
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 
 // redux
@@ -53,10 +53,9 @@ const FailMesssage: React.FC<FailMessagesProps> = ({ words }) => {
         maskClosable={true}
         width={400}
         className={classNames("bg-transparent shadow-none")}
-
       >
         <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">המשחק נגמר</h1>
+          <Typography.Title level={3} className="text-2xl font-bold text-gray-800 mb-4">המשחק נגמר</Typography.Title>
           <div className="flex flex-col gap-4">
             <Button
               onClick={handleBack}

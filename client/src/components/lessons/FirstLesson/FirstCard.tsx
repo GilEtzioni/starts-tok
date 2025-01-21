@@ -27,7 +27,7 @@ const cardBackround = (() => {
         onClick={() => onClick(id, language)}
         hoverable={isSelected === ""}
         className={classNames(
-          'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew', 
+          'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear', 
           cardBackround,
         )}
       >

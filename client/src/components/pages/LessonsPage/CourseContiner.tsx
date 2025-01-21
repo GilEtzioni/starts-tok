@@ -73,7 +73,7 @@ const CourseContainer: React.FC = () => {
                         <Card
                           bordered={false}
                           hoverable={true}
-                          className={`font-hebrew transition-transform duration-300 transform hover:scale-110 w-40 h-40 relative shadow-md rounded-lg ${cardBackground(
+                          className={`transition-transform duration-300 transform hover:scale-110 w-40 h-40 relative shadow-md rounded-lg ${cardBackground(
                             course.lessonCompleted
                           )}`}
                         >

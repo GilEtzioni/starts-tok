@@ -88,7 +88,7 @@ const MainHangman: React.FC = () => {
         <div className="flex flex-col items-center mt-12">
           <Title
             level={3}
-            className="mb-5 text-3xl font-semibold text-center antialiased !font-hebrew" >
+            className="mb-5 text-3xl font-semibold text-center antialiased" >
               הצלחת {successCounter} משחקים ברצף 
           </Title>
           <PhotosHang />

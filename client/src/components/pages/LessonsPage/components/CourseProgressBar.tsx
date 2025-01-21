@@ -17,10 +17,10 @@ const CourseProgressBar: React.FC<CourseProgressBarProps> = ({ num }) => {
         trailColor="rgba(255, 255, 255, 0.2)"
         strokeWidth={16}
         showInfo={false}
-        className="w-full font-hebrew"
+        className="w-full"
       />
 
-    <p className="font-hebrew absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
+    <p className="absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
       {num} / 6
     </p>
     </div>

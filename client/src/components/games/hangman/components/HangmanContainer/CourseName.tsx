@@ -15,7 +15,7 @@ const CourseName: React.FC<CourseNameProps> = ({ randomWord }) => {
         <Row justify="center" className="mb-2">
           <Title
             level={3}
-            className="text-3xl font-semibold text-center antialiased !font-hebrew"
+            className="text-3xl font-semibold text-center antialiased"
           >
             {randomWord[0].courseNameEnglish}
           </Title>

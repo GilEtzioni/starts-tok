@@ -25,7 +25,7 @@ const SuccessMessage: React.FC = () => {
             >
                 <div className="absolute top-2 right-2 flex flex-col items-end text-lg">
                     <div className="flex items-center mb-4">
-                        <span className="font-semibold !font-hebrew rtl mr-1 text-green-600">
+                        <span className="font-semibold rtl mr-1 text-green-600">
                             !כל הכבוד
                         </span>
                         <i className="fas fa-check-circle text-green-600"></i>
@@ -35,7 +35,7 @@ const SuccessMessage: React.FC = () => {
                         bordered={false}
                         className="mt-4 flex items-center justify-center bg-green-500 text-white border-green-600 border-b-4 hover:bg-green-600 cursor-pointer w-64 h-8 mr-2"
                     >
-                        <span className="font-semibold !font-hebrew w-full text-center">המשך</span>
+                        <span className="font-semibold w-full text-center">המשך</span>
                     </Card>
                 </div>
             </Card>

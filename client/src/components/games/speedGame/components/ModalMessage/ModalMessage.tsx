@@ -1,5 +1,5 @@
 // react + antd
-import { Button, Modal } from 'antd';
+import { Button, Modal, Typography } from 'antd';
 import React, { useState } from 'react';
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
@@ -29,13 +29,7 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
   const successCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
   const newScore = useAddNewScore(GameNameEnum.SpeedGame)
 
-  if (!words) {
-    return (
-      <div className="flex items-center justify-center h-screen bg-gray-100">
-        <p>Words not available.</p>
-      </div>
-    );
-  }
+  if (!words) return;
 
   function newGame() {
     // reset reudx
@@ -74,9 +68,9 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
       >
         <div className={classNames("bg-transparent shadow-none")}>
           <div className="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200">
-            <h1 className="text-3xl font-extrabold text-gray-900 mb-6">
+            <Typography.Title level={1} className="text-3xl font-extrabold text-gray-900 mb-6">
               הצלחת למצוא {successCounter} זוגות
-            </h1>
+            </Typography.Title>
             <div className="flex flex-col gap-4">
               <Button
                 onClick={goToHomePage}

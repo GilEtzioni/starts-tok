@@ -25,7 +25,7 @@ const MainStatics: React.FC = () => {
     <>
     <Card
       onClick={showModal}
-     className="duration-300 ease-in-out hover:-translate-y-0.5 bg-[#60a5fa] text-white border border-blue-500 border-b-4 border-0 h-8 text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew hover:bg-blue-500 hover:cursor-pointer"
+     className="duration-300 ease-in-out hover:-translate-y-0.5 bg-[#60a5fa] text-white border border-blue-500 border-b-4 border-0 h-8 text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear hover:bg-blue-500 hover:cursor-pointer"
       >
       סטטיסטיקה <i className="fa-solid fa-chart-simple"></i>
     </Card>

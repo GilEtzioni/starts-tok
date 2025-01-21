@@ -26,7 +26,7 @@ const AnswerGrid: React.FC<AnswerGridProps> = ({ gridAnswer }) => {
         <Card
           key={item?.letter}
           className={classNames(
-            'p-2 border flex items-center justify-center w-[50px] h-[50px] rounded-none !font-hebrew font-semibold', 
+            'p-2 border flex items-center justify-center w-[50px] h-[50px] rounded-none font-semibold', 
             {
               "bg-gray-300 border border-gray-300 duration-300 ease-in-out":
                 item?.selected === LetterSeleceted.NotSelected,

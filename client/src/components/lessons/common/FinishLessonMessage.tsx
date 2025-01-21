@@ -1,5 +1,5 @@
 // react + antd
-import { Button, Modal } from 'antd';
+import { Button, Modal, Typography } from 'antd';
 import React, { useState } from 'react';
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
@@ -49,9 +49,9 @@ const FinishLessonMessage: React.FC = () => {
       >
         <div className={classNames("bg-transparent shadow-none")}>
           <div className="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200">
-            <h1 className="text-3xl font-extrabold text-gray-900 mb-6">
+            <Typography.Title level={3} className="text-3xl font-extrabold text-gray-900 mb-6">
               כל הכבוד! קיבלת {newPoints} נקודות
-            </h1>
+            </Typography.Title>
             <div className="flex flex-col gap-4">
               <Button
                 onClick={goToHomePage}

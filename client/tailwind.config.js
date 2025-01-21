@@ -3,6 +3,7 @@ module.exports = {
   safelist: ['fas', 'fa-envelope', 'fa-book'],
   theme: {
     fontFamily: {
+      sans: ['Alef', 'sans-serif'],
       hebrew: ['Alef', 'sans-serif'],
     },
     extend: {

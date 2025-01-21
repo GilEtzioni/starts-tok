@@ -1,4 +1,4 @@
-import { Button, Modal } from 'antd';
+import { Button, Modal, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAddNewScore } from '../../../requests/mutate';
@@ -20,7 +20,6 @@ const SuccessMessage: React.FC = () => {
   function restartGame() {
     dispatch(resetWrongCounter());
     dispatch(addOneSuccesssCounter());
-
   }
 
   async function handleBack() {
@@ -43,7 +42,7 @@ const SuccessMessage: React.FC = () => {
         className="bg-transparent shadow-none"
       >
         <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4"> !כל הכבוד </h1>
+          <Typography.Title level={2} className="text-2xl font-bold text-gray-800 mb-4"> !כל הכבוד </Typography.Title>
           <div className="flex flex-col gap-4">
             <Link to="/main">
               <Button onClick={() => handleBack()} type="primary" 

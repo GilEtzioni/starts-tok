@@ -42,7 +42,7 @@ const UsersGraph: React.FC = () => {
   return (
     <div className="flex flex-col items-end">
       <Row className="mt-2 mr-18 flex justify-end">
-        <Title level={3} className="font-hebrew text-right"> הניקוד השבועי שלי </Title>
+        <Title level={3} className="text-right"> הניקוד השבועי שלי </Title>
       </Row>
       <div className="w-[660px] bg-white flex justify-center items-center">
         <svg

@@ -50,11 +50,11 @@ const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content,
             className="bg-transparent shadow-none"
           />
 
-          <span className="font-hebrew text-sm text-white text-right">{cardDetails}</span>
+          <span className="text-sm text-white text-right">{cardDetails}</span>
         </div>
 
         <div className="absolute right-4 bottom-20 text-center">
-          <div className="font-hebrew text-2xl font-bold text-white">{levelHebrew}</div>
+          <div className="text-2xl font-bold text-white">{levelHebrew}</div>
         </div>
 
         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[85%] text-center">
@@ -67,7 +67,7 @@ const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content,
             showInfo={false}
             className="w-full"
           />
-    <p className="font-hebrew absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
+    <p className="absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
       {content} / 25
     </p>
   </div>

@@ -40,7 +40,7 @@ const WordsGrid: React.FC<WordsGridProps> = ({ setLettersArray, lettersArray ,ga
         <Card
           key={item.letter}
           className={classNames(
-            'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear !font-hebrew', 
+            'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear', 
             {
               "hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 duration-300 ease-in-out hover:-translate-y-0.5":
                 item.selected === SelectedLetter.NotSelected,
