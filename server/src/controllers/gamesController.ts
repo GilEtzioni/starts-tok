@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { Games, Words } from "../drizzle/schema";
+import { Games, Language, Words } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { eq, and, max } from "drizzle-orm";
 import { GamesNamesType } from "../types/gamesTypes";
+import { CourseLangauge } from "../types/seedersType";
+import { languageDictionaries } from "../utils/userHelper";
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -52,6 +54,8 @@ export const getGameMaxScore = async (req: Request, res: Response, gameName: Gam
         res.status(500).json({ message: "An error occurred while ", error });
     }
 }
+
+/* ------------------------------------------------------------------------------------ */
 
 export const addGameScore = async (req: Request, res: Response, gameName: GamesNamesType): Promise<void> => {
     const { userId } = getAuth(req);
@@ -106,3 +110,44 @@ export const addGameScore = async (req: Request, res: Response, gameName: GamesN
         res.status(500).json({ message: "An error occurred while adding the score", error });
     }
 };
+
+/* ------------------------------------------------------------------------------------ */
+
+export const getKeyboard = async (req: Request, res: Response): Promise<void> => {
+
+    const { userId } = getAuth(req);
+  
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized: User ID is missing" });
+        return;
+    }
+  
+    try {
+      const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(eq(Language.userId, userId))
+      .limit(1);
+  
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+    const language = userLanguage[0].language;
+
+    const keyborad = 
+    language === CourseLangauge.French
+      ? languageDictionaries.french
+      : language === CourseLangauge.Italian
+      ? languageDictionaries.italian
+      : language === CourseLangauge.Spanish
+      ? languageDictionaries.spanish
+      : language === CourseLangauge.German
+      ? languageDictionaries.german
+      : languageDictionaries.english
+
+      res.json(keyborad);
+    } catch (error) {
+      res.status(500).json({ message: "An error occurred while ", error });
+    }
+}

@@ -21,8 +21,8 @@ import TooShortMessage from './components/Messages/TooShortMessage';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { CurrentMode } from './ types/WordelType';
-import { Dictionary_ALL_WORDS } from '../requests/queryKeys';
-import { fetchWords } from '../../../api/games';
+import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
+import { fetchKeyboard, fetchWords } from '../../../api/games';
 import { useQuery } from '@tanstack/react-query';
 import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
 
@@ -36,14 +36,19 @@ const MainWordle: React.FC = () => {
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
 
+    const { data: keyboard } = useQuery(
+      [KEYBOARD_LETTERS],() => fetchKeyboard())
+
     const {  data: words, isLoading } = useQuery(
-      [Dictionary_ALL_WORDS],
+      [DICTIONARY_ALL_WORDS],
       () => fetchWords(),
     {
+      enabled: !!keyboard,
       onSuccess: (words) => {
         const filterArray = randomWordsArray(words);
         const gameWord = getRandomWord(filterArray);
-        const gridLetters = createLettersGrid();
+        if (!keyboard) return;
+        const gridLetters = createLettersGrid(keyboard);
   
         const ROW_LENGTH = 5;
         const COLUMN_LENGTH = gameWord.length;

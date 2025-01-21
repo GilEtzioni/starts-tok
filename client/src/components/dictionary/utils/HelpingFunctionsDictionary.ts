@@ -3,7 +3,7 @@ import { WordsType } from "../../../api/common/types";
 import { TranslatedWordsType } from "../types/DictionaryType";
 import { DictionaryKnowledgeType } from "../../../api/common/types";
 
-export function handleClickedRow(id: string, wordsArray: WordsType[], translatedWords: TranslatedWordsType[]): TranslatedWordsType[] {
+export const handleClickedRow = (id: string, wordsArray: WordsType[], translatedWords: TranslatedWordsType[]): TranslatedWordsType[] => {
   const result: TranslatedWordsType[] = [...translatedWords];
 
   // find the word

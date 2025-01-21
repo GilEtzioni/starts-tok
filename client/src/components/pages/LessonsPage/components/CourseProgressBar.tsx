@@ -21,7 +21,7 @@ const CourseProgressBar: React.FC<CourseProgressBarProps> = ({ num }) => {
       />
 
     <p className="absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
-      {num} / 6
+    6 / {num}
     </p>
     </div>
   );

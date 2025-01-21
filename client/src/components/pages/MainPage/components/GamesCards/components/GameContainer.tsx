@@ -31,11 +31,6 @@ const GameContainer: React.FC = () => {
     () => fetchWordsCounter(),
   );
 
-  console.log("hangmanScore", hangmanScore)
-  console.log("wordleScore", wordleScore)
-  console.log("speedScore", speedScore)
-  console.log("finishedWordsCount", finishedWordsCount)
-
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];
   const [visibleCards, setVisibleCards] = useState<number[]>(initialCards);
@@ -49,11 +44,11 @@ const GameContainer: React.FC = () => {
     wordleScore?.maxScore ?? 0, 
   ];
 
-  function handleForwardClick() {
+  const handleForwardClick = () => {
     setVisibleCards((prev) => prev.map((card) => (card % totalCards) + 1));
   }
 
-  function handleBackwardClick() {
+  const handleBackwardClick = () => {
     setVisibleCards((prev) => prev.map((card) => (card - 2 + totalCards) % totalCards + 1));
   }
 

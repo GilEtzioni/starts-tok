@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllWords, getGameMaxScore, addGameScore} from "../controllers/gamesController";
+import { getAllWords, getGameMaxScore, addGameScore, getKeyboard } from "../controllers/gamesController";
 import { requireAuth } from "@clerk/express";
 import { GamesNamesType } from "../types/gamesTypes";
 
@@ -16,5 +16,7 @@ router.post("/:gameName/score", requireAuth(), async (req, res) => {
     const { gameName } = req.params;
     await addGameScore(req, res, gameName as GamesNamesType);
 });
+
+router.get('/keyboard', requireAuth(), getKeyboard);
 
 export default router;

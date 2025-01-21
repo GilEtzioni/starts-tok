@@ -25,6 +25,89 @@ import SquareFootIcon from '@mui/icons-material/SquareFoot';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+// A2
+import FitnessCenter from '@mui/icons-material/FitnessCenter';
+import Checkroom from '@mui/icons-material/Checkroom';
+import Pets from '@mui/icons-material/Pets';
+import HolidayVillage from '@mui/icons-material/HolidayVillage';
+import Functions from '@mui/icons-material/Functions';
+import AcUnit from '@mui/icons-material/AcUnit';
+import Accessibility from '@mui/icons-material/Accessibility';
+import HealthAndSafety from '@mui/icons-material/HealthAndSafety';
+import Directions from '@mui/icons-material/Directions';
+import ChatBubble from '@mui/icons-material/ChatBubble';
+import Chair from '@mui/icons-material/Chair';
+import WbSunny from '@mui/icons-material/WbSunny';
+import Kitchen from '@mui/icons-material/Kitchen';
+import MusicNote from '@mui/icons-material/MusicNote';
+import AttachMoney from '@mui/icons-material/AttachMoney';
+import SocialDistance from '@mui/icons-material/SocialDistance';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import School from '@mui/icons-material/School';
+import Apartment from '@mui/icons-material/Apartment';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+import Devices from '@mui/icons-material/Devices';
+import Recycling from '@mui/icons-material/Recycling';
+import SportsTennis from '@mui/icons-material/SportsTennis';
+import Public from '@mui/icons-material/Public';
+import Group from '@mui/icons-material/Group';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import RecyclingIcon from '@mui/icons-material/Recycling';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import Groups2Icon from '@mui/icons-material/Groups2';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
+import SchoolIcon from '@mui/icons-material/School';
+import NightlifeIcon from '@mui/icons-material/Nightlife';
+import ScienceIcon from '@mui/icons-material/Science';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ScubaDivingIcon from '@mui/icons-material/ScubaDiving';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import Brightness2Icon from '@mui/icons-material/Brightness2';
+import BiotechIcon from '@mui/icons-material/Biotech';
+import Co2Icon from '@mui/icons-material/Co2';
+import BrushIcon from '@mui/icons-material/Brush';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import MuseumIcon from '@mui/icons-material/Museum';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import FlatwareIcon from '@mui/icons-material/Flatware';
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import KitesurfingIcon from '@mui/icons-material/Kitesurfing';
+import FlagIcon from '@mui/icons-material/Flag';
+import FemaleIcon from '@mui/icons-material/Female';
+import FestivalIcon from '@mui/icons-material/Festival';
+import SurfingIcon from '@mui/icons-material/Surfing';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import EditIcon from '@mui/icons-material/Edit';
+import HandymanIcon from '@mui/icons-material/Handyman';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import GavelIcon from '@mui/icons-material/Gavel';
+import SolarPowerIcon from '@mui/icons-material/SolarPower';
+import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
+import DomainIcon from '@mui/icons-material/Domain';
+import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
+import ChurchIcon from '@mui/icons-material/Church';
+import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import FaxIcon from '@mui/icons-material/Fax';
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
+import LandscapeIcon from '@mui/icons-material/Landscape';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
+
 interface CourseIconsProps {
   courseId: number;
 }
@@ -57,10 +140,135 @@ const iconMap: { [key: number]: React.ReactNode } = {
   23: <DirectionsWalkIcon className={iconsCss} />,
   24: <ShoppingCartIcon className={iconsCss} />,
   25: <PhoneIphoneIcon className={iconsCss} />,
-};
+  26: <FitnessCenter className={iconsCss} />,
+  27: <Checkroom className={iconsCss} />,
+  28: <Pets className={iconsCss} />,
+  29: <CelebrationIcon className={iconsCss} />,
+  30: <LooksOneIcon className={iconsCss} />,
+  31: <AcUnit className={iconsCss} />,
+  32: <Accessibility className={iconsCss} />,
+  33: <LocalHospitalIcon className={iconsCss} />,
+  34: <Directions className={iconsCss} />,
+  35: <LocalPhoneIcon className={iconsCss} />,
+  36: <Chair className={iconsCss} />,
+  37: <WbSunnyIcon className={iconsCss} />,
+  38: <RestaurantIcon className={iconsCss} />,
+  39: <MusicNote className={iconsCss} />,
+  40: <AccountBalanceIcon className={iconsCss} />,
+  41: <FacebookIcon className={iconsCss} />,
+  42: <Groups2Icon className={iconsCss} />,
+  43: <SchoolIcon className={iconsCss} />,
+  44: <HolidayVillageIcon className={iconsCss} />,
+  45: <PhoneIphoneIcon className={iconsCss} />,
+  46: <RecyclingIcon className={iconsCss} />,
+  47: <NightlifeIcon className={iconsCss} />,
+  48: <WorkOutlineIcon className={iconsCss} />,
+  49: <FamilyRestroomIcon className={iconsCss} />,
+  50: <ShoppingCartIcon className={iconsCss} />,
+  51: <PaletteIcon className={iconsCss} />,
+  52: <PetsIcon className={iconsCss} />,
+  53: <Public className={iconsCss} />,
+  54: <WorkOutlineIcon className={iconsCss} />,
+  55: <WorkIcon className={iconsCss} />,
+  56: <AttachMoney className={iconsCss} />,
+  57: <WbSunnyIcon className={iconsCss} />,
+  58: <DirectionsBusIcon className={iconsCss} />,
+  59: <ScienceIcon className={iconsCss} />,
+  60: <Group className={iconsCss} />,
+  61: <SportsBasketballIcon className={iconsCss} />,
+  62: <School className={iconsCss} />,
+  63: <EmojiEventsIcon className={iconsCss} />,
+  64: <FastfoodIcon className={iconsCss} />,
+  65: <ScubaDivingIcon className={iconsCss} />,
+  66: <WorkIcon className={iconsCss} />,
+  67: <EmojiEmotionsIcon className={iconsCss} />,
+  68: <Kitchen className={iconsCss} />,
+  69: <LooksOneIcon className={iconsCss} />,
+  70: <WbSunnyIcon className={iconsCss} />,
+  71: <HexagonIcon className={iconsCss} />,
+  72: <Directions className={iconsCss} />,
+  73: <SportsBarIcon className={iconsCss} />,
+  74: <MusicNote className={iconsCss} />,
+  75: <SchoolIcon className={iconsCss} />,
+  76: <PaletteIcon className={iconsCss} />,
+  77: <CheckroomIcon className={iconsCss} />,
+  78: <SchoolIcon className={iconsCss} />,
+  79: <LocalHospitalIcon className={iconsCss} />,
+  80: <TodayIcon className={iconsCss} />,
+  81: <AttachMoney className={iconsCss} />,
+  82: <Public className={iconsCss} />,
+  83: <HouseSidingIcon className={iconsCss} />,
+  84: <Group className={iconsCss} />,
+  85: <CurrencyBitcoinIcon className={iconsCss} />,
+  86: <WorkIcon className={iconsCss} />,
+  87: <Public className={iconsCss} />,
+  88: <Brightness2Icon className={iconsCss} />,
+  89: <TheaterComedyIcon className={iconsCss} />,
+  90: <AccessibilityIcon className={iconsCss} />,
+  91: <Co2Icon className={iconsCss} />,
+  92: <Devices className={iconsCss} />,
+  93: <CelebrationIcon className={iconsCss} />,
+  94: <SquareFootIcon className={iconsCss} />,
+  95: <LooksOneIcon className={iconsCss} />,
+  96: <Functions className={iconsCss} />,
+  97: <SchoolIcon className={iconsCss} />,
+  98: <BiotechIcon className={iconsCss} />,
+  99: <WorkOutlineIcon className={iconsCss} />,
+  100: <EmojiEmotionsIcon className={iconsCss} />,
 
+  101: <StorefrontIcon className={iconsCss} />,
+  102: <BrushIcon className={iconsCss} />,
+  103: <BrushIcon className={iconsCss} />,
+  104: <MusicNote className={iconsCss} />,
+  105: <MuseumIcon className={iconsCss} />,
+  106: <ShowChartIcon className={iconsCss} />,
+  107: <OutdoorGrillIcon className={iconsCss} />,
+  108: <PrecisionManufacturingIcon className={iconsCss} />,
+  109: <SupportAgentIcon className={iconsCss} />,
+  110: <CelebrationIcon className={iconsCss} />,
+  111: <FlatwareIcon className={iconsCss} />,
+  112: <RestaurantMenuIcon className={iconsCss} />,
+  113: <FemaleIcon className={iconsCss} />,
+  114: <FlagIcon className={iconsCss} />,
+  115: <KitesurfingIcon className={iconsCss} />,
+  116: <SurfingIcon className={iconsCss} />,
+  117: <FestivalIcon className={iconsCss} />,
+  118: <MilitaryTechIcon className={iconsCss} />, 
+  119: <ShoppingCartIcon className={iconsCss} />,
+  120: <CardGiftcardIcon className={iconsCss} />,
+  121: <RestaurantIcon className={iconsCss} />,
+  122: <AccountBalanceIcon className={iconsCss} />,
+  123: <NewspaperIcon className={iconsCss} />, 
+  124: <EditIcon className={iconsCss} />,
+  125: <HandymanIcon className={iconsCss} />,
+
+  126: <ConnectWithoutContactIcon className={iconsCss} />,
+  127: <DeveloperBoardIcon className={iconsCss} />,
+  128: <ModeEditOutlineIcon className={iconsCss} />,
+  129: <WorkOutlineIcon className={iconsCss} />, 
+  130: <GavelIcon className={iconsCss} />,
+  131: <SolarPowerIcon className={iconsCss} />,
+  132: <ChatBubble className={iconsCss} />,
+  133: <OfflineBoltIcon className={iconsCss} />,
+  134: <PsychologyAltIcon className={iconsCss} />,
+  135: <ScienceIcon className={iconsCss} />,
+  136: <DomainIcon className={iconsCss} />,
+  137: <ChurchIcon className={iconsCss} />,
+  138: <HandymanIcon className={iconsCss} />,
+  139: <LocalFloristIcon className={iconsCss} />,
+  140: <BeachAccessIcon className={iconsCss} />,
+  141: <FaxIcon className={iconsCss} />,
+  142: <HeadsetMicIcon className={iconsCss} />,
+  143: <LandscapeIcon className={iconsCss} />,
+  144: <DirectionsCarIcon className={iconsCss} />,
+  145: <HouseSidingIcon className={iconsCss} />,
+  146: <FitnessCenter className={iconsCss} />,
+  147: <PsychologyIcon className={iconsCss} />,
+  148: <MilitaryTechIcon className={iconsCss} />,
+  149: <TheaterComedyIcon className={iconsCss} />,
+  150: <DownhillSkiingIcon className={iconsCss} />,
+};
 const CourseIcons: React.FC<CourseIconsProps> = ({ courseId }) => {
-  
   return <div>{iconMap[courseId] || <div className={iconsCss}>?</div>}</div>;
 };
 

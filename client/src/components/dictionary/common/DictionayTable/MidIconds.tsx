@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { message } from 'antd'; // Import message from antd
 import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icons';
 import { isExTrue, isVyTrue, isQuesttionTrue } from "../../utils/HelpingFunctionsDictionary";
 import { DictionaryColors, IconItem } from '../../types/DictionaryType';
@@ -20,7 +21,7 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowledge, id }) => {
   const [activeIcon, setActiveIcon] = useState<IconItem[]>(icons);
   const { mutate: updateWordKnowledge, isLoading, isError } = useChangeWordKnowledge();
 
-  const handleIconsClicked = ( myIcons: IconItem[], buttonIconType: number, event: React.MouseEvent<HTMLDivElement> ) => {
+  const handleIconsClicked = (myIcons: IconItem[], buttonIconType: number, event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation(); // prevent the row click
 
     const updatedIcons = myIcons.map((iconTupple) => {
@@ -32,10 +33,17 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowledge, id }) => {
       return { ...iconTupple, isClicked: false };
     });
 
-    setActiveIcon(updatedIcons); 
+    setActiveIcon(updatedIcons);
 
     const newKnowledge = buttonIconType === 1 ? DictionaryKnowledgeType.Ex : buttonIconType === 2 ? DictionaryKnowledgeType.Vy : DictionaryKnowledgeType.QuestionMark;
     updateWordKnowledge({ id, knowledge: newKnowledge });
+
+    // Show the custom message without an icon
+    message.open({
+      content: "המילה עודכנה",
+      duration: 2,
+      icon: null, // Remove the icon
+    });
   };
 
   if (isLoading) return <div>Loading...</div>;

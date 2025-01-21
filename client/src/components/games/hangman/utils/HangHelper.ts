@@ -7,14 +7,14 @@ export const getRandomWord = (wordsArray: WordsType[]): WordsType => {
     return wordsArray[selected_word_index];
 };
 
-const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
-    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß'];
+// const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
+//     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß'];
 
-export const createLettersArray = (word: WordsType): HangmanType[] => {
+export const createLettersArray = (word: WordsType, keyboard: string[]): HangmanType[] => {
     const result: HangmanType[] = [];
     const wordLetters = word.foreignWord.toLowerCase().split('');
 
-    letters.forEach((letter) => {
+    keyboard.forEach((letter) => {
         result.push({
             letter: letter.toLowerCase(),
             inGame: wordLetters.includes(letter.toLowerCase()), 
@@ -25,11 +25,11 @@ export const createLettersArray = (word: WordsType): HangmanType[] => {
     return result;
 };
 
-export const createGameArray = (word: WordsType): HangmanType[] => {
+export const createGameArray = (word: WordsType, keyboard: string[]): HangmanType[] => {
     const gameArray: HangmanType[] = [];
   
     word.foreignWord.toLowerCase().split('').forEach((letter) => {
-      if (letters.includes(letter)) { 
+      if (keyboard.includes(letter)) { 
         gameArray.push({
           letter: letter.toLowerCase(),
           inGame: letter !== " ",

@@ -18,7 +18,7 @@ const DictionaryIconsTop: React.FC = () => {
 
   const [activeIcon, setActiveIcon] = useState<IconItem[]>(icons);
 
-  function handleIconsClicked(myIcons: IconItem[], myId: number) {
+  const handleIconsClicked = (myIcons: IconItem[], myId: number) => {
     const updatedIcons = myIcons.map((iconTupple) => {
       if (iconTupple.id === myId) {
         const prev = iconTupple.isClicked;

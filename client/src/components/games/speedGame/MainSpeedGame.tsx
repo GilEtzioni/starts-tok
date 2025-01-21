@@ -17,7 +17,7 @@ import { RootState } from "../../../app/store";
 import { WordsType } from '../../../api/common/types';
 import { useQuery } from '@tanstack/react-query';
 import { fetchWords } from '../../../api/games';
-import { Dictionary_ALL_WORDS } from '../requests/queryKeys';
+import { DICTIONARY_ALL_WORDS } from '../requests/queryKeys';
 import { createGameArray, shuffleAllWords } from './utils/speedHelper';
 
 const MainSpeedGame: React.FC = () => {
@@ -30,7 +30,7 @@ const MainSpeedGame: React.FC = () => {
     const [wordsCoppy, setWordsCoppy]  = useState<WordsType[] | undefined>([]);
 
     const {  data: words, isLoading, error } = useQuery(
-        [Dictionary_ALL_WORDS],
+        [DICTIONARY_ALL_WORDS],
         () => fetchWords(),
         {
         onSuccess: (lessonsData) => {

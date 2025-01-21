@@ -16,21 +16,21 @@ export const getAllPoints = async (req: Request, res: Response): Promise<void> =
     } 
 
     try {
-        const [allPointsCounter] = await db
-            .select({ value: sum(Users.points) })
-            .from(Users)
-            .where(
-                and(
-                    eq(Users.userId, userId)
-                )
-            );
+        const allPointsCounter = await db
+        .select({ 
+          points: sum(Users.points),
+          userName: Users.userName,
+        })
+        .from(Users)
+        .where(eq(Users.userId, userId))
+        .groupBy(Users.userName);
 
         if (!allPointsCounter) {
             res.status(404).json({ error: "users not found" });
             return;
         }
 
-        res.json(allPointsCounter.value);
+        res.json(allPointsCounter[0]);
     } catch (error) {
         res.status(500).json({ message: "An error occurred while fetching the word count", error });
     }

@@ -11,3 +11,8 @@ export const addNewScore = async (gameName: GameNameEnum, userNewScore: { score:
   const response = await axiosInstance.post(`/${gameName}/score`, userNewScore);
   return response.data;
 };
+
+export const fetchKeyboard = async (): Promise<string[]> => {
+  const { data } = await axiosInstance.get('/keyboard');
+  return data;
+};

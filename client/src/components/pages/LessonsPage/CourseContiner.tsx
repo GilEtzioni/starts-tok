@@ -53,6 +53,7 @@ const CourseContainer: React.FC = () => {
           Array.from({ length: Math.ceil(coursesCardsData.length / 5) }).map(
             (_, rowIndex) => (
               <Row
+                style={{ direction: "rtl" }}
                 gutter={[24, 24]}
                 justify="center"
                 key={rowIndex}
@@ -86,8 +87,7 @@ const CourseContainer: React.FC = () => {
                           >
                             {course.courseNameHebrew}
                           </p>
-
-                          <CourseIcons courseId={course?.courseOrder - coursesCardsData[0]?.courseOrder + 1} />
+                          <CourseIcons courseId={course?.courseOrder} />
                           <CourseProgressBar num={course.lessonCompleted} />
                         </Card>
                       </Link>

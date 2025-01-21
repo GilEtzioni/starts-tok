@@ -1,5 +1,6 @@
 import { WordsType } from "../../../../api/common/types"
 import { wordleType, LetterColor, LetterSeleceted } from '../ types/WordelType';
+import heIL from "antd/es/locale/he_IL"; // hebrew antd
 
 export const shuffleAllWords = (wordsArray: WordsType[]) => {
   for (let i = wordsArray?.length - 1; i > 0; i--) {
@@ -53,42 +54,10 @@ export const createGameGrid = (correctAnswer: wordleType[]) => {
   return result;
 };
 
-export const createLettersGrid = (): wordleType[] => {
+export const createLettersGrid = (keyboard: string[]): wordleType[] => {
   const result: wordleType[] = [];
-  const lettersArray = [
-    'a',
-    'ä',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'ö',
-    'p',
-    'q',
-    'r',
-    's',
-    'ß',
-    't',
-    'u',
-    'ü',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-  ];
 
-  lettersArray?.map((item) => {
+  keyboard?.map((item) => {
     result.push({
       letter: item,
       color: LetterColor.NotSelected,

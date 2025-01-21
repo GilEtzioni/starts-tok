@@ -5,8 +5,8 @@ export const fetchUserFlag = async (): Promise<string[]> => {
   const { data } = await axiosInstance.get('/userLanguage');
   return data;
   };
-
-export const fetchAllPoints = async (): Promise<number[]> => {
+  
+export const fetchAllPoints = async (): Promise<{ points: string; userName: string }> => {
   const { data } = await axiosInstance.get('/allPoints');
   return data;
 };

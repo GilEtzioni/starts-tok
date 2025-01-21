@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table } from 'antd';
-import { handleClickedRow, handleFilterclick, knowledgeDataArray, sortWordsById } from "../../utils/HelpingFunctionsDictionary";
+import { handleClickedRow, knowledgeDataArray, sortWordsById } from "../../utils/HelpingFunctionsDictionary";
 import { WordsType } from "../../../../api/common/types";
 import MidIcons from "./MidIconds";
 import { useTableEffect } from '../../utils/dataEffect';

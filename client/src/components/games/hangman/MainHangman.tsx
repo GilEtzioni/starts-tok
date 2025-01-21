@@ -19,8 +19,8 @@ import MainMessages from './components/Messages/MainMessages';
 import { HangmanType } from './types/hangmanType'; 
 import { WordsType } from "../../../api/common/types";
 import { useQuery } from '@tanstack/react-query';
-import { Dictionary_ALL_WORDS } from '../requests/queryKeys';
-import { fetchWords } from '../../../api/games';
+import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
+import { fetchWords, fetchKeyboard } from '../../../api/games';
 import { createGameArray, createLettersArray, getRandomWord } from './utils/HangHelper';
 import { setSelectedWord } from './slices/HangmanSlice';
 
@@ -33,10 +33,14 @@ const MainHangman: React.FC = () => {
     const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
     const dispatch = useDispatch();
 
+    const { data: keyboard } = useQuery(
+      [KEYBOARD_LETTERS],() => fetchKeyboard())
+
     const {  data: words, isLoading, error } = useQuery(
-      [Dictionary_ALL_WORDS],
+      [DICTIONARY_ALL_WORDS],
       () => fetchWords(),
       {
+        enabled: !!keyboard,
         onSuccess: (words) => {
           setLettersArray([]);
           setGameArray([]);
@@ -45,11 +49,13 @@ const MainHangman: React.FC = () => {
           dispatch(setSelectedWord([selectedWord]));
   
           setRandomWord([selectedWord]);
+
+          if(!keyboard) return;
   
-          const lettersRandomArray = createLettersArray(selectedWord);
+          const lettersRandomArray = createLettersArray(selectedWord, keyboard);
           setLettersArray(lettersRandomArray);
   
-          const gameRandomArray = createGameArray(selectedWord);
+          const gameRandomArray = createGameArray(selectedWord, keyboard);
           setGameArray(gameRandomArray);
         }
       }

@@ -20,7 +20,7 @@ const pool = new Pool({
     connectionString: connectionString,
 });
 
-async function main() {
+async const main = () => {
     console.log("Migration started...");
     
     const db = drizzle(pool); 
