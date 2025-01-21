@@ -14,7 +14,7 @@ import { speedGameType } from '../../types/speedGameTypes';
 import { WordsType } from "../../../../../api/common/types";
 import { shuffleAllWords, createGameArray } from "../../utils/speedHelper";
 
-import { useAddNewScore } from "../../../../../api/games/mutateApi"
+import { useAddNewScore } from '../../../requests/mutate';
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 
 interface ModalProps {
@@ -54,7 +54,7 @@ const ModalMessage: React.FC<ModalProps> = ({ words, setGermanArray, setHebrewAr
 
   function goToHomePage() {
     const payload = { score: successCounter };
-    newScore.mutate(payload );
+    newScore.mutate(payload);
 
     dispatch(resetSuccesssCounter());
     dispatch(resetWrongCounter());

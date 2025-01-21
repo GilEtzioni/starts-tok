@@ -7,10 +7,10 @@ export interface CardType {
 
 export interface TranslatedArray {
     hebrewString: string,
-    germanString: (string | null)[],
+    foreignString: (string | null)[],
 }
 
-export interface germanArrayType {
+export interface foreignArrayType {
     id: number, 
     containerOrder: number,
     word: string; 

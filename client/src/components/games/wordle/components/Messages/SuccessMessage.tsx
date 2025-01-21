@@ -10,7 +10,7 @@ import { CurrentMode } from '../../ types/WordelType';
 import { WordsType } from '../../../../../api/common/types';
 import { RootState } from '../../../../../app/store';
 import { shuffleAllWords } from '../../utilts/wordleHelper';
-import { useAddNewScore } from "../../../../../api/games/mutateApi"
+import { useAddNewScore } from '../../../requests/mutate';
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 
 interface SuccessMessageProps {

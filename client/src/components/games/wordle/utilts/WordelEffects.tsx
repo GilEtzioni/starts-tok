@@ -1,20 +1,9 @@
 import { useEffect } from 'react';
-// types
 import { WordsType } from "../../../../api/common/types";
 import { wordleType, LetterColor, LetterSeleceted } from '../ types/WordelType';
-
-// functions + redux
-import { randomWordsArray, getRandomWord, createLettersGrid, getLetterColor } from './wordleHelper';
 import { addOneSuccess, setCurrentMode } from '../slices/WordleSlice';
 import { useDispatch } from 'react-redux';
 import { CurrentMode } from '../ types/WordelType';
-
-export interface useStartGameProps {
-  words: WordsType[] | undefined;
-  setCorrectAnswer: (array: wordleType[]) => void;
-  setGridAnswer: (array: wordleType[][]) => void;
-  setGridLetters: (array: wordleType[]) => void;
-}
 
 export interface useEnterClickProps {
   clicksCounter: number;
@@ -26,31 +15,6 @@ export interface useEnterClickProps {
   gridLetters: wordleType[],
   setGridLetters: (array: wordleType[]) => void,
 }
-
-/* ------------------------------------------------------------------------------------------------------------------------------ */
-
-export const useStartGame = ({ words, setGridAnswer, setCorrectAnswer, setGridLetters }: useStartGameProps) => {
-  useEffect(() => {
-    if (!words) return;      
-      const filterArray = randomWordsArray(words);
-      const gameWord = getRandomWord(filterArray);
-      const gridLetters = createLettersGrid();
-
-      const ROW_LENGTH = 5;
-      const COLUMN_LENGTH = gameWord.length;
-
-      const initialGrid = Array.from({ length: ROW_LENGTH }, () =>
-        Array(COLUMN_LENGTH).fill(null)
-      );
-
-      setGridAnswer(initialGrid);
-      setCorrectAnswer(gameWord);
-      setGridLetters(gridLetters);
-    
-  }, [words]);
-};
-
-/* ------------------------------------------------------------------------------------------------------------------------------ */
 
 export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, words, dispatch, correctAnswer, gridLetters, setGridLetters }: useEnterClickProps) => {
   useEffect(() => {

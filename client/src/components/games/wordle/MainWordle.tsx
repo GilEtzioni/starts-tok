@@ -18,15 +18,15 @@ import NotWordMessage from './components/Messages/NotWordMessage';
 import TooShortMessage from './components/Messages/TooShortMessage';
 
 // redux
-import { useStartGame } from './utilts/WordelEffects';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { useFetchWordsData } from "../../../api/games/hooks"
 import { CurrentMode } from './ types/WordelType';
+import { Dictionary_ALL_WORDS } from '../requests/queryKeys';
+import { fetchWords } from '../../../api/games';
+import { useQuery } from '@tanstack/react-query';
+import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
 
 const MainWordle: React.FC = () => {
-
-    const { data: words, isLoading, error } = useFetchWordsData();
 
     const { Title } = Typography;
     const currentMode = useSelector((state: RootState) => state.wordel.currentMode);
@@ -36,10 +36,30 @@ const MainWordle: React.FC = () => {
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
 
-  useStartGame({ words, setGridAnswer, setCorrectAnswer, setGridLetters });
+    const {  data: words, isLoading } = useQuery(
+      [Dictionary_ALL_WORDS],
+      () => fetchWords(),
+    {
+      onSuccess: (words) => {
+        const filterArray = randomWordsArray(words);
+        const gameWord = getRandomWord(filterArray);
+        const gridLetters = createLettersGrid();
+  
+        const ROW_LENGTH = 5;
+        const COLUMN_LENGTH = gameWord.length;
+  
+        const initialGrid = Array.from({ length: ROW_LENGTH }, () =>
+          Array(COLUMN_LENGTH).fill(null)
+        );
+  
+        setGridAnswer(initialGrid);
+        setCorrectAnswer(gameWord);
+        setGridLetters(gridLetters);
+      }
+      }
+  );
 
   if (isLoading) return (<LoadingComponents />)
-  if (error) return <div>Error:</div>;
 
   const Message = () => {
     switch (currentMode) {

@@ -110,20 +110,21 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
     }
     const language = userLanguage[0].language;
 
-        const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
-        const coursesSubjects = await db
-        .select().
-        from(CourseNames)
-        .where(
-            and(
-                eq(CourseNames.englishLevel, userLevel),
-                eq(CourseNames.userId, userId),
-                eq(CourseNames.language ,language)
-            )
-          )
-        .orderBy(CourseNames.courseOrder);
+    const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
 
-        res.json(coursesSubjects);
+    const coursesSubjects = await db
+    .select()
+    .from(CourseNames)
+    .where(
+      and(
+        eq(CourseNames.englishLevel, userLevel),
+        eq(CourseNames.userId, userId),
+        eq(CourseNames.language ,language)
+      )
+    )
+    .orderBy(CourseNames.courseOrder);
+
+      res.json(coursesSubjects);
     } catch (error) {
       res.status(500).json({ message: "An error occurred while ", error });
     }

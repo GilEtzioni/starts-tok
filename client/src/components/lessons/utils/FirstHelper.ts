@@ -1,4 +1,3 @@
-import { WordsType } from '../../../api/common/types'; 
 import { FirstCardType, FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
 export function getHebrewWords(lessons: FirstCardType[]): FirstLessonType[] {
@@ -29,10 +28,10 @@ export function getHebrewWords(lessons: FirstCardType[]): FirstLessonType[] {
     return combinedWordsArray;
 }
 
-export function getGermanWords(lessons: FirstCardType[]): FirstLessonType[] {
-    const germanWordsArray: string[] = [];
+export function getForeignWords(lessons: FirstCardType[]): FirstLessonType[] {
+    const foreignWordsArray: string[] = [];
 
-    germanWordsArray.push(
+    foreignWordsArray.push(
         lessons[0].foreignWord,
         lessons[1].foreignWord,
         lessons[2].foreignWord,
@@ -42,13 +41,13 @@ export function getGermanWords(lessons: FirstCardType[]): FirstLessonType[] {
     )
 
     const combinedWordsArray: FirstLessonType[] = [];
-    for (let i = 0; i < germanWordsArray.length; i++) {
+    for (let i = 0; i < foreignWordsArray.length; i++) {
         const coupleId = i + 1;
-        const germanWord = germanWordsArray[i];
-        if (germanWord) {
+        const foreignWord = foreignWordsArray[i];
+        if (foreignWord) {
             combinedWordsArray.push({
                 coupleId: coupleId, 
-                word: germanWord, 
+                word: foreignWord, 
                 isSelected: IsSelected.NotSelected,
             });
         }

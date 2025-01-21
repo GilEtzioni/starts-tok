@@ -159,7 +159,7 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   { hebrewWord: "בירה", germanWord: "Bier", italianWord: "birra", spanishWord: "cerveza", frenchWord: "bière", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Beverages", courseOrder: 10 },
   { hebrewWord: "יין", germanWord: "Wein", italianWord: "vino", spanishWord: "vino", frenchWord: "vin", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Beverages", courseOrder: 10 },
   { hebrewWord: "משקה אלכוהולי", germanWord: "alkoholisches Getränk", italianWord: "bevanda alcolica", spanishWord: "bebida alcohólica", frenchWord: "boisson alcoolisée", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Beverages", courseOrder: 10 },
-  { hebrewWord: "מים מינרליים", germanWord: "Mineralwasser", italianWord: "acqua minerale", spanishWord: "agua mineral", frenchWord: "eau minérale", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Beverages", courseOrder: 10 }
+  { hebrewWord: "מים מינרליים", germanWord: "Mineralwasser", italianWord: "acqua minerale", spanishWord: "agua mineral", frenchWord: "eau minérale", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Beverages", courseOrder: 10 },
 
   // // Parts of the House - 11
   // Animals - 12
@@ -168,6 +168,21 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   // Intermediate Clothes - 27
   // Intermediate Animals - 28
   // Holidays - 29
+  { hebrewWord: "חג", germanWord: "Feiertag", italianWord: "giorno festivo", spanishWord: "día festivo", frenchWord: "jour férié", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "פסח", germanWord: "Passahfest", italianWord: "Pasqua", spanishWord: "Pascua", frenchWord: "Pâque", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "חנוכה", germanWord: "Chanukka", italianWord: "Chanukkah", spanishWord: "Janucá", frenchWord: "Hanoukka", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "ראש השנה", germanWord: "Neujahr", italianWord: "Capodanno", spanishWord: "Año Nuevo", frenchWord: "Nouvel An", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "סוכות", germanWord: "Laubhüttenfest", italianWord: "Sukkot", spanishWord: "Sukkot", frenchWord: "Souccot", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "שבועות", germanWord: "Wochenfest", italianWord: "Shavuot", spanishWord: "Shavuot", frenchWord: "Chavouot", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "פורים", germanWord: "Purim", italianWord: "Purim", spanishWord: "Purim", frenchWord: "Pourim", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "יום הולדת", germanWord: "Geburtstag", italianWord: "compleanno", spanishWord: "cumpleaños", frenchWord: "anniversaire", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "חג העצמאות", germanWord: "Unabhängigkeitstag", italianWord: "Giorno dell'Indipendenza", spanishWord: "Día de la Independencia", frenchWord: "Jour de l'Indépendance", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "שנה טובה", germanWord: "Frohes Neues Jahr", italianWord: "Felice Anno Nuovo", spanishWord: "Feliz Año Nuevo", frenchWord: "Bonne année", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "יום הולדת נופש", germanWord: "Feiertag", italianWord: "giorno festivo", spanishWord: "día festivo", frenchWord: "jour férié", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "חגיגות", germanWord: "Feiern", italianWord: "celebrazioni", spanishWord: "celebraciones", frenchWord: "festivités", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "שמח", germanWord: "Glücklich", italianWord: "felice", spanishWord: "feliz", frenchWord: "heureux", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  { hebrewWord: "מסיבה", germanWord: "Party", italianWord: "festeggiamento", spanishWord: "fiesta", frenchWord: "fête", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Holidays", courseOrder: 29 },
+  
   // Intermediate Numbers - 30
   // Seasons - 31
   // Intermediate Body Parts - 32
@@ -185,22 +200,27 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   // City and Village - 44
   // Intermediate Technology - 45
   // Recycling - 46
+  { hebrewWord: "מיחזור", germanWord: "Recycling", italianWord: "riciclaggio", spanishWord: "reciclaje", frenchWord: "recyclage", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "זכוכית", germanWord: "Glas", italianWord: "vetro", spanishWord: "vidrio", frenchWord: "verre", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "פלסטיק", germanWord: "Kunststoff", italianWord: "plastica", spanishWord: "plástico", frenchWord: "plastique", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "נייר", germanWord: "Papier", italianWord: "carta", spanishWord: "papel", frenchWord: "papier", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "ברזל", germanWord: "Eisen", italianWord: "ferro", spanishWord: "hierro", frenchWord: "fer", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "עץ", germanWord: "Holz", italianWord: "legno", spanishWord: "madera", frenchWord: "bois", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "אדם", germanWord: "Mensch", italianWord: "persona", spanishWord: "persona", frenchWord: "personne", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "סוגי פסולת", germanWord: "Abfallarten", italianWord: "tipi di rifiuti", spanishWord: "tipos de residuos", frenchWord: "types de déchets", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "מיכל מיחזור", germanWord: "Recyclingbehälter", italianWord: "contenitore per il riciclaggio", spanishWord: "contenedor de reciclaje", frenchWord: "conteneur de recyclage", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "מכונה למחזור", germanWord: "Recyclingmaschine", italianWord: "macchina per il riciclaggio", spanishWord: "máquina de reciclaje", frenchWord: "machine de recyclage", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "קומפוסט", germanWord: "Kompost", italianWord: "compost", spanishWord: "compost", frenchWord: "compost", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "פחית", germanWord: "Dose", italianWord: "lattina", spanishWord: "lata", frenchWord: "canette", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "הפחתה", germanWord: "Reduktion", italianWord: "riduzione", spanishWord: "reducción", frenchWord: "réduction", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+  { hebrewWord: "שימור", germanWord: "Erhaltung", italianWord: "conservazione", spanishWord: "conservación", frenchWord: "conservation", hebrewLevel: "מבוא", englishLevel: "A2", courseNameEnglish: "Recycling", courseOrder: 46 },
+
   // Intermediate Hobbies - 47
   // Politics - 48
   // Intermediate Family Members - 49
   // Intermediate Shopping - 50
 
   // Intermediate Colors - 51
-    // { hebrewWord: "בורדו", germanWord: "bordeauxrot", italianWord: "borgogna", spanishWord: "burdeos", frenchWord: "bordeaux", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "זהב", germanWord: "gold", italianWord: "oro", spanishWord: "dorado", frenchWord: "doré", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "כסף", germanWord: "silber", italianWord: "argento", spanishWord: "plateado", frenchWord: "argenté", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "שנהב", germanWord: "elfenbein", italianWord: "avorio", spanishWord: "marfil", frenchWord: "ivoire", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "זית", germanWord: "olivgrün", italianWord: "verde oliva", spanishWord: "verde oliva", frenchWord: "vert olive", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "טורקיז", germanWord: "türkis", italianWord: "turchese", spanishWord: "turquesa", frenchWord: "turquoise", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "ארגמן", germanWord: "purpurrot", italianWord: "porpora", spanishWord: "púrpura", frenchWord: "pourpre", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "ליים", germanWord: "limettengrün", italianWord: "lime", spanishWord: "lima", frenchWord: "citron vert", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "קרם", germanWord: "cremefarben", italianWord: "crema", spanishWord: "crema", frenchWord: "crème", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
-    // { hebrewWord: "פוקסיה", germanWord: "fuchsienrot", italianWord: "fucsia", spanishWord: "fucsia", frenchWord: "fuchsia", hebrewLevel: "בינוני", englishLevel: "B1", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
 
   // Advanced Animals - 52
   // Cultural Diversity - 53
@@ -217,6 +237,22 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   // Intermediate Food Products - 64
   // Adventures - 65
   // Work - 66
+  { hebrewWord: "עבודה", germanWord: "Arbeit", italianWord: "lavoro", spanishWord: "trabajo", frenchWord: "travail", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "משרד", germanWord: "Büro", italianWord: "ufficio", spanishWord: "oficina", frenchWord: "bureau", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "מנהל", germanWord: "Manager", italianWord: "manager", spanishWord: "gerente", frenchWord: "gestionnaire", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "פגישה", germanWord: "Besprechung", italianWord: "riunione", spanishWord: "reunión", frenchWord: "réunion", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "לקוח", germanWord: "Kunde", italianWord: "cliente", spanishWord: "cliente", frenchWord: "client", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "פרויקט", germanWord: "Projekt", italianWord: "progetto", spanishWord: "proyecto", frenchWord: "projet", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "הסכם", germanWord: "Vertrag", italianWord: "accordo", spanishWord: "acuerdo", frenchWord: "accord", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "שכר", germanWord: "Gehalt", italianWord: "salario", spanishWord: "salario", frenchWord: "salaire", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "משרות", germanWord: "Stellenangebote", italianWord: "offerte di lavoro", spanishWord: "ofertas de trabajo", frenchWord: "offres d'emploi", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "כישורים", germanWord: "Fähigkeiten", italianWord: "competenze", spanishWord: "habilidades", frenchWord: "compétences", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "תנאים", germanWord: "Bedingungen", italianWord: "condizioni", spanishWord: "condiciones", frenchWord: "conditions", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "תפקיד", germanWord: "Rolle", italianWord: "ruolo", spanishWord: "cargo", frenchWord: "rôle", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "עובד", germanWord: "Arbeiter", italianWord: "lavoratore", spanishWord: "trabajador", frenchWord: "travailleur", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "מנכל", germanWord: "Geschäftsführer", italianWord: "amministratore delegato", spanishWord: "director general", frenchWord: "PDG", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+  { hebrewWord: "הכשרה", germanWord: "Schulung", italianWord: "formazione", spanishWord: "capacitación", frenchWord: "formation", hebrewLevel: "מבוא", englishLevel: "B1", courseNameEnglish: "Work", courseOrder: 66 },
+
   // Intermediate Emotions - 67
   // Intermediate Kitchen Tools - 68
   // Numbers by Tens - 69
@@ -229,16 +265,16 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
 
   // Advanced Colors - 76
 
-    // { hebrewWord: "בורדו", germanWord: "bordeauxrot", italianWord: "borgogna", spanishWord: "burdeos", frenchWord: "bordeaux", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "זהב", germanWord: "gold", italianWord: "oro", spanishWord: "dorado", frenchWord: "doré", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "כסף", germanWord: "silber", italianWord: "argento", spanishWord: "plateado", frenchWord: "argenté", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "שנהב", germanWord: "elfenbein", italianWord: "avorio", spanishWord: "marfil", frenchWord: "ivoire", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "זית", germanWord: "olivgrün", italianWord: "verde oliva", spanishWord: "verde oliva", frenchWord: "vert olive", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "טורקיז", germanWord: "türkis", italianWord: "turchese", spanishWord: "turquesa", frenchWord: "turquoise", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "ארגמן", germanWord: "purpurrot", italianWord: "porpora", spanishWord: "púrpura", frenchWord: "pourpre", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "ליים", germanWord: "limettengrün", italianWord: "lime", spanishWord: "lima", frenchWord: "citron vert", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "קרם", germanWord: "cremefarben", italianWord: "crema", spanishWord: "crema", frenchWord: "crème", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
-    // { hebrewWord: "פוקסיה", germanWord: "fuchsienrot", italianWord: "fucsia", spanishWord: "fucsia", frenchWord: "fuchsia", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 }
+    { hebrewWord: "בורדו", germanWord: "bordeauxrot", italianWord: "borgogna", spanishWord: "burdeos", frenchWord: "bordeaux", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "זהב", germanWord: "gold", italianWord: "oro", spanishWord: "dorado", frenchWord: "doré", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "כסף", germanWord: "silber", italianWord: "argento", spanishWord: "plateado", frenchWord: "argenté", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "שנהב", germanWord: "elfenbein", italianWord: "avorio", spanishWord: "marfil", frenchWord: "ivoire", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "זית", germanWord: "olivgrün", italianWord: "verde oliva", spanishWord: "verde oliva", frenchWord: "vert olive", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "טורקיז", germanWord: "türkis", italianWord: "turchese", spanishWord: "turquesa", frenchWord: "turquoise", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "ארגמן", germanWord: "purpurrot", italianWord: "porpora", spanishWord: "púrpura", frenchWord: "pourpre", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "ליים", germanWord: "limettengrün", italianWord: "lime", spanishWord: "lima", frenchWord: "citron vert", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "קרם", germanWord: "cremefarben", italianWord: "crema", spanishWord: "crema", frenchWord: "crème", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
+    { hebrewWord: "פוקסיה", germanWord: "fuchsienrot", italianWord: "fucsia", spanishWord: "fucsia", frenchWord: "fuchsia", hebrewLevel: "מתקדם", englishLevel: "B2", courseNameEnglish: "Colors", courseOrder: 76 },
 
   // Advanced Clothes - 77
   // Intermediate School Supplies - 78
@@ -276,6 +312,22 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   // Services - 109
   // Christmas - 110
   // Fruits - 111
+  { hebrewWord: "תפוח", germanWord: "Apfel", italianWord: "mela", spanishWord: "manzana", frenchWord: "pomme", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "בננה", germanWord: "Banane", italianWord: "banana", spanishWord: "plátano", frenchWord: "banane", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "תפוז", germanWord: "Orange", italianWord: "arancia", spanishWord: "naranja", frenchWord: "orange", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "תות", germanWord: "Erdbeere", italianWord: "fragola", spanishWord: "fresa", frenchWord: "fraise", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "ענבים", germanWord: "Trauben", italianWord: "uva", spanishWord: "uva", frenchWord: "raisin", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "אבטיח", germanWord: "Wassermelone", italianWord: "anguria", spanishWord: "sandía", frenchWord: "pastèque", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "חמניה", germanWord: "Sonnenblume", italianWord: "girasole", spanishWord: "girasol", frenchWord: "tournesol", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "דובדבן", germanWord: "Kirsche", italianWord: "ciliegia", spanishWord: "cereza", frenchWord: "cerise", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "שזיף", germanWord: "Pflaume", italianWord: "prugna", spanishWord: "ciruela", frenchWord: "prune", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "מנגו", germanWord: "Mango", italianWord: "mango", spanishWord: "mango", frenchWord: "mangue", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "פפאיה", germanWord: "Papaya", italianWord: "papaya", spanishWord: "papaya", frenchWord: "papaye", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "אננס", germanWord: "Ananas", italianWord: "ananas", spanishWord: "piña", frenchWord: "ananas", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "קיווי", germanWord: "Kiwi", italianWord: "kiwi", spanishWord: "kiwi", frenchWord: "kiwi", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "אגס", germanWord: "Birne", italianWord: "pera", spanishWord: "pera", frenchWord: "poire", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrewWord: "אבוקדו", germanWord: "Avocado", italianWord: "avocado", spanishWord: "aguacate", frenchWord: "avocat", hebrewLevel: "מבוא", englishLevel: "C1", courseNameEnglish: "Fruits", courseOrder: 111 },
+
   // Vegetables - 112
   // Makeup - 113
   // Countries - 114
@@ -296,6 +348,22 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   // Academic Writing - 128
   // Leadership and Management - 129
   // Legal Terms - 130
+  { hebrewWord: "חוק", germanWord: "Gesetz", italianWord: "legge", spanishWord: "ley", frenchWord: "loi", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "זכות", germanWord: "Recht", italianWord: "diritto", spanishWord: "derecho", frenchWord: "droit", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "פסק דין", germanWord: "Urteil", italianWord: "sentenza", spanishWord: "sentencia", frenchWord: "arrêt", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "חוזה", germanWord: "Vertrag", italianWord: "contratto", spanishWord: "contrato", frenchWord: "contrat", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "ערעור", germanWord: "Berufung", italianWord: "appello", spanishWord: "apelación", frenchWord: "appel", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "פשע", germanWord: "Verbrechen", italianWord: "crimine", spanishWord: "delito", frenchWord: "crime", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "עבירה", germanWord: "Vergehen", italianWord: "reato", spanishWord: "infracción", frenchWord: "infraction", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "תביעה", germanWord: "Klage", italianWord: "causa", spanishWord: "demanda", frenchWord: "demande", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "הגנה", germanWord: "Verteidigung", italianWord: "difesa", spanishWord: "defensa", frenchWord: "défense", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "תובע", germanWord: "Kläger", italianWord: "attore", spanishWord: "demandante", frenchWord: "demandeur", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "עדים", germanWord: "Zeugen", italianWord: "testimoni", spanishWord: "testigos", frenchWord: "témoins", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "הסכמה", germanWord: "Zustimmung", italianWord: "accordo", spanishWord: "consentimiento", frenchWord: "consentement", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "משפט", germanWord: "Gericht", italianWord: "tribunale", spanishWord: "tribunal", frenchWord: "tribunal", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "פיצויים", germanWord: "Schadenersatz", italianWord: "risarcimento", spanishWord: "compensación", frenchWord: "dommages-intérêts", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+  { hebrewWord: "מעשה פלילי", germanWord: "Straftat", italianWord: "atto criminale", spanishWord: "acto criminal", frenchWord: "acte criminel", hebrewLevel: "מבוא", englishLevel: "C2", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+
   // Globalization - 131
   // Topics in Psychology - 132
   // Renewable Energy - 133

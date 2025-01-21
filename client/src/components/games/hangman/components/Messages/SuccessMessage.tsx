@@ -1,7 +1,7 @@
 import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useAddNewScore } from "../../../../../api/games/mutateApi"
+import { useAddNewScore } from '../../../requests/mutate';
 import { GameNameEnum } from '../../../../pages/MainPage/components/GamesCards/types/mainPageTypes';
 
 // redux

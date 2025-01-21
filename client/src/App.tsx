@@ -14,7 +14,7 @@ import CoursesLayout from './components/layout/CoursesLayout';
 import Main from './components/pages/Main';
 import Dictionary from './components/pages/DictionaryPage';
 import CoursesPage from './components/pages/LessonsPage';
-import  MainLearn from "./components/lessons/MainLearn";
+import  MainLessons from "./components/lessons/MainLessons";
 
 // login
 import SignUpContainer from './components/pages/LogInPage/SignUpContainer';
@@ -62,8 +62,8 @@ const router = createBrowserRouter(
        <Route path="dictionary" element={<Dictionary />} />               
        <Route path="main" element={<Main />} />                           
        <Route path="main/course" element={<CoursesLayout />}>     
-         <Route path=":name" element={<CoursesPage />} />                  {/* e.g:   "/main/course/A1" */}
-         <Route path=":name/:lesson/" element={<MainLearn />} />           {/* e.g:   "/main/course/A1/Greetings" */}
+         <Route path=":name" element={<CoursesPage />} />
+         <Route path=":name/:lesson/" element={<MainLessons />} />
        </Route>
      </Route>
    </>

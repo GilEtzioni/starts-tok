@@ -1,22 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
-import { getGermanWords, getHebrewWords, shuffleArray } from './FirstHelper';
-import { FirstCardType, FirstLessonType, IsSelected } from '../types/FirstLessonType';
-import { WordsType, SenteceType } from "../../../api/common/types";
+import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
 interface UseCardEffectsProps {
-    lessonsData: FirstCardType[] | undefined;
     order: number;
-    germanId: number;
+    foreignId: number;
     hebrewId: number;
-    germanArray: FirstLessonType[];
+    foreignArray: FirstLessonType[];
     hebrewArray: FirstLessonType[];
     counter: number;
-    setGermanID: (id: number) => void;
+    setForeignID: (id: number) => void;
     setHebrewId: (id: number) => void;
     setCounter: (value: React.SetStateAction<number>) => void;
-    setGermanArray: (array: FirstLessonType[]) => void;
+    setForeignArray: (array: FirstLessonType[]) => void;
     setHebrewArray: (array: FirstLessonType[]) => void;
     dispatch: ReturnType<typeof useDispatch>;
     status: string;
@@ -24,37 +21,18 @@ interface UseCardEffectsProps {
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useGetData = ({ lessonsData, order, setGermanArray, setHebrewArray }: UseCardEffectsProps) => {
-    useEffect(() => {
-
-        if (!lessonsData) return;
-        
-        const originalGermanArray = getGermanWords(lessonsData);        
-        const originalHebrewArray = getHebrewWords(lessonsData); 
-
-        const shuffledGerman = shuffleArray(originalGermanArray);
-        const shuffledHebrew = shuffleArray(originalHebrewArray);
-
-        setGermanArray(shuffledGerman);
-        setHebrewArray(shuffledHebrew);
-
-    }, [lessonsData]);
-}
-
-/* ------------------------------------------------------------------------------------------------------------------------------ */
-
-export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, counter, 
-    setGermanID, setHebrewId, setCounter, setGermanArray, setHebrewArray, dispatch }: UseCardEffectsProps) => { useEffect(() => {
-        if ( germanId !== 0 && hebrewId !== 0) {
+export const useHandleClick = ({ foreignId, hebrewId, foreignArray, hebrewArray, counter, 
+    setForeignID, setHebrewId, setCounter, setForeignArray, setHebrewArray, dispatch }: UseCardEffectsProps) => { useEffect(() => {
+        if ( foreignId !== 0 && hebrewId !== 0) {
             // success
-            if (germanId === hebrewId) {
+            if (foreignId === hebrewId) {
                 setCounter(prev => prev + 1); // count successes
 
-                // update german array
-                const updatedGermanArray = germanArray.map((item) =>
-                    item.coupleId === germanId ? { ...item, isSelected: IsSelected.True } : { ...item }
+                // update foreign array
+                const updatedForeignArray = foreignArray.map((item) =>
+                    item.coupleId === foreignId ? { ...item, isSelected: IsSelected.True } : { ...item }
                  );
-                setGermanArray(updatedGermanArray);
+                setForeignArray(updatedForeignArray);
     
                 // update hebrew array
                 const updatedHebrewArray = hebrewArray.map((item) =>
@@ -62,7 +40,7 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
                 );
                 setHebrewArray(updatedHebrewArray);
 
-                setGermanID(0);
+                setForeignID(0);
                 setHebrewId(0);
                 
                 // if finished the game
@@ -74,11 +52,11 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
             else {
                 dispatch(setFailure());
 
-                // update german array
-                const updatedGermanArray = germanArray.map((item) =>
-                    item.coupleId === germanId ? { ...item, isSelected: IsSelected.False } : { ...item }
+                // update foreign array
+                const updatedForeignArray = foreignArray.map((item) =>
+                    item.coupleId === foreignId ? { ...item, isSelected: IsSelected.False } : { ...item }
                 );
-                setGermanArray(updatedGermanArray);
+                setForeignArray(updatedForeignArray);
         
                 // update hebrew array
                 const updatedHebrewArray = hebrewArray.map((item) =>
@@ -86,10 +64,10 @@ export const useHandleClick = ({ germanId, hebrewId, germanArray, hebrewArray, c
                 );
                 setHebrewArray(updatedHebrewArray);
 
-                setGermanID(0);
+                setForeignID(0);
                 setHebrewId(0);
             }
         }   
 
-    }, [germanId, hebrewId]);
+    }, [foreignId, hebrewId]);
 };

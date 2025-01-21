@@ -8,28 +8,45 @@ import BackButton from './components/SpeedGameContainer/BackButton';
 import ModalMessage from './components/ModalMessage/ModalMessage';
 
 // functions + types
-import { useGetData, useHandleCouples, useHandleTimer } from "./utils/SpeedGameEffects";
+import { useHandleCouples, useHandleTimer } from "./utils/SpeedGameEffects";
 import { speedGameType, Language, SelectedCard } from "./types/speedGameTypes";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../../app/store";
-import { useFetchDictionaryData } from '../../../api/dictionary/hooks';
 import { WordsType } from '../../../api/common/types';
+import { useQuery } from '@tanstack/react-query';
+import { fetchWords } from '../../../api/games';
+import { Dictionary_ALL_WORDS } from '../requests/queryKeys';
+import { createGameArray, shuffleAllWords } from './utils/speedHelper';
 
 const MainSpeedGame: React.FC = () => {
 
-    const { data: words, isLoading, error } = useFetchDictionaryData();
-
     const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
-    const succcessCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
     const dispatch = useDispatch();
     
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<speedGameType[]>([]);
     const [wordsCoppy, setWordsCoppy]  = useState<WordsType[] | undefined>([]);
 
-    useGetData({ words, setGermanArray, setHebrewArray, setWordsCoppy });
+    const {  data: words, isLoading, error } = useQuery(
+        [Dictionary_ALL_WORDS],
+        () => fetchWords(),
+        {
+        onSuccess: (lessonsData) => {
+            const validWords = words ?? []; 
+            if (validWords.length === 0) return;
+    
+            const shuffledArray = shuffleAllWords(validWords);
+            const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
+    
+            setGermanArray(shuffledGermanArray ?? []); 
+            setHebrewArray(shuffledHebrewArray ?? []); 
+            setWordsCoppy(shuffledArray);
+        }
+        }
+    );
+
     useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
     useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
 

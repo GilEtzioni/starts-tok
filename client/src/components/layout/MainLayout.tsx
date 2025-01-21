@@ -4,9 +4,11 @@ import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import { SignedIn } from "@clerk/clerk-react";
 import { useAuth } from "@clerk/clerk-react";
-import { useFetchPointsData, useFetchUserFlag } from "../../api/layout/hooks";
-import Flags from './components/Flags';
+import Flags from './common/Flags';
 import { CourseLangauge } from '../../api/common/types';
+import { useQuery } from '@tanstack/react-query';
+import { USER_FLAG, USER_POINTS } from './requests/queryKeys';
+import { fetchAllPoints, fetchUserFlag } from '../../api/layout';
 
 const { Header } = Layout;
 interface MainLayoutProps {
@@ -16,8 +18,17 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
-  const { data: userFlag, isLoading: userFlagLoading, isError: userFlagError } = useFetchUserFlag();
-  const { data: points, isLoading: pointsLoading, isError: pointsError } = useFetchPointsData();
+
+  const { data: userFlag, isLoading: userFlagLoading, isError: userFlagError } = useQuery(
+    [USER_FLAG],
+    () => fetchUserFlag()
+  )
+
+  const { data: points, isLoading: pointsLoading, isError: pointsError } = useQuery(
+    [USER_POINTS],
+    () => fetchAllPoints()
+  )
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { signOut } = useAuth();

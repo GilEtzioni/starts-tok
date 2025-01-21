@@ -2,49 +2,95 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Typography } from 'antd';
 import { useParams } from 'react-router-dom';
-import classNames from 'classnames';
+
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { setRightAnswer, resetClicks, setSuccess } from "../slices/LessonsSlice";
 import { RootState } from "../../../app/store";
 
-// components
-import { useGetData , useHandleInput} from "../utils/ThirdEffects";
+// components + utils
+import {useHandleInput} from "../utils/ThirdEffects";
 import HebrewSentenceThird from './HebrewSentenceThird';
-import { useFetchThirdLesson, useFetchAllWords } from '../../../api/lessons/hooks';
+import { getForeignSentence, getForeignWord, getHebrewSentence, splitTheSentence } from '../utils/ThirdHelper';
+import { splitSentenceToWords } from '../utils/SecondHelper';
+import { TranslatedArray } from '../types/SecondLessonType';
+
+// fetch
+import { fetchAllWords, fetchThirdLessonWords } from '../../../api/lessons';
+import { ALL_WORDS, THIRD_LESSON_SENTENCES_QUERY_KEY } from '../requests/queryKeys';
+import { useQuery } from '@tanstack/react-query';
 
 const MainThird: React.FC = () => {
 
   const { name, lesson } = useParams<{ name: string; lesson: string }>();
-  const { data: lessonsData } = useFetchThirdLesson(name || '', lesson || '');
-  const { data: wordsData} = useFetchAllWords();
 
-    // redux
   const order = useSelector((state: RootState) => state.lessons.order);
   const clicks = useSelector((state: RootState) => state.lessons.clicks);
   const dispatch = useDispatch();
 
-  // states
   const [hebrewSentence, setHebrewSentence] = useState<string>("");
-  const [germanWord, setGermanWord] = useState<string>("");
-  const [firstPartGerman, setFirstPartGerman] = useState<string>("");
-  const [secondPartGerman, setSecondPartGerman] = useState<string>("");
-  
-  // input
+  const [foreignWord, setForeignWord] = useState<string>("");
+  const [firstPartForeign, setFirstPartForeign] = useState<string>("");
+  const [secondPartForeign, setSecondPartForeign] = useState<string>("");
+  const [translatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
+
   const [inputValue, setInputValue] = useState<string>("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
-
-  useGetData({ lessonsData, order, setHebrewSentence, setGermanWord, setFirstPartGerman, setSecondPartGerman});
-  useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue });
-
-  const { Title } = Typography;
-
-  useEffect(() => {
-    if (germanWord) {
-      dispatch(setRightAnswer(germanWord));
+    
+  const { data: lessonsData, isLoading: isCardsLoading, isError: isCardsError } = useQuery(
+    [THIRD_LESSON_SENTENCES_QUERY_KEY, name, lesson],
+    () => fetchThirdLessonWords(name || '', lesson || ''),
+    {
+      onSuccess: (lessonsData) => { 
+  
+        const foreignSentence = getForeignSentence(lessonsData, order);
+        const hebrewSentence = getHebrewSentence(lessonsData, order);
+        const foreignWord = getForeignWord(lessonsData, order);
+        
+        setHebrewSentence(hebrewSentence);
+        setForeignWord(foreignWord);
+  
+        const { firstPart, secondPart } = splitTheSentence(foreignSentence, foreignWord);
+        setFirstPartForeign(firstPart);
+        setSecondPartForeign(secondPart);
+        dispatch(setRightAnswer(foreignWord));
+      },
     }
-  }, [dispatch, germanWord, hebrewSentence]);
+  );
 
+  const { data: allWords, isLoading: isWordsLoading, isError: isWordsError } = useQuery(
+    [ALL_WORDS, name, lesson],
+    () => fetchAllWords(),
+    {
+      enabled: !!lessonsData,
+      onSuccess: (allWords) => {
+        if (!allWords|| !lessonsData) return;
+
+        const hebrewSentence = getHebrewSentence(lessonsData, order);
+
+        const punctuation = [',', '.', '-', '?', '...', '!'];
+        const wordsArray = splitSentenceToWords(hebrewSentence, allWords);
+        if (!wordsArray) return;
+          
+        const copiedArray = [...wordsArray];
+        const firstItem = copiedArray.shift();
+        const lastItemIndex = copiedArray.length - 1;
+          
+        if (firstItem && punctuation.includes(firstItem.hebrewString) && lastItemIndex >= 0) {
+            copiedArray[lastItemIndex].hebrewString = firstItem.hebrewString + copiedArray[lastItemIndex].hebrewString;
+        } 
+        else if (firstItem) {
+          copiedArray.unshift(firstItem);
+        }
+          
+        setTranslatedWords(copiedArray);
+      }
+    }
+  );
+
+  useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue });
+  const { Title } = Typography;
+  
   return (
     <div className="text-center h-[400px]">
 
@@ -52,20 +98,20 @@ const MainThird: React.FC = () => {
       <Title level={3} className="text-center !font-hebrew">תרגמו את המשפט</Title>
     </Row>
              
-    <HebrewSentenceThird wordsData={wordsData} hebrewSentence={hebrewSentence} />
+    <HebrewSentenceThird translatedWords={translatedWords} />
       
-      {/* german */}
+      {/* foreign */}
         <p className="inline-block relative top-[100px] !font-hebrew">
-          {firstPartGerman}
+          {firstPartForeign}
           <input
               type="text"
               value={inputValue}
               onChange={handleInputChange}
               className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0"
-              style={{ width: `${germanWord.length * 10}px` }}
+              style={{ width: `${foreignWord.length * 10}px` }}
               placeholder=" "
             />
-          {secondPartGerman}
+          {secondPartForeign}
         </p>
       </div> 
     );

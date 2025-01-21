@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import GameCard from './GameCard';
-import { useGameMaxScore, useFetchWordsCounter } from "../../../../../../api/pages/hooks"
 import { Typography, Row } from 'antd';
 import { GameNameEnum } from '../types/mainPageTypes';
 import { useQuery } from '@tanstack/react-query';
+import { WORDS_COUNTER, WORDLE_MAX_SCORE, HANGMAN_MAX_SCORE, SPEED_GAME_MAX_SCORE } from '../../../../requests/queryKeys';
+
+import { fetchMaxPoints, fetchWordsCounter } from '../../../../../../api/pages';
 
 const GameContainer: React.FC = () => {
 
-  const { data: hangmanScore, isLoading: isLoadingHangman, error: errorHangman } = useGameMaxScore(GameNameEnum.Hangman);
-  const { data: wordleScore, isLoading: isLoadingWordle, error: errorWordle } = useGameMaxScore(GameNameEnum.Wordle);
-  const { data: speedScore, isLoading: isLoadingSpeed, error: errorSpeed } = useGameMaxScore(GameNameEnum.SpeedGame);
-  const { data: finishedWordsCount, isLoading: isLoadingFinishedWords, error: errorFinishedWords } = useFetchWordsCounter();
-  // const { data: finishedWordsCount, isLoading: isLoadingFinishedWords, error: errorFinishedWords } = useQuery(
-  //   ['finishedWordsCounter'],
-  // );
+
+  const { data: wordleScore, isLoading: isLoadingWordle, error: errorWordle } = useQuery(
+    [WORDLE_MAX_SCORE],
+    () => fetchMaxPoints(GameNameEnum.Wordle),
+  );
+
+  const { data: hangmanScore, isLoading: isLoadingHangman, error: errorHangman } = useQuery(
+    [HANGMAN_MAX_SCORE],
+    () => fetchMaxPoints(GameNameEnum.Hangman),
+  );
+
+  const { data: speedScore, isLoading: isLoadingSpeed, error: errorSpeed } = useQuery(
+    [SPEED_GAME_MAX_SCORE],
+    () => fetchMaxPoints(GameNameEnum.SpeedGame),
+  );
+
+  const { data: finishedWordsCount } = useQuery(
+    [WORDS_COUNTER],
+    () => fetchWordsCounter(),
+  );
+
+  console.log("hangmanScore", hangmanScore)
+  console.log("wordleScore", wordleScore)
+  console.log("speedScore", speedScore)
+  console.log("finishedWordsCount", finishedWordsCount)
 
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];

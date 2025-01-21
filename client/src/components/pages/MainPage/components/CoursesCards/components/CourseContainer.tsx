@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { getNumberOfLessonsCompleted } from "./Helper"
 import CourseCard from "./CourseCard";
-import { useFetchLessonData } from '../../../../../../api/pages/hooks';
+import { fetchLessonPage } from '../../../../../../api/pages'; 
 import { Typography, Row } from 'antd';
+import { useQuery } from '@tanstack/react-query';
+import { LESSONS_PAGE } from '../../../../requests/queryKeys';
+
 const CardContainer: React.FC = () => {
 
-  const { data: coursesData, isLoading, error } = useFetchLessonData();
+  const { data: coursesData, isLoading } = useQuery(
+    [LESSONS_PAGE],
+    () => fetchLessonPage(),
+  );
 
   const finished: number[] | undefined = getNumberOfLessonsCompleted(coursesData);
 
@@ -49,7 +55,6 @@ const CardContainer: React.FC = () => {
   }
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data</div>;
   
   const { Title } = Typography;
 

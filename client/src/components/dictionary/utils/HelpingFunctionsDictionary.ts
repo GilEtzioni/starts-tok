@@ -25,9 +25,8 @@ export function handleClickedRow(id: string, wordsArray: WordsType[], translated
   return result;
 }
 
-  // make the redux boolean to strings array
-  export const knowledgeDataArray = (knowledgeFilter: KnowledgeType): DictionaryKnowledgeType[] => {
-    const knowledgeArray: DictionaryKnowledgeType[] = [];
+export const knowledgeDataArray = (knowledgeFilter: KnowledgeType): DictionaryKnowledgeType[] => {
+  const knowledgeArray: DictionaryKnowledgeType[] = [];
     
     if (knowledgeFilter.isEx === true) {
       knowledgeArray.push(DictionaryKnowledgeType.Ex);

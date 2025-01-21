@@ -1,62 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFailure } from "../slices/LessonsSlice";
-import { getGermanSentence, getHebrewSentence, getGermanWord, splitTheSentence } from './ThirdHelper';
+import { getForeignSentence, getHebrewSentence, getForeignWord, splitTheSentence } from './ThirdHelper';
 import { MissingWordType } from "../../../api/common/types";
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
-
-interface useGetDataProps {
-    lessonsData: MissingWordType[] | undefined;
-    order: number;
-    setHebrewSentence: React.Dispatch<React.SetStateAction<string>>;
-    setGermanWord: React.Dispatch<React.SetStateAction<string>>;
-    setFirstPartGerman: React.Dispatch<React.SetStateAction<string>>;
-    setSecondPartGerman: React.Dispatch<React.SetStateAction<string>>;
-}
 
 interface useHandleInputProps {
     lessonsData: MissingWordType[] | undefined;
     order: number;
     dispatch: ReturnType<typeof useDispatch>;
-    germanWord: string;
+    foreignWord: string;
     clicks: number;
     inputValue: string;
     setSuccess: ActionCreatorWithoutPayload;
     resetClicks: ActionCreatorWithoutPayload;
 }
 
-/* ------------------------------------------------------------------------------------------------------------------------------ */
-
-export const useGetData = ({ lessonsData, order, setHebrewSentence , setGermanWord, setFirstPartGerman, setSecondPartGerman}: useGetDataProps) => {
-    useEffect(() => {
-      if (!lessonsData || lessonsData.length === 0) return;
-
-      const germanSentence = getGermanSentence(lessonsData, order);
-      const hebrewSentence = getHebrewSentence(lessonsData, order);
-      const germanWord = getGermanWord(lessonsData, order);
-
-      setHebrewSentence(hebrewSentence);
-      setGermanWord(germanWord);
-
-      // split the German sentence
-      const { firstPart, secondPart } = splitTheSentence(germanSentence, germanWord);
-      setFirstPartGerman(firstPart);
-      setSecondPartGerman(secondPart);
-
-  }, [lessonsData, order, setHebrewSentence, setGermanWord, setFirstPartGerman, setSecondPartGerman]);
-}
-
-/* ------------------------------------------------------------------------------------------------------------------------------ */
-
-export const useHandleInput = ({ dispatch, resetClicks, setSuccess, germanWord, clicks, inputValue }: useHandleInputProps) => {
+export const useHandleInput = ({ dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue }: useHandleInputProps) => {
     useEffect(() => {
         if (inputValue === "" && clicks === 1) {
           dispatch(resetClicks());
         }
-        else if (inputValue === germanWord.toLocaleLowerCase() && clicks === 1) {
+        else if (inputValue === foreignWord.toLocaleLowerCase() && clicks === 1) {
           dispatch(setSuccess());
         } else if (clicks === 1) {
           dispatch(setFailure());
         }
-      }, [dispatch, clicks, inputValue, germanWord]);
+      }, [dispatch, clicks, inputValue, foreignWord]);
 }

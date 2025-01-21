@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux'; 
-import { RootState } from "../../../app/store";
+import { useEffect } from 'react';
 import { WordsType } from "../../../api/common/types";
 import { sortWordsById, knowledgeDataArray } from "./HelpingFunctionsDictionary";
-import { TranslatedWordsType } from '../types/DictionaryType';
+import { KnowledgeType, TranslatedWordsType } from '../types/DictionaryType';
 
-const useFilteredWords = (words: WordsType[] | undefined) => {
-    
-  const clicks = useSelector((state: RootState) => state.dictionary.clickFilter);
-  const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
-  const level = useSelector((state: RootState) => state.dictionary.levelFilter);
+interface TableEffectProps {
+  words: WordsType[] | undefined,
+  setFilteredWords: (array: WordsType[]) => void, 
+  setTranslatedWords: (array: TranslatedWordsType[]) => void,
+  knowledge: KnowledgeType,
+  clicks: number,
+  level: string[],
+}
 
-  const [filteredWords, setFilteredWords] = useState<WordsType[]>([]);
-  const [translatedWords, setTranslatedWords] = useState<TranslatedWordsType[]>([]);
-
+export const useTableEffect = ({ words, setFilteredWords, setTranslatedWords, clicks, knowledge, level }: TableEffectProps) => {
   useEffect(() => {
     if (words === undefined || !words) return;
     
@@ -41,8 +40,4 @@ const useFilteredWords = (words: WordsType[] | undefined) => {
     // show the filtered data by the id order
     setFilteredWords(filtered);
   }, [words, level, clicks, knowledge]);
-
-  return { filteredWords, translatedWords, setTranslatedWords };
 };
-
-export default useFilteredWords;

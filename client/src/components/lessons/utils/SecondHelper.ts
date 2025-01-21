@@ -2,12 +2,12 @@ import { WordsType, SenteceType } from "../../../api/common/types";
 import { CardType } from '../types/SecondLessonType';
 import { TranslatedArray } from '../types/SecondLessonType';
 
-export const getGermanWords = (cardsData: string[], order: number): CardType[] => {
-    const germanWordsArray: string[] = [];
+export const getForeignWords = (cardsData: string[], order: number): CardType[] => {
+    const foreignWordsArray: string[] = [];
 
     // first lesson - all 12 words
     if (order === 2) {
-        germanWordsArray.push(
+        foreignWordsArray.push(
             cardsData[0],
             cardsData[1],
             cardsData[2],
@@ -25,7 +25,7 @@ export const getGermanWords = (cardsData: string[], order: number): CardType[] =
 
     // second lesson - all 12 words
     if (order === 5) {
-        germanWordsArray.push(
+        foreignWordsArray.push(
             cardsData[12],
             cardsData[13],
             cardsData[14],
@@ -42,16 +42,16 @@ export const getGermanWords = (cardsData: string[], order: number): CardType[] =
     }
 
     const combinedWordsArray: CardType[] = [];
-    for (let i = 0; i < germanWordsArray.length; i++) {
+    for (let i = 0; i < foreignWordsArray.length; i++) {
         const coupleId = i + 1;
         const containerOrder = coupleId;
-        const germanWord = germanWordsArray[i];
+        const foreignWord = foreignWordsArray[i];
         const container = "down";
-        if (germanWord) {
+        if (foreignWord) {
             combinedWordsArray.push({
                 id: coupleId,
                 containerOrder: containerOrder,
-                word: germanWord, 
+                word: foreignWord, 
                 container: container
             });
         }
@@ -68,17 +68,17 @@ export const shuffleArray = (wordsArray: CardType[]):CardType[] => {
     return wordsArray;
 };
 
-export const findMaxIndex = (germanArray: CardType[], cardId: number): number => {
+export const findMaxIndex = (foreignArray: CardType[], cardId: number): number => {
     let maxContainerOrder = 0; 
 
     // find the card
-    const myCard = germanArray.find((item) => item.id === cardId);
+    const myCard = foreignArray.find((item) => item.id === cardId);
 
     if (myCard) {
         const targetContainer = myCard.container === "down" ? "up" : "down"; // find his curr container
 
         // find the max containerOrder in the other containerr
-        maxContainerOrder = germanArray.reduce((maxOrder, item) => {
+        maxContainerOrder = foreignArray.reduce((maxOrder, item) => {
             if (item.container === targetContainer && item.containerOrder > maxOrder) {
                 return item.containerOrder;
             }
@@ -89,30 +89,30 @@ export const findMaxIndex = (germanArray: CardType[], cardId: number): number =>
     return maxContainerOrder; 
 }
 
-export const getHebrewSentence = (lessons: SenteceType, order: number): string => { 
+export const getHebrewSentence = (lessons: SenteceType[], order: number): string => { 
     if (order === 2) {
-        return lessons.sentenceOneHebrew;
+        return lessons[0].sentenceOneHebrew;
     }
     if (order === 5) {
-        return lessons.sentenceTwoHebrew;
+        return lessons[0].sentenceTwoHebrew;
     }
     return "";
 }
 
-export const getGermanSentence = (lessons: SenteceType, order: number): string => { 
+export const getForeignSentence = (lessons: SenteceType[], order: number): string => { 
     if (order === 2) {
-        return lessons.sentenceOneForeign;
+        return lessons[0].sentenceOneForeign;
     }
     if (order === 5) {
-        return lessons.sentenceTwoForeign;
+        return lessons[0].sentenceTwoForeign;
     }
     return "";
 }
 
 
-export const getUserAnswer = (lessons: SenteceType, germanArray: CardType[], order: number): string => { 
+export const getUserAnswer = (lessons: SenteceType, foreignArray: CardType[], order: number): string => { 
     let answer = "";
-    germanArray
+    foreignArray
         .filter(item => item.container === "up") 
         .sort((a, b) => a.containerOrder - b.containerOrder) 
         .forEach((item, index) => {
@@ -174,14 +174,14 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
     const findAndPushMatches = (word: string): boolean => {
         const matchingWords = wordsArray.filter(item => item.hebrewWord === word);
         if (matchingWords.length > 0) {
-            const germanStrings = matchingWords.map(item => item.foreignWord);
+            const foreignStrings = matchingWords.map(item => item.foreignWord);
             const existingEntry = resultArray.find(entry => entry.hebrewString === word);
             if (existingEntry) {
-                existingEntry.germanString.push(...germanStrings);
+                existingEntry.foreignString.push(...foreignStrings);
             } else {
                 resultArray.push({
                     hebrewString: word,
-                    germanString: germanStrings,
+                    foreignString: foreignStrings,
                 });
             }
             return true;
@@ -215,11 +215,11 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
     remainingWords.forEach(word => {
         const existingEntry = resultArray.find(entry => entry.hebrewString === word);
         if (existingEntry) {
-            existingEntry.germanString.push("לא במילון");
+            existingEntry.foreignString.push("לא במילון");
         } else {
             resultArray.push({
                 hebrewString: word,
-                germanString: ["לא במילון"],
+                foreignString: ["לא במילון"],
             });
         }
     });
@@ -238,11 +238,11 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
             if (noSpaceString.charAt(i) === mark) {
                 const existingEntry = resultArray.find(entry => entry.hebrewString === mark);
                 if (existingEntry) {
-                    existingEntry.germanString.push(null);
+                    existingEntry.foreignString.push(null);
                 } else {
                     resultArray.push({
                         hebrewString: mark,
-                        germanString: [null],
+                        foreignString: [null],
                     });
                 }
             }
@@ -268,7 +268,7 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
             if (normalizedWord === substring) {
                 finalArray.push({
                     hebrewString: wordObj.hebrewString,
-                    germanString: wordObj.germanString
+                    foreignString: wordObj.foreignString
                 });
                 startIndex = i;
                 break; 

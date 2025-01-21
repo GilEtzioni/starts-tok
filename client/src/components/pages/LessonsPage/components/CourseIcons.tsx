@@ -6,24 +6,24 @@ import TodayIcon from '@mui/icons-material/Today';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import WavingHandIcon from '@mui/icons-material/WavingHand';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
-import CheckroomIcon from '@mui/icons-material/Checkroom';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
 import HouseSidingIcon from '@mui/icons-material/HouseSiding';
 import PetsIcon from '@mui/icons-material/Pets';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import NordicWalkingIcon from '@mui/icons-material/NordicWalking';
 import ChairIcon from '@mui/icons-material/Chair';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import HexagonIcon from '@mui/icons-material/Hexagon';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import CastleIcon from '@mui/icons-material/Castle';
-import FestivalIcon from '@mui/icons-material/Festival';
-import AttractionsIcon from '@mui/icons-material/Attractions';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import SportsBarIcon from '@mui/icons-material/SportsBar';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import SquareFootIcon from '@mui/icons-material/SquareFoot';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 interface CourseIconsProps {
   courseId: number;
@@ -41,29 +41,26 @@ const iconMap: { [key: number]: React.ReactNode } = {
   7: <AcUnitIcon className={iconsCss} />,
   8: <CheckroomIcon className={iconsCss} />,
   9: <FastfoodIcon className={iconsCss} />,
-  10: <HouseSidingIcon className={iconsCss} />,
-  11: <PetsIcon className={iconsCss} />,
-  12: <SentimentVerySatisfiedIcon className={iconsCss} />,
-  13: <DirectionsBusIcon className={iconsCss} />,
-  14: <SchoolIcon className={iconsCss} />,
-  15: <WorkIcon className={iconsCss} />,
-  16: <DirectionsWalkIcon className={iconsCss} />,
-  17: <NordicWalkingIcon className={iconsCss} />,
-  18: <ChairIcon className={iconsCss} />,
-  19: <SportsBasketballIcon className={iconsCss} />,
-  20: <HexagonIcon className={iconsCss} />,
-  21: <AccessTimeIcon className={iconsCss} />,
-  22: <CastleIcon className={iconsCss} />,
-  23: <FestivalIcon className={iconsCss} />,
-  24: <AttractionsIcon className={iconsCss} />,
+  10: <SportsBarIcon className={iconsCss} />,
+  11: <HouseSidingIcon className={iconsCss} />,
+  12: <PetsIcon className={iconsCss} />,
+  13: <EmojiEmotionsIcon className={iconsCss} />,
+  14: <DirectionsBusIcon className={iconsCss} />,
+  15: <SquareFootIcon className={iconsCss} />,
+  16: <WorkIcon className={iconsCss} />,
+  17: <AccessibilityIcon className={iconsCss} />,
+  18: <SportsBasketballIcon className={iconsCss} />,
+  19: <ChairIcon className={iconsCss} />,
+  20: <DirectionsRunIcon className={iconsCss} />,
+  21: <HexagonIcon className={iconsCss} />,
+  22: <AccessTimeIcon className={iconsCss} />,
+  23: <DirectionsWalkIcon className={iconsCss} />,
+  24: <ShoppingCartIcon className={iconsCss} />,
   25: <PhoneIphoneIcon className={iconsCss} />,
 };
 
 const CourseIcons: React.FC<CourseIconsProps> = ({ courseId }) => {
-  if (!iconMap[courseId]) {
-    console.warn(`No icon mapped for courseId: ${courseId}`);
-  }
-
+  
   return <div>{iconMap[courseId] || <div className={iconsCss}>?</div>}</div>;
 };
 

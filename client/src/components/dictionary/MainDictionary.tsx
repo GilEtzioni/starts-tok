@@ -1,18 +1,10 @@
-import TopIcons from "./components/FilterContainer/TopIcons";
-import ButtonsContainer from './components/FilterContainer/ButtonsContainer';
-import TableDictionary from './components/DictionayTable/TableDictionary';
-
-import MainAddWord from './components/AddWordButton/MainAddWord';
-import MainStatics from './components/StaticsButton/MainStatics';
-import { useFetchDictionaryData } from "../../api/dictionary/hooks";
+import TopIcons from "./common/FilterContainer/TopIcons";
+import ButtonsContainer from './common/FilterContainer/ButtonsContainer';
+import TableDictionary from './common/DictionayTable/TableDictionary';
+import MainAddWord from './common/AddWordButton/MainAddWord';
+import MainStatics from './common/StaticsButton/MainStatics';
 
 const MainDictionary: React.FC = () => {
-
-  const { data: words, isLoading, isError } = useFetchDictionaryData();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading data</div>;
-
   return (
     <>
       <div className="flex justify-center items-center mt-4">
@@ -20,7 +12,7 @@ const MainDictionary: React.FC = () => {
 
         <div className="flex justify-center items-center space-x-4 mb-4">
             <MainAddWord />
-            <MainStatics words={words}/>
+            <MainStatics/>
         </div>
 
         <div className="flex justify-center mb-4">
@@ -31,7 +23,7 @@ const MainDictionary: React.FC = () => {
         
       </div>
       <div className="mt-5">
-        <TableDictionary words={words} />
+        <TableDictionary />
       </div>
     </>
   );

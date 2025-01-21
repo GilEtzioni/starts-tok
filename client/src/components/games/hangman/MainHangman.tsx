@@ -18,28 +18,46 @@ import MainMessages from './components/Messages/MainMessages';
 // functions + types
 import { HangmanType } from './types/hangmanType'; 
 import { WordsType } from "../../../api/common/types";
-import { useStartGame } from './utils/HangEffects';
-import { useFetchWordsData } from "../../../api/games/hooks";
+import { useQuery } from '@tanstack/react-query';
+import { Dictionary_ALL_WORDS } from '../requests/queryKeys';
+import { fetchWords } from '../../../api/games';
+import { createGameArray, createLettersArray, getRandomWord } from './utils/HangHelper';
+import { setSelectedWord } from './slices/HangmanSlice';
 
 const MainHangman: React.FC = () => {
 
-  const { data: words, isLoading, error } = useFetchWordsData();
-  
     const [randomWord, setRandomWord] = useState<WordsType[]>([]);
     const [lettersArray, setLettersArray] = useState<HangmanType[]>([]);
     const [gameArray, setGameArray] = useState<HangmanType[]>([]);
 
     const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
-    const wrongCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
-    const selectedWord = useSelector((state: RootState) => state.hangman.selectedWord);
     const dispatch = useDispatch();
 
-    useStartGame({ setRandomWord, words, setLettersArray, setGameArray, successCounter, wrongCounter, dispatch });
+    const {  data: words, isLoading, error } = useQuery(
+      [Dictionary_ALL_WORDS],
+      () => fetchWords(),
+      {
+        onSuccess: (words) => {
+          setLettersArray([]);
+          setGameArray([]);
+  
+          const selectedWord = getRandomWord(words);
+          dispatch(setSelectedWord([selectedWord]));
+  
+          setRandomWord([selectedWord]);
+  
+          const lettersRandomArray = createLettersArray(selectedWord);
+          setLettersArray(lettersRandomArray);
+  
+          const gameRandomArray = createGameArray(selectedWord);
+          setGameArray(gameRandomArray);
+        }
+      }
+  );
 
     const { Title } = Typography;
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading data</div>;
   
   return (
       <>

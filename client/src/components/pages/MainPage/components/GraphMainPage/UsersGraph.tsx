@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Row, Typography } from 'antd';
-import { useFetchOneDayUserData } from '../../../../../api/pages/hooks';
+import { fetchOneDayUser } from '../../../../../api/pages'; 
 import { fillMissingWeekDays } from '../TableMainPage/userTableHelper';
 import { weekPointsType } from '../../../../../api/common/types';
+import { useQuery } from '@tanstack/react-query';
+import { WEEKLY_POINTS } from '../../../requests/queryKeys';
 
 const UsersGraph: React.FC = () => {
-  const { data: weekScore, isLoading, error } = useFetchOneDayUserData();
+  const { data: weekScore, isLoading, error } = useQuery(
+    [WEEKLY_POINTS],
+    () => fetchOneDayUser(),
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;

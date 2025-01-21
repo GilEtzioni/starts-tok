@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { message } from 'antd';
-import { minusOneClick, setCurrentMode } from '../../slices/WordleSlice';
+import { setCurrentMode } from '../../slices/WordleSlice';
 import { useDispatch } from 'react-redux';
 import { CurrentMode } from '../../ types/WordelType';
 

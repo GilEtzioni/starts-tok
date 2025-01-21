@@ -1,6 +1,6 @@
 // react  + antd
 import React, { useState } from 'react';
-import { Row, Col, Typography } from 'antd';
+import { Row, Col, Typography, Skeleton } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,42 +8,61 @@ import { RootState } from "../../../app/store";
 
 // components + functions
 import FirstCard from "./FirstCard"
-import { useGetData , useHandleClick} from '../utils/FirstEffects';
-import { useFetchLessonWords } from '../../../api/lessons/hooks'; 
-import { useParams } from 'react-router-dom';
+import { useHandleClick} from '../utils/FirstEffects';
+import { getForeignWords, getHebrewWords, shuffleArray } from '../utils/FirstHelper';
 import { FirstLessonType, IsSelected } from "../types/FirstLessonType";
 import { LessonStatus } from '../types/LessonType';
+import { LanguageType } from '../../../api/common/types';
+
+// fetch
+import { useParams } from 'react-router-dom';
+import { fetchFirstLessonWords } from '../../../api/lessons'; 
+import { useQuery } from '@tanstack/react-query';
+import { FIRST_LESSON_WORDS_QUERY_KEY } from '../requests/queryKeys';
 
 const FirstCardContainer: React.FC = () => {
 
     const { name, lesson } = useParams<{ name: string; lesson: string }>();
-    const { data: lessonsData, isLoading, isError } = useFetchLessonWords(name || '', lesson || '');
 
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
     
-    // handle current clicks
-    const [germanId, setGermanID] = useState(0);
+
+    const [foreignId, setForeignID] = useState(0);
     const [hebrewId, setHebrewId] = useState(0);
     const [counter, setCounter] = useState(0);
-
-    // contain all german / hebrew data
-    const [germanArray, setGermanArray] = useState<FirstLessonType[]>([]);
+    const [foreignArray, setForeignArray] = useState<FirstLessonType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<FirstLessonType[]>([]);
 
     const { Title } = Typography;
 
-    useGetData({lessonsData, order, germanId, hebrewId, germanArray, hebrewArray, counter, setGermanID, setHebrewId,
-        setCounter, setGermanArray, setHebrewArray, dispatch,  status });
+    const { data: lessons, isLoading, isError } = useQuery(
+        [FIRST_LESSON_WORDS_QUERY_KEY, name, lesson],
+        () => fetchFirstLessonWords(name || '', lesson || ''),
+        {
+          onSuccess: (lessons) => {
+            if (!lessons) return;
 
-    useHandleClick({ lessonsData, order,germanId,hebrewId, germanArray, hebrewArray, counter, setGermanID, setHebrewId,
-        setCounter, setGermanArray, setHebrewArray, dispatch,  status });
+            const originalForeignArray = getForeignWords(lessons);        
+            const originalHebrewArray = getHebrewWords(lessons); 
+      
+            const shuffledForeign = shuffleArray(originalForeignArray);
+            const shuffledHebrew = shuffleArray(originalHebrewArray);
+      
+            setForeignArray(shuffledForeign);
+            setHebrewArray(shuffledHebrew);
+          }
+        }
+    );
+
+    useHandleClick({ order,foreignId,hebrewId, foreignArray, hebrewArray, counter, setForeignID, setHebrewId,
+        setCounter, setForeignArray, setHebrewArray, dispatch,  status });
 
         const handleClick = (id: number, language: string) => {
-            // Update german array
-            if (status === LessonStatus.Running && language === "german") {
-                const updatedGermanArray = germanArray.map((item) => {
+            // Update foreign array
+            if (status === LessonStatus.Running && language === LanguageType.Foreign) {
+                const updatedForeignArray = foreignArray.map((item) => {
                 // if it's a new card, select it. if re-clicked, reset it
                 if (
                     item.coupleId === id &&
@@ -65,14 +84,14 @@ const FirstCardContainer: React.FC = () => {
                 return item;
                 });
             
-                setGermanArray(updatedGermanArray);
+                setForeignArray(updatedForeignArray);
             
-                const selectedCard = updatedGermanArray.find((item) => item.coupleId === id);
-                setGermanID(selectedCard?.isSelected === IsSelected.Clicked ? id : 0);
+                const selectedCard = updatedForeignArray.find((item) => item.coupleId === id);
+                setForeignID(selectedCard?.isSelected === IsSelected.Clicked ? id : 0);
             }
 
             // update hebrew
-            if (status === LessonStatus.Running && language === "hebrew") {
+            if (status === LessonStatus.Running && language === LanguageType.Hebrew) {
                 const updatedHebrewArray = hebrewArray.map((item) => {
                     // if it's a new card select it, if it re-click reset it
                     if (item.coupleId === id && item.isSelected !== IsSelected.False && item.isSelected !== IsSelected.True) {
@@ -94,7 +113,6 @@ const FirstCardContainer: React.FC = () => {
             }
         };
 
-    if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error...</div>;
 
     return (
@@ -106,30 +124,38 @@ const FirstCardContainer: React.FC = () => {
         </Row>
 
         <Row gutter={[4, 4]}>
-            {germanArray.map((germanItem, index) => {
+            {foreignArray.map((foreignItem, index) => {
                 const hebrewItem = hebrewArray[index]; 
                 return (
                     <>
-                        <Col key={`german-${germanItem.coupleId}`} span={12}>
-                            <FirstCard
-                                language="german"
-                                word={germanItem.word}
-                                id={germanItem.coupleId}
-                                isSelected={germanItem.isSelected}
-                                onClick={handleClick}
-                            />
+                    <Col key={`foreign-${foreignItem.coupleId}`} span={12}>
+                            {isLoading ? (
+                                <Skeleton active paragraph={{ rows: 1 }} />
+                            ) : (
+                                <FirstCard
+                                    language={LanguageType.Foreign}
+                                    word={foreignItem.word}
+                                    id={foreignItem.coupleId}
+                                    isSelected={foreignItem.isSelected}
+                                    onClick={handleClick}
+                                />
+                            )}
                         </Col>
                         
     
                         {hebrewItem && (
                             <Col key={`hebrew-${hebrewItem.coupleId}`} span={12}>
-                                <FirstCard
-                                    language="hebrew"
-                                    word={hebrewItem.word}
-                                    id={hebrewItem.coupleId}
-                                    isSelected={hebrewItem.isSelected}
-                                    onClick={handleClick}
-                                />
+                                {isLoading ? (
+                                    <Skeleton active paragraph={{ rows: 1 }} />
+                                ) : (
+                                    <FirstCard
+                                    language={LanguageType.Hebrew}
+                                        word={hebrewItem.word}
+                                        id={hebrewItem.coupleId}
+                                        isSelected={hebrewItem.isSelected}
+                                        onClick={handleClick}
+                                    />
+                                )}
                             </Col>
                         )}
                     </>

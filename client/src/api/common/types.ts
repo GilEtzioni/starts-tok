@@ -1,5 +1,3 @@
-import { KnowledgeType } from "../../components/dictionary/types/DictionaryType";
-
 export enum EnglishLevel {
   A1 = "A1",
   A2 = "A2",
@@ -93,4 +91,9 @@ export enum CourseLangauge {
   Italian = "italian",
   Spanish = "spanish",
   French = "french",
+}
+
+export enum LanguageType {
+  Hebrew = "hebrew",
+  Foreign = "foreign"
 }

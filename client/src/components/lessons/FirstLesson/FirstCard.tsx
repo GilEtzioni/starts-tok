@@ -1,9 +1,10 @@
 import { Card } from "antd";
 import { IsSelected } from "../types/FirstLessonType";
 import classNames from "classnames";
+import { LanguageType } from "../../../api/common/types";
 
 interface FirstCardProps {
-  language: string;
+  language: LanguageType;
   word: string;
   id: number;
   isSelected: string;
