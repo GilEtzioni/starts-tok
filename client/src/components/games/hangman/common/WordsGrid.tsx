@@ -3,12 +3,12 @@ import React from 'react';
 import { Card } from 'antd';
 
 // redux
-import { addOneWrongCounter } from "../../slices/HangmanSlice";
+import { addOneWrongCounter } from "../slices/HangmanSlice";
 import { useDispatch } from 'react-redux';
-import { HangmanType } from '../../types/hangmanType';
+import { HangmanType } from '../types/hangmanType';
 
-import { handleArray, isAnswerTrue } from "../../utils/HangHelper";
-import { SelectedLetter } from '../../types/hangmanType';
+import { handleArray, isAnswerTrue } from "../utils/hangHelper";
+import { SelectedLetter } from '../types/hangmanType';
 import classNames from 'classnames';
 
 interface WordsGridProps {

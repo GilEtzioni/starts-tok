@@ -6,7 +6,7 @@ export const hangmanSlice = createSlice({
   initialState: {
     wrongLettersCounter: 0,
     successGamesCounter: 0,
-    selectedWord: [] as WordsType[],
+    selectedWord: "",
   },
   reducers: {
     /* wrong counter */
@@ -15,6 +15,10 @@ export const hangmanSlice = createSlice({
     },
     resetWrongCounter: (state) => {
       state.wrongLettersCounter = 0;
+    },
+
+    setNumberWrongCounter: (state, action: PayloadAction<number>) => {
+      state.wrongLettersCounter = action.payload;
     },
 
     /* success counter */
@@ -26,12 +30,19 @@ export const hangmanSlice = createSlice({
     },
 
     /* selected word */
-    setSelectedWord: (state, action: PayloadAction<WordsType[]>) => {
+    setSelectedWord: (state, action: PayloadAction<string>) => {
       state.selectedWord = action.payload;
     },
   },
 });
 
-export const { addOneWrongCounter, resetWrongCounter, addOneSuccesssCounter, resetSuccesssCounter, setSelectedWord } = hangmanSlice.actions;
+export const { 
+  addOneWrongCounter, 
+  resetWrongCounter, 
+  addOneSuccesssCounter, 
+  resetSuccesssCounter, 
+  setSelectedWord,
+  setNumberWrongCounter
+} = hangmanSlice.actions;
 
 export default hangmanSlice.reducer;

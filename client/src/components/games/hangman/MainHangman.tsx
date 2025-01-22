@@ -9,11 +9,11 @@ import { RootState } from "../../../app/store";
 
 // components
 import BackButton from '../../../common/BackButton';
-import CourseName from './components/HangmanContainer/CourseName';
-import WordsLines from './components/HangmanContainer/WordsLines';
-import WordsGrid from './components/HangmanContainer/WordsGrid';
-import PhotosHang from './components/HangmanContainer/PhotosHang';
-import MainMessages from './components/Messages/MainMessages';
+import CourseName from './common/CourseName';
+import WordsLines from './common/WordsLines';
+import WordsGrid from './common/WordsGrid';
+import PhotosHang from './common/PhotosHang';
+import MainMessages from './common/MainMessages';
 
 // functions + types
 import { HangmanType } from './types/hangmanType'; 
@@ -21,8 +21,9 @@ import { WordsType } from "../../../api/common/types";
 import { useQuery } from '@tanstack/react-query';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
 import { fetchWords, fetchKeyboard } from '../../../api/games';
-import { createGameArray, createLettersArray, getRandomWord } from './utils/HangHelper';
-import { resetSuccesssCounter, setSelectedWord } from './slices/HangmanSlice';
+import { createGameArray, createLettersArray, getRandomWord } from './utils/hangHelper';
+import { resetSuccesssCounter, resetWrongCounter, setSelectedWord } from './slices/HangmanSlice';
+import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 
 const MainHangman: React.FC = () => {
 
@@ -31,23 +32,22 @@ const MainHangman: React.FC = () => {
     const [gameArray, setGameArray] = useState<HangmanType[]>([]);
 
     const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
+    const wrongLettersCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
     const dispatch = useDispatch();
+    const selectedWord = useSelector((state: RootState) => state.hangman.selectedWord);
 
     const { data: keyboard } = useQuery(
-      [KEYBOARD_LETTERS],() => fetchKeyboard())
+      [KEYBOARD_LETTERS ],() => fetchKeyboard())
 
-    const {  data: words, isLoading, error } = useQuery(
-      [DICTIONARY_ALL_WORDS],
+    const {  data: words, isLoading } = useQuery(
+      [DICTIONARY_ALL_WORDS, wrongLettersCounter === HANGMAN_FINISHED_NUMBER],
       () => fetchWords(),
       {
         enabled: !!keyboard,
         onSuccess: (words) => {
-          setLettersArray([]);
-          setGameArray([]);
-  
+          dispatch(resetWrongCounter());
           const selectedWord = getRandomWord(words);
-          dispatch(setSelectedWord([selectedWord]));
-  
+          dispatch(setSelectedWord(selectedWord.foreignWord));
           setRandomWord([selectedWord]);
 
           if(!keyboard) return;
@@ -61,18 +61,13 @@ const MainHangman: React.FC = () => {
       }
   );
 
-    const { Title } = Typography;
-
     if (isLoading) return <div>Loading...</div>;
 
     const handleBack = () => {
       if (words === undefined) return;
       const selectedWord = getRandomWord(words);
-      setSelectedWord([selectedWord])
       dispatch(resetSuccesssCounter());
     };
-
-    
     
     return (
       <>
@@ -81,7 +76,7 @@ const MainHangman: React.FC = () => {
           <Row>
             <Col span={14} className="h-screen p-10 relative">
               <div className="absolute">
-                <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} />
+                <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} selectedWord={selectedWord}/>
               </div>
     
               <div className="flex flex-col items-center justify-center gap-5 h-0 mt-10">
@@ -103,9 +98,9 @@ const MainHangman: React.FC = () => {
     
         <Col span={10} className="h-screen flex flex-col">
           <div className="flex justify-between items-center p-5">
-            <Title level={3} className="text-xl font-semibold antialiased ml-40">
+            <Typography.Title level={3} className="text-xl font-semibold antialiased ml-40">
               הצלחת {successCounter} משחקים ברצף
-            </Title>
+            </Typography.Title>
             <BackButton onBack={handleBack} />
           </div>
 

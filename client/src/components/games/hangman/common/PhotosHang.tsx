@@ -2,17 +2,17 @@ import React from 'react';
 import { Image } from 'antd';
 
 // images
-import image0 from "../../images/hangman0.png";
-import image1 from '../../images/hangman1.png';
-import image2 from '../../images/hangman2.png';
-import image3 from '../../images/hangman3.png';
-import image4 from '../../images/hangman4.png';
-import image5 from '../../images/hangman5.png';
-import image6 from '../../images/hangman6.png';
+import image0 from "../images/hangman0.png"
+import image1 from '../images/hangman1.png';
+import image2 from '../images/hangman2.png';
+import image3 from '../images/hangman3.png';
+import image4 from '../images/hangman4.png';
+import image5 from '../images/hangman5.png';
+import image6 from '../images/hangman6.png';
 
 // redux
 import { useSelector } from 'react-redux';
-import { RootState } from "../../../../../app/store";
+import { RootState } from "../../../../app/store";
 
 const PhotosHang: React.FC = () => {
 

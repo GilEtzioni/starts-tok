@@ -125,20 +125,21 @@ const LettersGrid: React.FC<WordsGridProps> = ({
       
       <div className="mt-4">
         
-      <Button
+      <div className="flex space-x-4">
+        <Button
           className="!hover:bg-gray-100 !hover:cursor-pointer !border !border-gray-100 !border-b-4 !border-1 !duration-300 ease-in-out hover:-translate-y-0.5"
           onClick={handleDelete}
         >
           מחיקה
         </Button>
-        
+
         <Button
           className="!hover:bg-gray-100 !hover:cursor-pointer !border !border-gray-100 !border-b-4 !border-1 !duration-300 ease-in-out hover:-translate-y-0.5"
           onClick={handleEnter}
         >
           לחץ
         </Button>
-
+      </div>
       </div>
     </>
   );

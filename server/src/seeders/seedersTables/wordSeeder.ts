@@ -384,6 +384,13 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   // Army - 148
   // Cinema - 149
   // Extreme Sports - 150
+  { hebrewWord: "אדום", germanWord: "aaaa", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Colors", courseOrder: 1 },
+  { hebrewWord: "אדום", germanWord: "bbbb", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Colors", courseOrder: 1 },
+  { hebrewWord: "אדום", germanWord: "cccc", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Colors", courseOrder: 1 },
+  { hebrewWord: "אדום", germanWord: "dddd", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Colors", courseOrder: 1 },
+  { hebrewWord: "אדום", germanWord: "eeee", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Colors", courseOrder: 1 },
+  { hebrewWord: "אדום", germanWord: "ffff", italianWord: "rosso", spanishWord: "rojo", frenchWord: "rouge", hebrewLevel: "מבוא", englishLevel: "A1", courseNameEnglish: "Colors", courseOrder: 1 },
+
 
 ];
 

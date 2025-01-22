@@ -1,11 +1,12 @@
 // react + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Spin, Row, Col, Typography } from 'antd';
 
 // fetch data + components
-import GameCard from './components/common/SpeedGameCard';
+import GameCard from './common/SpeedGameCard';
 import BackButton from '../../../common/BackButton';
-import ModalMessage from './components/ModalMessage/ModalMessage';
+import FinishedGameMesssage from '../common/FinishedGameMesssage';
+import useSpeedGameActions from './utils/messageHelper';
 
 // functions + types
 import { useHandleCouples, useHandleTimer } from "./utils/SpeedGameEffects";
@@ -19,23 +20,27 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchWords } from '../../../api/games';
 import { DICTIONARY_ALL_WORDS } from '../requests/queryKeys';
 import { createGameArray, shuffleAllWords } from './utils/speedHelper';
+import { resetWrongCounter } from './slices/SpeedGameSlice';
+import { SPEED_GAME_FINISHED_NUMBER } from '../common/consts';
 
 const MainSpeedGame: React.FC = () => {
 
     const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
+    const successCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
     const dispatch = useDispatch();
     
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<speedGameType[]>([]);
     const [wordsCoppy, setWordsCoppy]  = useState<WordsType[] | undefined>([]);
+    const { handleBack, restartGame } = useSpeedGameActions();
 
     const {  data: words, isLoading, error } = useQuery(
-        [DICTIONARY_ALL_WORDS],
+        [DICTIONARY_ALL_WORDS, wrongCounter === SPEED_GAME_FINISHED_NUMBER],
         () => fetchWords(),
         {
-        onSuccess: (lessonsData) => {
+        onSuccess: (words) => {
             const validWords = words ?? []; 
-            if (validWords.length === 0) return;
+            dispatch(resetWrongCounter());
     
             const shuffledArray = shuffleAllWords(validWords);
             const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
@@ -72,7 +77,9 @@ const MainSpeedGame: React.FC = () => {
         }
     }
 
-    const { Title } = Typography;
+    useEffect(() => {
+      console.log("wrongCounter: ", wrongCounter)
+    })
 
     if (isLoading) return <Spin tip="Loading..." />;
     if (error) return <div>Error loading data</div>;
@@ -80,19 +87,20 @@ const MainSpeedGame: React.FC = () => {
 return (
     <>
       {wrongCounter === germanArray.length && (
-        <ModalMessage
-          words={words}
-          setGermanArray={setGermanArray}
-          setHebrewArray={setHebrewArray}
+        <FinishedGameMesssage
+          onBack={handleBack}
+          onRestart={restartGame}
+          title='!כל הכבוד'
+          description={`הצלחת למצוא ${successCounter} זוגות`}
         />
       )}
   
       <div className="flex flex-col min-h-screen">
         <div className="relative flex items-center justify-between mt-5 px-5">
           <div className="absolute inset-0 flex justify-center">
-            <Title level={3} className="text-center">
+            <Typography.Title level={3} className="text-center">
               התאימו את הזוגות
-            </Title>
+            </Typography.Title>
           </div>
   
           <div className="ml-auto">

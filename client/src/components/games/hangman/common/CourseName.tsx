@@ -1,5 +1,5 @@
 import React from 'react';
-import { WordsType } from "../../../../../api/common/types";
+import { WordsType } from "../../../../api/common/types";
 import { Row, Typography } from 'antd';
 
 interface CourseNameProps {

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { HangmanType } from '../../types/hangmanType';
-import { SelectedLetter } from '../../types/hangmanType';
+import { HangmanType } from '../types/hangmanType';
+import { SelectedLetter } from '../types/hangmanType';
 
 interface WordsLinesProps {
   gameArray: HangmanType[];

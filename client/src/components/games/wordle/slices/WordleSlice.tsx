@@ -23,6 +23,10 @@ export const WordleSlice = createSlice({
       state.clicksCounter = 0;
     },
 
+    setClicks: (state, action: PayloadAction<number>) => {
+      state.clicksCounter = action.payload;
+    },
+
     /* success counter */
     addOneSuccess: (state) => {
       state.successCounter += 1;
@@ -45,6 +49,7 @@ export const {
   resetSuccess,
   setCurrentMode,
   minusOneClick,
+  setClicks
 } = WordleSlice.actions;
 
 export default WordleSlice.reducer;

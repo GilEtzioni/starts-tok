@@ -1,4 +1,3 @@
-
 import { Pool } from "pg";
 import dotenv from "dotenv";
 import { drizzle } from "drizzle-orm/node-postgres";
@@ -20,7 +19,7 @@ const pool = new Pool({
     connectionString: connectionString,
 });
 
-async const main = () => {
+async function main() {
     console.log("Migration started...");
     
     const db = drizzle(pool); 

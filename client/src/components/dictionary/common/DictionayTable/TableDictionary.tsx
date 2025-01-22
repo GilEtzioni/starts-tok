@@ -25,7 +25,6 @@ const TableDictionary: React.FC = () => {
     () => fetchFilterDictionary(level, knowledgeArray),
     {
       onSuccess: (data) => {
-        console.log("words:", words)
         const transformedWords = data.map((item) => ({
           key: item.wordId,
           wordId: item.wordId,

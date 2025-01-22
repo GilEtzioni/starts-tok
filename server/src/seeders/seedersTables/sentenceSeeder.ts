@@ -13,12 +13,6 @@ export const sentenceSeeder = async (userId: string, courseIds: Array<{ index: n
         hebrewLevel: "מבוא",
         englishLevel: "A1",
         courseNameEnglish: "Colors",
-        setentences [{
-          heberw: ""
-          german: "",
-          italian: "",
-          
-        }]
         lessonOrder: 0, 
         
         sentenceOneHebrew: "המכונית אדומה",

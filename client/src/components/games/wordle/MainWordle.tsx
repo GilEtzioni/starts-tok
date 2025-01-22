@@ -1,21 +1,17 @@
 // react + antd
 import React, { useState } from 'react';
-import { Row, Typography } from 'antd';
-
-// fetch data + types
-import { wordleType } from './ types/WordelType';
+import { Typography } from 'antd';
 
 // components
 import BackButton from '../../../common/BackButton';
-import LettersGrid from './components/WordleConatiner/LettersGrid';
-import AnswerGrid from './components/WordleConatiner/AnswerGrid';
-import LoadingComponents from './components/WordleConatiner/LoadingComponents';
-
-// messages
-import FailureMesssage from './components/Messages/FailureMesssage';
-import SuccessMessage from './components/Messages/SuccessMessage';
-import NotWordMessage from './components/Messages/NotWordMessage';
-import TooShortMessage from './components/Messages/TooShortMessage';
+import LettersGrid from './common/WordleConatiner/LettersGrid';
+import AnswerGrid from './common/WordleConatiner/AnswerGrid';
+import LoadingComponents from './common/WordleConatiner/LoadingComponents';
+import { wordleType } from './ types/WordelType';
+import FinishedGameMesssage from '../common/FinishedGameMesssage';
+import NotWordMessage from './common/Messages/NotWordMessage';
+import TooShortMessage from './common/Messages/TooShortMessage';
+import { useWordleActions } from "./utilts/messageHelper";
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,27 +22,32 @@ import { fetchKeyboard, fetchWords } from '../../../api/games';
 import { useQuery } from '@tanstack/react-query';
 import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
 import { resetClicks, resetSuccess, setCurrentMode } from './slices/WordleSlice';
+import { WORDLE_FINISHED_NUMBER } from '../common/consts';
+
 
 const MainWordle: React.FC = () => {
 
     const { Title } = Typography;
     const currentMode = useSelector((state: RootState) => state.wordel.currentMode);
     const succesCounter = useSelector((state: RootState) => state.wordel.successCounter);
+    const clicksCounter = useSelector((state: RootState) => state.wordel.clicksCounter);
 
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
     const dispatch = useDispatch();
+    const { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess, onBackClick } = useWordleActions();
 
     const { data: keyboard } = useQuery(
       [KEYBOARD_LETTERS],() => fetchKeyboard())
 
     const {  data: words, isLoading } = useQuery(
-      [DICTIONARY_ALL_WORDS],
+      [DICTIONARY_ALL_WORDS, clicksCounter === WORDLE_FINISHED_NUMBER],
       () => fetchWords(),
     {
       enabled: !!keyboard,
       onSuccess: (words) => {
+        dispatch(resetClicks());
         const filterArray = randomWordsArray(words);
         const gameWord = getRandomWord(filterArray);
         if (!keyboard) return;
@@ -58,6 +59,7 @@ const MainWordle: React.FC = () => {
         const initialGrid = Array.from({ length: ROW_LENGTH }, () =>
           Array(COLUMN_LENGTH).fill(null)
         );
+        console.log("gameWord: ", gameWord)
   
         setGridAnswer(initialGrid);
         setCorrectAnswer(gameWord);
@@ -66,12 +68,6 @@ const MainWordle: React.FC = () => {
       }
   );
 
-  const onBackClick = () => {
-    dispatch(setCurrentMode(CurrentMode.Running));
-    dispatch(resetSuccess());
-    dispatch(resetClicks());
-  }
-
   if (isLoading) return (<LoadingComponents />)
 
   const Message = () => {
@@ -79,9 +75,9 @@ const MainWordle: React.FC = () => {
       case CurrentMode.Running:
         return null;
       case CurrentMode.Failure:
-        return <FailureMesssage words={words}/>;
+        return <FinishedGameMesssage onBack={handleBackFail} onRestart={restartGameFail} title='המשחק נגמר'/>;
       case CurrentMode.Success:
-        return <SuccessMessage words={words}/>;
+        return <FinishedGameMesssage onBack={handleBackSuccess} onRestart={restartGameSuccess}  title='!כל הכבוד'/>
       case CurrentMode.NotInDictionary:
         return <NotWordMessage />;
       case CurrentMode.NotEnoughLetters:

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const hangmanSlice = createSlice({
   name: 'speedGame',
@@ -15,7 +15,9 @@ export const hangmanSlice = createSlice({
     resetWrongCounter: (state) => {
       state.wrongCounter = 0;
     },
-
+    setNumberWrongCounter: (state, action: PayloadAction<number>) => {
+      state.wrongCounter = action.payload;
+    },
     /* success counter */
     addOneSuccesssCounter: (state) => {
       state.succcessCounter += 1;
@@ -26,6 +28,12 @@ export const hangmanSlice = createSlice({
   },
 });
 
-export const { addOneWrongCounter, resetWrongCounter, addOneSuccesssCounter, resetSuccesssCounter } = hangmanSlice.actions;
+export const { 
+  addOneWrongCounter, 
+  resetWrongCounter, 
+  addOneSuccesssCounter, 
+  resetSuccesssCounter,
+  setNumberWrongCounter
+} = hangmanSlice.actions;
 
 export default hangmanSlice.reducer;

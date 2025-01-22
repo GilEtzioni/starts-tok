@@ -1,0 +1,3 @@
+export const HANGMAN_FINISHED_NUMBER = 7;
+export const WORDLE_FINISHED_NUMBER = 6;
+export const SPEED_GAME_FINISHED_NUMBER = 11;

@@ -28,16 +28,7 @@ export const shuffleCards = (wordsArray: speedGameType[]) => {
 
   return wordsArray;
 };
-// ////
-// export const getSelectedWord = (words: WordsType[] | undefined):  WordsType[] => {
-//   if (words !== undefined && words) {
-//       const selectedWord = getRandomWord(words); 
-//       const selectedWordArray = [selectedWord];
-//       return selectedWordArray;
-//   }
-//   return [];
-// }
-// ///
+
 export const createGameArray = (wordsArray: WordsType[] | undefined) => {
 
   if (!wordsArray || wordsArray.length === 0) {

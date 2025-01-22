@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 import classNames from "classnames";
-import { SelectedCard, speedGameType } from "../../types/speedGameTypes";
+import { SelectedCard, speedGameType } from "../types/speedGameTypes"; 
 
 interface GameCardProps {
     card: speedGameType;
