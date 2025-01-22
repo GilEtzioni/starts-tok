@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { Words, CourseNames, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
-import { eq, and, desc, count, isNotNull, ilike } from "drizzle-orm";
+import { eq, and, desc, count, isNotNull, ilike, inArray } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { DictionaryKnowledgeType } from "../types/dictionaryType"; 
 import { CourseLangauge } from "../types/seedersType";
+import { englishLevelType } from "../types/seedersType";
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -78,6 +79,100 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
     }
   };
 
+  export const getFilterWords = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+    const { levelArray, knowledgeArray } = req.query as {
+      levelArray: string;
+      knowledgeArray: string;
+    };
+  
+    if (!userId) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+  
+    if (!levelArray) {
+      res.status(400).json({ error: "Missing 'levelArray' in query parameters" });
+      return;
+    }
+  
+    if (!knowledgeArray) {
+      res.status(400).json({ error: "Missing 'knowledgeArray' in query parameters" });
+      return;
+    }
+  
+    try {
+      const parsedLevelArray = JSON.parse(levelArray) as englishLevelType[];
+      const parsedKnowledgeArray = JSON.parse(knowledgeArray) as DictionaryKnowledgeType[];
+  
+      const userLanguage = await db
+        .select()
+        .from(Language)
+        .where(eq(Language.userId, userId))
+        .limit(1);
+  
+      if (userLanguage.length === 0) {
+        res.status(404).json({ error: "User language not found" });
+        return;
+      }
+  
+      const language = userLanguage[0].language;
+      const knowledge =
+        language === CourseLangauge.Spanish
+          ? Words.spanishKnowledge
+          : language === CourseLangauge.Italian
+          ? Words.italianKnowledge
+          : language === CourseLangauge.French
+          ? Words.frenchKnowledge
+          : Words.germanKnowledge;
+  
+      const foreignWordColumn =
+        language === CourseLangauge.Spanish
+          ? Words.spanishWord
+          : language === CourseLangauge.Italian
+          ? Words.italianWord
+          : language === CourseLangauge.French
+          ? Words.frenchWord
+          : Words.germanWord;
+  
+      const levelCondition = parsedLevelArray.length > 0
+        ? inArray(Words.englishLevel as any, parsedLevelArray)
+        : undefined;
+  
+      const knowledgeCondition = parsedKnowledgeArray.length > 0
+        ? inArray(knowledge as any, parsedKnowledgeArray)
+        : undefined;
+  
+      const allWords = await db
+        .select({
+          userId: Words.userId,
+          wordId: Words.wordId,
+          hebrewLevel: Words.hebrewLevel,
+          englishLevel: Words.englishLevel,
+          courseId: Words.courseId,
+          courseNameEnglish: Words.courseNameEnglish,
+          hebrewWord: Words.hebrewWord,
+          foreignWord: foreignWordColumn,
+          knowledge: knowledge,
+          courseOrder: Words.courseOrder,
+        })
+        .from(Words)
+        .where(
+          and(
+            eq(Words.userId, userId),
+            isNotNull(foreignWordColumn),
+            knowledgeCondition,
+            levelCondition
+          )
+        )
+        .orderBy(Words.wordOrder);
+  
+      res.json(allWords);
+    } catch (error) {
+      res.status(500).json({ message: "An error occurred while fetching words", error });
+    }
+  };
+  
 export const getWordById = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
   const wordID = req.params.id;

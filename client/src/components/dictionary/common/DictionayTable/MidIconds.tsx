@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { message } from 'antd'; // Import message from antd
+import { message } from 'antd';
 import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icons';
-import { isExTrue, isVyTrue, isQuesttionTrue } from "../../utils/HelpingFunctionsDictionary";
+import { isExTrue, isVyTrue, isQuesttionTrue } from "../../utils/dictionaryHelper";
 import { DictionaryColors, IconItem } from '../../types/DictionaryType';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
 import { useChangeWordKnowledge } from '../../requests/mutate';
 
 interface MidIconsProps {
   knowledge: DictionaryKnowledgeType;
-  id: string;
+  wordId: string;
 }
 
-const MidIcons: React.FC<MidIconsProps> = ({ knowledge, id }) => {
+const MidIcons: React.FC<MidIconsProps> = ({ knowledge, wordId }) => {
   const icons: IconItem[] = [
     { id: 1, isClicked: isExTrue(knowledge), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Red, icon: <CloseOutlined /> },            // X button
     { id: 2, isClicked: isVyTrue(knowledge), defaultColor: DictionaryColors.Gray, activeColor: DictionaryColors.Green, icon: <CheckOutlined /> },          // V button
@@ -36,13 +36,12 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowledge, id }) => {
     setActiveIcon(updatedIcons);
 
     const newKnowledge = buttonIconType === 1 ? DictionaryKnowledgeType.Ex : buttonIconType === 2 ? DictionaryKnowledgeType.Vy : DictionaryKnowledgeType.QuestionMark;
-    updateWordKnowledge({ id, knowledge: newKnowledge });
+    updateWordKnowledge({ id: wordId, knowledge: newKnowledge });
 
-    // Show the custom message without an icon
     message.open({
       content: "המילה עודכנה",
       duration: 2,
-      icon: null, // Remove the icon
+      icon: null,
     });
   };
 

@@ -6,7 +6,7 @@ import { Row, Typography } from 'antd';
 import { wordleType } from './ types/WordelType';
 
 // components
-import BackButton from './components/WordleConatiner/BackButton';
+import BackButton from '../../../common/BackButton';
 import LettersGrid from './components/WordleConatiner/LettersGrid';
 import AnswerGrid from './components/WordleConatiner/AnswerGrid';
 import LoadingComponents from './components/WordleConatiner/LoadingComponents';
@@ -18,13 +18,14 @@ import NotWordMessage from './components/Messages/NotWordMessage';
 import TooShortMessage from './components/Messages/TooShortMessage';
 
 // redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { CurrentMode } from './ types/WordelType';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
 import { fetchKeyboard, fetchWords } from '../../../api/games';
 import { useQuery } from '@tanstack/react-query';
 import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
+import { resetClicks, resetSuccess, setCurrentMode } from './slices/WordleSlice';
 
 const MainWordle: React.FC = () => {
 
@@ -35,6 +36,7 @@ const MainWordle: React.FC = () => {
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
+    const dispatch = useDispatch();
 
     const { data: keyboard } = useQuery(
       [KEYBOARD_LETTERS],() => fetchKeyboard())
@@ -64,6 +66,12 @@ const MainWordle: React.FC = () => {
       }
   );
 
+  const onBackClick = () => {
+    dispatch(setCurrentMode(CurrentMode.Running));
+    dispatch(resetSuccess());
+    dispatch(resetClicks());
+  }
+
   if (isLoading) return (<LoadingComponents />)
 
   const Message = () => {
@@ -82,30 +90,26 @@ const MainWordle: React.FC = () => {
         return null;
     }
   };
-
+  
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="flex items-center justify-between mb-5">
-        <div className="absolute left-5">
-          <BackButton />
+      <div className="relative flex items-center mt-5">
+        <div className="absolute inset-0 flex justify-center">
+          <Title level={3} className="text-center">
+            הצלחת {succesCounter} משחקים ברצף
+          </Title>
         </div>
 
-        <div className="w-full">
-          <Row justify="center" className="mt-8">
-            <Title level={3} className="text-center">
-              הצלחת {succesCounter} משחקים ברצף
-            </Title>
-          </Row>
+        <div className="ml-auto mr-5">
+          <BackButton onBack={onBackClick}/>
         </div>
-      </div>
-
+    </div>
+  
       {Message()}
-
+  
       <div className="flex-grow flex flex-col items-center justify-center">
-        <AnswerGrid
-          gridAnswer={gridAnswer}
-        />
-
+        <AnswerGrid gridAnswer={gridAnswer} />
+  
         <LettersGrid
           correctAnswer={correctAnswer}
           gridAnswer={gridAnswer}
@@ -118,5 +122,5 @@ const MainWordle: React.FC = () => {
     </div>
   );
 };
-
+  
 export default MainWordle;

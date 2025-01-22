@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
 
 // components
-import BackButton from './components/HangmanContainer/BackButton';
+import BackButton from '../../../common/BackButton';
 import CourseName from './components/HangmanContainer/CourseName';
 import WordsLines from './components/HangmanContainer/WordsLines';
 import WordsGrid from './components/HangmanContainer/WordsGrid';
@@ -22,7 +22,7 @@ import { useQuery } from '@tanstack/react-query';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
 import { fetchWords, fetchKeyboard } from '../../../api/games';
 import { createGameArray, createLettersArray, getRandomWord } from './utils/HangHelper';
-import { setSelectedWord } from './slices/HangmanSlice';
+import { resetSuccesssCounter, setSelectedWord } from './slices/HangmanSlice';
 
 const MainHangman: React.FC = () => {
 
@@ -64,48 +64,60 @@ const MainHangman: React.FC = () => {
     const { Title } = Typography;
 
     if (isLoading) return <div>Loading...</div>;
-  
-  return (
+
+    const handleBack = () => {
+      if (words === undefined) return;
+      const selectedWord = getRandomWord(words);
+      setSelectedWord([selectedWord])
+      dispatch(resetSuccesssCounter());
+    };
+
+    
+    
+    return (
       <>
-      {words? (
-    <Row>
-      <Col span={14} className="h-screen p-2 relative">
-        <div className="flex justify-start mb-5">
-          <BackButton words={words}/>
-        </div>
-
-        <div className="absolute">
-            <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} />
-        </div>
-
-        <div className="flex flex-col items-center justify-center gap-5 h-0">
-          <CourseName randomWord={randomWord} />
-          <div className="w-full text-center">
-            <WordsLines gameArray={gameArray} />
+        {words ? (
+          
+          <Row>
+            <Col span={14} className="h-screen p-10 relative">
+              <div className="absolute">
+                <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} />
+              </div>
+    
+              <div className="flex flex-col items-center justify-center gap-5 h-0 mt-10">
+                <CourseName randomWord={randomWord} />
+                <div className="w-full text-center">
+                  <WordsLines gameArray={gameArray} />
+                </div>
+              </div>
+    
+              <div className="absolute top-[50%] left-1/2 -translate-x-1/2 w-auto">
+                <WordsGrid
+                  lettersArray={lettersArray}
+                  setLettersArray={setLettersArray}
+                  gameArray={gameArray}
+                  setGameArray={setGameArray}
+                />
+              </div>
+            </Col>
+    
+        <Col span={10} className="h-screen flex flex-col">
+          <div className="flex justify-between items-center p-5">
+            <Title level={3} className="text-xl font-semibold antialiased ml-40">
+              הצלחת {successCounter} משחקים ברצף
+            </Title>
+            <BackButton onBack={handleBack} />
           </div>
-        </div>
 
-        <div className="absolute top-[50%] left-1/2 -translate-x-1/2 w-auto">
-          <WordsGrid lettersArray={lettersArray} setLettersArray={setLettersArray} gameArray={gameArray} setGameArray={setGameArray} />
-        </div>
-      </Col>
-
-      <Col span={10} className="h-screen">
-        <div className="flex flex-col items-center mt-12">
-          <Title
-            level={3}
-            className="mb-5 text-3xl font-semibold text-center antialiased" >
-              הצלחת {successCounter} משחקים ברצף 
-          </Title>
-          <PhotosHang />
-        </div>
-      </Col>
-
-    </Row>
-      ) : null}
-    </>
-    );
-  }
+          <div className="flex-grow flex flex-col items-center justify-center">
+            <PhotosHang />
+          </div>
+        </Col>
+          </Row>
+        ) : null}
+      </>
+    );    
+  } 
   
   export default MainHangman;
   

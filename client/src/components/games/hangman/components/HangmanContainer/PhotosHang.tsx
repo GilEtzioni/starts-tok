@@ -30,8 +30,8 @@ const PhotosHang: React.FC = () => {
   const currImage = imageMap[wrongCounter] || image6;
 
   return (
-    <div className='mt-10'>
-      <Image src={currImage} alt="Hangman" className="max-w-full h-auto" />
+    <div>
+      <Image src={currImage} alt="Hangman"/>
     </div>
   );
 };

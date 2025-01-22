@@ -9,14 +9,14 @@ import MainThird from './ThirdLesson/MainThird';
 
 // common
 import NextButton from "./common/NextButton"
-import BackButton from "./common/BackButton";
+import BackButton from '../../common/BackButton';
 import ProgressBar from './common/ProgressBar'; 
 import FailureMessage from './common/FailureMessage';
 import SuccessMessage from './common/SuccessMessage';
 import FinishLessonMessage from './common/FinishLessonMessage';
 import { LessonStatus } from './types/LessonType';
 import { useEffect } from 'react';
-import { addOnePoint } from './slices/LessonsSlice';
+import { addOnePoint, resetOrder, setRunning } from './slices/LessonsSlice';
 
 const MainLearn: React.FC = () => {
 
@@ -50,27 +50,32 @@ const MainLearn: React.FC = () => {
         }
     },[status]);
 
+    const handleBack = () => {
+        dispatch(resetOrder());
+        dispatch(setRunning());
+    }
+
     return (
         <>
-            <div className="flex items-center justify-between my-5 gap-5">
-                <div className="ml-5">
-                    <BackButton />
-                </div>
-                <div className="flex-grow">
-                    <ProgressBar num={order} />
-                </div>
+        <div className="flex items-center justify-between mt-5">
+            <div className="flex-grow text-center ml-10">
+                <ProgressBar num={order} />
             </div>
-    
-            <div>{renderCurrentLesson()}</div>
 
-            <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+            <div className='mr-10'>
+                <BackButton onBack={handleBack} />
+            </div>
+        </div>
+      
+        <div>{renderCurrentLesson()}</div>
+        
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             {status === LessonStatus.Failure && <FailureMessage />}
             {status === LessonStatus.Success && <SuccessMessage />}
             {status === LessonStatus.Running && <NextButton />}
-            </div>
-    
+        </div>
         </>
-    );
-}    
+      );
+    }      
 
 export default MainLearn;

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Spin, Row, Col, Typography } from 'antd';
 
 // fetch data + components
-import GameCard from './components/SpeedGameContainer/SpeedGameCard';
-import BackButton from './components/SpeedGameContainer/BackButton';
+import GameCard from './components/common/SpeedGameCard';
+import BackButton from '../../../common/BackButton';
 import ModalMessage from './components/ModalMessage/ModalMessage';
 
 // functions + types
@@ -77,53 +77,60 @@ const MainSpeedGame: React.FC = () => {
     if (isLoading) return <Spin tip="Loading..." />;
     if (error) return <div>Error loading data</div>;
 
-    return (
-        <div>
-        {wrongCounter === germanArray.length ? <ModalMessage words={words} setGermanArray={setGermanArray} setHebrewArray={setHebrewArray}/> : null}
-        <div className="flex items-center justify-between mb-5">
-            
-            <div className="flex-none">
-                <BackButton />
-            </div>
-
-            <div className="flex-grow text-center">
-                <Row justify="center" className="mb-4 mt-8">
-                    <Title level={3} className="text-center"> התאימו את הזוגות </Title>
-                </Row>
-            </div>
+return (
+    <>
+      {wrongCounter === germanArray.length && (
+        <ModalMessage
+          words={words}
+          setGermanArray={setGermanArray}
+          setHebrewArray={setHebrewArray}
+        />
+      )}
+  
+      <div className="flex flex-col min-h-screen">
+        <div className="relative flex items-center justify-between mt-5 px-5">
+          <div className="absolute inset-0 flex justify-center">
+            <Title level={3} className="text-center">
+              התאימו את הזוגות
+            </Title>
+          </div>
+  
+          <div className="ml-auto">
+            <BackButton />
+          </div>
         </div>
+  
+        <div className="w-4/5 mx-auto mt-5">
+          <Row gutter={[4, 4]}>
+            {germanArray.map((germanItem, index) => {
+              const hebrewItem = hebrewArray[index];
+              return (
+                <React.Fragment key={`pair-${germanItem.id}`}>
+                  {/* german */}
+                  <Col key={`german-${germanItem.id}`} span={12}>
+                    <GameCard
+                      card={germanItem}
+                      onClick={() => handleClick(germanArray, index)}
+                    />
+                  </Col>
 
-        <div className="w-4/5 mx-auto">
-            <Row gutter={[4, 4]}>
-                {germanArray.map((germanItem, index) => {
-                    const hebrewItem = hebrewArray[index];
-                    return (
-                        <React.Fragment key={`pair-${germanItem.id}`}>
-
-                            {/* german */}
-                            <Col key={`german-${germanItem.id}`} span={12}>
-                                <GameCard
-                                    card={germanItem}
-                                    onClick={() => handleClick(germanArray, index)}
-                                />
-                            </Col>
-
-                            {/* hebrew */}
-                            {hebrewItem && (
-                                <Col key={`hebrew-${hebrewItem.id}`} span={12}>
-                                    <GameCard
-                                        card={hebrewItem}
-                                        onClick={() => handleClick(hebrewArray, index)}
-                                    />
-                                </Col>
-                            )}
-                        </React.Fragment>
-                    );
-                })}
-            </Row>
+                  {/* hebrew */}
+                  {hebrewItem && (
+                    <Col key={`hebrew-${hebrewItem.id}`} span={12}>
+                      <GameCard
+                        card={hebrewItem}
+                        onClick={() => handleClick(hebrewArray, index)}
+                      />
+                    </Col>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </Row>
         </div>
-    </div>
-    );
-};
+      </div>
+    </>
+  );
+}  
 
 export default MainSpeedGame;
