@@ -1,7 +1,7 @@
-import UsersGraph from "./MainPage/components/GraphMainPage/UsersGraph";
-import CardContainer from "./MainPage/components/CoursesCards/components/CourseContainer";
-import GameContainer from "./MainPage/components/GamesCards/components/GameContainer";
-import UsersTable from "./MainPage/components/TableMainPage/UsersTable";
+import UsersGraph from "./MainPage/common/GraphMainPage/UsersGraph";
+import CardContainer from "./MainPage/common/CoursesCards/components/CourseContainer";
+import GameContainer from "./MainPage/common/GamesCards/components/GameContainer";
+import UsersTable from "./MainPage/common/TableMainPage/UsersTable";
 
 export default function MainPage() {
   return (

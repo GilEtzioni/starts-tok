@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Typography } from 'antd';
 import { fetchOneDayUser } from '../../../../../api/pages'; 
-import { fillMissingWeekDays } from '../TableMainPage/userTableHelper';
+import { fillMissingWeekDays } from '../../utils/userGraphHelper';
 import { weekPointsType } from '../../../../../api/common/types';
 import { useQuery } from '@tanstack/react-query';
 import { WEEKLY_POINTS } from '../../../requests/queryKeys';

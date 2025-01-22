@@ -1,8 +1,13 @@
 import axiosInstance from "./common/axiosInstance";
-import { CourseType } from "./common/types";
+import { CourseType, UserTableType } from "./common/types";
 import { weekPointsType } from "./common/types";
-import { FinishedType } from "../components/pages/MainPage/components/CoursesCards/types/courseTypes";
-import { GameNameEnum } from "../components/pages/MainPage/components/GamesCards/types/mainPageTypes";
+import { FinishedType } from "../components/pages/MainPage/common/CoursesCards/types/courseTypes";
+import { GameNameEnum } from "../components/pages/MainPage/common/GamesCards/types/mainPageTypes";
+
+export const fetchBestUsers = async (): Promise<UserTableType[]> => {
+    const { data } = await axiosInstance.get(`/bestUsers`);
+    return data;
+};
 
 export const fetchCoursesCards = async (name: string): Promise<CourseType[]> => {
     const { data } = await axiosInstance.get(`/main/course/${name}`);

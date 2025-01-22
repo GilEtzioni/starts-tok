@@ -1,6 +1,6 @@
 import { WordsType } from "./common/types";
 import axiosInstance from './common/axiosInstance';
-import { GameNameEnum } from "../components/pages/MainPage/components/GamesCards/types/mainPageTypes";
+import { GameNameEnum } from "../components/pages/MainPage/common/GamesCards/types/mainPageTypes";
 
 export const fetchWords = async (): Promise<WordsType[]> => {
   const { data } = await axiosInstance.get('/dictionary');

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../app/store";
-import { GameNameEnum } from "../../../pages/MainPage/components/GamesCards/types/mainPageTypes";
+import { GameNameEnum } from "../../../pages/MainPage/common/GamesCards/types/mainPageTypes";
 import { useAddNewScore } from "../../requests/mutate";
 import { resetSuccesssCounter, resetWrongCounter, setNumberWrongCounter } from "../slices/SpeedGameSlice";
 import { SPEED_GAME_FINISHED_NUMBER } from "../../common/consts";

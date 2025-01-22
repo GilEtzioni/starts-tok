@@ -84,6 +84,7 @@ export interface SentenceType {
     Italian = "italian",
     Spanish = "spanish",
     French = "french",
+    English = "english"
   }
 
   export type englishLevelType = {

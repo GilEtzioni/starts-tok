@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Card } from "antd";
-import StaticsCards from "./StaticsCards";
+import StaticsTable from "./StaticsTable"
 import { useQuery } from "@tanstack/react-query";
 import { fetchDictionary } from "../../../../api/dictionary";
 import { ALL_DICTIONARY_WORDS } from "../../requests/queryKeys";
@@ -30,19 +30,21 @@ const MainStatics: React.FC = () => {
       סטטיסטיקה <i className="fa-solid fa-chart-simple"></i>
     </Card>
 
-      <Modal
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={null}
-        centered
-        closable={false}
-        maskClosable={true}
-        width={1200} 
-        height={600}
-        className="bg-transparent shadow-none"
-      >
-        <StaticsCards data={words || []} />
-      </Modal>
+      <div className="absolute">
+        <Modal
+          visible={isModalVisible}
+          onCancel={handleCancel}
+          footer={null}
+          centered
+          closable={false}
+          maskClosable={true}
+          width={1200} 
+          height={600}
+          className="bg-transparent shadow-none"
+        >
+          <StaticsTable data={words || []} />
+        </Modal>
+      </div>
     </>
   );
 };

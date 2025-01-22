@@ -8,9 +8,9 @@ import { useQuery } from '@tanstack/react-query';
 import { COURSE_CARD } from '../requests/queryKeys';
 
 // components
-import CourseProgressBar from "./components/CourseProgressBar"
+import CourseProgressBar from "./common/CourseProgressBar"
 import { CourseType } from "../../../api/common/types";
-import CourseIcons from "./components/CourseIcons";
+import CourseIcons from "./common/CourseIcons";
 
 const CourseContainer: React.FC = () => {
   const { name } = useParams<{ name: string }>();

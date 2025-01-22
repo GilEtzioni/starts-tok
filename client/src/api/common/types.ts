@@ -91,9 +91,18 @@ export enum CourseLangauge {
   Italian = "italian",
   Spanish = "spanish",
   French = "french",
+  English = "english"
 }
 
 export enum LanguageType {
   Hebrew = "hebrew",
   Foreign = "foreign"
+}
+
+export type UserTableType = {
+  key: number,
+  userId: string,
+  userName: string,
+  totalPoints: number,
+  language: CourseLangauge 
 }

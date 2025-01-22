@@ -244,3 +244,61 @@ export const getUserLanguage = async (req: Request, res: Response): Promise<void
       res.status(500).json({ message: "An error occurred while fetching words", error });
     }
   };
+
+  /* ------------------------------------------------------------------------------------ */
+
+  export const genericUsersData = 
+  [
+    { userId: "first_user", userName: "גיל", totalPoints: 55, language: CourseLangauge.German },
+    { userId: "second_user", userName: "רוי", totalPoints: 51, language: CourseLangauge.French },
+    { userId: "third_user", userName: "עמית", totalPoints: 48, language: CourseLangauge.Italian },
+    { userId: "fourth_user", userName: "נדב", totalPoints: 47, language: CourseLangauge.English },
+    { userId: "fifth_user", userName: "נעם", totalPoints: 46, language: CourseLangauge.Spanish },
+  ];
+  
+  export const getBestUsers = async (req: Request, res: Response): Promise<void> => {
+    const { userId } = getAuth(req);
+    if (!userId) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+  
+    const today = getTodayDate();       // e.g., "2025-01-22"
+    const lastWeek = getLastWeekDate(); // e.g., "2025-01-15"
+  
+    console.log("today:", today);
+    console.log("lastWeek:", lastWeek);
+  
+    try {
+      const weekPoints = await db
+        .select({
+          userId: Users.userId,
+          userName: Users.userName,
+          totalPoints: sql`SUM(${Users.points})`,
+          language: Language.language,
+        })
+        .from(Users)
+        .innerJoin(Language, sql`${Language.userId} = ${Users.userId}`)
+        .where(sql`${Users.pointsDate} BETWEEN ${lastWeek} AND ${today}`)
+        .groupBy(Users.userId, Users.userName, Language.language);
+  
+      const combinedPoints = [...weekPoints, ...genericUsersData];
+
+      // conver the point to number
+      const formattedWeekPoints = combinedPoints.map((point) => ({
+        ...point,
+        totalPoints: Number(point.totalPoints),
+      }));
+  
+      // add key based on the user points
+      const rankedPoints = formattedWeekPoints
+        .sort((a, b) => b.totalPoints - a.totalPoints) 
+        .slice(0, 5)
+        .map((item, index) => ({ ...item, key: index + 1 }));
+  
+      res.status(200).json(rankedPoints);
+    } catch (error) {
+      console.error("Error fetching best users:", error);
+      res.status(500).json({ message: "An error occurred while fetching best users", error });
+    }
+  };
