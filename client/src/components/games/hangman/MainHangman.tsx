@@ -68,6 +68,8 @@ const MainHangman: React.FC = () => {
       const selectedWord = getRandomWord(words);
       dispatch(resetSuccesssCounter());
     };
+
+    const { Title } = Typography;
     
     return (
       <>
@@ -98,9 +100,9 @@ const MainHangman: React.FC = () => {
     
         <Col span={10} className="h-screen flex flex-col">
           <div className="flex justify-between items-center p-5">
-            <Typography.Title level={3} className="text-xl font-semibold antialiased ml-40">
+            <Title level={3} className="text-xl font-semibold antialiased ml-40">
               הצלחת {successCounter} משחקים ברצף
-            </Typography.Title>
+            </Title>
             <BackButton onBack={handleBack} />
           </div>
 

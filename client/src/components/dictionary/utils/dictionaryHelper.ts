@@ -40,19 +40,19 @@ export const knowledgeDataArray = (knowledgeFilter: KnowledgeType): DictionaryKn
     return knowledgeArray;
   }
 
-  export function isExTrue (icon: DictionaryKnowledgeType): boolean {
+  export const isExTrue = (icon: DictionaryKnowledgeType): boolean => {
     return icon === DictionaryKnowledgeType.Ex;
   };
 
-  export function isVyTrue (icon: string): boolean {
+  export const isVyTrue = (icon: string): boolean => {
     return icon === DictionaryKnowledgeType.Vy;
   }
 
-  export function isQuesttionTrue (icon: string): boolean {
+  export const isQuesttionTrue = (icon: string): boolean => {
     return icon === DictionaryKnowledgeType.QuestionMark;
   }
 
-  export function sortWordsById(words: WordsType[]): WordsType[] {
+  export const sortWordsById =(words: WordsType[]): WordsType[] => {
     return [...words].sort((a, b) => {
       const idA = a.wordOrder ?? Number.MAX_SAFE_INTEGER;
       const idB = b.wordOrder ?? Number.MAX_SAFE_INTEGER;

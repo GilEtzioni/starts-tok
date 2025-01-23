@@ -10,7 +10,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { resetOrder, resetPoints } from '../slices/LessonsSlice';
 
-import { usePatchFinishLesson, useAddNewPoints } from '../requests/mutate';
+import { useAddNewPoints } from '../requests/addPointsMutate';
+import { usePatchFinishLesson } from '../requests/finishLessonMutate';
 
 const FinishLessonMessage: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);
@@ -29,7 +30,7 @@ const FinishLessonMessage: React.FC = () => {
   const status = useSelector((state: RootState) => state.lessons.status);
   const order = useSelector((state: RootState) => state.lessons.order);
 
-  function goToHomePage() {
+  const goToHomePage = () => {
     addNewPoints({ newPoints });
     finishLesson({ name: myLevel, lesson: myLesson });
 
@@ -37,6 +38,8 @@ const FinishLessonMessage: React.FC = () => {
     dispatch(resetPoints());
     navigate(`/main/course/${myLevel}`);
   }
+
+  const { Title } = Typography;
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -49,9 +52,9 @@ const FinishLessonMessage: React.FC = () => {
       >
         <div className={classNames("bg-transparent shadow-none")}>
           <div className="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200">
-            <Typography.Title level={3} className="text-3xl font-extrabold text-gray-900 mb-6">
+            <Title level={3} className="text-3xl font-extrabold text-gray-900 mb-6">
               כל הכבוד! קיבלת {newPoints} נקודות
-            </Typography.Title>
+            </Title>
             <div className="flex flex-col gap-4">
               <Button
                 onClick={goToHomePage}

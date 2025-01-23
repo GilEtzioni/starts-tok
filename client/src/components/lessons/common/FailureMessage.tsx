@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { setRunning, addOneOrder, resetClicks } from "../slices/LessonsSlice";
-import { Card } from 'antd';
+import { Card, Typography } from 'antd';
 
 const FailureMessage: React.FC = () => {
     const rightAnswer = useSelector((state: RootState) => state.lessons.anwser);
@@ -14,6 +14,8 @@ const FailureMessage: React.FC = () => {
         dispatch(addOneOrder());
         dispatch(setRunning());
     };
+
+    const { Paragraph } = Typography;
 
     return (
         <div className="flex justify-center items-center">
@@ -31,12 +33,12 @@ const FailureMessage: React.FC = () => {
 
                     {order !== 1 && order !== 4 && (
                         <div className="absolute mt-7 w-full">
-                            <p
-                                dir="ltr"
-                                className="text-red-600 text-left w-full pl-2"
-                            >
-                                {rightAnswer}
-                            </p>
+                        <Paragraph
+                            dir="ltr"
+                            className="text-red-600 text-left w-full pl-2 text-lg"
+                        >
+                            {rightAnswer}
+                        </Paragraph>
                         </div>
                     )}
 

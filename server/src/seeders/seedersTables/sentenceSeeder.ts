@@ -1533,8 +1533,6 @@ export const sentenceSeeder = async (userId: string, courseIds: Array<{ index: n
 const getUuidByCourseName = ( courseIds: Array<{ index: number; uuid: string; courseName: string }>, courseName: string ): string => {
   const resultItem = courseIds.find((item) => item.courseName.toLowerCase() === courseName.toLowerCase());
   if (!resultItem) {
-    console.error(`Course name "${courseName}" not found in courseIds`);
-    console.error("Available course names:", courseIds.map((item) => item.courseName));
     throw new Error(`Course name "${courseName}" not found in courseIds`);
   }
   return resultItem.uuid;

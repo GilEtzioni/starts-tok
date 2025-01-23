@@ -140,11 +140,11 @@ export const areStringsEqual = (str1: string, str2: string): boolean => {
 
 const punctuation = [',', '.', '-', '?', '...', '!'];
 
-function stringWithoutSpaces (str: string) {
+const stringWithoutSpaces = (str: string) => {
     return str.replace(/ /g, '');
 }
 
-function movePunctuationToFront(str: string): string {
+const movePunctuationToFront = (str: string): string => {
     for (const mark of punctuation) {
         if (str.endsWith(mark)) {
             // if it ends with the punctuation mark, move it to the front

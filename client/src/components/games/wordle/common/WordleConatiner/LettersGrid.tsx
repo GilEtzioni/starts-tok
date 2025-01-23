@@ -32,7 +32,7 @@ const LettersGrid: React.FC<WordsGridProps> = ({
   );
   const dispatch = useDispatch();
 
-  function handleLetterClick(letter: string | undefined, letterObject: wordleType | undefined) {
+  const handleLetterClick = (letter: string | undefined, letterObject: wordleType | undefined) => {
     if (!letter || !letterObject || (letterObject.color === LetterColor.Gray && letterObject.selected === LetterSeleceted.Selected)) return;
 
     const columnIndex = gridLetters.findIndex((item) => item?.letter === letter);
@@ -59,7 +59,7 @@ const LettersGrid: React.FC<WordsGridProps> = ({
     }
   }
 
-  function handleDelete() {
+  const handleDelete = () => {
     if (!gridAnswer[clicksCounter]?.length) return;
     const columnIndex = gridAnswer[clicksCounter]
       .slice()
@@ -73,7 +73,7 @@ const LettersGrid: React.FC<WordsGridProps> = ({
     }
   }
 
-  function handleEnter() {
+  const handleEnter = () => {
     if (!words) return;
     const currentWord = gridAnswer[clicksCounter]?.map((item) => item?.letter).join('') || '';
     const isWordInDataBase: boolean = words.some((item) => item.foreignWord.toLowerCase() === currentWord.toLowerCase());

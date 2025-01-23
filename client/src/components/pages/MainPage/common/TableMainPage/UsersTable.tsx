@@ -24,13 +24,12 @@ const UsersTable: React.FC = () => {
     [BEST_USERS_TABLE],
     fetchBestUsers
   );
-
-  console.log("usersScore", usersScore)
+  const { Title } = Typography;
 
   return (
     <div>
       <Row className="mb-2 mt-2 mr-16 flex justify-end">
-        <Typography.Title level={3} className="text-right">המובילים השבוע</Typography.Title>
+        <Title level={3} className="text-right">המובילים השבוע</Title>
       </Row>
 
       <div className="w-[660px] rounded-lg bg-white">

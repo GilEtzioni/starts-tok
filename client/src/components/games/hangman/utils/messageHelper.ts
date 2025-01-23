@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../app/store";
 import { GameNameEnum } from "../../../pages/MainPage/common/GamesCards/types/mainPageTypes";
-import { useAddNewScore } from "../../requests/mutate";
+import { useAddNewScore } from "../../requests/addScoreMutate";
 import { addOneSuccesssCounter, resetSuccesssCounter, setNumberWrongCounter } from "../slices/HangmanSlice";
 import { WordsType } from "../../../../api/common/types";
 import { HANGMAN_FINISHED_NUMBER } from "../../common/consts";

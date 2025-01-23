@@ -87,6 +87,7 @@ const MainThird: React.FC = () => {
       }
     }
   );
+  const { Paragraph } = Typography
 
   useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue });
   const { Title } = Typography;
@@ -99,20 +100,20 @@ const MainThird: React.FC = () => {
     </Row>
              
     <HebrewSentenceThird translatedWords={translatedWords} />
-      
+
       {/* foreign */}
-        <p className="inline-block relative top-[100px]">
+        <Paragraph className="inline-block relative top-[100px] text-lg">
           {firstPartForeign}
           <input
               type="text"
               value={inputValue}
               onChange={handleInputChange}
-              className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0"
+              className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0 text-lg"
               style={{ width: `${foreignWord.length * 10}px` }}
               placeholder=" "
             />
           {secondPartForeign}
-        </p>
+        </Paragraph>
       </div> 
     );
   }

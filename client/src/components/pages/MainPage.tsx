@@ -1,9 +1,9 @@
 import UsersGraph from "./MainPage/common/GraphMainPage/UsersGraph";
-import CardContainer from "./MainPage/common/CoursesCards/components/CourseContainer";
+import CardContainer from "./MainPage/common/CoursesCards/common/CourseContainer";
 import GameContainer from "./MainPage/common/GamesCards/components/GameContainer";
 import UsersTable from "./MainPage/common/TableMainPage/UsersTable";
 
-export default function MainPage() {
+const MainPage: React.FC = () => {
   return (
     <div className="w-full">
      <div className="w-full px-5">
@@ -22,3 +22,5 @@ export default function MainPage() {
     </div>
   );
 }
+
+export default MainPage;

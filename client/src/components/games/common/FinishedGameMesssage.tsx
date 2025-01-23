@@ -12,16 +12,19 @@ const FinishedGameMesssage: React.FC<FailMessagesProps> = ({ onRestart, onBack, 
 
   const navigate = useNavigate();
 
-  function restartGame() {
+  const restartGame = () => {
     if (onRestart) onRestart();
   }
 
-  async function handleBack() {
+  const handleBack = () => {
     if (onBack) {
       onBack();
       navigate(-1);
     }
   }
+
+  const { Title } = Typography;
+  const { Paragraph } = Typography;
 
   return (
     <div className="bg-gray-100">
@@ -35,8 +38,8 @@ const FinishedGameMesssage: React.FC<FailMessagesProps> = ({ onRestart, onBack, 
         className="bg-transparent shadow-none"
       >
         <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-          <Typography.Title level={3} className="text-2xl font-bold text-gray-800 mb-4"> {title} </Typography.Title>
-          <Typography.Paragraph className="text-2xl font-bold text-gray-800 mb-4"> {description} </Typography.Paragraph>
+          <Title level={3} className="text-2xl font-bold text-gray-800 mb-4"> {title} </Title>
+          <Paragraph className="text-2xl font-bold text-gray-800 mb-4"> {description} </Paragraph>
           <div className="flex flex-col gap-4">
             <Button
               onClick={handleBack}

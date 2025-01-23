@@ -5,13 +5,12 @@ import { DictionaryKnowledgeType, EnglishLevel, WordsType } from './common/types
 export const fetchFilterDictionary = async (levelArray: string[], knowledgeArray: DictionaryKnowledgeType[]): Promise<WordsType[]> => {
   const { data } = await axiosInstance.get('/filter', {
     params: {
-      levelArray: JSON.stringify(levelArray), // serialize the array
+      levelArray: JSON.stringify(levelArray),
       knowledgeArray: JSON.stringify(knowledgeArray),
     },
   });
   return data;
 };
-
 
 export const fetchDictionary = async (): Promise<WordsType[]> => {
   const { data } = await axiosInstance.get('/dictionary');

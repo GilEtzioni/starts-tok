@@ -106,7 +106,6 @@ export const addGameScore = async (req: Request, res: Response, gameName: GamesN
 
         res.status(201).json(newScore);
     } catch (error) {
-        console.error("Error adding hangman score:", error);
         res.status(500).json({ message: "An error occurred while adding the score", error });
     }
 };

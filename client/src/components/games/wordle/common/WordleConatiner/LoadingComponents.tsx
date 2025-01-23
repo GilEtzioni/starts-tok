@@ -3,6 +3,8 @@ import { Spin, Typography } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
 
 const LoadingComponents: React.FC = () => {
+  const { Title } = Typography;
+
     return (
         <div className="flex items-center justify-center min-h-screen">
           <Spin
@@ -13,9 +15,9 @@ const LoadingComponents: React.FC = () => {
               />
             }
           />
-          <Typography.Title level={4} className="mt-4">
+          <Title level={4} className="mt-4">
             Loading...
-          </Typography.Title>
+          </Title>
         </div>
     )
 }

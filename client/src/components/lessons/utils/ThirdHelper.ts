@@ -1,6 +1,6 @@
 import { MissingWordType } from "../../../api/common/types";
 
-export function getForeignMissingSentence(lessons: MissingWordType, order: number): string {
+export const getForeignMissingSentence = (lessons: MissingWordType, order: number): string => {
 
     let sentence: string = "";
     if (order === 3) {
@@ -13,7 +13,7 @@ export function getForeignMissingSentence(lessons: MissingWordType, order: numbe
     return sentence;
 }
 
-export function getHebewMissingSentence(lessons: MissingWordType, order: number): string {
+export const getHebewMissingSentence = (lessons: MissingWordType, order: number): string => {
 
   let sentence: string = "";
   if (order === 3) {
@@ -28,7 +28,7 @@ export function getHebewMissingSentence(lessons: MissingWordType, order: number)
 
 /*  ------------------------------------------------------ */
 
-export function getForeignWord(lessonsData: MissingWordType, order: number): string {
+export const getForeignWord = (lessonsData: MissingWordType, order: number): string => {
 
     let sentence: string = "";
     if (order=== 3) {
@@ -41,7 +41,7 @@ export function getForeignWord(lessonsData: MissingWordType, order: number): str
     return sentence;
 }
 
-export function getHebrewWord(lessonsData: MissingWordType[], order: number): string {
+export const getHebrewWord = (lessonsData: MissingWordType[], order: number): string => {
   let sentence: string = "";
   if (order=== 3) {
     sentence = lessonsData[0].missingWordOneHebrew;
@@ -55,7 +55,7 @@ export function getHebrewWord(lessonsData: MissingWordType[], order: number): st
 
 /*  ------------------------------------------------------ */
 
-export function getHebrewSentence(lessonsData: MissingWordType, order: number): string {
+export const getHebrewSentence = (lessonsData: MissingWordType, order: number): string => {
     let sentence: string = "";
     if (order === 3) {
         sentence = lessonsData?.missingSentenceOneHebrew ?? "";
@@ -66,7 +66,7 @@ export function getHebrewSentence(lessonsData: MissingWordType, order: number): 
     return sentence;
 }
 
-export function getForeignSentence(lessonsData: MissingWordType, order: number): string {
+export const getForeignSentence = (lessonsData: MissingWordType, order: number): string => {
 
   let sentence: string = "";
   // first lesson - only first sentence

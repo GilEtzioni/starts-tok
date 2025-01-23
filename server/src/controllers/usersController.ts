@@ -84,7 +84,6 @@ export const getLastWeekPoints = async (req: Request, res: Response): Promise<vo
 
         res.status(200).json(formattedPoints);
     } catch (error) {
-        console.error("Error fetching points:", error);
         res.status(500).json({
             message: "An error occurred while fetching the points for the last week",
             error: error,
@@ -266,9 +265,6 @@ export const getUserLanguage = async (req: Request, res: Response): Promise<void
     const today = getTodayDate();       // e.g., "2025-01-22"
     const lastWeek = getLastWeekDate(); // e.g., "2025-01-15"
   
-    console.log("today:", today);
-    console.log("lastWeek:", lastWeek);
-  
     try {
       const weekPoints = await db
         .select({
@@ -284,17 +280,23 @@ export const getUserLanguage = async (req: Request, res: Response): Promise<void
   
       const combinedPoints = [...weekPoints, ...genericUsersData];
 
+      console.log("combinedPoints: ", combinedPoints)
+
       // conver the point to number
       const formattedWeekPoints = combinedPoints.map((point) => ({
         ...point,
         totalPoints: Number(point.totalPoints),
       }));
+
+      console.log("formattedWeekPoints: ", formattedWeekPoints)
   
       // add key based on the user points
       const rankedPoints = formattedWeekPoints
         .sort((a, b) => b.totalPoints - a.totalPoints) 
         .slice(0, 5)
         .map((item, index) => ({ ...item, key: index + 1 }));
+
+        console.log("rankedPoints: ", rankedPoints)
   
       res.status(200).json(rankedPoints);
     } catch (error) {

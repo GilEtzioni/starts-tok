@@ -59,7 +59,6 @@ const MainWordle: React.FC = () => {
         const initialGrid = Array.from({ length: ROW_LENGTH }, () =>
           Array(COLUMN_LENGTH).fill(null)
         );
-        console.log("gameWord: ", gameWord)
   
         setGridAnswer(initialGrid);
         setCorrectAnswer(gameWord);

@@ -1,6 +1,6 @@
 import { FirstCardType, FirstLessonType, IsSelected } from '../types/FirstLessonType';
 
-export function getHebrewWords(lessons: FirstCardType[]): FirstLessonType[] {
+export const getHebrewWords = (lessons: FirstCardType[]): FirstLessonType[] => {
     const hebrewWordsArray: string[] = [];
 
     hebrewWordsArray.push(
@@ -28,7 +28,7 @@ export function getHebrewWords(lessons: FirstCardType[]): FirstLessonType[] {
     return combinedWordsArray;
 }
 
-export function getForeignWords(lessons: FirstCardType[]): FirstLessonType[] {
+export const getForeignWords = (lessons: FirstCardType[]): FirstLessonType[] => {
     const foreignWordsArray: string[] = [];
 
     foreignWordsArray.push(
@@ -56,7 +56,7 @@ export function getForeignWords(lessons: FirstCardType[]): FirstLessonType[] {
     return combinedWordsArray;
 }
 
-export function shuffleArray (wordsArray: FirstLessonType[]): FirstLessonType[] {
+export const shuffleArray = (wordsArray: FirstLessonType[]): FirstLessonType[] => {
     for (let i = wordsArray.length - 1; i > 0; i--) {
         const random = Math.floor(Math.random() * (i + 1));
         [wordsArray[i], wordsArray[random]] = [wordsArray[random], wordsArray[i]]; // swap item with random

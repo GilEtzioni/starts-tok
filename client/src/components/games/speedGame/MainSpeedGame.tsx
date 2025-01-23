@@ -77,12 +77,10 @@ const MainSpeedGame: React.FC = () => {
         }
     }
 
-    useEffect(() => {
-      console.log("wrongCounter: ", wrongCounter)
-    })
-
     if (isLoading) return <Spin tip="Loading..." />;
     if (error) return <div>Error loading data</div>;
+
+    const { Title } = Typography;
 
 return (
     <>
@@ -98,9 +96,9 @@ return (
       <div className="flex flex-col min-h-screen">
         <div className="relative flex items-center justify-between mt-5 px-5">
           <div className="absolute inset-0 flex justify-center">
-            <Typography.Title level={3} className="text-center">
+            <Title level={3} className="text-center">
               התאימו את הזוגות
-            </Typography.Title>
+            </Title>
           </div>
   
           <div className="ml-auto">

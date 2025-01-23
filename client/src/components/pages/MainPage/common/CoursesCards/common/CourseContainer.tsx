@@ -46,11 +46,11 @@ const CardContainer: React.FC = () => {
     "/main/course/C2"
   ];
 
-  function handleForwardClick() {
+  const handleForwardClick = () => {
     setVisibleCards((prev) => prev.map((card) => (card % totalCards) + 1));
   }
   
-  function handleBackwardClick() {
+  const handleBackwardClick = () => {
     setVisibleCards((prev) => prev.map((card) => (card - 2 + totalCards) % totalCards + 1));
   }
 

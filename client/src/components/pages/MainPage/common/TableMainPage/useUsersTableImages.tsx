@@ -26,7 +26,6 @@ export const italianIcon = (
   <Image width={20} preview={false} className="rounded-sm mr-5 mt-0.5" src={italyPNG} />
 );
 
-// Utility function to map language to icons
 export const getLanguge = (language: CourseLangauge) => {
   switch (language) {
     case CourseLangauge.French:

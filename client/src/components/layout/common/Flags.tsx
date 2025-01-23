@@ -6,7 +6,7 @@ import spainPNG from "../../pages/MainPage/images/spainIcon.png";
 import usaPNG from "../../pages/MainPage/images/usaIcon.png";
 import { CourseLangauge } from '../../../api/common/types';
 import { Image, Col, Row, Typography } from 'antd';
-import { useChangeLanguage } from '../requests/mutate'; 
+import { useChangeLanguage } from '../requests/changeLanguageMutate'; 
 
 interface FlagsProps {
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;

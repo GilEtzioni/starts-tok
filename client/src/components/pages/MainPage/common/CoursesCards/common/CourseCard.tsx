@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Progress } from 'antd';
+import { Badge, Progress, Typography } from 'antd';
 import { generateRandomBubbles } from './Helper';
 import { OneCardProps } from '../types/courseTypes';
 
@@ -15,6 +15,7 @@ const cardColors = [
 
 const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content, link, number, cardDetails }) => {
   const [bubbles, setBubbles] = useState<{ size: number; top: number; left: number; opacity: number }[]>([]);
+  const { Paragraph } = Typography;
 
   useEffect(() => {
     setBubbles(generateRandomBubbles(5));
@@ -67,9 +68,9 @@ const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content,
             showInfo={false}
             className="w-full"
           />
-    <p className="absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
+    <Paragraph className="absolute w-full text-center font-bold text-gray-500/80 m-0 top-1/3 -translate-y-1/2 text-[12px]" >
       {content} / 25
-    </p>
+    </Paragraph>
   </div>
   </div>
 </div>
