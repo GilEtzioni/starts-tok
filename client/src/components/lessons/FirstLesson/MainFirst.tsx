@@ -16,7 +16,7 @@ import { LanguageType } from '../../../api/common/types';
 
 // fetch
 import { useParams } from 'react-router-dom';
-import { fetchFirstLessonWords } from '../../../api/lessons'; 
+import { fetchFirstLesson } from '../../../api/lessons'; 
 import { useQuery } from '@tanstack/react-query';
 import { FIRST_LESSON_WORDS_QUERY_KEY } from '../requests/queryKeys';
 
@@ -39,7 +39,7 @@ const FirstCardContainer: React.FC = () => {
 
     const { data: lessons, isLoading, isError } = useQuery(
         [FIRST_LESSON_WORDS_QUERY_KEY, name, lesson],
-        () => fetchFirstLessonWords(name || '', lesson || ''),
+        () => fetchFirstLesson(lesson || ''),
         {
           onSuccess: (lessons) => {
             if (!lessons) return;

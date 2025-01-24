@@ -1,3 +1,5 @@
+import { CardType } from "../../components/lessons/types/SecondLessonType";
+
 export enum EnglishLevel {
   A1 = "A1",
   A2 = "A2",
@@ -16,21 +18,16 @@ export enum HebrewLevel {
   שפתאם = "שפת אם",
 }
   export type SenteceType = {
-    sentenceOneForeign: string, 
-    sentenceTwoForeign: string, 
-    sentenceOneHebrew: string, 
-    sentenceTwoHebrew: string,
+    foreignSentence: string, 
+    hebrewSentence: string, 
+    words: CardType[],
   }
   
   export type MissingWordType = {
-    missingSentenceOneHebrew: string,
-    missingWordOneHebrew: string,
-    missingSentenceTwoHebrew: string,
-    missingWordTwoHebrew: string,
-    missingSentenceOneForeign: string,
-    missingWordOneForeign: string,
-    missingSentenceTwoForeign: string,
-    missingWordTwoForeign: string,
+    hebrewSentence: string,
+    hebrewWord: string,
+    foreignSentence: string,
+    foreignWord: string,
   }
 
   export type CourseType = {

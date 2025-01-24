@@ -2,23 +2,18 @@ import axiosInstance from "./common/axiosInstance";
 import { FirstCardType } from "../components/lessons/types/FirstLessonType";
 import { MissingWordType, SenteceType, WordsType } from "./common/types";
 
-export const fetchFirstLessonWords = async (name: string, lesson: string): Promise<FirstCardType[]> => {
-  const { data } = await axiosInstance.get(`/main/firstLessonWords/${name}/${lesson}`);
+export const fetchFirstLesson = async (lesson: string): Promise<FirstCardType[]> => {
+  const { data } = await axiosInstance.get(`/main/firstLesson/${lesson}`);
   return data;
 };
 
-export const fetchSecondLessonSentence = async (name: string, lesson: string): Promise<SenteceType[]> => {
-  const { data } = await axiosInstance.get(`/main/secondLessonSentence/${name}/${lesson}`);
+export const fetchSecondLesson = async (lesson: string): Promise<SenteceType> => {
+  const { data } = await axiosInstance.get(`/main/secondLesson/${lesson}`);
   return data;
 };
 
-export const fetchSecondLessonWords = async(name: string, lesson: string): Promise<string[]> => {
-  const { data } = await axiosInstance.get(`/main/secondLessonWords/${name}/${lesson}`);
-  return data;
-};
-
-export const fetchThirdLessonWords = async (name: string, lesson: string): Promise<MissingWordType[]> => {
-  const { data } = await axiosInstance.get(`/main/thirdLesson/${name}/${lesson}`);
+export const fetchThirdLesson = async (lesson: string): Promise<MissingWordType> => {
+  const { data } = await axiosInstance.get(`/main/thirdLesson/${lesson}`);
   return data;
 };
 

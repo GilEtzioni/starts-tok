@@ -298,7 +298,17 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     .limit(FAILURE_WORDS);
 
     const failureLessonWordsArray = failureLessonWords.map((item) => item.foreignWord);
-    const WordsResult =[...correctLessonWords, failureLessonWordsArray].flat();
+    const flatWords =[...correctLessonWords, failureLessonWordsArray].flat();
+
+    const WordsResult: Array<{id: number; containerOrder: number; word: string; container: string;}> = []
+    flatWords.forEach((item, index) => {
+      WordsResult.push({
+        id: index,
+        containerOrder: index,
+        word: item ?? "",
+        container: "down",
+      });
+    });
 
     // get lesson's sentence
     const currentForeignSentence = await db

@@ -8,16 +8,17 @@ import { setSuccess, setFailure, resetClicks, setRightAnswer } from '../slices/L
 import { RootState } from "../../../app/store";
 
 // components
-import { getForeignWords, shuffleArray, getForeignSentence, splitSentenceToWords, getHebrewSentence, findMaxIndex } from '../utils/SecondHelper';
+import { splitSentenceToWords, findMaxIndex } from '../utils/SecondHelper';
 import { useHandleNext} from "../utils/SecondEffects";
 import HebrewSentenceTwo from "./HebrewSentenceTwo";
 import { CardType, TranslatedArray } from '../types/SecondLessonType';
 import { LessonStatus } from '../types/LessonType';
+import { CardContainer } from '../types/SecondLessonType';
 
 // fetch data
 import { useParams } from 'react-router-dom';
-import { fetchAllWords, fetchSecondLessonSentence, fetchSecondLessonWords } from '../../../api/lessons';
-import { SECOND_LESSON_WORDS_QUERY_KEY, SECOND_LESSON_SENTENCES_QUERY_KEY, ALL_WORDS } from '../requests/queryKeys';
+import { fetchAllWords, fetchSecondLesson } from '../../../api/lessons';
+import { SECOND_LESSON_SENTENCES_QUERY_KEY, ALL_WORDS } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 
 const MainSecond: React.FC = () => {
@@ -31,19 +32,16 @@ const MainSecond: React.FC = () => {
     const dispatch = useDispatch();
 
     const [foreignArray, setForeignArray] = useState<CardType[]>([]);
-    const [hebrewSentence, setHebrewSentence] = useState("");
     const [TranslatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
 
-    const { data: lessonsData, isLoading: isLessonsLoading, isError: isLessonsError } = useQuery(
+    const { data: lessonData, isLoading: isLessonsLoading, isError: isLessonsError } = useQuery(
         [SECOND_LESSON_SENTENCES_QUERY_KEY, name, lesson],
-        () => fetchSecondLessonSentence(name || '', lesson || ''),
+        () => fetchSecondLesson(lesson || ''),
         {
-            onSuccess: (lessonsData) => {
-                const hebrewSentence = getHebrewSentence(lessonsData, order);
-                const foreignSentence = getForeignSentence(lessonsData, order);
-                setHebrewSentence(hebrewSentence);
-
-                dispatch(setRightAnswer(foreignSentence));
+            onSuccess: (lessonData) => {
+                if (!lessonData) return;          
+                dispatch(setRightAnswer(lessonData.foreignSentence));
+                setForeignArray(lessonData.words);
             }
         }
     );
@@ -52,11 +50,11 @@ const MainSecond: React.FC = () => {
         [ALL_WORDS, name, lesson],
         () => fetchAllWords(),
         {
-            enabled: !!lessonsData,
+            enabled: !!lessonData,
             onSuccess: (allWords) => {
-                if (!allWords || !lessonsData) return;
+                if (!allWords || !lessonData) return;
 
-                const hebrewSentence = getHebrewSentence(lessonsData, order);
+                const hebrewSentence = lessonData.hebrewSentence;
 
                 const punctuation = [',', '.', '-', '?', '...', '!'];
                 const wordsArray = splitSentenceToWords(hebrewSentence, allWords);
@@ -79,31 +77,17 @@ const MainSecond: React.FC = () => {
         }
     );
 
-    const { data: cardsData, isLoading: isCardsLoading, isError: isCardsError } = useQuery(
-        [SECOND_LESSON_WORDS_QUERY_KEY, name, lesson],
-        () => fetchSecondLessonWords(name || '', lesson || ''),
-        {
-            onSuccess: (cardsData) => {  
-                if (!lessonsData || !cardsData || cardsData.length < 23) return;          
-    
-                const originalForeignArray = getForeignWords(cardsData, order);
-                const shuffledForeign = shuffleArray(originalForeignArray);
-                setForeignArray(shuffledForeign);
-            }
-        }
-    );
-
-    useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, foreignArray, order });
+    useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonData, foreignArray, order });
 
     const handleClick = (card: CardType) => {
         if (status === LessonStatus.Running) {
             // from down container to up container
-            if (card.container === "down") {
+            if (card.container === CardContainer.Down) {
                 const currMax = findMaxIndex(foreignArray, card.id);
                 const nextIndex = currMax + 1;
 
                 const updatedArray= foreignArray.map((item) =>
-                    item.id === card.id ? { ...item, container: "up",containerOrder: nextIndex } : { ...item }
+                    item.id === card.id ? { ...item, container: CardContainer.Up, containerOrder: nextIndex } : { ...item }
                 );                
                 setForeignArray(updatedArray);
             }
@@ -114,21 +98,13 @@ const MainSecond: React.FC = () => {
                 const nextIndex = currMax + 1;
 
                 const updatedArray= foreignArray.map((item) =>
-                    item.id === card.id ? { ...item, container: "down",containerOrder: nextIndex } : { ...item }
+                    item.id === card.id ? { ...item, container: CardContainer.Down, containerOrder: nextIndex } : { ...item }
                 );                
                 setForeignArray(updatedArray);
             }
         }
     }
 
-    if (isLessonsLoading || isCardsLoading) {
-        return <div>Loading data...</div>;
-    }
-    
-    if (isLessonsError || isCardsError) {
-        return <div>Error loading data</div>;
-    }
-  
     return (
         <>
             <Row className="flex justify-center">
@@ -140,7 +116,7 @@ const MainSecond: React.FC = () => {
             {/* up container */}
             <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
                 {foreignArray
-                    .filter(item => item.container === "up")
+                    .filter(item => item.container === CardContainer.Up)
                     .sort((a, b) => a.containerOrder - b.containerOrder)
                     .map(item => (
                         <div className="h-[50px]">
@@ -159,7 +135,7 @@ const MainSecond: React.FC = () => {
     {/* down container */}
     <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
         {foreignArray
-            .filter(item => item.container === "down")
+            .filter(item => item.container === CardContainer.Down)
             .sort((a, b) => a.containerOrder - b.containerOrder)
             .map(item => (
                 <Card

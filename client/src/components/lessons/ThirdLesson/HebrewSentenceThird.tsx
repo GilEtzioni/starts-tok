@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { WordsType } from "../../../api/common/types";
 import { Tooltip } from 'antd';
-// import { useHandleData } from '../utils/SecondEffects';
 import { TranslatedArray } from '../types/SecondLessonType';
 
 interface HebrewSentenceProps {

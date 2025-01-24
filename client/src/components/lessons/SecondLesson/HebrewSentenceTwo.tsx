@@ -14,7 +14,7 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) =
         <div className="text-center my-5 !font-medium">
             <div className="inline-block">
                 {[...TranslatedWords]
-                    .reverse() // map from last index
+                    .reverse() 
                     .map((item, index) => (
                         <Tooltip
                             key={index}

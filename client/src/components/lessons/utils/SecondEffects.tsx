@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { getUserAnswer, getForeignSentence, areStringsEqual } from './SecondHelper';
+import { getUserAnswer, areStringsEqual } from './SecondHelper';
 import { useDispatch } from 'react-redux';
-import { foreignArrayType } from '../types/SecondLessonType';
+import { CardType, foreignArrayType } from '../types/SecondLessonType';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 import { SenteceType } from '../../../api/common/types';
 
@@ -11,22 +11,20 @@ interface UseHandleNextProps {
   resetClicks: ActionCreatorWithoutPayload;
   setSuccess: ActionCreatorWithoutPayload;
   setFailure: ActionCreatorWithoutPayload;
-  lessonsData: SenteceType[] | undefined;
-  foreignArray: foreignArrayType[];
+  lessonData: SenteceType | undefined;
+  foreignArray: CardType[];
   order: number;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonsData, foreignArray, order }: UseHandleNextProps) => { 
+export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonData, foreignArray, order }: UseHandleNextProps) => { 
   useEffect(() => {
 
-    if(!lessonsData) return;
+    if (!lessonData) return;
 
-    const lessons = lessonsData[0]
-    const userAnswer = getUserAnswer(lessons, foreignArray, order);
-    const rightAnswer = getForeignSentence(lessonsData, order);
-    const isUserRight: boolean = areStringsEqual(userAnswer, rightAnswer); 
+    const userAnswer = getUserAnswer(lessonData, foreignArray, order);
+    const isUserRight: boolean = areStringsEqual(userAnswer, lessonData.foreignSentence); 
 
     if(clicks === 1) {
         // the user click before enter data - reset

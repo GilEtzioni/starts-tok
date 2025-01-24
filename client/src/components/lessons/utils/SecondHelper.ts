@@ -2,65 +2,7 @@ import { WordsType, SenteceType } from "../../../api/common/types";
 import { CardType } from '../types/SecondLessonType';
 import { TranslatedArray } from '../types/SecondLessonType';
 
-export const getForeignWords = (cardsData: string[], order: number): CardType[] => {
-    const foreignWordsArray: string[] = [];
-
-    // first lesson - all 12 words
-    if (order === 2) {
-        foreignWordsArray.push(
-            cardsData[0],
-            cardsData[1],
-            cardsData[2],
-            cardsData[3],
-            cardsData[4],
-            cardsData[5],
-            cardsData[6],
-            cardsData[7],
-            cardsData[8],
-            cardsData[9],
-            cardsData[10],
-            cardsData[11],
-        );
-    }
-
-    // second lesson - all 12 words
-    if (order === 5) {
-        foreignWordsArray.push(
-            cardsData[12],
-            cardsData[13],
-            cardsData[14],
-            cardsData[15],
-            cardsData[16],
-            cardsData[17],
-            cardsData[18],
-            cardsData[19],
-            cardsData[20],
-            cardsData[21],
-            cardsData[22],
-            cardsData[23],
-        );
-    }
-
-    const combinedWordsArray: CardType[] = [];
-    for (let i = 0; i < foreignWordsArray.length; i++) {
-        const coupleId = i + 1;
-        const containerOrder = coupleId;
-        const foreignWord = foreignWordsArray[i];
-        const container = "down";
-        if (foreignWord) {
-            combinedWordsArray.push({
-                id: coupleId,
-                containerOrder: containerOrder,
-                word: foreignWord, 
-                container: container
-            });
-        }
-    }
-
-    return combinedWordsArray;
-}
-
-export const shuffleArray = (wordsArray: CardType[]):CardType[] => {
+export const shuffleArray = (wordsArray: string[]):string[] => {
     for (let i = wordsArray.length - 1; i > 0; i--) {
         const random = Math.floor(Math.random() * (i + 1));
         [wordsArray[i], wordsArray[random]] = [wordsArray[random], wordsArray[i]]; // swap item with random
@@ -88,27 +30,6 @@ export const findMaxIndex = (foreignArray: CardType[], cardId: number): number =
 
     return maxContainerOrder; 
 }
-
-export const getHebrewSentence = (lessons: SenteceType[], order: number): string => { 
-    if (order === 2) {
-        return lessons[0].sentenceOneHebrew;
-    }
-    if (order === 5) {
-        return lessons[0].sentenceTwoHebrew;
-    }
-    return "";
-}
-
-export const getForeignSentence = (lessons: SenteceType[], order: number): string => { 
-    if (order === 2) {
-        return lessons[0].sentenceOneForeign;
-    }
-    if (order === 5) {
-        return lessons[0].sentenceTwoForeign;
-    }
-    return "";
-}
-
 
 export const getUserAnswer = (lessons: SenteceType, foreignArray: CardType[], order: number): string => { 
     let answer = "";
@@ -165,8 +86,8 @@ const sentenceWithoutPunctuations = (hebrewSentence: string): string => {
 
 export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsType[]) => {
 
-    const fixedString: string = movePunctuationToFront(hebrewSentence);               // make the last '?' as the first index
-    const noPunctionsSentence: string = sentenceWithoutPunctuations(fixedString);   // no punctions
+    const fixedString: string = movePunctuationToFront(hebrewSentence);
+    const noPunctionsSentence: string = sentenceWithoutPunctuations(fixedString);
     const resultArray :TranslatedArray[] = [];
     const tempArray: string[] = noPunctionsSentence.split(' ');
     

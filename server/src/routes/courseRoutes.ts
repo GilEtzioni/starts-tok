@@ -7,7 +7,7 @@ const router = Router();
 router.get("/main", requireAuth(), getCourses);
 router.get("/main/finished", requireAuth(), getFinishedCourses);
 router.get("/main/course/:userLevel/", requireAuth(), getLevelLessons);
-router.get("/main/firstLessonWords/:course", requireAuth(), getFirstLessonWords);
+router.get("/main/firstLesson/:course", requireAuth(), getFirstLessonWords);
 router.get("/main/secondLesson/:course", requireAuth(), getSecondLesson);
 router.get("/main/thirdLesson/:course", requireAuth(), getThirdLesson);             
 router.patch("/main/course/:userLevel/:course", requireAuth(), updateLesson);

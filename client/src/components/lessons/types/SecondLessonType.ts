@@ -16,3 +16,8 @@ export interface foreignArrayType {
     word: string; 
     container: string
 }
+
+export enum CardContainer {
+    Up = "up",
+    Down = "down"
+}
