@@ -4,6 +4,7 @@ import { CourseNames, Words, Sentences, MissingWords, Language } from "../drizzl
 import { getAuth } from "@clerk/express";
 import { and, desc, eq, notInArray, sql } from "drizzle-orm";
 import { CourseLangauge } from "../types/seedersType";
+import { shuffleArray } from "../seeders/utils/helpingSeeders";
 
 export const getCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -257,45 +258,21 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     )
     .limit(1);
 
-  const correctLessonWords = currentLesson[0].sentence.split(" ");
-
-  const wordLanguage = (language: string) => {
-    switch (language) {
-      case CourseLangauge.German:
-        return Words.germanWord; 
-      case CourseLangauge.Italian:
-        return Words.italianWord;
-      case CourseLangauge.French:
-        return Words.frenchWord;
-      case CourseLangauge.Spanish:
-        return Words.spanishWord;
-      default:
-        return Words.germanWord; 
-    }
-  };
-
-  const FAILURE_WORDS = 12 - correctLessonWords.length;
-
-  const failureLessonWords = await db
-    .select({
-      foreignWord: 
-      language === CourseLangauge.Spanish
-      ? Words.spanishWord
-      : language === CourseLangauge.Italian
-      ? Words.italianWord
-      : language === CourseLangauge.French
-      ? Words.frenchWord
-      : Words.germanWord,
-    })
-    .from(Words)
-    .where(
-      and(
-        notInArray(wordLanguage(language), correctLessonWords),
-        eq(Words.courseNameEnglish, course),
-        eq(Words.userId, userId),
+    const correctLessonWords = currentLesson[0].sentence.split(" ");
+    const FAILURE_WORDS = Math.max(12 - correctLessonWords.length, 0);
+    
+    const failureLessonWords = await db
+      .select()
+      .from(Words)
+      .where(
+        and(
+          notInArray(Words.foreignWord, correctLessonWords),
+          eq(Words.courseNameEnglish, course),
+          eq(Words.userId, userId),
+          eq(Words.language, language)
+        )
       )
-    )
-    .limit(FAILURE_WORDS);
+      .limit(FAILURE_WORDS);
 
     const failureLessonWordsArray = failureLessonWords.map((item) => item.foreignWord);
     const flatWords =[...correctLessonWords, failureLessonWordsArray].flat();
@@ -451,6 +428,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
 
 export const getFirstLessonWords = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
+    const course = req.params.course;
   
     if (!userId) {
         res.status(401).json({ error: "Unauthorized: User ID is missing" });
@@ -458,8 +436,6 @@ export const getFirstLessonWords = async (req: Request, res: Response): Promise<
     }
   
     try {
-        const course = req.params.course;
-
         const userLanguage = await db
         .select()
         .from(Language)
@@ -472,62 +448,44 @@ export const getFirstLessonWords = async (req: Request, res: Response): Promise<
       }
       const language = userLanguage[0].language;
   
-        const currLesson = await db.select().from(Words).where(
+        const currentLesson = await db
+        .select()
+        .from(Words)
+        .where(
           and(
             eq(Words.courseNameEnglish, course),
-            eq(Words.userId, userId))
+            eq(Words.userId, userId),
+            eq(Words.language, language),
+          )
         )
         .orderBy(sql`RANDOM()`)
         .limit(6)
 
-        const result: Array<{hebrewWord: string, foreignWord: string, coupleId: number}> = [];
+        const hebrewResult: Array<{word: string, coupleId: number, isSelected: string}> = [];
+        const foreignResult: Array<{word: string, coupleId: number, isSelected: string}> = [];
 
-        if (language === CourseLangauge.German) {
-          currLesson.map((item, coupleId) => {
-            result.push({
-              hebrewWord: item.hebrewWord ?? "",
-              foreignWord: item.germanWord ?? "",
-              coupleId: coupleId + 1, 
+        currentLesson.map((item, coupleId) => {
+            hebrewResult.push({
+                word: item.hebrewWord ?? "",
+                coupleId: coupleId + 1,
+                isSelected: "notSelected",
             });
+
+            foreignResult.push({
+              word: item.foreignWord ?? "",
+              coupleId: coupleId + 1,
+              isSelected: "notSelected",
           });
-        }
-        
-        if (language === CourseLangauge.French) {
-          currLesson.map((item, coupleId) => {  
-            result.push({
-              hebrewWord: item.hebrewWord ?? "",
-              foreignWord: item.frenchWord ?? "",
-              coupleId: coupleId + 1, 
-            });
-          });
-        }
-        
-        if (language === CourseLangauge.Italian) {
-          currLesson.map((item, coupleId) => { 
-            result.push({
-              hebrewWord: item.hebrewWord ?? "",
-              foreignWord: item.italianWord ?? "",
-              coupleId: coupleId + 1, 
-            });
-          });
-        }
-        
-        if (language === CourseLangauge.Spanish) {
-          currLesson.map((item, coupleId) => {
-            result.push({
-              hebrewWord: item.hebrewWord ?? "",
-              foreignWord: item.spanishWord ?? "",
-              coupleId: coupleId + 1, 
-            });
-          });
-        }
-        
+        });
+
+        const result = {
+            hebrew: shuffleArray(hebrewResult),
+            foreign: shuffleArray(foreignResult),
+        };
+
         res.json(result);
-        
 
-  
     } catch (error) {
-      res.status(500).json({ message: "An error occurred while ", error });
+        res.status(500).json({ message: "An error occurred while fetching the lesson words.", error });
     }
-  };
-
+};

@@ -1,28 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
-import { FirstLessonType, IsSelected } from '../types/FirstLessonType';
+import { FirstLessonCard, IsSelected } from '../types/FirstLessonType';
 
 interface UseCardEffectsProps {
     order: number;
     foreignId: number;
     hebrewId: number;
-    foreignArray: FirstLessonType[];
-    hebrewArray: FirstLessonType[];
+    foreignArray: FirstLessonCard[];
+    hebrewArray: FirstLessonCard[];
     counter: number;
     setForeignID: (id: number) => void;
     setHebrewId: (id: number) => void;
     setCounter: (value: React.SetStateAction<number>) => void;
-    setForeignArray: (array: FirstLessonType[]) => void;
-    setHebrewArray: (array: FirstLessonType[]) => void;
+    setForeignArray: (array: FirstLessonCard[]) => void;
+    setHebrewArray: (array: FirstLessonCard[]) => void;
     dispatch: ReturnType<typeof useDispatch>;
     status: string;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
-export const useHandleClick = ({ foreignId, hebrewId, foreignArray, hebrewArray, counter, 
-    setForeignID, setHebrewId, setCounter, setForeignArray, setHebrewArray, dispatch }: UseCardEffectsProps) => { useEffect(() => {
+export const useHandleClick = ({ foreignId, hebrewId, counter, 
+    setForeignID, setHebrewId, setCounter, dispatch, setForeignArray, setHebrewArray, foreignArray, hebrewArray }: UseCardEffectsProps) => { useEffect(() => {
         if ( foreignId !== 0 && hebrewId !== 0) {
             // success
             if (foreignId === hebrewId) {

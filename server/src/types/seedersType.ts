@@ -6,76 +6,32 @@ export interface Course {
     courseNameHebrew: string;
     lessonCompleted: number;
   }
-
-export interface SentenceType {
-    hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי",
-    englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2',
-    courseNameEnglish: string,
-    lessonOrder: number,
-
-    sentenceOneHebrew: string,
-    sentenceTwoHebrew: string,
-
-    sentenceOneGerman: string,  
-    sentenceTwoGerman: string, 
-
-    sentenceOneItalian: string,  
-    sentenceTwoItalian: string,  
-
-    sentenceOneSpanish: string,  
-    sentenceTwoSpanish: string,  
-
-    sentenceOneFranch: string,  
-    sentenceTwoFranch: string,  
-
-    finished: boolean,
-  }
-
-  export interface MissingWordsType {
-    hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי";
-    englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-    courseNameEnglish: string;
-    lessonOrder: number;
-
-    missingSentenceOneHebrew: string, 
-    missingSentenceTwoHebrew: string, 
-    missingWordOneHebrew: string, 
-    missingWordTwoHebrew: string, 
-
-    missingSentenceOneGerman: string, 
-    missingWordOneGerman: string, 
-    missingSentenceTwoGerman: string,  
-    missingWordTwoGerman: string, 
-
-    // Italian
-    missingSentenceOneItalian: string, 
-    missingWordOneItalian: string, 
-    missingSentenceTwoItalian: string,  
-    missingWordTwoItalian: string, 
-
-    // Spanish
-    missingSentenceOneSpanish: string, 
-    missingWordOneSpanish: string, 
-    missingSentenceTwoSpanish: string,  
-    missingWordTwoSpanish: string, 
-
-    // French
-    missingSentenceOneFrench: string, 
-    missingWordOneFrench: string, 
-    missingSentenceTwoFrench: string,  
-    missingWordTwoFrench: string, 
-    finished: false,
-  }
-
+export enum HebrewLevel {
+  A1 = "מבוא",
+  A2 = "בסיסי",
+  B1 = "בינוני",
+  B2 = "מתקדם",
+  C1 =  "מתקדם מאוד",
+  C2 = "שפת אם",
+  UserWords = "המילים שהוספתי",
+}
+export enum EnglishLevel {
+  A1 = "A1",
+  A2 = "A2",
+  B1 = "B1",
+  B2 = "B2",
+  C1 = "C1",
+  C2 = "C2",
+  UserWords = "userWords"
+}
   export interface Word {
-    hebrewLevel: "מבוא" | "בסיסי" | "בינוני" | "מתקדם" | "מתקדם מאוד" | "שפת אם" | "המילים שהוספתי";
-    englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+    hebrew: string,
+    english: string,
+    german: string,
+    italian: string,
+    spanish: string,
+    french: string,
     courseNameEnglish: string;
-    germanWord: string;
-    hebrewWord: string;
-    italianWord: string;
-    spanishWord: string;
-    frenchWord: string;
     courseOrder: number;
   }
 

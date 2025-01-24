@@ -9,8 +9,7 @@ import { RootState } from "../../../app/store";
 // components + functions
 import FirstCard from "./FirstCard"
 import { useHandleClick} from '../utils/FirstEffects';
-import { getForeignWords, getHebrewWords, shuffleArray } from '../utils/FirstHelper';
-import { FirstLessonType, IsSelected } from "../types/FirstLessonType";
+import { FirstLessonCard, IsSelected } from "../types/FirstLessonType";
 import { LessonStatus } from '../types/LessonType';
 import { LanguageType } from '../../../api/common/types';
 
@@ -32,8 +31,8 @@ const FirstCardContainer: React.FC = () => {
     const [foreignId, setForeignID] = useState(0);
     const [hebrewId, setHebrewId] = useState(0);
     const [counter, setCounter] = useState(0);
-    const [foreignArray, setForeignArray] = useState<FirstLessonType[]>([]);
-    const [hebrewArray, setHebrewArray] = useState<FirstLessonType[]>([]);
+    const [foreignArray, setForeignArray] = useState<FirstLessonCard[]>([]);
+    const [hebrewArray, setHebrewArray] = useState<FirstLessonCard[]>([]);
 
     const { Title } = Typography;
 
@@ -43,15 +42,8 @@ const FirstCardContainer: React.FC = () => {
         {
           onSuccess: (lessons) => {
             if (!lessons) return;
-
-            const originalForeignArray = getForeignWords(lessons);        
-            const originalHebrewArray = getHebrewWords(lessons); 
-      
-            const shuffledForeign = shuffleArray(originalForeignArray);
-            const shuffledHebrew = shuffleArray(originalHebrewArray);
-      
-            setForeignArray(shuffledForeign);
-            setHebrewArray(shuffledHebrew);
+            setForeignArray(lessons.foreign);
+            setHebrewArray(lessons.hebrew);
           }
         }
     );

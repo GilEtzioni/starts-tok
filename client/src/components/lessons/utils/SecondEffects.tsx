@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getUserAnswer, areStringsEqual } from './SecondHelper';
 import { useDispatch } from 'react-redux';
-import { CardType, foreignArrayType } from '../types/SecondLessonType';
+import { CardType } from '../types/SecondLessonType';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 import { SenteceType } from '../../../api/common/types';
 

@@ -53,13 +53,12 @@ const MainSecond: React.FC = () => {
             enabled: !!lessonData,
             onSuccess: (allWords) => {
                 if (!allWords || !lessonData) return;
-
                 const hebrewSentence = lessonData.hebrewSentence;
-
                 const punctuation = [',', '.', '-', '?', '...', '!'];
                 const wordsArray = splitSentenceToWords(hebrewSentence, allWords);
+
                 if (!wordsArray) return;
-            
+        
                 const copiedArray = [...wordsArray];
                 const firstItem = copiedArray.shift();
                 const lastItemIndex = copiedArray.length - 1;

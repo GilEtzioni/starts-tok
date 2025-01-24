@@ -1,5 +1,5 @@
 {
-  "id": "dd7d61d0-b866-47b4-a070-6da95bbcc1b3",
+  "id": "0caa93cd-d7dc-4132-9876-0ea756d4e815",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -364,8 +364,8 @@
         "wordId": {
           "name": "wordId",
           "type": "text",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "hebrewLevel": {
           "name": "hebrewLevel",
@@ -399,50 +399,21 @@
           "primaryKey": false,
           "notNull": false
         },
-        "germanWord": {
-          "name": "germanWord",
+        "foreignWord": {
+          "name": "foreignWord",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "italianWord": {
-          "name": "italianWord",
-          "type": "text",
+        "language": {
+          "name": "language",
+          "type": "languages",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "spanishWord": {
-          "name": "spanishWord",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "frenchWord": {
-          "name": "frenchWord",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "germanKnowledge": {
-          "name": "germanKnowledge",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "italianKnowledge": {
-          "name": "italianKnowledge",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "spanishKnowledge": {
-          "name": "spanishKnowledge",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "frenchKnowledge": {
-          "name": "frenchKnowledge",
+        "knowledge": {
+          "name": "knowledge",
           "type": "text",
           "primaryKey": false,
           "notNull": false

@@ -2,14 +2,6 @@ import { WordsType, SenteceType } from "../../../api/common/types";
 import { CardType } from '../types/SecondLessonType';
 import { TranslatedArray } from '../types/SecondLessonType';
 
-export const shuffleArray = (wordsArray: string[]):string[] => {
-    for (let i = wordsArray.length - 1; i > 0; i--) {
-        const random = Math.floor(Math.random() * (i + 1));
-        [wordsArray[i], wordsArray[random]] = [wordsArray[random], wordsArray[i]]; // swap item with random
-    }
-    return wordsArray;
-};
-
 export const findMaxIndex = (foreignArray: CardType[], cardId: number): number => {
     let maxContainerOrder = 0; 
 
@@ -57,7 +49,7 @@ export const areStringsEqual = (str1: string, str2: string): boolean => {
     return cleanedStr1 === cleanedStr2;
 }
 
-/* ---------------------------------------- */
+/* -------------------------------------------------------------------------------- */
 
 const punctuation = [',', '.', '-', '?', '...', '!'];
 

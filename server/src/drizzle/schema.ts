@@ -14,7 +14,7 @@ export const CourseNames = pgTable("courses", {
     courseNameEnglish: text("courseNameEnglish"),
     courseNameGerman: text("courseNameGerman"),
     courseNameHebrew: text("courseNameHebrew"),
-    lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0), // 0-5
+    lessonCompleted: integer("lessonCompleted").notNull().$default(() => 0),
     courseOrder: integer("courseOrder"),
     language: languagesEnum("language"),
 });
@@ -30,7 +30,6 @@ export const Sentences = pgTable("sentences", {
     compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
 }));
 
-
 export const MissingWords = pgTable("missingWords", {
     courseId: text("courseId").notNull().references(() => CourseNames.courseId),
     userId: text("userId").notNull(),
@@ -43,23 +42,17 @@ export const MissingWords = pgTable("missingWords", {
     compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
 }));
 
-
 export const Words = pgTable("words", {
     userId: text("userId").notNull(),
-    wordId: text("wordId").primaryKey(), 
+    wordId: text("wordId"), 
     hebrewLevel: levelHebrewEnum("hebrewLevel"),
     englishLevel: levelEnglishEnum("englishLevel"),
-    courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
+    courseId: text("courseId").notNull().references(() => CourseNames.courseId),
     courseNameEnglish: text("courseNameEnglish"),
     hebrewWord: text("hebrewWord"),
-    germanWord: text("germanWord"),
-    italianWord: text("italianWord"),
-    spanishWord: text("spanishWord"),
-    frenchWord: text("frenchWord"),    
-    germanKnowledge: text("germanKnowledge"),
-    italianKnowledge: text("italianKnowledge"),
-    spanishKnowledge: text("spanishKnowledge"),
-    frenchKnowledge: text("frenchKnowledge"),
+    foreignWord: text("foreignWord"),
+    language: languagesEnum("language").notNull(),
+    knowledge: text("knowledge"),
     wordOrder: serial("wordOrder"),
     courseOrder: integer("courseOrder"),
 });

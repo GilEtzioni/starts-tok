@@ -7,6 +7,7 @@ export enum EnglishLevel {
   B2 = "B2",
   C1 = "C1",
   C2 = "C2",
+  UserWords = "userWords"
 }
 
 export enum HebrewLevel {

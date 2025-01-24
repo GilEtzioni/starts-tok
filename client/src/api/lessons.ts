@@ -1,8 +1,8 @@
 import axiosInstance from "./common/axiosInstance";
-import { FirstCardType } from "../components/lessons/types/FirstLessonType";
+import { FirstLesson } from "../components/lessons/types/FirstLessonType";
 import { MissingWordType, SenteceType, WordsType } from "./common/types";
 
-export const fetchFirstLesson = async (lesson: string): Promise<FirstCardType[]> => {
+export const fetchFirstLesson = async (lesson: string): Promise<FirstLesson> => {
   const { data } = await axiosInstance.get(`/main/firstLesson/${lesson}`);
   return data;
 };

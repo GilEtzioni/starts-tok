@@ -59,20 +59,15 @@ CREATE TABLE IF NOT EXISTS "users" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "words" (
 	"userId" text NOT NULL,
-	"wordId" text PRIMARY KEY NOT NULL,
+	"wordId" text,
 	"hebrewLevel" "levelHebrew",
 	"englishLevel" "levelEnglish",
 	"courseId" text NOT NULL,
 	"courseNameEnglish" text,
 	"hebrewWord" text,
-	"germanWord" text,
-	"italianWord" text,
-	"spanishWord" text,
-	"frenchWord" text,
-	"germanKnowledge" text,
-	"italianKnowledge" text,
-	"spanishKnowledge" text,
-	"frenchKnowledge" text,
+	"foreignWord" text,
+	"language" "languages" NOT NULL,
+	"knowledge" text,
 	"wordOrder" serial NOT NULL,
 	"courseOrder" integer
 );
