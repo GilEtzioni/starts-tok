@@ -1,5 +1,5 @@
 CREATE TYPE "public"."gameName" AS ENUM('speedGame', 'hangmanGame', 'wordleGame');--> statement-breakpoint
-CREATE TYPE "public"."languages" AS ENUM('german', 'italian', 'spanish', 'french');--> statement-breakpoint
+CREATE TYPE "public"."languages" AS ENUM('german', 'italian', 'spanish', 'french', 'english', 'hebrew');--> statement-breakpoint
 CREATE TYPE "public"."levelEnglish" AS ENUM('A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'userWords');--> statement-breakpoint
 CREATE TYPE "public"."levelHebrew" AS ENUM('מבוא', 'בסיסי', 'בינוני', 'מתקדם', 'מתקדם מאוד', 'שפת אם', 'המילים שהוספתי');--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "courses" (
@@ -30,53 +30,24 @@ CREATE TABLE IF NOT EXISTS "language" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "missingWords" (
-	"userId" text NOT NULL,
-	"hebrewLevel" "levelHebrew",
-	"englishLevel" "levelEnglish",
-	"courseNameEnglish" text,
 	"courseId" text NOT NULL,
-	"lessonId" integer,
-	"missingSentenceOneHebrew" text,
-	"missingWordOneHebrew" text,
-	"missingSentenceTwoHebrew" text,
-	"missingWordTwoHebrew" text,
-	"missingSentenceOneGerman" text,
-	"missingWordOneGerman" text,
-	"missingSentenceTwoGerman" text,
-	"missingWordTwoGerman" text,
-	"missingSentenceOneItalian" text,
-	"missingWordOneItalian" text,
-	"missingSentenceTwoItalian" text,
-	"missingWordTwoItalian" text,
-	"missingSentenceOneSpanish" text,
-	"missingWordOneSpanish" text,
-	"missingSentenceTwoSpanish" text,
-	"missingWordTwoSpanish" text,
-	"missingSentenceOneFrench" text,
-	"missingWordOneFrench" text,
-	"missingSentenceFrench" text,
-	"missingWordTwoFrench" text,
-	"finished" boolean
+	"userId" text NOT NULL,
+	"courseNameEnglish" text,
+	"missingSentenceOrder" integer NOT NULL,
+	"language" "languages" NOT NULL,
+	"missingSentence" text NOT NULL,
+	"missingWord" text NOT NULL,
+	CONSTRAINT "missingWords_userId_courseId_missingSentenceOrder_language_pk" PRIMARY KEY("userId","courseId","missingSentenceOrder","language")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sentences" (
-	"userId" text NOT NULL,
-	"hebrewLevel" "levelHebrew",
-	"englishLevel" "levelEnglish",
-	"courseNameEnglish" text,
 	"courseId" text NOT NULL,
-	"lessonId" integer,
-	"sentenceOneHebrew" text,
-	"sentenceTwoHebrew" text,
-	"sentenceOneGerman" text,
-	"sentenceTwoGerman" text,
-	"sentenceOneItalian" text,
-	"sentenceTwoItalian" text,
-	"sentenceOneSpanish" text,
-	"sentenceTwoSpanish" text,
-	"sentenceOneFranch" text,
-	"sentenceTwoFranch" text,
-	"finished" boolean
+	"userId" text NOT NULL,
+	"courseNameEnglish" text,
+	"sentenceOrder" integer NOT NULL,
+	"language" "languages" NOT NULL,
+	"sentence" text NOT NULL,
+	CONSTRAINT "sentences_userId_courseId_sentenceOrder_language_pk" PRIMARY KEY("userId","courseId","sentenceOrder","language")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (

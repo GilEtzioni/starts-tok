@@ -1,10 +1,10 @@
-import { timestamp, pgTable, text, integer, pgEnum, boolean, serial, date } from "drizzle-orm/pg-core";
+import { timestamp, pgTable, text, integer, pgEnum, serial, date, primaryKey } from "drizzle-orm/pg-core";
 
 // enums
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
 export const levelHebrewEnum = pgEnum("levelHebrew", ["מבוא", "בסיסי", "בינוני", "מתקדם", "מתקדם מאוד", "שפת אם", "המילים שהוספתי"]);
 export const gameNameEnum = pgEnum("gameName", ["speedGame", "hangmanGame", "wordleGame"]);
-export const languagesEnum = pgEnum("languages", ["german", "italian", "spanish", "french", "english" ]);
+export const languagesEnum = pgEnum("languages", ["german", "italian", "spanish", "french", "english", "hebrew" ]);
 
 export const CourseNames = pgTable("courses", {
     userId: text("userId").notNull(),
@@ -18,6 +18,31 @@ export const CourseNames = pgTable("courses", {
     courseOrder: integer("courseOrder"),
     language: languagesEnum("language"),
 });
+
+export const Sentences = pgTable("sentences", {
+    courseId: text("courseId").notNull().references(() => CourseNames.courseId),
+    userId: text("userId").notNull(),
+    courseNameEnglish: text("courseNameEnglish"),
+    senteceOrder: integer("sentenceOrder").notNull(),
+    language: languagesEnum("language").notNull(),
+    sentence: text("sentence").notNull(),
+}, (table) => ({
+    compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
+}));
+
+
+export const MissingWords = pgTable("missingWords", {
+    courseId: text("courseId").notNull().references(() => CourseNames.courseId),
+    userId: text("userId").notNull(),
+    courseNameEnglish: text("courseNameEnglish"),
+    missingSentenceOrder: integer("missingSentenceOrder").notNull(),
+    language: languagesEnum("language").notNull(),
+    missingSentence: text("missingSentence").notNull(),
+    missingWord: text("missingWord").notNull(),
+}, (table) => ({
+    compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
+}));
+
 
 export const Words = pgTable("words", {
     userId: text("userId").notNull(),
@@ -39,83 +64,12 @@ export const Words = pgTable("words", {
     courseOrder: integer("courseOrder"),
 });
 
-export const Sentences = pgTable("sentences", {
-    userId: text("userId").notNull(),
-    hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
-    englishLevel: levelEnglishEnum("englishLevel"),  // A1
-
-    courseNameEnglish: text("courseNameEnglish"), // Greeting
-    courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
-
-    lessonOrder: integer("lessonId"),               // 0-5
-
-    // sentences
-    sentenceOneHebrew: text("sentenceOneHebrew"),
-    sentenceTwoHebrew: text("sentenceTwoHebrew"),
-
-    sentenceOneGerman: text("sentenceOneGerman"), 
-    sentenceTwoGerman: text("sentenceTwoGerman"), 
-
-    sentenceOneItalian: text("sentenceOneItalian"),
-    sentenceTwoItalian: text("sentenceTwoItalian"),
-
-    sentenceOneSpanish: text("sentenceOneSpanish"),
-    sentenceTwoSpanish: text("sentenceTwoSpanish"), 
-
-    sentenceOneFranch: text("sentenceOneFranch"),
-    sentenceTwoFranch: text("sentenceTwoFranch"), 
-
-    // words
-    finished: boolean("finished"),
-});
-
-export const MissingWords = pgTable("missingWords", {
-    userId: text("userId").notNull(),
-    hebrewLevel: levelHebrewEnum("hebrewLevel"),     // ״מתחילים״
-    englishLevel: levelEnglishEnum("englishLevel"),  // A1
-
-    courseNameEnglish: text("courseNameEnglish"), // Greeting
-    courseId: text("courseId").notNull().references(() => CourseNames.courseId), // foreign key
-
-    lessonOrder: integer("lessonId"),               // 0-5
-
-    // missing sentences
-    missingSentenceOneHebrew: text("missingSentenceOneHebrew"),
-    missingWordOneHebrew: text("missingWordOneHebrew"),
-    missingSentenceTwoHebrew: text("missingSentenceTwoHebrew"),
-    missingWordTwoHebrew: text("missingWordTwoHebrew"),
-
-    missingSentenceOneGerman: text("missingSentenceOneGerman"), // hallo! _____ morgen
-    missingWordOneGerman: text("missingWordOneGerman"),         // guten
-    missingSentenceTwoGerman: text("missingSentenceTwoGerman"),
-    missingWordTwoGerman: text("missingWordTwoGerman"),
-
-    missingSentenceOneItalian: text("missingSentenceOneItalian"),
-    missingWordOneItalian: text("missingWordOneItalian"),
-    missingSentenceTwoItalian: text("missingSentenceTwoItalian"),
-    missingWordTwoItalian: text("missingWordTwoItalian"),
-
-    missingSentenceOneSpanish: text("missingSentenceOneSpanish"),
-    missingWordOneSpanish: text("missingWordOneSpanish"),
-    missingSentenceTwoSpanish: text("missingSentenceTwoSpanish"),
-    missingWordTwoSpanish: text("missingWordTwoSpanish"),
-
-    missingSentenceOneFrench: text("missingSentenceOneFrench"),
-    missingWordOneFrench: text("missingWordOneFrench"),
-    missingSentenceTwoFrench: text("missingSentenceFrench"),
-    missingWordTwoFrench: text("missingWordTwoFrench"),
-
-    // words
-    finished: boolean("finished"),
-});
-
-// "games" table
 export const Games = pgTable("games", {
     userId: text("userId").notNull(),
     gameId: text("gameId").notNull(),
     gameName: gameNameEnum("gameName"),
     gameScore: integer("gameScore"),
-    createdAt: timestamp("createdAt").defaultNow(), //filter by created time
+    createdAt: timestamp("createdAt").defaultNow(),
 });
 
 export const Users = pgTable("users", {

@@ -280,23 +280,17 @@ export const getUserLanguage = async (req: Request, res: Response): Promise<void
   
       const combinedPoints = [...weekPoints, ...genericUsersData];
 
-      console.log("combinedPoints: ", combinedPoints)
-
       // conver the point to number
       const formattedWeekPoints = combinedPoints.map((point) => ({
         ...point,
         totalPoints: Number(point.totalPoints),
       }));
-
-      console.log("formattedWeekPoints: ", formattedWeekPoints)
   
       // add key based on the user points
       const rankedPoints = formattedWeekPoints
         .sort((a, b) => b.totalPoints - a.totalPoints) 
         .slice(0, 5)
         .map((item, index) => ({ ...item, key: index + 1 }));
-
-        console.log("rankedPoints: ", rankedPoints)
   
       res.status(200).json(rankedPoints);
     } catch (error) {

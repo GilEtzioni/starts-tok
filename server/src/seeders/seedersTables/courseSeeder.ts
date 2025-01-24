@@ -1,7 +1,7 @@
 import { CourseNames } from "../../drizzle/schema";
 import { db } from "../../drizzle/db";
 import { Course } from "../../types/seedersType";
-// import { CourseLangauge } from "../../types/seedersType";
+import { CourseLangauge } from "../../types/seedersType";
 
 export const courseSeeder = async (userId: string, courseIds: Array<{ index: number; uuid: string; courseName: string }>) => {
   const courses: Course[] = 
@@ -170,12 +170,6 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Extreme Sports", courseNameGerman: "Extremsportarten", courseNameHebrew: "ספורט אתגרי", lessonCompleted: 0 }
   ];
 
-enum CourseLangauge {
-    German = "german",
-    Italian = "italian",
-    Spanish = "spanish",
-    French = "french",
-}
 const languages = [
   CourseLangauge.German,
   CourseLangauge.Italian,
@@ -183,7 +177,6 @@ const languages = [
   CourseLangauge.French,
 ];
 
-// Verify sufficient courseIds
 const requiredLength = courses.length * languages.length;
 if (courseIds.length < requiredLength) {
   throw new Error(`Insufficient courseIds provided. Expected ${requiredLength}, but got ${courseIds.length}.`);
@@ -193,9 +186,9 @@ const courseData = courses.flatMap((course, courseIndex) =>
   languages.map((language, langIndex) => ({
     ...course,
     userId,
-    courseId: courseIds[courseIndex * languages.length + langIndex].uuid, // Unique courseId for each language
+    courseId: courseIds[courseIndex * languages.length + langIndex].uuid,
     language,
-    courseOrder: courseIndex + 1, // Same courseOrder for all languages of a course
+    courseOrder: courseIndex + 1,
   }))
 );
 
