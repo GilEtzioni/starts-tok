@@ -22,6 +22,7 @@ import { DICTIONARY_ALL_WORDS } from '../requests/queryKeys';
 import { createGameArray, shuffleAllWords } from './utils/speedHelper';
 import { resetWrongCounter } from './slices/SpeedGameSlice';
 import { SPEED_GAME_FINISHED_NUMBER } from '../common/consts';
+import LoadingPage from '../../../common/LoadingPage';
 
 const MainSpeedGame: React.FC = () => {
 
@@ -81,62 +82,63 @@ const MainSpeedGame: React.FC = () => {
     if (error) return <div>Error loading data</div>;
 
     const { Title } = Typography;
-
-return (
-    <>
-      {wrongCounter === germanArray.length && (
-        <FinishedGameMesssage
-          onBack={handleBack}
-          onRestart={restartGame}
-          title='!כל הכבוד'
-          description={`הצלחת למצוא ${successCounter} זוגות`}
-        />
-      )}
-  
-      <div className="flex flex-col min-h-screen">
-        <div className="relative flex items-center justify-between mt-5 px-5">
-          <div className="absolute inset-0 flex justify-center">
-            <Title level={3} className="text-center">
-              התאימו את הזוגות
-            </Title>
+    return (
+      <>
+        {isLoading ? (
+          <LoadingPage />
+        ) : wrongCounter === germanArray.length ? (
+          <FinishedGameMesssage
+            onBack={handleBack}
+            onRestart={restartGame}
+            title='!כל הכבוד'
+            description={`הצלחת למצוא ${successCounter} זוגות`}
+          />
+        ) : (
+          <div className="flex flex-col min-h-screen">
+            <div className="relative flex items-center justify-between mt-5 px-5">
+              <div className="absolute inset-0 flex justify-center">
+                <Title level={3} className="text-center">
+                  התאימו את הזוגות
+                </Title>
+              </div>
+    
+              <div className="ml-auto">
+                <BackButton />
+              </div>
+            </div>
+    
+            <div className="w-4/5 mx-auto mt-5">
+              <Row gutter={[4, 4]}>
+                {germanArray.map((germanItem, index) => {
+                  const hebrewItem = hebrewArray[index];
+                  return (
+                    <React.Fragment key={`pair-${germanItem.id}`}>
+                      {/* german */}
+                      <Col key={`german-${germanItem.id}`} span={12}>
+                        <GameCard
+                          card={germanItem}
+                          onClick={() => handleClick(germanArray, index)}
+                        />
+                      </Col>
+    
+                      {/* hebrew */}
+                      {hebrewItem && (
+                        <Col key={`hebrew-${hebrewItem.id}`} span={12}>
+                          <GameCard
+                            card={hebrewItem}
+                            onClick={() => handleClick(hebrewArray, index)}
+                          />
+                        </Col>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </Row>
+            </div>
           </div>
+        )}
+      </>
+    );
+  }    
   
-          <div className="ml-auto">
-            <BackButton />
-          </div>
-        </div>
-  
-        <div className="w-4/5 mx-auto mt-5">
-          <Row gutter={[4, 4]}>
-            {germanArray.map((germanItem, index) => {
-              const hebrewItem = hebrewArray[index];
-              return (
-                <React.Fragment key={`pair-${germanItem.id}`}>
-                  {/* german */}
-                  <Col key={`german-${germanItem.id}`} span={12}>
-                    <GameCard
-                      card={germanItem}
-                      onClick={() => handleClick(germanArray, index)}
-                    />
-                  </Col>
-
-                  {/* hebrew */}
-                  {hebrewItem && (
-                    <Col key={`hebrew-${hebrewItem.id}`} span={12}>
-                      <GameCard
-                        card={hebrewItem}
-                        onClick={() => handleClick(hebrewArray, index)}
-                      />
-                    </Col>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </Row>
-        </div>
-      </div>
-    </>
-  );
-}  
-
 export default MainSpeedGame;

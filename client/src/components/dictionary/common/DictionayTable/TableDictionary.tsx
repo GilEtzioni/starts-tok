@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { RootState } from '../../../../app/store';
 import { useSelector } from 'react-redux';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
+import SkeletonTable from './SkeletonTable';
 
 const TableDictionary: React.FC = () => {
   const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
@@ -20,7 +21,7 @@ const TableDictionary: React.FC = () => {
   if (knowledge.isEx) knowledgeArray.push(DictionaryKnowledgeType.Ex);
   if (knowledge.isQueistion) knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
 
-  const { data: words } = useQuery(
+  const { data: words, isLoading } = useQuery(
     [ALL_DICTIONARY_WORDS, knowledge, level],
     () => fetchFilterDictionary(level, knowledgeArray),
     {
@@ -46,33 +47,33 @@ const TableDictionary: React.FC = () => {
 
   return (
     <div className="w-4/5 mx-auto">
-      <Table
-        columns={[
-          {
-            title: 'סינון',
-            dataIndex: 'knowledge',
-            key: 'knowledge',
-            render: (text, row) => {
-              const { knowledge, wordId } = row;
-              if (knowledge) {
-                return <MidIcons knowledge={knowledge} wordId={wordId}/>
-              }
+      {isLoading ? (
+        <SkeletonTable />
+      ) : (
+        <Table
+          columns={[
+            {
+              title: 'סינון',
+              dataIndex: 'knowledge',
+              key: 'knowledge',
+              render: (text, row) => {
+                const { knowledge, wordId } = row;
+                return knowledge ? <MidIcons knowledge={knowledge} wordId={wordId} /> : null;
+              },
             },
-          },
-          {
-            title: 'מילה',
-            dataIndex: 'foreignWord',
-            key: 'foreignWord',
-            align: 'right' as const,
-          },
-        ]}
-        dataSource={dataSource}
-        pagination={false}
-        onRow={(row) => ({
-        })}
-      />
+            {
+              title: 'מילה',
+              dataIndex: 'foreignWord',
+              key: 'foreignWord',
+              align: 'right' as const,
+            },
+          ]}
+          dataSource={dataSource}
+          pagination={false}
+        />
+      )}
     </div>
   );
-};
+}
 
 export default TableDictionary;

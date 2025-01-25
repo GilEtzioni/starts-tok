@@ -1,7 +1,7 @@
 import axiosInstance from "./common/axiosInstance";
 import { CourseLangauge } from "./common/types";
 
-export const fetchUserFlag = async (): Promise<string[]> => {
+export const fetchUserFlag = async (): Promise<CourseLangauge[]> => {
   const { data } = await axiosInstance.get('/userLanguage');
   return data;
   };

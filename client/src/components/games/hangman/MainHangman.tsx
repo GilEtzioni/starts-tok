@@ -24,6 +24,7 @@ import { fetchWords, fetchKeyboard } from '../../../api/games';
 import { createGameArray, createLettersArray, getRandomWord } from './utils/hangHelper';
 import { resetSuccesssCounter, resetWrongCounter, setSelectedWord } from './slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
+import LoadingPage from '../../../common/LoadingPage';
 
 const MainHangman: React.FC = () => {
 
@@ -61,8 +62,6 @@ const MainHangman: React.FC = () => {
       }
   );
 
-    if (isLoading) return <div>Loading...</div>;
-
     const handleBack = () => {
       if (words === undefined) return;
       const selectedWord = getRandomWord(words);
@@ -73,8 +72,9 @@ const MainHangman: React.FC = () => {
     
     return (
       <>
-        {words ? (
-          
+        {isLoading ? 
+        <LoadingPage />
+          :
           <Row>
             <Col span={14} className="h-screen p-10 relative">
               <div className="absolute">
@@ -111,10 +111,9 @@ const MainHangman: React.FC = () => {
           </div>
         </Col>
           </Row>
-        ) : null}
+    }
       </>
     );    
   } 
   
   export default MainHangman;
-  

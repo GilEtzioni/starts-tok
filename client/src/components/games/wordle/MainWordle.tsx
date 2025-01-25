@@ -6,7 +6,7 @@ import { Typography } from 'antd';
 import BackButton from '../../../common/BackButton';
 import LettersGrid from './common/WordleConatiner/LettersGrid';
 import AnswerGrid from './common/WordleConatiner/AnswerGrid';
-import LoadingComponents from './common/WordleConatiner/LoadingComponents';
+import LoadingPage from '../../../common/LoadingPage';
 import { wordleType } from './ types/WordelType';
 import FinishedGameMesssage from '../common/FinishedGameMesssage';
 import NotWordMessage from './common/Messages/NotWordMessage';
@@ -36,7 +36,7 @@ const MainWordle: React.FC = () => {
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
     const dispatch = useDispatch();
-    const { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess, onBackClick } = useWordleActions();
+    const { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess } = useWordleActions();
 
     const { data: keyboard } = useQuery(
       [KEYBOARD_LETTERS],() => fetchKeyboard())
@@ -67,8 +67,6 @@ const MainWordle: React.FC = () => {
       }
   );
 
-  if (isLoading) return (<LoadingComponents />)
-
   const Message = () => {
     switch (currentMode) {
       case CurrentMode.Running:
@@ -87,7 +85,10 @@ const MainWordle: React.FC = () => {
   };
   
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
+    {isLoading ?
+    <LoadingPage /> 
+    : ( <div className="flex flex-col min-h-screen">
       <div className="relative flex items-center mt-5">
         <div className="absolute inset-0 flex justify-center">
           <Title level={3} className="text-center">
@@ -96,7 +97,7 @@ const MainWordle: React.FC = () => {
         </div>
 
         <div className="ml-auto mr-5">
-          <BackButton onBack={onBackClick}/>
+          <BackButton />
         </div>
     </div>
   
@@ -114,7 +115,8 @@ const MainWordle: React.FC = () => {
           words={words}
         />
       </div>
-    </div>
+    </div> )}
+    </>
   );
 };
   

@@ -41,13 +41,7 @@ export const useWordleActions = () => {
     dispatch(setClicks(WORDLE_FINISHED_NUMBER));
   };
 
-  const onBackClick = () => {
-    dispatch(setCurrentMode(CurrentMode.Running));
-    dispatch(resetSuccess());
-    dispatch(setClicks(WORDLE_FINISHED_NUMBER));
-  }
-
-  return { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess, onBackClick };
+  return { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess };
 };
 
 export default useWordleActions;

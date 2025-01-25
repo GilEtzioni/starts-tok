@@ -1,6 +1,6 @@
 // react + antd
 import React, { useState } from 'react';
-import { Row, Typography } from 'antd';
+import { Row, Typography, Skeleton } from 'antd';
 import { useParams } from 'react-router-dom';
 
 // redux
@@ -17,7 +17,7 @@ import { TranslatedArray } from '../types/SecondLessonType';
 
 // fetch
 import { fetchAllWords, fetchThirdLesson } from '../../../api/lessons';
-import { ALL_WORDS, THIRD_LESSON_SENTENCES_QUERY_KEY } from '../requests/queryKeys';
+import { ALL_WORDS, THIRD_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 
 const MainThird: React.FC = () => {
@@ -36,8 +36,8 @@ const MainThird: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
     
-  const { data: lessonsData, isLoading: isCardsLoading, isError: isCardsError } = useQuery(
-    [THIRD_LESSON_SENTENCES_QUERY_KEY, name, lesson],
+  const { data: lessonsData, isLoading: isCardsLoading } = useQuery(
+    [THIRD_LESSON_QUERY_KEY, name, lesson],
     () => fetchThirdLesson(lesson || ''),
     {
       onSuccess: (lessonsData) => { 
@@ -51,7 +51,7 @@ const MainThird: React.FC = () => {
     }
   );
 
-  const { data: allWords, isLoading: isWordsLoading, isError: isWordsError } = useQuery(
+  const { data: allWords, isLoading: isWordsLoading } = useQuery(
     [ALL_WORDS, name, lesson],
     () => fetchAllWords(),
     {
@@ -78,21 +78,36 @@ const MainThird: React.FC = () => {
       }
     }
   );
-  const { Paragraph } = Typography
 
   useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue });
+
+  const { Paragraph } = Typography;
   const { Title } = Typography;
-  
+  const { Button } = Skeleton
+  const isLoading = isCardsLoading || isWordsLoading;
+
   return (
     <div className="text-center h-[400px]">
 
     <Row className="flex justify-center">
       <Title level={3} className="text-center">תרגמו את המשפט</Title>
     </Row>
-             
-    <HebrewSentenceThird translatedWords={translatedWords} />
+
+    {isLoading ?
+      <div className="text-center my-5 !font-medium w-1/2 mx-auto">
+      <Button block />
+      </div>  
+      :
+      <HebrewSentenceThird translatedWords={translatedWords} />
+    }
 
       {/* foreign */}
+      {isLoading
+      ?
+      <div className='inline-block relative top-[100px] text-lg w-1/2'>
+        <Button block />
+      </div>
+      :
         <Paragraph className="inline-block relative top-[100px] text-lg">
           {firstPartForeign}
           <input
@@ -105,6 +120,7 @@ const MainThird: React.FC = () => {
             />
           {secondPartForeign}
         </Paragraph>
+        }
       </div> 
     );
   }

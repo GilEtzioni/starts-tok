@@ -1,6 +1,6 @@
 // react  + antd
 import React, { useState } from 'react';
-import { Row, Card, Typography } from 'antd';
+import { Row, Card, Typography, Skeleton } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,7 +18,7 @@ import { CardContainer } from '../types/SecondLessonType';
 // fetch data
 import { useParams } from 'react-router-dom';
 import { fetchAllWords, fetchSecondLesson } from '../../../api/lessons';
-import { SECOND_LESSON_SENTENCES_QUERY_KEY, ALL_WORDS } from '../requests/queryKeys';
+import { SECOND_LESSON_QUERY_KEY, ALL_WORDS } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 
 const MainSecond: React.FC = () => {
@@ -34,19 +34,19 @@ const MainSecond: React.FC = () => {
     const [foreignArray, setForeignArray] = useState<CardType[]>([]);
     const [TranslatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
 
-    const { data: lessonData, isLoading: isLessonsLoading, isError: isLessonsError } = useQuery(
-        [SECOND_LESSON_SENTENCES_QUERY_KEY, name, lesson],
+    const { data: lessonData, isLoading: isLessonsLoading } = useQuery(
+        [SECOND_LESSON_QUERY_KEY, name, lesson],
         () => fetchSecondLesson(lesson || ''),
         {
-            onSuccess: (lessonData) => {
-                if (!lessonData) return;          
+            onSuccess: (lessonData) => {        
+                if(!lessonData) return;
                 dispatch(setRightAnswer(lessonData.foreignSentence));
                 setForeignArray(lessonData.words);
             }
         }
     );
 
-    const { data: allWords, isLoading: isWordsLoading, isError: isWordsError } = useQuery(
+    const { data: allWords, isLoading: isWordsLoading } = useQuery(
         [ALL_WORDS, name, lesson],
         () => fetchAllWords(),
         {
@@ -104,49 +104,60 @@ const MainSecond: React.FC = () => {
         }
     }
 
+    const isLoading = isLessonsLoading || isWordsLoading;
+    const { Button } = Skeleton
+
     return (
         <>
-            <Row className="flex justify-center">
-                <Title level={3} className="text-center">תרגמו את המשפט</Title>
-            </Row>
+        <Row className="flex justify-center">
+            <Title level={3} className="text-center">תרגמו את המשפט</Title>
+        </Row>
 
-            <HebrewSentenceTwo TranslatedWords={TranslatedWords} />
+        <HebrewSentenceTwo TranslatedWords={TranslatedWords} />
     
-            {/* up container */}
-            <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
-                {foreignArray
-                    .filter(item => item.container === CardContainer.Up)
-                    .sort((a, b) => a.containerOrder - b.containerOrder)
-                    .map(item => (
-                        <div className="h-[50px]">
-                            <Card
-                                bodyStyle={{ padding: '12px' }}
-                                key={item.containerOrder}
-                                onClick={() => handleClick(item)}
-                                className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
-                            >
-                                {item.word}
-                            </Card>
-                        </div>
-                    ))}
-            </div> 
-
-    {/* down container */}
-    <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
-        {foreignArray
-            .filter(item => item.container === CardContainer.Down)
-            .sort((a, b) => a.containerOrder - b.containerOrder)
-            .map(item => (
-                <Card
-                    bodyStyle={{ padding: '12px' }}
-                    key={item.containerOrder}
-                    onClick={() => handleClick(item)}
-                    className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
-                >
-                    {item.word}
-                </Card>
+        {/* up container */}
+        <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
+            {foreignArray
+                .filter(item => item.container === CardContainer.Up)
+                .sort((a, b) => a.containerOrder - b.containerOrder)
+                .map(item => (
+                    <div className="h-[50px]">
+                        <Card
+                            bodyStyle={{ padding: '12px' }}
+                            key={item.containerOrder}
+                            onClick={() => handleClick(item)}
+                            className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
+                        >
+                        {item.word}
+                        </Card>
+                    </div>
             ))}
-    </div>
+        </div> 
+
+        {/* down container */}
+        {isLoading ?
+        <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
+            {[...Array(3)].map((_, index) => (
+            <Button key={index} block active />
+            ))}
+        </div>
+        :
+        <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
+            {foreignArray
+                .filter(item => item.container === CardContainer.Down)
+                .sort((a, b) => a.containerOrder - b.containerOrder)
+                .map(item => (
+                    <Card
+                        bodyStyle={{ padding: '12px' }}
+                        key={item.containerOrder}
+                        onClick={() => handleClick(item)}
+                        className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
+                    >
+                        {item.word}
+                    </Card>
+                ))}
+        </div>
+        }
     </>
     );
 }    

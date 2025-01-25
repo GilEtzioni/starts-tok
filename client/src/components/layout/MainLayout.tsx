@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Layout, Badge, Avatar, Image, Modal } from 'antd';
+import { Button, Layout, Badge, Avatar, Image, Modal, Skeleton } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
-import { SignedIn } from "@clerk/clerk-react";
-import { useAuth } from "@clerk/clerk-react";
+import { SignedIn, useAuth } from "@clerk/clerk-react";
 import Flags from './common/Flags';
 import { CourseLangauge } from '../../api/common/types';
 import { useQuery } from '@tanstack/react-query';
@@ -29,12 +28,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { signOut } = useAuth();
-  const { getToken } = useAuth();
-
-  const handleSignOut = () => {
-    signOut();
-  };
+  const { getToken, isLoaded, signOut } = useAuth();
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -53,58 +47,69 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
     setIsModalVisible(false);
   };
 
-  const flagUrl =  Array.isArray(userFlag) || userFlag === undefined
-    ? "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg"
-    : userFlag === CourseLangauge.French
-    ? "https://www.svgrepo.com/show/401605/flag-for-france.svg"
-    : userFlag === CourseLangauge.German
-    ? "https://www.svgrepo.com/show/131993/germany.svg"
-    : userFlag === CourseLangauge.Italian
-    ? "https://www.svgrepo.com/show/401660/flag-for-italy.svg"
-    : userFlag === CourseLangauge.Spanish
-    ? "https://www.svgrepo.com/show/401755/flag-for-spain.svg"
-    : "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg";
+  const flagUrl = (userFlag: CourseLangauge | undefined): string | undefined => {
+    if (userFlag === CourseLangauge.English) return "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg";
+    if (userFlag === CourseLangauge.French) return "https://www.svgrepo.com/show/401605/flag-for-france.svg";
+    if (userFlag === CourseLangauge.German) return "https://www.svgrepo.com/show/131993/germany.svg";
+    if (userFlag === CourseLangauge.Italian) return "https://www.svgrepo.com/show/401660/flag-for-italy.svg";
+    if (userFlag === CourseLangauge.Spanish) return "https://www.svgrepo.com/show/401755/flag-for-spain.svg";
+    return undefined;
+  };
+    
+    const isLoading = userFlagLoading || pointsLoading;
 
-  return (
-    <Layout>
-      <Header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-50 to-gray-100 shadow-md z-50 flex justify-between items-center px-6 py-4 border-b border-gray-200">
-        {/* right Section */}
-        <div className="flex items-center gap-6">
-        <SignedIn>
-            <Button
-              type="primary"
-              danger
-              onClick={handleSignOut}
-              className="border border-transparent !bg-transparent !text-red-500 hover:!border-red-500 hover:!text-red-600 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300"
-            >
-              התנתק <i className="fas fa-sign-out-alt"></i>
-            </Button>
-          </SignedIn>
+    return (
+      <Layout>
+        <Header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-50 to-gray-100 shadow-md z-50 flex justify-between items-center px-6 py-4 border-b border-gray-200">
+          {/* right Section */}
+          <div className="flex items-center gap-6">
+          <Button
+            type="primary"
+            danger
+            onClick={() => signOut()}
+            disabled={!isLoaded}
+            className="border border-transparent !bg-transparent !text-red-500 hover:!border-red-500 hover:!text-red-600 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300"
+          >
+            התנתק <i className="fas fa-sign-out-alt"></i>
+          </Button>
+
           <div className="flex items-center text-red-500 text-lg gap-2">
-            <span>{user?.points !== undefined ? user.points : 0}</span>
+            {isLoading ? (
+              <Skeleton.Button active size="small" />
+            ) : (
+              <span>{user?.points}</span>
+            )}
             <i className="fas fa-star"></i>
           </div>
-          <div className="flex items-center gap-2">
-          <span className="hidden lg:block text-gray-500 text-lg"> {user?.userName} </span>
-          <Badge
-            onClick={showModal}
-            count={
-              <Image
-                src={flagUrl}
-                alt="Flag"
-                width={20}
-                height={18}
-                preview={false}
-                className="rounded-sm mr-5 mt-0.5"
-              />
-            }
-          >
-            <Avatar
-              icon={<UserOutlined />}
-              className="cursor-pointer hover:scale-105 transition-transform"
-            />
-          </Badge>
-        </div>
+
+          <div className="flex items-center justify-center gap-2 h-full">
+            {isLoading ? (
+              <Skeleton.Button active size="small" className="mt-3" />
+            ) : (
+              <span className="hidden lg:block text-gray-500 text-lg">{user?.userName}</span>
+            )}
+            {!isLoading && (
+              <Badge
+                onClick={showModal}
+                count={
+                  <Image
+                    src={flagUrl(Array.isArray(userFlag) ? userFlag[0] : userFlag)}
+                    alt="Flag"
+                    width={20}
+                    height={18}
+                    preview={false}
+                    className="rounded-sm mr-5 mt-0.5"
+                  />
+                }
+              >
+                <Avatar
+                  icon={<UserOutlined />}
+                  className="cursor-pointer hover:scale-105 transition-transform"
+                />
+              </Badge>
+            )}
+          </div>
+
           <Modal
             visible={isModalVisible}
             onCancel={handleCancel}
@@ -121,24 +126,24 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         </div>
 
         {/* center Section */}
-        <div className="flex items-center gap-6">
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center gap-4 pointer-events-none">
           <Link to="/contact">
             <Button
-              className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300"
+              className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 pointer-events-auto"
             >
               צור קשר<i className="fas fa-envelope"></i>
             </Button>
           </Link>
           <Link to="/dictionary">
             <Button
-              className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300"
+              className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 pointer-events-auto"
             >
               מילון <i className="fas fa-book"></i>
             </Button>
           </Link>
           <Link to="/main">
             <Button
-              className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300"
+              className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 pointer-events-auto"
             >
               בית <i className="fas fa-home"></i>
             </Button>
