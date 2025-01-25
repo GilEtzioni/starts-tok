@@ -7,7 +7,7 @@ import useHangmanActions from '../utils/messageHelper';
 // redux
 import { useSelector } from 'react-redux';
 import { RootState } from "../../../../app/store";
-import { getSelectedWord } from '../utils/hangHelper';
+import { getSelectedWord } from '../utils/hangHelp';
 
 interface MainMessagesProps {
     randomWord: WordsType[];
