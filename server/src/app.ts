@@ -14,7 +14,7 @@ app.use(express.json());
 
 // middleware
 app.use(cors({
-  origin: "*",
+  origin: "https://website-project-lyart.vercel.app", 
   methods: ["GET", "POST", "PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
