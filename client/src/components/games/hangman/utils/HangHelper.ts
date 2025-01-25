@@ -19,7 +19,6 @@ export const createLettersArray = (word: WordsType, keyboard: string[]): Hangman
             selected: SelectedLetter.NotSelected, 
         });
     });
-
     return result;
 };
 

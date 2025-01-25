@@ -55,7 +55,6 @@ const MainHangman: React.FC = () => {
   
           const lettersRandomArray = createLettersArray(selectedWord, keyboard);
           setLettersArray(lettersRandomArray);
-  
           const gameRandomArray = createGameArray(selectedWord, keyboard);
           setGameArray(gameRandomArray);
         }
