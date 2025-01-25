@@ -21,7 +21,7 @@ import { WordsType } from "../../../api/common/types";
 import { useQuery } from '@tanstack/react-query';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
 import { fetchWords, fetchKeyboard } from '../../../api/games';
-import { createGameArray, createLettersArray, getRandomWord } from './utils/hangHelper';
+import { createGameArray, createLettersArray, getRandomWord } from './utils/hangHelp';
 import { resetSuccesssCounter, resetWrongCounter, setSelectedWord } from './slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
