@@ -31,7 +31,8 @@ app.use(
 console.log("Configuring Clerk middleware...");
 app.use(
   clerkMiddleware({
-    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    // publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    publishableKey: "promoted-camel-14.clerk.accounts.dev",
     secretKey: process.env.CLERK_SECRET_KEY,
   })
 );
