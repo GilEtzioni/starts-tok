@@ -14,20 +14,12 @@ app.use(express.json());
 
 // middleware
 app.use(cors({
-  origin: "http://localhost:3001",
-  // origin: "*", 
-  // origin: "https://website-project-lyart.vercel.app", 
+  origin: "https://website-project-lyart.vercel.app",
   methods: ["GET", "POST", "PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// app.use((req, res, next) => {
-//   console.log(`[${new Date().toISOString()}] Incoming Request: ${req.method} ${req.originalUrl}`);
-//   console.log("Headers:", req.headers);
-//   console.log("Body:", req.body);
-//   next();
-// });
 
 app.use( clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,

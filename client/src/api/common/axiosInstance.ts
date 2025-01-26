@@ -1,10 +1,7 @@
 import axios from "axios";
 
-// const url = "16.170.202.0";
-const url = "localhost";
-// origin: "http://localhost:3000",,
 const axiosInstance = axios.create({
-  baseURL: `http://${url}:3000/`,
+  baseURL: "https://website-project-ngoiyb9o4-giletzionis-projects.vercel.app",
   withCredentials: true,
 });
 
