@@ -5,7 +5,7 @@ import { store } from "./app/store";
 import { Provider } from 'react-redux';
 import { ClerkProvider } from "@clerk/clerk-react";
 
-const frontendApi = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "";
+const frontendApi = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "pk_live_Y2xlcmsuc3RhcnRzdG9rLmNvbSQ" || "";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

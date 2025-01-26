@@ -17,9 +17,6 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "https://www.startstok.com"
-    // "*",
-    // "http://localhost:3001",
-    // "https://website-project-lyart.vercel.app",
   ],  methods: ["GET", "POST", "PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
