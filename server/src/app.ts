@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 import cors from "cors";
 import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
@@ -12,55 +12,33 @@ import { clerkMiddleware } from "@clerk/express";
 const app = express();
 app.use(express.json());
 
-// debugging environment variables
-console.log("Environment Variables:");
-console.log("NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);
+const allowedOrigins = [
+  "http://localhost:3001", // Local development
+  "https://website-project-lyart.vercel.app", // Deployed frontend
+];
 
 // middleware
-console.log("Configuring CORS...");
-app.use(
-  cors({
-    origin: "https://website-project-lyart.vercel.app",
-    methods: ["GET", "POST", "PATCH"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PATCH"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
-console.log("Configuring Clerk middleware...");
 app.use(
   clerkMiddleware({
-    // publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    publishableKey: "promoted-camel-14.clerk.accounts.dev",
+    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
   })
 );
 
-// print for every incoming request
-app.use((req: Request, res: Response, next: NextFunction) => {
-  console.log(`[Incoming Request]: Method=${req.method}, URL=${req.originalUrl}`);
-  next();
-});
-
-// routes
-console.log("Registering routes...");
-app.use("/courses", coursesRoutes);
-app.use("/dictionary", dictionaryRoutes);
-app.use("/games", gamesRoutes);
-app.use("/users", usersRoutes);
-
-app.get("/", (req: Request, res: Response) => {
-  res.json({ message: "Server is up and running!" });
-});
-
-// catch unhandled routes
-app.use((req: Request, res: Response) => {
-  console.log(`[Unhandled Route]: Method=${req.method}, URL=${req.originalUrl}`);
-  res.status(404).json({ error: "Route not found" });
-});
+app.use(coursesRoutes);
+app.use(dictionaryRoutes);
+app.use(gamesRoutes);
+app.use(usersRoutes);
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
