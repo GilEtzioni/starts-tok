@@ -19,7 +19,7 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)({
     origin: [
         "http://localhost:3001",
-        "https://website-project-lyart.vercel.app",
+        // "https://website-project-lyart.vercel.app",
     ], methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
