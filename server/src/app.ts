@@ -49,6 +49,10 @@ app.use("/dictionary", dictionaryRoutes);
 app.use("/games", gamesRoutes);
 app.use("/users", usersRoutes);
 
+app.get("/", (req: Request, res: Response) => {
+  res.json({ message: "Server is up and running!" });
+});
+
 // catch unhandled routes
 app.use((req: Request, res: Response) => {
   console.log(`[Unhandled Route]: Method=${req.method}, URL=${req.originalUrl}`);
