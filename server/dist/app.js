@@ -22,14 +22,15 @@ console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);
 // middleware
 console.log("Configuring CORS...");
 app.use((0, cors_1.default)({
-    origin: "https://website-project-lyart.vercel.app", // frontend deployment domain
+    origin: "https://website-project-lyart.vercel.app",
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 console.log("Configuring Clerk middleware...");
 app.use((0, express_2.clerkMiddleware)({
-    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    // publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    publishableKey: "promoted-camel-14.clerk.accounts.dev",
     secretKey: process.env.CLERK_SECRET_KEY,
 }));
 // print for every incoming request
@@ -43,6 +44,9 @@ app.use("/courses", courseRoutes_1.default);
 app.use("/dictionary", dictionaryRoutes_1.default);
 app.use("/games", gamesRouter_1.default);
 app.use("/users", usersRoutes_1.default);
+app.get("/", (req, res) => {
+    res.json({ message: "Server is up and running!" });
+});
 // catch unhandled routes
 app.use((req, res) => {
     console.log(`[Unhandled Route]: Method=${req.method}, URL=${req.originalUrl}`);

@@ -8,16 +8,18 @@ const drizzle_orm_1 = require("drizzle-orm");
 const seedersType_1 = require("../types/seedersType");
 const helpingSeeders_1 = require("../seeders/utils/helpingSeeders");
 const getCourses = async (req, res) => {
-    const { userId } = (0, express_1.getAuth)(req);
-    if (!userId) {
-        res.status(401).json({ error: "Unauthorized: User ID is missing" });
-        return;
-    }
+    // const { userId } = getAuth(req);
+    // if (!userId) {
+    //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
+    //     return;
+    // }
     try {
         const userLanguage = await db_1.db
             .select()
             .from(schema_1.Language)
-            .where((0, drizzle_orm_1.eq)(schema_1.Language.userId, userId))
+            // .where(
+            //   eq(Language.userId, userId)
+            // )
             .limit(1);
         if (userLanguage.length === 0) {
             res.status(404).json({ error: "User language not found" });
@@ -27,7 +29,9 @@ const getCourses = async (req, res) => {
         const coursesSubjects = await db_1.db
             .select().
             from(schema_1.CourseNames)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.CourseNames.userId, userId), (0, drizzle_orm_1.eq)(schema_1.CourseNames.language, language)));
+            .where((0, drizzle_orm_1.and)(
+        // eq(CourseNames.userId, userId),
+        (0, drizzle_orm_1.eq)(schema_1.CourseNames.language, language)));
         res.json(coursesSubjects);
     }
     catch (error) {
@@ -37,16 +41,16 @@ const getCourses = async (req, res) => {
 exports.getCourses = getCourses;
 /* ------------------------------------------------------------------------------------ */
 const getFinishedCourses = async (req, res) => {
-    const { userId } = (0, express_1.getAuth)(req);
-    if (!userId) {
-        res.status(401).json({ error: "Unauthorized: User ID is missing" });
-        return;
-    }
+    // const { userId } = getAuth(req);
+    // if (!userId) {
+    //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
+    //     return;
+    // }
     try {
         const userLanguage = await db_1.db
             .select()
             .from(schema_1.Language)
-            .where((0, drizzle_orm_1.eq)(schema_1.Language.userId, userId))
+            // .where(eq(Language.userId, userId))
             .limit(1);
         if (userLanguage.length === 0) {
             res.status(404).json({ error: "User language not found" });
@@ -58,7 +62,9 @@ const getFinishedCourses = async (req, res) => {
             totalLessonsCompleted: (0, drizzle_orm_1.sql) `SUM(${schema_1.CourseNames.lessonCompleted}) / 6`
         })
             .from(schema_1.CourseNames)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.CourseNames.userId, userId), (0, drizzle_orm_1.eq)(schema_1.CourseNames.language, language)))
+            .where((0, drizzle_orm_1.and)(
+        // eq(CourseNames.userId, userId),
+        (0, drizzle_orm_1.eq)(schema_1.CourseNames.language, language)))
             .groupBy(schema_1.CourseNames.englishLevel);
         res.json(coursesSubjects);
     }
