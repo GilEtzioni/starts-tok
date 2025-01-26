@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const courseController_1 = require("../controllers/courseController");
+const express_2 = require("@clerk/express");
+const router = (0, express_1.Router)();
+router.get("/main", (0, express_2.requireAuth)(), courseController_1.getCourses);
+router.get("/main/finished", (0, express_2.requireAuth)(), courseController_1.getFinishedCourses);
+router.get("/main/course/:userLevel/", (0, express_2.requireAuth)(), courseController_1.getLevelLessons);
+router.get("/main/firstLesson/:course", (0, express_2.requireAuth)(), courseController_1.getFirstLessonWords);
+router.get("/main/secondLesson/:course", (0, express_2.requireAuth)(), courseController_1.getSecondLesson);
+router.get("/main/thirdLesson/:course", (0, express_2.requireAuth)(), courseController_1.getThirdLesson);
+router.patch("/main/course/:userLevel/:course", (0, express_2.requireAuth)(), courseController_1.updateLesson);
+exports.default = router;

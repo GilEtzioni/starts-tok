@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const express_2 = require("@clerk/express");
+const usersController_1 = require("../controllers/usersController");
+const router = (0, express_1.Router)();
+router.get("/bestUsers", (0, express_2.requireAuth)(), usersController_1.getBestUsers);
+router.get("/allPoints", (0, express_2.requireAuth)(), usersController_1.getAllPoints);
+router.get("/currentWeekPoints", (0, express_2.requireAuth)(), usersController_1.getLastWeekPoints);
+router.post("/addPoints", (0, express_2.requireAuth)(), usersController_1.addPoints);
+router.get("/:day/getOneDayPoints", (0, express_2.requireAuth)(), usersController_1.getOneDayPoints);
+router.get("/userLanguage", (0, express_2.requireAuth)(), usersController_1.getUserLanguage);
+router.patch("/changeLanguage", (0, express_2.requireAuth)(), usersController_1.changeLanguage);
+exports.default = router;

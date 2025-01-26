@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const dictionaryController_1 = require("../controllers/dictionaryController");
+const express_2 = require("@clerk/express");
+const router = (0, express_1.Router)();
+router.get("/filter", (0, express_2.requireAuth)(), dictionaryController_1.getFilterWords);
+router.get("/dictionary", (0, express_2.requireAuth)(), dictionaryController_1.getAllWords);
+router.post("/dictionary/new", (0, express_2.requireAuth)(), dictionaryController_1.addNewWord);
+router.patch("/dictionary/:id", (0, express_2.requireAuth)(), dictionaryController_1.editWord);
+router.get("/finishedWords", (0, express_2.requireAuth)(), dictionaryController_1.getFinishedWordsCounter);
+exports.default = router;
