@@ -2,7 +2,6 @@ import React from 'react';
 import { Table, Skeleton } from 'antd';
 
 const SkeletonTable: React.FC = () => {
-    <div className="w-4/5 mx-auto"></div>
   const columns = [
     {
       title: 'סינון',
@@ -25,7 +24,7 @@ const SkeletonTable: React.FC = () => {
   }));
 
   return (
-    <div className="w-4/5 mx-auto">
+    <div>
       <Table
         columns={columns}
         dataSource={dataSource}
