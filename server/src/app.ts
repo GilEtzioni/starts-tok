@@ -21,7 +21,7 @@ console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);
 console.log("Configuring CORS...");
 app.use(
   cors({
-    origin: "*",
+    origin: "https://website-project-lyart.vercel.app",
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
