@@ -13,8 +13,8 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
-  "http://localhost:3001", // Local development
-  "https://website-project-lyart.vercel.app", // Deployed frontend
+  "http://localhost:3001",
+  "https://website-project-lyart.vercel.app",
 ];
 
 // middleware

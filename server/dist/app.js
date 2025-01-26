@@ -15,43 +15,25 @@ const express_2 = require("@clerk/express");
 // express
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-// debugging environment variables
-console.log("Environment Variables:");
-console.log("NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);
+const allowedOrigins = [
+    "http://localhost:3001",
+    "https://website-project-lyart.vercel.app",
+];
 // middleware
-console.log("Configuring CORS...");
 app.use((0, cors_1.default)({
-    origin: "https://website-project-lyart.vercel.app",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
-console.log("Configuring Clerk middleware...");
 app.use((0, express_2.clerkMiddleware)({
-    // publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    publishableKey: "promoted-camel-14.clerk.accounts.dev",
+    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
 }));
-// print for every incoming request
-app.use((req, res, next) => {
-    console.log(`[Incoming Request]: Method=${req.method}, URL=${req.originalUrl}`);
-    next();
-});
-// routes
-console.log("Registering routes...");
-app.use("/courses", courseRoutes_1.default);
-app.use("/dictionary", dictionaryRoutes_1.default);
-app.use("/games", gamesRouter_1.default);
-app.use("/users", usersRoutes_1.default);
-app.get("/", (req, res) => {
-    res.json({ message: "Server is up and running!" });
-});
-// catch unhandled routes
-app.use((req, res) => {
-    console.log(`[Unhandled Route]: Method=${req.method}, URL=${req.originalUrl}`);
-    res.status(404).json({ error: "Route not found" });
-});
+app.use(courseRoutes_1.default);
+app.use(dictionaryRoutes_1.default);
+app.use(gamesRouter_1.default);
+app.use(usersRoutes_1.default);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
