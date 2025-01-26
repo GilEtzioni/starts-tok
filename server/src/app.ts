@@ -13,15 +13,17 @@ const app = express();
 app.use(express.json());
 
 // middleware
-app.use(cors({
-  origin: "https://website-project-lyart.vercel.app",
-  methods: ["GET", "POST", "PATCH"],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
+app.use(
+  cors({
+    origin: "https://website-project-lyart.vercel.app", // Frontend deployment domain
+    methods: ["GET", "POST", "PATCH"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-
-app.use( clerkMiddleware({
+app.use(
+  clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
   })
@@ -31,6 +33,7 @@ app.use((req, res, next) => {
   console.log("Routing request...");
   next();
 });
+
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
 app.use(gamesRoutes);
