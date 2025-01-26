@@ -15,14 +15,12 @@ const express_2 = require("@clerk/express");
 // express
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-const allowedOrigins = [
-    "http://localhost:3001",
-    "https://website-project-lyart.vercel.app",
-];
 // middleware
 app.use((0, cors_1.default)({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "PATCH"],
+    origin: [
+        "http://localhost:3001",
+        "https://website-project-lyart.vercel.app",
+    ], methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -30,6 +28,9 @@ app.use((0, express_2.clerkMiddleware)({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
 }));
+app.get("/", (req, res) => {
+    res.send("Backend is working!");
+});
 app.use(courseRoutes_1.default);
 app.use(dictionaryRoutes_1.default);
 app.use(gamesRouter_1.default);

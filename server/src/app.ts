@@ -12,15 +12,13 @@ import { clerkMiddleware } from "@clerk/express";
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = [
-  "http://localhost:3001",
-  "https://website-project-lyart.vercel.app",
-];
 
 // middleware
 app.use(cors({
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PATCH"],
+  origin: [
+    "http://localhost:3001",
+    "https://website-project-lyart.vercel.app",
+  ],  methods: ["GET", "POST", "PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -31,6 +29,10 @@ app.use(
     secretKey: process.env.CLERK_SECRET_KEY,
   })
 );
+
+app.get("/", (req, res) => {
+  res.send("Backend is working!");
+});
 
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
