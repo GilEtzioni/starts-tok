@@ -15,7 +15,7 @@ app.use(express.json());
 // middleware
 app.use(
   cors({
-    origin: "https://www.startstok.com", // Front-end URL
+    origin: "*", // Front-end URL
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
