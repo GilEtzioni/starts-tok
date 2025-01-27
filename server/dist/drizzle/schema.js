@@ -23,11 +23,11 @@ exports.Sentences = (0, pg_core_1.pgTable)("sentences", {
     courseId: (0, pg_core_1.text)("courseId").notNull().references(() => exports.CourseNames.courseId),
     userId: (0, pg_core_1.text)("userId").notNull(),
     courseNameEnglish: (0, pg_core_1.text)("courseNameEnglish"),
-    senteceOrder: (0, pg_core_1.integer)("sentenceOrder").notNull(),
+    senteceOrder: (0, pg_core_1.integer)("senteceOrder").notNull(),
     language: (0, exports.languagesEnum)("language").notNull(),
     sentence: (0, pg_core_1.text)("sentence").notNull(),
 }, (table) => ({
-    compositePrimaryKey: (0, pg_core_1.primaryKey)(table.userId, table.courseId, table.senteceOrder, table.language),
+// compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
 }));
 exports.MissingWords = (0, pg_core_1.pgTable)("missingWords", {
     courseId: (0, pg_core_1.text)("courseId").notNull().references(() => exports.CourseNames.courseId),
@@ -38,7 +38,7 @@ exports.MissingWords = (0, pg_core_1.pgTable)("missingWords", {
     missingSentence: (0, pg_core_1.text)("missingSentence").notNull(),
     missingWord: (0, pg_core_1.text)("missingWord").notNull(),
 }, (table) => ({
-    compositePrimaryKey: (0, pg_core_1.primaryKey)(table.userId, table.courseId, table.missingSentenceOrder, table.language),
+// compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
 }));
 exports.Words = (0, pg_core_1.pgTable)("words", {
     userId: (0, pg_core_1.text)("userId").notNull(),

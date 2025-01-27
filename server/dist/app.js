@@ -17,24 +17,41 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 // middleware
 app.use((0, cors_1.default)({
-    origin: [
-        "http://localhost:3001",
-        // "https://website-project-lyart.vercel.app",
-    ], methods: ["GET", "POST", "PATCH"],
+    origin: "https://www.startstok.com", // Front-end URL
+    methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
+// Respond to OPTIONS preflight requests
+app.options("*", (0, cors_1.default)());
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://www.startstok.com");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+});
+// Clerk middleware
 app.use((0, express_2.clerkMiddleware)({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
+    jwtKey: process.env.CLERK_JWT_KEY, // Use the PEM public key for JWT verification
+    authorizedParties: ["https://www.startstok.com"], // Prevent subdomain cookie leaks
+    audience: "your-audience-id", // Validate the 'aud' claim in the token (optional)
+    clockSkewInMs: 5000, // Allow 5 seconds of clock skew
+    enableHandshake: true, // Enable Clerk's handshake flow (default)
+    debug: true, // Enable debug logging for troubleshooting
 }));
-app.get("/", (req, res) => {
-    res.send("Backend is working!");
-});
+// Test route
+// app.get("/", (req, res) => {
+//   res.send("Backend is working!");
+// });
+// Routes
 app.use(courseRoutes_1.default);
 app.use(dictionaryRoutes_1.default);
 app.use(gamesRouter_1.default);
 app.use(usersRoutes_1.default);
+// Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

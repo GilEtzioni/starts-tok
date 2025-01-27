@@ -15,7 +15,7 @@ app.use(express.json());
 // middleware
 app.use(
   cors({
-    origin: "*", // Front-end URL
+    origin: "https://www.startstok.com", // Front-end URL
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -38,13 +38,19 @@ app.use(
   clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
+    jwtKey: process.env.CLERK_JWT_KEY, // Use the PEM public key for JWT verification
+    authorizedParties: ["https://www.startstok.com"], // Prevent subdomain cookie leaks
+    audience: "your-audience-id", // Validate the 'aud' claim in the token (optional)
+    clockSkewInMs: 5000, // Allow 5 seconds of clock skew
+    enableHandshake: true, // Enable Clerk's handshake flow (default)
+    debug: true, // Enable debug logging for troubleshooting
   })
 );
 
 // Test route
-app.get("/", (req, res) => {
-  res.send("Backend is working!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Backend is working!");
+// });
 
 // Routes
 app.use(coursesRoutes);
