@@ -62,7 +62,7 @@ const router = createBrowserRouter(
 
        <Route path="dictionary" element={<Dictionary />} />   
        <Route path="contact" element={<ContactPage />} />                           
-       {/* <Route path="main" element={<Main />} />                            */}
+       <Route path="main" element={<Main />} />                           
        <Route path="main/course" element={<CoursesLayout />}>     
          <Route path=":name" element={<CoursesPage />} />
          <Route path=":name/:lesson/" element={<MainLessons />} />
