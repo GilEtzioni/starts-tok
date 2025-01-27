@@ -12,7 +12,6 @@ import { clerkMiddleware } from "@clerk/express";
 const app = express();
 app.use(express.json());
 
-
 // middleware
 app.use(cors({
   origin: [
