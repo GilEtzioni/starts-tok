@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://www.startstok.com",
+  baseURL: "https://start-tok.onrender.com",
   withCredentials: true,
 });
 
