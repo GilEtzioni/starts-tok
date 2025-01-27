@@ -4,7 +4,7 @@
   "main": "app.ts",
   "type": "commonjs",
   "scripts": {
-    "start": "ts-node dist/app.ts",
+    "start": "node dist/app.js",
     "build": "tsc",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
