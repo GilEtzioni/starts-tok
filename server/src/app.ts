@@ -38,14 +38,15 @@ app.use(
   clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
+    jwtKey: process.env.CLERK_JWT_KEY, // Use the PEM public key for JWT verification
     authorizedParties: ["https://www.startstok.com"], // Prevent subdomain cookie leaks
+    audience: "your-audience-id", // Validate the 'aud' claim in the token (optional)
     clockSkewInMs: 5000, // Allow 5 seconds of clock skew
     enableHandshake: true, // Enable Clerk's handshake flow (default)
     debug: true, // Enable debug logging for troubleshooting
   })
 );
 
-// Test route
 app.get("/", (req, res) => {
   res.send("Backend is working!");
 });
@@ -57,7 +58,7 @@ app.use(gamesRoutes);
 app.use(usersRoutes);
 
 // Server
-const PORT = process.env.PORT || 5432;
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
