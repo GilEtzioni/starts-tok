@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
-// import cookieParser from 'cookie-parser'
 import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
@@ -18,7 +17,7 @@ app.use(express.json());
 // CORS middleware
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Front-end URL
+    origin: 'https://www.startstok.com', // Front-end URL
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
