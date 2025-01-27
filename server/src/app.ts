@@ -13,23 +13,17 @@ const app = express();
 app.use(express.json());
 
 // middleware
-app.use(cors({
-  origin: [
-    "https://www.startstok.com" // Replace with your frontend URL
-  ],
-  methods: ["GET", "POST", "PATCH"],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
-
 app.use(
-  clerkMiddleware({
-    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    secretKey: process.env.CLERK_SECRET_KEY,
+  cors({
+    origin: "https://www.startstok.com", // Front-end URL
+    methods: ["GET", "POST", "PATCH"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.options('*', cors());
+// Respond to OPTIONS preflight requests
+app.options("*", cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://www.startstok.com");
@@ -39,16 +33,26 @@ app.use((req, res, next) => {
   next();
 });
 
+// Clerk middleware
+app.use(
+  clerkMiddleware({
+    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    secretKey: process.env.CLERK_SECRET_KEY,
+  })
+);
 
+// Test route
 app.get("/", (req, res) => {
   res.send("Backend is working!");
 });
 
+// Routes
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
 app.use(gamesRoutes);
 app.use(usersRoutes);
 
+// Server
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
