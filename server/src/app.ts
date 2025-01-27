@@ -12,7 +12,7 @@ import { clerkMiddleware } from "@clerk/express";
 const app = express();
 app.use(express.json());
 
-// middleware
+// Middleware
 app.use(
   cors({
     origin: "https://www.startstok.com", // Front-end URL
@@ -46,6 +46,16 @@ app.use(
     debug: true, // Enable debug logging for troubleshooting
   })
 );
+
+// app.use((req, res, next) => {
+//   // Correct the SameSite attribute to 'none' (lowercase)
+//   res.cookie('__clerk_db_jwt', '', {
+//     httpOnly: true,
+//     secure: true,  // Ensure cookies are only sent over HTTPS
+//     sameSite: 'none', // Corrected to lowercase "none"
+//   });
+//   next();
+// });
 
 app.get("/", (req, res) => {
   res.send("Backend is working!");
