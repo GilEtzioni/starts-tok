@@ -45,25 +45,6 @@ app.use(
   })
 );
 
-// Custom middleware to add SameSite and Secure options for Clerk cookies
-app.use((req, res, next) => {
-  const cookieSettings: express.CookieOptions = {
-    sameSite: "none", // Set to "none" for cross-site requests
-    secure: true, // Ensure cookies are only sent over HTTPS
-  };
-  if (req.cookies["__clerk_db_jwt"]) {
-    res.cookie("__clerk_db_jwt", req.cookies["__clerk_db_jwt"], cookieSettings);
-  }
-  if (req.cookies["__clerk_db_jwt_8AXyZN2z"]) {
-    res.cookie(
-      "__clerk_db_jwt_8AXyZN2z",
-      req.cookies["__clerk_db_jwt_8AXyZN2z"],
-      cookieSettings
-    );
-  }
-  next();
-});
-
 // Test route
 app.get("/", (req, res) => {
   res.send("Backend is working!");
