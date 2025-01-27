@@ -15,8 +15,9 @@ app.use(express.json());
 // middleware
 app.use(cors({
   origin: [
-    "https://www.startstok.com"
-  ],  methods: ["GET", "POST", "PATCH"],
+    "https://www.startstok.com" // Replace with your frontend URL
+  ],
+  methods: ["GET", "POST", "PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -27,6 +28,17 @@ app.use(
     secretKey: process.env.CLERK_SECRET_KEY,
   })
 );
+
+app.options('*', cors());
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://www.startstok.com");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 
 app.get("/", (req, res) => {
   res.send("Backend is working!");
