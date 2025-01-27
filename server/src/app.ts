@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
-import cookieSession from "cookie-session";
+import cookieParser from 'cookie-parser'
 import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
@@ -12,18 +12,8 @@ import { clerkMiddleware } from "@clerk/express";
 // Express app setup
 const app = express();
 app.use(express.json());
+app.use(cookieParser())
 
-// Cookie session middleware
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: [process.env.SESSION_SECRET || "default_secret"],
-//     maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
-//     sameSite: "none", // Use "none" for cross-origin in production
-//     secure: true, // Secure only in production (HTTPS)
-//     httpOnly: true, // Helps mitigate XSS attacks
-//   })
-// );
 
 // CORS middleware
 app.use(
@@ -38,14 +28,16 @@ app.use(
 // Respond to OPTIONS preflight requests
 app.options("*", cors());
 
-// Clerk middleware
-// app.use(
-//   clerkMiddleware({
-//     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "",
-//     secretKey: process.env.CLERK_SECRET_KEY || "",
-//     debug: true, // Enable debug logs
-//   })
-// );
+
+app.use((req, res, next) => {
+  const isProduction = process.env.NODE_ENV === 'production';
+  res.cookie('__clerk_db_jwt', 'cookieValue', {
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: 'none', 
+  });
+  next();
+});
 
 // Routes
 app.use(coursesRoutes);
