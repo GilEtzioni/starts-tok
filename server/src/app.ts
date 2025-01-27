@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
-import cookieParser from 'cookie-parser'
+// import cookieParser from 'cookie-parser'
 import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
@@ -12,7 +12,7 @@ import { clerkMiddleware } from "@clerk/express";
 // Express app setup
 const app = express();
 app.use(express.json());
-app.use(cookieParser())
+// app.use(cookieParser())
 
 
 // CORS middleware
