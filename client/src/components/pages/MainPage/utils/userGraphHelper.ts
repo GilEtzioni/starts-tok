@@ -55,6 +55,6 @@ const englishDayToHebrew = (englishDay: string): string => {
       case "Saturday":
         return DaysOfTheWeekHebrew.Saturday;
       default:
-        throw new Error(`Invalid English day: ${englishDay}`);
+        return DaysOfTheWeekHebrew.Saturday;
     }
   };
