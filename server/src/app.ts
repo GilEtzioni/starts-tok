@@ -21,6 +21,10 @@ app.use(
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
+    // exposedHeaders: ,
+    // preflightContinue ,
+    // optionsSuccessStatus
+    // maxAge
   })
 );
 
@@ -28,18 +32,28 @@ app.options("*", cors());
 
 app.set('trust proxy', 1);
 
-app.use((req, res, next) => {
-  res.cookie('_cfuvid', 'cookie-value', {
-    sameSite: 'none',
-    secure: true,
-  });
-  next(); 
-});
-
 app.use(clerkMiddleware({
   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   secretKey: process.env.CLERK_SECRET_KEY,
   authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
+  domain: 'www.startstok.com',
+  debug: true,
+  // jwtKey
+  // afterSignInUrl
+  // afterSignUpUrl
+  // apiClient
+  // apiVersion
+  // audience
+  // clerkClient
+  // clockSkewInMs
+  // debug
+  // domain
+  // skipJwksCache
+  // signInUrl
+  // signInUrl
+  // enableHandshake
+  // isSatellite
+  // organizationSyncOptions
 }));
 // Routes
 app.use(coursesRoutes);
