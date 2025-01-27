@@ -38,14 +38,31 @@ app.use(
   clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
-    jwtKey: process.env.CLERK_JWT_KEY, // Use the PEM public key for JWT verification
     authorizedParties: ["https://www.startstok.com"], // Prevent subdomain cookie leaks
-    audience: "your-audience-id", // Validate the 'aud' claim in the token (optional)
     clockSkewInMs: 5000, // Allow 5 seconds of clock skew
     enableHandshake: true, // Enable Clerk's handshake flow (default)
     debug: true, // Enable debug logging for troubleshooting
   })
 );
+
+// Custom middleware to add SameSite and Secure options for Clerk cookies
+app.use((req, res, next) => {
+  const cookieSettings: express.CookieOptions = {
+    sameSite: "none", // Set to "none" for cross-site requests
+    secure: true, // Ensure cookies are only sent over HTTPS
+  };
+  if (req.cookies["__clerk_db_jwt"]) {
+    res.cookie("__clerk_db_jwt", req.cookies["__clerk_db_jwt"], cookieSettings);
+  }
+  if (req.cookies["__clerk_db_jwt_8AXyZN2z"]) {
+    res.cookie(
+      "__clerk_db_jwt_8AXyZN2z",
+      req.cookies["__clerk_db_jwt_8AXyZN2z"],
+      cookieSettings
+    );
+  }
+  next();
+});
 
 // Test route
 app.get("/", (req, res) => {
