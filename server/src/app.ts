@@ -38,13 +38,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  clerkMiddleware({
-    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    secretKey: process.env.CLERK_SECRET_KEY,
-  })
-);
-
+app.use(clerkMiddleware({
+  publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+  secretKey: process.env.CLERK_SECRET_KEY,
+  authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
+}));
 // Routes
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
