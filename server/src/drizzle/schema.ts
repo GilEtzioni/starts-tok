@@ -23,11 +23,11 @@ export const Sentences = pgTable("sentences", {
     courseId: text("courseId").notNull().references(() => CourseNames.courseId),
     userId: text("userId").notNull(),
     courseNameEnglish: text("courseNameEnglish"),
-    senteceOrder: integer("sentenceOrder").notNull(),
+    senteceOrder: integer("senteceOrder").notNull(),
     language: languagesEnum("language").notNull(),
     sentence: text("sentence").notNull(),
 }, (table) => ({
-    compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
+    // compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
 }));
 
 export const MissingWords = pgTable("missingWords", {
@@ -39,7 +39,7 @@ export const MissingWords = pgTable("missingWords", {
     missingSentence: text("missingSentence").notNull(),
     missingWord: text("missingWord").notNull(),
 }, (table) => ({
-    compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
+    // compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
 }));
 
 export const Words = pgTable("words", {

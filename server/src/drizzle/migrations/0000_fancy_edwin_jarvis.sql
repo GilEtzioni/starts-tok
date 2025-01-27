@@ -36,18 +36,16 @@ CREATE TABLE IF NOT EXISTS "missingWords" (
 	"missingSentenceOrder" integer NOT NULL,
 	"language" "languages" NOT NULL,
 	"missingSentence" text NOT NULL,
-	"missingWord" text NOT NULL,
-	CONSTRAINT "missingWords_userId_courseId_missingSentenceOrder_language_pk" PRIMARY KEY("userId","courseId","missingSentenceOrder","language")
+	"missingWord" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "sentences" (
 	"courseId" text NOT NULL,
 	"userId" text NOT NULL,
 	"courseNameEnglish" text,
-	"sentenceOrder" integer NOT NULL,
+	"senteceOrder" integer NOT NULL,
 	"language" "languages" NOT NULL,
-	"sentence" text NOT NULL,
-	CONSTRAINT "sentences_userId_courseId_sentenceOrder_language_pk" PRIMARY KEY("userId","courseId","sentenceOrder","language")
+	"sentence" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
