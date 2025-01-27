@@ -17,6 +17,7 @@ export const fillMissingWeekDays = (weekScore: weekPointsType[] | undefined): (w
         const formattedDate = format(currentDate, "yyyy-MM-dd");
         const dayName = daysOfWeek[currentDate.getDay()];
 
+        console.log("9")
         const existingEntry = weekPoints.find(entry => entry.date === formattedDate);
 
         if (existingEntry) {

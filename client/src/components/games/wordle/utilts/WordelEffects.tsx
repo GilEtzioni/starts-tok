@@ -46,6 +46,7 @@ export const useEnterClick = ({ clicksCounter, setGridAnswer, gridAnswer, words,
         oneRowArray.forEach((secondItem) => {
           if (firstItem?.selected === LetterSeleceted.Clicked && !secondItem || firstItem?.letter !== secondItem?.letter) return;
       
+          console.log("5")
           const greenLetterCounter = oneRowArray.find(
             (item) => item?.letter === firstItem?.letter && item?.color === LetterColor.Green
           )?.letter.length;

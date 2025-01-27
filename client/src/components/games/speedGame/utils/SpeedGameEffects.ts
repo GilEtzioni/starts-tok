@@ -28,6 +28,7 @@ interface useHandleTimerProps {
 
 export const useHandleCouples = ({ hebrewArray, germanArray, setGermanArray, setHebrewArray , dispatch }: useHandleCouplesProps) => {
     useEffect(() => {
+        console.log("2")
         const hebrewId = hebrewArray.find((item) => item.isSelected === "clicked")?.id || null;
         const germanId = germanArray.find((item) => item.isSelected === "clicked")?.id || null;
 

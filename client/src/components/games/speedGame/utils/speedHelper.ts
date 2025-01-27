@@ -86,6 +86,7 @@ export const getRandomIndex = (
   const randomHebrewItem =
     hebrewIndexArray[Math.floor(Math.random() * hebrewIndexArray.length)];
 
+  console.log("3")
   let correspondingGermanItem = germanIndexArray.find(
     (item) => item.id === randomHebrewItem.id
   );
@@ -100,6 +101,7 @@ export const getRandomIndex = (
 
     if (fallbackHebrewIndexArray.length > 0) {
       const fallbackHebrewItem = fallbackHebrewIndexArray[0];
+      console.log("4")
       correspondingGermanItem = fallbackGermanIndexArray.find(
         (item) => item.id === fallbackHebrewItem.id
       );

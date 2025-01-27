@@ -78,6 +78,7 @@ const FirstCardContainer: React.FC = () => {
             
                 setForeignArray(updatedForeignArray);
             
+                console.log("6")
                 const selectedCard = updatedForeignArray.find((item) => item.coupleId === id);
                 setForeignID(selectedCard?.isSelected === IsSelected.Clicked ? id : 0);
             }
@@ -99,6 +100,7 @@ const FirstCardContainer: React.FC = () => {
                     return item;
                 }
             );
+            console.log("7")
                 setHebrewArray(updatedHebrewArray);
                         const selectedCard = updatedHebrewArray.find((item) => item.coupleId === id);
                 setHebrewId(selectedCard?.isSelected === IsSelected.Clicked ? id : 0);
