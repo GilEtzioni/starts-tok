@@ -21,6 +21,7 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
     sameSite: "none", // Use "none" for cross-origin in production
     secure: true, // Secure only in production (HTTPS)
+    httpOnly: true, // Helps mitigate XSS attacks
   })
 );
 
@@ -46,13 +47,11 @@ app.use(
   })
 );
 
-
 // Routes
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
 app.use(gamesRoutes);
 app.use(usersRoutes);
-
 
 // Start the server
 const PORT = process.env.PORT || 3000;
