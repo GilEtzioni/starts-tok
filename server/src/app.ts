@@ -33,12 +33,24 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  res.cookie("cookie2", "value2", { sameSite: "none", secure: true });
+  next();
+});
+
+app.use((req, res, next) => {
+  res.cookie("__clerk_db_jwt_8AXyZN2z", "value", {
+    sameSite: "none",
+    secure: true, // Ensure secure cookies for HTTPS
+  });
+  next();
+});
+
 // Clerk middleware
 app.use(
   clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
-    jwtKey: process.env.CLERK_JWT_KEY, // Use the PEM public key for JWT verification
     authorizedParties: ["https://www.startstok.com"], // Prevent subdomain cookie leaks
     audience: "your-audience-id", // Validate the 'aud' claim in the token (optional)
     clockSkewInMs: 5000, // Allow 5 seconds of clock skew
@@ -51,16 +63,14 @@ app.use(
 //   res.send("Backend is working!");
 // });
 
-app.use((req, res, next) => {
-  res.cookie("myCookie", "cookieValue", {
-    httpOnly: true, // Prevent JavaScript from accessing the cookie
-    secure: true, // Only send the cookie over HTTPS
-    sameSite: "none", // Corrected to lowercase "none"
-    maxAge: 1000 * 60 * 60 * 24 * 7, // Set the cookie expiration (7 days)
-    path: "/", // Make the cookie available to the entire domain
-  });
-  next(); // Proceed to the next middleware/route handler
+app.post ("/", (req, res, next) => { 
+  const cookie = "samesite=none";
+  res.setHeader("set-cookie", [cookie]);
+  next();
+}, (req, res) => {
+  res.send("Cookie is set and request continues!");
 });
+
 
 // Routes
 app.use(coursesRoutes);
