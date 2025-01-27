@@ -47,18 +47,19 @@ app.use(
   })
 );
 
-// app.use((req, res, next) => {
-//   // Correct the SameSite attribute to 'none' (lowercase)
-//   res.cookie('__clerk_db_jwt', '', {
-//     httpOnly: true,
-//     secure: true,  // Ensure cookies are only sent over HTTPS
-//     sameSite: 'none', // Corrected to lowercase "none"
-//   });
-//   next();
+// app.get("/", (req, res) => {
+//   res.send("Backend is working!");
 // });
 
-app.get("/", (req, res) => {
-  res.send("Backend is working!");
+app.use((req, res, next) => {
+  res.cookie("myCookie", "cookieValue", {
+    httpOnly: true, // Prevent JavaScript from accessing the cookie
+    secure: true, // Only send the cookie over HTTPS
+    sameSite: "none", // Corrected to lowercase "none"
+    maxAge: 1000 * 60 * 60 * 24 * 7, // Set the cookie expiration (7 days)
+    path: "/", // Make the cookie available to the entire domain
+  });
+  next(); // Proceed to the next middleware/route handler
 });
 
 // Routes
@@ -68,7 +69,7 @@ app.use(gamesRoutes);
 app.use(usersRoutes);
 
 // Server
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
