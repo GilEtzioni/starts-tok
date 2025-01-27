@@ -28,6 +28,13 @@ app.options("*", cors());
 
 app.set('trust proxy', 1);
 
+app.use((req, res, next) => {
+  res.cookie('_cfuvid', 'cookie-value', {
+    sameSite: 'none',
+    secure: true,
+  });
+  next(); 
+});
 
 app.use(clerkMiddleware({
   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
