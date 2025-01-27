@@ -42,6 +42,9 @@ const TableDictionary: React.FC = () => {
         }));
         setDataSource(transformedWords);
       },
+      onError: (error) => {
+        console.error("Error fetching dictionary words:", error);
+      },
     }
   );
 
