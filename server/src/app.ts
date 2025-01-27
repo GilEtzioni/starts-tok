@@ -24,19 +24,10 @@ app.use(
   })
 );
 
-// Respond to OPTIONS preflight requests
 app.options("*", cors());
 
+app.set('trust proxy', 1);
 
-app.use((req, res, next) => {
-  const isProduction = process.env.NODE_ENV === 'production';
-  res.cookie('__clerk_db_jwt', 'cookieValue', {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: 'none', 
-  });
-  next();
-});
 
 app.use(clerkMiddleware({
   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
