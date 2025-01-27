@@ -16,11 +16,11 @@ app.use(express.json());
 // Cookie session middleware
 app.use(
   cookieSession({
-    name: "session", // Name of the cookie
-    keys: [process.env.SESSION_SECRET || "default_secret"], // Secret key for signing
+    name: "session",
+    keys: [process.env.SESSION_SECRET || "default_secret"],
     maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
-    sameSite: "none", // Allow cross-origin requests
-    secure: true, // Ensure cookies are sent only over HTTPS
+    sameSite: "none", // Use "none" for cross-origin in production
+    secure: true, // Secure only in production (HTTPS)
   })
 );
 
