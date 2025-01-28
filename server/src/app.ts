@@ -6,7 +6,7 @@ import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
 import usersRoutes from "./routes/usersRoutes";
-import { clerkMiddleware } from "@clerk/express";
+// import { clerkMiddleware } from "@clerk/express";
 
 // Express app setup
 const app = express();
@@ -23,12 +23,12 @@ app.use(
 );
 
 
-app.use(clerkMiddleware({
-  publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-  secretKey: process.env.CLERK_SECRET_KEY,
-  authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
-  domain: 'www.startstok.com',
-}));
+// app.use(clerkMiddleware({
+//   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+//   secretKey: process.env.CLERK_SECRET_KEY,
+//   authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
+//   domain: 'www.startstok.com',
+// }));
 
 // Routes
 app.use(coursesRoutes);
