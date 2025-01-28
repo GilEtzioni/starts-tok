@@ -23,12 +23,10 @@ app.use(
 );
 
 
-// app.use(clerkMiddleware({
-//   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-//   secretKey: process.env.CLERK_SECRET_KEY,
-//   authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
-//   domain: 'www.startstok.com',
-// }));
+app.get('/', (req, res) => {
+  res.send('The program is running');
+});
+
 
 // Routes
 app.use(coursesRoutes);
