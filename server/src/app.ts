@@ -23,10 +23,10 @@ app.use(
 );
 
 
-app.get('/', (req, res) => {
+app.use('/', (req, res, next) => {
   res.send('The program is running');
+  next(); // Pass to the next middleware if necessary (though not needed here)
 });
-
 
 // Routes
 app.use(coursesRoutes);
