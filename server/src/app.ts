@@ -11,47 +11,23 @@ import { clerkMiddleware } from "@clerk/express";
 // Express app setup
 const app = express();
 app.use(express.json());
-// app.use(cookieParser())
 
 // CORS middleware
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Front-end URL
+    origin: 'https://www.startstok.com', // Front-end URL
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
-    // exposedHeaders: ,
-    // preflightContinue ,
-    // optionsSuccessStatus
-    // maxAge
   })
 );
 
-// app.options("*", cors());
-
-// app.set('trust proxy', 1);
 
 app.use(clerkMiddleware({
   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   secretKey: process.env.CLERK_SECRET_KEY,
   authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
   domain: 'www.startstok.com',
-  // jwtKey
-  // afterSignInUrl
-  // afterSignUpUrl
-  // apiClient
-  // apiVersion
-  // audience
-  // clerkClient
-  // clockSkewInMs
-  // debug
-  // domain
-  // skipJwksCache
-  // signInUrl
-  // signInUrl
-  // enableHandshake
-  // isSatellite
-  // organizationSyncOptions
 }));
 
 // Routes
@@ -61,7 +37,7 @@ app.use(gamesRoutes);
 app.use(usersRoutes);
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
