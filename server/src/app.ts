@@ -13,11 +13,10 @@ const app = express();
 app.use(express.json());
 // app.use(cookieParser())
 
-
 // CORS middleware
 app.use(
   cors({
-    origin: 'https://www.startstok.com', // Front-end URL
+    origin: 'http://localhost:3000', // Front-end URL
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -28,16 +27,15 @@ app.use(
   })
 );
 
-app.options("*", cors());
+// app.options("*", cors());
 
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 app.use(clerkMiddleware({
   publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   secretKey: process.env.CLERK_SECRET_KEY,
   authorizedParties: ['http://localhost:3000', 'https://www.startstok.com'],
   domain: 'www.startstok.com',
-  debug: true,
   // jwtKey
   // afterSignInUrl
   // afterSignUpUrl
@@ -55,6 +53,7 @@ app.use(clerkMiddleware({
   // isSatellite
   // organizationSyncOptions
 }));
+
 // Routes
 app.use(coursesRoutes);
 app.use(dictionaryRoutes);
