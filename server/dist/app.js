@@ -26,13 +26,13 @@ app.use((0, express_2.clerkMiddleware)({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_live_Y2xlcmsuc3RhcnRzdG9rLmNvbSQ",
     secretKey: process.env.CLERK_SECRET_KEY,
 }));
+app.use("/api", courseRoutes_1.default);
+app.use("/api", dictionaryRoutes_1.default);
+app.use("/api", gamesRouter_1.default);
+app.use("/api", usersRoutes_1.default);
 app.get('/', (req, res) => {
     res.send('The program is running');
 });
-app.use("/api/", courseRoutes_1.default);
-app.use("/api/", dictionaryRoutes_1.default);
-app.use("/api/", gamesRouter_1.default);
-app.use("/api/", usersRoutes_1.default);
 // Initialize PostgreSQL connection pool
 const pool = new pg_1.Pool({
     connectionString: process.env.DATABASE_URL,
@@ -51,21 +51,6 @@ async function connectDB() {
     }
 }
 connectDB();
-app.get('/api/data', (0, express_2.requireAuth)(), async (req, res) => {
-    try {
-        const { userId } = (0, express_2.getAuth)(req);
-        if (!userId) {
-            res.status(401).json({ error: "Unauthorized: User ID is missing" });
-            return;
-        }
-        const result = await pool.query('SELECT * FROM words');
-        res.json(result.rows);
-    }
-    catch (err) {
-        console.error('Error executing query:', err);
-        res.status(500).send('Database query error');
-    }
-});
 // Handle Clerk errors
 app.use((err, req, res, next) => {
     if (err.name === "ClerkAuthError") {

@@ -7,7 +7,7 @@ import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
 import usersRoutes from "./routes/usersRoutes";
-import { clerkMiddleware, getAuth, requireAuth } from "@clerk/express";
+import { clerkMiddleware } from "@clerk/express";
 
 // Express app setup
 const app = express();
@@ -29,14 +29,14 @@ app.use(
   })
 );
 
+app.use("/api", coursesRoutes);
+app.use("/api", dictionaryRoutes);
+app.use("/api", gamesRoutes);
+app.use("/api", usersRoutes);
+
 app.get('/', (req: Request, res: Response) => {
   res.send('The program is running');
 });
-
-app.use("/api/", coursesRoutes);
-app.use("/api/", dictionaryRoutes);
-app.use("/api/", gamesRoutes);
-app.use("/api/", usersRoutes);
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -57,23 +57,6 @@ async function connectDB() {
 }
 
 connectDB();
-
-app.get('/api/data', requireAuth(), async (req: Request, res: Response) => {
-  try {
-
-  const { userId } = getAuth(req);
-
-  if (!userId) {
-      res.status(401).json({ error: "Unauthorized: User ID is missing" });
-      return;
-  }
-    const result = await pool.query('SELECT * FROM words');
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Error executing query:', err);
-    res.status(500).send('Database query error');
-  }
-});
 
 // Handle Clerk errors
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
