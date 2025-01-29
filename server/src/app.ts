@@ -16,13 +16,23 @@ app.use(express.json());
 // CORS middleware
 app.use(
   cors({
-    origin: ["https://www.startstok.com", "https://website-project-n5t7.vercel.app"],
-    methods: ["GET", "POST", "PATCH"],
+    origin: (origin, callback) => {
+      if (
+        !origin ||
+        /vercel\.app$/.test(origin) ||
+        /onrender\.com$/.test(origin) ||
+        origin.includes("startstok.com")
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PATCH"],
   })
 );
-
 app.use(
   clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_live_Y2xlcmsuc3RhcnRzdG9rLmNvbSQ",
@@ -39,10 +49,10 @@ app.get('/', (req: Request, res: Response) => {
 // app.use(dictionaryRoutes);
 // app.use(gamesRoutes);
 // app.use(usersRoutes);
-app.use("/api", coursesRoutes);
-app.use("/api", dictionaryRoutes);
-app.use("/api", gamesRoutes);
-app.use("/api", usersRoutes);
+app.use("/api/", coursesRoutes);
+app.use("/api/", dictionaryRoutes);
+app.use("/api/", gamesRoutes);
+app.use("/api/", usersRoutes);
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
