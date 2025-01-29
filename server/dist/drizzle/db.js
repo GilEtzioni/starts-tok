@@ -40,7 +40,7 @@ exports.db = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = require("pg");
 const node_postgres_1 = require("drizzle-orm/node-postgres");
-const schema = __importStar(require("./schema"));
+const schema = __importStar(require("./schema")); // Adjust path as necessary
 dotenv_1.default.config();
 const dbCredentials = {
     user: process.env.DB_USER,
@@ -55,5 +55,8 @@ const pool = new pg_1.Pool({
     host: dbCredentials.host,
     port: dbCredentials.port,
     database: dbCredentials.database,
+    ssl: {
+        rejectUnauthorized: false, // Allows SSL but does not validate certificates
+    },
 });
 exports.db = (0, node_postgres_1.drizzle)(pool, { schema });
