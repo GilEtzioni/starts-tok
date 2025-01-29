@@ -39,10 +39,10 @@ app.get('/', (req: Request, res: Response) => {
 // app.use(dictionaryRoutes);
 // app.use(gamesRoutes);
 // app.use(usersRoutes);
-app.use(coursesRoutes);
-app.use(dictionaryRoutes);
-app.use(gamesRoutes);
-app.use(usersRoutes);
+app.use("/api", coursesRoutes);
+app.use("/api", dictionaryRoutes);
+app.use("/api", gamesRoutes);
+app.use("/api", usersRoutes);
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -73,7 +73,7 @@ app.get('/api/data', requireAuth(), async (req: Request, res: Response) => {
       res.status(401).json({ error: "Unauthorized: User ID is missing" });
       return;
   }
-    const result = await pool.query('SELECT * FROM users');
+    const result = await pool.query('SELECT * FROM words');
     res.json(result.rows);
   } catch (err) {
     console.error('Error executing query:', err);
