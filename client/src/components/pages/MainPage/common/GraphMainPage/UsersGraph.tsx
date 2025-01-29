@@ -11,7 +11,7 @@ const UsersGraph: React.FC = () => {
 
   const { Title } = Typography;
 
-  const { data: weekScore, isLoading } = useQuery(
+  const { data: weekScore, isLoading, error } = useQuery(
     [WEEKLY_POINTS],
     () => fetchOneDayUser(),
   );
@@ -20,9 +20,14 @@ const UsersGraph: React.FC = () => {
   const height = 380;
   const padding = 30;
 
-  const pointsArray: weekPointsType[] = !isLoading ? fillMissingWeekDays(weekScore) ?? [] : [];
-  const maxValue = !isLoading
-    ? Math.ceil(Math.max(...pointsArray.map((d) => d.points)) / 15) * 15
+  let pointsArray: weekPointsType[] = [];
+  
+  if (!isLoading) {
+    pointsArray = fillMissingWeekDays(weekScore) ?? [];
+  }
+
+  const maxValue = pointsArray.length > 0 
+    ? Math.ceil(Math.max(...pointsArray.map((d) => d.points)) / 15) * 15 
     : 0;
 
   const points = pointsArray.map((d, i) => {
@@ -34,6 +39,14 @@ const UsersGraph: React.FC = () => {
   const linePath = points
     .map((point, i) => (i === 0 ? `M${point.x},${point.y}` : `L${point.x},${point.y}`))
     .join(' ');
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center">
+        <h3>Oops! Something went wrong.</h3>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-end">
