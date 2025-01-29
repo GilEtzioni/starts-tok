@@ -16,7 +16,7 @@ app.use(express.json());
 // CORS middleware
 app.use(
   cors({
-    origin: "*",
+    origin: "https://www.startstok.com",
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -35,10 +35,14 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Routes
-app.use(coursesRoutes);
-app.use(dictionaryRoutes);
-app.use(gamesRoutes);
-app.use(usersRoutes);
+// app.use(coursesRoutes);
+// app.use(dictionaryRoutes);
+// app.use(gamesRoutes);
+// app.use(usersRoutes);
+app.use("/api", coursesRoutes);
+app.use("/api", dictionaryRoutes);
+app.use("/api", gamesRoutes);
+app.use("/api", usersRoutes);
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
