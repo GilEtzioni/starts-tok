@@ -16,19 +16,8 @@ const express_2 = require("@clerk/express");
 // Express app setup
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-// CORS middleware
 app.use((0, cors_1.default)({
-    origin: (origin, callback) => {
-        if (!origin ||
-            /vercel\.app$/.test(origin) ||
-            /onrender\.com$/.test(origin) ||
-            origin.includes("startstok.com")) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: process.env.FRONT_END_URL,
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
     methods: ["GET", "POST", "PATCH"],
@@ -40,11 +29,6 @@ app.use((0, express_2.clerkMiddleware)({
 app.get('/', (req, res) => {
     res.send('The program is running');
 });
-// Routes
-// app.use(coursesRoutes);
-// app.use(dictionaryRoutes);
-// app.use(gamesRoutes);
-// app.use(usersRoutes);
 app.use("/api/", courseRoutes_1.default);
 app.use("/api/", dictionaryRoutes_1.default);
 app.use("/api/", gamesRouter_1.default);
@@ -115,6 +99,7 @@ process.on('SIGINT', async () => {
         process.exit(1);
     }
 });
+console.log("frotn end URL:", process.env.FRONT_END_URL);
 console.log("Clerk Publishable Key:", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 console.log("Clerk Secret Key:", process.env.CLERK_SECRET_KEY);
 console.log("Database URL:", process.env.DATABASE_URL);

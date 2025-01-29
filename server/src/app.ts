@@ -21,6 +21,7 @@ app.use(
     methods: ["GET", "POST", "PATCH"],
   })
 );
+
 app.use(
   clerkMiddleware({
     publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_live_Y2xlcmsuc3RhcnRzdG9rLmNvbSQ",
@@ -32,11 +33,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send('The program is running');
 });
 
-// Routes
-// app.use(coursesRoutes);
-// app.use(dictionaryRoutes);
-// app.use(gamesRoutes);
-// app.use(usersRoutes);
 app.use("/api/", coursesRoutes);
 app.use("/api/", dictionaryRoutes);
 app.use("/api/", gamesRoutes);
@@ -112,6 +108,7 @@ process.on('SIGINT', async () => {
   }
 });
 
+console.log("frotn end URL:", process.env.FRONT_END_URL);
 console.log("Clerk Publishable Key:", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 console.log("Clerk Secret Key:", process.env.CLERK_SECRET_KEY);
 console.log("Database URL:", process.env.DATABASE_URL);
