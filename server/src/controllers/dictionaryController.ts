@@ -9,6 +9,7 @@ import { DictionaryKnowledgeType } from "../types/dictionaryType";
 
 export const getAllWords = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
+    console.log("userId: ", userId)
     if (!userId) {
       res.status(401).json({ error: "Unauthorized" });
       return;
@@ -48,6 +49,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
 
   export const getFilterWords = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
+    console.log("userId: ", userId)
     const { levelArray, knowledgeArray } = req.query as {
       levelArray: string;
       knowledgeArray: string;
@@ -109,6 +111,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
 
 export const addNewWord = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
+  console.log("userId: ", userId)
 
   if (!userId) {
     res.status(401).json({ error: "Unauthorized: User ID is missing" });

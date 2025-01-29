@@ -15,24 +15,24 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: process.env.FRONT_END_URL,
+    origin: "http://localhost:3000",
+    // origin: process.env.FRONT_END_URL,
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
-    methods: ["GET", "POST", "PATCH"],
   })
 );
 
 app.use(
   clerkMiddleware({
-    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "pk_live_Y2xlcmsuc3RhcnRzdG9rLmNvbSQ",
+    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
   })
 );
 
-app.use("/api", coursesRoutes);
-app.use("/api", dictionaryRoutes);
-app.use("/api", gamesRoutes);
-app.use("/api", usersRoutes);
+app.use(coursesRoutes);
+app.use(dictionaryRoutes);
+app.use(gamesRoutes);
+app.use(usersRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('The program is running');

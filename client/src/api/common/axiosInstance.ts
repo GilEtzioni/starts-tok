@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useAuth } from '@clerk/clerk-react';
 const axiosInstance = axios.create({
-  baseURL: `${process.env.REACT_APP_BACK_END_URL}/api`,
+  baseURL: `${process.env.REACT_APP_BACK_END_URL}`,
   withCredentials: true,
+  headers: { "Content-Type": "application/json", Accept: "application/json", },
 });
 
 axiosInstance.interceptors.request.use(async (config) => {

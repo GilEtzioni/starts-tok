@@ -9,6 +9,8 @@ import { RootState } from '../../../../app/store';
 import { useSelector } from 'react-redux';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
 import SkeletonTable from './SkeletonTable';
+import axiosInstance from '../../../../api/common/axiosInstance';
+import { useAuth } from '@clerk/clerk-react';
 
 const TableDictionary: React.FC = () => {
   const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
@@ -20,11 +22,23 @@ const TableDictionary: React.FC = () => {
   if (knowledge.isVy) knowledgeArray.push(DictionaryKnowledgeType.Vy);
   if (knowledge.isEx) knowledgeArray.push(DictionaryKnowledgeType.Ex);
   if (knowledge.isQueistion) knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
-
+  const { getToken } = useAuth();
+  
   const { data: words, isLoading } = useQuery(
     [ALL_DICTIONARY_WORDS, knowledge, level],
-    () => fetchFilterDictionary(level, knowledgeArray),
-    {
+    async () => {
+      const token = await getToken();
+      const { data } = await axiosInstance.get('/filter', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        params: {
+          levelArray: JSON.stringify(level),
+          knowledgeArray: JSON.stringify(knowledge),
+        }});
+        return data;
+    },
+     {
       onSuccess: (data) => {
         const transformedWords = data.map((item) => ({
           key: item.wordId,
