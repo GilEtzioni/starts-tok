@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://website-project-n5t7.vercel.app/api",
+  baseURL: process.env.VERCEL_BACK_END_URL || process.env.RENDER_BACK_END_URL,
   withCredentials: true,
 });
 
