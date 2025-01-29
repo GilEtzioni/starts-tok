@@ -39,10 +39,10 @@ app.get('/', (req: Request, res: Response) => {
 // app.use(dictionaryRoutes);
 // app.use(gamesRoutes);
 // app.use(usersRoutes);
-app.use("/api", coursesRoutes);
-app.use("/api", dictionaryRoutes);
-app.use("/api", gamesRoutes);
-app.use("/api", usersRoutes);
+app.use(coursesRoutes);
+app.use(dictionaryRoutes);
+app.use(gamesRoutes);
+app.use(usersRoutes);
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
