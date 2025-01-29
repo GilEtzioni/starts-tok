@@ -16,7 +16,7 @@ app.use(express.json());
 // CORS middleware
 app.use(
   cors({
-    origin: ["https://www.startstok.com", "https://website-project-n5t7.vercel.app"],
+    origin: "https://www.startstok.com",
     methods: ["GET", "POST", "PATCH"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
