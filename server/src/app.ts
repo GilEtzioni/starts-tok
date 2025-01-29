@@ -16,18 +16,7 @@ app.use(express.json());
 // CORS middleware
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (
-        !origin ||
-        /vercel\.app$/.test(origin) ||
-        /onrender\.com$/.test(origin) ||
-        origin.includes("startstok.com")
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: process.env.FRONT_END_URL,
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
     methods: ["GET", "POST", "PATCH"],
