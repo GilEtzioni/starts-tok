@@ -13,7 +13,6 @@ import { clerkMiddleware, getAuth, requireAuth } from "@clerk/express";
 const app = express();
 app.use(express.json());
 
-// CORS middleware
 app.use(
   cors({
     origin: process.env.FRONT_END_URL,
