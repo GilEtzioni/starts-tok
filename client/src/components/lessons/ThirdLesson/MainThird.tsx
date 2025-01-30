@@ -19,10 +19,11 @@ import { TranslatedArray } from '../types/SecondLessonType';
 import { fetchAllWords, fetchThirdLesson } from '../../../api/lessons';
 import { ALL_WORDS, THIRD_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
+import { useWithAuth } from '../../../api/common/withAuth';
 
 const MainThird: React.FC = () => {
 
-  const { name, lesson } = useParams<{ name: string; lesson: string }>();
+  const { name, lesson } = useParams<{ name: string; lesson?: string }>();
 
   const order = useSelector((state: RootState) => state.lessons.order);
   const clicks = useSelector((state: RootState) => state.lessons.clicks);
@@ -36,9 +37,13 @@ const MainThird: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
     
+  const withAuth = useWithAuth();
+  const thirdLesson = async () => withAuth((token) => fetchThirdLesson(lesson ?? "", token));
+  const words = async () => withAuth((token) => fetchAllWords(token));
+
   const { data: lessonsData, isLoading: isCardsLoading } = useQuery(
     [THIRD_LESSON_QUERY_KEY, name, lesson],
-    () => fetchThirdLesson(lesson || ''),
+    thirdLesson,
     {
       onSuccess: (lessonsData) => { 
         if(!lessonsData) return;
@@ -53,7 +58,7 @@ const MainThird: React.FC = () => {
 
   const { data: allWords, isLoading: isWordsLoading } = useQuery(
     [ALL_WORDS, name, lesson],
-    () => fetchAllWords(),
+    words,
     {
       enabled: !!lessonsData,
       onSuccess: (allWords) => {

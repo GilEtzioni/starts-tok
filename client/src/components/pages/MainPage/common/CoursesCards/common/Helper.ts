@@ -1,7 +1,7 @@
 import { FinishedType } from "../types/courseTypes";
 
-export const getNumberOfLessonsCompleted = (arr: FinishedType[] | undefined): number[] => {
-    if (!arr || !Array.isArray(arr)) {
+export const getNumberOfLessonsCompleted = (arr: FinishedType[] | undefined | null): number[] => {
+    if (!arr || !Array.isArray(arr) || arr === null) {
         return [0, 0, 0, 0, 0, 0];
     }
 

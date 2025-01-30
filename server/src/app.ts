@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
-import { Pool } from "pg";
 import dictionaryRoutes from "./routes/dictionaryRoutes";
 import coursesRoutes from "./routes/courseRoutes";
 import gamesRoutes from "./routes/gamesRouter";
@@ -38,26 +37,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send('The program is running');
 });
 
-// Initialize PostgreSQL connection pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL as string,
-  ssl: { rejectUnauthorized: false },
-});
-
-// Connect to PostgreSQL database
-async function connectDB() {
-  try {
-    const client = await pool.connect();
-    console.log('Connected to PostgreSQL');
-    client.release();
-  } catch (err) {
-    console.error('Connection error:', err);
-    process.exit(1);
-  }
-}
-
-connectDB();
-
 // Handle Clerk errors
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err.name === "ClerkAuthError") {
@@ -65,29 +44,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(401).json({ error: "Authentication failed" });
   } else {
     next(err);
-  }
-});
-
-// Graceful shutdown
-process.on('SIGTERM', async () => {
-  try {
-    await pool.end();
-    console.log('Closed PostgreSQL connection');
-    process.exit(0);
-  } catch (err) {
-    console.error('Error closing PostgreSQL connection:', err);
-    process.exit(1);
-  }
-});
-
-process.on('SIGINT', async () => {
-  try {
-    await pool.end();
-    console.log('Closed PostgreSQL connection');
-    process.exit(0);
-  } catch (err) {
-    console.error('Error closing PostgreSQL connection:', err);
-    process.exit(1);
   }
 });
 

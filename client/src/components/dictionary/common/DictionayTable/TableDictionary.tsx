@@ -24,9 +24,7 @@ const TableDictionary: React.FC = () => {
   if (knowledge.isEx) knowledgeArray.push(DictionaryKnowledgeType.Ex);
   if (knowledge.isQueistion) knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
 
-  // const { getToken } = useAuth();
   const withAuth = useWithAuth();
-  
   const fetchWords = () => withAuth((token) => fetchFilterDictionary(level, knowledgeArray, token));
 
   const { data: words, isLoading } = useQuery(

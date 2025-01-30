@@ -1,26 +1,26 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { CourseNames, Words, Sentences, MissingWords, Language } from "../drizzle/schema";
-// import { getAuth } from "@clerk/express";
+import { getAuth } from "@clerk/express";
 import { and, desc, eq, notInArray, sql } from "drizzle-orm";
 import { CourseLangauge } from "../types/seedersType";
 import { shuffleArray } from "../seeders/utils/helpingSeeders";
 
 export const getCourses = async (req: Request, res: Response): Promise<void> => {
-  // const { userId } = getAuth(req);
+  const { userId } = getAuth(req);
 
-  // if (!userId) {
-  //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
-  //     return;
-  // }
+  if (!userId) {
+      res.status(401).json({ error: "Unauthorized: User ID is missing" });
+      return;
+  }
 
   try {
     const userLanguage = await db
     .select()
     .from(Language)
-    // .where(
-    //   // eq(Language.userId, userId)
-    // )
+    .where(
+      eq(Language.userId, userId)
+    )
     .limit(1);
 
   if (userLanguage.length === 0) {
@@ -34,7 +34,7 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
     from(CourseNames)
     .where(
       and(
-          // eq(CourseNames.userId, userId),
+          eq(CourseNames.userId, userId),
           eq(CourseNames.language ,language)
       )
     );
@@ -56,18 +56,18 @@ export const getCourses = async (req: Request, res: Response): Promise<void> => 
 /* ------------------------------------------------------------------------------------ */
 
 export const getFinishedCourses = async (req: Request, res: Response): Promise<void> => {
-  // const { userId } = getAuth(req);
+  const { userId } = getAuth(req);
 
-  // if (!userId) {
-  //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
-  //     return;
-  // }
+  if (!userId) {
+      res.status(401).json({ error: "Unauthorized: User ID is missing" });
+      return;
+  }
 
   try {
     const userLanguage = await db
     .select()
     .from(Language)
-    // .where(eq(Language.userId, userId))
+    .where(eq(Language.userId, userId))
     .limit(1);
 
   if (userLanguage.length === 0) {
@@ -83,7 +83,7 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
       .from(CourseNames)
       .where(
         and(
-            // eq(CourseNames.userId, userId),
+            eq(CourseNames.userId, userId),
             eq(CourseNames.language ,language)
         )
       )
@@ -100,18 +100,20 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
 
 export const getLevelLessons = async (req: Request, res: Response): Promise<void> => {
 
-    // const { userId } = getAuth(req);
+    const { userId } = getAuth(req);
   
-    // if (!userId) {
-    //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
-    //     return;
-    // }
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized: User ID is missing" });
+        return;
+    }
   
     try {
       const userLanguage = await db
       .select()
       .from(Language)
-      // .where(eq(Language.userId, userId))
+      .where(
+        eq(Language.userId, userId)
+      )
       .limit(1);
   
     if (userLanguage.length === 0) {
@@ -128,7 +130,7 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
     .where(
       and(
         eq(CourseNames.englishLevel, userLevel),
-        // eq(CourseNames.userId, userId),
+        eq(CourseNames.userId, userId),
         eq(CourseNames.language ,language)
       )
     )
@@ -143,12 +145,12 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
 /* ------------------------------------------------------------------------------------ */
 
 export const getThirdLesson = async (req: Request, res: Response): Promise<void> => {
-  // const { userId } = getAuth(req);
+  const { userId } = getAuth(req);
 
-  // if (!userId) {
-  //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
-  //     return;
-  // }
+  if (!userId) {
+      res.status(401).json({ error: "Unauthorized: User ID is missing" });
+      return;
+  }
 
   try {
       const course = req.params.course;
@@ -156,7 +158,9 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
       const userLanguage = await db
       .select()
       .from(Language)
-      // .where(eq(Language.userId, userId))
+      .where(
+        eq(Language.userId, userId)
+      )
       .limit(1);
 
     if (userLanguage.length === 0) {
@@ -183,7 +187,7 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
     .where(
       and(
         eq(MissingWords.courseNameEnglish, course),
-        // eq(MissingWords.userId, userId),
+        eq(MissingWords.userId, userId),
         eq(MissingWords.language, language),
         eq(MissingWords.missingSentenceOrder, randomNumber)
       )
@@ -195,7 +199,7 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
     .where(
       and(
         eq(MissingWords.courseNameEnglish, course),
-        // eq(MissingWords.userId, userId),
+        eq(MissingWords.userId, userId),
         eq(MissingWords.language, CourseLangauge.Hebrew),
         eq(MissingWords.missingSentenceOrder, randomNumber)
       )
@@ -217,12 +221,12 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
 /* ------------------------------------------------------------------------------------ */
 
 export const getSecondLesson = async (req: Request, res: Response): Promise<void> => {
-  // const { userId } = getAuth(req);
+  const { userId } = getAuth(req);
 
-  // if (!userId) {
-  //   res.status(401).json({ error: "Unauthorized: User ID is missing" });
-  //   return;
-  // }
+  if (!userId) {
+    res.status(401).json({ error: "Unauthorized: User ID is missing" });
+    return;
+  }
 
   try {
     const course = req.params.course;
@@ -231,7 +235,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     const userLanguage = await db
     .select()
     .from(Language)
-    // .where(eq(Language.userId, userId))
+    .where(eq(Language.userId, userId))
     .limit(1);
 
   if (userLanguage.length === 0) {
@@ -262,7 +266,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
       and(
         eq(Sentences.courseNameEnglish, course),
         eq(Sentences.senteceOrder, randomNumber),
-        // eq(Sentences.userId, userId),
+        eq(Sentences.userId, userId),
         eq(Sentences.language, language),
       )
     )
@@ -278,7 +282,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
         and(
           notInArray(Words.foreignWord, correctLessonWords),
           eq(Words.courseNameEnglish, course),
-          // eq(Words.userId, userId),
+          eq(Words.userId, userId),
           eq(Words.language, language)
         )
       )
@@ -304,7 +308,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     .where(
       and(
         eq(Sentences.courseNameEnglish, course),
-        // eq(Sentences.userId, userId),
+        eq(Sentences.userId, userId),
         eq(Sentences.senteceOrder, randomNumber),
         eq(Sentences.language, language)
       )
@@ -316,7 +320,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     .where(
       and(
         eq(Sentences.courseNameEnglish, course),
-        // eq(Sentences.userId, userId),
+        eq(Sentences.userId, userId),
         eq(Sentences.senteceOrder, randomNumber),
         eq(Sentences.language, CourseLangauge.Hebrew),
       )
@@ -342,12 +346,12 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
 /* ------------------------------------------------------------------------------------ */
 
 export const updateLesson = async (req: Request, res: Response): Promise<void> => {
-  // const { userId } = getAuth(req);
+  const { userId } = getAuth(req);
 
-  // if (!userId) {
-  //   res.status(401).json({ error: "Unauthorized: User ID is missing" });
-  //   return;
-  // }
+  if (!userId) {
+    res.status(401).json({ error: "Unauthorized: User ID is missing" });
+    return;
+  }
 
   try {
     const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ; // string
@@ -356,7 +360,9 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
     const userLanguage = await db
     .select()
     .from(Language)
-    // .where(eq(Language.userId, userId))
+    .where(
+      eq(Language.userId, userId)
+    )
     .limit(1);
 
   if (userLanguage.length === 0) {
@@ -371,7 +377,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
       .from(CourseNames)
       .where(
         and(
-          // eq(CourseNames.userId, userId),
+          eq(CourseNames.userId, userId),
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
           eq(CourseNames.language, language)
@@ -402,7 +408,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
         and(
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
-          // eq(CourseNames.userId, userId),
+          eq(CourseNames.userId, userId),
           eq(CourseNames.language, language)
         )
       )
@@ -419,7 +425,7 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
       .set({ lessonCompleted: lessonOrder + 1 }) 
       .where(
         and(
-          // eq(CourseNames.userId, userId),
+          eq(CourseNames.userId, userId),
           eq(CourseNames.courseId, courseToUpdate.courseId),
           eq(CourseNames.englishLevel, userLevel),
           eq(CourseNames.courseNameEnglish, course),
@@ -437,19 +443,21 @@ export const updateLesson = async (req: Request, res: Response): Promise<void> =
 /* ------------------------------------------------------------------------------------ */
 
 export const getFirstLessonWords = async (req: Request, res: Response): Promise<void> => {
-    // const { userId } = getAuth(req);
+    const { userId } = getAuth(req);
     const course = req.params.course;
   
-    // if (!userId) {
-    //     res.status(401).json({ error: "Unauthorized: User ID is missing" });
-    //     return;
-    // }
+    if (!userId) {
+        res.status(401).json({ error: "Unauthorized: User ID is missing" });
+        return;
+    }
   
     try {
         const userLanguage = await db
         .select()
         .from(Language)
-        // .where(eq(Language.userId, userId))
+        .where(
+          eq(Language.userId, userId)
+        )
         .limit(1);
   
       if (userLanguage.length === 0) {
@@ -464,7 +472,7 @@ export const getFirstLessonWords = async (req: Request, res: Response): Promise<
         .where(
           and(
             eq(Words.courseNameEnglish, course),
-            // eq(Words.userId, userId),
+            eq(Words.userId, userId),
             eq(Words.language, language),
           )
         )

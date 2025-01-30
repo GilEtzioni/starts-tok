@@ -3,17 +3,23 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { getNumberOfLessonsCompleted } from "./Helper";
 import CourseCard from "./CourseCard";
 import SkeletonCard from "../../Skeleton/SkeletonCard";
-import { fetchLessonPage, fetchCoursesCards } from '../../../../../../api/pages'; 
+import { fetchLessonPage } from '../../../../../../api/pages'; 
 import { Typography, Row, ConfigProvider } from 'antd';
 import { useQuery } from '@tanstack/react-query';
 import { LESSONS_PAGE } from '../../../../requests/queryKeys';
 import heIL from "antd/es/locale/he_IL";
+import { useWithAuth } from '../../../../../../api/common/withAuth';
 
 const CardContainer: React.FC = () => {
+
+  const withAuth = useWithAuth();
+  const course = () => withAuth((token) => fetchLessonPage(token));
+
   const { data: coursesData, isLoading } = useQuery(
     [LESSONS_PAGE],
-    () => fetchLessonPage(),
-  );
+    course);
+
+    console.log("course: ", course)
 
   const finished: number[] | undefined = getNumberOfLessonsCompleted(coursesData);
 

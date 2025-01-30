@@ -11,7 +11,7 @@ interface UseHandleNextProps {
   resetClicks: ActionCreatorWithoutPayload;
   setSuccess: ActionCreatorWithoutPayload;
   setFailure: ActionCreatorWithoutPayload;
-  lessonData: SenteceType | undefined;
+  lessonData: SenteceType | undefined | null;
   foreignArray: CardType[];
   order: number;
 }

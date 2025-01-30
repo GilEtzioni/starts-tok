@@ -1,20 +1,26 @@
 import React from 'react';
 import { Row, Typography } from 'antd';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCoursesCards, fetchOneDayUser } from '../../../../../api/pages';
+import { fetchOneDayUser } from '../../../../../api/pages';
 import { fillMissingWeekDays } from '../../utils/userGraphHelper';
 import { weekPointsType } from '../../../../../api/common/types';
 import { WEEKLY_POINTS } from '../../../requests/queryKeys';
 import SkeltonPoints from '../Skeleton/SkeltonPoints';
+import { useWithAuth } from '../../../../../api/common/withAuth';
 
 const UsersGraph: React.FC = () => {
 
   const { Title } = Typography;
 
+  const withAuth = useWithAuth();
+  const oneDayUser = async (): Promise<weekPointsType[]> => {
+    const result = await withAuth((token) => fetchOneDayUser(token));
+    return result ?? [];
+  };
+  
   const { data: weekScore, isLoading, error } = useQuery(
     [WEEKLY_POINTS],
-    () => fetchOneDayUser(),
-  );
+    oneDayUser);
 
   const width = 650;
   const height = 380;

@@ -24,21 +24,52 @@ export const fetchFilterDictionary = async (
   return data;
 };
 
+export const fetchDictionary = async (
+  token?: string
+): Promise<WordsType[]> => {
+  if (!token) {
+    throw new Error("No authentication token found.");
+  }
 
-export const fetchDictionary = async (): Promise<WordsType[]> => {
-  const { data } = await axiosInstance.get('/dictionary');  
+  const { data } = await axiosInstance.get('/dictionary', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
   return data;
 };
 
+export const changeWordKnowledge = async (
+  updatedWord: UpdatedWordType,
+  token: string
+) => {
+  if (!token) {
+    throw new Error("No authentication token found.");
+  }
 
-export const changeWordKnowledge = async (updatedWord: UpdatedWordType) => {
   const { id, knowledge } = updatedWord;
-  const response = await axiosInstance.patch(`dictionary/${id}`, { knowledge });
+  const response = await axiosInstance.patch(`dictionary/${id}`, { knowledge }, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
   return response.data;
 };
 
-export const addNewWord = async (userWord: { foreignWord: string; translatedWord: string }) => {
+export const addNewWord = async (
+  userWord: { foreignWord: string; translatedWord: string },
+  token: string
+) => {
+  if (!token) {
+    throw new Error("No authentication token found.");
+  }
+
   const payload = { foreignWord: userWord.foreignWord, hebrewWord: userWord.translatedWord };
-  const response = await axiosInstance.post('/dictionary/new', payload);
+  const response = await axiosInstance.post('/dictionary/new', payload, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
   return response.data;
 };
