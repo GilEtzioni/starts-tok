@@ -22,7 +22,7 @@ const CreateDatabase: React.FC = () => {
 
       try {
         const token = await getToken();
-        const response = await fetch("http://localhost:3001/api/create-db", {
+        const response = await fetch(`${process.env.REACT_APP_BACK_END_URL}/api/create-db`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
