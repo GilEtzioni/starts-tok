@@ -1,7 +1,7 @@
 // clerk js + react
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from 'react-router-dom';
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, useSignUp } from "@clerk/clerk-react";
 
 // react query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -27,6 +27,7 @@ import MainWordle from './components/games/wordle/MainWordle';
 import MainHangman from './components/games/hangman/MainHangman';
 import MainSpeedGame from './components/games/speedGame/MainSpeedGame';
 import ContactPage from './components/pages/MainPage/common/Contact/ContactPage';
+import CreateDatabase from './components/pages/LogInPage/CreateDatabase';
 
 const router = createBrowserRouter(
  createRoutesFromElements(
@@ -45,20 +46,16 @@ const router = createBrowserRouter(
            </>
          }
        />
-
+       <Route path="/sign-up" element={<SignUpContainer />} />
+       <Route path="/sign-up/verify-email-address" element={<VerifyEmailAddress />} />
+       <Route path="/sign-up/verify-email-address/create-db" element={<CreateDatabase />} />
 
        <Route path="sign-in" element={<SignInContainer />} />
-       <Route path="/sign-up" element={<SignUpContainer />} />
-
-
-       <Route path="sign-up/verify-email-address" element={<VerifyEmailAddress />} />
        <Route path="sign-in/factor-one" element={<FactorOne />} />
-
 
        <Route path="wordle" element={<MainWordle />} />                 
        <Route path="speedGame" element={<MainSpeedGame />} />               
        <Route path="hangman" element={<MainHangman />} /> 
-
 
        <Route path="dictionary" element={<Dictionary />} />   
        <Route path="contact" element={<ContactPage />} />                           
@@ -75,6 +72,10 @@ const router = createBrowserRouter(
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
+
+  useEffect(() => {
+    console.log("App.tsx")
+})
 
  return (
    <QueryClientProvider client={queryClient}>
