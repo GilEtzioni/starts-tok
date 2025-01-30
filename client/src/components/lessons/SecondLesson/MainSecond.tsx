@@ -20,10 +20,11 @@ import { useParams } from 'react-router-dom';
 import { fetchAllWords, fetchSecondLesson } from '../../../api/lessons';
 import { SECOND_LESSON_QUERY_KEY, ALL_WORDS } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
+import { useWithAuth } from '../../../api/common/withAuth';
 
 const MainSecond: React.FC = () => {
 
-    const { name, lesson } = useParams<{ name: string; lesson: string }>();
+    const { name, lesson } = useParams<{ name: string;  lesson?: string }>();
     const { Title } = Typography;
 
     const order = useSelector((state: RootState) => state.lessons.order);
@@ -34,21 +35,25 @@ const MainSecond: React.FC = () => {
     const [foreignArray, setForeignArray] = useState<CardType[]>([]);
     const [TranslatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
 
+    const withAuth = useWithAuth();
+    const secondLesson = async () => withAuth((token) => fetchSecondLesson(lesson ?? "", token));
+    const words = async () => withAuth((token) => fetchAllWords(token));
+    
     const { data: lessonData, isLoading: isLessonsLoading } = useQuery(
         [SECOND_LESSON_QUERY_KEY, name, lesson],
-        () => fetchSecondLesson(lesson || ''),
+        secondLesson,
         {
             onSuccess: (lessonData) => {        
-                if(!lessonData) return;
+                if (!lessonData) return;
                 dispatch(setRightAnswer(lessonData.foreignSentence));
                 setForeignArray(lessonData.words);
             }
         }
     );
-
+    
     const { data: allWords, isLoading: isWordsLoading } = useQuery(
         [ALL_WORDS, name, lesson],
-        () => fetchAllWords(),
+        words,
         {
             enabled: !!lessonData,
             onSuccess: (allWords) => {
@@ -56,9 +61,9 @@ const MainSecond: React.FC = () => {
                 const hebrewSentence = lessonData.hebrewSentence;
                 const punctuation = [',', '.', '-', '?', '...', '!'];
                 const wordsArray = splitSentenceToWords(hebrewSentence, allWords);
-
+    
                 if (!wordsArray) return;
-        
+    
                 const copiedArray = [...wordsArray];
                 const firstItem = copiedArray.shift();
                 const lastItemIndex = copiedArray.length - 1;
@@ -75,6 +80,7 @@ const MainSecond: React.FC = () => {
             }
         }
     );
+    
 
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonData, foreignArray, order });
 

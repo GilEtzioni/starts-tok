@@ -181,11 +181,9 @@ export const missingWordSeeder = async (
     ];
   });
 
-  console.log("Missing Word Data: ", JSON.stringify(missingWordData, null, 2));
-
   for (const row of missingWordData) {
     try {
-      await db.insert(MissingWords).values(row); // Avoid duplicate key conflicts
+      await db.insert(MissingWords).values(row);
     } catch (error) {
       console.error(`Failed to insert missing word: ${JSON.stringify(row)}`);
       throw error;

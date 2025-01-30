@@ -13,7 +13,6 @@ const icons = [
 ];
 
 const DictionaryIconsTop: React.FC = () => {
-  // redux variables
   const dispatch = useDispatch();
 
   const [activeIcon, setActiveIcon] = useState<IconItem[]>(icons);

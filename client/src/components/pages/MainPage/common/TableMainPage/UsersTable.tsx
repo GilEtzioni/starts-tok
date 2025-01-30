@@ -1,11 +1,12 @@
 import React from 'react';
 import { Table, TableProps, Typography, Row } from 'antd';
 import { useQuery } from '@tanstack/react-query';
-import { fetchBestUsers, fetchCoursesCards } from '../../../../../api/pages';
+import { fetchBestUsers } from '../../../../../api/pages';
 import { BEST_USERS_TABLE } from '../../../requests/queryKeys';
-import { UserTableType } from '../../../../../api/common/types';
 import { getLanguge } from './useUsersTableImages';
 import SkeltonPoints from '../Skeleton/SkeltonPoints';
+import { useWithAuth } from '../../../../../api/common/withAuth';
+import { UserTableType } from '../../../../../api/common/types';
 
 const UsersTable: React.FC = () => {
   const columns: TableProps<UserTableType>['columns'] = [
@@ -21,10 +22,17 @@ const UsersTable: React.FC = () => {
     { title: 'מקום', dataIndex: 'key', key: 'key', align: 'center' },
   ];
 
+  const withAuth = useWithAuth();
+
+  const bestUsers = async (): Promise<UserTableType[]> => {
+    const result = await withAuth((token) => fetchBestUsers(token));
+    return result ?? [];
+  };  
+  
   const { data: usersScore, isLoading } = useQuery<UserTableType[]>(
     [BEST_USERS_TABLE],
-    fetchBestUsers
-  );
+    bestUsers)
+
   const { Title } = Typography;
 
   return (

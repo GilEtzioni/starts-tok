@@ -9,24 +9,29 @@ import { RootState } from '../../../../app/store';
 import { useSelector } from 'react-redux';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
 import SkeletonTable from './SkeletonTable';
+import { useWithAuth } from '../../../../api/common/withAuth';
 
 const TableDictionary: React.FC = () => {
   const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
   const level = useSelector((state: RootState) => state.dictionary.levelFilter);
-
+  
   const [dataSource, setDataSource] = useState<WordsType[]>([]);
-
+  
   const knowledgeArray: DictionaryKnowledgeType[] = [];
   if (knowledge.isVy) knowledgeArray.push(DictionaryKnowledgeType.Vy);
   if (knowledge.isEx) knowledgeArray.push(DictionaryKnowledgeType.Ex);
   if (knowledge.isQueistion) knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
 
+  const withAuth = useWithAuth();
+  const fetchWords = () => withAuth((token) => fetchFilterDictionary(level, knowledgeArray, token));
+
   const { data: words, isLoading } = useQuery(
     [ALL_DICTIONARY_WORDS, knowledge, level],
-    () => fetchFilterDictionary(level, knowledgeArray),
+    fetchWords,
     {
-      onSuccess: (data) => {
-        const transformedWords = data.map((item) => ({
+      onSuccess: (words) => {
+        if (!words) return;
+        const transformedWords = words.map((item) => ({
           key: item.wordId,
           wordId: item.wordId,
           hebrewWord: item.hebrewWord,
@@ -41,6 +46,9 @@ const TableDictionary: React.FC = () => {
           courseOrder: item.courseOrder,
         }));
         setDataSource(transformedWords);
+      },
+      onError: (error) => {
+        console.error("Error fetching dictionary words:", error);
       },
     }
   );

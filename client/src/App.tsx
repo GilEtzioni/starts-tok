@@ -49,15 +49,12 @@ const router = createBrowserRouter(
        <Route path="sign-in" element={<SignInContainer />} />
        <Route path="/sign-up" element={<SignUpContainer />} />
 
-
        <Route path="sign-up/verify-email-address" element={<VerifyEmailAddress />} />
        <Route path="sign-in/factor-one" element={<FactorOne />} />
-
 
        <Route path="wordle" element={<MainWordle />} />                 
        <Route path="speedGame" element={<MainSpeedGame />} />               
        <Route path="hangman" element={<MainHangman />} /> 
-
 
        <Route path="dictionary" element={<Dictionary />} />               
        <Route path="main" element={<Main />} />                           
@@ -70,12 +67,9 @@ const router = createBrowserRouter(
  )
 );
 
-
 const queryClient = new QueryClient();
 
-
 const App: React.FC = () => {
-
 
  return (
    <QueryClientProvider client={queryClient}>
@@ -83,6 +77,5 @@ const App: React.FC = () => {
    </QueryClientProvider>
  );
 };
-
 
 export default App;

@@ -13,16 +13,19 @@ import SkeletonCards from './common/SkeletonCards';
 import CourseProgressBar from "./common/CourseProgressBar"
 import { CourseType } from "../../../api/common/types";
 import CourseIcons from "./common/CourseIcons";
+import { useWithAuth } from '../../../api/common/withAuth';
 
 const CourseContainer: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
+  const { name } = useParams<{ name?: string }>();
   const { Title } = Typography;
   const { Paragraph } = Typography;
 
+  const withAuth = useWithAuth();
+  const course = () => withAuth((token) => fetchCoursesCards(name ?? "", token));
+
   const { data: coursesCardsData, isLoading, isError } = useQuery(
     [COURSE_CARD],
-    () => fetchCoursesCards(name || '')
-  );
+    course);
 
   const mappedData =
     coursesCardsData?.map((course: CourseType) => ({

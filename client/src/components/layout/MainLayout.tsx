@@ -8,6 +8,7 @@ import { CourseLangauge } from '../../api/common/types';
 import { useQuery } from '@tanstack/react-query';
 import { USER_FLAG, USER_POINTS } from './requests/queryKeys';
 import { fetchAllPoints, fetchUserFlag } from '../../api/layout';
+import { useWithAuth } from '../../api/common/withAuth';
 
 const { Header } = Layout;
 interface MainLayoutProps {
@@ -18,13 +19,17 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
 
-  const { data: userFlag, isLoading: userFlagLoading, isError: userFlagError } = useQuery(
+  const withAuth = useWithAuth();
+  const allPoints = () => withAuth((token) => fetchAllPoints(token));
+  const userFlag = () => withAuth((token) => fetchUserFlag(token));
+
+  const { data: flag, isLoading: userFlagLoading, isError: userFlagError } = useQuery(
     [USER_FLAG],
-    () => fetchUserFlag()
-  )
+    userFlag)
 
   const { data: user, isLoading: pointsLoading, isError: pointsError } = useQuery(
-    [USER_POINTS],fetchAllPoints)
+    [USER_POINTS],
+    allPoints)
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -47,12 +52,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
     setIsModalVisible(false);
   };
 
-  const flagUrl = (userFlag: CourseLangauge | undefined): string | undefined => {
-    if (userFlag === CourseLangauge.English) return "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg";
-    if (userFlag === CourseLangauge.French) return "https://www.svgrepo.com/show/401605/flag-for-france.svg";
-    if (userFlag === CourseLangauge.German) return "https://www.svgrepo.com/show/131993/germany.svg";
-    if (userFlag === CourseLangauge.Italian) return "https://www.svgrepo.com/show/401660/flag-for-italy.svg";
-    if (userFlag === CourseLangauge.Spanish) return "https://www.svgrepo.com/show/401755/flag-for-spain.svg";
+  const flagUrl = (flag: CourseLangauge | undefined): string | undefined => {
+    if (flag === CourseLangauge.English) return "https://www.svgrepo.com/show/242307/united-states-of-america-united-states.svg";
+    if (flag === CourseLangauge.French) return "https://www.svgrepo.com/show/401605/flag-for-france.svg";
+    if (flag === CourseLangauge.German) return "https://www.svgrepo.com/show/131993/germany.svg";
+    if (flag === CourseLangauge.Italian) return "https://www.svgrepo.com/show/401660/flag-for-italy.svg";
+    if (flag === CourseLangauge.Spanish) return "https://www.svgrepo.com/show/401755/flag-for-spain.svg";
     return undefined;
   };
     
@@ -93,7 +98,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
                 onClick={showModal}
                 count={
                   <Image
-                    src={flagUrl(Array.isArray(userFlag) ? userFlag[0] : userFlag)}
+                    src={flagUrl(Array.isArray(flag) ? flag[0] : flag ?? undefined)}
                     alt="Flag"
                     width={20}
                     height={18}
@@ -158,7 +163,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         <div className="bg-gray-400 w-px h-8"></div>
         <div className="text-4xl font-extrabold tracking-wide relative inline-block">
           <span className="bg-gradient-to-r from-[hsl(142.1,76.2%,36.3%)] to-[hsl(142.1,70.6%,45.3%)] bg-clip-text text-transparent transition-colors">
-            Start
+            Starts
           </span>
           <span className="text-black">Tok</span>
         </div>

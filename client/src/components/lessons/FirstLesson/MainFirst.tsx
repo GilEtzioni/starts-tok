@@ -18,16 +18,16 @@ import { useParams } from 'react-router-dom';
 import { fetchFirstLesson } from '../../../api/lessons'; 
 import { useQuery } from '@tanstack/react-query';
 import { FIRST_LESSON_QUERY_KEY } from '../requests/queryKeys';
+import { useWithAuth } from '../../../api/common/withAuth';
 
 const FirstCardContainer: React.FC = () => {
 
-    const { name, lesson } = useParams<{ name: string; lesson: string }>();
+    const { name, lesson } = useParams<{ name: string; lesson?: string  }>();
 
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
     
-
     const [foreignId, setForeignID] = useState(0);
     const [hebrewId, setHebrewId] = useState(0);
     const [counter, setCounter] = useState(0);
@@ -36,9 +36,12 @@ const FirstCardContainer: React.FC = () => {
 
     const { Title } = Typography;
 
+    const withAuth = useWithAuth();
+    const firstLesson = () => withAuth((token) => fetchFirstLesson(lesson ?? "", token));  
+
     const { data: lessons, isLoading } = useQuery(
         [FIRST_LESSON_QUERY_KEY, name, lesson],
-        () => fetchFirstLesson(lesson || ''),
+        firstLesson,
         {
           onSuccess: (lessons) => {
             if (!lessons) return;

@@ -4,12 +4,16 @@ import StaticsTable from "./StaticsTable"
 import { useQuery } from "@tanstack/react-query";
 import { fetchDictionary } from "../../../../api/dictionary";
 import { ALL_DICTIONARY_WORDS } from "../../requests/queryKeys";
+import { useWithAuth } from "../../../../api/common/withAuth";
 
 const MainStatics: React.FC = () => {
 
+  const withAuth = useWithAuth();
+  const fetchWords = () => withAuth((token) => fetchDictionary(token));
+
   const { data: words } = useQuery(
     [ALL_DICTIONARY_WORDS],
-    () => fetchDictionary())
+    fetchWords)
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 

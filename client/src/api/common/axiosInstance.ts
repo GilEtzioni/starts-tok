@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const url = "16.170.202.0";
 const axiosInstance = axios.create({
-  baseURL: `http://${url}:3000/`,
+  baseURL: `${process.env.REACT_APP_BACK_END_URL}`,
   withCredentials: true,
+  headers: { "Content-Type": "application/json", Accept: "application/json", },
 });
 
 export default axiosInstance;

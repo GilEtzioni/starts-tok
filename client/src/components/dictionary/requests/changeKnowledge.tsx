@@ -1,0 +1,25 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { UpdatedWordType } from '../types/DictionaryType';
+import { changeWordKnowledge } from '../../../api/dictionary';
+import { CHANGE_WORD_KNOWLEDGE } from './queryKeys';
+import { useAuth } from '@clerk/clerk-react';
+
+export const useChangeWordKnowledge = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation(
+    async (updatedWord: UpdatedWordType) => {
+      const token = await getToken();
+      if (!token) {
+        throw new Error("Authentication token is missing.");
+      }
+      return changeWordKnowledge(updatedWord, token);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries([CHANGE_WORD_KNOWLEDGE]);
+      },
+    }
+  );
+};

@@ -6,28 +6,33 @@ import { Typography, Row } from 'antd';
 import { GameNameEnum } from '../types/mainPageTypes';
 import { useQuery } from '@tanstack/react-query';
 import { WORDS_COUNTER, WORDLE_MAX_SCORE, HANGMAN_MAX_SCORE, SPEED_GAME_MAX_SCORE } from '../../../../requests/queryKeys';
-import { fetchMaxPoints, fetchWordsCounter, fetchLessonPage, fetchCoursesCards } from '../../../../../../api/pages';
+import { fetchMaxPoints, fetchWordsCounter } from '../../../../../../api/pages';
+import { useWithAuth } from '../../../../../../api/common/withAuth';
 
 const GameContainer: React.FC = () => {
+
+  const withAuth = useWithAuth();
+  const wordsCounter = () => withAuth((token) => fetchWordsCounter(token));
+  const maxPointsWordle = () => withAuth((token) => fetchMaxPoints(GameNameEnum.Wordle, token));
+  const maxPointsHangman = () => withAuth((token) => fetchMaxPoints(GameNameEnum.Hangman, token));
+  const maxPointsSpeedGame = () => withAuth((token) => fetchMaxPoints(GameNameEnum.SpeedGame, token));
+
+
   const { data: wordleScore, isLoading: isLoadingWordle} = useQuery(
     [WORDLE_MAX_SCORE],
-    () => fetchMaxPoints(GameNameEnum.Wordle),
-  );
+    maxPointsWordle);
 
   const { data: hangmanScore, isLoading: isLoadingHangman} = useQuery(
     [HANGMAN_MAX_SCORE],
-    () => fetchMaxPoints(GameNameEnum.Hangman),
-  );
+    maxPointsHangman);
 
   const { data: speedScore, isLoading: isLoadingSpeed } = useQuery(
     [SPEED_GAME_MAX_SCORE],
-    () => fetchMaxPoints(GameNameEnum.SpeedGame),
-  );
+    maxPointsSpeedGame);
 
   const { data: finishedWordsCount } = useQuery(
     [WORDS_COUNTER],
-    () => fetchWordsCounter(),
-  );
+    wordsCounter);
 
   const totalCards = 4;
   const initialCards = [1, 2, 3, 4];

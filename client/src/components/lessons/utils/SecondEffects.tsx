@@ -11,7 +11,7 @@ interface UseHandleNextProps {
   resetClicks: ActionCreatorWithoutPayload;
   setSuccess: ActionCreatorWithoutPayload;
   setFailure: ActionCreatorWithoutPayload;
-  lessonData: SenteceType | undefined;
+  lessonData: SenteceType | undefined | null;
   foreignArray: CardType[];
   order: number;
 }
@@ -21,7 +21,7 @@ interface UseHandleNextProps {
 export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonData, foreignArray, order }: UseHandleNextProps) => { 
   useEffect(() => {
 
-    if (!lessonData) return;
+    if (!lessonData || lessonData === null) return;
 
     const userAnswer = getUserAnswer(lessonData, foreignArray, order);
     const isUserRight: boolean = areStringsEqual(userAnswer, lessonData.foreignSentence); 

@@ -8,12 +8,14 @@ import { generateCourseIds, hangmanGameId, speedGameId, rowGameId } from "./util
 import { CourseLangauge } from "../types/seedersType";
 import { db } from "../drizzle/db";
 import { Language } from "../drizzle/schema";
+import { clerkClient } from "@clerk/express";
 
 export const mainSeeder = async (userId: string) => {
 
-    const courseIds = generateCourseIds();
-    const userName = "גיל"; // i will change it dinamiclly in in next few days (when the sign-up will be done)
-    
+    const user = await clerkClient.users.getUser(userId);
+    const userName = user?.username ?? "unknown user";
+    const courseIds = generateCourseIds();    
+
     console.log("\nstart seeding courses...");
     await courseSeeder(userId, courseIds);
     console.log("courses seeded\n");

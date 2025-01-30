@@ -4,7 +4,7 @@ import { CloseOutlined, CheckOutlined, QuestionOutlined } from '@ant-design/icon
 import { isExTrue, isVyTrue, isQuesttionTrue } from "../../utils/dictionaryHelper";
 import { DictionaryColors, IconItem } from '../../types/DictionaryType';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
-import { useChangeWordKnowledge } from '../../requests/mutate';
+import { useChangeWordKnowledge } from '../../requests/changeKnowledge';
 
 interface MidIconsProps {
   knowledge: DictionaryKnowledgeType;

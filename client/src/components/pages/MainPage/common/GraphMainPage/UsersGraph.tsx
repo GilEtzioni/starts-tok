@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Typography } from 'antd';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCoursesCards, fetchOneDayUser } from '../../../../../api/pages';
+import { fetchOneDayUser } from '../../../../../api/pages';
 import { fillMissingWeekDays } from '../../utils/userGraphHelper';
 import { weekPointsType } from '../../../../../api/common/types';
 import { WEEKLY_POINTS } from '../../../requests/queryKeys';
 import SkeltonPoints from '../Skeleton/SkeltonPoints';
+import { useWithAuth } from '../../../../../api/common/withAuth';
 
 const UsersGraph: React.FC = () => {
-
   const { Title } = Typography;
 
-  const { data: weekScore, isLoading } = useQuery(
+  const [pointsArray, setPointsArray] = useState<weekPointsType[]>([]); // State to store the points data
+
+  const withAuth = useWithAuth();
+  const oneDayUser = async (): Promise<weekPointsType[]> => {
+    const result = await withAuth((token) => fetchOneDayUser(token));
+    return result ?? [];
+  };
+
+  const { data: weekScore, isLoading, error } = useQuery(
     [WEEKLY_POINTS],
-    () => fetchOneDayUser(),
+    oneDayUser,
+    {
+      onSuccess: async (weekScore) => {
+        const pointsArray = await fillMissingWeekDays(weekScore);
+        setPointsArray(pointsArray ?? []);
+      },
+    }
   );
 
   const width = 650;
   const height = 380;
   const padding = 30;
 
-  const pointsArray: weekPointsType[] = !isLoading ? fillMissingWeekDays(weekScore) ?? [] : [];
-  const maxValue = !isLoading
-    ? Math.ceil(Math.max(...pointsArray.map((d) => d.points)) / 15) * 15
-    : 0;
+  // Fix maxValue to avoid division by zero
+  const maxValue = pointsArray.length > 0
+    ? Math.max(...pointsArray.map((d) => d.points)) || 1 // Ensure maxValue is at least 1
+    : 1;
 
   const points = pointsArray.map((d, i) => {
     const x = padding + (i * (width - 2 * padding)) / (pointsArray.length - 1);
@@ -34,6 +48,14 @@ const UsersGraph: React.FC = () => {
   const linePath = points
     .map((point, i) => (i === 0 ? `M${point.x},${point.y}` : `L${point.x},${point.y}`))
     .join(' ');
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center">
+        <h3>Oops! Something went wrong.</h3>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-end">

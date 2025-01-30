@@ -5,7 +5,7 @@ import { MissingWordType } from "../../../api/common/types";
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 
 interface useHandleInputProps {
-    lessonsData: MissingWordType | undefined;
+    lessonsData: MissingWordType | undefined | null;
     order: number;
     dispatch: ReturnType<typeof useDispatch>;
     foreignWord: string;
