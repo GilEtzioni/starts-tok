@@ -49,10 +49,9 @@ const sentenceSeeder = async (userId, courseIds) => {
             { ...commonData, language: seedersType_1.CourseLangauge.Spanish, sentence: sentence.spanish },
         ];
     });
-    console.log("Sentence Data: ", JSON.stringify(sentenceData, null, 2));
     for (const row of sentenceData) {
         try {
-            await db_1.db.insert(schema_1.Sentences).values(row); // Avoid duplicate key conflicts
+            await db_1.db.insert(schema_1.Sentences).values(row);
         }
         catch (error) {
             console.error(`Failed to insert sentence: ${JSON.stringify(row)}`);

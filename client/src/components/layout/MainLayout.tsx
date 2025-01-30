@@ -163,7 +163,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         <div className="bg-gray-400 w-px h-8"></div>
         <div className="text-4xl font-extrabold tracking-wide relative inline-block">
           <span className="bg-gradient-to-r from-[hsl(142.1,76.2%,36.3%)] to-[hsl(142.1,70.6%,45.3%)] bg-clip-text text-transparent transition-colors">
-            Start
+            Starts
           </span>
           <span className="text-black">Tok</span>
         </div>

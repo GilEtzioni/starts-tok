@@ -73,9 +73,6 @@ const queryClient = new QueryClient();
 
 const App: React.FC = () => {
 
-  useEffect(() => {
-    console.log("App.tsx")
-})
 
  return (
    <QueryClientProvider client={queryClient}>

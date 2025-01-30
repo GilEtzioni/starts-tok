@@ -7,7 +7,6 @@ export const handleClickedRow = (id: string, wordsArray: WordsType[], translated
   const result: TranslatedWordsType[] = [...translatedWords];
 
   // find the word
-  console.log("1")
   const filtered = wordsArray.find((item: WordsType) => item.wordId === id);
 
   // check if the word is already in the translatedWords array

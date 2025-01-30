@@ -40,8 +40,14 @@ exports.db = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = require("pg");
 const node_postgres_1 = require("drizzle-orm/node-postgres");
-const schema = __importStar(require("./schema")); // Adjust path as necessary
+const schema = __importStar(require("./schema"));
 dotenv_1.default.config();
+const requiredEnvVars = ["DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "DB_NAME"];
+for (const varName of requiredEnvVars) {
+    if (!process.env[varName]) {
+        throw new Error(`Missing required environment variable: ${varName}`);
+    }
+}
 const dbCredentials = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -50,13 +56,25 @@ const dbCredentials = {
     database: process.env.DB_NAME,
 };
 const pool = new pg_1.Pool({
-    user: dbCredentials.user,
-    password: dbCredentials.password,
-    host: dbCredentials.host,
-    port: dbCredentials.port,
-    database: dbCredentials.database,
-    ssl: {
-        rejectUnauthorized: false, // Allows SSL but does not validate certificates
-    },
+    ...dbCredentials,
+    ssl: { rejectUnauthorized: false },
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 5000,
+});
+pool.on("connect", (client) => {
+    client.query("SET idle_in_transaction_session_timeout = 60000;");
+});
+process.on("SIGTERM", async () => {
+    console.log("Closing database connection...");
+    await pool.end();
+    console.log("Database connection closed.");
+    process.exit(0);
+});
+process.on("SIGINT", async () => {
+    console.log("Closing database connection...");
+    await pool.end();
+    console.log("Database connection closed.");
+    process.exit(0);
 });
 exports.db = (0, node_postgres_1.drizzle)(pool, { schema });

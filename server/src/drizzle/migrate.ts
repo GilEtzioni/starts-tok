@@ -20,7 +20,7 @@ const pool = new Pool({
     port: dbCredentials.port,
     database: dbCredentials.database,
     ssl: {
-        rejectUnauthorized: false, // Allows SSL but does not validate certificates
+        rejectUnauthorized: false,
     },
 });
 
@@ -30,7 +30,7 @@ async function main() {
     const db = drizzle(pool);
 
     await migrate(db, {
-        migrationsFolder: "./src/drizzle/migrations", // Adjust the path to your migrations folder
+        migrationsFolder: "./src/drizzle/migrations",
     });
 
     console.log("Migration ended...");

@@ -22,14 +22,14 @@ const pool = new pg_1.Pool({
     port: dbCredentials.port,
     database: dbCredentials.database,
     ssl: {
-        rejectUnauthorized: false, // Allows SSL but does not validate certificates
+        rejectUnauthorized: false,
     },
 });
 async function main() {
     console.log("Migration started...");
     const db = (0, node_postgres_1.drizzle)(pool);
     await (0, migrator_1.migrate)(db, {
-        migrationsFolder: "./src/drizzle/migrations", // Adjust the path to your migrations folder
+        migrationsFolder: "./src/drizzle/migrations",
     });
     console.log("Migration ended...");
     process.exit(0);

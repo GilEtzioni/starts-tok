@@ -63,11 +63,9 @@ export const sentenceSeeder = async (
     ];
   });
 
-  console.log("Sentence Data: ", JSON.stringify(sentenceData, null, 2));
-
   for (const row of sentenceData) {
     try {
-      await db.insert(Sentences).values(row); // Avoid duplicate key conflicts
+      await db.insert(Sentences).values(row);
     } catch (error) {
       console.error(`Failed to insert sentence: ${JSON.stringify(row)}`);
       throw error;

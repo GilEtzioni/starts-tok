@@ -11,9 +11,11 @@ const helpingSeeders_1 = require("./utils/helpingSeeders");
 const seedersType_1 = require("../types/seedersType");
 const db_1 = require("../drizzle/db");
 const schema_1 = require("../drizzle/schema");
+const express_1 = require("@clerk/express");
 const mainSeeder = async (userId) => {
+    const user = await express_1.clerkClient.users.getUser(userId);
+    const userName = user?.username ?? "unknown user";
     const courseIds = (0, helpingSeeders_1.generateCourseIds)();
-    const userName = "גיל"; // i will change it dinamiclly in in next few days (when the sign-up will be done)
     console.log("\nstart seeding courses...");
     await (0, courseSeeder_1.courseSeeder)(userId, courseIds);
     console.log("courses seeded\n");

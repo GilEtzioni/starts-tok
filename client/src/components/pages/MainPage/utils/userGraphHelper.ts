@@ -2,8 +2,7 @@ import { format, subDays } from "date-fns";
 import { weekPointsType } from "../../../../api/common/types";
 import { DaysOfTheWeekHebrew } from "../type/mainPageType";
 
-export const fillMissingWeekDays = (weekScore: weekPointsType[] | undefined): weekPointsType[] | undefined => {
-
+export const fillMissingWeekDays = async (weekScore: weekPointsType[] | undefined): Promise<weekPointsType[]> => {
     if (!weekScore || !Array.isArray(weekScore)) return [];
 
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -17,7 +16,6 @@ export const fillMissingWeekDays = (weekScore: weekPointsType[] | undefined): we
         const formattedDate = format(currentDate, "yyyy-MM-dd");
         const dayName = daysOfWeek[currentDate.getDay()];
 
-        console.log("9")
         const existingEntry = weekPoints.find(entry => entry.date === formattedDate);
 
         if (existingEntry) {

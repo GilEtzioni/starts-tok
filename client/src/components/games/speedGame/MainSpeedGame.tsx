@@ -81,9 +81,6 @@ const MainSpeedGame: React.FC = () => {
         }
     }
 
-    if (isLoading) return <Spin tip="Loading..." />;
-    if (error) return <div>Error loading data</div>;
-
     const { Title } = Typography;
     return (
       <>

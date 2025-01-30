@@ -6,7 +6,6 @@ export const findMaxIndex = (foreignArray: CardType[], cardId: number): number =
     let maxContainerOrder = 0; 
 
     // find the card
-    console.log("8")
     const myCard = foreignArray.find((item) => item.id === cardId);
 
     if (myCard) {
@@ -89,7 +88,6 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
         const matchingWords = wordsArray.filter(item => item.hebrewWord === word);
         if (matchingWords.length > 0) {
             const foreignStrings = matchingWords.map(item => item.foreignWord);
-            console.log("9")
             const existingEntry = resultArray.find(entry => entry.hebrewString === word);
             if (existingEntry) {
                 existingEntry.foreignString.push(...foreignStrings);
@@ -128,7 +126,6 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
 
     // push words that dont in the dictionary
     remainingWords.forEach(word => {
-        console.log("10")
         const existingEntry = resultArray.find(entry => entry.hebrewString === word);
         if (existingEntry) {
             existingEntry.foreignString.push("לא במילון");
@@ -152,7 +149,6 @@ export const splitSentenceToWords = (hebrewSentence: string, wordsArray: WordsTy
     for (const mark of punctuation) {
         for (let i = 0; i < noSpaceString.length; i++) {
             if (noSpaceString.charAt(i) === mark) {
-                console.log("11")
                 const existingEntry = resultArray.find(entry => entry.hebrewString === mark);
                 if (existingEntry) {
                     existingEntry.foreignString.push(null);

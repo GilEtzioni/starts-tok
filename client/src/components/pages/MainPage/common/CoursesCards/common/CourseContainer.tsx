@@ -19,8 +19,6 @@ const CardContainer: React.FC = () => {
     [LESSONS_PAGE],
     course);
 
-    console.log("course: ", course)
-
   const finished: number[] | undefined = getNumberOfLessonsCompleted(coursesData);
 
   const totalCards = 6;

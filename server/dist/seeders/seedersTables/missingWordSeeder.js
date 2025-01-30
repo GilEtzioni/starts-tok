@@ -166,7 +166,6 @@ const missingWordSeeder = async (userId, courseIds) => {
             },
         ];
     });
-    console.log("Missing Word Data: ", JSON.stringify(missingWordData, null, 2));
     for (const row of missingWordData) {
         try {
             await db_1.db.insert(schema_1.MissingWords).values(row); // Avoid duplicate key conflicts

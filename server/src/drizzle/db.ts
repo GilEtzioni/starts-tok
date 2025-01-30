@@ -5,7 +5,6 @@ import * as schema from "./schema";
 
 dotenv.config();
 
-// Ensure required environment variables are present
 const requiredEnvVars = ["DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "DB_NAME"];
 for (const varName of requiredEnvVars) {
     if (!process.env[varName]) {
@@ -24,17 +23,15 @@ const dbCredentials = {
 const pool = new Pool({
     ...dbCredentials,
     ssl: { rejectUnauthorized: false },
-    max: 10, // ✅ Set max connections to prevent overloading
-    idleTimeoutMillis: 30000, // ✅ Close idle clients after 30 seconds
-    connectionTimeoutMillis: 5000, // ✅ Timeout if connection takes too long
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 5000,
 });
 
-// Keep-alive query to prevent connections from being closed in free-tier services like Render
 pool.on("connect", (client) => {
     client.query("SET idle_in_transaction_session_timeout = 60000;");
 });
 
-// Graceful shutdown handling
 process.on("SIGTERM", async () => {
     console.log("Closing database connection...");
     await pool.end();
@@ -49,5 +46,4 @@ process.on("SIGINT", async () => {
     process.exit(0);
 });
 
-// Export Drizzle ORM instance
 export const db = drizzle(pool, { schema });
