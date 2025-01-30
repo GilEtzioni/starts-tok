@@ -2,20 +2,34 @@ import { UpdatedWordType } from '../components/dictionary/types/DictionaryType';
 import axiosInstance from './common/axiosInstance';
 import { DictionaryKnowledgeType, EnglishLevel, WordsType } from './common/types';
 
-export const fetchFilterDictionary = async (levelArray: string[], knowledgeArray: DictionaryKnowledgeType[]): Promise<WordsType[]> => {
+export const fetchFilterDictionary = async (
+  levelArray: string[], 
+  knowledgeArray: DictionaryKnowledgeType[], 
+  token?: string
+): Promise<WordsType[]> => {
+  if (!token) {
+    throw new Error("No authentication token found.");
+  }
+
   const { data } = await axiosInstance.get('/filter', {
     params: {
       levelArray: JSON.stringify(levelArray),
       knowledgeArray: JSON.stringify(knowledgeArray),
     },
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
   });
+
   return data;
 };
 
+
 export const fetchDictionary = async (): Promise<WordsType[]> => {
-  const { data } = await axiosInstance.get('/dictionary');
+  const { data } = await axiosInstance.get('/dictionary');  
   return data;
 };
+
 
 export const changeWordKnowledge = async (updatedWord: UpdatedWordType) => {
   const { id, knowledge } = updatedWord;

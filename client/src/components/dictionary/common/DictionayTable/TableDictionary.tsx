@@ -15,30 +15,29 @@ import { useAuth } from '@clerk/clerk-react';
 const TableDictionary: React.FC = () => {
   const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
   const level = useSelector((state: RootState) => state.dictionary.levelFilter);
-
+  
   const [dataSource, setDataSource] = useState<WordsType[]>([]);
-
+  
   const knowledgeArray: DictionaryKnowledgeType[] = [];
   if (knowledge.isVy) knowledgeArray.push(DictionaryKnowledgeType.Vy);
   if (knowledge.isEx) knowledgeArray.push(DictionaryKnowledgeType.Ex);
   if (knowledge.isQueistion) knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
+
   const { getToken } = useAuth();
-  
+
+  const fetchWords = async () => {
+    const token = await getToken();
+    if (!token) {
+      console.error("failed to retrieve token.");
+      return [];
+    }
+    return fetchFilterDictionary(level, knowledgeArray, token);
+  };
+
   const { data: words, isLoading } = useQuery(
     [ALL_DICTIONARY_WORDS, knowledge, level],
-    async () => {
-      const token = await getToken();
-      const { data } = await axiosInstance.get('/filter', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-        params: {
-          levelArray: JSON.stringify(level),
-          knowledgeArray: JSON.stringify(knowledge),
-        }});
-        return data;
-    },
-     {
+    fetchWords,
+    {
       onSuccess: (data) => {
         const transformedWords = data.map((item) => ({
           key: item.wordId,
