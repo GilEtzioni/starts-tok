@@ -9,8 +9,9 @@ import { RootState } from '../../../../app/store';
 import { useSelector } from 'react-redux';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
 import SkeletonTable from './SkeletonTable';
-import axiosInstance from '../../../../api/common/axiosInstance';
-import { useAuth } from '@clerk/clerk-react';
+// import axiosInstance from '../../../../api/common/axiosInstance';
+// import { useAuth } from '@clerk/clerk-react';
+import { useWithAuth } from '../../../../api/common/withAuth';
 
 const TableDictionary: React.FC = () => {
   const knowledge = useSelector((state: RootState) => state.dictionary.knowledgeFilter);
@@ -23,23 +24,18 @@ const TableDictionary: React.FC = () => {
   if (knowledge.isEx) knowledgeArray.push(DictionaryKnowledgeType.Ex);
   if (knowledge.isQueistion) knowledgeArray.push(DictionaryKnowledgeType.QuestionMark);
 
-  const { getToken } = useAuth();
-
-  const fetchWords = async () => {
-    const token = await getToken();
-    if (!token) {
-      console.error("failed to retrieve token.");
-      return [];
-    }
-    return fetchFilterDictionary(level, knowledgeArray, token);
-  };
+  // const { getToken } = useAuth();
+  const withAuth = useWithAuth();
+  
+  const fetchWords = () => withAuth((token) => fetchFilterDictionary(level, knowledgeArray, token));
 
   const { data: words, isLoading } = useQuery(
     [ALL_DICTIONARY_WORDS, knowledge, level],
     fetchWords,
     {
-      onSuccess: (data) => {
-        const transformedWords = data.map((item) => ({
+      onSuccess: (words) => {
+        if (!words) return;
+        const transformedWords = words.map((item) => ({
           key: item.wordId,
           wordId: item.wordId,
           hebrewWord: item.hebrewWord,
