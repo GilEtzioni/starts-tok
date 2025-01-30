@@ -7,12 +7,12 @@ import useHangmanActions from '../utils/messageHelper';
 // redux
 import { useSelector } from 'react-redux';
 import { RootState } from "../../../../app/store";
-import { getSelectedWord } from '../utils/hangHelper';
+import { getSelectedWord } from '../utils/HangHelper';
 
 interface MainMessagesProps {
     randomWord: WordsType[];
     lettersArray: HangmanType[];
-    words: WordsType[] | undefined;
+    words: WordsType[] | undefined | null;
     selectedWord: string
 }
 

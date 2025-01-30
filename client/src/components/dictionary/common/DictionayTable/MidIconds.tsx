@@ -45,9 +45,6 @@ const MidIcons: React.FC<MidIconsProps> = ({ knowledge, wordId }) => {
     });
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error while adding the word</div>;
-
   return (
     <div className="flex justify-start items-center gap-2">
       {activeIcon.map(({ id, isClicked, defaultColor, activeColor, icon }) => (

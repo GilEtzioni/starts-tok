@@ -1,10 +1,9 @@
 import { format, subDays } from "date-fns";
 import { weekPointsType } from "../../../../api/common/types";
-  import { DaysOfTheWeekHebrew } from "../type/mainPageType";
+import { DaysOfTheWeekHebrew } from "../type/mainPageType";
 
-export const fillMissingWeekDays = (weekScore: weekPointsType[] | undefined): (weekPointsType[] | undefined) => {
-
-    if (weekScore === undefined) return;
+export const fillMissingWeekDays = async (weekScore: weekPointsType[] | undefined): Promise<weekPointsType[]> => {
+    if (!weekScore || !Array.isArray(weekScore)) return [];
 
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const weekPoints = weekScore;
@@ -54,6 +53,6 @@ const englishDayToHebrew = (englishDay: string): string => {
       case "Saturday":
         return DaysOfTheWeekHebrew.Saturday;
       default:
-        throw new Error(`Invalid English day: ${englishDay}`);
+        return DaysOfTheWeekHebrew.Saturday;
     }
-  };
+};

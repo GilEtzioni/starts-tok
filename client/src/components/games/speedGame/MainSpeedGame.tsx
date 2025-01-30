@@ -23,6 +23,7 @@ import { createGameArray, shuffleAllWords } from './utils/speedHelper';
 import { resetWrongCounter } from './slices/SpeedGameSlice';
 import { SPEED_GAME_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
+import { useWithAuth } from '../../../api/common/withAuth';
 
 const MainSpeedGame: React.FC = () => {
 
@@ -35,9 +36,11 @@ const MainSpeedGame: React.FC = () => {
     const [wordsCoppy, setWordsCoppy]  = useState<WordsType[] | undefined>([]);
     const { handleBack, restartGame } = useSpeedGameActions();
 
+    const withAuth = useWithAuth();
+    const fetchGameWords = () => withAuth((token) => fetchWords(token));
     const {  data: words, isLoading, error } = useQuery(
         [DICTIONARY_ALL_WORDS, wrongCounter === SPEED_GAME_FINISHED_NUMBER],
-        () => fetchWords(),
+        fetchGameWords,
         {
         onSuccess: (words) => {
             const validWords = words ?? []; 
@@ -77,9 +80,6 @@ const MainSpeedGame: React.FC = () => {
             setHebrewArray(updatedHebrewArray);
         }
     }
-
-    if (isLoading) return <Spin tip="Loading..." />;
-    if (error) return <div>Error loading data</div>;
 
     const { Title } = Typography;
     return (

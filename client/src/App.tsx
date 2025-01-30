@@ -17,15 +17,16 @@ import CoursesPage from './components/pages/LessonsPage';
 import  MainLessons from "./components/lessons/MainLessons";
 
 // login
-import SignUpContainer from './components/pages/LogInPage/SignUpContainer';
-import SignInContainer from './components/pages/LogInPage/ֿSignInContainer';
-import FactorOne from './components/pages/LogInPage/FactorOne';
-import VerifyEmailAddress from './components/pages/LogInPage/VerifyEmailAddress';
+import SignUpContainer from './components/pages/LogInPage/SignUp/SignUpContainer';
+import SignInContainer from './components/pages/LogInPage/SignIn/ֿSignInContainer';
+import FactorOne from './components/pages/LogInPage/SignIn/FactorOne';
+import VerifyEmailAddress from './components/pages/LogInPage/SignUp/VerifyEmailAddress';
 
 // games
 import MainWordle from './components/games/wordle/MainWordle';
 import MainHangman from './components/games/hangman/MainHangman';
 import MainSpeedGame from './components/games/speedGame/MainSpeedGame';
+import CreateDatabase from './components/pages/LogInPage/SignUp/CreateDatabase';
 
 const router = createBrowserRouter(
  createRoutesFromElements(
@@ -45,11 +46,11 @@ const router = createBrowserRouter(
          }
        />
 
-
-       <Route path="sign-in" element={<SignInContainer />} />
        <Route path="/sign-up" element={<SignUpContainer />} />
-
        <Route path="sign-up/verify-email-address" element={<VerifyEmailAddress />} />
+       <Route path="/sign-up/verify-email-address/create-db" element={<CreateDatabase />} />
+  
+       <Route path="sign-in" element={<SignInContainer />} />
        <Route path="sign-in/factor-one" element={<FactorOne />} />
 
        <Route path="wordle" element={<MainWordle />} />                 

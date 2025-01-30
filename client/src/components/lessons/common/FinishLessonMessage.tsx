@@ -17,7 +17,6 @@ const FinishLessonMessage: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const successCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
   const newPoints = useSelector((state: RootState) => state.lessons.points);
 
   const { mutate: finishLesson } = usePatchFinishLesson();
@@ -26,9 +25,6 @@ const FinishLessonMessage: React.FC = () => {
   const { name, lesson } = useParams<{ name?: string; lesson?: string; }>(); 
   const myLesson = lesson ?? 'default-lesson';  
   const myLevel = name ?? 'default-level';         
-
-  const status = useSelector((state: RootState) => state.lessons.status);
-  const order = useSelector((state: RootState) => state.lessons.order);
 
   const goToHomePage = () => {
     addNewPoints({ newPoints });

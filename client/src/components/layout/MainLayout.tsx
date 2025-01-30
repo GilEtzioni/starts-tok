@@ -58,7 +58,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
     if (flag === CourseLangauge.German) return "https://www.svgrepo.com/show/131993/germany.svg";
     if (flag === CourseLangauge.Italian) return "https://www.svgrepo.com/show/401660/flag-for-italy.svg";
     if (flag === CourseLangauge.Spanish) return "https://www.svgrepo.com/show/401755/flag-for-spain.svg";
-    return undefined;
+    // return undefined;
   };
     
     const isLoading = userFlagLoading || pointsLoading;

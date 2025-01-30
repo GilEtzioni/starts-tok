@@ -23,6 +23,7 @@ import { useQuery } from '@tanstack/react-query';
 import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
 import { resetClicks, resetSuccess, setCurrentMode } from './slices/WordleSlice';
 import { WORDLE_FINISHED_NUMBER } from '../common/consts';
+import { useWithAuth } from '../../../api/common/withAuth';
 
 
 const MainWordle: React.FC = () => {
@@ -38,15 +39,21 @@ const MainWordle: React.FC = () => {
     const dispatch = useDispatch();
     const { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess } = useWordleActions();
 
+    const withAuth = useWithAuth();
+    const fetchGameWords = () => withAuth((token) => fetchWords(token));
+    const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
+
     const { data: keyboard } = useQuery(
-      [KEYBOARD_LETTERS],() => fetchKeyboard())
+      [KEYBOARD_LETTERS],
+      fetchGameKeyboard)
 
     const {  data: words, isLoading } = useQuery(
       [DICTIONARY_ALL_WORDS, clicksCounter === WORDLE_FINISHED_NUMBER],
-      () => fetchWords(),
+      fetchGameWords,
     {
       enabled: !!keyboard,
       onSuccess: (words) => {
+        if (!words) return;
         dispatch(resetClicks());
         const filterArray = randomWordsArray(words);
         const gameWord = getRandomWord(filterArray);

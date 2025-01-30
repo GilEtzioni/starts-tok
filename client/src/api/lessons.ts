@@ -70,20 +70,25 @@ export const fetchAllWords = async (
 };
 
 export const patchFinishLesson = async (
-  { name, lesson }: { name: string; lesson: string },
-  token?: string
+  { name, lesson, token }: { name: string; lesson: string; token: string }
 ) => {
   if (!token) {
     throw new Error("No authentication token found.");
   }
-  
-  const response = await axiosInstance.patch(`/main/course/${name}/${lesson}`, {
-    headers: {
-      'Authorization': `Bearer ${token}`
+
+  const response = await axiosInstance.patch(
+    `/main/course/${name}/${lesson}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
-  });
+  );
+
   return response.data;
 };
+
 
 export const postNewPoints = async (
   userPoints: { newPoints: number },

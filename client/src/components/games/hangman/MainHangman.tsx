@@ -25,6 +25,7 @@ import { createGameArray, createLettersArray, getRandomWord } from './utils/Hang
 import { resetSuccesssCounter, resetWrongCounter, setSelectedWord } from './slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
+import { useWithAuth } from '../../../api/common/withAuth';
 
 const MainHangman: React.FC = () => {
 
@@ -37,15 +38,21 @@ const MainHangman: React.FC = () => {
     const dispatch = useDispatch();
     const selectedWord = useSelector((state: RootState) => state.hangman.selectedWord);
 
+    const withAuth = useWithAuth();
+    const fetchGameWords = () => withAuth((token) => fetchWords(token));
+    const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
+
     const { data: keyboard } = useQuery(
-      [KEYBOARD_LETTERS ],() => fetchKeyboard())
+      [KEYBOARD_LETTERS ],
+      fetchGameKeyboard)
 
     const {  data: words, isLoading } = useQuery(
       [DICTIONARY_ALL_WORDS, wrongLettersCounter === HANGMAN_FINISHED_NUMBER],
-      () => fetchWords(),
+      fetchGameWords,
       {
         enabled: !!keyboard,
         onSuccess: (words) => {
+          if (!words) return;
           dispatch(resetWrongCounter());
           const selectedWord = getRandomWord(words);
           dispatch(setSelectedWord(selectedWord.foreignWord));
@@ -55,7 +62,6 @@ const MainHangman: React.FC = () => {
   
           const lettersRandomArray = createLettersArray(selectedWord, keyboard);
           setLettersArray(lettersRandomArray);
-  
           const gameRandomArray = createGameArray(selectedWord, keyboard);
           setGameArray(gameRandomArray);
         }
@@ -63,7 +69,7 @@ const MainHangman: React.FC = () => {
   );
 
     const handleBack = () => {
-      if (words === undefined) return;
+      if (!words) return;
       const selectedWord = getRandomWord(words);
       dispatch(resetSuccesssCounter());
     };
