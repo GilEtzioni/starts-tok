@@ -3,7 +3,8 @@ import { useAuth } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { Spin, Typography } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { useMutation } from "@tanstack/react-query";
+import { useCreateDataBase } from "../../requests/createDataBase";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const CreateDatabase: React.FC = () => {
   const { Paragraph } = Typography;
@@ -15,7 +16,7 @@ const CreateDatabase: React.FC = () => {
       if (!userId) return;
 
       const token = await getToken();
-      const response = await fetch(`${process.env.REACT_APP_BACK_END_URL}/api/create-db`, {
+      const response = await fetch(`${process.env.REACT_APP_BACK_END_URL}/create-db`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,13 +29,9 @@ const CreateDatabase: React.FC = () => {
         throw new Error("Failed to create database");
       }
 
-      console.log("Database successfully created");
     },
     onSuccess: () => {
-      navigate("/main");
-    },
-    onError: (error) => {
-      console.error("Error creating database:", error);
+      navigate("/main", { state: { startTour: true } });
     },
   });
 

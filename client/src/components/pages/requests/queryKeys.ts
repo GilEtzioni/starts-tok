@@ -6,3 +6,4 @@ export const WORDLE_MAX_SCORE = 'wordleMaxScore'
 export const HANGMAN_MAX_SCORE = 'handmanMaxScore'
 export const SPEED_GAME_MAX_SCORE = 'speedGameMaxScore'
 export const BEST_USERS_TABLE = 'bestUsersTable'
+export const CREATE_DATA_BASE = "createDataBase"

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Layout, Badge, Avatar, Image, Modal, Skeleton } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
-import { SignedIn, useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 import Flags from './common/Flags';
 import { CourseLangauge } from '../../api/common/types';
 import { useQuery } from '@tanstack/react-query';
@@ -15,9 +15,22 @@ interface MainLayoutProps {
   myComponent: React.ReactNode;
   levelName: string;
   courseName: string;
+  pointsRef?: any;
+  languageRef?: any;
+  contactRef?: any;
+  dictionaryRef?: any;
+  homeRef?: any;
 }
-
-const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseName }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ 
+  myComponent, 
+  levelName, 
+  courseName, 
+  pointsRef, 
+  languageRef, 
+  contactRef,
+  dictionaryRef,
+  homeRef
+}) => {
 
   const withAuth = useWithAuth();
   const allPoints = () => withAuth((token) => fetchAllPoints(token));
@@ -58,11 +71,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
     if (flag === CourseLangauge.German) return "https://www.svgrepo.com/show/131993/germany.svg";
     if (flag === CourseLangauge.Italian) return "https://www.svgrepo.com/show/401660/flag-for-italy.svg";
     if (flag === CourseLangauge.Spanish) return "https://www.svgrepo.com/show/401755/flag-for-spain.svg";
-    // return undefined;
   };
-    
-    const isLoading = userFlagLoading || pointsLoading;
 
+  const isLoading = userFlagLoading || pointsLoading;
+  
     return (
       <Layout>
         <Header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-50 to-gray-100 shadow-md z-50 flex justify-between items-center px-6 py-4 border-b border-gray-200">
@@ -78,7 +90,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
             התנתק <i className="fas fa-sign-out-alt"></i>
           </Button>
 
-          <div className="flex items-center text-red-500 text-lg gap-2">
+          <div className="flex items-center text-red-500 text-lg gap-2" ref={pointsRef}>
             {isLoading ? (
               <Skeleton.Button active size="small" />
             ) : (
@@ -87,7 +99,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
             <i className="fas fa-star"></i>
           </div>
 
-          <div className="flex items-center justify-center gap-2 h-full">
+          <div className="flex items-center justify-center gap-2 h-full" ref={languageRef}>
             {isLoading ? (
               <Skeleton.Button active size="small" className="mt-3" />
             ) : (
@@ -133,7 +145,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
         {/* center Section */}
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center gap-4 pointer-events-none">
           <Link to="/contact">
-            <Button
+            <Button ref={contactRef}
               className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 pointer-events-auto"
             >
               צור קשר<i className="fas fa-envelope"></i>
@@ -141,6 +153,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
           </Link>
           <Link to="/dictionary">
             <Button
+              ref={dictionaryRef}
               className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 pointer-events-auto"
             >
               מילון <i className="fas fa-book"></i>
@@ -148,6 +161,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ myComponent, levelName, courseN
           </Link>
           <Link to="/main">
             <Button
+              ref={homeRef}
               className="border border-transparent !bg-transparent !text-gray-700 hover:!border-gray-300 hover:!text-gray-800 hover:!shadow-sm !px-4 !py-2 !transition-all text-sm flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 pointer-events-auto"
             >
               בית <i className="fas fa-home"></i>

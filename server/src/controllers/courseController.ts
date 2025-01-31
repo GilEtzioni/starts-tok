@@ -91,7 +91,8 @@ export const getFinishedCourses = async (req: Request, res: Response): Promise<v
 export const getLevelLessons = async (req: Request, res: Response): Promise<void> => {
 
     const { userId } = getAuth(req);
-  
+    const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
+
     if (!userId) {
         res.status(401).json({ error: "Unauthorized: User ID is missing" });
         return;
@@ -109,8 +110,6 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
       return;
     }
     const language = userLanguage[0].language;
-
-    const userLevel = req.params.userLevel as "A1" | "A2" | "B1" | "B2" | "C1" | "C2" ;
 
     const coursesSubjects = await db
     .select()

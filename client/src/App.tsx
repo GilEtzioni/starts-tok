@@ -27,6 +27,7 @@ import MainWordle from './components/games/wordle/MainWordle';
 import MainHangman from './components/games/hangman/MainHangman';
 import MainSpeedGame from './components/games/speedGame/MainSpeedGame';
 import CreateDatabase from './components/pages/LogInPage/SignUp/CreateDatabase';
+import ContactPage from './components/pages/MainPage/Contact/ContactPage';
 
 const router = createBrowserRouter(
  createRoutesFromElements(
@@ -57,7 +58,8 @@ const router = createBrowserRouter(
        <Route path="speedGame" element={<MainSpeedGame />} />               
        <Route path="hangman" element={<MainHangman />} /> 
 
-       <Route path="dictionary" element={<Dictionary />} />               
+       <Route path="dictionary" element={<Dictionary />} />
+       <Route path="contact" element={<ContactPage />} />                                         
        <Route path="main" element={<Main />} />                           
        <Route path="main/course" element={<CoursesLayout />}>     
          <Route path=":name" element={<CoursesPage />} />

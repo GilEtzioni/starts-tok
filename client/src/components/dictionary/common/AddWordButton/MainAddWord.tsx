@@ -34,9 +34,6 @@ const MainAddWord: React.FC = () => {
     );
   };
 
-  if (isLoading) return <div>Loading dictionary...</div>;
-  if (isError) return <div>Error loading dictionary.</div>;
-
   return (
     <>
       <Card

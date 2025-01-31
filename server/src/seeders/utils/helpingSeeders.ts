@@ -3,10 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 export const hangmanGameId = uuidv4();
 export const speedGameId = uuidv4();
 export const rowGameId = uuidv4();
+const NUMBER_OF_COURSES = 150;
+const NUMBER_OF_LANGUAGES = 150;
 
 export const generateCourseIds = (): Array<{index: number, uuid: string, courseName: string}> => {
   const courseIds: Array<{index: number, uuid: string, courseName: string}> = [];
-  for (let i = 0; i <= 150 * 4; i++) {
+  for (let i = 0; i <= NUMBER_OF_COURSES * NUMBER_OF_LANGUAGES; i++) {
     courseIds.push({
       index: i,
       uuid: uuidv4(),

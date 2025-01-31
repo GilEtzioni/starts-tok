@@ -175,6 +175,7 @@ const languages = [
   CourseLangauge.Italian,
   CourseLangauge.Spanish,
   CourseLangauge.French,
+  CourseLangauge.English
 ];
 
 const requiredLength = courses.length * languages.length;
