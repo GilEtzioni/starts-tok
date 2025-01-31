@@ -17,6 +17,7 @@ export enum CurrentMode {
   NotInDictionary = "notInDictionary",
   Failure = "failure",
   Running = "running",
+  Loading = "loading",
 }
 
 export type wordleType = {

@@ -22,7 +22,7 @@ import { useQuery } from '@tanstack/react-query';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
 import { fetchWords, fetchKeyboard } from '../../../api/games';
 import { createGameArray, createLettersArray, getRandomWord } from './utils/HangHelper';
-import { resetSuccesssCounter, resetWrongCounter, setSelectedWord } from './slices/HangmanSlice';
+import { resetSuccesssCounter, resetWrongCounter, setNumberWrongCounter, setSelectedWord } from './slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
@@ -53,17 +53,17 @@ const MainHangman: React.FC = () => {
         enabled: !!keyboard,
         onSuccess: (words) => {
           if (!words) return;
-          dispatch(resetWrongCounter());
           const selectedWord = getRandomWord(words);
           dispatch(setSelectedWord(selectedWord.foreignWord));
           setRandomWord([selectedWord]);
 
           if(!keyboard) return;
-  
+
           const lettersRandomArray = createLettersArray(selectedWord, keyboard);
           setLettersArray(lettersRandomArray);
           const gameRandomArray = createGameArray(selectedWord, keyboard);
           setGameArray(gameRandomArray);
+          dispatch(resetWrongCounter());
         }
       }
   );
@@ -72,13 +72,14 @@ const MainHangman: React.FC = () => {
       if (!words) return;
       const selectedWord = getRandomWord(words);
       dispatch(resetSuccesssCounter());
+      dispatch(setNumberWrongCounter(HANGMAN_FINISHED_NUMBER))
     };
 
     const { Title } = Typography;
     
     return (
       <>
-        {isLoading ? 
+        {isLoading || wrongLettersCounter === HANGMAN_FINISHED_NUMBER ? 
         <LoadingPage />
           :
           <Row>

@@ -15,28 +15,28 @@ export const useWordleActions = () => {
 
   // fail handlers
   const restartGameFail = () => {
-    dispatch(setCurrentMode(CurrentMode.Running));
+    dispatch(setCurrentMode(CurrentMode.Loading));
     dispatch(setClicks(WORDLE_FINISHED_NUMBER));
   };
 
   const handleBackFail = () => {
     const payload = { score: successCounter};
     newScore.mutate(payload);
-    dispatch(setCurrentMode(CurrentMode.Running));
+    dispatch(setCurrentMode(CurrentMode.Loading));
     dispatch(resetSuccess());
     dispatch(setClicks(WORDLE_FINISHED_NUMBER));
   };
 
   // success handlers
   const restartGameSuccess = () => {
-    dispatch(setCurrentMode(CurrentMode.Running));
+    dispatch(setCurrentMode(CurrentMode.Loading));
     dispatch(setClicks(WORDLE_FINISHED_NUMBER));
   };
 
   const handleBackSuccess = () => {
     const payload = { score: successCounter};
     newScore.mutate(payload);
-    dispatch(setCurrentMode(CurrentMode.Running));
+    dispatch(setCurrentMode(CurrentMode.Loading));
     dispatch(resetSuccess());
     dispatch(setClicks(WORDLE_FINISHED_NUMBER));
   };

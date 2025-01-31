@@ -70,6 +70,7 @@ const MainWordle: React.FC = () => {
         setGridAnswer(initialGrid);
         setCorrectAnswer(gameWord);
         setGridLetters(gridLetters);
+        dispatch(setCurrentMode(CurrentMode.Running));
       }
       }
   );
@@ -90,10 +91,18 @@ const MainWordle: React.FC = () => {
         return null;
     }
   };
-  
+
+  const handleBack = () => {
+    if (!words) return;
+    const selectedWord = getRandomWord(words);
+    dispatch(resetClicks());
+    dispatch(resetSuccess());
+    dispatch(setCurrentMode(CurrentMode.Loading))
+  };
+
   return (
     <>
-    {isLoading ?
+    {isLoading || currentMode === CurrentMode.Loading ?
     <LoadingPage /> 
     : ( <div className="flex flex-col min-h-screen">
       <div className="relative flex items-center mt-5">
@@ -104,7 +113,7 @@ const MainWordle: React.FC = () => {
         </div>
 
         <div className="ml-auto mr-5">
-          <BackButton />
+          <BackButton onBack={handleBack}/>
         </div>
     </div>
   

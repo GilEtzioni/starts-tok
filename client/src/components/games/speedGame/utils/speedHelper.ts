@@ -157,7 +157,7 @@ export const deleteOldCards =
     id: newWord?.wordId || "",
     index: hebrewIndex,
     language: Language.HebrewWord,
-    word: newWord.hebrewWord || "",
+    word: newHebrewArray[hebrewIndex].word || "",
     isSelected: SelectedCard.Failure,
   };
 
@@ -165,7 +165,7 @@ export const deleteOldCards =
     id: newWord?.wordId || "",
     index: germanIndex,
     language: Language.GermanWord,
-    word: newWord.foreignWord || "",
+    word: newGermanArray[germanIndex].word || "",
     isSelected: SelectedCard.Failure,
   };
 

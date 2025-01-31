@@ -49,7 +49,7 @@ const TableDictionary: React.FC = () => {
       }
     }
   );
-
+  
   return (
     <div className="w-4/5 mx-auto">
       {isLoading ? (
@@ -67,6 +67,12 @@ const TableDictionary: React.FC = () => {
               },
             },
             {
+              title: 'תרגום',
+              dataIndex: 'hebrewWord',
+              key: 'hebrewWord',
+              align: 'center' as const,
+            },
+            {
               title: 'מילה',
               dataIndex: 'foreignWord',
               key: 'foreignWord',
@@ -80,5 +86,5 @@ const TableDictionary: React.FC = () => {
     </div>
   );
 }
-
-export default TableDictionary;
+  
+  export default TableDictionary;

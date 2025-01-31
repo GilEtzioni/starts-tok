@@ -4,6 +4,7 @@ import { SelectedCard, speedGameType } from "../types/speedGameTypes";
 import { addOneWrongCounter, addOneSuccesssCounter } from "../slices/SpeedGameSlice";
 import { WordsType } from "../../../../api/common/types"
 import { useDispatch } from "react-redux";
+import { SpeedGameMode } from "../types/speedGameTypes"
 
 interface useHandleCouplesProps {
     hebrewArray: speedGameType[];
@@ -21,6 +22,7 @@ interface useHandleTimerProps {
     setHebrewArray: (array: speedGameType[]) => void; 
     dispatch: ReturnType<typeof useDispatch>;
     wrongCounter: number;
+    currentMode: SpeedGameMode;
 }
 
 
@@ -28,8 +30,8 @@ interface useHandleTimerProps {
 
 export const useHandleCouples = ({ hebrewArray, germanArray, setGermanArray, setHebrewArray , dispatch }: useHandleCouplesProps) => {
     useEffect(() => {
-        const hebrewId = hebrewArray.find((item) => item.isSelected === "clicked")?.id || null;
-        const germanId = germanArray.find((item) => item.isSelected === "clicked")?.id || null;
+        const hebrewId = hebrewArray.find((item) => item.isSelected === SelectedCard.Clicked)?.id || null;
+        const germanId = germanArray.find((item) => item.isSelected === SelectedCard.Clicked)?.id || null;
 
         if (hebrewId && germanId) {
             const updatedGermanArray = germanArray.map((item) =>
@@ -62,12 +64,14 @@ export const useHandleTimer = ({
     setHebrewArray,
     dispatch,
     wrongCounter,
+    currentMode
 }: useHandleTimerProps) => {
     const intervalDurationRef = useRef(2000); // start with 3 sec
     const roundCounterRef = useRef(1); 
 
     useEffect(() => {
         if (
+            currentMode === SpeedGameMode.Loading ||
             wrongCounter === germanArray.length ||
             wordsCoppy === undefined ||
             wordsCoppy.length === 0
@@ -104,7 +108,6 @@ export const useHandleTimer = ({
                     }
                 } else {
                     const { hebrewIndex, germanIndex } = getRandomIndex(hebrewArray, germanArray, SelectedCard.NotSelected);
-
                     const { newHebrewArray, newGermanArray } = deleteOldCards(
                         newWord,
                         hebrewArray,

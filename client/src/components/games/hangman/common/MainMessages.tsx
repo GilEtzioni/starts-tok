@@ -32,8 +32,8 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
                 <FinishedGameMesssage
                     onBack={handleBackFail}
                     onRestart={() => restartGameFail(words)}
-                    title="fail"
-                    description={`התשובה הנכונה היא ${selectedWord}`}
+                    title="המשחק נגמר"
+                    description={`${selectedWord} התשובה הנכונה היא`}
                 />
             );
         }
@@ -52,7 +52,8 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
                 <FinishedGameMesssage
                     onBack={handleBackSuccess}
                     onRestart={() => restartGameSuccess()}
-                    title="success"
+                    title="!כל הכבוד"
+                    description={`${selectedWord} התשובה הנכונה היא`}
                 />
             );
         }
