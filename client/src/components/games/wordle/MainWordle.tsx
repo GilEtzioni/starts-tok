@@ -37,20 +37,25 @@ const MainWordle: React.FC = () => {
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
     const dispatch = useDispatch();
-    const { restartGameFail, handleBackFail, restartGameSuccess, handleBackSuccess } = useWordleActions();
+    const { restartGameFail, handleBack, restartGameSuccess } = useWordleActions();
 
     const withAuth = useWithAuth();
     const fetchGameWords = () => withAuth((token) => fetchWords(token));
     const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
 
     const { data: keyboard } = useQuery(
-      [KEYBOARD_LETTERS],
-      fetchGameKeyboard)
+      [KEYBOARD_LETTERS, currentMode === CurrentMode.Loading],
+      fetchGameKeyboard, {
+        staleTime: Infinity, 
+        cacheTime: Infinity,
+      })
 
     const {  data: words, isLoading } = useQuery(
-      [DICTIONARY_ALL_WORDS, clicksCounter === WORDLE_FINISHED_NUMBER],
+      [DICTIONARY_ALL_WORDS, currentMode === CurrentMode.Loading],
       fetchGameWords,
     {
+      staleTime: Infinity, 
+      cacheTime: Infinity,
       enabled: !!keyboard,
       onSuccess: (words) => {
         if (!words) return;
@@ -80,9 +85,9 @@ const MainWordle: React.FC = () => {
       case CurrentMode.Running:
         return null;
       case CurrentMode.Failure:
-        return <FinishedGameMesssage onBack={handleBackFail} onRestart={restartGameFail} title='המשחק נגמר'/>;
+        return <FinishedGameMesssage onBack={handleBack} onRestart={restartGameFail} title='המשחק נגמר'/>;
       case CurrentMode.Success:
-        return <FinishedGameMesssage onBack={handleBackSuccess} onRestart={restartGameSuccess}  title='!כל הכבוד'/>
+        return <FinishedGameMesssage onBack={handleBack} onRestart={restartGameSuccess}  title='!כל הכבוד'/>
       case CurrentMode.NotInDictionary:
         return <NotWordMessage />;
       case CurrentMode.NotEnoughLetters:
@@ -90,14 +95,6 @@ const MainWordle: React.FC = () => {
       default:
         return null;
     }
-  };
-
-  const handleBack = () => {
-    if (!words) return;
-    const selectedWord = getRandomWord(words);
-    dispatch(resetClicks());
-    dispatch(resetSuccess());
-    dispatch(setCurrentMode(CurrentMode.Loading))
   };
 
   return (

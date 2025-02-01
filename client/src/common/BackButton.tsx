@@ -1,21 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Typography } from 'antd';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface BackButtonProps {
   onBack?: () => void;
 }
 
 const BackButton: React.FC<BackButtonProps> = ({ onBack }) => { 
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const handleBack = () => {
+  const handleBack = async () => {
+    await queryClient.removeQueries();     
     navigate(-1);
     if (onBack) {
       onBack();
     }
   };
-
+  
   const { Paragraph } = Typography;
 
   return (

@@ -43,13 +43,18 @@ const MainHangman: React.FC = () => {
     const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
 
     const { data: keyboard } = useQuery(
-      [KEYBOARD_LETTERS ],
-      fetchGameKeyboard)
+      [ KEYBOARD_LETTERS ,wrongLettersCounter === HANGMAN_FINISHED_NUMBER],
+      fetchGameKeyboard, {
+        staleTime: Infinity, 
+        cacheTime: Infinity,
+      })
 
     const {  data: words, isLoading } = useQuery(
       [DICTIONARY_ALL_WORDS, wrongLettersCounter === HANGMAN_FINISHED_NUMBER],
       fetchGameWords,
       {
+        staleTime: Infinity, 
+        cacheTime: Infinity,
         enabled: !!keyboard,
         onSuccess: (words) => {
           if (!words) return;

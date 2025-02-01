@@ -40,7 +40,7 @@ const MainSecond: React.FC = () => {
     const words = async () => withAuth((token) => fetchAllWords(token));
     
     const { data: lessonData, isLoading: isLessonsLoading } = useQuery(
-        [SECOND_LESSON_QUERY_KEY, name, lesson],
+        [SECOND_LESSON_QUERY_KEY, name, lesson ],
         secondLesson,
         {
             onSuccess: (lessonData) => {        
@@ -54,7 +54,7 @@ const MainSecond: React.FC = () => {
     const { data: allWords, isLoading: isWordsLoading } = useQuery(
         [ALL_WORDS, name, lesson],
         words,
-        {
+        { 
             enabled: !!lessonData,
             onSuccess: (allWords) => {
                 if (!allWords || !lessonData) return;
@@ -151,11 +151,11 @@ const MainSecond: React.FC = () => {
         <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
             {foreignArray
                 .filter(item => item.container === CardContainer.Down)
-                .sort((a, b) => a.containerOrder - b.containerOrder)
+                .sort()
                 .map(item => (
                     <Card
                         bodyStyle={{ padding: '12px' }}
-                        key={item.containerOrder}
+                        key={item.id}
                         onClick={() => handleClick(item)}
                         className='duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1'
                     >

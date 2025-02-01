@@ -43,6 +43,8 @@ const MainSpeedGame: React.FC = () => {
         [DICTIONARY_ALL_WORDS, wrongCounter === SPEED_GAME_FINISHED_NUMBER, currentMode === SpeedGameMode.Loading],
         fetchGameWords,
         {
+        staleTime: Infinity, 
+        cacheTime: Infinity,
         onSuccess: (words) => {
             const validWords = words ?? []; 
     

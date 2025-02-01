@@ -20,7 +20,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FIRST_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useWithAuth } from '../../../api/common/withAuth';
 
-const FirstCardContainer: React.FC = () => {
+const MainFirst: React.FC = () => {
 
     const { name, lesson } = useParams<{ name: string; lesson?: string  }>();
 
@@ -170,4 +170,4 @@ const FirstCardContainer: React.FC = () => {
       );
     };
     
-export default FirstCardContainer;
+export default MainFirst;

@@ -1,18 +1,18 @@
 import React from 'react';
 import { Card } from 'antd';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from "../../../app/store";
-import { setRunning, addOneOrder, resetClicks } from "../slices/LessonsSlice";
+import { useDispatch } from 'react-redux';
+import { setRunning, addOneOrder, resetClicks, setLessonName } from "../slices/LessonsSlice";
+import { LessonName } from '../types/LessonType';
 
 const SuccessMessage: React.FC = () => {
-    const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
-
+    
     const handleClick = () => {
         dispatch(resetClicks());
         dispatch(addOneOrder());
         dispatch(setRunning());
+        dispatch(setLessonName(LessonName.Loading))
     };
 
     return (

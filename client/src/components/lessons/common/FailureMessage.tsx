@@ -1,18 +1,20 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { setRunning, addOneOrder, resetClicks } from "../slices/LessonsSlice";
+import { setRunning, addOneOrder, resetClicks, setLessonName } from "../slices/LessonsSlice";
 import { Card, Typography } from 'antd';
+import { LessonName } from '../types/LessonType';
 
 const FailureMessage: React.FC = () => {
     const rightAnswer = useSelector((state: RootState) => state.lessons.anwser);
-    const order = useSelector((state: RootState) => state.lessons.order);
+    const lessonName = useSelector((state: RootState) => state.lessons.lessonName);
     const dispatch = useDispatch();
 
     const handleClick = () => {
         dispatch(resetClicks());
         dispatch(addOneOrder());
         dispatch(setRunning());
+        dispatch(setLessonName(LessonName.Loading))
     };
 
     const { Paragraph } = Typography;
@@ -26,12 +28,12 @@ const FailureMessage: React.FC = () => {
                 <div className="absolute top-2 right-2 flex flex-col items-end text-lg">
                     <div className="flex items-center mb-4">
                         <span className="font-semibold rtl mr-1 text-red-600">
-                            {order === 1 || order === 4 ? "!טעות" : ":טעות! התשובה הנכונה היא"}
+                            {lessonName === LessonName.MatchPairs ? "!טעות" : ":טעות! התשובה הנכונה היא"}
                         </span>
                         <i className="fas fa-times-circle text-red-600"></i>
                     </div>
 
-                    {order !== 1 && order !== 4 && (
+                    {lessonName !== LessonName.MatchPairs && (
                         <div className="absolute mt-7 w-full">
                         <Paragraph
                             dir="ltr"

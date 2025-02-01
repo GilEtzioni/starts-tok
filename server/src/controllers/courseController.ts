@@ -271,6 +271,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
           eq(Words.language, language)
         )
       )
+      .orderBy(sql`RANDOM()`)
       .limit(FAILURE_WORDS);
 
     const failureLessonWordsArray = failureLessonWords.map((item) => item.foreignWord);
@@ -285,6 +286,8 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
         container: "down",
       });
     });
+
+    const shuffleWords = shuffleArray(WordsResult)
 
     // get lesson's sentence
     const currentForeignSentence = await db
@@ -317,7 +320,7 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     };
 
     const result = {
-      words: WordsResult,
+      words: shuffleWords,
       hebrewSentence: SentecncesResult.hebrewSentence,
       foreignSentence: SentecncesResult.foreignSentence
     };

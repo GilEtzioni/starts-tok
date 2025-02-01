@@ -1,4 +1,4 @@
-// redux
+import { ReactElement, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../app/store";
 
@@ -14,41 +14,45 @@ import ProgressBar from './common/ProgressBar';
 import FailureMessage from './common/FailureMessage';
 import SuccessMessage from './common/SuccessMessage';
 import FinishLessonMessage from './common/FinishLessonMessage';
-import { LessonStatus } from './types/LessonType';
-import { useEffect } from 'react';
-import { addOnePoint, resetOrder, setRunning } from './slices/LessonsSlice';
+import { LessonName, LessonStatus } from './types/LessonType';
+import { resetOrder, setLessonName, setRunning } from './slices/LessonsSlice';
 
 const MainLearn: React.FC = () => {
-
     const status = useSelector((state: RootState) => state.lessons.status);
+    const randomOrder = useSelector((state: RootState) => state.lessons.randomOrder);
     const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
 
-    const renderCurrentLesson = () => {
+    const [currentLesson, setCurrentLesson] = useState<{ component: ReactElement | null, key: number }>({
+        component: null,
+        key: 0,
+    });
+
+    const getLessonComponent = (order: number): ReactElement | null => {
         switch (order) {
             case 1:
+            case 4:
+                dispatch(setLessonName(LessonName.MatchPairs));
                 return <MainFirst />;
-            case 2: 
+            case 2:
+            case 5:
+                dispatch(setLessonName(LessonName.ForeignSentence));
                 return <MainSecond />;
             case 3:
-                return <MainThird />;
-            case 4:
-                return <MainFirst />;
-            case 5: 
-                return <MainSecond />;                
             case 6:
+                dispatch(setLessonName(LessonName.ForeignMissing));
                 return <MainThird />;
             default:
-                return <FinishLessonMessage />
+                return null;
         }
     };
 
-    // count success
     useEffect(() => {
-        if(status === LessonStatus.Success) {
-            dispatch(addOnePoint());
-        }
-    },[status]);
+        setCurrentLesson(prev => ({
+            component: getLessonComponent(randomOrder),
+            key: prev.key + 1,
+        }));
+    }, [randomOrder, dispatch]);
 
     const handleBack = () => {
         dispatch(resetOrder());
@@ -67,8 +71,8 @@ const MainLearn: React.FC = () => {
             </div>
         </div>
       
-        <div>{renderCurrentLesson()}</div>
-        
+        <div>{order === 7 ? <FinishLessonMessage /> : <div key={currentLesson.key}>{currentLesson.component}</div>}</div> 
+
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             {status === LessonStatus.Failure && <FailureMessage />}
             {status === LessonStatus.Success && <SuccessMessage />}
@@ -76,6 +80,6 @@ const MainLearn: React.FC = () => {
         </div>
         </>
       );
-    }      
+}      
 
 export default MainLearn;

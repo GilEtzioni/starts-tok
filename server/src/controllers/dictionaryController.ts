@@ -33,7 +33,8 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
         .where(
             and(
                 eq(Words.userId, userId),
-                eq(Words.language, language)
+                eq(Words.language, language),
+                isNotNull(Words.knowledge)
             )
         )
         .orderBy(Words.wordOrder);

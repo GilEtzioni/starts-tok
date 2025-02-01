@@ -17,7 +17,7 @@ interface MainMessagesProps {
 }
 
 const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, words, selectedWord }) => {
-    const { handleBackFail, restartGameFail, handleBackSuccess, restartGameSuccess } = useHangmanActions();
+    const { restartGameFail, restartGameSuccess, handleBack } = useHangmanActions();
     const wrongCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
 
     const renderEndGameMessage = () => {
@@ -30,7 +30,7 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
         if (wrongCounter === 6 && words) {
             return (
                 <FinishedGameMesssage
-                    onBack={handleBackFail}
+                    onBack={handleBack}
                     onRestart={() => restartGameFail(words)}
                     title="המשחק נגמר"
                     description={`${selectedWord} התשובה הנכונה היא`}
@@ -50,7 +50,7 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
         if (successLetter === uniqueLettersLength && words) {
             return (
                 <FinishedGameMesssage
-                    onBack={handleBackSuccess}
+                    onBack={handleBack}
                     onRestart={() => restartGameSuccess()}
                     title="!כל הכבוד"
                     description={`${selectedWord} התשובה הנכונה היא`}
