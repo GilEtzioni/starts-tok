@@ -17,7 +17,7 @@ const NextButton: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center p-6">
-      {(lessonName !== LessonName.MatchPairs && clicks === 0) && (
+      {(lessonName !== LessonName.MatchPairs) && (
         <Card
           className="!flex !items-center !justify-center h-8 !w-44
           bg-green-500 text-white border-green-600 border-b-4 border-0 hover:!bg-green-600 hover:!cursor-pointer

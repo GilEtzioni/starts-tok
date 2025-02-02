@@ -8,7 +8,7 @@ import { setSuccess, setFailure, resetClicks, setRightAnswer } from '../slices/L
 import { RootState } from "../../../app/store";
 
 // components
-import { splitSentenceToWords, findMaxIndex } from '../utils/SecondHelper';
+import { findMaxIndex } from '../utils/lessonsHelper';
 import { useHandleNext} from "../utils/SecondEffects";
 import HebrewSentenceTwo from "./HebrewSentenceTwo";
 import { CardType, TranslatedArray } from '../types/SecondLessonType';
@@ -17,8 +17,8 @@ import { CardContainer } from '../types/SecondLessonType';
 
 // fetch data
 import { useParams } from 'react-router-dom';
-import { fetchAllWords, fetchSecondLesson } from '../../../api/lessons';
-import { SECOND_LESSON_QUERY_KEY, ALL_WORDS } from '../requests/queryKeys';
+import { fetchSecondLesson } from '../../../api/lessons';
+import { SECOND_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
 
@@ -37,50 +37,22 @@ const MainSecond: React.FC = () => {
 
     const withAuth = useWithAuth();
     const secondLesson = async () => withAuth((token) => fetchSecondLesson(lesson ?? "", token));
-    const words = async () => withAuth((token) => fetchAllWords(token));
     
-    const { data: lessonData, isLoading: isLessonsLoading } = useQuery(
-        [SECOND_LESSON_QUERY_KEY, name, lesson ],
+    const { data: lessonData, isLoading } = useQuery(
+        [SECOND_LESSON_QUERY_KEY, name, lesson, clicks === 2 ],
         secondLesson,
         {
-            onSuccess: (lessonData) => {        
+            staleTime: Infinity, 
+            cacheTime: Infinity,
+            onSuccess: (lessonData) => {     
                 if (!lessonData) return;
+                dispatch(resetClicks());
                 dispatch(setRightAnswer(lessonData.foreignSentence));
                 setForeignArray(lessonData.words);
+                setTranslatedWords(lessonData.translatedArray);
             }
         }
     );
-    
-    const { data: allWords, isLoading: isWordsLoading } = useQuery(
-        [ALL_WORDS, name, lesson],
-        words,
-        { 
-            enabled: !!lessonData,
-            onSuccess: (allWords) => {
-                if (!allWords || !lessonData) return;
-                const hebrewSentence = lessonData.hebrewSentence;
-                const punctuation = [',', '.', '-', '?', '...', '!'];
-                const wordsArray = splitSentenceToWords(hebrewSentence, allWords);
-    
-                if (!wordsArray) return;
-    
-                const copiedArray = [...wordsArray];
-                const firstItem = copiedArray.shift();
-                const lastItemIndex = copiedArray.length - 1;
-            
-                if (firstItem && punctuation.includes(firstItem.hebrewString) && lastItemIndex >= 0) {
-                    copiedArray[lastItemIndex].hebrewString =
-                        firstItem.hebrewString + copiedArray[lastItemIndex].hebrewString;
-                } 
-                else if (firstItem) {
-                    copiedArray.unshift(firstItem);
-                }
-            
-                setTranslatedWords(copiedArray);
-            }
-        }
-    );
-    
 
     useHandleNext ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonData, foreignArray, order });
 
@@ -110,7 +82,6 @@ const MainSecond: React.FC = () => {
         }
     }
 
-    const isLoading = isLessonsLoading || isWordsLoading;
     const { Button } = Skeleton
 
     return (

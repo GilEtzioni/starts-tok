@@ -19,6 +19,7 @@ import { fetchFirstLesson } from '../../../api/lessons';
 import { useQuery } from '@tanstack/react-query';
 import { FIRST_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useWithAuth } from '../../../api/common/withAuth';
+import { resetClick } from '../../dictionary/slices/DictionarySlice';
 
 const MainFirst: React.FC = () => {
 
@@ -26,6 +27,7 @@ const MainFirst: React.FC = () => {
 
     const status = useSelector((state: RootState) => state.lessons.status);
     const order = useSelector((state: RootState) => state.lessons.order);
+    const clicks = useSelector((state: RootState) => state.lessons.clicks);
     const dispatch = useDispatch();
     
     const [foreignId, setForeignID] = useState(0);
@@ -40,11 +42,14 @@ const MainFirst: React.FC = () => {
     const firstLesson = () => withAuth((token) => fetchFirstLesson(lesson ?? "", token));  
 
     const { data: lessons, isLoading } = useQuery(
-        [FIRST_LESSON_QUERY_KEY, name, lesson],
+        [FIRST_LESSON_QUERY_KEY, name, lesson, clicks === 2],
         firstLesson,
         {
+          staleTime: Infinity, 
+          cacheTime: Infinity,
           onSuccess: (lessons) => {
             if (!lessons) return;
+            dispatch(resetClick());
             setForeignArray(lessons.foreign);
             setHebrewArray(lessons.hebrew);
           }

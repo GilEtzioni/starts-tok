@@ -1,20 +1,24 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { setRunning, addOneOrder, resetClicks, setLessonName } from "../slices/LessonsSlice";
+import { setRunning, addOneOrder, resetClicks, setLessonName, addOneClick } from "../slices/LessonsSlice";
 import { Card, Typography } from 'antd';
 import { LessonName } from '../types/LessonType';
+import { useQueryClient } from '@tanstack/react-query';
+import { setClicks } from '../../games/wordle/slices/WordleSlice';
 
 const FailureMessage: React.FC = () => {
     const rightAnswer = useSelector((state: RootState) => state.lessons.anwser);
     const lessonName = useSelector((state: RootState) => state.lessons.lessonName);
     const dispatch = useDispatch();
+    const queryClient = useQueryClient();
 
-    const handleClick = () => {
-        dispatch(resetClicks());
+    const handleClick = async() => {
+        dispatch(setClicks(2))
         dispatch(addOneOrder());
         dispatch(setRunning());
         dispatch(setLessonName(LessonName.Loading))
+        await queryClient.removeQueries();
     };
 
     const { Paragraph } = Typography;

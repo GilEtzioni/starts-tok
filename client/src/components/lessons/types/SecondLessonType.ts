@@ -1,3 +1,5 @@
+import { SenteceType } from "../../../api/common/types";
+
 export interface CardType {
     id: number;
     containerOrder: number;
@@ -6,8 +8,8 @@ export interface CardType {
 }
 
 export interface TranslatedArray {
-    hebrewString: string,
-    foreignString: (string | null)[],
+    hebrewWord: string,
+    foreignWord: (string | null)[],
 }
 
 export interface foreignArrayType {

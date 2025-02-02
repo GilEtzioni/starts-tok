@@ -8,7 +8,7 @@ interface useHandleInputProps {
     lessonsData: MissingWordType | undefined | null;
     order: number;
     dispatch: ReturnType<typeof useDispatch>;
-    foreignWord: string;
+    foreignWord: string | undefined;
     clicks: number;
     inputValue: string;
     setSuccess: ActionCreatorWithoutPayload;
@@ -17,6 +17,7 @@ interface useHandleInputProps {
 
 export const useHandleInput = ({ dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue }: useHandleInputProps) => {
     useEffect(() => {
+      if (!foreignWord) return;
         if (inputValue === "" && clicks === 1) {
           dispatch(resetClicks());
         }

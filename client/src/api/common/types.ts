@@ -1,4 +1,4 @@
-import { CardType } from "../../components/lessons/types/SecondLessonType";
+import { CardType, TranslatedArray } from "../../components/lessons/types/SecondLessonType";
 
 export enum EnglishLevel {
   A1 = "A1",
@@ -22,6 +22,7 @@ export enum HebrewLevel {
     foreignSentence: string, 
     hebrewSentence: string, 
     words: CardType[],
+    translatedArray: TranslatedArray[];
   }
   
   export type MissingWordType = {
@@ -29,6 +30,9 @@ export enum HebrewLevel {
     hebrewWord: string,
     foreignSentence: string,
     foreignWord: string,
+    translatedArray: TranslatedArray[];
+    firstPartForeign: string,
+    secondPartForeign: string,
   }
 
   export type CourseType = {

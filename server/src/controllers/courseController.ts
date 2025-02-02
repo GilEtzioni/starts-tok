@@ -5,6 +5,7 @@ import { getAuth } from "@clerk/express";
 import { and, desc, eq, notInArray, sql } from "drizzle-orm";
 import { CourseLangauge } from "../types/seedersType";
 import { shuffleArray } from "../seeders/utils/helpingSeeders";
+import { processSentence, splitTheSentence } from "../seeders/utils/helperSentece";
 
 export const getCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -189,12 +190,23 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
         eq(MissingWords.missingSentenceOrder, randomNumber)
       )
     );
+    const translatedArray = await processSentence(currentHebrewLesson[0]?.missingSentence ?? "", language)
+
+    const { firstPart: firstPartForeign, secondPart: secondPartForeign } = splitTheSentence(
+      currentForeignLesson[0]?.missingSentence ?? "", 
+      currentForeignLesson[0]?.missingWord ?? ""
+    );
+    
     const result = {
       hebrewSentence: currentHebrewLesson[0]?.missingSentence,
       hebrewWord: currentHebrewLesson[0]?.missingWord,
       foreignSentence: currentForeignLesson[0]?.missingSentence,
-      foreignWord: currentForeignLesson[0]?.missingWord
+      foreignWord: currentForeignLesson[0]?.missingWord,
+      translatedArray,
+      firstPartForeign,
+      secondPartForeign
     };
+    
     
     res.json(result);
   
@@ -314,15 +326,13 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
       )
     );
 
-    const SentecncesResult = {
-      hebrewSentence: currentHebrewSentence[0]?.sentence,
-      foreignSentence: currentForeignSentence[0]?.sentence,
-    };
+    const translatedArray = await processSentence(currentHebrewSentence[0]?.sentence ?? "", language)
 
     const result = {
       words: shuffleWords,
-      hebrewSentence: SentecncesResult.hebrewSentence,
-      foreignSentence: SentecncesResult.foreignSentence
+      hebrewSentence: currentHebrewSentence[0]?.sentence,
+      foreignSentence: currentForeignSentence[0]?.sentence,
+      translatedArray,
     };
 
     res.json(result);
