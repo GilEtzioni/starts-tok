@@ -1,0 +1,311 @@
+cd server
+npm install drizzle-orm drizzle-kit pg
+npm i --save-div drizzle-kit
+npm i dotenv
+npm init -y
+npm install typescript @types/node @types/pg ts-node --save-dev
+npm install tsx --save-dev
+npm install postgres
+npm install --save-dev @types/cors
+
+
+touch drizzle.config.ts
+touch tsconfig.json
+touch .env
+mkdir src
+cd src
+mkdir drizzle
+touch main.ts
+touch index.ts
+cd drizzle
+touch schema.ts
+touch migrate.ts
+cd ..
+cd ..
+
+--------- drizzle.config.ts ---------
+
+import dotenv from "dotenv";
+
+dotenv.config();
+
+// Connection string
+const dbCredentials = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+};
+
+const connectionString = `postgresql://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
+
+const config = {
+    schema: "./src/drizzle/schema.ts", // Include the .ts extension
+    out: "./src/drizzle/migrations",
+    dialect: "postgresql",
+    dbCredentials: {
+        connectionString,
+    },
+    verbose: true,
+    strict: true,
+};
+
+export default config;
+
+--------- schema.ts ---------
+
+import { pgTable , varchar, serial , text , decimal, real, boolean, json, jsonb, pgEnum} from "drizzle-orm/pg-core";
+
+// "user" = the name of the table
+export const UserTable = pgTable("user", {
+    id: serial("id").primaryKey(),
+    phone: text("phone").notNull(),
+    fullName: varchar("fullName", { length : 255 }),
+})
+
+/*
+export const MoodEnum = pgEnum("mood", ["sad", "happy", "okay"]);
+
+export const TestTable = pgTable("test", {
+    id: serial("id").primaryKey(),
+    price: decimal("price", { precision: 7, scale: 2 }), // 12345.67
+    fullPrice: real("fullPrice"), // 12.34567...
+    deliered: boolean("deliered"),
+    data: json("data"),
+    dataBinary: jsonb("data"),
+    mood: MoodEnum("mood").default("okay"),
+});
+*/
+
+--------- tsconfig.json ---------
+
+{
+    "compilerOptions": {
+      "target": "ES2020",                      // Specify ECMAScript target version
+      "module": "CommonJS",                   // Specify module code generation
+      "rootDir": "./src",                     // Root directory of your TypeScript files
+      "outDir": "./dist",                     // Output directory for compiled JavaScript files
+      "strict": true,                         // Enable all strict type-checking options
+      "esModuleInterop": true,                // Allow default imports from CommonJS modules
+      "forceConsistentCasingInFileNames": true, // Ensure consistent file casing
+      "skipLibCheck": true,                   // Skip type checking of declaration files
+      "moduleResolution": "node",            // Module resolution strategy
+      "resolveJsonModule": true,             // Allow importing JSON files
+      "types": ["node"]                      // Include Node.js type definitions
+    },
+    "include": ["src"],                       // Include the source directory
+    "exclude": ["node_modules", "dist"]      // Exclude unnecessary directories
+  }
+
+--------- migrate.ts ---------
+
+import { Pool } from "pg";
+import dotenv from "dotenv";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { migrate } from "drizzle-orm/node-postgres/migrator";
+
+dotenv.config();
+
+// Database credentials from environment variables
+const dbCredentials = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT || "5432", 10),
+    database: process.env.DB_NAME,
+};
+
+// Constructing connection string
+const connectionString = `postgresql://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
+
+// Initializing the connection pool
+const pool = new Pool({
+    connectionString: connectionString,
+});
+
+async function main() {
+    console.log("Migration started...");
+    
+    // Create the Drizzle database instance
+    const db = drizzle(pool); 
+    
+    // Running the migration
+    await migrate(db, {
+        migrationsFolder: "./src/drizzle/migrations", // Path to your migrations folder
+    });
+    
+    console.log("Migration ended...");
+    process.exit(0);
+}
+
+// Execute the main function
+main().catch((error) => {
+    console.error("Migration failed:", error);
+    process.exit(1);
+});
+
+--------- main.ts ---------
+import "dotenv/config";
+import {db} from "./drizzle/db";
+import { UserTable } from "./drizzle/schema";
+import { and, between, eq, gt, gte, ilike, inArray, isNotNull, isNull, like, lt, lte, ne, not, notBetween, notInArray, notLike, or } from "drizzle-orm";
+
+async function main() {
+    // await db.insert(UserTable).values({
+    //     fullName: 'niv',
+    //     phone: "0544505558", // Required field
+    // })
+    // await db.delete(UserTable);
+    const user1 = await db.select().from(UserTable).where(eq(UserTable.id, 1)); // ==
+    const user2 = await db.select().from(UserTable).where(ne(UserTable.id, 1)); // !=
+    const user3 = await db.select().from(UserTable).where(gt(UserTable.id, 3)); // greater than 3
+    const user4 = await db.select().from(UserTable).where(gte(UserTable.id, 3)); // greater than equtal 3
+    const user5 = await db.select().from(UserTable).where(lt(UserTable.id, 3)); // less than 3
+    const user6 = await db.select().from(UserTable).where(lte(UserTable.id, 3)); // less than equtal 3
+    const user7 = await db.select().from(UserTable).where(isNull(UserTable.age)); // age == null
+    const user8 = await db.select().from(UserTable).where(isNotNull(UserTable.id)); // id != null
+    const user9 = await db.select().from(UserTable).where(inArray(UserTable.id,[2,4])); // id == 2,4
+    const user10 = await db.select().from(UserTable).where(notInArray(UserTable.id,[2,4])); // id != 2,4
+    const user11 = await db.select().from(UserTable).where(between(UserTable.id,2,4)); // 2 <= id <= 4
+    const user12 = await db.select().from(UserTable).where(notBetween(UserTable.id,2,4)); // ! (2 <= id <= 4)
+    const user13 = await db.select().from(UserTable).where(like(UserTable.phone, "%544%")); // ... 544 ....
+    const user14 = await db.select().from(UserTable).where(ilike(UserTable.fullName, "%GiL%")); // ignore capital letters
+    const user15 = await db.select().from(UserTable).where(notLike(UserTable.fullName, "%gil%")); // 
+    const user16 = await db.select().from(UserTable).where(not(eq(UserTable.id, 1))); // not (...)
+    const user17 = await db.select().from(UserTable).where(and(between(UserTable.id,2,4),isNull(UserTable.age))); // (...) and (...)
+    const user18 = await db.select().from(UserTable).where(or(between(UserTable.id,2,4),isNull(UserTable.age))); // (...) or (...)
+
+    console.log(user18);
+}
+
+main()
+
+--------- db.ts ---------
+import dotenv from "dotenv";
+import { Pool } from "pg";
+import { drizzle } from "drizzle-orm/node-postgres";
+import * as schema from "./schema";
+
+dotenv.config();
+
+// Database credentials from environment variables
+const dbCredentials = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT || "5432", 10),
+    database: process.env.DB_NAME,
+};
+
+// Initializing the connection pool
+const pool = new Pool({
+    user: dbCredentials.user,
+    password: dbCredentials.password,
+    host: dbCredentials.host,
+    port: dbCredentials.port,
+    database: dbCredentials.database,
+});
+
+// Creating the Drizzle instance
+export const db = drizzle(pool, { schema });
+
+--------- index.ts ---------
+import express, { Request, Response } from "express";
+import {db} from "./drizzle/db";
+import { UserTable } from "./drizzle/schema";
+import "dotenv/config";
+
+const app = express();
+
+// middleware for parsing JSON
+app.use(express.json());
+
+
+app.get("/", async (req: Request, res: Response) => {
+    try{
+    const users = await db.select().from(UserTable);
+    res.json(users);
+    }
+    catch(err) {
+        console.error(err);
+        res.status(500).send('Error fetching users');
+    }
+});
+
+app.get("/api/users", (req: Request, res: Response) => {
+    console.log(req.query);
+    res.status(201).send({ msg: "here!" });
+});
+
+app.get("/api/users/:id", (req: Request, res: Response) => {
+    res.status(201).send({ msg: "here!" }); // there is also status in the console
+});
+
+const PORT: number = Number(process.env.PORT) || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`);
+});
+
+
+--------- .env ---------
+DB_USER=postgres
+DB_PASSWORD=9Q1aa1wd8i4
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=development_db # if you dont have it, it will crash
+
+--------- create table ---------
+npx drizzle-kit generate
+
+--------- delete table ---------
+npx drizzle-kit drop
+
+--------- migrate ---------
+npx tsx src/drizzle/migrate.ts
+
+--------- delete the tables ---------
+rm -rf ./src/drizzle/migrations
+psql -U postgres -d development_db
+DROP TABLE IF EXISTS "words" CASCADE;
+DROP TABLE IF EXISTS "courses" CASCADE;
+DROP TABLE IF EXISTS "missingWords" CASCADE;
+DROP TABLE IF EXISTS "sentences" CASCADE;
+DROP TABLE IF EXISTS "games" CASCADE;
+DROP TYPE IF EXISTS levelEnglishEnum CASCADE;
+DROP TYPE IF EXISTS levelHebrewEnum CASCADE;
+
+DROP TYPE IF EXISTS "levelEnglish" CASCADE;
+DROP TABLE IF EXISTS "levelEnglish" CASCADE;
+DROP TYPE IF EXISTS levelHebrew CASCADE;
+DROP TABLE IF EXISTS levelHebrew CASCADE;
+DROP TYPE IF EXISTS "levelHebrew" CASCADE;
+DROP TABLE IF EXISTS "levelHebrew" CASCADE;
+DROP TABLE IF EXISTS "levelHebrew" CASCADE;
+DROP TYPE IF EXISTS "gameNameEnum" CASCADE;
+DROP TYPE IF EXISTS "languages" CASCADE;
+DROP TYPE IF EXISTS "languges" CASCADE;
+DROP TYPE IF EXISTS "languge" CASCADE;
+DROP TYPE IF EXISTS "languges" CASCADE;
+DROP TYPE IF EXISTS "gameName" CASCADE;
+DROP TABLE IF EXISTS "users" CASCADE;
+DROP TYPE IF EXISTS "languagesEnum" CASCADE;
+DROP TABLE IF EXISTS "current_language" CASCADE;
+DROP TABLE IF EXISTS "languages" CASCADE;
+DROP TABLE IF EXISTS "language" CASCADE;
+DROP TABLE IF EXISTS "languges" CASCADE;
+
+\q
+
+npx drizzle-kit generate
+npx tsx src/drizzle/migrate.ts
+
+DROP TABLE __drizzle_migrations;
+
+DELETE FROM drizzle_migrations WHERE migration_name = '__drizzle_migrations';
+
+ts-node src/seeders/courseSeeder.ts
+ts-node src/seeders/gameSeeder.ts
+ts-node src/seeders/lessonSeeder.ts
+ts-node src/seeders/wordSeeder.ts

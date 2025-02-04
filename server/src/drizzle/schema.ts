@@ -1,4 +1,4 @@
-import { timestamp, pgTable, text, integer, pgEnum, serial, date, primaryKey } from "drizzle-orm/pg-core";
+import { timestamp, pgTable, text, integer, pgEnum, serial, date } from "drizzle-orm/pg-core";
 
 // enums
 export const levelEnglishEnum = pgEnum("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
@@ -26,9 +26,7 @@ export const Sentences = pgTable("sentences", {
     senteceOrder: integer("senteceOrder").notNull(),
     language: languagesEnum("language").notNull(),
     sentence: text("sentence").notNull(),
-}, (table) => ({
-    // compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
-}));
+});
 
 export const MissingWords = pgTable("missingWords", {
     courseId: text("courseId").notNull().references(() => CourseNames.courseId),
@@ -38,9 +36,7 @@ export const MissingWords = pgTable("missingWords", {
     language: languagesEnum("language").notNull(),
     missingSentence: text("missingSentence").notNull(),
     missingWord: text("missingWord").notNull(),
-}, (table) => ({
-    // compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
-}));
+});
 
 export const Words = pgTable("words", {
     userId: text("userId").notNull(),
