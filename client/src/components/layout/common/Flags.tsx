@@ -18,7 +18,7 @@ const Flags: React.FC<FlagsProps> = ({ setIsModalVisible }) => {
 
   const icons = [
     { src: germanyPNG, alt: "German", title: "גרמנית", language: CourseLangauge.German },
-    { src: usaPNG, alt: "USA", title: "אנגלית (בקרוב)" },
+    { src: usaPNG, alt: "USA", title: "אנגלית", language: CourseLangauge.English },
     { src: francePNG, alt: "France", title: "צרפתית", language: CourseLangauge.French },
     { src: italyPNG, alt: "Italy", title: "איטלקית", language: CourseLangauge.Italian },
     { src: spainPNG, alt: "Spain", title: "ספרדית", language: CourseLangauge.Spanish },

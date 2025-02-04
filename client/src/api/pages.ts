@@ -103,3 +103,19 @@ export const fetchWordsCounter = async (
     
       return data;
 };
+
+export const createDataBase = async (
+  token: string
+): Promise<void> => {
+  if (!token) {
+    throw new Error("No authentication token found.");
+  }
+
+  const response = await axiosInstance.post('/dictionary/new', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  return response.data;
+};

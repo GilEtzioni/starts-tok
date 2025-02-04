@@ -6,7 +6,7 @@ export const WordleSlice = createSlice({
   initialState: {
     clicksCounter: 0,
     successCounter: 0,
-    currentMode: CurrentMode.Running,
+    currentMode: CurrentMode.Loading,
   },
 
   reducers: {

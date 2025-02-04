@@ -7,17 +7,17 @@ import useHangmanActions from '../utils/messageHelper';
 // redux
 import { useSelector } from 'react-redux';
 import { RootState } from "../../../../app/store";
-import { getSelectedWord } from '../utils/hangHelp';
+import { getSelectedWord } from '../utils/HangHelper';
 
 interface MainMessagesProps {
     randomWord: WordsType[];
     lettersArray: HangmanType[];
-    words: WordsType[] | undefined;
+    words: WordsType[] | undefined | null;
     selectedWord: string
 }
 
 const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, words, selectedWord }) => {
-    const { handleBackFail, restartGameFail, handleBackSuccess, restartGameSuccess } = useHangmanActions();
+    const { restartGameFail, restartGameSuccess, handleBack } = useHangmanActions();
     const wrongCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
 
     const renderEndGameMessage = () => {
@@ -30,10 +30,10 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
         if (wrongCounter === 6 && words) {
             return (
                 <FinishedGameMesssage
-                    onBack={handleBackFail}
+                    onBack={handleBack}
                     onRestart={() => restartGameFail(words)}
-                    title="fail"
-                    description={`התשובה הנכונה היא ${selectedWord}`}
+                    title="המשחק נגמר"
+                    description={`${selectedWord} התשובה הנכונה היא`}
                 />
             );
         }
@@ -50,9 +50,10 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
         if (successLetter === uniqueLettersLength && words) {
             return (
                 <FinishedGameMesssage
-                    onBack={handleBackSuccess}
+                    onBack={handleBack}
                     onRestart={() => restartGameSuccess()}
-                    title="success"
+                    title="!כל הכבוד"
+                    description={`${selectedWord} התשובה הנכונה היא`}
                 />
             );
         }

@@ -1,14 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LessonStatus } from '../types/LessonType';
+import { LessonName, LessonStatus } from '../types/LessonType';
+
+const generateShuffledNumbers = () => {
+  const numbers = [1, 2, 3, 4, 5, 6];
+  for (let i = numbers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+  }
+  return numbers;
+};
 
 export const lessonsSlice = createSlice({
   name: 'lessons',
   initialState: {
     status: LessonStatus.Running,
     order: 1,
+    randomOrder: 1,
+    randomOrderList: generateShuffledNumbers(),
+    randomIndex: 0,
     clicks: 0,
     anwser: "",
     points: 0,
+    lessonName: LessonName.Loading,
   },
 
   reducers: {
@@ -28,15 +41,27 @@ export const lessonsSlice = createSlice({
     /* order */
     resetOrder: (state) => {
       state.order = 1;
+      state.randomOrderList = generateShuffledNumbers();
+      state.randomIndex = 0;
+      state.randomOrder = state.randomOrderList[0];
     },
 
     addOneOrder: (state) => {
       state.order += 1;
+      
+      if (state.randomIndex >= state.randomOrderList.length - 1) {
+        state.randomOrderList = generateShuffledNumbers();
+        state.randomIndex = 0;
+      } else {
+        state.randomIndex += 1;
+      }
+      
+      state.randomOrder = state.randomOrderList[state.randomIndex];
     },
 
     changeOrder: (state, action: PayloadAction<number>) => {
-        state.order = action.payload;
-      },
+      state.order = action.payload;
+    },
 
     /* clicks */
     resetClicks: (state) => {
@@ -49,11 +74,11 @@ export const lessonsSlice = createSlice({
 
     /* answer */
     setRightAnswer: (state, action: PayloadAction<string>) => {
-        state.anwser = action.payload;
+      state.anwser = action.payload;
     },
 
     resetAnswer: (state) => {
-        state.anwser = "";
+      state.anwser = "";
     },
 
     /* points */
@@ -63,6 +88,11 @@ export const lessonsSlice = createSlice({
 
     addOnePoint: (state) => {
       state.points += 1;
+    },
+
+    /* lesson */
+    setLessonName: (state, action: PayloadAction<LessonName>) => {
+      state.lessonName = action.payload;
     },
   },
 });
@@ -79,7 +109,8 @@ export const {
   setRightAnswer,
   resetAnswer,
   resetPoints,
-  addOnePoint
+  addOnePoint,
+  setLessonName
 } = lessonsSlice.actions;
 
 export default lessonsSlice.reducer;

@@ -8,7 +8,7 @@ const dbCredentials = {
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
     ssl: {
-        rejectUnauthorized: false, // Disable SSL verification (safe for development only; do not use in production)
+        rejectUnauthorized: false,
     },
 };
 
@@ -20,7 +20,7 @@ const config = {
     dialect: "postgresql",
     dbCredentials: {
         connectionString,
-        ssl: dbCredentials.ssl, // Explicitly include SSL settings here
+        ssl: dbCredentials.ssl,
     },
     verbose: true,
     strict: true,

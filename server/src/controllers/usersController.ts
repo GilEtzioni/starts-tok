@@ -6,6 +6,7 @@ import { eq, and, sum, sql} from "drizzle-orm";
 import { DaysOfTheWeek } from "../types/userType";
 import { getTodayDate, getDayDate, getLastWeekDate, convertDateToDay } from "../utils/userHelper"
 import { CourseLangauge } from "../types/seedersType";
+import { mainSeeder } from "../seeders/mainSeeder";
 
 export const getAllPoints = async (req: Request, res: Response): Promise<void> => {
     const { userId } = getAuth(req);
@@ -298,3 +299,23 @@ export const getUserLanguage = async (req: Request, res: Response): Promise<void
       res.status(500).json({ message: "An error occurred while fetching best users", error });
     }
   };
+
+/* ------------------------------------------------------------------------------------ */
+
+export const createDataBase = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { userId } = getAuth(req);
+      if (!userId) {
+         res.status(401).json({ error: "Unauthorized" });
+         return;
+      }
+  
+      console.log(`Seeding database for user: ${userId}`);
+      await mainSeeder(userId);
+  
+      res.status(200).json({ message: "Database seeded successfully" });
+    } catch (error) {
+      console.error("Error seeding database:", error);
+      res.status(500).json({ error: "Failed to seed database" });
+    } 
+}

@@ -5,7 +5,8 @@
 /.pnp
 .pnp.js
 /server/node_modules/
-
+/client/node_modules/
+/client/build/
 # testing
 /coverage
 
@@ -24,7 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /server/.env
-/client/.env
 .env
 .vscode
 .vscode/settings.json
+/server/node_modules

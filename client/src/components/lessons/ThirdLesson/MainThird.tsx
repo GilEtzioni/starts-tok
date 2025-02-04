@@ -11,13 +11,11 @@ import { RootState } from "../../../app/store";
 // components + utils
 import {useHandleInput} from "../utils/ThirdEffects";
 import HebrewSentenceThird from './HebrewSentenceThird';
-import { splitTheSentence } from '../utils/ThirdHelper';
-import { splitSentenceToWords } from '../utils/SecondHelper';
 import { TranslatedArray } from '../types/SecondLessonType';
 
 // fetch
-import { fetchAllWords, fetchThirdLesson } from '../../../api/lessons';
-import { ALL_WORDS, THIRD_LESSON_QUERY_KEY } from '../requests/queryKeys';
+import { fetchThirdLesson } from '../../../api/lessons';
+import { THIRD_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
 
@@ -39,48 +37,22 @@ const MainThird: React.FC = () => {
     
   const withAuth = useWithAuth();
   const thirdLesson = async () => withAuth((token) => fetchThirdLesson(lesson ?? "", token));
-  const words = async () => withAuth((token) => fetchAllWords(token));
 
-  const { data: lessonsData, isLoading: isCardsLoading } = useQuery(
-    [THIRD_LESSON_QUERY_KEY, name, lesson],
+  const { data: lessonsData, isLoading } = useQuery(
+    [THIRD_LESSON_QUERY_KEY, name, lesson, clicks === 2],
     thirdLesson,
     {
+      staleTime: Infinity, 
+      cacheTime: Infinity,
       onSuccess: (lessonsData) => { 
         if(!lessonsData) return;
-        setForeignWord(lessonsData.foreignWord);
-        const { firstPart, secondPart } = splitTheSentence(lessonsData.foreignSentence, lessonsData.foreignWord);
-        setFirstPartForeign(firstPart);
-        setSecondPartForeign(secondPart);
+        dispatch(resetClicks())
         dispatch(setRightAnswer(lessonsData.foreignWord));
+        setForeignWord(lessonsData.foreignWord);
+        setFirstPartForeign(lessonsData.firstPartForeign);
+        setSecondPartForeign(lessonsData.secondPartForeign);
+        setTranslatedWords(lessonsData.translatedArray);
       },
-    }
-  );
-
-  const { data: allWords, isLoading: isWordsLoading } = useQuery(
-    [ALL_WORDS, name, lesson],
-    words,
-    {
-      enabled: !!lessonsData,
-      onSuccess: (allWords) => {
-        if (!allWords|| !lessonsData) return;
-
-        const punctuation = [',', '.', '-', '?', '...', '!'];
-        const wordsArray = splitSentenceToWords(lessonsData.hebrewSentence, allWords);
-        if (!wordsArray) return;
-          
-        const copiedArray = [...wordsArray];
-        const firstItem = copiedArray.shift();
-        const lastItemIndex = copiedArray.length - 1;
-          
-        if (firstItem && punctuation.includes(firstItem.hebrewString) && lastItemIndex >= 0) {
-            copiedArray[lastItemIndex].hebrewString = firstItem.hebrewString + copiedArray[lastItemIndex].hebrewString;
-        } 
-        else if (firstItem) {
-          copiedArray.unshift(firstItem);
-        }
-          
-        setTranslatedWords(copiedArray);
-      }
     }
   );
 
@@ -89,13 +61,12 @@ const MainThird: React.FC = () => {
   const { Paragraph } = Typography;
   const { Title } = Typography;
   const { Button } = Skeleton
-  const isLoading = isCardsLoading || isWordsLoading;
 
   return (
     <div className="text-center h-[400px]">
 
     <Row className="flex justify-center">
-      <Title level={3} className="text-center">תרגמו את המשפט</Title>
+      <Title level={3} className="text-center">השלימו את המשפט</Title>
     </Row>
 
     {isLoading ?
@@ -109,11 +80,12 @@ const MainThird: React.FC = () => {
       {/* foreign */}
       {isLoading
       ?
-      <div className='inline-block relative top-[100px] text-lg w-1/2'>
-        <Button block />
+      <div className="flesx flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[100%]">
+        <Button block className='mt-1'/>
       </div>
       :
-        <Paragraph className="inline-block relative top-[100px] text-lg">
+      <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[100%]">
+        <Paragraph className="p-2 text-lg">
           {firstPartForeign}
           <input
               type="text"
@@ -124,7 +96,8 @@ const MainThird: React.FC = () => {
               placeholder=" "
             />
           {secondPartForeign}
-        </Paragraph>
+          </Paragraph>
+        </div>
         }
       </div> 
     );

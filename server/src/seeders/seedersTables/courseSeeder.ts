@@ -39,7 +39,7 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
     { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Intermediate Animals", courseNameGerman: "Tiere Mittelstufe", courseNameHebrew: "חיות בינוני", lessonCompleted: 0 }, 
     { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Holidays", courseNameGerman: "Feiertage", courseNameHebrew: "חגים", lessonCompleted: 0 }, 
     { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Intermediate Numbers", courseNameGerman: "Zahlen Mittelstufe", courseNameHebrew: "מספרים בינוני", lessonCompleted: 0 }, 
-    { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Seasons", courseNameGerman: "Jahreszeiten", courseNameHebrew: "עונות השנה", lessonCompleted: 0 }, 
+    { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Countries", courseNameGerman: "Jahreszeiten", courseNameHebrew: "עונות השנה", lessonCompleted: 0 }, 
     { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Intermediate Body Parts", courseNameGerman: "Körperteile Mittelstufe", courseNameHebrew: "חלקי גוף בינוני", lessonCompleted: 0 }, 
     { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Health", courseNameGerman: "Gesundheit", courseNameHebrew: "בריאות", lessonCompleted: 0 }, 
     { englishLevel: "A2", hebrewLevel: "בסיסי", courseNameEnglish: "Directions", courseNameGerman: "Richtungen", courseNameHebrew: "כיוונים", lessonCompleted: 0 }, 
@@ -83,10 +83,10 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
     { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Advanced Weather", courseNameGerman: "Wetter Fortgeschritten", courseNameHebrew: "מזג אוויר מתקדם", lessonCompleted: 0 },  
     { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Intermediate Shapes", courseNameGerman: "Formen Mittelstufe", courseNameHebrew: "צורות בינוני", lessonCompleted: 0 }, 
     { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Intermediate Directions", courseNameGerman: "Richtungen Mittelstufe", courseNameHebrew: "כיוונים בינוני", lessonCompleted: 0 }, 
-    { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Beverages", courseNameGerman: "Getränke", courseNameHebrew: "מוצרי שתייה", lessonCompleted: 0 }, 
+    { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Intermediate Beverages", courseNameGerman: "Getränke", courseNameHebrew: "מוצרי שתייה", lessonCompleted: 0 }, 
     { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Intermediate Musical Instruments", courseNameGerman: "Musikinstrumente Mittelstufe", courseNameHebrew: "כלי נגינה בינוני", lessonCompleted: 0 }, 
     { englishLevel: "B1", hebrewLevel: "בינוני", courseNameEnglish: "Intermediate Education", courseNameGerman: "Bildung Mittelstufe", courseNameHebrew: "חינוך בינוני", lessonCompleted: 0 },  
-
+    
       // B2
       { englishLevel: "B2", hebrewLevel: "מתקדם", courseNameEnglish: "Advanced Colors", courseNameGerman: "Farben Fortgeschritten", courseNameHebrew: "צבעים מתקדם", lessonCompleted: 0 }, 
       { englishLevel: "B2", hebrewLevel: "מתקדם", courseNameEnglish: "Advanced Clothes", courseNameGerman: "Kleidung Fortgeschritten", courseNameHebrew: "בגדים מתקדם", lessonCompleted: 0 }, 
@@ -116,7 +116,7 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
 
       // C1
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Digital Marketing", courseNameGerman: "Digitales Marketing", courseNameHebrew: "שיווק דיגיטלי", lessonCompleted: 0 },
-      { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Graphic Design", courseNameGerman: "Grafikdesign", courseNameHebrew: "עיצוב גרפי", lessonCompleted: 0 },
+      { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Intermediate Countries", courseNameGerman: "Grafikdesign", courseNameHebrew: "עיצוב גרפי", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Graphic Design", courseNameGerman: "Grafikdesign", courseNameHebrew: "עיצוב גרפי", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Classical Music", courseNameGerman: "Klassische Musik", courseNameHebrew: "מוזיקה קלאסית", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Museums", courseNameGerman: "Museen", courseNameHebrew: "מוזיאונים", lessonCompleted: 0 },
@@ -128,7 +128,7 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Fruits", courseNameGerman: "Früchte", courseNameHebrew: "פירות", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Vegetables", courseNameGerman: "Gemüse", courseNameHebrew: "ירקות", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Makeup", courseNameGerman: "Make-up", courseNameHebrew: "איפור", lessonCompleted: 0 },
-      { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Countries", courseNameGerman: "Länder", courseNameHebrew: "מדינות", lessonCompleted: 0 },
+      { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Advanced Countries", courseNameGerman: "Länder", courseNameHebrew: "מדינות", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Extreme Sports", courseNameGerman: "Extremsportarten", courseNameHebrew: "ספורט אתגרי", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Surfing", courseNameGerman: "Surfen", courseNameHebrew: "גלישה", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Camping", courseNameGerman: "Camping", courseNameHebrew: "קמפינג", lessonCompleted: 0 },
@@ -139,8 +139,7 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Bank", courseNameGerman: "Bank", courseNameHebrew: "בנק", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "News", courseNameGerman: "Nachrichten", courseNameHebrew: "חדשות", lessonCompleted: 0 },
       { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Writing Tools", courseNameGerman: "Schreibwerkzeuge", courseNameHebrew: "כלי כתיבה", lessonCompleted: 0 },
-      { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Advanced Tools", courseNameGerman: "Fortgeschrittene Werkzeuge", courseNameHebrew: "כלי עבודה מתקדם", lessonCompleted: 0 },
-    
+      { englishLevel: "C1", hebrewLevel: "מתקדם מאוד", courseNameEnglish: "Tools", courseNameGerman: "Fortgeschrittene Werkzeuge", courseNameHebrew: "כלי עבודה מתקדם", lessonCompleted: 0 },
   
     // C2
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Business Communication", courseNameGerman: "Geschäftskommunikation", courseNameHebrew: "תקשורת עסקית", lessonCompleted: 0 },
@@ -155,7 +154,7 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Topics in Physics", courseNameGerman: "Themen in der Physik", courseNameHebrew: "נושאים בפיזיקה", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Topics in Architecture", courseNameGerman: "Themen in der Architektur", courseNameHebrew: "נושאים באדריכלות", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Religions", courseNameGerman: "Religionen", courseNameHebrew: "דתות", lessonCompleted: 0 },
-    { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Tools", courseNameGerman: "Werkzeuge", courseNameHebrew: "כלי עבודה", lessonCompleted: 0 },
+    { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Advanced Tools", courseNameGerman: "Werkzeuge", courseNameHebrew: "כלי עבודה", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Plants and Flowers", courseNameGerman: "Pflanzen und Blumen", courseNameHebrew: "צמחים ופרחים", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Sea", courseNameGerman: "Meer", courseNameHebrew: "ים", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Office Supplies", courseNameGerman: "Bürobedarf", courseNameHebrew: "כלים משרדיים", lessonCompleted: 0 },
@@ -167,7 +166,7 @@ export const courseSeeder = async (userId: string, courseIds: Array<{ index: num
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Brain Research", courseNameGerman: "Hirnforschung", courseNameHebrew: "חקר המוח", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Army", courseNameGerman: "Armee", courseNameHebrew: "צבא", lessonCompleted: 0 },
     { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Cinema", courseNameGerman: "Kino", courseNameHebrew: "בית קולנוע", lessonCompleted: 0 },
-    { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Extreme Sports", courseNameGerman: "Extremsportarten", courseNameHebrew: "ספורט אתגרי", lessonCompleted: 0 }
+    { englishLevel: "C2", hebrewLevel: "שפת אם", courseNameEnglish: "Intermediate Extreme Sports", courseNameGerman: "Extremsportarten", courseNameHebrew: "ספורט אתגרי", lessonCompleted: 0 }
   ];
 
 const languages = [
@@ -175,6 +174,7 @@ const languages = [
   CourseLangauge.Italian,
   CourseLangauge.Spanish,
   CourseLangauge.French,
+  CourseLangauge.English
 ];
 
 const requiredLength = courses.length * languages.length;

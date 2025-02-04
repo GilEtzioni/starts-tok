@@ -19,22 +19,14 @@ export const CourseNames = pgTable("courses", {
     language: languagesEnum("language"),
 });
 
-export const Sentences = pgTable("sentences", {
-    courseId: text("courseId").notNull().references(() => CourseNames.courseId),
-    userId: text("userId").notNull(),
-    courseNameEnglish: text("courseNameEnglish"),
-    senteceOrder: integer("senteceOrder").notNull(),
-    language: languagesEnum("language").notNull(),
-    sentence: text("sentence").notNull(),
-});
 
-export const MissingWords = pgTable("missingWords", {
+export const Lesson = pgTable("lesson", {
     courseId: text("courseId").notNull().references(() => CourseNames.courseId),
     userId: text("userId").notNull(),
     courseNameEnglish: text("courseNameEnglish"),
-    missingSentenceOrder: integer("missingSentenceOrder").notNull(),
+    sentenceOrder: integer("missingSentenceOrder").notNull(),
     language: languagesEnum("language").notNull(),
-    missingSentence: text("missingSentence").notNull(),
+    sentence: text("missingSentence").notNull(),
     missingWord: text("missingWord").notNull(),
 });
 

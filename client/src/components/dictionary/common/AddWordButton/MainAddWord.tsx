@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useAddNewWord } from '../../requests/mutate'; 
+import { useAddNewWord } from '../../requests/addNewWords';
 import { Card, Input, Alert, Spin , ConfigProvider, Button} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { styles } from './StyleAddWord'; 
@@ -33,9 +33,6 @@ const MainAddWord: React.FC = () => {
       }
     );
   };
-
-  if (isLoading) return <div>Loading dictionary...</div>;
-  if (isError) return <div>Error loading dictionary.</div>;
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Badge, Progress, Typography } from 'antd';
-import { generateRandomBubbles } from './Helper';
+import { generateRandomBubbles } from './courseCardHelper';
 import { OneCardProps } from '../types/courseTypes';
 
 const cardColors = [

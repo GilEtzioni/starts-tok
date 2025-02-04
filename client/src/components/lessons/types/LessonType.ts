@@ -9,3 +9,10 @@ export type LessonSentenceType = {
   hebrewWord: string,
   wordId: string
 }
+
+export enum LessonName {
+  Loading = "loading",
+  MatchPairs = "matchPairs",
+  ForeignSentence = "foreignSentence",
+  ForeignMissing = "foreignMissing"
+}

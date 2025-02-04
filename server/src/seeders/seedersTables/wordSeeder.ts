@@ -9,6 +9,177 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
   const words: Word[] = [
 
 // Colors - 1
+// Numbers - 2
+// Family Members - 3
+// Days of the Week - 4
+// Months - 5
+// Introduction - 6
+// Weather - 7
+// Clothes - 8
+// Food Products - 9
+// Beverages - 10
+// Parts of the House - 11
+// Animals - 12
+// Emotions - 13
+// Transportation - 14
+// School Supplies - 15
+// Professions - 16
+// Body Parts - 17
+// Hobbies - 18
+// Furniture - 19
+// Sports - 20
+// Shapes - 21
+// Time - 22
+// Common Actions - 23
+// Shopping - 24
+// Technology - 25
+// Health and Fitness - 26
+// Intermediate Clothes - 27
+// Intermediate Animals - 28
+// Holidays - 29
+// Intermediate Numbers - 30
+// Countries - 31
+// Intermediate Body Parts - 32
+// Health - 33
+// Directions - 34
+// Means of Communication - 35
+// Intermediate Furniture - 36
+// Intermediate Weather - 37
+// Kitchen Tools - 38
+// Musical Instruments - 39
+// Economic Terms - 40
+// Social Media - 41
+// Intermediate Introduction - 42
+// Education - 43
+// City and Village - 44
+// Intermediate Technology - 45
+// Recycling - 46
+// Intermediate Hobbies - 47
+// Politics - 48
+// Intermediate Family Members - 49
+// Intermediate Shopping - 50
+// Intermediate Colors - 51
+// Advanced Animals - 52
+// Cultural Diversity - 53
+// Intermediate Professions - 54
+// Intermediate Politics - 55
+// Intermediate Economic Terms - 56
+// Climate Change - 57
+// Intermediate Transportation - 58
+// Science - 59
+// Social Issues - 60
+// Intermediate Sports - 61
+// Higher Education - 62
+// Competitions - 63
+// Intermediate Food Products - 64
+// Adventures - 65
+// Work - 66
+// Intermediate Emotions - 67
+// Intermediate Kitchen Tools - 68
+// Numbers by Tens - 69
+// Advanced Weather - 70
+// Intermediate Shapes - 71
+// Intermediate Directions - 72
+// Intermediate Beverages - 73
+// Intermediate Musical Instruments - 74
+// Intermediate Education - 75
+// Advanced Colors - 76
+// Advanced Clothes - 77
+// Intermediate School Supplies - 78
+// Intermediate Health - 79
+// Intermediate Days of the Week - 80
+// Taxes - 81
+// Philosophical Topics - 82
+// Intermediate Parts of the House - 83
+// Describing People - 84
+// Crypto - 85
+// Advanced Politics - 86
+// International Relations - 87
+// Stars - 88
+// Theatre - 89
+// Human Rights - 90
+// Chemistry - 91
+// Artificial Intelligence - 92
+// Intermediate Holidays - 93
+// Numbers by Hundreds - 94
+// Numbers by Thousands - 95
+// Mathematical Topics - 96
+// Intermediate Higher Education - 97
+// Biology - 98
+// Intermediate Work - 99
+// Advanced Emotions - 100
+// Digital Marketing - 101
+// Intermediate Countries - 102
+// Graphic Design - 103
+// Classical Music - 104
+// Museums - 105
+// Stock Market - 106
+// Cooking - 107
+// Robots - 108
+// Services - 109
+// Christmas - 110
+// Fruits - 111
+// Vegetables - 112
+// Makeup - 113
+// Advanced Countries - 114
+// Extreme Sports - 115
+// Surfing - 116
+// Camping - 117
+// Martial Arts - 118
+ // Market - 119
+ // Gifts - 120
+// Restaurant - 121
+// Bank - 122
+// News - 123
+// Writing Tools - 124
+// Tools - 125
+// Business Communication - 126
+// Cyber - 127
+// Academic Writing - 128
+// Leadership and Management - 129
+// Legal Terms - 130
+// Globalization - 131
+// Topics in Psychology - 132
+// Renewable Energy - 133
+// Neuroscience - 134
+// Topics in Physics - 135
+// Topics in Architecture - 136
+// Religions - 137
+// Advanced Tools - 138
+// Plants and Flowers - 139
+// Sea - 140
+// Office Supplies - 141
+// Advanced Conversation Management - 142
+// Nature Trip - 143
+// Cars - 144
+// Houses - 145
+// Gym - 146
+// Brain Research - 147
+// Army - 148
+// Cinema - 149
+// Intermediate Extreme Sports - 150
+
+
+{ hebrew: "מסדרון", english: "Hallway", german: "Flur", italian: "Corridoio", spanish: "Pasillo", french: "Couloir", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "עליית גג", english: "Attic", german: "Dachboden", italian: "Soffitta", spanish: "Ático", french: "Grenier", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "מרתף", english: "Basement", german: "Keller", italian: "Seminterrato", spanish: "Sótano", french: "Sous-sol", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חניה", english: "Parking space", german: "Parkplatz", italian: "Parcheggio", spanish: "Estacionamiento", french: "Place de parking", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "מחסן", english: "Storage room", german: "Lagerraum", italian: "Ripostiglio", spanish: "Almacén", french: "Débarras", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "פרגולה", english: "Pergola", german: "Pergola", italian: "Pergolato", spanish: "Pérgola", french: "Pergola", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חדר עבודה", english: "Study room", german: "Arbeitszimmer", italian: "Studio", spanish: "Estudio", french: "Bureau", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "לובי", english: "Lobby", german: "Lobby", italian: "Atrio", spanish: "Vestíbulo", french: "Hall d’entrée", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "גדר", english: "Fence", german: "Zaun", italian: "Recinto", spanish: "Cerca", french: "Clôture", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "בריכת שחייה", english: "Swimming pool", german: "Schwimmbad", italian: "Piscina", spanish: "Piscina", french: "Piscine", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חדר כביסה", english: "Laundry room", german: "Waschraum", italian: "Lavanderia", spanish: "Lavadero", french: "Buanderie", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "ארון קיר", english: "Built-in closet", german: "Einbauschrank", italian: "Armadio a muro", spanish: "Armario empotrado", french: "Placard intégré", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "מזווה", english: "Pantry", german: "Speisekammer", italian: "Dispensa", spanish: "Despensa", french: "Garde-manger", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "כניסה ראשית", english: "Main entrance", german: "Haupteingang", italian: "Ingresso principale", spanish: "Entrada principal", french: "Entrée principale", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "פרקט", english: "Wooden flooring", german: "Holzboden", italian: "Pavimento in legno", spanish: "Suelo de madera", french: "Parquet", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חדר משחקים", english: "Playroom", german: "Spielzimmer", italian: "Sala giochi", spanish: "Sala de juegos", french: "Salle de jeux", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+
+
+
+// Colors - 1
 { hebrew: "אדום", english: "red", german: "rot", italian: "rosso", spanish: "rojo", french: "rouge", courseNameEnglish: "Colors", courseOrder: 1 },
 { hebrew: "כחול", english: "blue", german: "blau", italian: "blu", spanish: "azul", french: "bleu", courseNameEnglish: "Colors", courseOrder: 1 },
 { hebrew: "ירוק", english: "green", german: "grün", italian: "verde", spanish: "verde", french: "vert", courseNameEnglish: "Colors", courseOrder: 1 },
@@ -51,337 +222,2319 @@ export const wordSeeder = async (userId: string, courseIds: Array<{ index: numbe
 { hebrew: "אחיינית", english: "niece", german: "Nichte", italian: "nipote", spanish: "sobrina", french: "nièce", courseNameEnglish: "Family Members", courseOrder: 3 },
 { hebrew: "הורים", english: "parents", german: "Eltern", italian: "genitori", spanish: "padres", french: "parents", courseNameEnglish: "Family Members", courseOrder: 3 },
 
-  // Days of the Week - 4
-  { hebrew: "ראשון", english: "Sunday", german: "Sonntag", italian: "domenica", spanish: "domingo", french: "dimanche", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "שני", english: "Monday", german: "Montag", italian: "lunedì", spanish: "lunes", french: "lundi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "שלישי", english: "Tuesday", german: "Dienstag", italian: "martedì", spanish: "martes", french: "mardi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "רביעי", english: "Wednesday", german: "Mittwoch", italian: "mercoledì", spanish: "miércoles", french: "mercredi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "חמישי", english: "Thursday", german: "Donnerstag", italian: "giovedì", spanish: "jueves", french: "jeudi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "שישי", english: "Friday", german: "Freitag", italian: "venerdì", spanish: "viernes", french: "vendredi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "שבת", english: "Saturday", german: "Samstag", italian: "sabato", spanish: "sábado", french: "samedi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "יום מנוחה", english: "Rest day", german: "Ruhetag", italian: "giorno di riposo", spanish: "día de descanso", french: "jour de repos", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "סוף שבוע", english: "Weekend", german: "Wochenende", italian: "fine settimana", spanish: "fin de semana", french: "week-end", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "יום עבודה", english: "Workday", german: "Arbeitstag", italian: "giorno lavorativo", spanish: "día laboral", french: "jour de travail", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "יום חופשי", english: "Day off", german: "freier Tag", italian: "giorno libero", spanish: "día libre", french: "jour de congé", courseNameEnglish: "Days of the Week", courseOrder: 4 },
-  { hebrew: "יום חג", english: "Holiday", german: "Feiertag", italian: "giorno festivo", spanish: "día festivo", french: "jour férié", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+// Days of the Week - 4
+{ hebrew: "ראשון", english: "Sunday", german: "Sonntag", italian: "domenica", spanish: "domingo", french: "dimanche", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "שני", english: "Monday", german: "Montag", italian: "lunedì", spanish: "lunes", french: "lundi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "שלישי", english: "Tuesday", german: "Dienstag", italian: "martedì", spanish: "martes", french: "mardi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "רביעי", english: "Wednesday", german: "Mittwoch", italian: "mercoledì", spanish: "miércoles", french: "mercredi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "חמישי", english: "Thursday", german: "Donnerstag", italian: "giovedì", spanish: "jueves", french: "jeudi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "שישי", english: "Friday", german: "Freitag", italian: "venerdì", spanish: "viernes", french: "vendredi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "שבת", english: "Saturday", german: "Samstag", italian: "sabato", spanish: "sábado", french: "samedi", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "יום מנוחה", english: "Rest day", german: "Ruhetag", italian: "giorno di riposo", spanish: "día de descanso", french: "jour de repos", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "סוף שבוע", english: "Weekend", german: "Wochenende", italian: "fine settimana", spanish: "fin de semana", french: "week-end", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "יום עבודה", english: "Workday", german: "Arbeitstag", italian: "giorno lavorativo", spanish: "día laboral", french: "jour de travail", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "יום חופשי", english: "Day off", german: "freier Tag", italian: "giorno libero", spanish: "día libre", french: "jour de congé", courseNameEnglish: "Days of the Week", courseOrder: 4 },
+{ hebrew: "יום חג", english: "Holiday", german: "Feiertag", italian: "giorno festivo", spanish: "día festivo", french: "jour férié", courseNameEnglish: "Days of the Week", courseOrder: 4 },
 
-  // Months - 5
-  { hebrew: "ינואר", english: "January", german: "Januar", italian: "Gennaio", spanish: "Enero", french: "Janvier", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "פברואר", english: "February", german: "Februar", italian: "Febbraio", spanish: "Febrero", french: "Février", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "מרץ", english: "March", german: "März", italian: "Marzo", spanish: "Marzo", french: "Mars", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "אפריל", english: "April", german: "April", italian: "Aprile", spanish: "Abril", french: "Avril", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "מאי", english: "May", german: "Mai", italian: "Maggio", spanish: "Mayo", french: "Mai", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "יוני", english: "June", german: "Juni", italian: "Giugno", spanish: "Junio", french: "Juin", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "יולי", english: "July", german: "Juli", italian: "Luglio", spanish: "Julio", french: "Juillet", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "אוגוסט", english: "August", german: "August", italian: "Agosto", spanish: "Agosto", french: "Août", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "ספטמבר", english: "September", german: "September", italian: "Settembre", spanish: "Septiembre", french: "Septembre", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "אוקטובר", english: "October", german: "Oktober", italian: "Ottobre", spanish: "Octubre", french: "Octobre", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "נובמבר", english: "November", german: "November", italian: "Novembre", spanish: "Noviembre", french: "Novembre", courseNameEnglish: "Months", courseOrder: 5 },
-  { hebrew: "דצמבר", english: "December", german: "Dezember", italian: "Dicembre", spanish: "Diciembre", french: "Décembre", courseNameEnglish: "Months", courseOrder: 5 },
+// Months - 5
+{ hebrew: "ינואר", english: "January", german: "Januar", italian: "Gennaio", spanish: "Enero", french: "Janvier", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "פברואר", english: "February", german: "Februar", italian: "Febbraio", spanish: "Febrero", french: "Février", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "מרץ", english: "March", german: "März", italian: "Marzo", spanish: "Marzo", french: "Mars", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "אפריל", english: "April", german: "April", italian: "Aprile", spanish: "Abril", french: "Avril", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "מאי", english: "May", german: "Mai", italian: "Maggio", spanish: "Mayo", french: "Mai", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "יוני", english: "June", german: "Juni", italian: "Giugno", spanish: "Junio", french: "Juin", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "יולי", english: "July", german: "Juli", italian: "Luglio", spanish: "Julio", french: "Juillet", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "אוגוסט", english: "August", german: "August", italian: "Agosto", spanish: "Agosto", french: "Août", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "ספטמבר", english: "September", german: "September", italian: "Settembre", spanish: "Septiembre", french: "Septembre", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "אוקטובר", english: "October", german: "Oktober", italian: "Ottobre", spanish: "Octubre", french: "Octobre", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "נובמבר", english: "November", german: "November", italian: "Novembre", spanish: "Noviembre", french: "Novembre", courseNameEnglish: "Months", courseOrder: 5 },
+{ hebrew: "דצמבר", english: "December", german: "Dezember", italian: "Dicembre", spanish: "Diciembre", french: "Décembre", courseNameEnglish: "Months", courseOrder: 5 },
 
-  // Introduction - 6
-  { hebrew: "שלום", english: "Hello", german: "Hallo", italian: "Ciao", spanish: "Hola", french: "Bonjour", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "תודה", english: "Thank you", german: "Danke", italian: "Grazie", spanish: "Gracias", french: "Merci", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "בבקשה", english: "Please", german: "Bitte", italian: "Per favore", spanish: "Por favor", french: "S'il vous plaît", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "סליחה", english: "Sorry", german: "Entschuldigung", italian: "Scusa", spanish: "Lo siento", french: "Désolé", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "מה שלומך", english: "How are you?", german: "Wie geht es dir?", italian: "Come stai?", spanish: "¿Cómo estás?", french: "Comment ça va?", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "אני בסדר", english: "I am fine", german: "Mir geht's gut", italian: "Sto bene", spanish: "Estoy bien", french: "Je vais bien", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "איך קוראים לך", english: "What is your name?", german: "Wie heißt du?", italian: "Come ti chiami?", spanish: "¿Cómo te llamas?", french: "Comment t'appelles-tu?", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "אני", english: "I", german: "Ich", italian: "Io", spanish: "Yo", french: "Je", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "אתה", english: "You (male)", german: "Du", italian: "Tu", spanish: "Tú", french: "Tu", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "איפה", english: "Where", german: "Wo", italian: "Dove", spanish: "Dónde", french: "Où", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "כן", english: "Yes", german: "Ja", italian: "Sì", spanish: "Sí", french: "Oui", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "לא", english: "No", german: "Nein", italian: "No", spanish: "No", french: "Non", courseNameEnglish: "Introduction", courseOrder: 6 },
-  { hebrew: "לא מבין", english: "I don't understand", german: "Ich verstehe nicht", italian: "Non capisco", spanish: "No entiendo", french: "Je ne comprends pas", courseNameEnglish: "Introduction", courseOrder: 6 },
+// Introduction - 6
+{ hebrew: "שלום", english: "Hello", german: "Hallo", italian: "Ciao", spanish: "Hola", french: "Bonjour", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "תודה", english: "Thank you", german: "Danke", italian: "Grazie", spanish: "Gracias", french: "Merci", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "בבקשה", english: "Please", german: "Bitte", italian: "Per favore", spanish: "Por favor", french: "S'il vous plaît", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "סליחה", english: "Sorry", german: "Entschuldigung", italian: "Scusa", spanish: "Lo siento", french: "Désolé", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "מה שלומך", english: "How are you?", german: "Wie geht es dir?", italian: "Come stai?", spanish: "¿Cómo estás?", french: "Comment ça va?", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "אני בסדר", english: "I am fine", german: "Mir geht's gut", italian: "Sto bene", spanish: "Estoy bien", french: "Je vais bien", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "איך קוראים לך", english: "What is your name?", german: "Wie heißt du?", italian: "Come ti chiami?", spanish: "¿Cómo te llamas?", french: "Comment t'appelles-tu?", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "אני", english: "I", german: "Ich", italian: "Io", spanish: "Yo", french: "Je", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "אתה", english: "You", german: "Du", italian: "Tu", spanish: "Tú", french: "Tu", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "איפה", english: "Where", german: "Wo", italian: "Dove", spanish: "Dónde", french: "Où", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "כן", english: "Yes", german: "Ja", italian: "Sì", spanish: "Sí", french: "Oui", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "לא", english: "No", german: "Nein", italian: "No", spanish: "No", french: "Non", courseNameEnglish: "Introduction", courseOrder: 6 },
+{ hebrew: "לא מבין", english: "I don't understand", german: "Ich verstehe nicht", italian: "Non capisco", spanish: "No entiendo", french: "Je ne comprends pas", courseNameEnglish: "Introduction", courseOrder: 6 },
 
-    // Weather - 7
-    { hebrew: "מזג אוויר", english: "Weather", german: "Wetter", italian: "tempo", spanish: "tiempo", french: "météo", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "חם", english: "Hot", german: "heiß", italian: "caldo", spanish: "calor", french: "chaud", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "קר", english: "Cold", german: "kalt", italian: "freddo", spanish: "frío", french: "froid", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "גשום", english: "Rainy", german: "regnerisch", italian: "piovoso", spanish: "lluvioso", french: "pluvieux", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "מעונן", english: "Cloudy", german: "bewölkt", italian: "nuvoloso", spanish: "nublado", french: "nuageux", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "שמשי", english: "Sunny", german: "sonnig", italian: "soleggiato", spanish: "soleado", french: "ensoleillé", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "סערה", english: "Storm", german: "Sturm", italian: "tempesta", spanish: "tormenta", french: "tempête", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "רוח", english: "Wind", german: "Wind", italian: "vento", spanish: "viento", french: "vent", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "שלג", english: "Snow", german: "Schnee", italian: "neve", spanish: "nieve", french: "neige", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "ברקים ורעמים", english: "Lightning and Thunder", german: "Blitze und Donner", italian: "fulmini e tuoni", spanish: "relámpagos y truenos", french: "éclairs et tonnerre", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "טמפרטורה", english: "Temperature", german: "Temperatur", italian: "temperatura", spanish: "temperatura", french: "température", courseNameEnglish: "Weather", courseOrder: 7 },
-    { hebrew: "חם מאוד", english: "Very Hot", german: "sehr heiß", italian: "molto caldo", spanish: "muy caliente", french: "très chaud", courseNameEnglish: "Weather", courseOrder: 7 },
+// Weather - 7
+{ hebrew: "מזג אוויר", english: "Weather", german: "Wetter", italian: "tempo", spanish: "tiempo", french: "météo", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "חם", english: "Hot", german: "heiß", italian: "caldo", spanish: "calor", french: "chaud", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "קר", english: "Cold", german: "kalt", italian: "freddo", spanish: "frío", french: "froid", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "גשום", english: "Rainy", german: "regnerisch", italian: "piovoso", spanish: "lluvioso", french: "pluvieux", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "מעונן", english: "Cloudy", german: "bewölkt", italian: "nuvoloso", spanish: "nublado", french: "nuageux", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "שמשי", english: "Sunny", german: "sonnig", italian: "soleggiato", spanish: "soleado", french: "ensoleillé", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "סערה", english: "Storm", german: "Sturm", italian: "tempesta", spanish: "tormenta", french: "tempête", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "רוח", english: "Wind", german: "Wind", italian: "vento", spanish: "viento", french: "vent", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "שלג", english: "Snow", german: "Schnee", italian: "neve", spanish: "nieve", french: "neige", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "ברקים ורעמים", english: "Lightning and Thunder", german: "Blitze und Donner", italian: "fulmini e tuoni", spanish: "relámpagos y truenos", french: "éclairs et tonnerre", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "טמפרטורה", english: "Temperature", german: "Temperatur", italian: "temperatura", spanish: "temperatura", french: "température", courseNameEnglish: "Weather", courseOrder: 7 },
+{ hebrew: "חם מאוד", english: "Very Hot", german: "sehr heiß", italian: "molto caldo", spanish: "muy caliente", french: "très chaud", courseNameEnglish: "Weather", courseOrder: 7 },
   
-    // Clothes - 8
-    { hebrew: "חולצה", english: "Shirt", german: "Hemd", italian: "maglietta", spanish: "camisa", french: "chemise", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "מכנסיים", english: "Pants", german: "Hose", italian: "pantaloni", spanish: "pantalones", french: "pantalon", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "מעיל", english: "Coat", german: "Mantel", italian: "cappotto", spanish: "abrigo", french: "manteau", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "סוודר", english: "Sweater", german: "Pullover", italian: "maglione", spanish: "suéter", french: "pull", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "חצאית", english: "Skirt", german: "Rock", italian: "gonna", spanish: "falda", french: "jupe", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "שמלה", english: "Dress", german: "Kleid", italian: "vestito", spanish: "vestido", french: "robe", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "נעליים", english: "Shoes", german: "Schuhe", italian: "scarpe", spanish: "zapatos", french: "chaussures", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "גרביים", english: "Socks", german: "Socken", italian: "calzini", spanish: "calcetines", french: "chaussettes", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "תיק", english: "Bag", german: "Tasche", italian: "borsa", spanish: "bolso", french: "sac", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "כובע", english: "Hat", german: "Hut", italian: "cappello", spanish: "sombrero", french: "chapeau", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "משקפי שמש", english: "Sunglasses", german: "Sonnenbrille", italian: "occhiali da sole", spanish: "gafas de sol", french: "lunettes de soleil", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "עניבה", english: "Tie", german: "Krawatte", italian: "cravatta", spanish: "corbata", french: "cravate", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "טי שירט", english: "T-Shirt", german: "T-Shirt", italian: "maglietta", spanish: "camiseta", french: "T-shirt", courseNameEnglish: "Clothes", courseOrder: 8 },
-    { hebrew: "מעיל רוח", english: "Windbreaker", german: "Windjacke", italian: "giacca a vento", spanish: "chaqueta cortavientos", french: "veste coupe-vent", courseNameEnglish: "Clothes", courseOrder: 8 },
+// Clothes - 8
+{ hebrew: "חולצה", english: "Shirt", german: "Hemd", italian: "maglietta", spanish: "camisa", french: "chemise", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "מכנסיים", english: "Pants", german: "Hose", italian: "pantaloni", spanish: "pantalones", french: "pantalon", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "מעיל", english: "Coat", german: "Mantel", italian: "cappotto", spanish: "abrigo", french: "manteau", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "סוודר", english: "Sweater", german: "Pullover", italian: "maglione", spanish: "suéter", french: "pull", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "חצאית", english: "Skirt", german: "Rock", italian: "gonna", spanish: "falda", french: "jupe", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "שמלה", english: "Dress", german: "Kleid", italian: "vestito", spanish: "vestido", french: "robe", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "נעליים", english: "Shoes", german: "Schuhe", italian: "scarpe", spanish: "zapatos", french: "chaussures", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "גרביים", english: "Socks", german: "Socken", italian: "calzini", spanish: "calcetines", french: "chaussettes", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "תיק", english: "Bag", german: "Tasche", italian: "borsa", spanish: "bolso", french: "sac", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "כובע", english: "Hat", german: "Hut", italian: "cappello", spanish: "sombrero", french: "chapeau", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "משקפי שמש", english: "Sunglasses", german: "Sonnenbrille", italian: "occhiali da sole", spanish: "gafas de sol", french: "lunettes de soleil", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "עניבה", english: "Tie", german: "Krawatte", italian: "cravatta", spanish: "corbata", french: "cravate", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "טי שירט", english: "T-Shirt", german: "T-Shirt", italian: "maglietta", spanish: "camiseta", french: "T-shirt", courseNameEnglish: "Clothes", courseOrder: 8 },
+{ hebrew: "מעיל רוח", english: "Windbreaker", german: "Windjacke", italian: "giacca a vento", spanish: "chaqueta cortavientos", french: "veste coupe-vent", courseNameEnglish: "Clothes", courseOrder: 8 },
   
-    // Food Products - 9
-    { hebrew: "לחם", english: "Bread", german: "Brot", italian: "pane", spanish: "pan", french: "pain", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "חלב", english: "Milk", german: "Milch", italian: "latte", spanish: "leche", french: "lait", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "ביצה", english: "Egg", german: "Ei", italian: "uovo", spanish: "huevo", french: "œuf", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "חמאה", english: "Butter", german: "Butter", italian: "burro", spanish: "mantequilla", french: "beurre", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "גבינה", english: "Cheese", german: "Käse", italian: "formaggio", spanish: "queso", french: "fromage", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "תפוח אדמה", english: "Potato", german: "Kartoffel", italian: "patata", spanish: "papa", french: "pomme de terre", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "עגבנייה", english: "Tomato", german: "Tomate", italian: "pomodoro", spanish: "tomate", french: "tomate", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "מלפפון", english: "Cucumber", german: "Gurke", italian: "cetriolo", spanish: "pepino", french: "concombre", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "עוף", english: "Chicken", german: "Hähnchen", italian: "pollo", spanish: "pollo", french: "poulet", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "בשר", english: "Meat", german: "Fleisch", italian: "carne", spanish: "carne", french: "viande", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "דג", english: "Fish", german: "Fisch", italian: "pesce", spanish: "pescado", french: "poisson", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "ממתקים", english: "Sweets", german: "Süßigkeiten", italian: "dolci", spanish: "dulces", french: "bonbons", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "סוכר", english: "Sugar", german: "Zucker", italian: "zucchero", spanish: "azúcar", french: "sucre", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "מלח", english: "Salt", german: "Salz", italian: "sale", spanish: "sal", french: "sel", courseNameEnglish: "Food Products", courseOrder: 9 },
-    { hebrew: "קמח", english: "Flour", german: "Mehl", italian: "farina", spanish: "harina", french: "farine", courseNameEnglish: "Food Products", courseOrder: 9 },
+// Food Products - 9
+{ hebrew: "לחם", english: "Bread", german: "Brot", italian: "pane", spanish: "pan", french: "pain", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "חלב", english: "Milk", german: "Milch", italian: "latte", spanish: "leche", french: "lait", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "ביצה", english: "Egg", german: "Ei", italian: "uovo", spanish: "huevo", french: "œuf", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "חמאה", english: "Butter", german: "Butter", italian: "burro", spanish: "mantequilla", french: "beurre", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "גבינה", english: "Cheese", german: "Käse", italian: "formaggio", spanish: "queso", french: "fromage", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "תפוח אדמה", english: "Potato", german: "Kartoffel", italian: "patata", spanish: "papa", french: "pomme de terre", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "עגבנייה", english: "Tomato", german: "Tomate", italian: "pomodoro", spanish: "tomate", french: "tomate", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "מלפפון", english: "Cucumber", german: "Gurke", italian: "cetriolo", spanish: "pepino", french: "concombre", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "עוף", english: "Chicken", german: "Hähnchen", italian: "pollo", spanish: "pollo", french: "poulet", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "בשר", english: "Meat", german: "Fleisch", italian: "carne", spanish: "carne", french: "viande", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "דג", english: "Fish", german: "Fisch", italian: "pesce", spanish: "pescado", french: "poisson", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "ממתקים", english: "Sweets", german: "Süßigkeiten", italian: "dolci", spanish: "dulces", french: "bonbons", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "סוכר", english: "Sugar", german: "Zucker", italian: "zucchero", spanish: "azúcar", french: "sucre", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "מלח", english: "Salt", german: "Salz", italian: "sale", spanish: "sal", french: "sel", courseNameEnglish: "Food Products", courseOrder: 9 },
+{ hebrew: "קמח", english: "Flour", german: "Mehl", italian: "farina", spanish: "harina", french: "farine", courseNameEnglish: "Food Products", courseOrder: 9 },
   
-    // Beverages - 10
-    { hebrew: "מים", english: "Water", german: "Wasser", italian: "acqua", spanish: "agua", french: "eau", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "קפה", english: "Coffee", german: "Kaffee", italian: "caffè", spanish: "café", french: "café", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "תה", english: "Tea", german: "Tee", italian: "tè", spanish: "té", french: "thé", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "מיץ תפוזים", english: "Orange Juice", german: "Orangensaft", italian: "succo d'arancia", spanish: "jugo de naranja", french: "jus d'orange", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "מיץ תפוחים", english: "Apple Juice", german: "Apfelsaft", italian: "succo di mela", spanish: "zumo de manzana", french: "jus de pomme", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "מיץ ענבים", english: "Grape Juice", german: "Traubensaft", italian: "succo d'uva", spanish: "jugo de uva", french: "jus de raisin", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "קולה", english: "Cola", german: "Cola", italian: "cola", spanish: "cola", french: "cola", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "סודה", english: "Soda", german: "Sprudelwasser", italian: "acqua frizzante", spanish: "agua con gas", french: "eau pétillante", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "חלב", english: "Milk", german: "Milch", italian: "latte", spanish: "leche", french: "lait", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "יוגורט", english: "Yogurt", german: "Joghurt", italian: "yogurt", spanish: "yogur", french: "yaourt", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "שוקו", english: "Chocolate Milk", german: "Schokoladenmilch", italian: "latte al cioccolato", spanish: "leche con chocolate", french: "lait au chocolat", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "בירה", english: "Beer", german: "Bier", italian: "birra", spanish: "cerveza", french: "bière", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "יין", english: "Wine", german: "Wein", italian: "vino", spanish: "vino", french: "vin", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "משקה אלכוהולי", english: "Alcoholic Beverage", german: "alkoholisches Getränk", italian: "bevanda alcolica", spanish: "bebida alcohólica", french: "boisson alcoolisée", courseNameEnglish: "Beverages", courseOrder: 10 },
-    { hebrew: "מים מינרליים", english: "Mineral Water", german: "Mineralwasser", italian: "acqua minerale", spanish: "agua mineral", french: "eau minérale", courseNameEnglish: "Beverages", courseOrder: 10 },
+// Beverages - 10
+{ hebrew: "מים", english: "Water", german: "Wasser", italian: "acqua", spanish: "agua", french: "eau", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "קפה", english: "Coffee", german: "Kaffee", italian: "caffè", spanish: "café", french: "café", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "תה", english: "Tea", german: "Tee", italian: "tè", spanish: "té", french: "thé", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "מיץ תפוזים", english: "Orange Juice", german: "Orangensaft", italian: "succo d'arancia", spanish: "jugo de naranja", french: "jus d'orange", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "מיץ תפוחים", english: "Apple Juice", german: "Apfelsaft", italian: "succo di mela", spanish: "zumo de manzana", french: "jus de pomme", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "מיץ ענבים", english: "Grape Juice", german: "Traubensaft", italian: "succo d'uva", spanish: "jugo de uva", french: "jus de raisin", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "קולה", english: "Cola", german: "Cola", italian: "cola", spanish: "cola", french: "cola", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "סודה", english: "Soda", german: "Sprudelwasser", italian: "acqua frizzante", spanish: "agua con gas", french: "eau pétillante", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "חלב", english: "Milk", german: "Milch", italian: "latte", spanish: "leche", french: "lait", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "יוגורט", english: "Yogurt", german: "Joghurt", italian: "yogurt", spanish: "yogur", french: "yaourt", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "שוקו", english: "Chocolate Milk", german: "Schokoladenmilch", italian: "latte al cioccolato", spanish: "leche con chocolate", french: "lait au chocolat", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "בירה", english: "Beer", german: "Bier", italian: "birra", spanish: "cerveza", french: "bière", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "יין", english: "Wine", german: "Wein", italian: "vino", spanish: "vino", french: "vin", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "משקה אלכוהולי", english: "Alcoholic Beverage", german: "alkoholisches Getränk", italian: "bevanda alcolica", spanish: "bebida alcohólica", french: "boisson alcoolisée", courseNameEnglish: "Beverages", courseOrder: 10 },
+{ hebrew: "מים מינרליים", english: "Mineral Water", german: "Mineralwasser", italian: "acqua minerale", spanish: "agua mineral", french: "eau minérale", courseNameEnglish: "Beverages", courseOrder: 10 },
   
-  // // Parts of the House - 11
-  // Animals - 12
+// Parts of the House - 11
+{ hebrew: "דלת", english: "Door", german: "Tür", italian: "Porta", spanish: "Puerta", french: "Porte", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "חלון", english: "Window", german: "Fenster", italian: "Finestra", spanish: "Ventana", french: "Fenêtre", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "גג", english: "Roof", german: "Dach", italian: "Tetto", spanish: "Techo", french: "Toit", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "קיר", english: "Wall", german: "Wand", italian: "Muro", spanish: "Pared", french: "Mur", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "תקרה", english: "Ceiling", german: "Decke", italian: "Soffitto", spanish: "Techo", french: "Plafond", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "רצפה", english: "Floor", german: "Boden", italian: "Pavimento", spanish: "Suelo", french: "Sol", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "חדר", english: "Room", german: "Zimmer", italian: "Stanza", spanish: "Habitación", french: "Chambre", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "מטבח", english: "Kitchen", german: "Küche", italian: "Cucina", spanish: "Cocina", french: "Cuisine", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "סלון", english: "Living room", german: "Wohnzimmer", italian: "Soggiorno", spanish: "Salón", french: "Salon", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "חדר שינה", english: "Bedroom", german: "Schlafzimmer", italian: "Camera da letto", spanish: "Dormitorio", french: "Chambre", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "חדר אמבטיה", english: "Bathroom", german: "Badezimmer", italian: "Bagno", spanish: "Baño", french: "Salle de bain", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "גינה", english: "Garden", german: "Garten", italian: "Giardino", spanish: "Jardín", french: "Jardin", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "מרפסת", english: "Balcony", german: "Balkon", italian: "Balcone", spanish: "Balcón", french: "Balcon", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "מדרגות", english: "Stairs", german: "Treppe", italian: "Scale", spanish: "Escaleras", french: "Escaliers", courseNameEnglish: "Parts of the House", courseOrder: 11 },
+{ hebrew: "מוסך", english: "Garage", german: "Garage", italian: "Garage", spanish: "Garaje", french: "Garage", courseNameEnglish: "Parts of the House", courseOrder: 11 },
 
-  // Health and Fitness - 26
-  // Intermediate Clothes - 27
-  // Intermediate Animals - 28
+// Animals - 12
+{ hebrew: "כלב", english: "Dog", german: "Hund", italian: "Cane", spanish: "Perro", french: "Chien", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "חתול", english: "Cat", german: "Katze", italian: "Gatto", spanish: "Gato", french: "Chat", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "סוס", english: "Horse", german: "Pferd", italian: "Cavallo", spanish: "Caballo", french: "Cheval", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "פרה", english: "Cow", german: "Kuh", italian: "Mucca", spanish: "Vaca", french: "Vache", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "כבש", english: "Sheep", german: "Schaf", italian: "Pecora", spanish: "Oveja", french: "Mouton", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "תרנגול", english: "Rooster", german: "Hahn", italian: "Gallo", spanish: "Gallo", french: "Coq", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "אריה", english: "Lion", german: "Löwe", italian: "Leone", spanish: "León", french: "Lion", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "פיל", english: "Elephant", german: "Elefant", italian: "Elefante", spanish: "Elefante", french: "Éléphant", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "דוב", english: "Bear", german: "Bär", italian: "Orso", spanish: "Oso", french: "Ours", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "קוף", english: "Monkey", german: "Affe", italian: "Scimmia", spanish: "Mono", french: "Singe", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "ציפור", english: "Bird", german: "Vogel", italian: "Uccello", spanish: "Pájaro", french: "Oiseau", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "נחש", english: "Snake", german: "Schlange", italian: "Serpente", spanish: "Serpiente", french: "Serpent", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "צפרדע", english: "Frog", german: "Frosch", italian: "Rana", spanish: "Rana", french: "Grenouille", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "דג", english: "Fish", german: "Fisch", italian: "Pesce", spanish: "Pez", french: "Poisson", courseNameEnglish: "Animals", courseOrder: 12 },
+{ hebrew: "זאב", english: "Wolf", german: "Wolf", italian: "Lupo", spanish: "Lobo", french: "Loup", courseNameEnglish: "Animals", courseOrder: 12 },
 
-  // Holidays - 29
-  { hebrew: "חג", english: "Holiday", german: "Feiertag", italian: "Vacanza", spanish: "Fiesta", french: "Fête", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "פסח", english: "Passover", german: "Pessach", italian: "Pasqua Ebraica", spanish: "Pésaj", french: "Pâque juive", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "חנוכה", english: "Hanukkah", german: "Chanukka", italian: "Chanukkah", spanish: "Janucá", french: "Hanoucca", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "ראש השנה", english: "Rosh Hashanah", german: "Rosch Haschana", italian: "Rosh Hashanah", spanish: "Rosh Hashaná", french: "Roch Hachana", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "סוכות", english: "Sukkot", german: "Sukkot", italian: "Sukkot", spanish: "Sucot", french: "Souccot", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "שבועות", english: "Shavuot", german: "Schawuot", italian: "Shavuot", spanish: "Shavuot", french: "Chavouot", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "פורים", english: "Purim", german: "Purim", italian: "Purim", spanish: "Purim", french: "Pourim", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "יום הולדת", english: "Birthday", german: "Geburtstag", italian: "Compleanno", spanish: "Cumpleaños", french: "Anniversaire", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "יום העמצאות", english: "Independence Day", german: "Unabhängigkeitstag", italian: "Giorno dell'Indipendenza", spanish: "Día de la Independencia", french: "Fête de l'Indépendance", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "שנה טובה", english: "Happy New Year", german: "Frohes neues Jahr", italian: "Buon anno", spanish: "Feliz Año Nuevo", french: "Bonne année", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "חגיגה", english: "Celebration", german: "Feier", italian: "Celebrazione", spanish: "Celebración", french: "Célébration", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "מסיבה", english: "Party", german: "Party", italian: "Festa", spanish: "Fiesta", french: "Fête", courseNameEnglish: "Holidays", courseOrder: 29 },
-  { hebrew: "כריסמס", english: "Christmas", german: "Weihnachten", italian: "Natale", spanish: "Navidad", french: "Noël", courseNameEnglish: "Holidays", courseOrder: 29 },
+// Emotions - 13
+{ hebrew: "שמח", english: "Happy", german: "Glücklich", italian: "Felice", spanish: "Feliz", french: "Heureux", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "עצוב", english: "Sad", german: "Traurig", italian: "Triste", spanish: "Triste", french: "Triste", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "כועס", english: "Angry", german: "Wütend", italian: "Arrabbiato", spanish: "Enojado", french: "En colère", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מפוחד", english: "Afraid", german: "Ängstlich", italian: "Spaventato", spanish: "Asustado", french: "Effrayé", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מופתע", english: "Surprised", german: "Überrascht", italian: "Sorpreso", spanish: "Sorprendido", french: "Surpris", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "נרגש", english: "Excited", german: "Aufgeregt", italian: "Emozionato", spanish: "Emocionado", french: "Excité", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "רגוע", english: "Calm", german: "Ruhig", italian: "Calmo", spanish: "Tranquilo", french: "Calme", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "נבוך", english: "Embarrassed", german: "Verlegen", italian: "Imbarazzato", spanish: "Avergonzado", french: "Gêné", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מודאג", english: "Worried", german: "Besorgt", italian: "Preoccupato", spanish: "Preocupado", french: "Inquiet", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מאוהב", english: "In love", german: "Verliebt", italian: "Innamorato", spanish: "Enamorado", french: "Amoureux", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "גאה", english: "Proud", german: "Stolz", italian: "Orgoglioso", spanish: "Orgulloso", french: "Fier", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מבולבל", english: "Confused", german: "Verwirrt", italian: "Confuso", spanish: "Confundido", french: "Confus", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מתוסכל", english: "Frustrated", german: "Frustriert", italian: "Frustrato", spanish: "Frustrado", french: "Frustré", courseNameEnglish: "Emotions", courseOrder: 13 },
+{ hebrew: "מתוח", english: "Nervous", german: "Nervös", italian: "Nervoso", spanish: "Nervioso", french: "Nerveux", courseNameEnglish: "Emotions", courseOrder: 13 },
 
-  // Intermediate Numbers - 30
-  // Seasons - 31
-  // Intermediate Body Parts - 32
-  // Health - 33
-  // Directions - 34
-  // Means of Communication - 35
-  // Intermediate Furniture - 36
-  // Intermediate Weather - 37
-  // Kitchen Tools - 38
-  // Musical Instruments - 39
-  // Economic Terms - 40
-  // Social Media - 41
-  // Intermediate Introduction - 42
-  // Education - 43
-  // City and Village - 44
-  // Intermediate Technology - 45
+// Transportation - 14
+{ hebrew: "מכונית", english: "Car", german: "Auto", italian: "Macchina", spanish: "Coche", french: "Voiture", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "אופניים", english: "Bicycle", german: "Fahrrad", italian: "Bicicletta", spanish: "Bicicleta", french: "Vélo", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "רכבת", english: "Train", german: "Zug", italian: "Treno", spanish: "Tren", french: "Train", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "מטוס", english: "Airplane", german: "Flugzeug", italian: "Aereo", spanish: "Avión", french: "Avion", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "אוטובוס", english: "Bus", german: "Bus", italian: "Autobus", spanish: "Autobús", french: "Bus", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "אופנוע", english: "Motorcycle", german: "Motorrad", italian: "Motocicletta", spanish: "Motocicleta", french: "Moto", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "סירה", english: "Boat", german: "Boot", italian: "Barca", spanish: "Barco", french: "Bateau", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "משאית", english: "Truck", german: "LKW", italian: "Camion", spanish: "Camión", french: "Camion", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "ספינה", english: "Ship", german: "Schiff", italian: "Nave", spanish: "Barco", french: "Navire", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "רכבל", english: "Cable car", german: "Seilbahn", italian: "Funivia", spanish: "Teleférico", french: "Téléphérique", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "מונית", english: "Taxi", german: "Taxi", italian: "Taxi", spanish: "Taxi", french: "Taxi", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "כדור פורח", english: "Hot air balloon", german: "Heißluftballon", italian: "Mongolfiera", spanish: "Globo aerostático", french: "Montgolfière", courseNameEnglish: "Transportation", courseOrder: 14 },
+{ hebrew: "טרקטור", english: "Tractor", german: "Traktor", italian: "Trattore", spanish: "Tractor", french: "Tracteur", courseNameEnglish: "Transportation", courseOrder: 14 },
 
-  // Recycling - 46
-  { hebrew: "מחזור", english: "Recycling", german: "Recycling", italian: "Riciclaggio", spanish: "Reciclaje", french: "Recyclage", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "זכוכית", english: "Glass", german: "Glas", italian: "Vetro", spanish: "Vidrio", french: "Verre", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "פלסטיק", english: "Plastic", german: "Plastik", italian: "Plastica", spanish: "Plástico", french: "Plastique", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "נייר", english: "Paper", german: "Papier", italian: "Carta", spanish: "Papel", french: "Papier", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "ברזל", english: "Metal", german: "Metall", italian: "Metallo", spanish: "Metal", french: "Métal", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "עץ", english: "Wood", german: "Holz", italian: "Legno", spanish: "Madera", french: "Bois", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "אדם", english: "Person", german: "Mensch", italian: "Persona", spanish: "Persona", french: "Personne", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "סוגי פסולת", english: "Types of Waste", german: "Abfallarten", italian: "Tipi di rifiuti", spanish: "Tipos de residuos", french: "Types de déchets", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "מיכל מחזור", english: "Recycling Bin", german: "Recyclingbehälter", italian: "Contenitore per il riciclaggio", spanish: "Contenedor de reciclaje", french: "Bac de recyclage", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "קומפוסט", english: "Compost", german: "Kompost", italian: "Compost", spanish: "Compost", french: "Compost", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "שימור", english: "Conservation", german: "Erhaltung", italian: "Conservazione", spanish: "Conservación", french: "Conservation", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "הטמנה", english: "Landfill", german: "Deponie", italian: "Discarica", spanish: "Vertedero", french: "Décharge", courseNameEnglish: "Recycling", courseOrder: 46 },
-  { hebrew: "פח", english: "Trash Can", german: "Mülleimer", italian: "Cestino", spanish: "Basurero", french: "Poubelle", courseNameEnglish: "Recycling", courseOrder: 46 },
+// School Supplies - 15
+{ hebrew: "עט", english: "Pen", german: "Stift", italian: "Penna", spanish: "Bolígrafo", french: "Stylo", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "עיפרון", english: "Pencil", german: "Bleistift", italian: "Matita", spanish: "Lápiz", french: "Crayon", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "מחברת", english: "Notebook", german: "Notizbuch", italian: "Quaderno", spanish: "Cuaderno", french: "Cahier", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "ספר", english: "Book", german: "Buch", italian: "Libro", spanish: "Libro", french: "Livre", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "מחק", english: "Eraser", german: "Radiergummi", italian: "Gomma", spanish: "Goma", french: "Gomme", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "סרגל", english: "Ruler", german: "Lineal", italian: "Righello", spanish: "Regla", french: "Règle", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "תיק", english: "Bag", german: "Tasche", italian: "Borsa", spanish: "Bolsa", french: "Sac", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "קלמר", english: "Pencil case", german: "Federmäppchen", italian: "Astuccio", spanish: "Estuche", french: "Trousse", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "מספריים", english: "Scissors", german: "Schere", italian: "Forbici", spanish: "Tijeras", french: "Ciseaux", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "מהדק", english: "Stapler", german: "Tacker", italian: "Graffettatrice", spanish: "Engrapadora", french: "Agrafeuse", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "דבק", english: "Glue", german: "Kleber", italian: "Colla", spanish: "Pegamento", french: "Colle", courseNameEnglish: "School Supplies", courseOrder: 15 },
+{ hebrew: "לוח", english: "Board", german: "Tafel", italian: "Lavagna", spanish: "Pizarra", french: "Tableau", courseNameEnglish: "School Supplies", courseOrder: 15 },
 
-  // Intermediate Hobbies - 47
-  // Politics - 48
-  // Intermediate Family Members - 49
-  // Intermediate Shopping - 50
+// Professions - 16
+{ hebrew: "רופא", english: "Doctor", german: "Arzt", italian: "Dottore", spanish: "Médico", french: "Médecin", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "מורה", english: "Teacher", german: "Lehrer", italian: "Insegnante", spanish: "Profesor", french: "Professeur", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "מהנדס", english: "Engineer", german: "Ingenieur", italian: "Ingegnere", spanish: "Ingeniero", french: "Ingénieur", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "שוטר", english: "Police officer", german: "Polizist", italian: "Poliziotto", spanish: "Policía", french: "Policier", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "כבאי", english: "Firefighter", german: "Feuerwehrmann", italian: "Pompiere", spanish: "Bombero", french: "Pompier", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "טבח", english: "Chef", german: "Koch", italian: "Cuoco", spanish: "Cocinero", french: "Chef", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "עורך דין", english: "Lawyer", german: "Anwalt", italian: "Avvocato", spanish: "Abogado", french: "Avocat", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "נהג", english: "Driver", german: "Fahrer", italian: "Autista", spanish: "Conductor", french: "Chauffeur", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "חקלאי", english: "Farmer", german: "Bauer", italian: "Contadino", spanish: "Granjero", french: "Agriculteur", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "צלם", english: "Photographer", german: "Fotograf", italian: "Fotografo", spanish: "Fotógrafo", french: "Photographe", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "מלצר", english: "Waiter", german: "Kellner", italian: "Cameriere", spanish: "Camarero", french: "Serveur", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "רוקח", english: "Pharmacist", german: "Apotheker", italian: "Farmacista", spanish: "Farmacéutico", french: "Pharmacien", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "סופר", english: "Writer", german: "Schriftsteller", italian: "Scrittore", spanish: "Escritor", french: "Écrivain", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "אומן", english: "Artist", german: "Künstler", italian: "Artista", spanish: "Artista", french: "Artiste", courseNameEnglish: "Professions", courseOrder: 16 },
+{ hebrew: "זמר", english: "Singer", german: "Sänger", italian: "Cantante", spanish: "Cantante", french: "Chanteur", courseNameEnglish: "Professions", courseOrder: 16 },
 
-  // Intermediate Colors - 51
+// Body Parts - 17
+{ hebrew: "ראש", english: "Head", german: "Kopf", italian: "Testa", spanish: "Cabeza", french: "Tête", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "עין", english: "Eye", german: "Auge", italian: "Occhio", spanish: "Ojo", french: "Œil", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "אוזן", english: "Ear", german: "Ohr", italian: "Orecchio", spanish: "Oreja", french: "Oreille", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "פה", english: "Mouth", german: "Mund", italian: "Bocca", spanish: "Boca", french: "Bouche", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "אף", english: "Nose", german: "Nase", italian: "Naso", spanish: "Nariz", french: "Nez", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "שן", english: "Tooth", german: "Zahn", italian: "Dente", spanish: "Diente", french: "Dent", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "יד", english: "Hand", german: "Hand", italian: "Mano", spanish: "Mano", french: "Main", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "רגל", english: "Leg", german: "Bein", italian: "Gamba", spanish: "Pierna", french: "Jambe", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "כף רגל", english: "Foot", german: "Fuß", italian: "Piede", spanish: "Pie", french: "Pied", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "אצבע", english: "Finger", german: "Finger", italian: "Dito", spanish: "Dedo", french: "Doigt", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "כתף", english: "Shoulder", german: "Schulter", italian: "Spalla", spanish: "Hombro", french: "Épaule", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "ברך", english: "Knee", german: "Knie", italian: "Ginocchio", spanish: "Rodilla", french: "Genou", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "מרפק", english: "Elbow", german: "Ellbogen", italian: "Gomito", spanish: "Codo", french: "Coude", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "לב", english: "Heart", german: "Herz", italian: "Cuore", spanish: "Corazón", french: "Cœur", courseNameEnglish: "Body Parts", courseOrder: 17 },
+{ hebrew: "בטן", english: "Stomach", german: "Magen", italian: "Stomaco", spanish: "Estómago", french: "Estomac", courseNameEnglish: "Body Parts", courseOrder: 17 },
 
-  // Advanced Animals - 52
-  // Cultural Diversity - 53
-  // Intermediate Professions - 54
-  // Intermediate Politics - 55
-  // Intermediate Economic Terms - 56
-  // Climate Change - 57
-  // Intermediate Transportation - 58
-  // Science - 59
-  // Social Issues - 60
-  // Intermediate Sports - 61
-  // Higher Education - 62
-  // Competitions - 63
-  // Intermediate Food Products - 64
-  // Adventures - 65
-  // Work - 66
-  { hebrew: "חוק", english: "Law", german: "Gesetz", italian: "Legge", spanish: "Ley", french: "Loi", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "זכות", english: "Right", german: "Recht", italian: "Diritto", spanish: "Derecho", french: "Droit", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "פסק דין", english: "Judgment", german: "Urteil", italian: "Sentenza", spanish: "Sentencia", french: "Jugement", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "חוזה", english: "Contract", german: "Vertrag", italian: "Contratto", spanish: "Contrato", french: "Contrat", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "ערעור", english: "Appeal", german: "Berufung", italian: "Appello", spanish: "Apelación", french: "Appel", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "פשע", english: "Crime", german: "Verbrechen", italian: "Crimine", spanish: "Crimen", french: "Crime", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "עבירה", english: "Offense", german: "Straftat", italian: "Reato", spanish: "Delito", french: "Infraction", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "תביעה", english: "Lawsuit", german: "Klage", italian: "Causa", spanish: "Demanda", french: "Procès", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "הגנה", english: "Defense", german: "Verteidigung", italian: "Difesa", spanish: "Defensa", french: "Défense", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "תובע", english: "Prosecutor", german: "Staatsanwalt", italian: "Procuratore", spanish: "Fiscal", french: "Procureur", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "עדים", english: "Witnesses", german: "Zeugen", italian: "Testimoni", spanish: "Testigos", french: "Témoins", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "הסכמה", english: "Consent", german: "Zustimmung", italian: "Consenso", spanish: "Consentimiento", french: "Consentement", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "משפט", english: "Trial", german: "Prozess", italian: "Processo", spanish: "Juicio", french: "Procès", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "פיצויים", english: "Compensation", german: "Entschädigung", italian: "Risarcimento", spanish: "Compensación", french: "Indemnisation", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "מעשה פלילי", english: "Criminal Act", german: "Kriminelle Handlung", italian: "Atto criminale", spanish: "Acto criminal", french: "Acte criminel", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+// Hobbies - 18
+{ hebrew: "קריאה", english: "Reading", german: "Lesen", italian: "Lettura", spanish: "Lectura", french: "Lecture", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "ציור", english: "Painting", german: "Malen", italian: "Pittura", spanish: "Pintura", french: "Peinture", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "נגינה", english: "Playing music", german: "Musik spielen", italian: "Suonare", spanish: "Tocar música", french: "Jouer de la musique", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "בישול", english: "Cooking", german: "Kochen", italian: "Cucinare", spanish: "Cocinar", french: "Cuisine", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "ריקוד", english: "Dancing", german: "Tanzen", italian: "Ballare", spanish: "Bailar", french: "Danser", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "צילום", english: "Photography", german: "Fotografie", italian: "Fotografia", spanish: "Fotografía", french: "Photographie", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "ספורט", english: "Sports", german: "Sport", italian: "Sport", spanish: "Deporte", french: "Sport", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "גינון", english: "Gardening", german: "Gartenarbeit", italian: "Giardinaggio", spanish: "Jardinería", french: "Jardinage", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "דיג", english: "Fishing", german: "Angeln", italian: "Pesca", spanish: "Pesca", french: "Pêche", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "כתיבה", english: "Writing", german: "Schreiben", italian: "Scrittura", spanish: "Escritura", french: "Écriture", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "משחקי וידאו", english: "Video games", german: "Videospiele", italian: "Videogiochi", spanish: "Videojuegos", french: "Jeux vidéo", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "טיולים", english: "Hiking", german: "Wandern", italian: "Escursioni", spanish: "Senderismo", french: "Randonnée", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "רכיבה על אופניים", english: "Cycling", german: "Radfahren", italian: "Ciclismo", spanish: "Ciclismo", french: "Cyclisme", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "שחייה", english: "Swimming", german: "Schwimmen", italian: "Nuotare", spanish: "Nadar", french: "Nager", courseNameEnglish: "Hobbies", courseOrder: 18 },
+{ hebrew: "איסוף בולים", english: "Stamp collecting", german: "Briefmarkensammeln", italian: "Collezionare francobolli", spanish: "Coleccionar sellos", french: "Collection de timbres", courseNameEnglish: "Hobbies", courseOrder: 18 },
 
-  // Intermediate Emotions - 67
-  // Intermediate Kitchen Tools - 68
-  // Numbers by Tens - 69
-  // Advanced Weather - 70
-  // Intermediate Shapes - 71
-  // Intermediate Directions - 72
-  // Beverages - 73
-  // Intermediate Musical Instruments - 74
-  // Intermediate Education - 75
+// Furniture - 19
+{ hebrew: "כיסא", english: "Chair", german: "Stuhl", italian: "Sedia", spanish: "Silla", french: "Chaise", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "שולחן", english: "Table", german: "Tisch", italian: "Tavolo", spanish: "Mesa", french: "Table", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "ספה", english: "Sofa", german: "Sofa", italian: "Divano", spanish: "Sofá", french: "Canapé", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "מיטה", english: "Bed", german: "Bett", italian: "Letto", spanish: "Cama", french: "Lit", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "ארון", english: "Wardrobe", german: "Kleiderschrank", italian: "Armadio", spanish: "Armario", french: "Armoire", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "מדף", english: "Shelf", german: "Regal", italian: "Mensola", spanish: "Estante", french: "Étagère", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "שידה", english: "Dresser", german: "Kommode", italian: "Cassettiera", spanish: "Cómoda", french: "Commode", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "מראה", english: "Mirror", german: "Spiegel", italian: "Specchio", spanish: "Espejo", french: "Miroir", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "שולחן קפה", english: "Coffee table", german: "Couchtisch", italian: "Tavolino", spanish: "Mesa de café", french: "Table basse", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "מנורה", english: "Lamp", german: "Lampe", italian: "Lampada", spanish: "Lámpara", french: "Lampe", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "ארונית", english: "Cabinet", german: "Schrank", italian: "Credenza", spanish: "Gabinete", french: "Placard", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "וילון", english: "Curtain", german: "Vorhang", italian: "Tenda", spanish: "Cortina", french: "Rideau", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "שטיח", english: "Carpet", german: "Teppich", italian: "Tappeto", spanish: "Alfombra", french: "Tapis", courseNameEnglish: "Furniture", courseOrder: 19 },
+{ hebrew: "שולחן עבודה", english: "Desk", german: "Schreibtisch", italian: "Scrivania", spanish: "Escritorio", french: "Bureau", courseNameEnglish: "Furniture", courseOrder: 19 },
 
-  // Advanced Colors - 76
-  { hebrew: "עבודה", english: "Work", german: "Arbeit", italian: "Lavoro", spanish: "Trabajo", french: "Travail", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "משרד", english: "Office", german: "Büro", italian: "Ufficio", spanish: "Oficina", french: "Bureau", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "מנהל", english: "Manager", german: "Manager", italian: "Manager", spanish: "Gerente", french: "Manager", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "פגישה", english: "Meeting", german: "Meeting", italian: "Riunione", spanish: "Reunión", french: "Réunion", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "לקוח", english: "Client", german: "Kunde", italian: "Cliente", spanish: "Cliente", french: "Client", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "פרויקט", english: "Project", german: "Projekt", italian: "Progetto", spanish: "Proyecto", french: "Projet", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "הסכם", english: "Agreement", german: "Vereinbarung", italian: "Accordo", spanish: "Acuerdo", french: "Accord", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "שכר", english: "Salary", german: "Gehalt", italian: "Stipendio", spanish: "Salario", french: "Salaire", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "משרות", english: "Jobs", german: "Stellen", italian: "Lavori", spanish: "Trabajos", french: "Emplois", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "כישורים", english: "Skills", german: "Fähigkeiten", italian: "Competenze", spanish: "Habilidades", french: "Compétences", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "תנאים", english: "Conditions", german: "Bedingungen", italian: "Condizioni", spanish: "Condiciones", french: "Conditions", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "תפקיד", english: "Role", german: "Rolle", italian: "Ruolo", spanish: "Papel", french: "Rôle", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "עובד", english: "Employee", german: "Mitarbeiter", italian: "Dipendente", spanish: "Empleado", french: "Employé", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "מנכל", english: "CEO", german: "CEO", italian: "Amministratore delegato", spanish: "Director general", french: "PDG", courseNameEnglish: "Work", courseOrder: 66 },
-  { hebrew: "הכשרה", english: "Training", german: "Ausbildung", italian: "Formazione", spanish: "Capacitación", french: "Formation", courseNameEnglish: "Work", courseOrder: 66 },
+// Sports - 20
+{ hebrew: "כדורגל", english: "Soccer", german: "Fußball", italian: "Calcio", spanish: "Fútbol", french: "Football", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "כדורסל", english: "Basketball", german: "Basketball", italian: "Pallacanestro", spanish: "Baloncesto", french: "Basketball", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "טניס", english: "Tennis", german: "Tennis", italian: "Tennis", spanish: "Tenis", french: "Tennis", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "שחייה", english: "Swimming", german: "Schwimmen", italian: "Nuoto", spanish: "Natación", french: "Natation", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "אתלטיקה", english: "Athletics", german: "Leichtathletik", italian: "Atletica", spanish: "Atletismo", french: "Athlétisme", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "רכיבה על אופניים", english: "Cycling", german: "Radfahren", italian: "Ciclismo", spanish: "Ciclismo", french: "Cyclisme", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "היאבקות", english: "Wrestling", german: "Ringen", italian: "Lotta", spanish: "Lucha", french: "Lutte", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "גולף", english: "Golf", german: "Golf", italian: "Golf", spanish: "Golf", french: "Golf", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "סקי", english: "Skiing", german: "Skifahren", italian: "Sci", spanish: "Esquí", french: "Ski", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "ריצה", english: "Running", german: "Laufen", italian: "Corsa", spanish: "Correr", french: "Course", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "כדורעף", english: "Volleyball", german: "Volleyball", italian: "Pallavolo", spanish: "Voleibol", french: "Volley-ball", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "בייסבול", english: "Baseball", german: "Baseball", italian: "Baseball", spanish: "Béisbol", french: "Base-ball", courseNameEnglish: "Sports", courseOrder: 20 },
+{ hebrew: "סנובורד", english: "Snowboarding", german: "Snowboarden", italian: "Snowboard", spanish: "Snowboard", french: "Snowboard", courseNameEnglish: "Sports", courseOrder: 20 },
 
-  // Advanced Clothes - 77
-  // Intermediate School Supplies - 78
-  // Intermediate Health - 79
-  // Intermediate Days of the Week - 80
-  // Taxes - 81
-  // Philosophical Topics - 82
-  // Intermediate Parts of the House - 83
-  // Describing People - 84
-  // Crypto - 85
-  // Advanced Politics - 86
-  // International Relations - 87
-  // Stars - 88
-  // Theatre - 89
-  // Human Rights - 90
-  // Chemistry - 91
-  // Artificial Intelligence - 92
-  // Intermediate Holidays - 93
-  // Numbers by Hundreds - 94
-  // Numbers by Thousands - 95
-  // Mathematical Topics - 96
-  // Intermediate Higher Education - 97
-  // Biology - 98
-  // Intermediate Work - 99
-  // Advanced Emotions - 100
+// Shapes - 21
+{ hebrew: "עיגול", english: "Circle", german: "Kreis", italian: "Cerchio", spanish: "Círculo", french: "Cercle", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "ריבוע", english: "Square", german: "Quadrat", italian: "Quadrato", spanish: "Cuadrado", french: "Carré", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "מלבן", english: "Rectangle", german: "Rechteck", italian: "Rettangolo", spanish: "Rectángulo", french: "Rectangle", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "משולש", english: "Triangle", german: "Dreieck", italian: "Triangolo", spanish: "Triángulo", french: "Triangle", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "אליפסה", english: "Oval", german: "Oval", italian: "Ovale", spanish: "Óvalo", french: "Ovale", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "מעוין", english: "Rhombus", german: "Raute", italian: "Rombo", spanish: "Rombo", french: "Losange", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "מחומש", english: "Pentagon", german: "Fünfeck", italian: "Pentagono", spanish: "Pentágono", french: "Pentagone", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "משושה", english: "Hexagon", german: "Sechseck", italian: "Esagono", spanish: "Hexágono", french: "Hexagone", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "כוכב", english: "Star", german: "Stern", italian: "Stella", spanish: "Estrella", french: "Étoile", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "קשת", english: "Arc", german: "Bogen", italian: "Arco", spanish: "Arco", french: "Arc", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "טרפז", english: "Trapezoid", german: "Trapez", italian: "Trapezio", spanish: "Trapecio", french: "Trapèze", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "גליל", english: "Cylinder", german: "Zylinder", italian: "Cilindro", spanish: "Cilindro", french: "Cylindre", courseNameEnglish: "Shapes", courseOrder: 21 },
+{ hebrew: "קוביה", english: "Cube", german: "Würfel", italian: "Cubo", spanish: "Cubo", french: "Cube", courseNameEnglish: "Shapes", courseOrder: 21 },
 
-  // Digital Marketing - 101
-  // Graphic Design - 102
-  // Graphic Design - 103
-  // Classical Music - 104
-  // Museums - 105
-  // Stock Market - 106
-  // Cooking - 107
-  // Robots - 108
-  // Services - 109
-  // Christmas - 110
-  // Fruits - 111
-  { hebrew: "תפוח", english: "Apple", german: "Apfel", italian: "Mela", spanish: "Manzana", french: "Pomme", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "בננה", english: "Banana", german: "Banane", italian: "Banana", spanish: "Plátano", french: "Banane", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "תפוז", english: "Orange", german: "Orange", italian: "Arancia", spanish: "Naranja", french: "Orange", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "תות", english: "Strawberry", german: "Erdbeere", italian: "Fragola", spanish: "Fresa", french: "Fraise", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "ענבים", english: "Grapes", german: "Trauben", italian: "Uva", spanish: "Uvas", french: "Raisins", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "אבטיח", english: "Watermelon", german: "Wassermelone", italian: "Anguria", spanish: "Sandía", french: "Pastèque", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "שזיף", english: "Plum", german: "Pflaume", italian: "Prugna", spanish: "Ciruela", french: "Prune", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "מנגו", english: "Mango", german: "Mango", italian: "Mango", spanish: "Mango", french: "Mangue", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "פפאיה", english: "Papaya", german: "Papaya", italian: "Papaia", spanish: "Papaya", french: "Papaye", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "אננס", english: "Pineapple", german: "Ananas", italian: "Ananas", spanish: "Piña", french: "Ananas", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "קיווי", english: "Kiwi", german: "Kiwi", italian: "Kiwi", spanish: "Kiwi", french: "Kiwi", courseNameEnglish: "Fruits", courseOrder: 111 },
-  { hebrew: "אגס", english: "Pear", german: "Birne", italian: "Pera", spanish: "Pera", french: "Poire", courseNameEnglish: "Fruits", courseOrder: 111 },
+// Time - 22
+{ hebrew: "שעה", english: "Hour", german: "Stunde", italian: "Ora", spanish: "Hora", french: "Heure", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "דקה", english: "Minute", german: "Minute", italian: "Minuto", spanish: "Minuto", french: "Minute", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "שנייה", english: "Second", german: "Sekunde", italian: "Secondo", spanish: "Segundo", french: "Seconde", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "בוקר", english: "Morning", german: "Morgen", italian: "Mattina", spanish: "Mañana", french: "Matin", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "צהריים", english: "Noon", german: "Mittag", italian: "Mezzogiorno", spanish: "Mediodía", french: "Midi", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "אחר הצהריים", english: "Afternoon", german: "Nachmittag", italian: "Pomeriggio", spanish: "Tarde", french: "Après-midi", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "ערב", english: "Evening", german: "Abend", italian: "Sera", spanish: "Noche", french: "Soir", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "לילה", english: "Night", german: "Nacht", italian: "Notte", spanish: "Noche", french: "Nuit", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "אתמול", english: "Yesterday", german: "Gestern", italian: "Ieri", spanish: "Ayer", french: "Hier", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "היום", english: "Today", german: "Heute", italian: "Oggi", spanish: "Hoy", french: "Aujourd’hui", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "מחר", english: "Tomorrow", german: "Morgen", italian: "Domani", spanish: "Mañana", french: "Demain", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "שבוע", english: "Week", german: "Woche", italian: "Settimana", spanish: "Semana", french: "Semaine", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "חודש", english: "Month", german: "Monat", italian: "Mese", spanish: "Mes", french: "Mois", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "שנה", english: "Year", german: "Jahr", italian: "Anno", spanish: "Año", french: "Année", courseNameEnglish: "Time", courseOrder: 22 },
+{ hebrew: "עונה", english: "Season", german: "Jahreszeit", italian: "Stagione", spanish: "Estación", french: "Saison", courseNameEnglish: "Time", courseOrder: 22 },
 
-  // Vegetables - 112
-  // Makeup - 113
-  // Countries - 114
-  // Extreme Sports - 115
-  // Surfing - 116
-  // Camping - 117
-  // Martial Arts - 118
-  // Market - 119
-  // Gifts - 120
-  // Restaurant - 121
-  // Bank - 122
-  // News - 123
-  // Writing Tools - 124
-  // Advanced Tools - 125
+// Common Actions - 23
+{ hebrew: "ללכת", english: "Walk", german: "Gehen", italian: "Camminare", spanish: "Caminar", french: "Marcher", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לרוץ", english: "Run", german: "Laufen", italian: "Correre", spanish: "Correr", french: "Courir", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לקפוץ", english: "Jump", german: "Springen", italian: "Saltare", spanish: "Saltar", french: "Sauter", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לשבת", english: "Sit", german: "Sitzen", italian: "Sedersi", spanish: "Sentarse", french: "S'asseoir", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לעמוד", english: "Stand", german: "Stehen", italian: "Stare in piedi", spanish: "Estar de pie", french: "Se tenir debout", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לפתוח", english: "Open", german: "Öffnen", italian: "Aprire", spanish: "Abrir", french: "Ouvrir", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לסגור", english: "Close", german: "Schließen", italian: "Chiudere", spanish: "Cerrar", french: "Fermer", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לאכול", english: "Eat", german: "Essen", italian: "Mangiare", spanish: "Comer", french: "Manger", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לשתות", english: "Drink", german: "Trinken", italian: "Bere", spanish: "Beber", french: "Boire", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לכתוב", english: "Write", german: "Schreiben", italian: "Scrivere", spanish: "Escribir", french: "Écrire", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לקרוא", english: "Read", german: "Lesen", italian: "Leggere", spanish: "Leer", french: "Lire", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לראות", english: "See", german: "Sehen", italian: "Vedere", spanish: "Ver", french: "Voir", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לשמוע", english: "Hear", german: "Hören", italian: "Sentire", spanish: "Oír", french: "Entendre", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לדבר", english: "Speak", german: "Sprechen", italian: "Parlare", spanish: "Hablar", french: "Parler", courseNameEnglish: "Common Actions", courseOrder: 23 },
+{ hebrew: "לישון", english: "Sleep", german: "Schlafen", italian: "Dormire", spanish: "Dormir", french: "Dormir", courseNameEnglish: "Common Actions", courseOrder: 23 },
 
-  // Business Communication - 126
-  // Cyber - 127
-  // Academic Writing - 128
-  // Leadership and Management - 129
-  // Legal Terms - 130
-  { hebrew: "חוק", english: "Law", german: "Gesetz", italian: "Legge", spanish: "Ley", french: "Loi", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "זכות", english: "Right", german: "Recht", italian: "Diritto", spanish: "Derecho", french: "Droit", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "פסק דין", english: "Judgment", german: "Urteil", italian: "Sentenza", spanish: "Sentencia", french: "Jugement", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "חוזה", english: "Contract", german: "Vertrag", italian: "Contratto", spanish: "Contrato", french: "Contrat", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "ערעור", english: "Appeal", german: "Berufung", italian: "Appello", spanish: "Apelación", french: "Appel", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "פשע", english: "Crime", german: "Verbrechen", italian: "Crimine", spanish: "Crimen", french: "Crime", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "עבירה", english: "Offense", german: "Straftat", italian: "Reato", spanish: "Delito", french: "Infraction", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "תביעה", english: "Lawsuit", german: "Klage", italian: "Causa", spanish: "Demanda", french: "Procès", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "הגנה", english: "Defense", german: "Verteidigung", italian: "Difesa", spanish: "Defensa", french: "Défense", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "תובע", english: "Prosecutor", german: "Staatsanwalt", italian: "Procuratore", spanish: "Fiscal", french: "Procureur", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "עדים", english: "Witnesses", german: "Zeugen", italian: "Testimoni", spanish: "Testigos", french: "Témoins", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "הסכמה", english: "Consent", german: "Zustimmung", italian: "Consenso", spanish: "Consentimiento", french: "Consentement", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "משפט", english: "Trial", german: "Prozess", italian: "Processo", spanish: "Juicio", french: "Procès", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "פיצויים", english: "Compensation", german: "Entschädigung", italian: "Risarcimento", spanish: "Compensación", french: "Indemnisation", courseNameEnglish: "Legal Terms", courseOrder: 130 },
-  { hebrew: "מעשה פלילי", english: "Criminal Act", german: "Kriminelle Handlung", italian: "Atto criminale", spanish: "Acto criminal", french: "Acte criminel", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+// Shopping - 24
+{ hebrew: "חנות", english: "Store", german: "Geschäft", italian: "Negozio", spanish: "Tienda", french: "Magasin", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "קניון", english: "Mall", german: "Einkaufszentrum", italian: "Centro commerciale", spanish: "Centro comercial", french: "Centre commercial", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "כסף", english: "Money", german: "Geld", italian: "Denaro", spanish: "Dinero", french: "Argent", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "מזומן", english: "Cash", german: "Bargeld", italian: "Contanti", spanish: "Efectivo", french: "Espèces", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "כרטיס אשראי", english: "Credit card", german: "Kreditkarte", italian: "Carta di credito", spanish: "Tarjeta de crédito", french: "Carte de crédit", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "עגלה", english: "Shopping cart", german: "Einkaufswagen", italian: "Carrello", spanish: "Carrito de compras", french: "Chariot", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "מחיר", english: "Price", german: "Preis", italian: "Prezzo", spanish: "Precio", french: "Prix", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "הנחה", english: "Discount", german: "Rabatt", italian: "Sconto", spanish: "Descuento", french: "Réduction", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "חשבונית", english: "Receipt", german: "Kassenbon", italian: "Scontrino", spanish: "Recibo", french: "Reçu", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "קופון", english: "Coupon", german: "Gutschein", italian: "Buono", spanish: "Cupón", french: "Bon de réduction", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "מדף", english: "Shelf", german: "Regal", italian: "Scaffale", spanish: "Estante", french: "Étagère", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "מדבקה", english: "Sticker", german: "Aufkleber", italian: "Adesivo", spanish: "Pegatina", french: "Autocollant", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "שקית", english: "Bag", german: "Tüte", italian: "Borsa", spanish: "Bolsa", french: "Sac", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "קופה", english: "Cash register", german: "Kasse", italian: "Cassa", spanish: "Caja registradora", french: "Caisse", courseNameEnglish: "Shopping", courseOrder: 24 },
+{ hebrew: "לשלם", english: "To pay", german: "Bezahlen", italian: "Pagare", spanish: "Pagar", french: "Payer", courseNameEnglish: "Shopping", courseOrder: 24 },
 
-  // Globalization - 131
-  // Topics in Psychology - 132
-  // Renewable Energy - 133
-  // Neuroscience - 134
-  // Topics in Physics - 135
-  // Topics in Architecture - 136
-  // Religions - 137
-  // Tools - 138
-  // Plants and Flowers - 139
-  // Sea - 140
-  // Office Supplies - 141
-  // Advanced Conversation Management - 142
-  // Nature Trip - 143
-  // Cars - 144
-  // Houses - 145
-  // Gym - 146
-  // Brain Research - 147
-  // Army - 148
-  // Cinema - 149
-  // Extreme Sports - 150
+// Technology - 25
+{ hebrew: "מחשב", english: "Computer", german: "Computer", italian: "Computer", spanish: "Computadora", french: "Ordinateur", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "טלפון", english: "Phone", german: "Telefon", italian: "Telefono", spanish: "Teléfono", french: "Téléphone", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "טאבלט", english: "Tablet", german: "Tablet", italian: "Tablet", spanish: "Tableta", french: "Tablette", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "מקלדת", english: "Keyboard", german: "Tastatur", italian: "Tastiera", spanish: "Teclado", french: "Clavier", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "עכבר", english: "Mouse", german: "Maus", italian: "Mouse", spanish: "Ratón", french: "Souris", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "מסך", english: "Screen", german: "Bildschirm", italian: "Schermo", spanish: "Pantalla", french: "Écran", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "מדפסת", english: "Printer", german: "Drucker", italian: "Stampante", spanish: "Impresora", french: "Imprimante", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "רשת אלחוטית", english: "Wi-Fi", german: "WLAN", italian: "Wi-Fi", spanish: "Wi-Fi", french: "Wi-Fi", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "דפדפן", english: "Browser", german: "Browser", italian: "Browser", spanish: "Navegador", french: "Navigateur", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "אינטרנט", english: "Internet", german: "Internet", italian: "Internet", spanish: "Internet", french: "Internet", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "כבל", english: "Cable", german: "Kabel", italian: "Cavo", spanish: "Cable", french: "Câble", courseNameEnglish: "Technology", courseOrder: 25 },
+{ hebrew: "תוכנה", english: "Software", german: "Software", italian: "Software", spanish: "Software", french: "Logiciel", courseNameEnglish: "Technology", courseOrder: 25 },
+
+// Health and Fitness - 26
+{ hebrew: "בריאות", english: "Health", german: "Gesundheit", italian: "Salute", spanish: "Salud", french: "Santé", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "כושר", english: "Fitness", german: "Fitness", italian: "Fitness", spanish: "Aptitud", french: "Forme physique", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "יוגה", english: "Yoga", german: "Yoga", italian: "Yoga", spanish: "Yoga", french: "Yoga", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "משקולות", english: "Weights", german: "Gewichte", italian: "Pesi", spanish: "Pesas", french: "Haltères", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "מתיחות", english: "Stretching", german: "Dehnen", italian: "Allungamento", spanish: "Estiramiento", french: "Étirement", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "אירובי", english: "Aerobics", german: "Aerobic", italian: "Aerobica", spanish: "Aeróbicos", french: "Aérobic", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "אימון", english: "Workout", german: "Training", italian: "Allenamento", spanish: "Entrenamiento", french: "Entraînement", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "מד דופק", english: "Heart rate monitor", german: "Herzfrequenzmesser", italian: "Misuratore di battito", spanish: "Monitor de frecuencia cardíaca", french: "Moniteur de fréquence cardiaque", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "קלוריות", english: "Calories", german: "Kalorien", italian: "Calorie", spanish: "Calorías", french: "Calories", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "שריר", english: "Muscle", german: "Muskel", italian: "Muscolo", spanish: "Músculo", french: "Muscle", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "תזונה", english: "Nutrition", german: "Ernährung", italian: "Nutrizione", spanish: "Nutrición", french: "Nutrition", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+{ hebrew: "שינה", english: "Sleep", german: "Schlaf", italian: "Sonno", spanish: "Sueño", french: "Sommeil", courseNameEnglish: "Health and Fitness", courseOrder: 26 },
+
+// Intermediate Clothes - 27
+{ hebrew: "ג'קט", english: "Jacket", german: "Jacke", italian: "Giacca", spanish: "Chaqueta", french: "Veste", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "קרדיגן", english: "Cardigan", german: "Cardigan", italian: "Cardigan", spanish: "Cárdigan", french: "Cardigan", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "מעיל גשם", english: "Raincoat", german: "Regenmantel", italian: "Impermeabile", spanish: "Chubasquero", french: "Imperméable", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "אפוד", english: "Vest", german: "Weste", italian: "Gilet", spanish: "Chaleco", french: "Gilet", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "פיג'מה", english: "Pajamas", german: "Schlafanzug", italian: "Pigiama", spanish: "Pijama", french: "Pyjama", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "חלוק רחצה", english: "Bathrobe", german: "Bademantel", italian: "Accappatoio", spanish: "Bata de baño", french: "Peignoir", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "בגדי ים", english: "Swimsuit", german: "Badeanzug", italian: "Costume da bagno", spanish: "Traje de baño", french: "Maillot de bain", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "כפפות", english: "Gloves", german: "Handschuhe", italian: "Guanti", spanish: "Guantes", french: "Gants", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "צעיף", english: "Scarf", german: "Schal", italian: "Sciarpa", spanish: "Bufanda", french: "Écharpe", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "חגורה", english: "Belt", german: "Gürtel", italian: "Cintura", spanish: "Cinturón", french: "Ceinture", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "כפכפים", english: "Flip-flops", german: "Flip-Flops", italian: "Infradito", spanish: "Chanclas", french: "Tongs", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "מגפיים", english: "Boots", german: "Stiefel", italian: "Stivali", spanish: "Botas", french: "Bottes", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "גרביונים", english: "Tights", german: "Strumpfhose", italian: "Collant", spanish: "Medias", french: "Collants", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+{ hebrew: "בנדנה", english: "Bandana", german: "Bandana", italian: "Bandana", spanish: "Bandana", french: "Bandana", courseNameEnglish: "Intermediate Clothes", courseOrder: 27 },
+
+// Intermediate Animals - 28
+{ hebrew: "שועל", english: "Fox", german: "Fuchs", italian: "Volpe", spanish: "Zorro", french: "Renard", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "ג'ירפה", english: "Giraffe", german: "Giraffe", italian: "Giraffa", spanish: "Jirafa", french: "Girafe", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "תנין", english: "Crocodile", german: "Krokodil", italian: "Coccodrillo", spanish: "Cocodrilo", french: "Crocodile", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "צבי", english: "Deer", german: "Hirsch", italian: "Cervo", spanish: "Ciervo", french: "Cerf", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "לטאה", english: "Lizard", german: "Eidechse", italian: "Lucertola", spanish: "Lagarto", french: "Lézard", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "ינשוף", english: "Owl", german: "Eule", italian: "Gufo", spanish: "Búho", french: "Hibou", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "דולפין", english: "Dolphin", german: "Delfin", italian: "Delfino", spanish: "Delfín", french: "Dauphin", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "כריש", english: "Shark", german: "Hai", italian: "Squalo", spanish: "Tiburón", french: "Requin", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "עטלף", english: "Bat", german: "Fledermaus", italian: "Pipistrello", spanish: "Murciélago", french: "Chauve-souris", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "לוויתן", english: "Whale", german: "Wal", italian: "Balena", spanish: "Ballena", french: "Baleine", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "תמנון", english: "Octopus", german: "Krake", italian: "Polpo", spanish: "Pulpo", french: "Poulpe", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "ארנב", english: "Rabbit", german: "Kaninchen", italian: "Coniglio", spanish: "Conejo", french: "Lapin", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "חמור", english: "Donkey", german: "Esel", italian: "Asino", spanish: "Burro", french: "Âne", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "נשר", english: "Eagle", german: "Adler", italian: "Aquila", spanish: "Águila", french: "Aigle", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+{ hebrew: "קיפוד", english: "Hedgehog", german: "Igel", italian: "Riccio", spanish: "Erizo", french: "Hérisson", courseNameEnglish: "Intermediate Animals", courseOrder: 28 },
+
+// Holidays - 29
+{ hebrew: "חג", english: "Holiday", german: "Feiertag", italian: "Vacanza", spanish: "Fiesta", french: "Fête", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "פסח", english: "Passover", german: "Pessach", italian: "Pasqua Ebraica", spanish: "Pésaj", french: "Pâque juive", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "חנוכה", english: "Hanukkah", german: "Chanukka", italian: "Chanukkah", spanish: "Janucá", french: "Hanoucca", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "ראש השנה", english: "Rosh Hashanah", german: "Rosch Haschana", italian: "Rosh Hashanah", spanish: "Rosh Hashaná", french: "Roch Hachana", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "סוכות", english: "Sukkot", german: "Sukkot", italian: "Sukkot", spanish: "Sucot", french: "Souccot", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "שבועות", english: "Shavuot", german: "Schawuot", italian: "Shavuot", spanish: "Shavuot", french: "Chavouot", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "פורים", english: "Purim", german: "Purim", italian: "Purim", spanish: "Purim", french: "Pourim", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "יום הולדת", english: "Birthday", german: "Geburtstag", italian: "Compleanno", spanish: "Cumpleaños", french: "Anniversaire", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "יום העמצאות", english: "Independence Day", german: "Unabhängigkeitstag", italian: "Giorno dell'Indipendenza", spanish: "Día de la Independencia", french: "Fête de l'Indépendance", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "שנה טובה", english: "Happy New Year", german: "Frohes neues Jahr", italian: "Buon anno", spanish: "Feliz Año Nuevo", french: "Bonne année", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "חגיגה", english: "Celebration", german: "Feier", italian: "Celebrazione", spanish: "Celebración", french: "Célébration", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "מסיבה", english: "Party", german: "Party", italian: "Festa", spanish: "Fiesta", french: "Fête", courseNameEnglish: "Holidays", courseOrder: 29 },
+{ hebrew: "כריסמס", english: "Christmas", german: "Weihnachten", italian: "Natale", spanish: "Navidad", french: "Noël", courseNameEnglish: "Holidays", courseOrder: 29 },
+
+// Intermediate Numbers - 30
+{ hebrew: "שלוש עשרה", english: "Thirteen", german: "Dreizehn", italian: "Tredici", spanish: "Trece", french: "Treize", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "ארבע עשרה", english: "Fourteen", german: "Vierzehn", italian: "Quattordici", spanish: "Catorce", french: "Quatorze", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "חמש עשרה", english: "Fifteen", german: "Fünfzehn", italian: "Quindici", spanish: "Quince", french: "Quinze", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שש עשרה", english: "Sixteen", german: "Sechzehn", italian: "Sedici", spanish: "Dieciséis", french: "Seize", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שבע עשרה", english: "Seventeen", german: "Siebzehn", italian: "Diciassette", spanish: "Diecisiete", french: "Dix-sept", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שמונה עשרה", english: "Eighteen", german: "Achtzehn", italian: "Diciotto", spanish: "Dieciocho", french: "Dix-huit", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "תשע עשרה", english: "Nineteen", german: "Neunzehn", italian: "Diciannove", spanish: "Diecinueve", french: "Dix-neuf", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "עשרים", english: "Twenty", german: "Zwanzig", italian: "Venti", spanish: "Veinte", french: "Vingt", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שלושים", english: "Thirty", german: "Dreißig", italian: "Trenta", spanish: "Treinta", french: "Trente", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "ארבעים", english: "Forty", german: "Vierzig", italian: "Quaranta", spanish: "Cuarenta", french: "Quarante", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "חמישים", english: "Fifty", german: "Fünfzig", italian: "Cinquanta", spanish: "Cincuenta", french: "Cinquante", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שישים", english: "Sixty", german: "Sechzig", italian: "Sessanta", spanish: "Sesenta", french: "Soixante", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שבעים", english: "Seventy", german: "Siebzig", italian: "Settanta", spanish: "Setenta", french: "Soixante-dix", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "שמונים", english: "Eighty", german: "Achtzig", italian: "Ottanta", spanish: "Ochenta", french: "Quatre-vingts", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+{ hebrew: "תשעים", english: "Ninety", german: "Neunzig", italian: "Novanta", spanish: "Noventa", french: "Quatre-vingt-dix", courseNameEnglish: "Intermediate Numbers", courseOrder: 30 },
+
+// Countries - 31
+{ hebrew: "ישראל", english: "Israel", german: "Israel", italian: "Israele", spanish: "Israel", french: "Israël", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "ארצות הברית", english: "United States", german: "Vereinigte Staaten", italian: "Stati Uniti", spanish: "Estados Unidos", french: "États-Unis", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "קנדה", english: "Canada", german: "Kanada", italian: "Canada", spanish: "Canadá", french: "Canada", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "בריטניה", english: "United Kingdom", german: "Vereinigtes Königreich", italian: "Regno Unito", spanish: "Reino Unido", french: "Royaume-Uni", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "צרפת", english: "France", german: "Frankreich", italian: "Francia", spanish: "Francia", french: "France", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "גרמניה", english: "Germany", german: "Deutschland", italian: "Germania", spanish: "Alemania", french: "Allemagne", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "איטליה", english: "Italy", german: "Italien", italian: "Italia", spanish: "Italia", french: "Italie", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "ספרד", english: "Spain", german: "Spanien", italian: "Spagna", spanish: "España", french: "Espagne", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "רוסיה", english: "Russia", german: "Russland", italian: "Russia", spanish: "Rusia", french: "Russie", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "סין", english: "China", german: "China", italian: "Cina", spanish: "China", french: "Chine", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "יפן", english: "Japan", german: "Japan", italian: "Giappone", spanish: "Japón", french: "Japon", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "ברזיל", english: "Brazil", german: "Brasilien", italian: "Brasile", spanish: "Brasil", french: "Brésil", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "הודו", english: "India", german: "Indien", italian: "India", spanish: "India", french: "Inde", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "מצרים", english: "Egypt", german: "Ägypten", italian: "Egitto", spanish: "Egipto", french: "Égypte", courseNameEnglish: "Countries", courseOrder: 31 },
+{ hebrew: "אוסטרליה", english: "Australia", german: "Australien", italian: "Australia", spanish: "Australia", french: "Australie", courseNameEnglish: "Countries", courseOrder: 31 },
+
+// Intermediate Body Parts - 32
+{ hebrew: "צוואר", english: "Neck", german: "Hals", italian: "Collo", spanish: "Cuello", french: "Cou", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "סנטר", english: "Chin", german: "Kinn", italian: "Mento", spanish: "Barbilla", french: "Mentón", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "לחי", english: "Cheek", german: "Wange", italian: "Guancia", spanish: "Mejilla", french: "Joue", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "מצח", english: "Forehead", german: "Stirn", italian: "Fronte", spanish: "Frente", french: "Front", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "גבות", english: "Eyebrows", german: "Augenbrauen", italian: "Sopracciglia", spanish: "Cejas", french: "Sourcils", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "ריסים", english: "Eyelashes", german: "Wimpern", italian: "Ciglia", spanish: "Pestañas", french: "Cils", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "לשון", english: "Tongue", german: "Zunge", italian: "Lingua", spanish: "Lengua", french: "Langue", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "עצם הבריח", english: "Collarbone", german: "Schlüsselbein", italian: "Clavicola", spanish: "Clavícula", french: "Clavicule", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "צלעות", english: "Ribs", german: "Rippen", italian: "Costole", spanish: "Costillas", french: "Côtes", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "ירך", english: "Thigh", german: "Oberschenkel", italian: "Coscia", spanish: "Muslo", french: "Cuisse", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "קרסול", english: "Ankle", german: "Knöchel", italian: "Caviglia", spanish: "Tobillo", french: "Cheville", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "עקב", english: "Heel", german: "Ferse", italian: "Tallone", spanish: "Talón", french: "Talon", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "כף היד", english: "Wrist", german: "Handgelenk", italian: "Polso", spanish: "Muñeca", french: "Poignet", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "כבד", english: "Liver", german: "Leber", italian: "Fegato", spanish: "Hígado", french: "Foie", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+{ hebrew: "כליות", english: "Kidneys", german: "Nieren", italian: "Reni", spanish: "Riñones", french: "Reins", courseNameEnglish: "Intermediate Body Parts", courseOrder: 32 },
+
+// Health - 33
+{ hebrew: "רופא", english: "Doctor", german: "Arzt", italian: "Dottore", spanish: "Médico", french: "Médecin", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "חום", english: "Fever", german: "Fieber", italian: "Febbre", spanish: "Fiebre", french: "Fièvre", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "כאב ראש", english: "Headache", german: "Kopfschmerzen", italian: "Mal di testa", spanish: "Dolor de cabeza", french: "Mal de tête", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "כאב גרון", english: "Sore throat", german: "Halsschmerzen", italian: "Mal di gola", spanish: "Dolor de garganta", french: "Mal de gorge", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "תרופה", english: "Medicine", german: "Medizin", italian: "Medicina", spanish: "Medicina", french: "Médicament", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "זריקה", english: "Injection", german: "Injektion", italian: "Iniezione", spanish: "Inyección", french: "Injection", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "תחבושת", english: "Bandage", german: "Verband", italian: "Benda", spanish: "Vendaje", french: "Bandage", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "שבר", english: "Fracture", german: "Bruch", italian: "Frattura", spanish: "Fractura", french: "Fracture", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "לחץ דם", english: "Blood pressure", german: "Blutdruck", italian: "Pressione sanguigna", spanish: "Presión arterial", french: "Tension artérielle", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "חיסון", english: "Vaccine", german: "Impfstoff", italian: "Vaccino", spanish: "Vacuna", french: "Vaccin", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "פציעה", english: "Injury", german: "Verletzung", italian: "Ferita", spanish: "Lesión", french: "Blessure", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "אלרגיה", english: "Allergy", german: "Allergie", italian: "Allergia", spanish: "Alergia", french: "Allergie", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "ניתוח", english: "Surgery", german: "Operation", italian: "Chirurgia", spanish: "Cirugía", french: "Chirurgie", courseNameEnglish: "Health", courseOrder: 33 },
+{ hebrew: "דופק", english: "Pulse", german: "Puls", italian: "Polso", spanish: "Pulso", french: "Pouls", courseNameEnglish: "Health", courseOrder: 33 },
+
+// Directions - 34
+{ hebrew: "ימין", english: "Right", german: "Rechts", italian: "Destra", spanish: "Derecha", french: "Droite", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "שמאל", english: "Left", german: "Links", italian: "Sinistra", spanish: "Izquierda", french: "Gauche", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "קדימה", english: "Forward", german: "Vorwärts", italian: "Avanti", spanish: "Adelante", french: "En avant", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "אחורה", english: "Backward", german: "Rückwärts", italian: "Indietro", spanish: "Atrás", french: "En arrière", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "צפון", english: "North", german: "Norden", italian: "Nord", spanish: "Norte", french: "Nord", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "דרום", english: "South", german: "Süden", italian: "Sud", spanish: "Sur", french: "Sud", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "מזרח", english: "East", german: "Osten", italian: "Est", spanish: "Este", french: "Est", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "מערב", english: "West", german: "Westen", italian: "Ovest", spanish: "Oeste", french: "Ouest", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "ישר", english: "Straight", german: "Geradeaus", italian: "Dritto", spanish: "Recto", french: "Tout droit", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "ליד", english: "Near", german: "In der Nähe", italian: "Vicino", spanish: "Cerca", french: "Près de", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "רחוק", english: "Far", german: "Weit", italian: "Lontano", spanish: "Lejos", french: "Loin", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "בפנים", english: "Inside", german: "Drinnen", italian: "Dentro", spanish: "Adentro", french: "À l'intérieur", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "בחוץ", english: "Outside", german: "Draußen", italian: "Fuori", spanish: "Afuera", french: "À l'extérieur", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "בפינה", english: "At the corner", german: "An der Ecke", italian: "All'angolo", spanish: "En la esquina", french: "À l'angle", courseNameEnglish: "Directions", courseOrder: 34 },
+{ hebrew: "באמצע", english: "In the middle", german: "In der Mitte", italian: "Nel mezzo", spanish: "En el medio", french: "Au milieu", courseNameEnglish: "Directions", courseOrder: 34 },
+
+// Means of Communication - 35
+{ hebrew: "מכתב", english: "Letter", german: "Brief", italian: "Lettera", spanish: "Carta", french: "Lettre", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "אימייל", english: "Email", german: "E-Mail", italian: "Email", spanish: "Correo electrónico", french: "E-mail", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "רדיו", english: "Radio", german: "Radio", italian: "Radio", spanish: "Radio", french: "Radio", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "טלוויזיה", english: "Television", german: "Fernsehen", italian: "Televisione", spanish: "Televisión", french: "Télévision", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "עיתון", english: "Newspaper", german: "Zeitung", italian: "Giornale", spanish: "Periódico", french: "Journal", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "מגזין", english: "Magazine", german: "Magazin", italian: "Rivista", spanish: "Revista", french: "Magazine", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "שליח", english: "Messenger", german: "Bote", italian: "Messaggero", spanish: "Mensajero", french: "Messager", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "שיחת וידאו", english: "Video call", german: "Videoanruf", italian: "Chiamata video", spanish: "Videollamada", french: "Appel vidéo", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "סמס", english: "Text message", german: "Textnachricht", italian: "Messaggio di testo", spanish: "Mensaje de texto", french: "Message texte", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "אפליקציה", english: "App", german: "App", italian: "App", spanish: "Aplicación", french: "Application", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "פקס", english: "Fax", german: "Fax", italian: "Fax", spanish: "Fax", french: "Fax", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+{ hebrew: "מדיה חברתית", english: "Social media", german: "Soziale Medien", italian: "Social media", spanish: "Redes sociales", french: "Réseaux sociaux", courseNameEnglish: "Means of Communication", courseOrder: 35 },
+
+// Intermediate Furniture - 36
+{ hebrew: "כורסה", english: "Armchair", german: "Sessel", italian: "Poltrona", spanish: "Sillón", french: "Fauteuil", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "שולחן אוכל", english: "Dining table", german: "Esstisch", italian: "Tavolo da pranzo", spanish: "Mesa de comedor", french: "Table à manger", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "שולחן צד", english: "Side table", german: "Beistelltisch", italian: "Tavolino laterale", spanish: "Mesa auxiliar", french: "Table d'appoint", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "שידה לטלוויזיה", english: "TV stand", german: "TV-Schrank", italian: "Mobile TV", spanish: "Mueble para televisión", french: "Meuble TV", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "מיטת קומותיים", english: "Bunk bed", german: "Etagenbett", italian: "Letto a castello", spanish: "Litera", french: "Lit superposé", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "מיטת יחיד", english: "Single bed", german: "Einzelbett", italian: "Letto singolo", spanish: "Cama individual", french: "Lit simple", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "מיטת זוגית", english: "Double bed", german: "Doppelbett", italian: "Letto matrimoniale", spanish: "Cama doble", french: "Lit double", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "שולחן איפור", english: "Vanity table", german: "Schminktisch", italian: "Tavolo da toeletta", spanish: "Tocador", french: "Coiffeuse", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "שולחן מתקפל", english: "Folding table", german: "Klapptisch", italian: "Tavolo pieghevole", spanish: "Mesa plegable", french: "Table pliante", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "מתלה בגדים", english: "Clothes rack", german: "Kleiderständer", italian: "Appendiabiti", spanish: "Perchero", french: "Portant à vêtements", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "ארגז אחסון", english: "Storage chest", german: "Aufbewahrungstruhe", italian: "Baule", spanish: "Baúl de almacenamiento", french: "Coffre de rangement", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+{ hebrew: "ערסל", english: "Hammock", german: "Hängematte", italian: "Amaca", spanish: "Hamaca", french: "Hamac", courseNameEnglish: "Intermediate Furniture", courseOrder: 36 },
+
+// Intermediate Weather - 37
+{ hebrew: "לחות", english: "Humidity", german: "Luftfeuchtigkeit", italian: "Umidità", spanish: "Humedad", french: "Humidité", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "ערפל", english: "Fog", german: "Nebel", italian: "Nebbia", spanish: "Niebla", french: "Brouillard", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "כפור", english: "Frost", german: "Frost", italian: "Gelo", spanish: "Escarcha", french: "Gel", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "ברד", english: "Hail", german: "Hagel", italian: "Grandine", spanish: "Granizo", french: "Grêle", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "רוח חזקה", english: "Strong Wind", german: "Starker Wind", italian: "Vento forte", spanish: "Viento fuerte", french: "Vent fort", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "בריזה", english: "Light Breeze", german: "Leichte Brise", italian: "Brezza leggera", spanish: "Brisa ligera", french: "Brise légère", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "אובך", english: "Haze", german: "Dunst", italian: "Foschia", spanish: "Bruma", french: "Brume", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "ממטרים", english: "Showers", german: "Schauer", italian: "Rovesci", spanish: "Chubascos", french: "Averses", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "התבהרות", english: "Clear sky", german: "Klarer Himmel", italian: "Cielo sereno", spanish: "Cielo despejado", french: "Ciel dégagé", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "התחממות", english: "Warming", german: "Erwärmung", italian: "Riscaldamento", spanish: "Calentamiento", french: "Réchauffement", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "התקררות", english: "Cooling", german: "Abkühlung", italian: "Raffreddamento", spanish: "Enfriamiento", french: "Refroidissement", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "זריחה", english: "Sunrise", german: "Sonnenaufgang", italian: "Alba", spanish: "Amanecer", french: "Lever du soleil", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "שקיעה", english: "Sunset", german: "Sonnenuntergang", italian: "Tramonto", spanish: "Atardecer", french: "Coucher du soleil", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "עננים נמוכים", english: "Low clouds", german: "Tiefe Wolken", italian: "Nuvole basse", spanish: "Nubes bajas", french: "Nuages bas", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+{ hebrew: "שרב", english: "Heatwave", german: "Hitzewelle", italian: "Ondata di caldo", spanish: "Ola de calor", french: "Canicule", courseNameEnglish: "Intermediate Weather", courseOrder: 37 },
+
+// Kitchen Tools - 38
+{ hebrew: "סכין", english: "Knife", german: "Messer", italian: "Coltello", spanish: "Cuchillo", french: "Couteau", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מזלג", english: "Fork", german: "Gabel", italian: "Forchetta", spanish: "Tenedor", french: "Fourchette", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "כף עץ", english: "Wooden spoon", german: "Holzlöffel", italian: "Cucchiaio di legno", spanish: "Cuchara de madera", french: "Cuillère en bois", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מצקת", english: "Ladle", german: "Schöpflöffel", italian: "Mestolo", spanish: "Cucharón", french: "Louche", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "פותחן בקבוקים", english: "Bottle opener", german: "Flaschenöffner", italian: "Apribottiglie", spanish: "Abrebotellas", french: "Décapsuleur", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "פותחן קופסאות", english: "Can opener", german: "Dosenöffner", italian: "Apriscatole", spanish: "Abrelatas", french: "Ouvre-boîte", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מערוך", english: "Rolling pin", german: "Nudelholz", italian: "Mattarello", spanish: "Rodillo", french: "Rouleau à pâtisserie", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מסננת", english: "Strainer", german: "Sieb", italian: "Colino", spanish: "Colador", french: "Passoire", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "קרש חיתוך", english: "Cutting board", german: "Schneidebrett", italian: "Tagliere", spanish: "Tabla de cortar", french: "Planche à découper", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "קערה", english: "Bowl", german: "Schüssel", italian: "Ciotola", spanish: "Bol", french: "Bol", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "תבנית אפייה", english: "Baking pan", german: "Backform", italian: "Teglia da forno", spanish: "Molde para hornear", french: "Moule à gâteau", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מסחטת מיץ", english: "Juicer", german: "Saftpresse", italian: "Spremiagrumi", spanish: "Exprimidor", french: "Presse-agrumes", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מחבת", english: "Frying pan", german: "Pfanne", italian: "Padella", spanish: "Sartén", french: "Poêle", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+{ hebrew: "מלקחיים", english: "Tongs", german: "Zange", italian: "Pinza", spanish: "Pinzas", french: "Pince", courseNameEnglish: "Kitchen Tools", courseOrder: 38 },
+
+// Musical Instruments - 39
+{ hebrew: "פסנתר", english: "Piano", german: "Klavier", italian: "Pianoforte", spanish: "Piano", french: "Piano", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "גיטרה", english: "Guitar", german: "Gitarre", italian: "Chitarra", spanish: "Guitarra", french: "Guitare", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "כינור", english: "Violin", german: "Geige", italian: "Violino", spanish: "Violín", french: "Violon", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "תופים", english: "Drums", german: "Schlagzeug", italian: "Batteria", spanish: "Batería", french: "Batterie", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "חצוצרה", english: "Trumpet", german: "Trompete", italian: "Tromba", spanish: "Trompeta", french: "Trompette", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "חליל", english: "Flute", german: "Flöte", italian: "Flauto", spanish: "Flauta", french: "Flûte", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "סקסופון", english: "Saxophone", german: "Saxophon", italian: "Sassofono", spanish: "Saxofón", french: "Saxophone", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "צ'לו", english: "Cello", german: "Cello", italian: "Violoncello", spanish: "Violonchelo", french: "Violoncelle", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "מפוחית", english: "Harmonica", german: "Mundharmonika", italian: "Armonica", spanish: "Armónica", french: "Harmonica", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "גונג", english: "Gong", german: "Gong", italian: "Gong", spanish: "Gong", french: "Gong", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "גיטרה בס", english: "Bass guitar", german: "Bassgitarre", italian: "Basso", spanish: "Bajo", french: "Guitare basse", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+{ hebrew: "אורגן", english: "Organ", german: "Orgel", italian: "Organo", spanish: "Órgano", french: "Orgue", courseNameEnglish: "Musical Instruments", courseOrder: 39 },
+
+// Economic Terms - 40
+{ hebrew: "שוק ההון", english: "Stock market", german: "Börse", italian: "Mercato azionario", spanish: "Mercado de valores", french: "Marché boursier", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "אינפלציה", english: "Inflation", german: "Inflation", italian: "Inflazione", spanish: "Inflación", french: "Inflation", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "מיתון", english: "Recession", german: "Rezession", italian: "Recessione", spanish: "Recesión", french: "Récession", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "השקעה", english: "Investment", german: "Investition", italian: "Investimento", spanish: "Inversión", french: "Investissement", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "ריבית", english: "Interest rate", german: "Zinssatz", italian: "Tasso d'interesse", spanish: "Tasa de interés", french: "Taux d'intérêt", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "בורסה", english: "Stock exchange", german: "Börsenhandel", italian: "Borsa valori", spanish: "Bolsa de valores", french: "Bourse", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "תוצר מקומי גולמי", english: "Gross Domestic Product", german: "Bruttoinlandsprodukt", italian: "Prodotto Interno Lordo", spanish: "Producto Interno Bruto", french: "Produit Intérieur Brut", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "שוק חופשי", english: "Free market", german: "Freier Markt", italian: "Mercato libero", spanish: "Mercado libre", french: "Marché libre", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "היצע וביקוש", english: "Supply and demand", german: "Angebot und Nachfrage", italian: "Domanda e offerta", spanish: "Oferta y demanda", french: "Offre et demande", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "חוב לאומי", english: "National debt", german: "Staatsverschuldung", italian: "Debito pubblico", spanish: "Deuda nacional", french: "Dette nationale", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "מיסוי", english: "Taxation", german: "Besteuerung", italian: "Tassazione", spanish: "Imposición", french: "Imposition", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "גירעון", english: "Deficit", german: "Defizit", italian: "Deficit", spanish: "Déficit", french: "Déficit", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "רווח והפסד", english: "Profit and loss", german: "Gewinn und Verlust", italian: "Profitto e perdita", spanish: "Ganancia y pérdida", french: "Profit et perte", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "מדד מחירים", english: "Price index", german: "Preisindex", italian: "Indice dei prezzi", spanish: "Índice de precios", french: "Indice des prix", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+{ hebrew: "בורסה למטבע חוץ", english: "Foreign exchange market", german: "Devisenmarkt", italian: "Mercato dei cambi", spanish: "Mercado de divisas", french: "Marché des changes", courseNameEnglish: "Economic Terms", courseOrder: 40 },
+
+// Social Media - 41
+{ hebrew: "רשת חברתית", english: "Social network", german: "Soziales Netzwerk", italian: "Rete sociale", spanish: "Red social", french: "Réseau social", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "פרופיל", english: "Profile", german: "Profil", italian: "Profilo", spanish: "Perfil", french: "Profil", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "סטטוס", english: "Status", german: "Status", italian: "Stato", spanish: "Estado", french: "Statut", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "פוסט", english: "Post", german: "Beitrag", italian: "Post", spanish: "Publicación", french: "Publication", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "תגובה", english: "Comment", german: "Kommentar", italian: "Commento", spanish: "Comentario", french: "Commentaire", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "שיתוף", english: "Share", german: "Teilen", italian: "Condividere", spanish: "Compartir", french: "Partager", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "לייק", english: "Like", german: "Gefällt mir", italian: "Mi piace", spanish: "Me gusta", french: "J'aime", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "עוקבים", english: "Followers", german: "Follower", italian: "Seguaci", spanish: "Seguidores", french: "Abonnés", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "מנויים", english: "Subscribers", german: "Abonnenten", italian: "Iscritti", spanish: "Suscriptores", french: "Abonnements", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "הודעות פרטיות", english: "Direct messages", german: "Direktnachrichten", italian: "Messaggi diretti", spanish: "Mensajes directos", french: "Messages privés", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "תמונה", english: "Image", german: "Bild", italian: "Immagine", spanish: "Imagen", french: "Image", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "סרטון", english: "Video", german: "Video", italian: "Video", spanish: "Video", french: "Vidéo", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "תוכן ויראלי", english: "Viral content", german: "Viraler Inhalt", italian: "Contenuto virale", spanish: "Contenido viral", french: "Contenu viral", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "פרסום ממומן", english: "Sponsored ad", german: "Gesponserte Werbung", italian: "Annuncio sponsorizzato", spanish: "Anuncio patrocinado", french: "Publicité sponsorisée", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "שידור חי", english: "Live stream", german: "Livestream", italian: "Streaming dal vivo", spanish: "Transmisión en vivo", french: "Diffusion en direct", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "קהילה", english: "Community", german: "Gemeinschaft", italian: "Comunità", spanish: "Comunidad", french: "Communauté", courseNameEnglish: "Social Media", courseOrder: 41 },
+{ hebrew: "חסימה", english: "Block", german: "Blockieren", italian: "Bloccare", spanish: "Bloquear", french: "Bloquer", courseNameEnglish: "Social Media", courseOrder: 41 },
+
+// Intermediate Introduction - 42
+{ hebrew: "נעים להכיר", english: "Nice to meet you", german: "Freut mich, dich kennenzulernen", italian: "Piacere di conoscerti", spanish: "Encantado de conocerte", french: "Enchanté de vous rencontrer", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "מאיפה אתה", english: "Where are you from", german: "Woher kommst du", italian: "Di dove sei", spanish: "De dónde eres", french: "D'où viens-tu", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "בן כמה אתה", english: "How old are you", german: "Wie alt bist du", italian: "Quanti anni hai", spanish: "Cuántos años tienes", french: "Quel âge as-tu", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "מה אתה עושה", english: "What do you do", german: "Was machst du", italian: "Cosa fai", spanish: "A qué te dedicas", french: "Que fais-tu", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "אני לומד", english: "I study", german: "Ich studiere", italian: "Studio", spanish: "Estudio", french: "J'étudie", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "מה התחביבים שלך", english: "What are your hobbies", german: "Was sind deine Hobbys", italian: "Quali sono i tuoi hobby", spanish: "Cuáles son tus pasatiempos", french: "Quels sont tes passe-temps", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "יש לך אחים", english: "Do you have siblings", german: "Hast du Geschwister", italian: "Hai fratelli o sorelle", spanish: "¿Tienes hermanos", french: "As-tu des frères et sœurs", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "מה הטלפון שלך", english: "What is your phone number", german: "Wie ist deine Telefonnummer", italian: "Qual è il tuo numero di telefono", spanish: "Cuál es tu número de teléfono", french: "Quel est ton numéro de téléphone", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "האם אתה נשוי", english: "Are you married", german: "Bist du verheiratet", italian: "Sei sposato", spanish: "Estás casado", french: "Es-tu marié", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "אני לא מבין אותך", english: "I don’t understand you", german: "Ich verstehe dich nicht", italian: "Non ti capisco", spanish: "No te entiendo", french: "Je ne te comprends pas", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+{ hebrew: "מה העבודה שלך", english: "Tell me about your job", german: "Erzähl mir von deinem Beruf", italian: "Parlami del tuo lavoro", spanish: "Háblame de tu trabajo", french: "Parle-moi de ton travail", courseNameEnglish: "Intermediate Introduction", courseOrder: 42 },
+
+// Education - 43
+{ hebrew: "בית ספר", english: "School", german: "Schule", italian: "Scuola", spanish: "Escuela", french: "École", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "תלמיד", english: "Student", german: "Schüler", italian: "Studente", spanish: "Estudiante", french: "Étudiant", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "אוניברסיטה", english: "University", german: "Universität", italian: "Università", spanish: "Universidad", french: "Université", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "כיתה", english: "Classroom", german: "Klassenzimmer", italian: "Aula", spanish: "Aula", french: "Salle de classe", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "הרצאה", english: "Lecture", german: "Vorlesung", italian: "Lezione", spanish: "Conferencia", french: "Conférence", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "מבחן", english: "Exam", german: "Prüfung", italian: "Esame", spanish: "Examen", french: "Examen", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "תעודה", english: "Diploma", german: "Diplom", italian: "Diploma", spanish: "Diploma", french: "Diplôme", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "ציונים", english: "Grades", german: "Noten", italian: "Voti", spanish: "Calificaciones", french: "Notes", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "ספר לימוד", english: "Textbook", german: "Lehrbuch", italian: "Libro di testo", spanish: "Libro de texto", french: "Manuel scolaire", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "מטלה", english: "Assignment", german: "Aufgabe", italian: "Compito", spanish: "Tarea", french: "Devoir", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "שיעורי בית", english: "Homework", german: "Hausaufgaben", italian: "Compiti a casa", spanish: "Tarea", french: "Devoirs", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "חינוך", english: "Education", german: "Bildung", italian: "Istruzione", spanish: "Educación", french: "Éducation", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "שפה זרה", english: "Foreign language", german: "Fremdsprache", italian: "Lingua straniera", spanish: "Idioma extranjero", french: "Langue étrangère", courseNameEnglish: "Education", courseOrder: 43 },
+{ hebrew: "מילגה", english: "Scholarship", german: "Stipendium", italian: "Borsa di studio", spanish: "Beca", french: "Bourse d'études", courseNameEnglish: "Education", courseOrder: 43 },
+
+// City and Village - 44
+{ hebrew: "עיר", english: "City", german: "Stadt", italian: "Città", spanish: "Ciudad", french: "Ville", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "כפר", english: "Village", german: "Dorf", italian: "Villaggio", spanish: "Pueblo", french: "Village", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "רחוב", english: "Street", german: "Straße", italian: "Strada", spanish: "Calle", french: "Rue", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "כיכר", english: "Square", german: "Platz", italian: "Piazza", spanish: "Plaza", french: "Place", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "שכונה", english: "Neighborhood", german: "Nachbarschaft", italian: "Quartiere", spanish: "Barrio", french: "Quartier", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "בניין", english: "Building", german: "Gebäude", italian: "Edificio", spanish: "Edificio", french: "Bâtiment", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "גשר", english: "Bridge", german: "Brücke", italian: "Ponte", spanish: "Puente", french: "Pont", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "כביש", english: "Road", german: "Straße", italian: "Strada", spanish: "Carretera", french: "Route", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "פארק", english: "Park", german: "Park", italian: "Parco", spanish: "Parque", french: "Parc", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "בית קפה", english: "Cafe", german: "Café", italian: "Caffè", spanish: "Cafetería", french: "Café", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "מסעדה", english: "Restaurant", german: "Restaurant", italian: "Ristorante", spanish: "Restaurante", french: "Restaurant", courseNameEnglish: "City and Village", courseOrder: 44 },
+{ hebrew: "תחנת אוטובוס", english: "Bus station", german: "Bushaltestelle", italian: "Stazione degli autobus", spanish: "Estación de autobuses", french: "Gare routière", courseNameEnglish: "City and Village", courseOrder: 44 },
+
+// Intermediate Technology - 45
+{ hebrew: "בינה מלאכותית", english: "Artificial intelligence", german: "Künstliche Intelligenz", italian: "Intelligenza artificiale", spanish: "Inteligencia artificial", french: "Intelligence artificielle", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "בסיס נתונים", english: "Database", german: "Datenbank", italian: "Database", spanish: "Base de datos", french: "Base de données", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "שרת", english: "Server", german: "Server", italian: "Server", spanish: "Servidor", french: "Serveur", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "ענן מחשוב", english: "Cloud computing", german: "Cloud-Computing", italian: "Cloud computing", spanish: "Computación en la nube", french: "Informatique en nuage", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "מערכת הפעלה", english: "Operating system", german: "Betriebssystem", italian: "Sistema operativo", spanish: "Sistema operativo", french: "Système d'exploitation", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "לוח אם", english: "Motherboard", german: "Hauptplatine", italian: "Scheda madre", spanish: "Placa base", french: "Carte mère", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "מעבד", english: "Processor", german: "Prozessor", italian: "Processore", spanish: "Procesador", french: "Processeur", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "כרטיס גרפי", english: "Graphics card", german: "Grafikkarte", italian: "Scheda grafica", spanish: "Tarjeta gráfica", french: "Carte graphique", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "כרטיס זכרון", english: "RAM memory", german: "Arbeitsspeicher", italian: "Memoria RAM", spanish: "Memoria RAM", french: "Mémoire RAM", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "דיסק קשיח", english: "Hard drive", german: "Festplatte", italian: "Disco rigido", spanish: "Disco duro", french: "Disque dur", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "אבטחת סייבר", english: "Cybersecurity", german: "Cybersicherheit", italian: "Sicurezza informatica", spanish: "Ciberseguridad", french: "Cybersécurité", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "חיבור בלוטוס'", english: "Bluetooth connection", german: "Bluetooth-Verbindung", italian: "Connessione Bluetooth", spanish: "Conexión Bluetooth", french: "Connexion Bluetooth", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "מציאות מדומה", english: "Virtual reality", german: "Virtuelle Realität", italian: "Realtà virtuale", spanish: "Realidad virtual", french: "Réalité virtuelle", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "מטבע דיגיטלי", english: "Digital currency", german: "Digitale Währung", italian: "Valuta digitale", spanish: "Moneda digital", french: "Monnaie numérique", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "למידת מכונה", english: "Machine learning", german: "Maschinelles Lernen", italian: "Apprendimento automatico", spanish: "Aprendizaje automático", french: "Apprentissage automatique", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+{ hebrew: "מודם", english: "Modem", german: "Modem", italian: "Modem", spanish: "Módem", french: "Modem", courseNameEnglish: "Intermediate Technology", courseOrder: 45 },
+
+// Recycling - 46
+{ hebrew: "מחזור", english: "Recycling", german: "Recycling", italian: "Riciclaggio", spanish: "Reciclaje", french: "Recyclage", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "זכוכית", english: "Glass", german: "Glas", italian: "Vetro", spanish: "Vidrio", french: "Verre", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "פלסטיק", english: "Plastic", german: "Plastik", italian: "Plastica", spanish: "Plástico", french: "Plastique", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "נייר", english: "Paper", german: "Papier", italian: "Carta", spanish: "Papel", french: "Papier", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "ברזל", english: "Metal", german: "Metall", italian: "Metallo", spanish: "Metal", french: "Métal", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "עץ", english: "Wood", german: "Holz", italian: "Legno", spanish: "Madera", french: "Bois", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "אדם", english: "Person", german: "Mensch", italian: "Persona", spanish: "Persona", french: "Personne", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "סוגי פסולת", english: "Types of Waste", german: "Abfallarten", italian: "Tipi di rifiuti", spanish: "Tipos de residuos", french: "Types de déchets", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "מיכל מחזור", english: "Recycling Bin", german: "Recyclingbehälter", italian: "Contenitore per il riciclaggio", spanish: "Contenedor de reciclaje", french: "Bac de recyclage", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "קומפוסט", english: "Compost", german: "Kompost", italian: "Compost", spanish: "Compost", french: "Compost", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "שימור", english: "Conservation", german: "Erhaltung", italian: "Conservazione", spanish: "Conservación", french: "Conservation", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "הטמנה", english: "Landfill", german: "Deponie", italian: "Discarica", spanish: "Vertedero", french: "Décharge", courseNameEnglish: "Recycling", courseOrder: 46 },
+{ hebrew: "פח", english: "Trash Can", german: "Mülleimer", italian: "Cestino", spanish: "Basurero", french: "Poubelle", courseNameEnglish: "Recycling", courseOrder: 46 },
+
+// Intermediate Hobbies - 47
+{ hebrew: "קרמיקה", english: "Pottery", german: "Töpfern", italian: "Ceramica", spanish: "Cerámica", french: "Poterie", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "סריגה", english: "Knitting", german: "Stricken", italian: "Lavorare a maglia", spanish: "Tejer", french: "Tricot", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "רקמה", english: "Embroidery", german: "Stickerei", italian: "Ricamo", spanish: "Bordado", french: "Broderie", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "עיצוב גרפי", english: "Graphic design", german: "Grafikdesign", italian: "Design grafico", spanish: "Diseño gráfico", french: "Conception graphique", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "בנייה בלגו", english: "Building with LEGO", german: "LEGO bauen", italian: "Costruire con LEGO", spanish: "Construcción con LEGO", french: "Construction avec LEGO", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "פאזלים", english: "Solving puzzles", german: "Rätsel lösen", italian: "Risolvere puzzle", spanish: "Resolver rompecabezas", french: "Résoudre des puzzles", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "משחקי לוח", english: "Board games", german: "Brettspiele", italian: "Giochi da tavolo", spanish: "Juegos de mesa", french: "Jeux de société", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "מודלים מיניאטוריים", english: "Miniature modeling", german: "Modellbau", italian: "Modellismo", spanish: "Modelismo", french: "Modélisme", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "כתיבה יצירתית", english: "Creative writing", german: "Kreatives Schreiben", italian: "Scrittura creativa", spanish: "Escritura creativa", french: "Écriture créative", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "תיאטרון", english: "Theater", german: "Theater", italian: "Teatro", spanish: "Teatro", french: "Théâtre", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "מופעי קסמים", english: "Magic tricks", german: "Zaubertricks", italian: "Trucchi di magia", spanish: "Trucos de magia", french: "Tours de magie", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+{ hebrew: "לימוד שפות", english: "Learning languages", german: "Sprachen lernen", italian: "Imparare le lingue", spanish: "Aprender idiomas", french: "Apprendre des langues", courseNameEnglish: "Intermediate Hobbies", courseOrder: 47 },
+
+// Politics - 48
+{ hebrew: "ממשלה", english: "Government", german: "Regierung", italian: "Governo", spanish: "Gobierno", french: "Gouvernement", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "פרלמנט", english: "Parliament", german: "Parlament", italian: "Parlamento", spanish: "Parlamento", french: "Parlement", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "נשיא", english: "President", german: "Präsident", italian: "Presidente", spanish: "Presidente", french: "Président", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "ראש ממשלה", english: "Prime Minister", german: "Premierminister", italian: "Primo ministro", spanish: "Primer ministro", french: "Premier ministre", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "מפלגה פוליטית", english: "Political party", german: "Politische Partei", italian: "Partito politico", spanish: "Partido político", french: "Parti politique", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "דמוקרטיה", english: "Democracy", german: "Demokratie", italian: "Democrazia", spanish: "Democracia", french: "Démocratie", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "דיקטטורה", english: "Dictatorship", german: "Diktatur", italian: "Dittatura", spanish: "Dictadura", french: "Dictature", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "בחירות", english: "Elections", german: "Wahlen", italian: "Elezioni", spanish: "Elecciones", french: "Élections", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "מצביעים", english: "Voters", german: "Wähler", italian: "Elettori", spanish: "Votantes", french: "Électeurs", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "קמפיין", english: "Campaign", german: "Kampagne", italian: "Campagna", spanish: "Campaña", french: "Campagne", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "חקיקה", english: "Legislation", german: "Gesetzgebung", italian: "Legislazione", spanish: "Legislación", french: "Législation", courseNameEnglish: "Politics", courseOrder: 48 },
+{ hebrew: "חוק", english: "Law", german: "Gesetz", italian: "Legge", spanish: "Ley", french: "Loi", courseNameEnglish: "Politics", courseOrder: 48 },
+
+// Intermediate Family Members - 49
+{ hebrew: "גיס", english: "Brother-in-law", german: "Schwager", italian: "Cognato", spanish: "Cuñado", french: "Beau-frère", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "גיסה", english: "Sister-in-law", german: "Schwägerin", italian: "Cognata", spanish: "Cuñada", french: "Belle-sœur", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "בן דוד", english: "Cousin", german: "Cousin", italian: "Cugino", spanish: "Primo", french: "Cousin", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "בת דודה", english: "Cousin", german: "Cousine", italian: "Cugina", spanish: "Prima", french: "Cousine", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "אב חורג", english: "stepfather", german: "Stiefvater", italian: "Patrigno", spanish: "Padrastro", french: "Beau-père", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "אם חורגת", english: "stepmother", german: "Stiefmutter", italian: "Matrigna", spanish: "Madrastra", french: "Belle-mère", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "תאומים", english: "Twins", german: "Zwillinge", italian: "Gemelli", spanish: "Gemelos", french: "Jumeaux", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "אח חורג", english: "stepbrother", german: "Stiefbruder", italian: "Fratellastro", spanish: "Hermanastro", french: "Demi-frère", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "אחות חורגת", english: "stepssister", german: "Stiefschwester", italian: "Sorellastra", spanish: "Hermanastra", french: "Demi-sœur", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "משפחה מורחבת", english: "Extended family", german: "Erweiterte Familie", italian: "Famiglia allargata", spanish: "Familia extendida", french: "Famille élargie", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "בן זוג", english: "Partner", german: "Partner", italian: "Compagno", spanish: "Pareja", french: "Partenaire", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "בת זוג", english: "Partner", german: "Partnerin", italian: "Compagna", spanish: "Pareja", french: "Partenaire", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "משפחה מאמצת", english: "Adoptive family", german: "Adoptivfamilie", italian: "Famiglia adottiva", spanish: "Familia adoptiva", french: "Famille adoptive", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "ילד מאומץ", english: "Adopted child", german: "Adoptiertes Kind", italian: "Bambino adottato", spanish: "Niño adoptado", french: "Enfant adopté", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+{ hebrew: "תינוק", english: "Baby", german: "Baby", italian: "Bambino", spanish: "Bebé", french: "Bébé", courseNameEnglish: "Intermediate Family Members", courseOrder: 49 },
+
+// Intermediate Shopping - 50
+{ hebrew: "רשימת קניות", english: "Shopping list", german: "Einkaufsliste", italian: "Lista della spesa", spanish: "Lista de compras", french: "Liste de courses", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "מכירה מיוחדת", english: "Special sale", german: "Sonderverkauf", italian: "Vendita speciale", spanish: "Venta especial", french: "Vente spéciale", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "סוחר", english: "Merchant", german: "Händler", italian: "Commerciante", spanish: "Comerciante", french: "Marchand", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "החזר כספי", english: "Refund", german: "Rückerstattung", italian: "Rimborso", spanish: "Reembolso", french: "Remboursement", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "מלאי", english: "Stock", german: "Lagerbestand", italian: "Magazzino", spanish: "Inventario", french: "Stock", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "שירות לקוחות", english: "Customer service", german: "Kundendienst", italian: "Servizio clienti", spanish: "Atención al cliente", french: "Service client", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "הזמנה מראש", english: "Pre-order", german: "Vorbestellung", italian: "Preordine", spanish: "Pedido anticipado", french: "Précommande", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "משלוח חינם", english: "Free shipping", german: "Kostenloser Versand", italian: "Spedizione gratuita", spanish: "Envío gratis", french: "Livraison gratuite", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "משלוח מהיר", english: "Express delivery", german: "Expresslieferung", italian: "Consegna espressa", spanish: "Entrega rápida", french: "Livraison express", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "מותג", english: "Brand", german: "Marke", italian: "Marca", spanish: "Marca", french: "Marque", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "קטלוג מוצרים", english: "Product catalog", german: "Produktkatalog", italian: "Catalogo prodotti", spanish: "Catálogo de productos", french: "Catalogue de produits", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "סניף", english: "Store branch", german: "Filiale", italian: "Filiale", spanish: "Sucursal", french: "Succursale", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "הוראת קבע", english: "Subscription payment", german: "Abonnementzahlung", italian: "Pagamento in abbonamento", spanish: "Pago por suscripción", french: "Paiement par abonnement", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+{ hebrew: "ביקורת מוצרים", english: "Product review", german: "Produktbewertung", italian: "Recensione del prodotto", spanish: "Reseña de producto", french: "Critique de produit", courseNameEnglish: "Intermediate Shopping", courseOrder: 50 },
+
+
+// Intermediate Colors - 51
+{ hebrew: "בורדו", english: "Burgundy", german: "Bordeauxrot", italian: "Bordeaux", spanish: "Burdeos", french: "Bordeaux", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "טורקיז", english: "Turquoise", german: "Türkis", italian: "Turchese", spanish: "Turquesa", french: "Turquoise", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "שמנת", english: "Cream", german: "Creme", italian: "Crema", spanish: "Crema", french: "Crème", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "זהב", english: "Gold", german: "Gold", italian: "Oro", spanish: "Oro", french: "Or", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "כסף", english: "Silver", german: "Silber", italian: "Argento", spanish: "Plata", french: "Argent", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "חרדל", english: "Mustard", german: "Senfgelb", italian: "Giallo senape", spanish: "Mostaza", french: "Moutarde", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "קורל", english: "Coral", german: "Korallenrot", italian: "Corallo", spanish: "Coral", french: "Corail", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "קרם", english: "Beige", german: "Beige", italian: "Beige", spanish: "Beige", french: "Beige", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "ענבר", english: "Amber", german: "Bernstein", italian: "Ambra", spanish: "Ámbar", french: "Ambre", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "אדום בהיר", english: "Light red", german: "Hellrot", italian: "Rosso chiaro", spanish: "Rojo claro", french: "Rouge clair", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+{ hebrew: "אדום כהה", english: "Dark red", german: "Dunkelrot", italian: "Rosso scuro", spanish: "Rojo oscuro", french: "Rouge foncé", courseNameEnglish: "Intermediate Colors", courseOrder: 51 },
+
+// Advanced Animals - 52
+{ hebrew: "גירית", english: "Badger", german: "Dachs", italian: "Tasso", spanish: "Tejón", french: "Blaireau", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "לוטרה", english: "Otter", german: "Otter", italian: "Lontra", spanish: "Nutria", french: "Loutre", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "שועל קוטב", english: "Arctic fox", german: "Polarfuchs", italian: "Volpe artica", spanish: "Zorro ártico", french: "Renard arctique", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "זיקית", english: "Chameleon", german: "Chamäleon", italian: "Camaleonte", spanish: "Camaleón", french: "Caméléon", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "חולד", english: "Mole", german: "Maulwurf", italian: "Talpa", spanish: "Topo", french: "Taupe", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "דביבון", english: "Raccoon", german: "Waschbär", italian: "Procione", spanish: "Mapache", french: "Raton laveur", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "טפיר", english: "Tapir", german: "Tapir", italian: "Tapiro", spanish: "Tapir", french: "Tapir", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "אנטילופה", english: "Antelope", german: "Antilope", italian: "Antilope", spanish: "Antílope", french: "Antilope", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "קווקאקה", english: "Quokka", german: "Quokka", italian: "Quokka", spanish: "Quokka", french: "Quokka", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "אלפקה", english: "Alpaca", german: "Alpaka", italian: "Alpaca", spanish: "Alpaca", french: "Alpaga", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "ארמדיל", english: "Armadillo", german: "Gürteltier", italian: "Armadillo", spanish: "Armadillo", french: "Tatou", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "יגואר", english: "Jaguar", german: "Jaguar", italian: "Giaguaro", spanish: "Jaguar", french: "Jaguar", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "סמור", english: "Weasel", german: "Wiesel", italian: "Donnola", spanish: "Comadreja", french: "Belette", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+{ hebrew: "טיגריס לבן", english: "White tiger", german: "Weißer Tiger", italian: "Tigre bianca", spanish: "Tigre blanco", french: "Tigre blanc", courseNameEnglish: "Advanced Animals", courseOrder: 52 },
+
+// Cultural Diversity - 53
+{ hebrew: "מסורת", english: "Tradition", german: "Tradition", italian: "Tradizione", spanish: "Tradición", french: "Tradition", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "פסטיבל", english: "Festival", german: "Festival", italian: "Festival", spanish: "Festival", french: "Festival", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "מורשת", english: "Heritage", german: "Erbe", italian: "Patrimonio", spanish: "Herencia", french: "Patrimoine", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "מנהגים", english: "Customs", german: "Bräuche", italian: "Usanze", spanish: "Costumbres", french: "Coutumes", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "לבוש מסורתי", english: "Traditional clothing", german: "Traditionelle Kleidung", italian: "Abbigliamento tradizionale", spanish: "Ropa tradicional", french: "Vêtements traditionnels", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "חג", english: "Holiday", german: "Feiertag", italian: "Festa", spanish: "Día festivo", french: "Jour férié", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "מוזיקה עממית", english: "Folk music", german: "Volksmusik", italian: "Musica popolare", spanish: "Música folclórica", french: "Musique folklorique", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "קהילה", english: "Community", german: "Gemeinschaft", italian: "Comunità", spanish: "Comunidad", french: "Communauté", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "קבוצת אתניות", english: "Ethnic group", german: "Ethnische Gruppe", italian: "Gruppo etnico", spanish: "Grupo étnico", french: "Groupe ethnique", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "רב לשוניות", english: "Multilingualism", german: "Mehrsprachigkeit", italian: "Multilinguismo", spanish: "Multilingüismo", french: "Multilinguisme", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "רב תרבותיות", english: "Multiculturalism", german: "Multikulturalismus", italian: "Multiculturalismo", spanish: "Multiculturalismo", french: "Multiculturalisme", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "קבלת האחר", english: "Acceptance of others", german: "Akzeptanz anderer", italian: "Accettazione degli altri", spanish: "Aceptación de los demás", french: "Acceptation des autres", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "אמונה", english: "Belief", german: "Glaube", italian: "Credenza", spanish: "Creencia", french: "Croyance", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+{ hebrew: "ערכים תרבותיים", english: "Cultural values", german: "Kulturelle Werte", italian: "Valori culturali", spanish: "Valores culturales", french: "Valeurs culturelles", courseNameEnglish: "Cultural Diversity", courseOrder: 53 },
+
+// Intermediate Professions - 54
+{ hebrew: "פסיכולוג", english: "Psychologist", german: "Psychologe", italian: "Psicologo", spanish: "Psicólogo", french: "Psychologue", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "אדריכל", english: "Architect", german: "Architekt", italian: "Architetto", spanish: "Arquitecto", french: "Architecte", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "רואה חשבון", english: "Accountant", german: "Buchhalter", italian: "Contabile", spanish: "Contador", french: "Comptable", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "מדען", english: "Scientist", german: "Wissenschaftler", italian: "Scienziato", spanish: "Científico", french: "Scientifique", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "חוקר", english: "Researcher", german: "Forscher", italian: "Ricercatore", spanish: "Investigador", french: "Chercheur", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "מתכנת", english: "Programmer", german: "Programmierer", italian: "Programmatore", spanish: "Programador", french: "Programmeur", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "מנהל", english: "Manager", german: "Manager", italian: "Manager", spanish: "Gerente", french: "Gérant", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "מתורגמן", english: "Translator", german: "Übersetzer", italian: "Traduttore", spanish: "Traductor", french: "Traducteur", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "יועץ", english: "Consultant", german: "Berater", italian: "Consulente", spanish: "Consultor", french: "Consultant", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "מהנדס תוכנה", english: "Software Engineer", german: "Softwareingenieur", italian: "Ingegnere del software", spanish: "Ingeniero de software", french: "Ingénieur logiciel", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "כימאי", english: "Chemist", german: "Chemiker", italian: "Chimico", spanish: "Químico", french: "Chimiste", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "מוזיקאי", english: "Musician", german: "Musiker", italian: "Musicista", spanish: "Músico", french: "Musicien", courseNameEnglish: "Professions", courseOrder: 54 },
+{ hebrew: "ביולוג", english: "Biologist", german: "Biologe", italian: "Biologo", spanish: "Biólogo", french: "Biologiste", courseNameEnglish: "Professions", courseOrder: 54 },
+
+// Intermediate Politics - 55
+{ hebrew: "שלטון מקומי", english: "Local government", german: "Kommunalverwaltung", italian: "Governo locale", spanish: "Gobierno local", french: "Gouvernement local", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "מועצה", english: "Council", german: "Rat", italian: "Consiglio", spanish: "Consejo", french: "Conseil", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "אופוזיציה", english: "Opposition", german: "Opposition", italian: "Opposizione", spanish: "Oposición", french: "Opposition", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "קואליציה", english: "Coalition", german: "Koalition", italian: "Coalizione", spanish: "Coalición", french: "Coalition", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "משאל עם", english: "Referendum", german: "Volksentscheid", italian: "Referendum", spanish: "Referéndum", french: "Référendum", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "חוקה", english: "Constitution", german: "Verfassung", italian: "Costituzione", spanish: "Constitución", french: "Constitution", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "תקציב", english: "Budget", german: "Haushalt", italian: "Bilancio", spanish: "Presupuesto", french: "Budget", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "מנדט", english: "Mandate", german: "Mandat", italian: "Mandato", spanish: "Mandato", french: "Mandat", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "ועדה", english: "Committee", german: "Ausschuss", italian: "Comitato", spanish: "Comité", french: "Comité", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "משטר", english: "Regime", german: "Regime", italian: "Regime", spanish: "Régimen", french: "Régime", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "מדיניות חוץ", english: "Foreign policy", german: "Außenpolitik", italian: "Politica estera", spanish: "Política exterior", french: "Politique étrangère", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "מדיניות פנים", english: "Domestic policy", german: "Innenpolitik", italian: "Politica interna", spanish: "Política interior", french: "Politique intérieure", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "הפרדת רשויות", english: "Separation of powers", german: "Gewaltenteilung", italian: "Separazione dei poteri", spanish: "Separación de poderes", french: "Séparation des pouvoirs", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "מועמד", english: "Candidate", german: "Kandidat", italian: "Candidato", spanish: "Candidato", french: "Candidat", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "עמותה", english: "Non-profit organization", german: "Gemeinnützige Organisation", italian: "Organizzazione no-profit", spanish: "Organización sin fines de lucro", french: "Organisation à but non lucratif", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+{ hebrew: "נציג", english: "Representative", german: "Vertreter", italian: "Rappresentante", spanish: "Representante", french: "Représentant", courseNameEnglish: "Intermediate Politics", courseOrder: 55 },
+
+// Intermediate Economic Terms - 56
+{ hebrew: "תקציב ממשלתי", english: "Government budget", german: "Staatshaushalt", italian: "Bilancio governativo", spanish: "Presupuesto gubernamental", french: "Budget gouvernemental", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "קרן השקעות", english: "Investment fund", german: "Investmentfonds", italian: "Fondo di investimento", spanish: "Fondo de inversión", french: "Fonds d'investissement", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "הפרטה", english: "Privatization", german: "Privatisierung", italian: "Privatizzazione", spanish: "Privatización", french: "Privatisation", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "מדיניות מוניטרית", english: "Monetary policy", german: "Geldpolitik", italian: "Politica monetaria", spanish: "Política monetaria", french: "Politique monétaire", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "מדיניות פיסקלית", english: "Fiscal policy", german: "Fiskalpolitik", italian: "Politica fiscale", spanish: "Política fiscal", french: "Politique fiscale", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "יציבות כלכלית", english: "Economic stability", german: "Wirtschaftsstabilität", italian: "Stabilità economica", spanish: "Estabilidad económica", french: "Stabilité économique", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "הכנסה לנפש", english: "Per capita income", german: "Pro-Kopf-Einkommen", italian: "Reddito pro capite", spanish: "Ingreso per cápita", french: "Revenu par habitant", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "שוק עבודה", english: "Labor market", german: "Arbeitsmarkt", italian: "Mercato del lavoro", spanish: "Mercado laboral", french: "Marché du travail", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "אבטלה", english: "Unemployment", german: "Arbeitslosigkeit", italian: "Disoccupazione", spanish: "Desempleo", french: "Chômage", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "שכר מינימום", english: "Minimum wage", german: "Mindestlohn", italian: "Salario minimo", spanish: "Salario mínimo", french: "Salaire minimum", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "מונופול", english: "Monopoly", german: "Monopol", italian: "Monopolio", spanish: "Monopolio", french: "Monopole", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "קרן פנסיה", english: "Pension fund", german: "Pensionsfonds", italian: "Fondo pensione", spanish: "Fondo de pensiones", french: "Fonds de pension", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "נכס פיננסי", english: "Financial asset", german: "Finanzvermögen", italian: "Attività finanziaria", spanish: "Activo financiero", french: "Actif financier", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "משבר כלכלי", english: "Economic crisis", german: "Wirtschaftskrise", italian: "Crisi economica", spanish: "Crisis económica", french: "Crise économique", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+{ hebrew: "שוק שחור", english: "Black market", german: "Schwarzmarkt", italian: "Mercato nero", spanish: "Mercado negro", french: "Marché noir", courseNameEnglish: "Intermediate Economic Terms", courseOrder: 56 },
+
+// Climate Change - 57
+{ hebrew: "זיהום אוויר", english: "Air pollution", german: "Luftverschmutzung", italian: "Inquinamento dell'aria", spanish: "Contaminación del aire", french: "Pollution de l'air", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "פסולת פלסטיק", english: "Plastic waste", german: "Plastikmüll", italian: "Rifiuti di plastica", spanish: "Residuos plásticos", french: "Déchets plastiques", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "שריפות יער", english: "Forest fires", german: "Waldbrände", italian: "Incendi boschivi", spanish: "Incendios forestales", french: "Feux de forêt", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "שיטפונות", english: "Floods", german: "Überschwemmungen", italian: "Alluvioni", spanish: "Inundaciones", french: "Inondations", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "אנרגיה ירוקה", english: "Green energy", german: "Grüne Energie", italian: "Energia verde", spanish: "Energía verde", french: "Énergie verte", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "מים נקיים", english: "Clean water", german: "Sauberes Wasser", italian: "Acqua pulita", spanish: "Agua limpia", french: "Eau propre", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "חיות בסכנה", english: "Animals in danger", german: "Gefährdete Tiere", italian: "Animali in pericolo", spanish: "Animales en peligro", french: "Animaux en danger", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "התחממות גלובלית", english: "Global warming", german: "Globale Erwärmung", italian: "Riscaldamento globale", spanish: "Calentamiento global", french: "Réchauffement climatique", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "פליטת גזים", english: "Gas emissions", german: "Gasemissionen", italian: "Emissioni di gas", spanish: "Emisiones de gases", french: "Émissions de gaz", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "אנרגיה מתחדשת", english: "Renewable energy", german: "Erneuerbare Energie", italian: "Energia rinnovabile", spanish: "Energía renovable", french: "Énergie renouvelable", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "הפחתת פחמן", english: "Carbon reduction", german: "CO2-Reduktion", italian: "Riduzione del carbonio", spanish: "Reducción de carbono", french: "Réduction du carbone", courseNameEnglish: "Climate Change", courseOrder: 57 },
+{ hebrew: "סופת הוריקן", english: "Hurricane", german: "Hurrikan", italian: "Uragano", spanish: "Huracán", french: "Ouragan", courseNameEnglish: "Climate Change", courseOrder: 57 },
+
+// Intermediate Transportation - 58
+{ hebrew: "רכבת תחתית", english: "Subway", german: "U-Bahn", italian: "Metropolitana", spanish: "Metro", french: "Métro", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "רכבת קלה", english: "Light rail", german: "Straßenbahn", italian: "Tram", spanish: "Tranvía", french: "Tramway", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "רכב חשמלי", english: "Electric car", german: "Elektroauto", italian: "Auto elettrica", spanish: "Coche eléctrico", french: "Voiture électrique", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "קטנוע", english: "Scooter", german: "Roller", italian: "Monopattino", spanish: "Patinete", french: "Trottinette", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "קורקינט חשמלי", english: "Electric scooter", german: "Elektroroller", italian: "Monopattino elettrico", spanish: "Patinete eléctrico", french: "Trottinette électrique", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "עגלת סוסים", english: "Horse-drawn carriage", german: "Pferdekutsche", italian: "Carrozza trainata da cavalli", spanish: "Carruaje de caballos", french: "Calèche", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "קרוון", english: "Caravan", german: "Wohnwagen", italian: "Caravan", spanish: "Caravana", french: "Caravane", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "רכב שטח", english: "Off-road vehicle", german: "Geländewagen", italian: "Veicolo fuoristrada", spanish: "Vehículo todoterreno", french: "Véhicule tout-terrain", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "סגווי", english: "Segway", german: "Segway", italian: "Segway", spanish: "Segway", french: "Segway", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "מזחלת שלג", english: "Snow sled", german: "Schlitten", italian: "Slitta", spanish: "Trineo", french: "Luge", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "מטוס פרטי", english: "Private jet", german: "Privatjet", italian: "Jet privato", spanish: "Jet privado", french: "Jet privé", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "אוניית קרוז", english: "Cruise ship", german: "Kreuzfahrtschiff", italian: "Nave da crociera", spanish: "Crucero", french: "Navire de croisière", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "צוללת", english: "Submarine", german: "U-Boot", italian: "Sottomarino", spanish: "Submarino", french: "Sous-marin", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "כרכרה", english: "Carriage", german: "Kutsche", italian: "Carrozza", spanish: "Calesa", french: "Fiacre", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+{ hebrew: "אופני הרים", english: "Mountain bike", german: "Mountainbike", italian: "Bicicletta da montagna", spanish: "Bicicleta de montaña", french: "VTT", courseNameEnglish: "Intermediate Transportation", courseOrder: 58 },
+
+// Science - 59
+{ hebrew: "מדען", english: "Scientist", german: "Wissenschaftler", italian: "Scienziato", spanish: "Científico", french: "Scientifique", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "ניסוי", english: "Experiment", german: "Experiment", italian: "Esperimento", spanish: "Experimento", french: "Expérience", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "מעבדה", english: "Laboratory", german: "Labor", italian: "Laboratorio", spanish: "Laboratorio", french: "Laboratoire", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "כוח משיכה", english: "Gravity", german: "Gravitation", italian: "Gravità", spanish: "Gravedad", french: "Gravité", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "אטום", english: "Atom", german: "Atom", italian: "Atomo", spanish: "Átomo", french: "Atome", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "אנרגיה", english: "Energy", german: "Energie", italian: "Energia", spanish: "Energía", french: "Énergie", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "מולקולה", english: "Molecule", german: "Molekül", italian: "Molecola", spanish: "Molécula", french: "Molécule", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "כימיה", english: "Chemistry", german: "Chemie", italian: "Chimica", spanish: "Química", french: "Chimie", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "ביולוגיה", english: "Biology", german: "Biologie", italian: "Biologia", spanish: "Biología", french: "Biologie", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "פיזיקה", english: "Physics", german: "Physik", italian: "Fisica", spanish: "Física", french: "Physique", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "חומר", english: "Matter", german: "Materie", italian: "Materia", spanish: "Materia", french: "Matière", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "אסטרונומיה", english: "Astronomy", german: "Astronomie", italian: "Astronomia", spanish: "Astronomía", french: "Astronomie", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "מיקרוסקופ", english: "Microscope", german: "Mikroskop", italian: "Microscopio", spanish: "Microscopio", french: "Microscope", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "תיאוריה מדעית", english: "Scientific theory", german: "Wissenschaftliche Theorie", italian: "Teoria scientifica", spanish: "Teoría científica", french: "Théorie scientifique", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "תגלית", english: "Discovery", german: "Entdeckung", italian: "Scoperta", spanish: "Descubrimiento", french: "Découverte", courseNameEnglish: "Science", courseOrder: 59 },
+{ hebrew: "חקר החלל", english: "Space exploration", german: "Raumfahrt", italian: "Esplorazione spaziale", spanish: "Exploración espacial", french: "Exploration spatiale", courseNameEnglish: "Science", courseOrder: 59 },
+
+// Social Issues - 60
+{ hebrew: "עוני", english: "Poverty", german: "Armut", italian: "Povertà", spanish: "Pobreza", french: "Pauvreté", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "אי שוויון", english: "Inequality", german: "Ungleichheit", italian: "Disuguaglianza", spanish: "Desigualdad", french: "Inégalité", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "אבטלה", english: "Unemployment", german: "Arbeitslosigkeit", italian: "Disoccupazione", spanish: "Desempleo", french: "Chômage", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "חינוך", english: "Education", german: "Bildung", italian: "Istruzione", spanish: "Educación", french: "Éducation", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "גזענות", english: "Racism", german: "Rassismus", italian: "Razzismo", spanish: "Racismo", french: "Racisme", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "אלימות", english: "Violence", german: "Gewalt", italian: "Violenza", spanish: "Violencia", french: "Violence", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "הומלסים", english: "Homelessness", german: "Obdachlosigkeit", italian: "Senzatetto", spanish: "Personas sin hogar", french: "Sans-abri", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "זכויות אדם", english: "Human rights", german: "Menschenrechte", italian: "Diritti umani", spanish: "Derechos humanos", french: "Droits de l'homme", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "עבודה ילדים", english: "Child labor", german: "Kinderarbeit", italian: "Lavoro minorile", spanish: "Trabajo infantil", french: "Travail des enfants", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "בריאות הציבור", english: "Public health", german: "Öffentliche Gesundheit", italian: "Salute pubblica", spanish: "Salud pública", french: "Santé publique", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "מגדר ושוויון", english: "Gender equality", german: "Geschlechtergleichheit", italian: "Parità di genere", spanish: "Igualdad de género", french: "Égalité des sexes", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "הגירה", english: "Immigration", german: "Einwanderung", italian: "Immigrazione", spanish: "Inmigración", french: "Immigration", courseNameEnglish: "Social Issues", courseOrder: 60 },
+{ hebrew: "שחיתות", english: "Corruption", german: "Korruption", italian: "Corruzione", spanish: "Corrupción", french: "Corruption", courseNameEnglish: "Social Issues", courseOrder: 60 },
+
+// Intermediate Sports - 61
+{ hebrew: "פינג פונג", english: "Table tennis", german: "Tischtennis", italian: "Tennis tavolo", spanish: "Tenis de mesa", french: "Tennis de table", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "התעמלות קרקע", english: "Gymnastics", german: "Turnen", italian: "Ginnastica", spanish: "Gimnasia", french: "Gymnastique", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "קפיצה לרוחק", english: "Long jump", german: "Weitsprung", italian: "Salto in lungo", spanish: "Salto de longitud", french: "Saut en longueur", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "חץ וקשת", english: "Archery", german: "Bogenschießen", italian: "Tiro con l’arco", spanish: "Tiro con arco", french: "Tir à l’arc", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "הוקי קרח", english: "Ice hockey", german: "Eishockey", italian: "Hockey su ghiaccio", spanish: "Hockey sobre hielo", french: "Hockey sur glace", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "כדוריד", english: "Handball", german: "Handball", italian: "Pallamano", spanish: "Balonmano", french: "Handball", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "קריקט", english: "Cricket", german: "Cricket", italian: "Cricket", spanish: "Críquet", french: "Cricket", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "מרוץ מכוניות", english: "Car racing", german: "Autorennen", italian: "Corsa automobilistica", spanish: "Carreras de autos", french: "Course automobile", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "ג'ודו", english: "Judo", german: "Judo", italian: "Judo", spanish: "Judo", french: "Judo", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "קיקבוקס", english: "Kickboxing", german: "Kickboxen", italian: "Kickboxing", spanish: "Kickboxing", french: "Kickboxing", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "אגרוף", english: "Boxing", german: "Boxen", italian: "Pugilato", spanish: "Boxeo", french: "Boxe", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "טאקוונדו", english: "Taekwondo", german: "Taekwondo", italian: "Taekwondo", spanish: "Taekwondo", french: "Taekwondo", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "סיף", english: "Fencing", german: "Fechten", italian: "Scherma", spanish: "Esgrima", french: "Escrime", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "סקווש", english: "Squash", german: "Squash", italian: "Squash", spanish: "Squash", french: "Squash", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+{ hebrew: "רוגבי", english: "Rugby", german: "Rugby", italian: "Rugby", spanish: "Rugby", french: "Rugby", courseNameEnglish: "Intermediate Sports", courseOrder: 61 },
+
+// Higher Education - 62
+{ hebrew: "אוניברסיטה", english: "University", german: "Universität", italian: "Università", spanish: "Universidad", french: "Université", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "מכללה", english: "College", german: "Hochschule", italian: "Collegio", spanish: "Colegio", french: "Collège", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "פקולטה", english: "Faculty", german: "Fakultät", italian: "Facoltà", spanish: "Facultad", french: "Faculté", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "תואר ראשון", english: "Bachelor's degree", german: "Bachelor-Abschluss", italian: "Laurea triennale", spanish: "Licenciatura", french: "Licence", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "תואר שני", english: "Master's degree", german: "Master-Abschluss", italian: "Laurea magistrale", spanish: "Maestría", french: "Master", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "תואר דוקטור", english: "Doctorate", german: "Doktortitel", italian: "Dottorato", spanish: "Doctorado", french: "Doctorat", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "פרופסור", english: "Professor", german: "Professor", italian: "Professore", spanish: "Profesor", french: "Professeur", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "סטודנט", english: "Student", german: "Student", italian: "Studente", spanish: "Estudiante", french: "Étudiant", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "מלגה", english: "Scholarship", german: "Stipendium", italian: "Borsa di studio", spanish: "Beca", french: "Bourse", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "מחקר", english: "Research", german: "Forschung", italian: "Ricerca", spanish: "Investigación", french: "Recherche", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "שיעור", english: "Lecture", german: "Vorlesung", italian: "Lezione", spanish: "Conferencia", french: "Cours magistral", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "ספרייה אקדמית", english: "Academic library", german: "Akademische Bibliothek", italian: "Biblioteca accademica", spanish: "Biblioteca académica", french: "Bibliothèque universitaire", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "סמסטר", english: "Semester", german: "Semester", italian: "Semestre", spanish: "Semestre", french: "Semestre", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "עבודה סמינריונית", english: "Seminar paper", german: "Seminararbeit", italian: "Tesina", spanish: "Trabajo de seminario", french: "Mémoire", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "תקופת מבחנים", english: "Exam period", german: "Prüfungszeit", italian: "Periodo d'esami", spanish: "Época de exámenes", french: "Période d'examens", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "מעונות סטודנטים", english: "Student dormitories", german: "Studentenwohnheim", italian: "Dormitori per studenti", spanish: "Residencias estudiantiles", french: "Résidence universitaire", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "התמחות", english: "Internship", german: "Praktikum", italian: "Tirocinio", spanish: "Pasantía", french: "Stage", courseNameEnglish: "Higher Education", courseOrder: 62 },
+{ hebrew: "מאמר אקדמי", english: "Academic paper", german: "Wissenschaftlicher Artikel", italian: "Articolo accademico", spanish: "Artículo académico", french: "Article académique", courseNameEnglish: "Higher Education", courseOrder: 62 },
+
+// Competitions - 63
+{ hebrew: "תחרות", english: "Competition", german: "Wettbewerb", italian: "Competizione", spanish: "Competición", french: "Compétition", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "פרס", english: "Prize", german: "Preis", italian: "Premio", spanish: "Premio", french: "Prix", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "מדליה", english: "Medal", german: "Medaille", italian: "Medaglia", spanish: "Medalla", french: "Médaille", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "גביע", english: "Trophy", german: "Trophäe", italian: "Trofeo", spanish: "Trofeo", french: "Trophée", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "מנצח", english: "Winner", german: "Gewinner", italian: "Vincitore", spanish: "Ganador", french: "Gagnant", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "הפסד", english: "Loss", german: "Niederlage", italian: "Sconfitta", spanish: "Derrota", french: "Défaite", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "שופט", english: "Judge", german: "Richter", italian: "Giudice", spanish: "Juez", french: "Juge", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "שיפוט", english: "Judging", german: "Bewertung", italian: "Giudizio", spanish: "Evaluación", french: "Jugement", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "גמר", english: "Final", german: "Finale", italian: "Finale", spanish: "Final", french: "Finale", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "חצי גמר", english: "Semi-final", german: "Halbfinale", italian: "Semifinale", spanish: "Semifinal", french: "Demi-finale", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "רבע גמר", english: "Quarter-final", german: "Viertelfinale", italian: "Quarti di finale", spanish: "Cuartos de final", french: "Quart de finale", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "דירוג", english: "Ranking", german: "Rangliste", italian: "Classifica", spanish: "Clasificación", french: "Classement", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "ניקוד", english: "Scoring", german: "Punktestand", italian: "Punteggio", spanish: "Puntuación", french: "Score", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "אליפות", english: "Championship", german: "Meisterschaft", italian: "Campionato", spanish: "Campeonato", french: "Championnat", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "משתתף", english: "Contestant", german: "Teilnehmer", italian: "Concorrente", spanish: "Concursante", french: "Concurrent", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "שיא", english: "Record", german: "Rekord", italian: "Record", spanish: "Récord", french: "Record", courseNameEnglish: "Competitions", courseOrder: 63 },
+{ hebrew: "תוצאה", english: "Result", german: "Ergebnis", italian: "Risultato", spanish: "Resultado", french: "Résultat", courseNameEnglish: "Competitions", courseOrder: 63 },
+
+// Intermediate Food Products - 64
+{ hebrew: "אורז", english: "Rice", german: "Reis", italian: "Riso", spanish: "Arroz", french: "Riz", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "שיבולת שועל", english: "Oats", german: "Hafer", italian: "Avena", spanish: "Avena", french: "Avoine", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "עדשים", english: "Lentils", german: "Linsen", italian: "Lenticchie", spanish: "Lentejas", french: "Lentilles", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "שעועית", english: "Beans", german: "Bohnen", italian: "Fagioli", spanish: "Frijoles", french: "Haricots", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "פסטה", english: "Pasta", german: "Nudeln", italian: "Pasta", spanish: "Pasta", french: "Pâtes", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "תירס", english: "Corn", german: "Mais", italian: "Mais", spanish: "Maíz", french: "Maïs", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "שמן זית", english: "Olive oil", german: "Olivenöl", italian: "Olio d'oliva", spanish: "Aceite de oliva", french: "Huile d'olive", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "חומוס", english: "Hummus", german: "Hummus", italian: "Hummus", spanish: "Hummus", french: "Houmous", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "שוקולד", english: "Chocolate", german: "Schokolade", italian: "Cioccolato", spanish: "Chocolate", french: "Chocolat", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "תבלינים", english: "Spices", german: "Gewürze", italian: "Spezie", spanish: "Especias", french: "Épices", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "גזר", english: "Carrot", german: "Karotte", italian: "Carota", spanish: "Zanahoria", french: "Carotte", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "בצל", english: "Onion", german: "Zwiebel", italian: "Cipolla", spanish: "Cebolla", french: "Oignon", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "פלפל", english: "Bell pepper", german: "Paprika", italian: "Peperone", spanish: "Pimiento", french: "Poivron", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "אגוזים", english: "Nuts", german: "Nüsse", italian: "Noci", spanish: "Nueces", french: "Noix", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "יוגורט", english: "Yogurt", german: "Joghurt", italian: "Yogurt", spanish: "Yogur", french: "Yaourt", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+{ hebrew: "ריבה", english: "Jam", german: "Marmelade", italian: "Marmellata", spanish: "Mermelada", french: "Confiture", courseNameEnglish: "Intermediate Food Products", courseOrder: 64 },
+
+// Adventures - 65
+{ hebrew: "טיפוס הרים", english: "Mountain climbing", german: "Bergsteigen", italian: "Arrampicata in montagna", spanish: "Escalada en montaña", french: "Escalade en montagne", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "ראפטינג", english: "Rafting", german: "Rafting", italian: "Rafting", spanish: "Rafting", french: "Rafting", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "גלישת גלים", english: "Surfing", german: "Surfen", italian: "Surf", spanish: "Surf", french: "Surf", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "צלילה", english: "Scuba diving", german: "Tauchen", italian: "Immersione subacquea", spanish: "Buceo", french: "Plongée sous-marine", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "רכיבה על סוסים", english: "Horseback riding", german: "Reiten", italian: "Equitazione", spanish: "Equitación", french: "Équitation", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "מחנאות", english: "Camping", german: "Camping", italian: "Campeggio", spanish: "Camping", french: "Camping", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "הליכה בטבע", english: "Hiking", german: "Wandern", italian: "Escursione", spanish: "Senderismo", french: "Randonnée", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "צניחה חופשית", english: "Skydiving", german: "Fallschirmspringen", italian: "Paracadutismo", spanish: "Paracaidismo", french: "Parachutisme", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "סקי מים", english: "Water skiing", german: "Wasserski", italian: "Sci nautico", spanish: "Esquí acuático", french: "Ski nautique", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "טרקים במדבר", english: "Desert trekking", german: "Wüstenwandern", italian: "Escursioni nel deserto", spanish: "Trekking en el desierto", french: "Randonnée dans le désert", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "שייט קיאקים", english: "Kayaking", german: "Kajakfahren", italian: "Kayak", spanish: "Kayak", french: "Kayak", courseNameEnglish: "Adventures", courseOrder: 65 },
+{ hebrew: "טיול אופניים", english: "Bicycle tour", german: "Fahrradtour", italian: "Tour in bicicletta", spanish: "Tour en bicicleta", french: "Tour en vélo", courseNameEnglish: "Adventures", courseOrder: 65 },
+
+// Work - 66
+{ hebrew: "משרד", english: "Office", german: "Büro", italian: "Ufficio", spanish: "Oficina", french: "Bureau", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "ישיבה", english: "Meeting", german: "Besprechung", italian: "Riunione", spanish: "Reunión", french: "Réunion", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "פרויקט", english: "Project", german: "Projekt", italian: "Progetto", spanish: "Proyecto", french: "Projet", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "משכורת", english: "Salary", german: "Gehalt", italian: "Stipendio", spanish: "Salario", french: "Salaire", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "משרה", english: "Job position", german: "Arbeitsstelle", italian: "Posizione lavorativa", spanish: "Puesto de trabajo", french: "Poste", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "עמיתים לעבודה", english: "Colleagues", german: "Kollegen", italian: "Colleghi", spanish: "Compañeros de trabajo", french: "Collègues", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: 'לו״ז', english: "Schedule", german: "Zeitplan", italian: "Orario", spanish: "Horario", french: "Emploi du temps", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "חוזה עבודה", english: "Work contract", german: "Arbeitsvertrag", italian: "Contratto di lavoro", spanish: "Contrato de trabajo", french: "Contrat de travail", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "אימון עובדים", english: "Employee training", german: "Mitarbeiterschulung", italian: "Formazione dei dipendenti", spanish: "Capacitación de empleados", french: "Formation des employés", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "קריירה", english: "Career", german: "Karriere", italian: "Carriera", spanish: "Carrera profesional", french: "Carrière", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "שעות נוספות", english: "Overtime", german: "Überstunden", italian: "Straordinari", spanish: "Horas extra", french: "Heures supplémentaires", courseNameEnglish: "Work", courseOrder: 66 },
+{ hebrew: "עבודה מרחוק", english: "Remote work", german: "Fernarbeit", italian: "Lavoro da remoto", spanish: "Trabajo remoto", french: "Télétravail", courseNameEnglish: "Work", courseOrder: 66 },
+
+// Intermediate Emotions - 67
+{ hebrew: "אסיר תודה", english: "Grateful", german: "Dankbar", italian: "Grato", spanish: "Agradecido", french: "Reconnaissant", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "נסער", english: "Upset", german: "Aufgebracht", italian: "Sconvolto", spanish: "Molesto", french: "Bouleversé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "עייף", english: "Tired", german: "Müde", italian: "Stanco", spanish: "Cansado", french: "Fatigué", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "קנאי", english: "Jealous", german: "Eifersüchtig", italian: "Gelos", spanish: "Celoso", french: "Jaloux", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "המום", english: "Overwhelmed", german: "Überfordert", italian: "Sopraffatto", spanish: "Abrumado", french: "Dépassé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "בדיכאון", english: "Depressed", german: "Depressiv", italian: "Depresso", spanish: "Deprimido", french: "Déprimé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "נחוש", english: "Determined", german: "Entschlossen", italian: "Determinato", spanish: "Decidido", french: "Déterminé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "נעלב", english: "Offended", german: "Beleidigt", italian: "Offeso", spanish: "Ofendido", french: "Vexé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מאוכזב", english: "Disappointed", german: "Enttäuscht", italian: "Deluso", spanish: "Decepcionado", french: "Déçu", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מלא תקווה", english: "Hopeful", german: "Hoffnungsvoll", italian: "Speranzoso", spanish: "Esperanzado", french: "Plein d'espoir", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "נרגז", english: "Annoyed", german: "Genervt", italian: "Infastidito", spanish: "Molesto", french: "Agacé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "משועמם", english: "Bored", german: "Gelangweilt", italian: "Annoiato", spanish: "Aburrido", french: "Ennuyé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מנומס", english: "Polite", german: "Höflich", italian: "Educato", spanish: "Cortés", french: "Poli", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מרוצה", english: "Satisfied", german: "Zufrieden", italian: "Soddisfatto", spanish: "Satisfecho", french: "Satisfait", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מבועת", english: "Terrified", german: "Entsetzt", italian: "Terrorizzato", spanish: "Aterrado", french: "Terrifié", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מבוהל", english: "Panicked", german: "In Panik", italian: "In preda al panico", spanish: "Asustado", french: "Paniqué", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "משוחרר", english: "Relieved", german: "Erleichtert", italian: "Sollevato", spanish: "Aliviado", french: "Soulagé", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "אדיש", english: "Indifferent", german: "Gleichgültig", italian: "Indifferente", spanish: "Indiferente", french: "Indifférent", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+{ hebrew: "מבולבל", english: "Dazed", german: "Benommen", italian: "Stordito", spanish: "Aturdido", french: "Hébété", courseNameEnglish: "Intermediate Emotions", courseOrder: 67 },
+
+// Intermediate Kitchen Tools - 68
+{ hebrew: "בלנדר", english: "Blender", german: "Mixer", italian: "Frullatore", spanish: "Licuadora", french: "Mixeur", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "תרווד", english: "Spatula", german: "Pfannenwender", italian: "Spatola", spanish: "Espátula", french: "Spatule", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "כף גלידה", english: "Ice cream scoop", german: "Eislöffel", italian: "Porzionatore per gelato", spanish: "Cucharón para helado", french: "Cuillère à glace", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "שייקר", english: "Shaker", german: "Shaker", italian: "Shaker", spanish: "Shaker", french: "Shaker", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "קומקום", english: "Kettle", german: "Wasserkocher", italian: "Bollitore", spanish: "Hervidor", french: "Bouilloire", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "מטחנת תבלינים", english: "Spice grinder", german: "Gewürzmühle", italian: "Macina spezie", spanish: "Molino de especias", french: "Moulin à épices", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "מברשת אפייה", english: "Pastry brush", german: "Backpinsel", italian: "Pennello da cucina", spanish: "Brocha de repostería", french: "Pinceau de pâtisserie", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "פומפייה", english: "Zester", german: "Zesteur", italian: "Zester", spanish: "Rallador de cítricos", french: "Zesteur", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "קוצץ ירקות", english: "Vegetable chopper", german: "Gemüseschneider", italian: "Taglia verdure", spanish: "Picador de verduras", french: "Coupe-légumes", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "מטחנת קפה", english: "Coffee grinder", german: "Kaffeemühle", italian: "Macina caffè", spanish: "Molino de café", french: "Moulin à café", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "כף מדידה", english: "Measuring spoon", german: "Messlöffel", italian: "Cucchiaio dosatore", spanish: "Cuchara medidora", french: "Cuillère doseuse", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "שקית זילוף", english: "Piping bag", german: "Spritzbeutel", italian: "Sac à poche", spanish: "Manga pastelera", french: "Poche à douille", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "תבנית לפיצה", english: "Pizza pan", german: "Pizzablech", italian: "Teglia per pizza", spanish: "Molde para pizza", french: "Plaque à pizza", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+{ hebrew: "מלקחיים לגריל", english: "Grill tongs", german: "Grillzange", italian: "Pinza per barbecue", spanish: "Pinzas para parrilla", french: "Pince à gril", courseNameEnglish: "Intermediate Kitchen Tools", courseOrder: 68 },
+
+// Numbers by Tens - 69
+{ hebrew: "עשרים ואחד", english: "Twenty-one", german: "Einundzwanzig", italian: "Ventuno", spanish: "Veintiuno", french: "Vingt-et-un", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "עשרים ושתיים", english: "Twenty-two", german: "Zweiundzwanzig", italian: "Ventidue", spanish: "Veintidós", french: "Vingt-deux", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שלושים ושלוש", english: "Thirty-three", german: "Dreiunddreißig", italian: "Trentatré", spanish: "Treinta y tres", french: "Trente-trois", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "ארבעים וארבע", english: "Forty-four", german: "Vierundvierzig", italian: "Quarantaquattro", spanish: "Cuarenta y cuatro", french: "Quarante-quatre", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "חמישים וחמש", english: "Fifty-five", german: "Fünfundfünfzig", italian: "Cinquanta cinque", spanish: "Cincuenta y cinco", french: "Cinquante-cinq", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "חמישים ושש", english: "Fifty-six", german: "Sechsundfünfzig", italian: "Cinquanta sei", spanish: "Cincuenta y seis", french: "Cinquante-six", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שישים ושבע", english: "Sixty-seven", german: "Siebenundsechzig", italian: "Sessantasette", spanish: "Sesenta y siete", french: "Soixante-sept", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שישים ושמונה", english: "Sixty-eight", german: "Achtundsechzig", italian: "Sessantotto", spanish: "Sesenta y ocho", french: "Soixante-huit", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שישים ותשע", english: "Sixty-nine", german: "Neunundsechzig", italian: "Sessantanove", spanish: "Sesenta y nueve", french: "Soixante-neuf", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שבעים ואחד", english: "Seventy-one", german: "Einundsiebzig", italian: "Settantuno", spanish: "Setenta y uno", french: "Soixante-et-onze", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שבעים ושתיים", english: "Seventy-two", german: "Zweiundsiebzig", italian: "Settantadue", spanish: "Setenta y dos", french: "Soixante-douze", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שמונים ואחד", english: "Eighty-one", german: "Einundachtzig", italian: "Ottantuno", spanish: "Ochenta y uno", french: "Quatre-vingt-un", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "שמונים ושתיים", english: "Eighty-two", german: "Zweiundachtzig", italian: "Ottantadue", spanish: "Ochenta y dos", french: "Quatre-vingt-deux", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+{ hebrew: "תשעים וחמש", english: "Ninety-five", german: "Fünfundneunzig", italian: "Novantacinque", spanish: "Noventa y cinco", french: "Quatre-vingt-quinze", courseNameEnglish: "Numbers by Tens", courseOrder: 69 },
+
+// Advanced Weather - 70
+{ hebrew: "ציקלון", english: "Cyclone", german: "Zyklon", italian: "Ciclone", spanish: "Ciclón", french: "Cyclone", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "הוריקן", english: "Hurricane", german: "Hurrikan", italian: "Uragano", spanish: "Huracán", french: "Ouragan", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "טורנדו", english: "Tornado", german: "Tornado", italian: "Tornado", spanish: "Tornado", french: "Tornade", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "מונסון", english: "Monsoon", german: "Monsun", italian: "Monsone", spanish: "Monzón", french: "Mousson", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "משב רוח", english: "Gust of wind", german: "Windböe", italian: "Folata di vento", spanish: "Ráfaga de viento", french: "Rafale de vent", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "סופה טרופית", english: "Tropical storm", german: "Tropensturm", italian: "Tempesta tropicale", spanish: "Tormenta tropical", french: "Tempête tropicale", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "לחץ ברומטרי", english: "Barometric pressure", german: "Luftdruck", italian: "Pressione barometrica", spanish: "Presión barométrica", french: "Pression barométrique", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "ממוצע טמפרטורות", english: "Temperature average", german: "Temperaturdurchschnitt", italian: "Media delle temperature", spanish: "Temperatura promedio", french: "Moyenne des températures", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "מערבולת", english: "Whirlwind", german: "Wirbelsturm", italian: "Vortice", spanish: "Remolino", french: "Tourbillon", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "ערפל כבד", english: "Thick fog", german: "Dichter Nebel", italian: "Nebbia fitta", spanish: "Niebla densa", french: "Brouillard épais", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "טפטוף", english: "Drizzle", german: "Nieselregen", italian: "Pioggerella", spanish: "Llovizna", french: "Bruine", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+{ hebrew: "גשם חומצי", english: "Acid rain", german: "Saurer Regen", italian: "Pioggia acida", spanish: "Lluvia ácida", french: "Pluie acide", courseNameEnglish: "Advanced Weather", courseOrder: 70 },
+
+// Intermediate Shapes - 71
+{ hebrew: "חרוט", english: "Cone", german: "Kegel", italian: "Cono", spanish: "Cono", french: "Cône", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "כיפה", english: "Dome", german: "Kuppel", italian: "Cupola", spanish: "Cúpula", french: "Dôme", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "פירמידה", english: "Pyramid", german: "Pyramide", italian: "Piramide", spanish: "Pirámide", french: "Pyramide", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "ספירלה", english: "Spiral", german: "Spirale", italian: "Spirale", spanish: "Espiral", french: "Spirale", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "מנסרה", english: "Prism", german: "Prisma", italian: "Prisma", spanish: "Prisma", french: "Prisme", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "תלתן", english: "Trefoil", german: "Dreiblatt", italian: "Trifoglio", spanish: "Trébol", french: "Trèfle", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "מצולע", english: "Polygon", german: "Polygon", italian: "Poligono", spanish: "Polígono", french: "Polygone", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "גלי", english: "Wavy shape", german: "Gewellte Form", italian: "Forma ondulata", spanish: "Forma ondulada", french: "Forme ondulée", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "מתומן", english: "Octagon", german: "Achteck", italian: "Ottagono", spanish: "Octágono", french: "Octogone", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "פרבולה", english: "Parabola", german: "Parabel", italian: "Parabola", spanish: "Parábola", french: "Parabole", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "קונכייה", english: "Shell shape", german: "Muschelform", italian: "Forma di conchiglia", spanish: "Forma de concha", french: "Forme de coquille", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "שעון חול", english: "Hourglass shape", german: "Sanduhrform", italian: "Forma di clessidra", spanish: "Forma de reloj de arena", french: "Forme de sablier", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+{ hebrew: "יהלום", english: "Diamond shape", german: "Diamantform", italian: "Forma di diamante", spanish: "Forma de diamante", french: "Forme de diamant", courseNameEnglish: "Intermediate Shapes", courseOrder: 71 },
+
+// Intermediate Directions - 72
+{ hebrew: "במורד", english: "Downhill", german: "Bergab", italian: "In discesa", spanish: "Cuesta abajo", french: "En descente", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "במעלה", english: "Uphill", german: "Bergauf", italian: "In salita", spanish: "Cuesta arriba", french: "En montée", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "מעל", english: "Above", german: "Über", italian: "Sopra", spanish: "Encima", french: "Au-dessus", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "מתחת", english: "Below", german: "Unter", italian: "Sotto", spanish: "Debajo", french: "Au-dessous", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "מול", english: "Opposite", german: "Gegenüber", italian: "Di fronte", spanish: "Frente a", french: "En face", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "לצד", english: "Beside", german: "Neben", italian: "Accanto", spanish: "Al lado de", french: "À côté de", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "לאורך", english: "Along", german: "Entlang", italian: "Lungo", spanish: "A lo largo de", french: "Le long de", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "מעבר", english: "Beyond", german: "Jenseits", italian: "Oltre", spanish: "Más allá de", french: "Au-delà de", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "למעלה", english: "Up", german: "Hinauf", italian: "Su", spanish: "Arriba", french: "En haut", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "למטה", english: "Down", german: "Hinunter", italian: "Giù", spanish: "Abajo", french: "En bas", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "במרחק קצר", english: "A short distance", german: "Eine kurze Strecke", italian: "A breve distanza", spanish: "A poca distancia", french: "À courte distance", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "במרחק רב", english: "A long distance", german: "Eine lange Strecke", italian: "A lunga distanza", spanish: "A larga distancia", french: "À longue distance", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "בין", english: "Between", german: "Zwischen", italian: "Tra", spanish: "Entre", french: "Entre", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "מעגלי", english: "Circular", german: "Kreisförmig", italian: "Circolare", spanish: "Circular", french: "Circulaire", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "עקום", english: "Curved", german: "Gekrümmt", italian: "Curvo", spanish: "Curvado", french: "Courbé", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+{ hebrew: "סיבובי", english: "Rotary", german: "Drehend", italian: "Rotatorio", spanish: "Rotativo", french: "Rotatif", courseNameEnglish: "Intermediate Directions", courseOrder: 72 },
+
+// Intermediate Beverages - 73
+{ hebrew: "משקה אנרגיה", english: "Energy Drink", german: "Energydrink", italian: "Bevanda energetica", spanish: "Bebida energética", french: "Boisson énergisante", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "משקה חלבון", english: "Protein Shake", german: "Proteinshake", italian: "Frullato proteico", spanish: "Batido de proteínas", french: "Shake protéiné", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "משקה שקדים", english: "Almond Milk", german: "Mandelmilch", italian: "Latte di mandorla", spanish: "Leche de almendra", french: "Lait d'amande", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "משקה סויה", english: "Soy Milk", german: "Sojamilch", italian: "Latte di soia", spanish: "Leche de soja", french: "Lait de soja", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "משקה קוקוס", english: "Coconut Milk", german: "Kokosmilch", italian: "Latte di cocco", spanish: "Leche de coco", french: "Lait de coco", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "תה ירוק", english: "Green Tea", german: "Grüner Tee", italian: "Tè verde", spanish: "Té verde", french: "Thé vert", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "תה צמחים", english: "Herbal Tea", german: "Kräutertee", italian: "Tisana", spanish: "Té de hierbas", french: "Infusion", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "שייק פירות", english: "Fruit Smoothie", german: "Frucht-Smoothie", italian: "Frullato di frutta", spanish: "Batido de frutas", french: "Smoothie aux fruits", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "גזוז", english: "Soft Drink", german: "Limonade", italian: "Bevanda gassata", spanish: "Refresco", french: "Soda", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "מיץ חמוציות", english: "Cranberry Juice", german: "Cranberrysaft", italian: "Succo di mirtillo rosso", spanish: "Jugo de arándano", french: "Jus de canneberge", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "ליקר", english: "Liqueur", german: "Likör", italian: "Liquore", spanish: "Licor", french: "Liqueur", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "משקה מוגז", english: "Carbonated Drink", german: "Kohlensäurehaltiges Getränk", italian: "Bevanda gassata", spanish: "Bebida carbonatada", french: "Boisson gazeuse", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "קוקטייל", english: "Cocktail", german: "Cocktail", italian: "Cocktail", spanish: "Cóctel", french: "Cocktail", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "בירה שחורה", english: "Dark Beer", german: "Dunkles Bier", italian: "Birra scura", spanish: "Cerveza negra", french: "Bière brune", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "יין מבעבע", english: "Sparkling Wine", german: "Sekt", italian: "Vino frizzante", spanish: "Vino espumoso", french: "Vin pétillant", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "סיידר תפוחים", english: "Apple Cider", german: "Apfelwein", italian: "Sidro di mele", spanish: "Sidra de manzana", french: "Cidre de pomme", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+{ hebrew: "קקאו חם", english: "Hot Cocoa", german: "Heiße Schokolade", italian: "Cioccolata calda", spanish: "Chocolate caliente", french: "Chocolat chaud", courseNameEnglish: "Intermediate Beverages", courseOrder: 73 },
+
+// Intermediate Musical Instruments - 74
+{ hebrew: "קסילופון", english: "Xylophone", german: "Xylophon", italian: "Xilofono", spanish: "Xilófono", french: "Xylophone", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "בנג'ו", english: "Banjo", german: "Banjo", italian: "Banjo", spanish: "Banjo", french: "Banjo", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "קלרינט", english: "Clarinet", german: "Klarinette", italian: "Clarinetto", spanish: "Clarinete", french: "Clarinette", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "אבוב", english: "Oboe", german: "Oboe", italian: "Oboe", spanish: "Oboe", french: "Hautbois", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "טמבורין", english: "Tambourine", german: "Tamburin", italian: "Tamburello", spanish: "Pandereta", french: "Tambourin", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "קרן יער", english: "French Horn", german: "Waldhorn", italian: "Corno francese", spanish: "Trompa", french: "Cor d’harmonie", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "קאנון", english: "Qanun", german: "Kanun", italian: "Qanun", spanish: "Qanún", french: "Qanun", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "קסטנייטות", english: "Castanets", german: "Kastagnetten", italian: "Nacchere", spanish: "Castañuelas", french: "Castagnettes", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "קונגאס", english: "Congas", german: "Congas", italian: "Congas", spanish: "Congas", french: "Congas", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "דרבוקה", english: "Darbuka", german: "Darbuka", italian: "Darbuka", spanish: "Darbuka", french: "Darbuka", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "שופר", english: "Shofar", german: "Schofar", italian: "Shofar", spanish: "Shofar", french: "Shofar", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+{ hebrew: "נבל", english: "Harp", german: "Harfe", italian: "Arpa", spanish: "Arpa", french: "Harpe", courseNameEnglish: "Intermediate Musical Instruments", courseOrder: 74 },
+
+// Intermediate Education - 75
+{ hebrew: "שיעור פרטי", english: "Private lesson", german: "Privatstunde", italian: "Lezione privata", spanish: "Clase particular", french: "Leçon privée", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "בית ספר יסודי", english: "Elementary school", german: "Grundschule", italian: "Scuola elementare", spanish: "Escuela primaria", french: "École élémentaire", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "חטיבת ביניים", english: "Middle school", german: "Mittelschule", italian: "Scuola media", spanish: "Escuela secundaria", french: "Collège", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "תיכון", english: "High school", german: "Gymnasium", italian: "Scuola superiore", spanish: "Instituto", french: "Lycée", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "חדר מורים", english: "Teachers' lounge", german: "Lehrerzimmer", italian: "Sala insegnanti", spanish: "Sala de profesores", french: "Salle des professeurs", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "תלבושת אחידה", english: "School uniform", german: "Schuluniform", italian: "Divisa scolastica", spanish: "Uniforme escolar", french: "Uniforme scolaire", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "ציוד בית ספר", english: "School supplies", german: "Schulmaterial", italian: "Materiale scolastico", spanish: "Útiles escolares", french: "Fournitures scolaires", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "הפסקה", english: "Recess", german: "Pause", italian: "Intervallo", spanish: "Recreo", french: "Récréation", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "מתמטיקה", english: "Mathematics", german: "Mathematik", italian: "Matematica", spanish: "Matemáticas", french: "Mathématiques", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "היסטוריה", english: "History", german: "Geschichte", italian: "Storia", spanish: "Historia", french: "Histoire", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "חינוך גופני", english: "Physical education", german: "Sportunterricht", italian: "Educazione fisica", spanish: "Educación física", french: "Éducation physique", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+{ hebrew: "מערכת שעות", english: "Timetable", german: "Stundenplan", italian: "Orario scolastico", spanish: "Horario escolar", french: "Emploi du temps", courseNameEnglish: "Intermediate Education", courseOrder: 75 },
+
+// Advanced Colors - 76
+{ hebrew: "כחול שמיים", english: "Sky blue", german: "Himmelblau", italian: "Azzurro cielo", spanish: "Azul celeste", french: "Bleu ciel", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "ירוק מנטה", english: "Mint green", german: "Minzgrün", italian: "Verde menta", spanish: "Verde menta", french: "Vert menthe", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "אדום דובדבן", english: "Cherry red", german: "Kirschrot", italian: "Rosso ciliegia", spanish: "Rojo cereza", french: "Rouge cerise", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "ורוד פוקסיה", english: "Fuchsia pink", german: "Fuchsienrosa", italian: "Rosa fucsia", spanish: "Rosa fucsia", french: "Rose fuchsia", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "סגול לבנדר", english: "Lavender purple", german: "Lavendelviolett", italian: "Viola lavanda", spanish: "Morado lavanda", french: "Violet lavande", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "צהוב חרדל", english: "Mustard yellow", german: "Senfgelb", italian: "Giallo senape", spanish: "Amarillo mostaza", french: "Jaune moutarde", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "כחול טורקיז", english: "Turquoise blue", german: "Türkisblau", italian: "Blu turchese", spanish: "Azul turquesa", french: "Bleu turquoise", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "ירוק אזמרגד", english: "Emerald green", german: "Smaragdgrün", italian: "Verde smeraldo", spanish: "Verde esmeralda", french: "Vert émeraude", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "כחול אינדיגו", english: "Indigo blue", german: "Indigoblau", italian: "Blu indaco", spanish: "Azul índigo", french: "Bleu indigo", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "כחול רויאל", english: "Royal blue", german: "Königsblau", italian: "Blu reale", spanish: "Azul real", french: "Bleu royal", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "ורוד סלמון", english: "Salmon pink", german: "Lachsrosa", italian: "Rosa salmone", spanish: "Rosa salmón", french: "Rose saumon", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "כחול נייבי", english: "Navy blue", german: "Marineblau", italian: "Blu navy", spanish: "Azul marino", french: "Bleu marine", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+{ hebrew: "ירוק ליים", english: "Lime green", german: "Limettengrün", italian: "Verde lime", spanish: "Verde lima", french: "Vert citron", courseNameEnglish: "Advanced Colors", courseOrder: 76 },
+
+// Advanced Clothes - 77
+{ hebrew: "שמלת ערב", english: "Evening gown", german: "Abendkleid", italian: "Abito da sera", spanish: "Vestido de noche", french: "Robe de soirée", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "מעיל פרווה", english: "Fur coat", german: "Pelzmantel", italian: "Cappotto di pelliccia", spanish: "Abrigo de piel", french: "Manteau de fourrure", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "חליפה", english: "Suit", german: "Anzug", italian: "Completo", spanish: "Traje", french: "Costume", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "חזייה", english: "Bra", german: "BH", italian: "Reggiseno", spanish: "Sujetador", french: "Soutien-gorge", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "תחתונים", english: "Underwear", german: "Unterwäsche", italian: "Biancheria intima", spanish: "Ropa interior", french: "Sous-vêtements", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "גרביים ארוכים", english: "Long socks", german: "Lange Socken", italian: "Calzini lunghi", spanish: "Calcetines largos", french: "Chaussettes longues", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "פונצ'ו", english: "Poncho", german: "Poncho", italian: "Poncho", spanish: "Poncho", french: "Poncho", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "סיכה", english: "Lapel pin", german: "Reversnadel", italian: "Spilla da bavero", spanish: "Pin de solapa", french: "Épinglette", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "חולצה מכופתרת", english: "Button-up shirt", german: "Hemd mit Knöpfen", italian: "Camicia abbottonata", spanish: "Camisa de botones", french: "Chemise boutonnée", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "כובע מצחייה", english: "Cap", german: "Schirmmütze", italian: "Berretto", spanish: "Gorra", french: "Casquette", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "מגפי גשם", english: "Rain boots", german: "Regenstiefel", italian: "Stivali da pioggia", spanish: "Botas de lluvia", french: "Bottes de pluie", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "חליפת ספורט", english: "Tracksuit", german: "Trainingsanzug", italian: "Tuta sportiva", spanish: "Chándal", french: "Survêtement", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "סיכת שיער", english: "Hairpin", german: "Haarnadel", italian: "Fermaglio", spanish: "Horquilla", french: "Épingle à cheveux", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "כפפות עור", english: "Leather gloves", german: "Lederhandschuhe", italian: "Guanti in pelle", spanish: "Guantes de cuero", french: "Gants en cuir", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+{ hebrew: "מעיל צמר", english: "Wool coat", german: "Wollmantel", italian: "Cappotto di lana", spanish: "Abrigo de lana", french: "Manteau en laine", courseNameEnglish: "Advanced Clothes", courseOrder: 77 },
+
+// Intermediate School Supplies - 78
+{ hebrew: "מרקר", english: "Highlighter", german: "Textmarker", italian: "Evidenziatore", spanish: "Resaltador", french: "Surligneur", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "טוש", english: "Marker", german: "Filzstift", italian: "Pennarello", spanish: "Marcador", french: "Feutre", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "חוברת עבודה", english: "Workbook", german: "Arbeitsbuch", italian: "Quaderno degli esercizi", spanish: "Libro de ejercicios", french: "Cahier d'exercices", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "שדכן", english: "Hole punch", german: "Locher", italian: "Perforatore", spanish: "Perforadora", french: "Perforatrice", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "מדבקות", english: "Stickers", german: "Aufkleber", italian: "Adesivi", spanish: "Pegatinas", french: "Autocollants", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "שקפים", english: "Transparencies", german: "Folie", italian: "Diapositive", spanish: "Transparencias", french: "Transparents", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "קלסר", english: "Binder", german: "Ordner", italian: "Raccoglitore", spanish: "Carpeta de anillas", french: "Classeur", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "מחורר", english: "Hole puncher", german: "Locher", italian: "Perforatrice", spanish: "Perforadora", french: "Perforeuse", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "פנקס", english: "Notepad", german: "Notizblock", italian: "Taccuino", spanish: "Bloc de notas", french: "Bloc-notes", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "טוש לוח", english: "Whiteboard marker", german: "Whiteboardmarker", italian: "Pennarello per lavagna", spanish: "Rotulador de pizarra", french: "Marqueur pour tableau blanc", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "פתקיות דביקות", english: "Sticky notes", german: "Haftnotizen", italian: "Foglietti adesivi", spanish: "Notas adhesivas", french: "Post-it", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "תיקיה", english: "Folder", german: "Mappe", italian: "Cartella", spanish: "Carpeta", french: "Dossier", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "עט צבעוני", english: "Colored pen", german: "Farbiger Stift", italian: "Penna colorata", spanish: "Bolígrafo de colores", french: "Stylo coloré", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "משולש זווית", english: "Set square", german: "Geodreieck", italian: "Squadra", spanish: "Escuadra", french: "Équerre", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "שמרדף", english: "Plastic sleeve", german: "Klarsichthülle", italian: "Busta trasparente", spanish: "Funda plástica", french: "Pochette plastique", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+{ hebrew: "חותמת דיו", english: "Ink stamp", german: "Stempel", italian: "Timbro", spanish: "Sello de tinta", french: "Tampon encreur", courseNameEnglish: "Intermediate School Supplies", courseOrder: 78 },
+
+// Intermediate Health - 79
+{ hebrew: "שיעול", english: "Cough", german: "Husten", italian: "Tosse", spanish: "Tos", french: "Toux", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "נזלת", english: "Runny nose", german: "Laufende Nase", italian: "Naso che cola", spanish: "Nariz mocosa", french: "Nez qui coule", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "עייפות", english: "Fatigue", german: "Müdigkeit", italian: "Affaticamento", spanish: "Fatiga", french: "Fatigue", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "סחרחורת", english: "Dizziness", german: "Schwindel", italian: "Vertigini", spanish: "Mareo", french: "Vertige", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "קלקול קיבה", english: "Indigestion", german: "Verdauungsstörung", italian: "Indigestione", spanish: "Indigestión", french: "Indigestion", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "עצירות", english: "Constipation", german: "Verstopfung", italian: "Stitichezza", spanish: "Estreñimiento", french: "Constipation", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "שלשול", english: "Diarrhea", german: "Durchfall", italian: "Diarrea", spanish: "Diarrea", french: "Diarrhée", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "דלקת", english: "Inflammation", german: "Entzündung", italian: "Infiammazione", spanish: "Inflamación", french: "Inflammation", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "כאבי מפרקים", english: "Joint pain", german: "Gelenkschmerzen", italian: "Dolori articolari", spanish: "Dolor en las articulaciones", french: "Douleurs articulaires", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "לחץ", english: "Stress", german: "Stress", italian: "Stress", spanish: "Estrés", french: "Stress", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "תסמינים", english: "Symptoms", german: "Symptome", italian: "Sintomi", spanish: "Síntomas", french: "Symptômes", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "בדיקות דם", english: "Blood tests", german: "Bluttests", italian: "Analisi del sangue", spanish: "Análisis de sangre", french: "Analyses de sang", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "לחץ נפשי", english: "Mental pressure", german: "Psychischer Druck", italian: "Pressione mentale", spanish: "Presión mental", french: "Pression mentale", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "תסמונת", english: "Syndrome", german: "Syndrom", italian: "Sindrome", spanish: "Síndrome", french: "Syndrome", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "דלקת גרון", english: "Throat infection", german: "Halsentzündung", italian: "Infezione alla gola", spanish: "Infección de garganta", french: "Infection de la gorge", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+{ hebrew: "הרעלה", english: "Poisoning", german: "Vergiftung", italian: "Avvelenamento", spanish: "Envenenamiento", french: "Intoxication", courseNameEnglish: "Intermediate Health", courseOrder: 79 },
+
+// Intermediate Days of the Week - 80
+{ hebrew: "אמצע השבוע", english: "Midweek", german: "Wochenmitte", italian: "Metà settimana", spanish: "Mitad de la semana", french: "Milieu de semaine", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "יום חול", english: "Weekday", german: "Wochentag", italian: "Giorno feriale", spanish: "Día laborable", french: "Jour de semaine", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "חצי שבוע", english: "Half a week", german: "Halbe Woche", italian: "Mezza settimana", spanish: "Media semana", french: "Demi-semaine", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "ערב חג", english: "Holiday eve", german: "Vorfeiertag", italian: "Vigilia di festa", spanish: "Víspera de festivo", french: "Veille de fête", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "ערב שבת", english: "Sabbath eve", german: "Sabbatabend", italian: "Vigilia del sabato", spanish: "Víspera del sábado", french: "Veille du sabbat", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "יום חג לאומי", english: "National holiday", german: "Nationalfeiertag", italian: "Festa nazionale", spanish: "Fiesta nacional", french: "Jour férié national", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "תחילת השבוע", english: "Beginning of the week", german: "Wochenanfang", italian: "Inizio settimana", spanish: "Inicio de la semana", french: "Début de la semaine", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "סוף השבוע", english: "End of the week", german: "Wochenende", italian: "Fine della settimana", spanish: "Final de la semana", french: "Fin de la semaine", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "תאריך", english: "Date", german: "Datum", italian: "Data", spanish: "Fecha", french: "Date", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "לוח שנה", english: "Calendar", german: "Kalender", italian: "Calendario", spanish: "Calendario", french: "Calendrier", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "יום ספורט", english: "Sports day", german: "Sporttag", italian: "Giornata sportiva", spanish: "Día del deporte", french: "Journée sportive", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+{ hebrew: "יום זיכרון", english: "Memorial day", german: "Gedenktag", italian: "Giornata della memoria", spanish: "Día conmemorativo", french: "Jour du souvenir", courseNameEnglish: "Intermediate Days of the Week", courseOrder: 80 },
+
+// Taxes - 81
+{ hebrew: "מס הכנסה", english: "Income tax", german: "Einkommenssteuer", italian: "Tassa sul reddito", spanish: "Impuesto sobre la renta", french: "Impôt sur le revenu", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מע״מ", english: "Value-added tax", german: "Mehrwertsteuer", italian: "Imposta sul valore aggiunto", spanish: "Impuesto sobre el valor añadido", french: "Taxe sur la valeur ajoutée", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מס רכוש", english: "Property tax", german: "Grundsteuer", italian: "Imposta sulla proprietà", spanish: "Impuesto sobre la propiedad", french: "Taxe foncière", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מס ירושה", english: "Inheritance tax", german: "Erbschaftssteuer", italian: "Imposta di successione", spanish: "Impuesto sobre herencias", french: "Droits de succession", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מס חברות", english: "Corporate tax", german: "Körperschaftsteuer", italian: "Tassa sulle società", spanish: "Impuesto de sociedades", french: "Impôt sur les sociétés", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מס קנייה", english: "Sales tax", german: "Verkaufssteuer", italian: "Tassa sulle vendite", spanish: "Impuesto sobre las ventas", french: "Taxe de vente", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "החזר מס", english: "Tax refund", german: "Steuerrückzahlung", italian: "Rimborso fiscale", spanish: "Reembolso de impuestos", french: "Remboursement d'impôt", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "פטור ממס", english: "Tax exemption", german: "Steuerbefreiung", italian: "Esenzione fiscale", spanish: "Exención fiscal", french: "Exonération fiscale", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "ניכוי מס", english: "Tax deduction", german: "Steuerabzug", italian: "Detrazione fiscale", spanish: "Deducción fiscal", french: "Déduction fiscale", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "רשות המיסים", english: "Tax authority", german: "Steuerbehörde", italian: "Autorità fiscale", spanish: "Autoridad tributaria", french: "Autorité fiscale", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "חשבונית מס", english: "Tax invoice", german: "Steuerrechnung", italian: "Fattura fiscale", spanish: "Factura fiscal", french: "Facture fiscale", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מדרגות מס", english: "Tax brackets", german: "Steuerklassen", italian: "Scaglioni fiscali", spanish: "Tramos impositivos", french: "Tranches d'imposition", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מס יבוא", english: "Import tax", german: "Einfuhrsteuer", italian: "Tassa di importazione", spanish: "Impuesto de importación", french: "Taxe d'importation", courseNameEnglish: "Taxes", courseOrder: 81 },
+{ hebrew: "מס יצוא", english: "Export tax", german: "Ausfuhrsteuer", italian: "Tassa di esportazione", spanish: "Impuesto de exportación", french: "Taxe d'exportation", courseNameEnglish: "Taxes", courseOrder: 81 },
+
+// Philosophical Topics - 82
+{ hebrew: "מוסר", english: "Morality", german: "Moral", italian: "Moralità", spanish: "Moralidad", french: "Moralité", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "אתיקה", english: "Ethics", german: "Ethik", italian: "Etica", spanish: "Ética", french: "Éthique", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "משמעות החיים", english: "Meaning of life", german: "Sinn des Lebens", italian: "Significato della vita", spanish: "Significado de la vida", french: "Sens de la vie", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "אמת", english: "Truth", german: "Wahrheit", italian: "Verità", spanish: "Verdad", french: "Vérité", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "תודעה", english: "Consciousness", german: "Bewusstsein", italian: "Coscienza", spanish: "Conciencia", french: "Conscience", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "רציונליזם", english: "Rationalism", german: "Rationalismus", italian: "Razionalismo", spanish: "Racionalismo", french: "Rationalisme", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "אידיאליזם", english: "Idealism", german: "Idealismus", italian: "Idealismo", spanish: "Idealismo", french: "Idéalisme", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "ריאליזם", english: "Realism", german: "Realismus", italian: "Realismo", spanish: "Realismo", french: "Réalisme", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "אקזיסטנציאליזם", english: "Existentialism", german: "Existenzialismus", italian: "Esistenzialismo", spanish: "Existencialismo", french: "Existentialisme", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "הכרה", english: "Perception", german: "Wahrnehmung", italian: "Percezione", spanish: "Percepción", french: "Perception", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "לוגיקה", english: "Logic", german: "Logik", italian: "Logica", spanish: "Lógica", french: "Logique", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+{ hebrew: "דטרמיניזם", english: "Determinism", german: "Determinismus", italian: "Determinismo", spanish: "Determinismo", french: "Déterminisme", courseNameEnglish: "Philosophical Topics", courseOrder: 82 },
+
+// Intermediate Parts of the House - 83
+{ hebrew: "מסדרון", english: "Hallway", german: "Flur", italian: "Corridoio", spanish: "Pasillo", french: "Couloir", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "עליית גג", english: "Attic", german: "Dachboden", italian: "Soffitta", spanish: "Ático", french: "Grenier", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "מרתף", english: "Basement", german: "Keller", italian: "Seminterrato", spanish: "Sótano", french: "Sous-sol", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חניה", english: "Parking space", german: "Parkplatz", italian: "Parcheggio", spanish: "Estacionamiento", french: "Place de parking", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "מחסן", english: "Storage room", german: "Lagerraum", italian: "Ripostiglio", spanish: "Almacén", french: "Débarras", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "פרגולה", english: "Pergola", german: "Pergola", italian: "Pergolato", spanish: "Pérgola", french: "Pergola", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חדר עבודה", english: "Study room", german: "Arbeitszimmer", italian: "Studio", spanish: "Estudio", french: "Bureau", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "לובי", english: "Lobby", german: "Lobby", italian: "Atrio", spanish: "Vestíbulo", french: "Hall d’entrée", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "גדר", english: "Fence", german: "Zaun", italian: "Recinto", spanish: "Cerca", french: "Clôture", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "בריכת שחייה", english: "Swimming pool", german: "Schwimmbad", italian: "Piscina", spanish: "Piscina", french: "Piscine", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חדר כביסה", english: "Laundry room", german: "Waschraum", italian: "Lavanderia", spanish: "Lavadero", french: "Buanderie", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "ארון קיר", english: "Built-in closet", german: "Einbauschrank", italian: "Armadio a muro", spanish: "Armario empotrado", french: "Placard intégré", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "מזווה", english: "Pantry", german: "Speisekammer", italian: "Dispensa", spanish: "Despensa", french: "Garde-manger", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "כניסה ראשית", english: "Main entrance", german: "Haupteingang", italian: "Ingresso principale", spanish: "Entrada principal", french: "Entrée principale", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "פרקט", english: "Wooden flooring", german: "Holzboden", italian: "Pavimento in legno", spanish: "Suelo de madera", french: "Parquet", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+{ hebrew: "חדר משחקים", english: "Playroom", german: "Spielzimmer", italian: "Sala giochi", spanish: "Sala de juegos", french: "Salle de jeux", courseNameEnglish: "Intermediate Parts of the House", courseOrder: 83 },
+
+// Describing People - 84
+{ hebrew: "נמוך", english: "Short", german: "Klein", italian: "Basso", spanish: "Bajo", french: "Petit", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "גבוה", english: "Tall", german: "Groß", italian: "Alto", spanish: "Alto", french: "Grand", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "רזה", english: "Thin", german: "Dünn", italian: "Magro", spanish: "Delgado", french: "Mince", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "מלא", english: "Chubby", german: "Pummelig", italian: "Paffuto", spanish: "Regordete", french: "Potelé", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "שרירי", english: "Muscular", german: "Muskulös", italian: "Muscoloso", spanish: "Musculoso", french: "Musclé", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "מבוגר", english: "Elderly", german: "Älter", italian: "Anziano", spanish: "Anciano", french: "Âgé", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "צעיר", english: "Young", german: "Jung", italian: "Giovane", spanish: "Joven", french: "Jeune", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "שזוף", english: "Tanned", german: "Gebräunt", italian: "Abbronzato", spanish: "Bronceado", french: "Bronzé", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "חיוור", english: "Pale", german: "Blass", italian: "Pallido", spanish: "Pálido", french: "Pâle", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "שיער גלי", english: "Wavy hair", german: "Gewelltes Haar", italian: "Capelli mossi", spanish: "Pelo ondulado", french: "Cheveux ondulés", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "שיער חלק", english: "Straight hair", german: "Glattes Haar", italian: "Capelli lisci", spanish: "Pelo liso", french: "Cheveux lisses", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "שיער מתולתל", english: "Curly hair", german: "Lockiges Haar", italian: "Capelli ricci", spanish: "Pelo rizado", french: "Cheveux bouclés", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "עיניים בהירות", english: "Light eyes", german: "Helle Augen", italian: "Occhi chiari", spanish: "Ojos claros", french: "Yeux clairs", courseNameEnglish: "Describing People", courseOrder: 84 },
+{ hebrew: "עיניים כהות", english: "Dark eyes", german: "Dunkle Augen", italian: "Occhi scuri", spanish: "Ojos oscuros", french: "Yeux foncés", courseNameEnglish: "Describing People", courseOrder: 84 },
+
+// Crypto - 85
+{ hebrew: "מטבע דיגיטלי", english: "Digital currency", german: "Digitale Währung", italian: "Valuta digitale", spanish: "Moneda digital", french: "Monnaie numérique", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "בלוקצ'יין", english: "Blockchain", german: "Blockchain", italian: "Blockchain", spanish: "Blockchain", french: "Blockchain", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "כריית מטבעות", english: "Mining", german: "Mining", italian: "Mining", spanish: "Minería", french: "Minage", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "חוזה חכם", english: "Smart contract", german: "Intelligenter Vertrag", italian: "Contratto intelligente", spanish: "Contrato inteligente", french: "Contrat intelligent", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "ארנק קריפטו", english: "Crypto wallet", german: "Krypto-Wallet", italian: "Portafoglio crypto", spanish: "Billetera cripto", french: "Portefeuille crypto", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "מפתח פרטי", english: "Private key", german: "Privater Schlüssel", italian: "Chiave privata", spanish: "Clave privada", french: "Clé privée", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "מפתח ציבורי", english: "Public key", german: "Öffentlicher Schlüssel", italian: "Chiave pubblica", spanish: "Clave pública", french: "Clé publique", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "אסימון", english: "Token", german: "Token", italian: "Token", spanish: "Token", french: "Jeton", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "מטבע יציב", english: "Stablecoin", german: "Stablecoin", italian: "Stablecoin", spanish: "Stablecoin", french: "Stablecoin", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "הנפקה ראשונית", english: "Initial Coin Offering", german: "Erstangebot für Kryptowährungen", italian: "Offerta iniziale di monete", spanish: "Oferta inicial de monedas", french: "Offre initiale de pièces", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "כרייה", english: "Mining", german: "Mining", italian: "Mining", spanish: "Minería", french: "Minage", courseNameEnglish: "Crypto", courseOrder: 85 },
+{ hebrew: "בורסת קריפטו", english: "Crypto exchange", german: "Krypto-Börse", italian: "Borsa cripto", spanish: "Intercambio cripto", french: "Échange crypto", courseNameEnglish: "Crypto", courseOrder: 85 },
+
+// Advanced Politics - 86
+{ hebrew: "ריבונות", english: "Sovereignty", german: "Souveränität", italian: "Sovranità", spanish: "Soberanía", french: "Souveraineté", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "דיפלומטיה", english: "Diplomacy", german: "Diplomatie", italian: "Diplomazia", spanish: "Diplomacia", french: "Diplomatie", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "רפורמה", english: "Reform", german: "Reform", italian: "Riforma", spanish: "Reforma", french: "Réforme", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "מהפכה", english: "Revolution", german: "Revolution", italian: "Rivoluzione", spanish: "Revolución", french: "Révolution", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "שחיתות", english: "Corruption", german: "Korruption", italian: "Corruzione", spanish: "Corrupción", french: "Corruption", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "שלטון חוק", english: "Rule of law", german: "Rechtsstaatlichkeit", italian: "Stato di diritto", spanish: "Estado de derecho", french: "État de droit", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "מערכת בחירות", english: "Electoral system", german: "Wahlsystem", italian: "Sistema elettorale", spanish: "Sistema electoral", french: "Système électoral", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "שלטון אוטוריטרי", english: "Authoritarian rule", german: "Autoritäre Herrschaft", italian: "Regime autoritario", spanish: "Gobierno autoritario", french: "Régime autoritaire", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "משטר טוטליטרי", english: "Totalitarian regime", german: "Totalitäres Regime", italian: "Regime totalitario", spanish: "Régimen totalitario", french: "Régime totalitaire", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "בדלנות", english: "Secession", german: "Sezession", italian: "Secessione", spanish: "Secesión", french: "Sécession", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "צנזורה", english: "Censorship", german: "Zensur", italian: "Censura", spanish: "Censura", french: "Censure", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "רשות מבצעת", english: "Executive branch", german: "Exekutive", italian: "Ramo esecutivo", spanish: "Poder ejecutivo", french: "Branche exécutive", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "רשות מחוקקת", english: "Legislative branch", german: "Legislative", italian: "Ramo legislativo", spanish: "Poder legislativo", french: "Branche législative", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "רשות שופטת", english: "Judicial branch", german: "Judikative", italian: "Ramo giudiziario", spanish: "Poder judicial", french: "Branche judiciaire", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+{ hebrew: "זכויות אזרח", english: "Civil rights", german: "Bürgerrechte", italian: "Diritti civili", spanish: "Derechos civiles", french: "Droits civiques", courseNameEnglish: "Advanced Politics", courseOrder: 86 },
+
+// International Relations - 87
+{ hebrew: "יחסים דיפלומטיים", english: "Diplomatic relations", german: "Diplomatische Beziehungen", italian: "Relazioni diplomatiche", spanish: "Relaciones diplomáticas", french: "Relations diplomatiques", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "שגרירות", english: "Embassy", german: "Botschaft", italian: "Ambasciata", spanish: "Embajada", french: "Ambassade", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "קונסוליה", english: "Consulate", german: "Konsulat", italian: "Consolato", spanish: "Consulado", french: "Consulat", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "אמנה בינלאומית", english: "International treaty", german: "Internationaler Vertrag", italian: "Trattato internazionale", spanish: "Tratado internacional", french: "Traité international", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "שגריר", english: "Ambassador", german: "Botschafter", italian: "Ambasciatore", spanish: "Embajador", french: "Ambassadeur", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "קשרים כלכליים", english: "Economic relations", german: "Wirtschaftsbeziehungen", italian: "Relazioni economiche", spanish: "Relaciones económicas", french: "Relations économiques", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "אמברגו", english: "Embargo", german: "Embargo", italian: "Embargo", spanish: "Embargo", french: "Embargo", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "אמנת סחר", english: "Trade agreement", german: "Handelsabkommen", italian: "Accordo commerciale", spanish: "Acuerdo comercial", french: "Accord commercial", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "יחסים אסטרטגיים", english: "Strategic relations", german: "Strategische Beziehungen", italian: "Relazioni strategiche", spanish: "Relaciones estratégicas", french: "Relations stratégiques", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "מדיניות חוץ", english: "Foreign policy", german: "Außenpolitik", italian: "Politica estera", spanish: "Política exterior", french: "Politique étrangère", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "ארגון בינלאומי", english: "International organization", german: "Internationale Organisation", italian: "Organizzazione internazionale", spanish: "Organización internacional", french: "Organisation internationale", courseNameEnglish: "International Relations", courseOrder: 87 },
+{ hebrew: "פליטים", english: "Refugees", german: "Flüchtlinge", italian: "Rifugiati", spanish: "Refugiados", french: "Réfugiés", courseNameEnglish: "International Relations", courseOrder: 87 },
+
+// Stars - 88
+{ hebrew: "כוכב לכת", english: "Planet", german: "Planet", italian: "Pianeta", spanish: "Planeta", french: "Planète", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "גלקסיה", english: "Galaxy", german: "Galaxie", italian: "Galassia", spanish: "Galaxia", french: "Galaxie", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "סופרנובה", english: "Supernova", german: "Supernova", italian: "Supernova", spanish: "Supernova", french: "Supernova", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "חור שחור", english: "Black hole", german: "Schwarzes Loch", italian: "Buco nero", spanish: "Agujero negro", french: "Trou noir", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "אסטרואיד", english: "Asteroid", german: "Asteroid", italian: "Asteroide", spanish: "Asteroide", french: "Astéroïde", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "מטאור", english: "Meteor", german: "Meteorit", italian: "Meteorite", spanish: "Meteorito", french: "Météorite", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "ערפילית", english: "Nebula", german: "Nebel", italian: "Nebulosa", spanish: "Nebulosa", french: "Nébuleuse", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "שביל החלב", english: "Milky Way", german: "Milchstraße", italian: "Via Lattea", spanish: "Vía Láctea", french: "Voie lactée", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "מערכת כוכבים", english: "Star system", german: "Sternensystem", italian: "Sistema stellare", spanish: "Sistema estelar", french: "Système stellaire", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "ענק אדום", english: "Red giant", german: "Roter Riese", italian: "Gigante rosso", spanish: "Gigante rojo", french: "Géante rouge", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "ננס לבן", english: "White dwarf", german: "Weißer Zwerg", italian: "Nana bianca", spanish: "Enana blanca", french: "Naine blanche", courseNameEnglish: "Stars", courseOrder: 88 },
+{ hebrew: "פולסר", english: "Pulsar", german: "Pulsar", italian: "Pulsar", spanish: "Púlsar", french: "Pulsar", courseNameEnglish: "Stars", courseOrder: 88 },
+
+// Theatre - 89
+{ hebrew: "שחקן", english: "Actor", german: "Schauspieler", italian: "Attore", spanish: "Actor", french: "Acteur", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "שחקנית", english: "Actress", german: "Schauspielerin", italian: "Attrice", spanish: "Actriz", french: "Actrice", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "במאי", english: "Director", german: "Regisseur", italian: "Regista", spanish: "Director", french: "Réalisateur", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "תסריט", english: "Script", german: "Drehbuch", italian: "Copione", spanish: "Guion", french: "Scénario", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "קומדיה", english: "Comedy", german: "Komödie", italian: "Commedia", spanish: "Comedia", french: "Comédie", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "טרגדיה", english: "Tragedy", german: "Tragödie", italian: "Tragedia", spanish: "Tragedia", french: "Tragédie", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "מחזמר", english: "Musical", german: "Musical", italian: "Musical", spanish: "Musical", french: "Comédie musicale", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "קהל", english: "Audience", german: "Publikum", italian: "Pubblico", spanish: "Audiencia", french: "Public", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "תאורה", english: "Lighting", german: "Beleuchtung", italian: "Illuminazione", spanish: "Iluminación", french: "Éclairage", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "מחזה", english: "Play", german: "Stück", italian: "Spettacolo", spanish: "Obra de teatro", french: "Pièce de théâtre", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "אביזרי במה", english: "Props", german: "Requisiten", italian: "Accessori di scena", spanish: "Atrezzo", french: "Accessoires de scène", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "כרטיס", english: "Ticket", german: "Ticket", italian: "Biglietto", spanish: "Entrada", french: "Billet", courseNameEnglish: "Theatre", courseOrder: 89 },
+{ hebrew: "חזרות", english: "Rehearsals", german: "Proben", italian: "Prove", spanish: "Ensayos", french: "Répétitions", courseNameEnglish: "Theatre", courseOrder: 89 },
+
+// Human Rights - 90
+{ hebrew: "חירות", english: "Freedom", german: "Freiheit", italian: "Libertà", spanish: "Libertad", french: "Liberté", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "שוויון", english: "Equality", german: "Gleichheit", italian: "Uguaglianza", spanish: "Igualdad", french: "Égalité", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "צדק", english: "Justice", german: "Gerechtigkeit", italian: "Giustizia", spanish: "Justicia", french: "Justice", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "זכות הצבעה", english: "Right to vote", german: "Wahlrecht", italian: "Diritto di voto", spanish: "Derecho al voto", french: "Droit de vote", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "חופש הביטוי", english: "Freedom of speech", german: "Meinungsfreiheit", italian: "Libertà di espressione", spanish: "Libertad de expresión", french: "Liberté d'expression", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "חופש הדת", english: "Freedom of religion", german: "Religionsfreiheit", italian: "Libertà di religione", spanish: "Libertad de religión", french: "Liberté de religion", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "זכויות נשים", english: "Women's rights", german: "Frauenrechte", italian: "Diritti delle donne", spanish: "Derechos de las mujeres", french: "Droits des femmes", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "זכויות להט״ב", english: "LGBTQ+ rights", german: "LGBTQ+ Rechte", italian: "Diritti LGBTQ+", spanish: "Derechos LGBTQ+", french: "Droits LGBTQ+", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "זכויות עובדים", english: "Workers' rights", german: "Arbeiterrechte", italian: "Diritti dei lavoratori", spanish: "Derechos de los trabajadores", french: "Droits des travailleurs", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "עונש מוות", english: "Death penalty", german: "Todesstrafe", italian: "Pena di morte", spanish: "Pena de muerte", french: "Peine de mort", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "אפליה", english: "Discrimination", german: "Diskriminierung", italian: "Discriminazione", spanish: "Discriminación", french: "Discrimination", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "מאבק חברתי", english: "Social struggle", german: "Sozialer Kampf", italian: "Lotta sociale", spanish: "Lucha social", french: "Lutte sociale", courseNameEnglish: "Human Rights", courseOrder: 90 },
+{ hebrew: "פלורליזם", english: "Pluralism", german: "Pluralismus", italian: "Pluralismo", spanish: "Pluralismo", french: "Pluralisme", courseNameEnglish: "Human Rights", courseOrder: 90 },
+  
+// Chemistry - 91
+{ hebrew: "יסוד", english: "Element", german: "Element", italian: "Elemento", spanish: "Elemento", french: "Élément", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "חמצן", english: "Oxygen", german: "Sauerstoff", italian: "Ossigeno", spanish: "Oxígeno", french: "Oxygène", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "מימן", english: "Hydrogen", german: "Wasserstoff", italian: "Idrogeno", spanish: "Hidrógeno", french: "Hydrogène", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "פחמן", english: "Carbon", german: "Kohlenstoff", italian: "Carbonio", spanish: "Carbono", french: "Carbone", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "חנקן", english: "Nitrogen", german: "Stickstoff", italian: "Azoto", spanish: "Nitrógeno", french: "Azote", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "נתרן", english: "Sodium", german: "Natrium", italian: "Sodio", spanish: "Sodio", french: "Sodium", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "תרכובת", english: "Compound", german: "Verbindung", italian: "Composto", spanish: "Compuesto", french: "Composé", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "חומצה", english: "Acid", german: "Säure", italian: "Acido", spanish: "Ácido", french: "Acide", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "תמיסה", english: "Solution", german: "Lösung", italian: "Soluzione", spanish: "Solución", french: "Solution", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "תגובה כימית", english: "Chemical reaction", german: "Chemische Reaktion", italian: "Reazione chimica", spanish: "Reacción química", french: "Réaction chimique", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "חומר מזרז", english: "Catalyst", german: "Katalysator", italian: "Catalizzatore", spanish: "Catalizador", french: "Catalyseur", courseNameEnglish: "Chemistry", courseOrder: 91 },
+{ hebrew: "כימיקל", english: "Chemical", german: "Chemikalie", italian: "Chimico", spanish: "Químico", french: "Produit chimique", courseNameEnglish: "Chemistry", courseOrder: 91 },
+
+// Artificial Intelligence - 92
+{ hebrew: "רשת נוירונים", english: "Neural Network", german: "Neuronales Netzwerk", italian: "Rete Neurale", spanish: "Red Neuronal", french: "Réseau Neuronal", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "למידה עמוקה", english: "Deep Learning", german: "Tiefes Lernen", italian: "Apprendimento Profondo", spanish: "Aprendizaje Profundo", french: "Apprentissage Profond", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "אלגוריתם", english: "Algorithm", german: "Algorithmus", italian: "Algoritmo", spanish: "Algoritmo", french: "Algorithme", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "עיבוד תמונה", english: "Image Processing", german: "Bildverarbeitung", italian: "Elaborazione Immagini", spanish: "Procesamiento de Imágenes", french: "Traitement d'Image", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "מידול נתונים", english: "Data Modeling", german: "Datenmodellierung", italian: "Modellazione dei Dati", spanish: "Modelado de Datos", french: "Modélisation des Données", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "זיהוי דיבור", english: "Speech Recognition", german: "Spracherkennung", italian: "Riconoscimento Vocale", spanish: "Reconocimiento de Voz", french: "Reconnaissance Vocale", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "ביג דאטה", english: "Big Data", german: "Große Daten", italian: "Grandi Dati", spanish: "Grandes Datos", french: "Données Massives", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "לומדה", english: "AI Training", german: "KI-Training", italian: "Addestramento AI", spanish: "Entrenamiento de IA", french: "Formation IA", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "מנוע חיפוש", english: "Search Engine", german: "Suchmaschine", italian: "Motore di Ricerca", spanish: "Motor de Búsqueda", french: "Moteur de Recherche", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "רובוטיקה", english: "Robotics", german: "Robotik", italian: "Robotica", spanish: "Robótica", french: "Robotique", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "זיהוי פנים", english: "Facial Recognition", german: "Gesichtserkennung", italian: "Riconoscimento Facciale", spanish: "Reconocimiento Facial", french: "Reconnaissance Faciale", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "בוטים", english: "Bots", german: "Bots", italian: "Bot", spanish: "Bots", french: "Bots", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "תוכנה חכמה", english: "Smart Software", german: "Intelligente Software", italian: "Software Intelligente", spanish: "Software Inteligente", french: "Logiciel Intelligent", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+{ hebrew: "זיהוי טקסט", english: "Text Recognition", german: "Texterkennung", italian: "Riconoscimento Testo", spanish: "Reconocimiento de Texto", french: "Reconnaissance de Texte", courseNameEnglish: "Artificial Intelligence", courseOrder: 92 },
+
+// Intermediate Holidays - 93
+{ hebrew: "יום נישואין", english: "Anniversary", german: "Jahrestag", italian: "Anniversario", spanish: "Aniversario", french: "Anniversaire de mariage", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "חופשה", english: "Vacation", german: "Urlaub", italian: "Vacanza", spanish: "Vacaciones", french: "Vacances", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "יום האם", english: "Mother's Day", german: "Muttertag", italian: "Festa della mamma", spanish: "Día de la madre", french: "Fête des mères", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "יום האב", english: "Father's Day", german: "Vatertag", italian: "Festa del papà", spanish: "Día del padre", french: "Fête des pères", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "ליל כל הקדושים", english: "Halloween", german: "Halloween", italian: "Halloween", spanish: "Halloween", french: "Halloween", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "אחד במאי", english: "May Day", german: "Erster Mai", italian: "Primo maggio", spanish: "Primero de mayo", french: "Premier mai", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "חג ההודיה", english: "Thanksgiving", german: "Erntedankfest", italian: "Giorno del Ringraziamento", spanish: "Día de Acción de Gracias", french: "Action de grâce", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "חג האורות", english: "Festival of Lights", german: "Lichterfest", italian: "Festa delle luci", spanish: "Festival de las luces", french: "Fête des lumières", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "יום האהבה", english: "Valentine’s Day", german: "Valentinstag", italian: "San Valentino", spanish: "Día de San Valentín", french: "Saint-Valentin", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "קרנבל", english: "Carnival", german: "Karneval", italian: "Carnevale", spanish: "Carnaval", french: "Carnaval", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "חג הפועלים", english: "Labor Day", german: "Tag der Arbeit", italian: "Festa dei lavoratori", spanish: "Día del Trabajador", french: "Fête du travail", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+{ hebrew: "חג אביב", english: "Spring Festival", german: "Frühlingsfest", italian: "Festa di primavera", spanish: "Festival de primavera", french: "Festival du printemps", courseNameEnglish: "Intermediate Holidays", courseOrder: 93 },
+
+// Numbers by Hundreds - 94
+{ hebrew: "מאה", english: "One hundred", german: "Einhundert", italian: "Cento", spanish: "Cien", french: "Cent", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "מאתיים", english: "Two hundred", german: "Zweihundert", italian: "Duecento", spanish: "Doscientos", french: "Deux cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "שלוש מאות", english: "Three hundred", german: "Dreihundert", italian: "Trecento", spanish: "Trescientos", french: "Trois cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "ארבע מאות", english: "Four hundred", german: "Vierhundert", italian: "Quattrocento", spanish: "Cuatrocientos", french: "Quatre cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "חמש מאות", english: "Five hundred", german: "Fünfhundert", italian: "Cinquecento", spanish: "Quinientos", french: "Cinq cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "שש מאות", english: "Six hundred", german: "Sechshundert", italian: "Seicento", spanish: "Seiscientos", french: "Six cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "שבע מאות", english: "Seven hundred", german: "Siebenhundert", italian: "Settecento", spanish: "Setecientos", french: "Sept cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "שמונה מאות", english: "Eight hundred", german: "Achthundert", italian: "Ottocento", spanish: "Ochocientos", french: "Huit cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "תשע מאות", english: "Nine hundred", german: "Neunhundert", italian: "Novecento", spanish: "Novecientos", french: "Neuf cents", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "אלף ואחד", english: "One thousand and one", german: "Tausendeins", italian: "Milleuno", spanish: "Mil uno", french: "Mille un", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "אלף מאה", english: "One thousand one hundred", german: "Eintausendeinhundert", italian: "Millecento", spanish: "Mil cien", french: "Mille cent", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+{ hebrew: "אלף מאה ואחד", english: "One thousand one hundred and one", german: "Eintausendeinhunderteins", italian: "Millecentouno", spanish: "Mil ciento uno", french: "Mille cent un", courseNameEnglish: "Numbers by Hundreds", courseOrder: 94 },
+
+// Numbers by Thousands - 95
+{ hebrew: "אלף", english: "One thousand", german: "Eintausend", italian: "Mille", spanish: "Mil", french: "Mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "אלפיים", english: "Two thousand", german: "Zweitausend", italian: "Duemila", spanish: "Dos mil", french: "Deux mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "שלושת אלפים", english: "Three thousand", german: "Dreitausend", italian: "Tremila", spanish: "Tres mil", french: "Trois mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "ארבעת אלפים", english: "Four thousand", german: "Viertausend", italian: "Quattromila", spanish: "Cuatro mil", french: "Quatre mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "חמשת אלפים", english: "Five thousand", german: "Fünftausend", italian: "Cinquemila", spanish: "Cinco mil", french: "Cinq mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "ששת אלפים", english: "Six thousand", german: "Sechstausend", italian: "Seimila", spanish: "Seis mil", french: "Six mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "שבעת אלפים", english: "Seven thousand", german: "Siebentausend", italian: "Settemila", spanish: "Siete mil", french: "Sept mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "שמונת אלפים", english: "Eight thousand", german: "Achttausend", italian: "Ottomila", spanish: "Ocho mil", french: "Huit mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "תשעת אלפים", english: "Nine thousand", german: "Neuntausend", italian: "Novemila", spanish: "Nueve mil", french: "Neuf mille", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "אלף מאה", english: "One thousand one hundred", german: "Eintausendeinhundert", italian: "Millecento", spanish: "Mil cien", french: "Mille cent", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "אלף ואחד", english: "One thousand and one", german: "Tausendeins", italian: "Milleuno", spanish: "Mil uno", french: "Mille un", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+{ hebrew: "אלף מאה ואחד", english: "One thousand one hundred and one", german: "Eintausendeinhunderteins", italian: "Millecentouno", spanish: "Mil ciento uno", french: "Mille cent un", courseNameEnglish: "Numbers by Thousands", courseOrder: 95 },
+
+// Mathematical Topics - 96
+{ hebrew: "מספרים", english: "Numbers", german: "Zahlen", italian: "Numeri", spanish: "Números", french: "Nombres", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "חיבור", english: "Addition", german: "Addition", italian: "Addizione", spanish: "Adición", french: "Addition", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "חיסור", english: "Subtraction", german: "Subtraktion", italian: "Sottrazione", spanish: "Sustracción", french: "Soustraction", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "כפל", english: "Multiplication", german: "Multiplikation", italian: "Moltiplicazione", spanish: "Multiplicación", french: "Multiplication", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "חילוק", english: "Division", german: "Division", italian: "Divisione", spanish: "División", french: "Division", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "שברים", english: "Fractions", german: "Brüche", italian: "Frazioni", spanish: "Fracciones", french: "Fractions", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "אחוזים", english: "Percentages", german: "Prozentsätze", italian: "Percentuali", spanish: "Porcentajes", french: "Pourcentages", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "שברים עשרוניים", english: "Decimals", german: "Dezimalzahlen", italian: "Decimali", spanish: "Decimales", french: "Décimales", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "משוואה", english: "Equation", german: "Gleichung", italian: "Equazione", spanish: "Ecuación", french: "Équation", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "משתנה", english: "Variable", german: "Variable", italian: "Variabile", spanish: "Variable", french: "Variable", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "נגזרת", english: "Derivative", german: "Ableitung", italian: "Derivata", spanish: "Derivada", french: "Dérivée", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "אינטגרל", english: "Integral", german: "Integral", italian: "Integrale", spanish: "Integral", french: "Intégrale", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "וקטור", english: "Vector", german: "Vektor", italian: "Vettore", spanish: "Vector", french: "Vecteur", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "מטריצה", english: "Matrix", german: "Matrix", italian: "Matrice", spanish: "Matriz", french: "Matrice", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "טריגונומטריה", english: "Trigonometry", german: "Trigonometrie", italian: "Trigonometria", spanish: "Trigonometría", french: "Trigonométrie", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "פונקציה", english: "Function", german: "Funktion", italian: "Funzione", spanish: "Función", french: "Fonction", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "לוגריתם", english: "Logarithm", german: "Logarithmus", italian: "Logaritmo", spanish: "Logaritmo", french: "Logarithme", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "סדרה חשבונית", english: "Arithmetic sequence", german: "Arithmetische Folge", italian: "Sequenza aritmetica", spanish: "Sucesión aritmética", french: "Suite arithmétique", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "שטח", english: "Area", german: "Fläche", italian: "Area", spanish: "Área", french: "Aire", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "היקף", english: "Perimeter", german: "Umfang", italian: "Perimetro", spanish: "Perímetro", french: "Périmètre", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "נפח", english: "Volume", german: "Volumen", italian: "Volume", spanish: "Volumen", french: "Volume", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "סטטיסטיקה", english: "Statistics", german: "Statistik", italian: "Statistica", spanish: "Estadística", french: "Statistiques", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "הסתברות", english: "Probability", german: "Wahrscheinlichkeit", italian: "Probabilità", spanish: "Probabilidad", french: "Probabilité", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "מצולע", english: "Polygon", german: "Polygon", italian: "Poligono", spanish: "Polígono", french: "Polygone", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+{ hebrew: "אלגברה", english: "Algebra", german: "Algebra", italian: "Algebra", spanish: "Álgebra", french: "Algèbre", courseNameEnglish: "Mathematical Topics", courseOrder: 96 },
+
+// Intermediate Higher Education - 97
+{ hebrew: "לימודים אקדמיים", english: "Academic studies", german: "Akademische Studien", italian: "Studi accademici", spanish: "Estudios académicos", french: "Études académiques", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "שנה אקדמית", english: "Academic year", german: "Akademisches Jahr", italian: "Anno accademico", spanish: "Año académico", french: "Année académique", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "קורסים", english: "Courses", german: "Kurse", italian: "Corsi", spanish: "Cursos", french: "Cours", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "מבחן כניסה", english: "Entrance exam", german: "Aufnahmeprüfung", italian: "Esame d’ingresso", spanish: "Examen de ingreso", french: "Examen d’entrée", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "קרדיט אקדמי", english: "Academic credit", german: "Akademischer Kredit", italian: "Credito accademico", spanish: "Crédito académico", french: "Crédit académique", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "חילופי סטודנטים", english: "Student exchange", german: "Studentenaustausch", italian: "Scambio studentesco", spanish: "Intercambio estudiantil", french: "Échange étudiant", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "סטאז'", english: "Internship", german: "Praktikum", italian: "Tirocinio", spanish: "Pasantía", french: "Stage", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "שכר לימוד", english: "Tuition fee", german: "Studiengebühr", italian: "Tasse universitarie", spanish: "Matrícula", french: "Frais de scolarité", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "מבחן גמר", english: "Final exam", german: "Abschlussprüfung", italian: "Esame finale", spanish: "Examen final", french: "Examen final", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "פרויקט גמר", english: "Final project", german: "Abschlussprojekt", italian: "Progetto finale", spanish: "Proyecto final", french: "Projet final", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "מאמר מדעי", english: "Scientific paper", german: "Wissenschaftlicher Artikel", italian: "Articolo scientifico", spanish: "Artículo científico", french: "Article scientifique", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "חומר עזר", english: "Reference material", german: "Referenzmaterial", italian: "Materiale di riferimento", spanish: "Material de referencia", french: "Matériel de référence", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+{ hebrew: "משוב על קורסים", english: "Course feedback", german: "Kursfeedback", italian: "Feedback sul corso", spanish: "Comentarios del curso", french: "Retour sur le cours", courseNameEnglish: "Intermediate Higher Education", courseOrder: 97 },
+
+// Biology - 98
+{ hebrew: "תא", english: "Cell", german: "Zelle", italian: "Cellula", spanish: "Célula", french: "Cellule", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "כרומוזום", english: "Chromosome", german: "Chromosom", italian: "Cromosoma", spanish: "Cromosoma", french: "Chromosome", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "חלבון", english: "Protein", german: "Protein", italian: "Proteina", spanish: "Proteína", french: "Protéine", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "אנזים", english: "Enzyme", german: "Enzym", italian: "Enzima", spanish: "Enzima", french: "Enzyme", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "מוטציה", english: "Mutation", german: "Mutation", italian: "Mutazione", spanish: "Mutación", french: "Mutation", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "חילוף חומרים", english: "Metabolic Process", german: "Stoffwechselprozess", italian: "Processo Metabolico", spanish: "Proceso Metabólico", french: "Processus Métabolique", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "מערכת עצבים", english: "Nervous System", german: "Nervensystem", italian: "Sistema Nervoso", spanish: "Sistema Nervioso", french: "Système Nerveux", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "מערכת חיסון", english: "Immune System", german: "Immunsystem", italian: "Sistema Immunitario", spanish: "Sistema Inmunológico", french: "Système Immunitaire", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "מערכת עיכול", english: "Digestive System", german: "Verdauungssystem", italian: "Sistema Digerente", spanish: "Sistema Digestivo", french: "Système Digestif", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "פוטוסינתזה", english: "Photosynthesis", german: "Photosynthese", italian: "Fotosintesi", spanish: "Fotosíntesis", french: "Photosynthèse", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "וירוס", english: "Virus", german: "Virus", italian: "Virus", spanish: "Virus", french: "Virus", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "בקטריה", english: "Bacteria", german: "Bakterien", italian: "Batteri", spanish: "Bacterias", french: "Bactéries", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "אורגניזם", english: "Organism", german: "Organismus", italian: "Organismo", spanish: "Organismo", french: "Organisme", courseNameEnglish: "Biology", courseOrder: 98 },
+{ hebrew: "אבולוציה", english: "Evolution", german: "Evolution", italian: "Evoluzione", spanish: "Evolución", french: "Évolution", courseNameEnglish: "Biology", courseOrder: 98 },
+
+// Intermediate Work - 99
+{ hebrew: "עבודה משרדית", english: "Office work", german: "Büroarbeit", italian: "Lavoro d'ufficio", spanish: "Trabajo de oficina", french: "Travail de bureau", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "משרה מלאה", english: "Full-time job", german: "Vollzeitstelle", italian: "Lavoro a tempo pieno", spanish: "Trabajo a tiempo completo", french: "Emploi à plein temps", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "משרה חלקית", english: "Part-time job", german: "Teilzeitstelle", italian: "Lavoro part-time", spanish: "Trabajo a tiempo parcial", french: "Emploi à temps partiel", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "קורות חיים", english: "Resume", german: "Lebenslauf", italian: "Curriculum vitae", spanish: "Currículum", french: "CV", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "ראיון עבודה", english: "Job interview", german: "Vorstellungsgespräch", italian: "Colloquio di lavoro", spanish: "Entrevista de trabajo", french: "Entretien d'embauche", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "צוות", english: "Team", german: "Team", italian: "Squadra", spanish: "Equipo", french: "Équipe", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "תוספת שכר", english: "Pay raise", german: "Gehaltserhöhung", italian: "Aumento di stipendio", spanish: "Aumento de sueldo", french: "Augmentation de salaire", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "הכשרה", english: "Training", german: "Schulung", italian: "Formazione", spanish: "Capacitación", french: "Formation", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "כישורים", english: "Skills", german: "Fähigkeiten", italian: "Competenze", spanish: "Habilidades", french: "Compétences", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "קידום", english: "Promotion", german: "Beförderung", italian: "Promozione", spanish: "Ascenso", french: "Promotion", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "הנהלה", english: "Management", german: "Verwaltung", italian: "Gestione", spanish: "Administración", french: "Gestion", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+{ hebrew: "משמרת", english: "Shift", german: "Schicht", italian: "Turno", spanish: "Turno", french: "Équipe", courseNameEnglish: "Intermediate Work", courseOrder: 99 },
+
+// Advanced Emotions - 100
+{ hebrew: "תקווה", english: "Hope", german: "Hoffnung", italian: "Speranza", spanish: "Esperanza", french: "Espoir", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "גאווה", english: "Pride", german: "Stolz", italian: "Orgoglio", spanish: "Orgullo", french: "Fierté", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "בושה", english: "Shame", german: "Scham", italian: "Vergogna", spanish: "Vergüenza", french: "Honte", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "חרטה", english: "Regret", german: "Reue", italian: "Rimpianto", spanish: "Arrepentimiento", french: "Regret", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "התפעלות", english: "Awe", german: "Ehrfurcht", italian: "Stupore", spanish: "Asombro", french: "Admiration", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "אכזבה", english: "Disappointment", german: "Enttäuschung", italian: "Delusione", spanish: "Decepción", french: "Déception", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "צער", english: "Grief", german: "Trauer", italian: "Cordoglio", spanish: "Duelo", french: "Chagrin", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "ייאוש", english: "Despair", german: "Verzweiflung", italian: "Disperazione", spanish: "Desesperación", french: "Désespoir", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "אדישות", english: "Indifference", german: "Gleichgültigkeit", italian: "Indifferenza", spanish: "Indiferencia", french: "Indifférence", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "סיפוק", english: "Satisfaction", german: "Zufriedenheit", italian: "Soddisfazione", spanish: "Satisfacción", french: "Satisfaction", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "חמלה", english: "Compassion", german: "Mitgefühl", italian: "Compassione", spanish: "Compasión", french: "Compassion", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "קנאה", english: "Jealousy", german: "Eifersucht", italian: "Gelosia", spanish: "Celos", french: "Jalousie", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "התלהבות", english: "Enthusiasm", german: "Begeisterung", italian: "Entusiasmo", spanish: "Entusiasmo", french: "Enthousiasme", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "חרדה", english: "Anxiety", german: "Angst", italian: "Ansia", spanish: "Ansiedad", french: "Anxiété", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "בדידות", english: "Loneliness", german: "Einsamkeit", italian: "Solitudine", spanish: "Soledad", french: "Solitude", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "אימה", english: "Terror", german: "Terror", italian: "Terrore", spanish: "Terror", french: "Terreur", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "ציפייה", english: "Anticipation", german: "Erwartung", italian: "Aspettativa", spanish: "Expectativa", french: "Anticipation", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+{ hebrew: "אומץ", english: "Courage", german: "Mut", italian: "Coraggio", spanish: "Valentía", french: "Courage", courseNameEnglish: "Advanced Emotions", courseOrder: 100 },
+
+// Digital Marketing - 101
+{ hebrew: "קידום אתרים", english: "SEO", german: "SEO", italian: "SEO", spanish: "SEO", french: "SEO", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+{ hebrew: "תוכן ממומן", english: "Sponsored content", german: "Gesponserter Inhalt", italian: "Contenuto sponsorizzato", spanish: "Contenido patrocinado", french: "Contenu sponsorisé", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+{ hebrew: "רשתות חברתיות", english: "Social media", german: "Soziale Medien", italian: "Social media", spanish: "Redes sociales", french: "Médias sociaux", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+{ hebrew: "קידום ממומן", english: "Paid promotion", german: "Bezahlte Werbung", italian: "Promozione a pagamento", spanish: "Promoción pagada", french: "Promotion payante", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+{ hebrew: "מיתוג אישי", english: "Personal branding", german: "Persönliches Branding", italian: "Branding personale", spanish: "Marca personal", french: "Image de marque personnelle", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+{ hebrew: "קידום בפייסבוק", english: "Facebook marketing", german: "Facebook-Marketing", italian: "Marketing su Facebook", spanish: "Marketing en Facebook", french: "Marketing sur Facebook", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+{ hebrew: "קידום ביוטיוב", english: "YouTube marketing", german: "YouTube-Marketing", italian: "Marketing su YouTube", spanish: "Marketing en YouTube", french: "Marketing sur YouTube", courseNameEnglish: "Digital Marketing", courseOrder: 101 },
+
+// Intermediate Countries - 102
+{ hebrew: "מקסיקו", english: "Mexico", german: "Mexiko", italian: "Messico", spanish: "México", french: "Mexique", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "ארגנטינה", english: "Argentina", german: "Argentinien", italian: "Argentina", spanish: "Argentina", french: "Argentine", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "דרום אפריקה", english: "South Africa", german: "Südafrika", italian: "Sudafrica", spanish: "Sudáfrica", french: "Afrique du Sud", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "פורטוגל", english: "Portugal", german: "Portugal", italian: "Portogallo", spanish: "Portugal", french: "Portugal", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "טורקיה", english: "Turkey", german: "Türkei", italian: "Turchia", spanish: "Turquía", french: "Turquie", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "יוון", english: "Greece", german: "Griechenland", italian: "Grecia", spanish: "Grecia", french: "Grèce", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "פולין", english: "Poland", german: "Polen", italian: "Polonia", spanish: "Polonia", french: "Pologne", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "שוודיה", english: "Sweden", german: "Schweden", italian: "Svezia", spanish: "Suecia", french: "Suède", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "הולנד", english: "Netherlands", german: "Niederlande", italian: "Paesi Bassi", spanish: "Países Bajos", french: "Pays-Bas", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "בלגיה", english: "Belgium", german: "Belgien", italian: "Belgio", spanish: "Bélgica", french: "Belgique", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "דרום קוריאה", english: "South Korea", german: "Südkorea", italian: "Corea del Sud", spanish: "Corea del Sur", french: "Corée du Sud", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "נורווגיה", english: "Norway", german: "Norwegen", italian: "Norvegia", spanish: "Noruega", french: "Norvège", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "אוקראינה", english: "Ukraine", german: "Ukraine", italian: "Ucraina", spanish: "Ucrania", french: "Ukraine", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "ניו זילנד", english: "New Zealand", german: "Neuseeland", italian: "Nuova Zelanda", spanish: "Nueva Zelanda", french: "Nouvelle-Zélande", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },
+{ hebrew: "צ'כיה", english: "Czech Republic", german: "Tschechien", italian: "Repubblica Ceca", spanish: "República Checa", french: "République tchèque", courseNameEnglish: "Intermediate Countries", courseOrder: 102 },  
+
+// Graphic Design - 103
+{ hebrew: "לוגו", english: "Logo", german: "Logo", italian: "Logo", spanish: "Logo", french: "Logo", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "צבעים", english: "Colors", german: "Farben", italian: "Colori", spanish: "Colores", french: "Couleurs", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "גופן", english: "Font", german: "Schriftart", italian: "Carattere tipografico", spanish: "Fuente", french: "Police d'écriture", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "פריסה", english: "Layout", german: "Layout", italian: "Layout", spanish: "Diseño", french: "Mise en page", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "איור", english: "Illustration", german: "Illustration", italian: "Illustrazione", spanish: "Ilustración", french: "Illustration", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "צורה", english: "Shape", german: "Form", italian: "Forma", spanish: "Forma", french: "Forme", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "צל", english: "Shadow", german: "Schatten", italian: "Ombra", spanish: "Sombra", french: "Ombre", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "רקע", english: "Background", german: "Hintergrund", italian: "Sfondo", spanish: "Fondo", french: "Arrière-plan", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "שקיפות", english: "Transparency", german: "Transparenz", italian: "Trasparenza", spanish: "Transparencia", french: "Transparence", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "תבנית", english: "Template", german: "Vorlage", italian: "Modello", spanish: "Plantilla", french: "Modèle", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "פיקסל", english: "Pixel", german: "Pixel", italian: "Pixel", spanish: "Píxel", french: "Pixel", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "פילטר", english: "Filter", german: "Filter", italian: "Filtro", spanish: "Filtro", french: "Filtre", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "חיתוך", english: "Cropping", german: "Zuschneiden", italian: "Ritaglio", spanish: "Recorte", french: "Recadrage", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "אייקון", english: "Icon", german: "Symbol", italian: "Icona", spanish: "Ícono", french: "Icône", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "רזולוציה", english: "Resolution", german: "Auflösung", italian: "Risoluzione", spanish: "Resolución", french: "Résolution", courseNameEnglish: "Graphic Design", courseOrder: 103 },
+{ hebrew: "פרסום", english: "Advertising", german: "Werbung", italian: "Pubblicità", spanish: "Publicidad", french: "Publicité", courseNameEnglish: "Digital Marketing", courseOrder: 103 },
+{ hebrew: "מודעה", english: "Ad", german: "Anzeige", italian: "Annuncio", spanish: "Anuncio", french: "Annonce", courseNameEnglish: "Digital Marketing", courseOrder: 103 },
+{ hebrew: "אתר", english: "Website", german: "Webseite", italian: "Sito web", spanish: "Sitio web", french: "Site web", courseNameEnglish: "Digital Marketing", courseOrder: 103 },
+{ hebrew: "קישור", english: "Link", german: "Link", italian: "Link", spanish: "Enlace", french: "Lien", courseNameEnglish: "Digital Marketing", courseOrder: 103 },
+{ hebrew: "חיפוש", english: "Search", german: "Suche", italian: "Ricerca", spanish: "Búsqueda", french: "Recherche", courseNameEnglish: "Digital Marketing", courseOrder: 103 },
+
+// Classical Music - 104
+{ hebrew: "מוזיקה קלאסית", english: "Classical music", german: "Klassische Musik", italian: "Musica classica", spanish: "Música clásica", french: "Musique classique", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "מלחין", english: "Composer", german: "Komponist", italian: "Compositore", spanish: "Compositor", french: "Compositeur", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "יצירה", english: "Composition", german: "Komposition", italian: "Composizione", spanish: "Composición", french: "Composition", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "תזמורת", english: "Orchestra", german: "Orchester", italian: "Orchestra", spanish: "Orquesta", french: "Orchestre", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "מנצח", english: "Conductor", german: "Dirigent", italian: "Direttore d'orchestra", spanish: "Director de orquesta", french: "Chef d'orchestre", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "סימפוניה", english: "Symphony", german: "Symphonie", italian: "Sinfonia", spanish: "Sinfonía", french: "Symphonie", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "מקהלה", english: "Choir", german: "Chor", italian: "Coro", spanish: "Coro", french: "Chœur", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "פילהרמונית", english: "Philharmonic", german: "Philharmonie", italian: "Filarmonica", spanish: "Filarmónica", french: "Philharmonique", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "הרמוניה", english: "Harmony", german: "Harmonie", italian: "Armonia", spanish: "Armonía", french: "Harmonie", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "מלודיה", english: "Melody", german: "Melodie", italian: "Melodia", spanish: "Melodía", french: "Mélodie", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "קצב", english: "Rhythm", german: "Rhythmus", italian: "Ritmo", spanish: "Ritmo", french: "Rythme", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "אופרה", english: "Opera", german: "Oper", italian: "Opera", spanish: "Ópera", french: "Opéra", courseNameEnglish: "Classical Music", courseOrder: 104 },
+{ hebrew: "בלט", english: "Ballet", german: "Ballett", italian: "Balletto", spanish: "Ballet", french: "Ballet", courseNameEnglish: "Classical Music", courseOrder: 104 },
+
+// Museums - 105
+{ hebrew: "מוזיאון", english: "Museum", german: "Museum", italian: "Museo", spanish: "Museo", french: "Musée", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "תערוכה", english: "Exhibition", german: "Ausstellung", italian: "Mostra", spanish: "Exposición", french: "Exposition", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "אמנות", english: "Art", german: "Kunst", italian: "Arte", spanish: "Arte", french: "Art", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "פסל", english: "Sculpture", german: "Skulptur", italian: "Scultura", spanish: "Escultura", french: "Sculpture", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "יצירת אמנות", english: "Artwork", german: "Kunstwerk", italian: "Opera d'arte", spanish: "Obra de arte", french: "Œuvre d'art", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "אוצֵר", english: "Curator", german: "Kurator", italian: "Curatore", spanish: "Curador", french: "Conservateur", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "ארכיאולוגיה", english: "Archaeology", german: "Archäologie", italian: "Archeologia", spanish: "Arqueología", french: "Archéologie", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "מוצג", english: "Exhibit", german: "Exponat", italian: "Esposizione", spanish: "Exhibición", french: "Exposition", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "מדריך שמע", english: "Audio guide", german: "Audioguide", italian: "Guida audio", spanish: "Audioguía", french: "Guide audio", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "שימור", english: "Preservation", german: "Erhaltung", italian: "Conservazione", spanish: "Preservación", french: "Préservation", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "שחזור", english: "Restoration", german: "Restauration", italian: "Restauro", spanish: "Restauración", french: "Restauration", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "תרבות", english: "Culture", german: "Kultur", italian: "Cultura", spanish: "Cultura", french: "Culture", courseNameEnglish: "Museums", courseOrder: 105 },
+{ hebrew: "מוזיאון מדע", english: "Science museum", german: "Wissenschaftsmuseum", italian: "Museo della scienza", spanish: "Museo de ciencias", french: "Musée des sciences", courseNameEnglish: "Museums", courseOrder: 105 },
+
+// Stock Market - 106
+{ hebrew: "מניה", english: "Stock", german: "Aktie", italian: "Azione", spanish: "Acción", french: "Action", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: 'אג״ח', english: "Bond", german: "Anleihe", italian: "Obbligazione", spanish: "Bono", french: "Obligation", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "סוחר מניות", english: "Stock Trader", german: "Aktienhändler", italian: "Trader azionario", spanish: "Operador bursátil", french: "Trader en bourse", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "קרן נאמנות", english: "Mutual Fund", german: "Investmentfonds", italian: "Fondo comune", spanish: "Fondo mutuo", french: "Fonds commun de placement", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "תעודת סל", english: "Exchange-Traded Fund", german: "Börsengehandelter Fonds", italian: "Fondo negoziato in borsa", spanish: "Fondo cotizado", french: "Fonds négocié en bourse", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "מדד", english: "Index", german: "Index", italian: "Indice", spanish: "Índice", french: "Indice", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "ניירות ערך", english: "Securities", german: "Wertpapiere", italian: "Titoli", spanish: "Valores", french: "Valeurs mobilières", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "נזילות", english: "Liquidity", german: "Liquidität", italian: "Liquidità", spanish: "Liquidez", french: "Liquidité", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "הון עצמי", english: "Equity", german: "Eigenkapital", italian: "Capitale proprio", spanish: "Capital propio", french: "Capitaux propres", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "תשואה", english: "Return", german: "Rendite", italian: "Rendimento", spanish: "Rendimiento", french: "Rendement", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "דיבידנד", english: "Dividend", german: "Dividende", italian: "Dividendo", spanish: "Dividendo", french: "Dividende", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "תנודתיות", english: "Volatility", german: "Volatilität", italian: "Volatilità", spanish: "Volatilidad", french: "Volatilité", courseNameEnglish: "Stock Market", courseOrder: 106 },
+{ hebrew: "שווי שוק", english: "Market Cap", german: "Marktkapitalisierung", italian: "Capitalizzazione di mercato", spanish: "Capitalización de mercado", french: "Capitalisation boursière", courseNameEnglish: "Stock Market", courseOrder: 106 },
+
+// Cooking - 107
+{ hebrew: "מתכון", english: "Recipe", german: "Rezept", italian: "Ricetta", spanish: "Receta", french: "Recette", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "מצרכים", english: "Ingredients", german: "Zutaten", italian: "Ingredienti", spanish: "Ingredientes", french: "Ingrédients", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "תנור", english: "Oven", german: "Ofen", italian: "Forno", spanish: "Horno", french: "Four", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "כיריים", english: "Stove", german: "Herd", italian: "Fornelli", spanish: "Estufa", french: "Cuisinière", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "מטרפה", english: "Whisk", german: "Schneebesen", italian: "Frusta", spanish: "Batidor", french: "Fouet", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "טיגון", english: "Frying", german: "Braten", italian: "Frittura", spanish: "Freír", french: "Friture", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "רתיחה", english: "Boiling", german: "Kochen", italian: "Bollitura", spanish: "Hervir", french: "Ébullition", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "אידוי", english: "Steaming", german: "Dämpfen", italian: "Cottura a vapore", spanish: "Cocción al vapor", french: "Cuisson à la vapeur", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "קילוף", english: "Peeling", german: "Schälen", italian: "Sbucciare", spanish: "Pelar", french: "Éplucher", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "קיצוץ", english: "Chopping", german: "Hacken", italian: "Tritare", spanish: "Picar", french: "Hacher", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "הקצפה", english: "Whipping", german: "Schlagen", italian: "Montare", spanish: "Batir", french: "Fouetter", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "תיבול", english: "Seasoning", german: "Würzen", italian: "Condimento", spanish: "Sazonar", french: "Assaisonnement", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "רוטב", english: "Sauce", german: "Soße", italian: "Salsa", spanish: "Salsa", french: "Sauce", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "מתוק", english: "Sweet", german: "Süß", italian: "Dolce", spanish: "Dulce", french: "Sucré", courseNameEnglish: "Cooking", courseOrder: 107 },
+{ hebrew: "מלוח", english: "Salty", german: "Salzig", italian: "Salato", spanish: "Salado", french: "Salé", courseNameEnglish: "Cooking", courseOrder: 107 },
+
+// Robots - 108
+{ hebrew: "רובוט", english: "Robot", german: "Roboter", italian: "Robot", spanish: "Robot", french: "Robot", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "אוטומציה", english: "Automation", german: "Automatisierung", italian: "Automazione", spanish: "Automatización", french: "Automatisation", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "חיישן", english: "Sensor", german: "Sensor", italian: "Sensore", spanish: "Sensor", french: "Capteur", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "מנוע", english: "Motor", german: "Motor", italian: "Motore", spanish: "Motor", french: "Moteur", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "חומרה", english: "Hardware", german: "Hardware", italian: "Hardware", spanish: "Hardware", french: "Matériel", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "ראייה ממוחשבת", english: "Computer vision", german: "Computer Vision", italian: "Visione artificiale", spanish: "Visión por computadora", french: "Vision par ordinateur", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "מערכת בקרה", english: "Control system", german: "Steuerungssystem", italian: "Sistema di controllo", spanish: "Sistema de control", french: "Système de contrôle", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "רובוט תעשייתי", english: "Industrial robot", german: "Industrieroboter", italian: "Robot industriale", spanish: "Robot industrial", french: "Robot industriel", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "בינה רובוטית", english: "Cognitive robotics", german: "Kognitive Robotik", italian: "Robotica cognitiva", spanish: "Robótica cognitiva", french: "Robotique cognitive", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "אינטגרציה", english: "Integration", german: "Integration", italian: "Integrazione", spanish: "Integración", french: "Intégration", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "אינטראקציה אנושית", english: "Human-robot interaction", german: "Mensch-Roboter-Interaktion", italian: "Interazione uomo-robot", spanish: "Interacción humano-robot", french: "Interaction homme-robot", courseNameEnglish: "Robots", courseOrder: 108 },
+{ hebrew: "מנוע חיפוש רובוטי", english: "Search engine bot", german: "Suchmaschinenbot", italian: "Bot dei motori di ricerca", spanish: "Bot de motor de búsqueda", french: "Bot de moteur de recherche", courseNameEnglish: "Robots", courseOrder: 108 },
+
+// Services - 109
+{ hebrew: "שירות", english: "Service", german: "Dienstleistung", italian: "Servizio", spanish: "Servicio", french: "Service", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "תחבורה ציבורית", english: "Public transportation", german: "Öffentlicher Verkehr", italian: "Trasporto pubblico", spanish: "Transporte público", french: "Transport public", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "שליחויות", english: "Delivery", german: "Lieferung", italian: "Consegna", spanish: "Entrega", french: "Livraison", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "תיקונים", english: "Repairs", german: "Reparaturen", italian: "Riparazioni", spanish: "Reparaciones", french: "Réparations", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "שירותי בריאות", english: "Healthcare services", german: "Gesundheitsdienstleistungen", italian: "Servizi sanitari", spanish: "Servicios de salud", french: "Services de santé", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "ביטוח", english: "Insurance", german: "Versicherung", italian: "Assicurazione", spanish: "Seguro", french: "Assurance", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "בנקאות", english: "Banking", german: "Bankwesen", italian: "Servizi bancari", spanish: "Servicios bancarios", french: "Services bancaires", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "שירותי דואר", english: "Postal services", german: "Postdienste", italian: "Servizi postali", spanish: "Servicios postales", french: "Services postaux", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "מכבסה", english: "Laundry service", german: "Wäscheservice", italian: "Lavanderia", spanish: "Servicio de lavandería", french: "Service de blanchisserie", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "ניקיון", english: "Cleaning", german: "Reinigung", italian: "Pulizia", spanish: "Limpieza", french: "Nettoyage", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "אינסטלציה", english: "Plumbing", german: "Klempnerei", italian: "Idraulica", spanish: "Fontanería", french: "Plomberie", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "קוסמטיקה", english: "Cosmetic services", german: "Kosmetische Dienstleistungen", italian: "Servizi cosmetici", spanish: "Servicios cosméticos", french: "Services cosmétiques", courseNameEnglish: "Services", courseOrder: 109 },
+{ hebrew: "תיירות", english: "Tourism", german: "Tourismus", italian: "Turismo", spanish: "Turismo", french: "Tourisme", courseNameEnglish: "Services", courseOrder: 109 },
+
+// Christmas - 110
+{ hebrew: "חג המולד", english: "Christmas", german: "Weihnachten", italian: "Natale", spanish: "Navidad", french: "Noël", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "עץ חג המולד", english: "Christmas tree", german: "Weihnachtsbaum", italian: "Albero di Natale", spanish: "Árbol de Navidad", french: "Sapin de Noël", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "מתנות", english: "Presents", german: "Geschenke", italian: "Regali", spanish: "Regalos", french: "Cadeaux", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "קישוטים", english: "Decorations", german: "Dekorationen", italian: "Decorazioni", spanish: "Decoraciones", french: "Décorations", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "כדור שלג", english: "Snow globe", german: "Schneekugel", italian: "Palla di neve", spanish: "Bola de nieve", french: "Boule à neige", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "סנטה קלאוס", english: "Santa Claus", german: "Weihnachtsmann", italian: "Babbo Natale", spanish: "Papá Noel", french: "Père Noël", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "איילים", english: "Reindeer", german: "Rentiere", italian: "Renna", spanish: "Reno", french: "Renne", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "ארוחת חג", english: "Holiday feast", german: "Festmahl", italian: "Cenone", spanish: "Banquete festivo", french: "Festin de Noël", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "שולחן חג", english: "Holiday table", german: "Festtafel", italian: "Tavola festiva", spanish: "Mesa navideña", french: "Table de fête", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "חגיגת השנה החדשה", english: "New Year's Eve", german: "Silvester", italian: "Vigilia di Capodanno", spanish: "Nochevieja", french: "Réveillon du Nouvel An", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "אורח חג המולד", english: "Holiday guest", german: "Festtagsgast", italian: "Ospite festivo", spanish: "Invitado navideño", french: "Invité de Noël", courseNameEnglish: "Christmas", courseOrder: 110 },
+{ hebrew: "זיקוקים", english: "Fireworks", german: "Feuerwerk", italian: "Fuochi d'artificio", spanish: "Fuegos artificiales", french: "Feux d'artifice", courseNameEnglish: "Christmas", courseOrder: 110 },
+
+// Fruits - 111
+{ hebrew: "תפוח", english: "Apple", german: "Apfel", italian: "Mela", spanish: "Manzana", french: "Pomme", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "בננה", english: "Banana", german: "Banane", italian: "Banana", spanish: "Plátano", french: "Banane", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "תפוז", english: "Orange", german: "Orange", italian: "Arancia", spanish: "Naranja", french: "Orange", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "תות", english: "Strawberry", german: "Erdbeere", italian: "Fragola", spanish: "Fresa", french: "Fraise", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "ענבים", english: "Grapes", german: "Trauben", italian: "Uva", spanish: "Uvas", french: "Raisins", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "אבטיח", english: "Watermelon", german: "Wassermelone", italian: "Anguria", spanish: "Sandía", french: "Pastèque", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "שזיף", english: "Plum", german: "Pflaume", italian: "Prugna", spanish: "Ciruela", french: "Prune", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "מנגו", english: "Mango", german: "Mango", italian: "Mango", spanish: "Mango", french: "Mangue", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "פפאיה", english: "Papaya", german: "Papaya", italian: "Papaia", spanish: "Papaya", french: "Papaye", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "אננס", english: "Pineapple", german: "Ananas", italian: "Ananas", spanish: "Piña", french: "Ananas", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "קיווי", english: "Kiwi", german: "Kiwi", italian: "Kiwi", spanish: "Kiwi", french: "Kiwi", courseNameEnglish: "Fruits", courseOrder: 111 },
+{ hebrew: "אגס", english: "Pear", german: "Birne", italian: "Pera", spanish: "Pera", french: "Poire", courseNameEnglish: "Fruits", courseOrder: 111 },
+
+// Vegetables - 112
+{ hebrew: "שום", english: "Garlic", german: "Knoblauch", italian: "Aglio", spanish: "Ajo", french: "Ail", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "חסה", english: "Lettuce", german: "Salat", italian: "Lattuga", spanish: "Lechuga", french: "Laitue", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "ברוקולי", english: "Broccoli", german: "Brokkoli", italian: "Broccolo", spanish: "Brócoli", french: "Brocoli", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "קישוא", english: "Zucchini", german: "Zucchini", italian: "Zucchina", spanish: "Calabacín", french: "Courgette", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "גמבה", english: "Bell pepper", german: "Paprikaschote", italian: "Peperone dolce", spanish: "Pimiento morrón", french: "Poivron doux", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "כרובית", english: "Cauliflower", german: "Blumenkohl", italian: "Cavolfiore", spanish: "Coliflor", french: "Chou-fleur", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "פטריות", english: "Mushrooms", german: "Pilze", italian: "Funghi", spanish: "Champiñones", french: "Champignons", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "סלק", english: "Beetroot", german: "Rote Bete", italian: "Barbabietola", spanish: "Remolacha", french: "Betterave", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "תרד", english: "Spinach", german: "Spinat", italian: "Spinaci", spanish: "Espinaca", french: "Épinard", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "חציל", english: "Eggplant", german: "Aubergine", italian: "Melanzana", spanish: "Berenjena", french: "Aubergine", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "קולורבי", english: "Kohlrabi", german: "Kohlrabi", italian: "Cavolo rapa", spanish: "Colinabo", french: "Chou-rave", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "אפונה", english: "Peas", german: "Erbsen", italian: "Piselli", spanish: "Guisantes", french: "Petits pois", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "דלורית", english: "Butternut squash", german: "Butternusskürbis", italian: "Zucca butternut", spanish: "Calabaza butternut", french: "Courge butternut", courseNameEnglish: "Vegetables", courseOrder: 112 },
+{ hebrew: "כרוב", english: "Cabbage", german: "Kohl", italian: "Cavolo", spanish: "Repollo", french: "Chou", courseNameEnglish: "Vegetables", courseOrder: 112 },
+
+// Makeup - 113
+{ hebrew: "איפור", english: "Makeup", german: "Make-up", italian: "Trucco", spanish: "Maquillaje", french: "Maquillage", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "מייקאפ", english: "Foundation", german: "Grundierung", italian: "Fondotinta", spanish: "Base de maquillaje", french: "Fond de teint", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "פודרה", english: "Powder", german: "Puder", italian: "Cipria", spanish: "Polvos", french: "Poudre", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "סומק", english: "Blush", german: "Rouge", italian: "Fard", spanish: "Colorete", french: "Blush", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "צללית", english: "Eyeshadow", german: "Lidschatten", italian: "Ombretto", spanish: "Sombra de ojos", french: "Ombre à paupières", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "אייליינר", english: "Eyeliner", german: "Eyeliner", italian: "Eyeliner", spanish: "Delineador", french: "Eyeliner", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "מסקרה", english: "Mascara", german: "Wimperntusche", italian: "Mascara", spanish: "Máscara de pestañas", french: "Mascara", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "עיפרון גבות", english: "Eyebrow pencil", german: "Augenbrauenstift", italian: "Matita per sopracciglia", spanish: "Lápiz de cejas", french: "Crayon à sourcils", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "שפתון", english: "Lipstick", german: "Lippenstift", italian: "Rossetto", spanish: "Pintalabios", french: "Rouge à lèvres", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "גלוס", english: "Lip gloss", german: "Lippgloss", italian: "Lucidalabbra", spanish: "Brillo labial", french: "Gloss à lèvres", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "בסיס איפור", english: "Primer", german: "Grundierung", italian: "Primer", spanish: "Prebase", french: "Base de maquillage", courseNameEnglish: "Makeup", courseOrder: 113 },
+{ hebrew: "מברשת איפור", english: "Makeup brush", german: "Make-up Pinsel", italian: "Pennello per trucco", spanish: "Brocha de maquillaje", french: "Pinceau de maquillage", courseNameEnglish: "Makeup", courseOrder: 113 },
+
+// Advanced Countries - 114
+{ hebrew: "פיליפינים", english: "Philippines", german: "Philippinen", italian: "Filippine", spanish: "Filipinas", french: "Philippines", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "ויאטנם", english: "Vietnam", german: "Vietnam", italian: "Vietnam", spanish: "Vietnam", french: "Vietnam", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "מלזיה", english: "Malaysia", german: "Malaysia", italian: "Malesia", spanish: "Malasia", french: "Malaisie", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "אינדונזיה", english: "Indonesia", german: "Indonesien", italian: "Indonesia", spanish: "Indonesia", french: "Indonésie", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "פינלנד", english: "Finland", german: "Finnland", italian: "Finlandia", spanish: "Finlandia", french: "Finlande", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "שווייץ", english: "Switzerland", german: "Schweiz", italian: "Svizzera", spanish: "Suiza", french: "Suisse", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "איסלנד", english: "Iceland", german: "Island", italian: "Islanda", spanish: "Islandia", french: "Islande", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "סינגפור", english: "Singapore", german: "Singapur", italian: "Singapore", spanish: "Singapur", french: "Singapour", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "קזחסטן", english: "Kazakhstan", german: "Kasachstan", italian: "Kazakistan", spanish: "Kazajistán", french: "Kazakhstan", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "פרו", english: "Peru", german: "Peru", italian: "Perù", spanish: "Perú", french: "Pérou", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "צ'ילה", english: "Chile", german: "Chile", italian: "Cile", spanish: "Chile", french: "Chili", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "בנגלדש", english: "Bangladesh", german: "Bangladesch", italian: "Bangladesh", spanish: "Bangladés", french: "Bangladesh", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "קולומביה", english: "Colombia", german: "Kolumbien", italian: "Colombia", spanish: "Colombia", french: "Colombie", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "תאילנד", english: "Thailand", german: "Thailand", italian: "Thailandia", spanish: "Tailandia", french: "Thaïlande", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+{ hebrew: "דרום אפריקה", english: "South Africa", german: "Südafrika", italian: "Sudafrica", spanish: "Sudáfrica", french: "Afrique du Sud", courseNameEnglish: "Advanced Countries", courseOrder: 114 },
+
+// Extreme Sports - 115
+{ hebrew: "בנג'י", english: "Bungee jumping", german: "Bungee-Jumping", italian: "Bungee jumping", spanish: "Puenting", french: "Saut à l'élastique", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "סקייטבורד", english: "Skateboarding", german: "Skateboarden", italian: "Skateboarding", spanish: "Skateboarding", french: "Skateboard", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "סנפלינג", english: "Rappelling", german: "Abseilen", italian: "Discesa in corda doppia", spanish: "Rápel", french: "Rappel", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "קיטבורד", english: "Kiteboarding", german: "Kitesurfen", italian: "Kitesurf", spanish: "Kitesurf", french: "Kitesurf", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "מוטוקרוס", english: "Motocross", german: "Motocross", italian: "Motocross", spanish: "Motocross", french: "Motocross", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "קרוספיט", english: "CrossFit", german: "CrossFit", italian: "CrossFit", spanish: "CrossFit", french: "CrossFit", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "רפטינג", english: "Whitewater rafting", german: "Wildwasser-Rafting", italian: "Rafting", spanish: "Rafting", french: "Rafting", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "צניחה ממטוס", english: "Paragliding", german: "Gleitschirmfliegen", italian: "Parapendio", spanish: "Parapente", french: "Parapente", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "זריקת גרזן", english: "Axe throwing", german: "Axtwerfen", italian: "Lancio dell'ascia", spanish: "Lanzamiento de hacha", french: "Lancer de hache", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "רכיבת שטח", english: "Dirt biking", german: "Dirt-Biking", italian: "Dirt bike", spanish: "Moto todoterreno", french: "Moto-cross", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "קיר טיפוס", english: "Rock climbing", german: "Klettern", italian: "Arrampicata", spanish: "Escalada", french: "Escalade", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+{ hebrew: "ספורט חבלים", english: "Rope course", german: "Seilparcours", italian: "Percorso con corde", spanish: "Curso de cuerdas", french: "Parcours de cordes", courseNameEnglish: "Extreme Sports", courseOrder: 115 },
+
+// Surfing - 116
+{ hebrew: "גלישה", english: "Surfing", german: "Surfen", italian: "Surf", spanish: "Surf", french: "Surf", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "גלשן", english: "Surfboard", german: "Surfbrett", italian: "Tavola da surf", spanish: "Tabla de surf", french: "Planche de surf", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "חוף", english: "Beach", german: "Strand", italian: "Spiaggia", spanish: "Playa", french: "Plage", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "גל", english: "Wave", german: "Welle", italian: "Onda", spanish: "Ola", french: "Vague", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "קצף", english: "Foam", german: "Schaum", italian: "Schiuma", spanish: "Espuma", french: "Mousse", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "מים רדודים", english: "Shallow water", german: "Flaches Wasser", italian: "Acqua bassa", spanish: "Agua poco profunda", french: "Eau peu profonde", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "גאות", english: "High tide", german: "Flut", italian: "Alta marea", spanish: "Marea alta", french: "Marée haute", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "שפל", english: "Low tide", german: "Ebbe", italian: "Bassa marea", spanish: "Marea baja", french: "Marée basse", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "גלישה רוח", english: "Windsurfing", german: "Windsurfen", italian: "Windsurf", spanish: "Windsurf", french: "Planche à voile", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "תחרות גלישה", english: "Surf competition", german: "Surf-Wettbewerb", italian: "Competizione di surf", spanish: "Competición de surf", french: "Compétition de surf", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "שבירת גל", english: "Wave break", german: "Wellenbruch", italian: "Rottura dell'onda", spanish: "Rotura de la ola", french: "Déferlante", courseNameEnglish: "Surfing", courseOrder: 116 },
+{ hebrew: "גלישת לונגבורד", english: "Longboarding", german: "Longboard-Surfen", italian: "Longboard", spanish: "Longboard", french: "Longboard", courseNameEnglish: "Surfing", courseOrder: 116 },
+
+// Camping - 117
+{ hebrew: "קמפינג", english: "Camping", german: "Camping", italian: "Campeggio", spanish: "Campamento", french: "Camping", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "אוהל", english: "Tent", german: "Zelt", italian: "Tenda", spanish: "Tienda de campaña", french: "Tente", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "שק שינה", english: "Sleeping bag", german: "Schlafsack", italian: "Sacco a pelo", spanish: "Saco de dormir", french: "Sac de couchage", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "מדורה", english: "Campfire", german: "Lagerfeuer", italian: "Falò", spanish: "Fogata", french: "Feu de camp", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "תרמיל גב", english: "Backpack", german: "Rucksack", italian: "Zaino", spanish: "Mochila", french: "Sac à dos", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "פנס", english: "Flashlight", german: "Taschenlampe", italian: "Torcia", spanish: "Linterna", french: "Lampe de poche", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "מזרן שטח", english: "Camping mat", german: "Isomatte", italian: "Materassino da campeggio", spanish: "Esterilla de camping", french: "Matelas de camping", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "מקלות הליכה", english: "Hiking poles", german: "Wanderstöcke", italian: "Bastoncini da trekking", spanish: "Bastones de senderismo", french: "Bâtons de randonnée", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "מצפן", english: "Compass", german: "Kompass", italian: "Bussola", spanish: "Brújula", french: "Boussole", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "מצת", english: "Lighter", german: "Feuerzeug", italian: "Accendino", spanish: "Encendedor", french: "Briquet", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "דוחה יתושים", english: "Mosquito repellent", german: "Mückenschutz", italian: "Repellente per zanzare", spanish: "Repelente de mosquitos", french: "Répulsif anti-moustiques", courseNameEnglish: "Camping", courseOrder: 117 },
+{ hebrew: "חבל", english: "Rope", german: "Seil", italian: "Corda", spanish: "Cuerda", french: "Corde", courseNameEnglish: "Camping", courseOrder: 117 },
+
+// Martial Arts - 118
+{ hebrew: "אומנויות לחימה", english: "Martial arts", german: "Kampfkünste", italian: "Arti marziali", spanish: "Artes marciales", french: "Arts martiaux", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "קראטה", english: "Karate", german: "Karate", italian: "Karate", spanish: "Karate", french: "Karaté", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "קונג פו", english: "Kung Fu", german: "Kung-Fu", italian: "Kung-Fu", spanish: "Kung-Fu", french: "Kung-Fu", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "ג'יו ג'יטסו", english: "Jiu-Jitsu", german: "Jiu-Jitsu", italian: "Jiu-Jitsu", spanish: "Jiu-Jitsu", french: "Jiu-Jitsu", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "דו קרב", english: "Duel", german: "Duell", italian: "Duello", spanish: "Duelo", french: "Duel", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "חגורה שחורה", english: "Black belt", german: "Schwarzgurt", italian: "Cintura nera", spanish: "Cinturón negro", french: "Ceinture noire", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "בעיטה", english: "Kick", german: "Tritt", italian: "Calcio", spanish: "Patada", french: "Coup de pied", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "אחיזה", english: "Grapple", german: "Griff", italian: "Presa", spanish: "Agarre", french: "Prise", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "קרקע", english: "Ground fighting", german: "Bodenkampf", italian: "Combattimento a terra", spanish: "Lucha en el suelo", french: "Combat au sol", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "קרב", english: "Fight", german: "Kampf", italian: "Combattimento", spanish: "Pelea", french: "Combat", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "סגנון לחימה", english: "Fighting style", german: "Kampfstil", italian: "Stile di combattimento", spanish: "Estilo de lucha", french: "Style de combat", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+{ hebrew: "זירה", english: "Arena", german: "Arena", italian: "Arena", spanish: "Arena", french: "Arène", courseNameEnglish: "Martial Arts", courseOrder: 118 },
+
+ // Market - 119
+{ hebrew: "קונים", english: "Buyers", german: "Käufer", italian: "Acquirenti", spanish: "Compradores", french: "Acheteurs", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "מוכרים", english: "Sellers", german: "Verkäufer", italian: "Venditori", spanish: "Vendedores", french: "Vendeurs", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "מחירים", english: "Prices", german: "Preise", italian: "Prezzi", spanish: "Precios", french: "Prix", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "דוכן", english: "Stall", german: "Stand", italian: "Bancarella", spanish: "Puesto", french: "Étal", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "סחורה", english: "Goods", german: "Waren", italian: "Merci", spanish: "Mercancías", french: "Marchandises", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "אשראי", english: "Credit", german: "Kredit", italian: "Credito", spanish: "Crédito", french: "Crédit", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "מיקוח", english: "Bargaining", german: "Verhandlung", italian: "Contrattazione", spanish: "Regateo", french: "Négociation", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "עמוס", english: "Crowded", german: "Überfüllt", italian: "Affollato", spanish: "Lleno", french: "Bondé", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "קופאית", english: "Cashier", german: "Kassierer", italian: "Cassiere", spanish: "Cajero", french: "Caissier", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "חנות מקומית", english: "Local store", german: "Laden", italian: "Negozio locale", spanish: "Tienda local", french: "Boutique locale", courseNameEnglish: "Market", courseOrder: 119 },
+{ hebrew: "שוק פשפשים", english: "Flea market", german: "Flohmarkt", italian: "Mercato delle pulci", spanish: "Mercado de pulgas", french: "Marché aux puces", courseNameEnglish: "Market", courseOrder: 119 },
+
+// Gifts - 120
+{ hebrew: "מתנה", english: "Gift", german: "Geschenk", italian: "Regalo", spanish: "Regalo", french: "Cadeau", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "עטיפה", english: "Wrapping", german: "Verpackung", italian: "Confezione", spanish: "Envoltura", french: "Emballage", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "ברכה", english: "Greeting card", german: "Grußkarte", italian: "Biglietto di auguri", spanish: "Tarjeta de felicitación", french: "Carte de vœux", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "הפתעה", english: "Surprise", german: "Überraschung", italian: "Sorpresa", spanish: "Sorpresa", french: "Surprise", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "כרטיס מתנה", english: "Gift card", german: "Geschenkkarte", italian: "Carta regalo", spanish: "Tarjeta de regalo", french: "Carte cadeau", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "תכשיט", english: "Jewelry", german: "Schmuck", italian: "Gioielli", spanish: "Joyería", french: "Bijoux", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "פרחים", english: "Flowers", german: "Blumen", italian: "Fiori", spanish: "Flores", french: "Fleurs", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "צעצוע", english: "Toy", german: "Spielzeug", italian: "Giocattolo", spanish: "Juguete", french: "Jouet", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "בושם", english: "Perfume", german: "Parfüm", italian: "Profumo", spanish: "Perfume", french: "Parfum", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "שובר קנייה", english: "Shopping voucher", german: "Einkaufsgutschein", italian: "Buono acquisto", spanish: "Vale de compra", french: "Bon d'achat", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "שעון", english: "Watch", german: "Uhr", italian: "Orologio", spanish: "Reloj", french: "Montre", courseNameEnglish: "Gifts", courseOrder: 120 },
+{ hebrew: "בובה", english: "Doll", german: "Puppe", italian: "Bambola", spanish: "Muñeca", french: "Poupée", courseNameEnglish: "Gifts", courseOrder: 120 },
+
+// Restaurant - 121
+{ hebrew: "תפריט", english: "Menu", german: "Speisekarte", italian: "Menù", spanish: "Menú", french: "Menu", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "מלצרית", english: "Waitress", german: "Kellnerin", italian: "Cameriera", spanish: "Camarera", french: "Serveuse", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "כוס", english: "Glass", german: "Glas", italian: "Bicchiere", spanish: "Vaso", french: "Verre", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "מפה", english: "Tablecloth", german: "Tischdecke", italian: "Tovaglia", spanish: "Mantel", french: "Nappe", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "מפית", english: "Napkin", german: "Serviette", italian: "Tovagliolo", spanish: "Servilleta", french: "Serviette", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "מתאבנים", english: "Appetizers", german: "Vorspeisen", italian: "Antipasti", spanish: "Aperitivos", french: "Entrées", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "מנה עיקרית", english: "Main course", german: "Hauptgericht", italian: "Piatto principale", spanish: "Plato principal", french: "Plat principal", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "קינוח", english: "Dessert", german: "Dessert", italian: "Dolce", spanish: "Postre", french: "Dessert", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "טיפ", english: "Tip", german: "Trinkgeld", italian: "Mancia", spanish: "Propina", french: "Pourboire", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "שירות עצמי", english: "Self-service", german: "Selbstbedienung", italian: "Self-service", spanish: "Autoservicio", french: "Libre-service", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "רעש", english: "Noise", german: "Lärm", italian: "Rumore", spanish: "Ruido", french: "Bruit", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "אוכל צמחוני", english: "Vegetarian food", german: "Vegetarisches Essen", italian: "Cibo vegetariano", spanish: "Comida vegetariana", french: "Nourriture végétarienne", courseNameEnglish: "Restaurant", courseOrder: 121 },
+{ hebrew: "מנות טבעוניות", english: "Vegan dishes", german: "Vegane Gerichte", italian: "Piatti vegani", spanish: "Platos veganos", french: "Plats végétaliens", courseNameEnglish: "Restaurant", courseOrder: 121 },
+
+// Bank - 122
+{ hebrew: "בנק", english: "Bank", german: "Bank", italian: "Banca", spanish: "Banco", french: "Banque", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "כספומט", english: "ATM", german: "Geldautomat", italian: "Bancomat", spanish: "Cajero automático", french: "Distributeur automatique", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "יתרה", english: "Balance", german: "Kontostand", italian: "Saldo", spanish: "Saldo", french: "Solde", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "חשבון עובר ושב", english: "Checking account", german: "Girokonto", italian: "Conto corrente", spanish: "Cuenta corriente", french: "Compte courant", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "חשבון חיסכון", english: "Savings account", german: "Sparkonto", italian: "Conto di risparmio", spanish: "Cuenta de ahorros", french: "Compte d'épargne", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "העברה בנקאית", english: "Bank transfer", german: "Überweisung", italian: "Bonifico bancario", spanish: "Transferencia bancaria", french: "Virement bancaire", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "הלוואה", english: "Loan", german: "Darlehen", italian: "Prestito", spanish: "Préstamo", french: "Prêt", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "פיקדון", english: "Deposit", german: "Einzahlung", italian: "Deposito", spanish: "Depósito", french: "Dépôt", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "שער חליפין", english: "Exchange rate", german: "Wechselkurs", italian: "Tasso di cambio", spanish: "Tipo de cambio", french: "Taux de change", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "מטבע", english: "Currency", german: "Währung", italian: "Valuta", spanish: "Moneda", french: "Devise", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "שיק", english: "Check", german: "Scheck", italian: "Assegno", spanish: "Cheque", french: "Chèque", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "עמלה", english: "Fee", german: "Gebühr", italian: "Commissione", spanish: "Tarifa", french: "Frais", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "מנהל בנק", english: "Bank manager", german: "Bankleiter", italian: "Direttore di banca", spanish: "Gerente de banco", french: "Directeur de banque", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "כספת", english: "Safe", german: "Tresor", italian: "Cassaforte", spanish: "Caja fuerte", french: "Coffre-fort", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "תשלומים", english: "Payments", german: "Zahlungen", italian: "Pagamenti", spanish: "Pagos", french: "Paiements", courseNameEnglish: "Bank", courseOrder: 122 },
+{ hebrew: "כרטיס נטען", english: "Prepaid card", german: "Prepaid-Karte", italian: "Carta prepagata", spanish: "Tarjeta prepaga", french: "Carte prépayée", courseNameEnglish: "Bank", courseOrder: 122 },
+
+// News - 123
+{ hebrew: "כתב", english: "Reporter", german: "Reporter", italian: "Giornalista", spanish: "Reportero", french: "Reporter", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "כתב חדשות", english: "News correspondent", german: "Korrespondent", italian: "Corrispondente", spanish: "Corresponsal", french: "Correspondant", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "כתבה", english: "Article", german: "Artikel", italian: "Articolo", spanish: "Artículo", french: "Article", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "כותרת", english: "Headline", german: "Schlagzeile", italian: "Titolo", spanish: "Titular", french: "Titre", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "ערוץ חדשות", english: "News channel", german: "Nachrichtensender", italian: "Canale di notizie", spanish: "Canal de noticias", french: "Chaîne d’actualités", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "חדשות עולמיות", english: "World news", german: "Weltnews", italian: "Notizie dal mondo", spanish: "Noticias mundiales", french: "Actualités mondiales", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "עורך", english: "Editor", german: "Redakteur", italian: "Editore", spanish: "Editor", french: "Éditeur", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "תכנית חדשות", english: "News program", german: "Nachrichtensendung", italian: "Programma di notizie", spanish: "Programa de noticias", french: "Journal télévisé", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "מדיה חברתית", english: "Social media", german: "Soziale Medien", italian: "Social media", spanish: "Redes sociales", french: "Médias sociaux", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "מהדורה", english: "Edition", german: "Ausgabe", italian: "Edizione", spanish: "Edición", french: "Édition", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "סיקור חדשותי", english: "News coverage", german: "Berichterstattung", italian: "Copertura delle notizie", spanish: "Cobertura de noticias", french: "Couverture médiatique", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "כתבים זרים", english: "Foreign correspondents", german: "Auslandskorrespondenten", italian: "Corrispondenti esteri", spanish: "Corresponsales extranjeros", french: "Correspondants étrangers", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "פייק ניוז", english: "Fake news", german: "Falschnachrichten", italian: "Notizie false", spanish: "Noticias falsas", french: "Fausses nouvelles", courseNameEnglish: "News", courseOrder: 123 },
+{ hebrew: "סקופ", english: "Scoop", german: "Exklusivmeldung", italian: "Esclusiva", spanish: "Exclusiva", french: "Exclusivité", courseNameEnglish: "News", courseOrder: 123 },
+
+// Writing Tools - 124
+{ hebrew: "דפדפת", english: "Notepad", german: "Notizblock", italian: "Blocco note", spanish: "Bloc de notas", french: "Bloc-notes", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "עט מחיק", english: "Whiteboard marker", german: "Whiteboard-Marker", italian: "Pennarello cancellabile", spanish: "Rotulador de pizarra", french: "Feutre effaçable", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "לוח מחיק", english: "Whiteboard", german: "Whiteboard", italian: "Lavagna cancellabile", spanish: "Pizarra blanca", french: "Tableau blanc", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "דיו", english: "Ink", german: "Tinte", italian: "Inchiostro", spanish: "Tinta", french: "Encre", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "עט ג'ל", english: "Gel pen", german: "Gelschreiber", italian: "Penna gel", spanish: "Bolígrafo de gel", french: "Stylo gel", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "נייר מדפסת", english: "Printer paper", german: "Druckerpapier", italian: "Carta per stampante", spanish: "Papel de impresora", french: "Papier d'impression", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "מחק דיו", english: "Ink eraser", german: "Tintenkiller", italian: "Cancellino per inchiostro", spanish: "Borrador de tinta", french: "Effaceur d’encre", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "קליפס נייר", english: "Paper clip", german: "Büroklammer", italian: "Graffetta", spanish: "Clip de papel", french: "Trombone", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "עט דיו", english: "Ink pen", german: "Tintenstift", italian: "Penna ad inchiostro", spanish: "Pluma de tinta", french: "Stylo à encre", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "פנקס כיס", english: "Pocket notebook", german: "Taschenbuch", italian: "Taccuino tascabile", spanish: "Bloc de bolsillo", french: "Carnet de poche", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "לוח שעם", english: "Corkboard", german: "Pinnwand", italian: "Bacheca in sughero", spanish: "Tablero de corcho", french: "Tableau en liège", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "נייר צילום", english: "Photocopy paper", german: "Kopierpapier", italian: "Carta per fotocopie", spanish: "Papel de fotocopia", french: "Papier de photocopie", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "עט גיר", english: "Chalk pen", german: "Kreidestift", italian: "Penna di gesso", spanish: "Pluma de tiza", french: "Stylo craie", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "טוש מחיק", english: "Dry erase marker", german: "Abwischbarer Marker", italian: "Pennarello cancellabile", spanish: "Marcador de borrado en seco", french: "Marqueur effaçable", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+{ hebrew: "לוח מודעות", english: "Bulletin board", german: "Schwarzes Brett", italian: "Bacheca", spanish: "Tablón de anuncios", french: "Tableau d'affichage", courseNameEnglish: "Writing Tools", courseOrder: 124 },
+
+// Tools - 125
+{ hebrew: "פטיש", english: "Hammer", german: "Hammer", italian: "Martello", spanish: "Martillo", french: "Marteau", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "מברג", english: "Screwdriver", german: "Schraubenzieher", italian: "Cacciavite", spanish: "Destornillador", french: "Tournevis", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "מסור", english: "Saw", german: "Säge", italian: "Sega", spanish: "Sierra", french: "Scie", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "פלס", english: "Level", german: "Wasserwaage", italian: "Livella", spanish: "Nivel", french: "Niveau", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "מקדחה", english: "Drill", german: "Bohrmaschine", italian: "Trapano", spanish: "Taladro", french: "Perceuse", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "מסמר", english: "Nail", german: "Nagel", italian: "Chiodo", spanish: "Clavo", french: "Clou", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "בורג", english: "Screw", german: "Schraube", italian: "Vite", spanish: "Tornillo", french: "Vis", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "פלייר", english: "Pliers", german: "Zange", italian: "Pinza", spanish: "Alicates", french: "Pince", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "סכין יפנית", english: "Utility knife", german: "Cutter", italian: "Coltello multiuso", spanish: "Cuchillo multiusos", french: "Cutter", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "מברשת צבע", english: "Paintbrush", german: "Pinsel", italian: "Pennello", spanish: "Brocha", french: "Pinceau", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "גלגלת צבע", english: "Paint roller", german: "Farbroller", italian: "Rullo per pittura", spanish: "Rodillo de pintura", french: "Rouleau de peinture", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "סרט מדידה", english: "Measuring tape", german: "Maßband", italian: "Metro a nastro", spanish: "Cinta métrica", french: "Mètre ruban", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "משקפי מגן", english: "Safety goggles", german: "Schutzbrille", italian: "Occhiali protettivi", spanish: "Gafas de seguridad", french: "Lunettes de protection", courseNameEnglish: "Tools", courseOrder: 125 },
+{ hebrew: "כפפות עבודה", english: "Work gloves", german: "Arbeitshandschuhe", italian: "Guanti da lavoro", spanish: "Guantes de trabajo", french: "Gants de travail", courseNameEnglish: "Tools", courseOrder: 125 },
+
+// Business Communication - 126
+{ hebrew: "שיחת ועידה", english: "Conference call", german: "Konferenzschaltung", italian: "Chiamata in conferenza", spanish: "Llamada en conferencia", french: "Appel en conférence", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "פגישת עבודה", english: "Business meeting", german: "Geschäftstreffen", italian: "Riunione di lavoro", spanish: "Reunión de negocios", french: "Réunion d'affaires", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "מצגת", english: "Presentation", german: "Präsentation", italian: "Presentazione", spanish: "Presentación", french: "Présentation", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "משא ומתן", english: "Negotiation", german: "Verhandlung", italian: "Negoziazione", spanish: "Negociación", french: "Négociation", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "תזכיר", english: "Memo", german: "Notiz", italian: "Promemoria", spanish: "Memorando", french: "Mémo", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "ספק", english: "Supplier", german: "Lieferant", italian: "Fornitore", spanish: "Proveedor", french: "Fournisseur", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "לקוח", english: "Client", german: "Kunde", italian: "Cliente", spanish: "Cliente", french: "Client", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "דיון", english: "Discussion", german: "Diskussion", italian: "Discussione", spanish: "Discusión", french: "Discussion", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "אסטרטגיה עסקית", english: "Business strategy", german: "Geschäftsstrategie", italian: "Strategia aziendale", spanish: "Estrategia empresarial", french: "Stratégie d'entreprise", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "חילוקי דעות", english: "Disagreement", german: "Meinungsverschiedenheit", italian: "Disaccordo", spanish: "Desacuerdo", french: "Désaccord", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "מכתב רשמי", english: "Formal letter", german: "Formeller Brief", italian: "Lettera formale", spanish: "Carta formal", french: "Lettre formelle", courseNameEnglish: "Business Communication", courseOrder: 126 },
+{ hebrew: "שיווק", english: "Marketing", german: "Marketing", italian: "Marketing", spanish: "Marketing", french: "Marketing", courseNameEnglish: "Business Communication", courseOrder: 126 },
+
+// Cyber - 127
+{ hebrew: "אבטחת מידע", english: "Information security", german: "Informationssicherheit", italian: "Sicurezza delle informazioni", spanish: "Seguridad de la información", french: "Sécurité de l'information", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "פרצת אבטחה", english: "Security breach", german: "Sicherheitsverletzung", italian: "Violazione della sicurezza", spanish: "Brecha de seguridad", french: "Violation de sécurité", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "פישינג", english: "Phishing", german: "Phishing", italian: "Phishing", spanish: "Phishing", french: "Hameçonnage", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "תוכנה זדונית", english: "Malware", german: "Schadsoftware", italian: "Malware", spanish: "Malware", french: "Logiciel malveillant", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "וירוס מחשב", english: "Computer virus", german: "Computervirus", italian: "Virus informatico", spanish: "Virus informático", french: "Virus informatique", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "רוגלה", english: "Spyware", german: "Spyware", italian: "Spyware", spanish: "Spyware", french: "Logiciel espion", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "חומת אש", english: "Firewall", german: "Firewall", italian: "Firewall", spanish: "Cortafuegos", french: "Pare-feu", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "האקר", english: "Hacker", german: "Hacker", italian: "Hacker", spanish: "Hacker", french: "Hacker", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "התקפת סייבר", english: "Cyber attack", german: "Cyberangriff", italian: "Attacco informatico", spanish: "Ataque cibernético", french: "Attaque cybernétique", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "הצפנה", english: "Encryption", german: "Verschlüsselung", italian: "Crittografia", spanish: "Cifrado", french: "Chiffrement", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "מנהל סיסמאות", english: "Password manager", german: "Passwortmanager", italian: "Gestore di password", spanish: "Gestor de contraseñas", french: "Gestionnaire de mots de passe", courseNameEnglish: "Cyber", courseOrder: 127 },
+{ hebrew: "מנועי הצפנה", english: "Encryption engines", german: "Verschlüsselungsmaschinen", italian: "Motori di crittografia", spanish: "Motores de cifrado", french: "Moteurs de chiffrement", courseNameEnglish: "Cyber", courseOrder: 127 },
+
+// Academic Writing - 128
+{ hebrew: "תזה", english: "Thesis", german: "These", italian: "Tesi", spanish: "Tesis", french: "Thèse", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "סקירת ספרות", english: "Literature review", german: "Literaturübersicht", italian: "Revisione della letteratura", spanish: "Revisión de literatura", french: "Revue de littérature", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "הערת שוליים", english: "Footnote", german: "Fußnote", italian: "Nota a piè di pagina", spanish: "Nota al pie", french: "Note de bas de page", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "ביבליוגרפיה", english: "Bibliography", german: "Bibliographie", italian: "Bibliografia", spanish: "Bibliografía", french: "Bibliographie", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "ציטוט", english: "Citation", german: "Zitat", italian: "Citazione", spanish: "Cita", french: "Citation", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "מקור", english: "Source", german: "Quelle", italian: "Fonte", spanish: "Fuente", french: "Source", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "שיטת מחקר", english: "Research methodology", german: "Forschungsmethodik", italian: "Metodologia di ricerca", spanish: "Metodología de investigación", french: "Méthodologie de recherche", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "ניתוח נתונים", english: "Data analysis", german: "Datenanalyse", italian: "Analisi dei dati", spanish: "Análisis de datos", french: "Analyse de données", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "תקציר", english: "Abstract", german: "Zusammenfassung", italian: "Abstract", spanish: "Resumen", french: "Résumé", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "פרק מבוא", english: "Introduction chapter", german: "Einleitungskapitel", italian: "Capitolo introduttivo", spanish: "Capítulo de introducción", french: "Chapitre d'introduction", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "פרק סיכום", english: "Conclusion chapter", german: "Schlusskapitel", italian: "Capitolo conclusivo", spanish: "Capítulo de conclusión", french: "Chapitre de conclusion", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+{ hebrew: "נייר עבודה", english: "Working paper", german: "Arbeitspapier", italian: "Documento di lavoro", spanish: "Documento de trabajo", french: "Document de travail", courseNameEnglish: "Academic Writing", courseOrder: 128 },
+
+// Leadership and Management - 129
+{ hebrew: "מנכ״ל", english: "CEO", german: "CEO", italian: "CEO", spanish: "Director ejecutivo", french: "PDG", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "עובד", english: "Employee", german: "Mitarbeiter", italian: "Dipendente", spanish: "Empleado", french: "Employé", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "מטרה", english: "Goal", german: "Ziel", italian: "Obiettivo", spanish: "Meta", french: "Objectif", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "תפקיד", english: "Role", german: "Rolle", italian: "Ruolo", spanish: "Papel", french: "Rôle", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "הצלחה", english: "Success", german: "Erfolg", italian: "Successo", spanish: "Éxito", french: "Succès", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "כישלון", english: "Failure", german: "Misserfolg", italian: "Fallimento", spanish: "Fracaso", french: "Échec", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "אחריות", english: "Responsibility", german: "Verantwortung", italian: "Responsabilità", spanish: "Responsabilidad", french: "Responsabilité", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "ניהול", english: "Management", german: "Management", italian: "Gestione", spanish: "Gestión", french: "Gestion", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "תקשורת", english: "Communication", german: "Kommunikation", italian: "Comunicazione", spanish: "Comunicación", french: "Communication", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "חזון", english: "Vision", german: "Vision", italian: "Visione", spanish: "Visión", french: "Vision", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "תכנון", english: "Planning", german: "Planung", italian: "Pianificazione", spanish: "Planificación", french: "Planification", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "זמן", english: "Time", german: "Zeit", italian: "Tempo", spanish: "Tiempo", french: "Temps", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "משאבים", english: "Resources", german: "Ressourcen", italian: "Risorse", spanish: "Recursos", french: "Ressources", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "אתגר", english: "Challenge", german: "Herausforderung", italian: "Sfida", spanish: "Desafío", french: "Défi", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "השראה", english: "Inspiration", german: "Inspiration", italian: "Ispirazione", spanish: "Inspiración", french: "Inspiration", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "פתרון", english: "Solution", german: "Lösung", italian: "Soluzione", spanish: "Solución", french: "Solution", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "משוב", english: "Feedback", german: "Feedback", italian: "Feedback", spanish: "Retroalimentación", french: "Retour", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+{ hebrew: "אסטרטגיה", english: "Strategy", german: "Strategie", italian: "Strategia", spanish: "Estrategia", french: "Stratégie", courseNameEnglish: "Leadership and Management", courseOrder: 129 },
+
+// Legal Terms - 130
+{ hebrew: "חוק", english: "Law", german: "Gesetz", italian: "Legge", spanish: "Ley", french: "Loi", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "זכות", english: "Right", german: "Recht", italian: "Diritto", spanish: "Derecho", french: "Droit", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "פסק דין", english: "Judgment", german: "Urteil", italian: "Sentenza", spanish: "Sentencia", french: "Jugement", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "חוזה", english: "Contract", german: "Vertrag", italian: "Contratto", spanish: "Contrato", french: "Contrat", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "ערעור", english: "Appeal", german: "Berufung", italian: "Appello", spanish: "Apelación", french: "Appel", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "פשע", english: "Crime", german: "Verbrechen", italian: "Crimine", spanish: "Crimen", french: "Crime", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "עבירה", english: "Offense", german: "Straftat", italian: "Reato", spanish: "Delito", french: "Infraction", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "תביעה", english: "Lawsuit", german: "Klage", italian: "Causa", spanish: "Demanda", french: "Procès", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "הגנה", english: "Defense", german: "Verteidigung", italian: "Difesa", spanish: "Defensa", french: "Défense", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "תובע", english: "Prosecutor", german: "Staatsanwalt", italian: "Procuratore", spanish: "Fiscal", french: "Procureur", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "עדים", english: "Witnesses", german: "Zeugen", italian: "Testimoni", spanish: "Testigos", french: "Témoins", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "הסכמה", english: "Consent", german: "Zustimmung", italian: "Consenso", spanish: "Consentimiento", french: "Consentement", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "משפט", english: "Trial", german: "Prozess", italian: "Processo", spanish: "Juicio", french: "Procès", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "פיצויים", english: "Compensation", german: "Entschädigung", italian: "Risarcimento", spanish: "Compensación", french: "Indemnisation", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+{ hebrew: "מעשה פלילי", english: "Criminal Act", german: "Kriminelle Handlung", italian: "Atto criminale", spanish: "Acto criminal", french: "Acte criminel", courseNameEnglish: "Legal Terms", courseOrder: 130 },
+
+// Globalization - 131
+{ hebrew: "עולם", english: "World", german: "Welt", italian: "Mondo", spanish: "Mundo", french: "Monde", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "מדינה", english: "Country", german: "Land", italian: "Paese", spanish: "País", french: "Pays", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "עסקים", english: "Business", german: "Geschäft", italian: "Affari", spanish: "Negocios", french: "Affaires", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "נסיעה", english: "Travel", german: "Reise", italian: "Viaggio", spanish: "Viaje", french: "Voyage", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "שפה", english: "Language", german: "Sprache", italian: "Lingua", spanish: "Idioma", french: "Langue", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "חברה", english: "Company", german: "Firma", italian: "Azienda", spanish: "Empresa", french: "Entreprise", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "גלובליזציה", english: "Globalization", german: "Globalisierung", italian: "Globalizzazione", spanish: "Globalización", french: "Mondialisation", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "מסחר בינלאומי", english: "International trade", german: "Internationaler Handel", italian: "Commercio internazionale", spanish: "Comercio internacional", french: "Commerce international", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "תאגיד רב לאומי", english: "Multinational corporation", german: "Multinationales Unternehmen", italian: "Corporazione multinazionale", spanish: "Corporación multinacional", french: "Entreprise multinationale", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "תיעוש", english: "Industrialization", german: "Industrialisierung", italian: "Industrializzazione", spanish: "Industrialización", french: "Industrialisation", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "פערים כלכליים", english: "Economic disparities", german: "Wirtschaftliche Ungleichheiten", italian: "Disparità economiche", spanish: "Desigualdades económicas", french: "Disparités économiques", courseNameEnglish: "Globalization", courseOrder: 131 },
+{ hebrew: "תרבות צריכה", english: "Consumer culture", german: "Konsumentenkultur", italian: "Cultura del consumo", spanish: "Cultura del consumo", french: "Culture de consommation", courseNameEnglish: "Globalization", courseOrder: 131 },
+
+// Topics in Psychology - 132
+{ hebrew: "מחשבה", english: "Thought", german: "Gedanke", italian: "Pensiero", spanish: "Pensamiento", french: "Pensée", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "פחד", english: "Fear", german: "Angst", italian: "Paura", spanish: "Miedo", french: "Peur", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "אהבה", english: "Love", german: "Liebe", italian: "Amore", spanish: "Amor", french: "Amour", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "זיכרון", english: "Memory", german: "Erinnerung", italian: "Memoria", spanish: "Memoria", french: "Mémoire", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "חלום", english: "Dream", german: "Traum", italian: "Sogno", spanish: "Sueño", french: "Rêve", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "מודע", english: "Aware", german: "Bewusst", italian: "Consapevole", spanish: "Consciente", french: "Conscient", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "תחושה", english: "Feeling", german: "Gefühl", italian: "Sensazione", spanish: "Sensación", french: "Sensation", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "התנהגות", english: "Behavior", german: "Verhalten", italian: "Comportamento", spanish: "Comportamiento", french: "Comportement", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "הרגל", english: "Habit", german: "Gewohnheit", italian: "Abitudine", spanish: "Hábito", french: "Habitude", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "אישיות", english: "Personality", german: "Persönlichkeit", italian: "Personalità", spanish: "Personalidad", french: "Personnalité", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "קשב", english: "Attention", german: "Aufmerksamkeit", italian: "Attenzione", spanish: "Atención", french: "Attention", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "למידה", english: "Learning", german: "Lernen", italian: "Apprendimento", spanish: "Aprendizaje", french: "Apprentissage", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "החלטה", english: "Decision", german: "Entscheidung", italian: "Decisione", spanish: "Decisión", french: "Décision", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+{ hebrew: "מוטיבציה", english: "Motivation", german: "Motivation", italian: "Motivazione", spanish: "Motivación", french: "Motivation", courseNameEnglish: "Topics in Psychology", courseOrder: 132 },
+
+// Renewable Energy - 133
+{ hebrew: "חום", english: "Heat", german: "Hitze", italian: "Calore", spanish: "Calor", french: "Chaleur", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "חשמל", english: "Electricity", german: "Elektrizität", italian: "Elettricità", spanish: "Electricidad", french: "Électricité", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "אנרגיה סולארית", english: "Solar energy", german: "Solarenergie", italian: "Energia solare", spanish: "Energía solar", french: "Énergie solaire", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "אנרגיית רוח", english: "Wind energy", german: "Windenergie", italian: "Energia eolica", spanish: "Energía eólica", french: "Énergie éolienne", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "אנרגיית מים", english: "Hydropower", german: "Wasserkraft", italian: "Energia idroelettrica", spanish: "Energía hidroeléctrica", french: "Énergie hydraulique", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "פאנל סולארי", english: "Solar panel", german: "Solarpanel", italian: "Pannello solare", spanish: "Panel solar", french: "Panneau solaire", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "תחנת כוח", english: "Power station", german: "Kraftwerk", italian: "Centrale elettrica", spanish: "Central eléctrica", french: "Centrale électrique", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "אחסון אנרגיה", english: "Energy storage", german: "Energiespeicherung", italian: "Accumulo di energia", spanish: "Almacenamiento de energía", french: "Stockage d’énergie", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "קיימות", english: "Sustainability", german: "Nachhaltigkeit", italian: "Sostenibilità", spanish: "Sostenibilidad", french: "Durabilité", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "חדשנות", english: "Innovation", german: "Innovation", italian: "Innovazione", spanish: "Innovación", french: "Innovation", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "בטרייה", english: "Battery", german: "Batterie", italian: "Batteria", spanish: "Batería", french: "Batterie", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+{ hebrew: "רשת חשמל", english: "Power grid", german: "Stromnetz", italian: "Rete elettrica", spanish: "Red eléctrica", french: "Réseau électrique", courseNameEnglish: "Renewable Energy", courseOrder: 133 },
+
+// Neuroscience - 134
+{ hebrew: "מוח", english: "Brain", german: "Gehirn", italian: "Cervello", spanish: "Cerebro", french: "Cerveau", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "נוירון", english: "Neuron", german: "Neuron", italian: "Neurone", spanish: "Neurona", french: "Neurone", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "מערכת עצבים מרכזית", english: "Central nervous system", german: "Zentrales Nervensystem", italian: "Sistema nervoso centrale", spanish: "Sistema nervioso central", french: "Système nerveux central", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "אדרנלין", english: "Adrenaline", german: "Adrenalin", italian: "Adrenalina", spanish: "Adrenalina", french: "Adrénaline", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "חוט השדרה", english: "Spinal cord", german: "Rückenmark", italian: "Midollo spinale", spanish: "Médula espinal", french: "Moelle épinière", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "דופמין", english: "Dopamine", german: "Dopamin", italian: "Dopamina", spanish: "Dopamina", french: "Dopamine", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "עצב", english: "Nerve", german: "Nerv", italian: "Nervo", spanish: "Nervio", french: "Nerf", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "חושים", english: "Senses", german: "Sinne", italian: "Sensi", spanish: "Sentidos", french: "Sens", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "כאב", english: "Pain", german: "Schmerz", italian: "Dolore", spanish: "Dolor", french: "Douleur", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+{ hebrew: "רפלקס", english: "Reflex", german: "Reflex", italian: "Riflesso", spanish: "Reflejo", french: "Réflexe", courseNameEnglish: "Neuroscience", courseOrder: 134 },
+
+// Topics in Physics - 135
+{ hebrew: "כוח", english: "Force", german: "Kraft", italian: "Forza", spanish: "Fuerza", french: "Force", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "חוקי ניוטון", english: "Newton's Laws", german: "Newtonsche Gesetze", italian: "Leggi di Newton", spanish: "Leyes de Newton", french: "Lois de Newton", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "תנועה", english: "Motion", german: "Bewegung", italian: "Movimento", spanish: "Movimiento", french: "Mouvement", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "מהירות", english: "Velocity", german: "Geschwindigkeit", italian: "Velocità", spanish: "Velocidad", french: "Vitesse", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "תאוצה", english: "Acceleration", german: "Beschleunigung", italian: "Accelerazione", spanish: "Aceleración", french: "Accélération", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "כבידה", english: "Gravity", german: "Schwerkraft", italian: "Gravità", spanish: "Gravedad", french: "Gravité", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "מכניקה", english: "Mechanics", german: "Mechanik", italian: "Meccanica", spanish: "Mecánica", french: "Mécanique", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "חיכוך", english: "Friction", german: "Reibung", italian: "Attrito", spanish: "Fricción", french: "Friction", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "לחץ", english: "Pressure", german: "Druck", italian: "Pressione", spanish: "Presión", french: "Pression", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "גלים", english: "Waves", german: "Wellen", italian: "Onde", spanish: "Ondas", french: "Ondes", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "קרן אור", english: "Light beam", german: "Lichtstrahl", italian: "Raggio di luce", spanish: "Rayo de luz", french: "Rayon de lumière", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+{ hebrew: "גל קול", english: "Sound wave", german: "Schallwelle", italian: "Onda sonora", spanish: "Onda sonora", french: "Onde sonore", courseNameEnglish: "Topics in Physics", courseOrder: 135 },
+
+// Topics in Architecture - 136
+{ hebrew: "ארכיטקטורה", english: "Architecture", german: "Architektur", italian: "Architettura", spanish: "Arquitectura", french: "Architecture", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "מבנה", english: "Structure", german: "Struktur", italian: "Struttura", spanish: "Estructura", french: "Structure", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "חזית", english: "Facade", german: "Fassade", italian: "Facciata", spanish: "Fachada", french: "Façade", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "עמוד", english: "Column", german: "Säule", italian: "Colonna", spanish: "Columna", french: "Colonne", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "כניסה", english: "Entrance", german: "Eingang", italian: "Ingresso", spanish: "Entrada", french: "Entrée", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "תכנון", english: "Design", german: "Design", italian: "Progetto", spanish: "Diseño", french: "Conception", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "שיפוץ", english: "Renovation", german: "Renovierung", italian: "Ristrutturazione", spanish: "Renovación", french: "Rénovation", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "חומרי בנייה", english: "Building materials", german: "Baumaterialien", italian: "Materiali da costruzione", spanish: "Materiales de construcción", french: "Matériaux de construction", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "בטון", english: "Concrete", german: "Beton", italian: "Cemento", spanish: "Hormigón", french: "Béton", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "פלדה", english: "Steel", german: "Stahl", italian: "Acciaio", spanish: "Acero", french: "Acier", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "עיצוב פנים", english: "Interior design", german: "Innenarchitektur", italian: "Design d'interni", spanish: "Diseño de interiores", french: "Design d'intérieur", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "מודרני", english: "Modern", german: "Modern", italian: "Moderno", spanish: "Moderno", french: "Moderne", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "קלאסי", english: "Classical", german: "Klassisch", italian: "Classico", spanish: "Clásico", french: "Classique", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+{ hebrew: "מגדל", english: "Tower", german: "Turm", italian: "Torre", spanish: "Torre", french: "Tour", courseNameEnglish: "Topics in Architecture", courseOrder: 136 },
+
+// Religions - 137
+{ hebrew: "דת", english: "Religion", german: "Religion", italian: "Religione", spanish: "Religión", french: "Religion", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "אלוהים", english: "God", german: "Gott", italian: "Dio", spanish: "Dios", french: "Dieu", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "תפילה", english: "Prayer", german: "Gebet", italian: "Preghiera", spanish: "Oración", french: "Prière", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "מקדש", english: "Temple", german: "Tempel", italian: "Tempio", spanish: "Templo", french: "Temple", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "כנסייה", english: "Church", german: "Kirche", italian: "Chiesa", spanish: "Iglesia", french: "Église", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "מסגד", english: "Mosque", german: "Moschee", italian: "Moschea", spanish: "Mezquita", french: "Mosquée", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "בית כנסת", english: "Synagogue", german: "Synagoge", italian: "Sinagoga", spanish: "Sinagoga", french: "Synagogue", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: 'תנ״ך', english: "Bible", german: "Bibel", italian: "Bibbia", spanish: "Biblia", french: "Bible", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "תורה", english: "Torah", german: "Tora", italian: "Torah", spanish: "Torá", french: "Torah", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "צלב", english: "Cross", german: "Kreuz", italian: "Croce", spanish: "Cruz", french: "Croix", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "נזיר", english: "Monk", german: "Mönch", italian: "Monaco", spanish: "Monje", french: "Moine", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "כומר", english: "Priest", german: "Priester", italian: "Sacerdote", spanish: "Sacerdote", french: "Prêtre", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "רב", english: "Rabbi", german: "Rabbiner", italian: "Rabbino", spanish: "Rabí", french: "Rabbin", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "נצרות", english: "Christianity", german: "Christentum", italian: "Cristianesimo", spanish: "Cristianismo", french: "Christianisme", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "אסלאם", english: "Islam", german: "Islam", italian: "Islam", spanish: "Islam", french: "Islam", courseNameEnglish: "Religions", courseOrder: 137 },
+{ hebrew: "יהדות", english: "Judaism", german: "Judentum", italian: "Ebraismo", spanish: "Judaísmo", french: "Judaïsme", courseNameEnglish: "Religions", courseOrder: 137 },  
+
+// Advanced Tools - 138
+{ hebrew: "מסור חשמלי", english: "Electric saw", german: "Elektrische Säge", italian: "Sega elettrica", spanish: "Sierra eléctrica", french: "Scie électrique", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "מפתח ברגים", english: "Socket wrench", german: "Ratsche", italian: "Chiave a bussola", spanish: "Llave de tubo", french: "Clé à douille", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "אקדח סיכות", english: "Staple gun", german: "Tacker", italian: "Graffettatrice", spanish: "Engrapadora", french: "Agrafeuse", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "לום", english: "Crowbar", german: "Brecheisen", italian: "Piede di porco", spanish: "Pata de cabra", french: "Pied-de-biche", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "פנס ראש", english: "Headlamp", german: "Stirnlampe", italian: "Torcia frontale", spanish: "Linterna frontal", french: "Lampe frontale", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "אזמל", english: "Chisel", german: "Meißel", italian: "Scalpello", spanish: "Cincel", french: "Ciseau", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "משור ידני", english: "Hand saw", german: "Handsäge", italian: "Sega a mano", spanish: "Sierra manual", french: "Scie à main", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "מפוח", english: "Blower", german: "Gebläse", italian: "Soffiatore", spanish: "Soplador", french: "Souffleur", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "מרסס צבע", english: "Paint sprayer", german: "Farbspritzgerät", italian: "Spruzzatore di vernice", spanish: "Pistola de pintura", french: "Pistolet à peinture", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+{ hebrew: "קומפרסור", english: "Compressor", german: "Kompressor", italian: "Compressore", spanish: "Compresor", french: "Compresseur", courseNameEnglish: "Advanced Tools", courseOrder: 138 },  
+{ hebrew: "משור", english: "Saw", german: "Säge", italian: "Sega", spanish: "Sierra", french: "Scie", courseNameEnglish: "Advanced Tools", courseOrder: 138 },
+
+// Plants and Flowers - 139
+{ hebrew: "עלה", english: "Leaf", german: "Blatt", italian: "Foglia", spanish: "Hoja", french: "Feuille", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "שיח", english: "Bush", german: "Busch", italian: "Cespuglio", spanish: "Arbusto", french: "Buisson", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "דשא", english: "Grass", german: "Gras", italian: "Erba", spanish: "Hierba", french: "Herbe", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "זרע", english: "Seed", german: "Samen", italian: "Seme", spanish: "Semilla", french: "Graine", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "שורש", english: "Root", german: "Wurzel", italian: "Radice", spanish: "Raíz", french: "Racine", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "ענף", english: "Branch", german: "Zweig", italian: "Ramo", spanish: "Rama", french: "Branche", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "קוץ", english: "Thorn", german: "Dorn", italian: "Spina", spanish: "Espina", french: "Épine", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "גבעול", english: "Stem", german: "Stängel", italian: "Stelo", spanish: "Tallo", french: "Tige", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "פרי", english: "Fruit", german: "Frucht", italian: "Frutto", spanish: "Fruta", french: "Fruit", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "חמנייה", english: "Sunflower", german: "Sonnenblume", italian: "Girasole", spanish: "Girasol", french: "Tournesol", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "סחלב", english: "Orchid", german: "Orchidee", italian: "Orchidea", spanish: "Orquídea", french: "Orchidée", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "חבצלת", english: "Lily of the valley", german: "Maiglöckchen", italian: "Mughetto", spanish: "Muguete", french: "Muguet", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "נענע", english: "Mint", german: "Minze", italian: "Menta", spanish: "Menta", french: "Menthe", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "בזיליקום", english: "Basil", german: "Basilikum", italian: "Basilico", spanish: "Albahaca", french: "Basilic", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "פטרוזיליה", english: "Parsley", german: "Petersilie", italian: "Prezzemolo", spanish: "Perejil", french: "Persil", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "כוסברה", english: "Coriander", german: "Koriander", italian: "Coriandolo", spanish: "Cilantro", french: "Coriandre", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "קקטוס", english: "Cactus", german: "Kaktus", italian: "Cactus", spanish: "Cactus", french: "Cactus", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "שקדיה", english: "Almond tree", german: "Mandelbaum", italian: "Mandorlo", spanish: "Almendro", french: "Amandier", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "תאנה", english: "Fig tree", german: "Feigenbaum", italian: "Fico", spanish: "Higuera", french: "Figuier", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+{ hebrew: "תמר", english: "Date palm", german: "Dattelpalme", italian: "Palma da datteri", spanish: "Palmera datilera", french: "Palmier dattier", courseNameEnglish: "Plants and Flowers", courseOrder: 139 },
+
+// Sea - 140
+{ hebrew: "אוקיינוס", english: "Ocean", german: "Ozean", italian: "Oceano", spanish: "Océano", french: "Océan", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "חול", english: "Sand", german: "Sand", italian: "Sabbia", spanish: "Arena", french: "Sable", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "דייג", english: "Fishing", german: "Angeln", italian: "Pesca", spanish: "Pesca", french: "Pêche", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "ריף", english: "Reef", german: "Riff", italian: "Scogliera", spanish: "Arrecife", french: "Récif", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "שונית אלמוגים", english: "Coral reef", german: "Korallenriff", italian: "Barriera corallina", spanish: "Arrecife de coral", french: "Récif corallien", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "לגונה", english: "Lagoon", german: "Lagune", italian: "Laguna", spanish: "Laguna", french: "Lagune", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "מציל", english: "Lifeguard", german: "Rettungsschwimmer", italian: "Bagnino", spanish: "Salvavidas", french: "Maître-nageur", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "צדפים", english: "Seashells", german: "Muscheln", italian: "Conchiglie", spanish: "Conchas marinas", french: "Coquillages", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "מפרץ", english: "Bay", german: "Bucht", italian: "Baia", spanish: "Bahía", french: "Baie", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "נמל", english: "Harbor", german: "Hafen", italian: "Porto", spanish: "Puerto", french: "Port", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "מדוזה", english: "Jellyfish", german: "Qualle", italian: "Medusa", spanish: "Medusa", french: "Méduse", courseNameEnglish: "Sea", courseOrder: 140 },
+{ hebrew: "מגדלור", english: "Lighthouse", german: "Leuchtturm", italian: "Faro", spanish: "Faro", french: "Phare", courseNameEnglish: "Sea", courseOrder: 140 },
+
+// Office Supplies - 141
+{ hebrew: "מחברת ספירלה", english: "Spiral notebook", german: "Spiralblock", italian: "Quaderno a spirale", spanish: "Cuaderno de espiral", french: "Cahier spiralé", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "דבק סטיק", english: "Glue stick", german: "Klebestift", italian: "Colla stick", spanish: "Pegamento en barra", french: "Bâton de colle", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "תיק מסמכים", english: "Document folder", german: "Dokumentenmappe", italian: "Cartella documenti", spanish: "Carpeta de documentos", french: "Porte-documents", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "פתקים דביקים", english: "Sticky notes", german: "Haftnotizen", italian: "Note adesive", spanish: "Notas adhesivas", french: "Post-it", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "נייר הדפסה", english: "Printer paper", german: "Druckerpapier", italian: "Carta per stampante", spanish: "Papel de impresora", french: "Papier d'impression", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "חותמת גומי", english: "Rubber stamp", german: "Gummistempel", italian: "Timbro in gomma", spanish: "Sello de goma", french: "Tampon encreur", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "סל מחזור", english: "Recycle bin", german: "Papierkorb", italian: "Cestino per la carta", spanish: "Papelera de reciclaje", french: "Corbeille à papier", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "מחשבון", english: "Calculator", german: "Taschenrechner", italian: "Calcolatrice", spanish: "Calculadora", french: "Calculatrice", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "כרטיסי ביקור", english: "Business cards", german: "Visitenkarten", italian: "Biglietti da visita", spanish: "Tarjetas de presentación", french: "Cartes de visite", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+{ hebrew: "פנקס קבלות", english: "Receipt book", german: "Quittungsblock", italian: "Blocco ricevute", spanish: "Libro de recibos", french: "Carnet de reçus", courseNameEnglish: "Office Supplies", courseOrder: 141 },
+
+// Advanced Conversation Management - 142
+{ hebrew: "הבעת דעה", english: "Expressing an opinion", german: "Meinung äußern", italian: "Esprimere un'opinione", spanish: "Expresar una opinión", french: "Exprimer une opinion", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "הסכמה", english: "Agreement", german: "Zustimmung", italian: "Accordo", spanish: "Acuerdo", french: "Accord", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "חוסר הסכמה", english: "Disagreement", german: "Uneinigkeit", italian: "Disaccordo", spanish: "Desacuerdo", french: "Désaccord", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "שכנוע", english: "Persuasion", german: "Überzeugung", italian: "Persuasione", spanish: "Persuasión", french: "Persuasion", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "התנגדות", english: "Objection", german: "Einspruch", italian: "Obiezione", spanish: "Objeción", french: "Objection", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "הבהרה", english: "Clarification", german: "Klarstellung", italian: "Chiarimento", spanish: "Aclaración", french: "Clarification", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "ניהול דיון", english: "Managing a discussion", german: "Diskussion leiten", italian: "Gestire una discussione", spanish: "Manejar una discusión", french: "Gérer une discussion", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "טיעון", english: "Argument", german: "Argument", italian: "Argomento", spanish: "Argumento", french: "Argument", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "ציון עובדות", english: "Stating facts", german: "Fakten angeben", italian: "Affermare fatti", spanish: "Afirmar hechos", french: "Énoncer des faits", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "הבעת ספק", english: "Expressing doubt", german: "Zweifel äußern", italian: "Esprimere dubbi", spanish: "Expresar dudas", french: "Exprimer un doute", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "פתיחת שיחה", english: "Starting a conversation", german: "Gespräch beginnen", italian: "Iniziare una conversazione", spanish: "Iniciar una conversación", french: "Commencer une conversation", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+{ hebrew: "סיכום שיחה", english: "Summarizing a conversation", german: "Gespräch zusammenfassen", italian: "Riassumere una conversazione", spanish: "Resumir una conversación", french: "Résumer une conversation", courseNameEnglish: "Advanced Conversation Management", courseOrder: 142 },
+
+// Nature Trip - 143
+{ hebrew: "יער", english: "Forest", german: "Wald", italian: "Foresta", spanish: "Bosque", french: "Forêt", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "נהר", english: "River", german: "Fluss", italian: "Fiume", spanish: "Río", french: "Rivière", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "אגם", english: "Lake", german: "See", italian: "Lago", spanish: "Lago", french: "Lac", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "מפלים", english: "Waterfalls", german: "Wasserfälle", italian: "Cascate", spanish: "Cascadas", french: "Chutes d'eau", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "מערה", english: "Cave", german: "Höhle", italian: "Grotta", spanish: "Cueva", french: "Grotte", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "הר", english: "Mountain", german: "Berg", italian: "Montagna", spanish: "Montaña", french: "Montagne", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "גבעה", english: "Hill", german: "Hügel", italian: "Collina", spanish: "Colina", french: "Colline", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "שביל", english: "Trail", german: "Weg", italian: "Sentiero", spanish: "Sendero", french: "Sentier", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "עלים", english: "Leaves", german: "Blätter", italian: "Foglie", spanish: "Hojas", french: "Feuilles", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "צמחים", english: "Plants", german: "Pflanzen", italian: "Piante", spanish: "Plantas", french: "Plantes", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "יער גשם", english: "Rainforest", german: "Regenwald", italian: "Foresta pluviale", spanish: "Selva tropical", french: "Forêt tropicale", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "נחל", english: "Stream", german: "Bach", italian: "Torrente", spanish: "Arroyo", french: "Ruisseau", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "חיות בר", english: "Wild animals", german: "Wildtiere", italian: "Animali selvatici", spanish: "Animales salvajes", french: "Animaux sauvages", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+{ hebrew: "ציפורים", english: "Birds", german: "Vögel", italian: "Uccelli", spanish: "Aves", french: "Oiseaux", courseNameEnglish: "Nature Trip", courseOrder: 143 },
+
+// Cars - 144
+{ hebrew: "הגה", english: "Steering wheel", german: "Lenkrad", italian: "Volante", spanish: "Volante", french: "Volant", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "גלגל", english: "Wheel", german: "Rad", italian: "Ruota", spanish: "Rueda", french: "Roue", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "צמיג", english: "Tire", german: "Reifen", italian: "Pneumatico", spanish: "Neumático", french: "Pneu", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "בלמים", english: "Brakes", german: "Bremsen", italian: "Freni", spanish: "Frenos", french: "Freins", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "גז", english: "Gas pedal", german: "Gaspedal", italian: "Acceleratore", spanish: "Acelerador", french: "Accélérateur", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "תיבת הילוכים", english: "Gearbox", german: "Getriebe", italian: "Cambio", spanish: "Caja de cambios", french: "Boîte de vitesses", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "תא מטען", english: "Trunk", german: "Kofferraum", italian: "Bagagliaio", spanish: "Maletero", french: "Coffre", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "מושב נהג", english: "Driver's seat", german: "Fahrersitz", italian: "Sedile del conducente", spanish: "Asiento del conductor", french: "Siège du conducteur", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "רישיון נהיגה", english: "Driver’s license", german: "Führerschein", italian: "Patente di guida", spanish: "Licencia de conducir", french: "Permis de conduire", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "דלק", english: "Fuel", german: "Kraftstoff", italian: "Carburante", spanish: "Combustible", french: "Carburant", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "תחנת דלק", english: "Gas station", german: "Tankstelle", italian: "Stazione di servizio", spanish: "Gasolinera", french: "Station-service", courseNameEnglish: "Cars", courseOrder: 144 },
+{ hebrew: "מצבר", english: "Car battery", german: "Autobatterie", italian: "Batteria per auto", spanish: "Batería de coche", french: "Batterie de voiture", courseNameEnglish: "Cars", courseOrder: 144 },
+
+// Houses - 145
+{ hebrew: "בית", english: "House", german: "Haus", italian: "Casa", spanish: "Casa", french: "Maison", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "דירה", english: "Apartment", german: "Wohnung", italian: "Appartamento", spanish: "Apartamento", french: "Appartement", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "מקלחת", english: "Shower", german: "Dusche", italian: "Doccia", spanish: "Ducha", french: "Douche", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "אסלה", english: "Toilet", german: "Toilette", italian: "Toilette", spanish: "Inodoro", french: "Toilettes", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "כיור", english: "Sink", german: "Waschbecken", italian: "Lavandino", spanish: "Lavabo", french: "Évier", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "מזגן", english: "Air conditioner", german: "Klimaanlage", italian: "Condizionatore", spanish: "Aire acondicionado", french: "Climatisation", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "רדיאטור", english: "Radiator", german: "Heizkörper", italian: "Radiatore", spanish: "Radiador", french: "Radiateur", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "תריסים", english: "Blinds", german: "Jalousien", italian: "Persiane", spanish: "Persianas", french: "Stores", courseNameEnglish: "Houses", courseOrder: 145 },
+{ hebrew: "חדר ילדים", english: "Children's room", german: "Kinderzimmer", italian: "Cameretta", spanish: "Cuarto de niños", french: "Chambre d'enfant", courseNameEnglish: "Houses", courseOrder: 147 },
+{ hebrew: "חדר אורחים", english: "Guest room", german: "Gästezimmer", italian: "Camera degli ospiti", spanish: "Habitación de invitados", french: "Chambre d'amis", courseNameEnglish: "Houses", courseOrder: 147 },
+{ hebrew: "חדר אוכל", english: "Dining room", german: "Esszimmer", italian: "Sala da pranzo", spanish: "Comedor", french: "Salle à manger", courseNameEnglish: "Houses", courseOrder: 147 },
+
+// Gym - 146
+{ hebrew: "חדר כושר", english: "Gym", german: "Fitnessstudio", italian: "Palestra", spanish: "Gimnasio", french: "Salle de sport", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "הליכון", english: "Treadmill", german: "Laufband", italian: "Tapis roulant", spanish: "Cinta de correr", french: "Tapis de course", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "אופני כושר", english: "Exercise bike", german: "Heimtrainer", italian: "Cyclette", spanish: "Bicicleta estática", french: "Vélo d'appartement", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "משקולת יד", english: "Dumbbell", german: "Kurzhantel", italian: "Manubrio", spanish: "Mancuerna", french: "Haltère", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "מדרגה", english: "Step", german: "Stepper", italian: "Step", spanish: "Escalón", french: "Step", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "מוט מתח", english: "Pull-up bar", german: "Klimmzugstange", italian: "Sbarra per trazioni", spanish: "Barra de dominadas", french: "Barre de traction", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "כפיפות בטן", english: "Sit-ups", german: "Sit-ups", italian: "Addominali", spanish: "Abdominales", french: "Abdominaux", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "סקוואט", english: "Squat", german: "Kniebeuge", italian: "Squat", spanish: "Sentadilla", french: "Squat", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "מתח", english: "Pull-up", german: "Klimmzug", italian: "Trazione", spanish: "Dominada", french: "Traction", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "שכיבות שמיכה", english: "Push-ups", german: "Liegestütze", italian: "Flessioni", spanish: "Flexiones", french: "Pompes", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "עליות מתח", english: "Pull-ups", german: "Klimmzüge", italian: "Trazioni", spanish: "Dominadas", french: "Tractions", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "חבל קפיצה", english: "Jump rope", german: "Springseil", italian: "Corda per saltare", spanish: "Cuerda para saltar", french: "Corde à sauter", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "בגד ספורט", english: "Sportswear", german: "Sportkleidung", italian: "Abbigliamento sportivo", spanish: "Ropa deportiva", french: "Vêtements de sport", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "נעלי ספורט", english: "Sports shoes", german: "Sportschuhe", italian: "Scarpe sportive", spanish: "Zapatillas deportivas", french: "Chaussures de sport", courseNameEnglish: "Gym", courseOrder: 146 },
+{ hebrew: "מאמן כושר", english: "Fitness trainer", german: "Fitnesstrainer", italian: "Allenatore di fitness", spanish: "Entrenador personal", french: "Entraîneur de fitness", courseNameEnglish: "Gym", courseOrder: 146 },
+
+// Brain Research - 147
+{ hebrew: "תאי עצב", english: "Neurons", german: "Neuronen", italian: "Neuroni", spanish: "Neuronas", french: "Neurones", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "תפקוד קוגניטיבי", english: "Cognitive function", german: "Kognitive Funktion", italian: "Funzione cognitiva", spanish: "Función cognitiva", french: "Fonction cognitive", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "אלצהיימר", english: "Alzheimer's disease", german: "Alzheimer-Krankheit", italian: "Malattia di Alzheimer", spanish: "Enfermedad de Alzheimer", french: "Maladie d'Alzheimer", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "אפילפסיה", english: "Epilepsy", german: "Epilepsie", italian: "Epilessia", spanish: "Epilepsia", french: "Épilepsie", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "נוירופלסטיות", english: "Neuroplasticity", german: "Neuroplastizität", italian: "Neuroplasticità", spanish: "Neuroplasticidad", french: "Neuroplasticité", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "מחקר מוח", english: "Brain research", german: "Gehirnforschung", italian: "Ricerca sul cervello", spanish: "Investigación cerebral", french: "Recherche sur le cerveau", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "פעילות מוחית", english: "Brain activity", german: "Gehirnaktivität", italian: "Attività cerebrale", spanish: "Actividad cerebral", french: "Activité cérébrale", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "מערכת העצבים", english: "Nervous system", german: "Nervensystem", italian: "Sistema nervoso", spanish: "Sistema nervioso", french: "Système nerveux", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "לוב קדמי", english: "Frontal lobe", german: "Frontallappen", italian: "Lobo frontale", spanish: "Lóbulo frontal", french: "Lobe frontal", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "מוח ימני", english: "Right brain", german: "Rechtes Gehirn", italian: "Emisfero destro", spanish: "Hemisferio derecho", french: "Hémisphère droit", courseNameEnglish: "Brain Research", courseOrder: 147 },
+{ hebrew: "מוח שמאלי", english: "Left brain", german: "Linkes Gehirn", italian: "Emisfero sinistro", spanish: "Hemisferio izquierdo", french: "Hémisphère gauche", courseNameEnglish: "Brain Research", courseOrder: 147 },
+
+// Army - 148
+{ hebrew: "צבא", english: "Army", german: "Armee", italian: "Esercito", spanish: "Ejército", french: "Armée", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "חייל", english: "Soldier", german: "Soldat", italian: "Soldato", spanish: "Soldado", french: "Soldat", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "קצין", english: "Officer", german: "Offizier", italian: "Ufficiale", spanish: "Oficial", french: "Officier", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מפקד", english: "Commander", german: "Kommandeur", italian: "Comandante", spanish: "Comandante", french: "Commandant", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "גיוס", english: "Enlistment", german: "Einberufung", italian: "Arruolamento", spanish: "Alistamiento", french: "Enrôlement", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "שירות צבאי", english: "Military service", german: "Militärdienst", italian: "Servizio militare", spanish: "Servicio militar", french: "Service militaire", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "טירונות", english: "Basic training", german: "Grundausbildung", italian: "Addestramento di base", spanish: "Entrenamiento básico", french: "Formation de base", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "יחידה", english: "Unit", german: "Einheit", italian: "Unità", spanish: "Unidad", french: "Unité", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "בסיס", english: "Base", german: "Basis", italian: "Base", spanish: "Base", french: "Base", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "נשק", english: "Weapon", german: "Waffe", italian: "Arma", spanish: "Arma", french: "Arme", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "רובה", english: "Rifle", german: "Gewehr", italian: "Fucile", spanish: "Rifle", french: "Fusil", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "אקדח", english: "Pistol", german: "Pistole", italian: "Pistola", spanish: "Pistola", french: "Pistolet", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "טנק", english: "Tank", german: "Panzer", italian: "Carro armato", spanish: "Tanque", french: "Char", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מטוס קרב", english: "Fighter jet", german: "Kampfjet", italian: "Caccia", spanish: "Caza", french: "Avion de chasse", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מסוק", english: "Helicopter", german: "Hubschrauber", italian: "Elicottero", spanish: "Helicóptero", french: "Hélicoptère", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "ספינת מלחמה", english: "Warship", german: "Kriegsschiff", italian: "Nave da guerra", spanish: "Buque de guerra", french: "Navire de guerre", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מודיעין", english: "Intelligence", german: "Geheimdienst", italian: "Intelligence", spanish: "Inteligencia", french: "Renseignement", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מבצע", english: "Operation", german: "Operation", italian: "Operazione", spanish: "Operación", french: "Opération", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "סיור", english: "Patrol", german: "Patrouille", italian: "Pattuglia", spanish: "Patrulla", french: "Patrouille", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מדים", english: "Uniform", german: "Uniform", italian: "Uniforme", spanish: "Uniforme", french: "Uniforme", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "מצעד", english: "Parade", german: "Parade", italian: "Parata", spanish: "Desfile", french: "Parade", courseNameEnglish: "Army", courseOrder: 148 },
+{ hebrew: "פרישה", english: "Retirement", german: "Ruhestand", italian: "Pensionamento", spanish: "Jubilación", french: "Retraite", courseNameEnglish: "Army", courseOrder: 148 },
+
+// Cinema - 149
+{ hebrew: "קולנוע", english: "Cinema", german: "Kino", italian: "Cinema", spanish: "Cine", french: "Cinéma", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "סרט", english: "Movie", german: "Film", italian: "Film", spanish: "Película", french: "Film", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "דרמה", english: "Drama", german: "Drama", italian: "Dramma", spanish: "Drama", french: "Drame", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "מדע בדיוני", english: "Science fiction", german: "Science-Fiction", italian: "Fantascienza", spanish: "Ciencia ficción", french: "Science-fiction", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "אנימציה", english: "Animation", german: "Animation", italian: "Animazione", spanish: "Animación", french: "Animation", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "מותחן", english: "Thriller", german: "Thriller", italian: "Thriller", spanish: "Suspenso", french: "Thriller", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "פסקול", english: "Soundtrack", german: "Soundtrack", italian: "Colonna sonora", spanish: "Banda sonora", french: "Bande originale", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "אפקטים מיוחדים", english: "Special effects", german: "Spezialeffekte", italian: "Effetti speciali", spanish: "Efectos especiales", french: "Effets spéciaux", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "סרט דוקומנטרי", english: "Documentary", german: "Dokumentarfilm", italian: "Documentario", spanish: "Documental", french: "Documentaire", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "כרטיס קולנוע", english: "Movie ticket", german: "Kinokarte", italian: "Biglietto del cinema", spanish: "Entrada de cine", french: "Billet de cinéma", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "בכורה", english: "Premiere", german: "Premiere", italian: "Prima", spanish: "Estreno", french: "Première", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "פרס אוסקר", english: "Oscar award", german: "Oscar", italian: "Premio Oscar", spanish: "Premio Óscar", french: "Oscar", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "קרדיטים", english: "Credits", german: "Abspann", italian: "Crediti", spanish: "Créditos", french: "Générique", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "פסטיבל סרטים", english: "Film festival", german: "Filmfestival", italian: "Festival del cinema", spanish: "Festival de cine", french: "Festival de cinéma", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "תסריטאי", english: "Screenwriter", german: "Drehbuchautor", italian: "Sceneggiatore", spanish: "Guionista", french: "Scénariste", courseNameEnglish: "Cinema", courseOrder: 149 },
+{ hebrew: "סרט תלת מימד", english: "3D film", german: "3D-Film", italian: "Film 3D", spanish: "Película en 3D", french: "Film en 3D", courseNameEnglish: "Cinema", courseOrder: 149 },
+
+// Intermediate Extreme Sports - 150
+{ hebrew: "באנג'י", english: "Bungee jumping", german: "Bungee-Jumping", italian: "Bungee jumping", spanish: "Puenting", french: "Saut à l'élastique", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "טיפוס צוקים", english: "Rock climbing", german: "Klettern", italian: "Arrampicata su roccia", spanish: "Escalada en roca", french: "Escalade", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "צלילה חופשית", english: "Freediving", german: "Apnoetauchen", italian: "Apnea", spanish: "Buceo libre", french: "Apnée", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "גלישת רוח", english: "Windsurfing", german: "Windsurfen", italian: "Windsurf", spanish: "Windsurf", french: "Planche à voile", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "סקייטבורדינג", english: "Skateboarding", german: "Skateboarden", italian: "Skateboarding", spanish: "Skateboarding", french: "Skateboard", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "גלישה על שלג", english: "Snowboarding", german: "Snowboarden", italian: "Snowboard", spanish: "Snowboard", french: "Snowboard", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "גלישת חול", english: "Sandboarding", german: "Sandboarding", italian: "Sandboarding", spanish: "Sandboarding", french: "Sandboard", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "פארקור", english: "Parkour", german: "Parkour", italian: "Parkour", spanish: "Parkour", french: "Parkour", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "סקי קרח", english: "Ice skiing", german: "Eisskifahren", italian: "Sci su ghiaccio", spanish: "Esquí en hielo", french: "Ski sur glace", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
+{ hebrew: "מרוצי אופנועים", english: "Motorcycle racing", german: "Motorradrennen", italian: "Corsa di moto", spanish: "Carreras de motos", french: "Course de moto", courseNameEnglish: "Intermediate Extreme Sports", courseOrder: 150 },
 ];
   const getCourseLevel = (courseOrder: number) => {
     if (courseOrder <= 25) {
@@ -431,5 +2584,10 @@ const wordData = words.flatMap((word) => {
   ];
 });
 
-await db.insert(Words).values(wordData).returning({ id: Words.courseId });
+// await db.insert(Words).values(wordData).returning({ id: Words.courseId });
+const CHUNK_SIZE = 1000;
+for (let i = 0; i < wordData.length; i += CHUNK_SIZE) {
+  const chunk = wordData.slice(i, i + CHUNK_SIZE);
+  await db.insert(Words).values(chunk).returning({ id: Words.courseId });
+}
 };

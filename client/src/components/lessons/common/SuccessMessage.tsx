@@ -1,18 +1,22 @@
 import React from 'react';
 import { Card } from 'antd';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from "../../../app/store";
-import { setRunning, addOneOrder, resetClicks } from "../slices/LessonsSlice";
+import { useDispatch } from 'react-redux';
+import { setRunning, addOneOrder, resetClicks, setLessonName, addOneClick } from "../slices/LessonsSlice";
+import { LessonName } from '../types/LessonType';
+import { setClicks } from '../../games/wordle/slices/WordleSlice';
+import { useQueryClient } from '@tanstack/react-query';
 
 const SuccessMessage: React.FC = () => {
-    const order = useSelector((state: RootState) => state.lessons.order);
     const dispatch = useDispatch();
-
-    const handleClick = () => {
-        dispatch(resetClicks());
+    const queryClient = useQueryClient();
+    
+    const handleClick = async() => {
+        dispatch(setClicks(2))
         dispatch(addOneOrder());
         dispatch(setRunning());
+        dispatch(setLessonName(LessonName.Loading))
+        await queryClient.removeQueries();
     };
 
     return (

@@ -33,7 +33,6 @@ export const fetchUserFlag = async (
   return data;
 };
 
-
 export const changeLanguage = async (
   newLanguage: CourseLangauge,
   token: string

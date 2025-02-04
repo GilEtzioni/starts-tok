@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import { getNumberOfLessonsCompleted } from "./Helper";
+import { getNumberOfLessonsCompleted } from "./courseCardHelper";
 import CourseCard from "./CourseCard";
 import SkeletonCard from "../../Skeleton/SkeletonCard";
 import { fetchLessonPage } from '../../../../../../api/pages'; 

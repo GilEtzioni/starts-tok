@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { Words, CourseNames, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
-import { eq, and, desc, count, inArray } from "drizzle-orm";
+import { eq, and, desc, count, inArray, isNotNull } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { EnglishLevel } from "../types/seedersType";
 import { DictionaryKnowledgeType } from "../types/dictionaryType";
@@ -33,7 +33,8 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
         .where(
             and(
                 eq(Words.userId, userId),
-                eq(Words.language, language)
+                eq(Words.language, language),
+                isNotNull(Words.knowledge)
             )
         )
         .orderBy(Words.wordOrder);
@@ -82,6 +83,7 @@ export const getAllWords = async (req: Request, res: Response): Promise<void> =>
       const filters = [
         eq(Words.userId, userId),
         eq(Words.language, language),
+        isNotNull(Words.knowledge)
       ];
   
       if (parsedKnowledgeArray.length > 0) {
@@ -161,6 +163,7 @@ export const addNewWord = async (req: Request, res: Response): Promise<void> => 
       hebrewWord,
       foreignWord,
       language,
+      knowledge: DictionaryKnowledgeType.Ex,
     });
 
     const insertedWord = await db

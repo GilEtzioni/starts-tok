@@ -10,7 +10,7 @@ import useSpeedGameActions from './utils/messageHelper';
 
 // functions + types
 import { useHandleCouples, useHandleTimer } from "./utils/SpeedGameEffects";
-import { speedGameType, Language, SelectedCard } from "./types/speedGameTypes";
+import { speedGameType, Language, SelectedCard, SpeedGameMode } from "./types/speedGameTypes";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,7 +20,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchWords } from '../../../api/games';
 import { DICTIONARY_ALL_WORDS } from '../requests/queryKeys';
 import { createGameArray, shuffleAllWords } from './utils/speedHelper';
-import { resetWrongCounter } from './slices/SpeedGameSlice';
+import { resetWrongCounter, setSpeedGameMode } from './slices/SpeedGameSlice';
 import { SPEED_GAME_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
@@ -28,6 +28,7 @@ import { useWithAuth } from '../../../api/common/withAuth';
 const MainSpeedGame: React.FC = () => {
 
     const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
+    const currentMode = useSelector((state: RootState) => state.speedGame.speedGameMode);
     const successCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
     const dispatch = useDispatch();
     
@@ -40,11 +41,12 @@ const MainSpeedGame: React.FC = () => {
     const fetchGameWords = () => withAuth((token) => fetchWords(token));
     const {  data: words, isLoading, error } = useQuery(
         [DICTIONARY_ALL_WORDS, wrongCounter === SPEED_GAME_FINISHED_NUMBER],
-        fetchGameWords,
+        () => fetchWords(),
         {
+        staleTime: Infinity, 
+        cacheTime: Infinity,
         onSuccess: (words) => {
             const validWords = words ?? []; 
-            dispatch(resetWrongCounter());
     
             const shuffledArray = shuffleAllWords(validWords);
             const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
@@ -52,12 +54,14 @@ const MainSpeedGame: React.FC = () => {
             setGermanArray(shuffledGermanArray ?? []); 
             setHebrewArray(shuffledHebrewArray ?? []); 
             setWordsCoppy(shuffledArray);
+            dispatch(resetWrongCounter());
+            dispatch(setSpeedGameMode(SpeedGameMode.Running))
         }
-        }
+      }
     );
 
     useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
-    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
+    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter, currentMode });
 
     const handleClick = (card: speedGameType[], id: number) => {
         if (card[id].language === Language.GermanWord) {
@@ -84,7 +88,7 @@ const MainSpeedGame: React.FC = () => {
     const { Title } = Typography;
     return (
       <>
-        {isLoading ? (
+        {isLoading || currentMode === SpeedGameMode.Loading ? (
           <LoadingPage />
         ) : wrongCounter === germanArray.length ? (
           <FinishedGameMesssage
@@ -103,7 +107,7 @@ const MainSpeedGame: React.FC = () => {
               </div>
     
               <div className="ml-auto">
-                <BackButton />
+                <BackButton onBack={handleBack}/>
               </div>
             </div>
     

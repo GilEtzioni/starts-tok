@@ -9,8 +9,6 @@ import { RootState } from '../../../../app/store';
 import { useSelector } from 'react-redux';
 import { DictionaryKnowledgeType } from '../../../../api/common/types';
 import SkeletonTable from './SkeletonTable';
-// import axiosInstance from '../../../../api/common/axiosInstance';
-// import { useAuth } from '@clerk/clerk-react';
 import { useWithAuth } from '../../../../api/common/withAuth';
 
 const TableDictionary: React.FC = () => {
@@ -48,13 +46,10 @@ const TableDictionary: React.FC = () => {
           courseOrder: item.courseOrder,
         }));
         setDataSource(transformedWords);
-      },
-      onError: (error) => {
-        console.error("Error fetching dictionary words:", error);
-      },
+      }
     }
   );
-
+  
   return (
     <div className="w-4/5 mx-auto">
       {isLoading ? (
@@ -72,6 +67,12 @@ const TableDictionary: React.FC = () => {
               },
             },
             {
+              title: 'תרגום',
+              dataIndex: 'hebrewWord',
+              key: 'hebrewWord',
+              align: 'center' as const,
+            },
+            {
               title: 'מילה',
               dataIndex: 'foreignWord',
               key: 'foreignWord',
@@ -85,5 +86,5 @@ const TableDictionary: React.FC = () => {
     </div>
   );
 }
-
-export default TableDictionary;
+  
+  export default TableDictionary;

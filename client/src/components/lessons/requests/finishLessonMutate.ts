@@ -7,13 +7,15 @@ export const usePatchFinishLesson = () => {
   const queryClient = useQueryClient();
   const { getToken } = useAuth();
 
-  return useMutation(
+  const mutation = useMutation(
     async ({ name, lesson }: { name: string; lesson: string }) => {
       const token = await getToken();
       if (!token) {
-        throw new Error("Authentication token is missing.");
+        throw new Error('Authentication token is missing.');
       }
-      return patchFinishLesson({ name, lesson }, token);
+
+      // Update here to pass an object with name, lesson, and token
+      return patchFinishLesson({ name, lesson, token });
     },
     {
       onSuccess: () => {
@@ -21,4 +23,6 @@ export const usePatchFinishLesson = () => {
       },
     }
   );
+
+  return mutation;
 };

@@ -1,8 +1,7 @@
 import { courseSeeder } from "./seedersTables/courseSeeder";
 import { wordSeeder } from "./seedersTables/wordSeeder";
 import { gameSeeder } from "./seedersTables/gameSeeder";
-import { missingWordSeeder } from "./seedersTables/missingWordSeeder";
-import { sentenceSeeder } from "./seedersTables/sentenceSeeder";
+import { lessonSeeder } from "./seedersTables/lessonSeeder";
 import { userSeeder } from "./seedersTables/userSeeder";
 import { generateCourseIds, hangmanGameId, speedGameId, rowGameId } from "./utils/helpingSeeders";
 import { CourseLangauge } from "../types/seedersType";
@@ -29,12 +28,8 @@ export const mainSeeder = async (userId: string) => {
     console.log("games seeded\n");
  
     console.log("\nstart seeding missingWord...");
-    await missingWordSeeder(userId, courseIds);
+    await lessonSeeder(userId, courseIds);
     console.log("missingWord seeded\n");
-
-    console.log("\nstart seeding sentence...");
-    await sentenceSeeder(userId, courseIds);
-    console.log("sentence seeded\n");
 
     console.log("\nstart seeding users...");
     await userSeeder(userId, userName);

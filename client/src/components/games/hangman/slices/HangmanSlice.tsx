@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { WordsType } from '../../../../api/common/types';
+import { HANGMAN_FINISHED_NUMBER } from '../../common/consts';
 
 export const hangmanSlice = createSlice({
   name: 'hangman',
   initialState: {
-    wrongLettersCounter: 0,
+    wrongLettersCounter: HANGMAN_FINISHED_NUMBER,
     successGamesCounter: 0,
     selectedWord: "",
   },

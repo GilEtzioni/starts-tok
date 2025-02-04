@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getUserAnswer, areStringsEqual } from './SecondHelper';
+import { getUserAnswer, areStringsEqual } from './lessonsHelper';
 import { useDispatch } from 'react-redux';
 import { CardType } from '../types/SecondLessonType';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
@@ -21,7 +21,7 @@ interface UseHandleNextProps {
 export const useHandleNext = ({ clicks, dispatch, resetClicks, setSuccess, setFailure, lessonData, foreignArray, order }: UseHandleNextProps) => { 
   useEffect(() => {
 
-    if (!lessonData) return;
+    if (!lessonData || lessonData === null || !foreignArray) return;
 
     const userAnswer = getUserAnswer(lessonData, foreignArray, order);
     const isUserRight: boolean = areStringsEqual(userAnswer, lessonData.foreignSentence); 

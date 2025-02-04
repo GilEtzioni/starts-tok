@@ -4,7 +4,7 @@ import { TranslatedArray } from '../types/SecondLessonType';
 const classNames = require('classnames');
 
 interface HebrewSentenceProps {
-    TranslatedWords: TranslatedArray[]
+    TranslatedWords: TranslatedArray[];
 }
 
 const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) => {
@@ -19,8 +19,8 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) =
                         <Tooltip
                             key={index}
                             title={
-                                Array.isArray(item.foreignString) && item.foreignString.length > 0
-                                    ? item.foreignString.map((str: string | null, strIndex: number) => (
+                                Array.isArray(item.foreignWord) && item.foreignWord.length > 0
+                                    ? item.foreignWord.map((str: string | null, strIndex: number) => (
                                           <div key='strIndex' className="text-center">
                                               {str}
                                           </div>
@@ -33,8 +33,8 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) =
                             onVisibleChange={(visible) => {
                                 if (
                                     visible &&
-                                    Array.isArray(item.foreignString) &&
-                                    item.foreignString[0] !== null
+                                    Array.isArray(item.foreignWord) &&
+                                    item.foreignWord[0] !== null
                                 ) {
                                     setHoveredIndex(index);
                                 } else {
@@ -45,21 +45,21 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) =
                             {/* add spaces based on the word / commas / etc */}
                             <span
                                 className={`inline-block text-center relative ${
-                                    !Array.isArray(item.foreignString) || item.foreignString[0] === null
+                                    !Array.isArray(item.foreignWord) || item.foreignWord[0] === null
                                         ? '' // no margin or hover for null
                                         : 'mr-2'
                                 }`}
                             >
                                 <span
                                     className={`block ${
-                                        !Array.isArray(item.foreignString) || item.foreignString[0] === null
+                                        !Array.isArray(item.foreignWord) || item.foreignWord[0] === null
                                             ? '' // disable hover behavior
                                             : 'hover:cursor-pointer'
                                     }`}
                                 >
-                                    {item.hebrewString}
+                                    {item.hebrewWord}
                                 </span>
-                                {Array.isArray(item.foreignString) && item.foreignString[0] !== null && (
+                                {Array.isArray(item.foreignWord) && item.foreignWord[0] !== null && (
                                     <div
                                         className={classNames(
                                             'border-t-2 w-full absolute top-4 left-0',

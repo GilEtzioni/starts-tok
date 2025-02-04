@@ -1,5 +1,5 @@
 {
-  "id": "78a63d79-d0a8-4471-8d6b-178c75aa9c8f",
+  "id": "c6096039-e704-4baf-9229-1c94ca4590c3",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -85,7 +85,8 @@
         }
       },
       "policies": {},
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.games": {
       "name": "games",
@@ -129,7 +130,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.language": {
       "name": "language",
@@ -154,10 +156,11 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
-    "public.missingWords": {
-      "name": "missingWords",
+    "public.lesson": {
+      "name": "lesson",
       "schema": "",
       "columns": {
         "courseId": {
@@ -206,9 +209,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "missingWords_courseId_courses_courseId_fk": {
-          "name": "missingWords_courseId_courses_courseId_fk",
-          "tableFrom": "missingWords",
+        "lesson_courseId_courses_courseId_fk": {
+          "name": "lesson_courseId_courses_courseId_fk",
+          "tableFrom": "lesson",
           "tableTo": "courses",
           "columnsFrom": [
             "courseId"
@@ -223,70 +226,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {}
-    },
-    "public.sentences": {
-      "name": "sentences",
-      "schema": "",
-      "columns": {
-        "courseId": {
-          "name": "courseId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "userId": {
-          "name": "userId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "courseNameEnglish": {
-          "name": "courseNameEnglish",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "senteceOrder": {
-          "name": "senteceOrder",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "language": {
-          "name": "language",
-          "type": "languages",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "sentence": {
-          "name": "sentence",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "sentences_courseId_courses_courseId_fk": {
-          "name": "sentences_courseId_courses_courseId_fk",
-          "tableFrom": "sentences",
-          "tableTo": "courses",
-          "columnsFrom": [
-            "courseId"
-          ],
-          "columnsTo": [
-            "courseId"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.users": {
       "name": "users",
@@ -323,7 +264,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.words": {
       "name": "words",
@@ -424,7 +366,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {
