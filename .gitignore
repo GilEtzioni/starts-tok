@@ -28,3 +28,4 @@ yarn-error.log*
 .env
 .vscode
 .vscode/settings.json
+/server/node_modules

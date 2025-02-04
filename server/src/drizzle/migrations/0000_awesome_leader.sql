@@ -29,25 +29,14 @@ CREATE TABLE IF NOT EXISTS "language" (
 	"language" "languages" NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "missingWords" (
+CREATE TABLE IF NOT EXISTS "lesson" (
 	"courseId" text NOT NULL,
 	"userId" text NOT NULL,
 	"courseNameEnglish" text,
 	"missingSentenceOrder" integer NOT NULL,
 	"language" "languages" NOT NULL,
 	"missingSentence" text NOT NULL,
-	"missingWord" text NOT NULL,
-	CONSTRAINT "missingWords_userId_courseId_missingSentenceOrder_language_pk" PRIMARY KEY("userId","courseId","missingSentenceOrder","language")
-);
---> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "sentences" (
-	"courseId" text NOT NULL,
-	"userId" text NOT NULL,
-	"courseNameEnglish" text,
-	"sentenceOrder" integer NOT NULL,
-	"language" "languages" NOT NULL,
-	"sentence" text NOT NULL,
-	CONSTRAINT "sentences_userId_courseId_sentenceOrder_language_pk" PRIMARY KEY("userId","courseId","sentenceOrder","language")
+	"missingWord" text NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
@@ -73,13 +62,7 @@ CREATE TABLE IF NOT EXISTS "words" (
 );
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "missingWords" ADD CONSTRAINT "missingWords_courseId_courses_courseId_fk" FOREIGN KEY ("courseId") REFERENCES "public"."courses"("courseId") ON DELETE no action ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "sentences" ADD CONSTRAINT "sentences_courseId_courses_courseId_fk" FOREIGN KEY ("courseId") REFERENCES "public"."courses"("courseId") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "lesson" ADD CONSTRAINT "lesson_courseId_courses_courseId_fk" FOREIGN KEY ("courseId") REFERENCES "public"."courses"("courseId") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

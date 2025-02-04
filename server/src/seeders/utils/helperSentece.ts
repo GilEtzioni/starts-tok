@@ -8,7 +8,7 @@ export const processSentence = async (
   language: "german" | "italian" | "spanish" | "french" | "english" | "hebrew"
 ): Promise<{ hebrewWord: string; foreignWord: [string] }[]> => {
 
-  const wordArray = inputSentence.split(' ');
+  const wordArray = inputSentence.toLowerCase().split(' ');
   const resultArray: Array<{ hebrewWord: string, foreignWord: [string] }> = [];
   const processedWords = new Set<string>();
 
@@ -110,7 +110,7 @@ export const processSentence = async (
 };
 
 (async () => {
-  const sentence_one = "הפרח סגול";
+  const sentence_one = "הרכבל מטפס על הר";
   const language = CourseLangauge.English;
   const processedSentenceOne = await processSentence(sentence_one, language);
   console.log("processedSentenceOne", processedSentenceOne)
@@ -184,6 +184,7 @@ const endSuffixesArray = (word: string): string[] => {
 
 const addSuffixesArray = (word: string): string[] => {
   return [
+    word.startsWith('ה') ? word.substring(1, word.length) : null,
     word.startsWith('ו') ? word.substring(1, word.length) : null,
     word.startsWith('ב') ? word.substring(1, word.length) : null,
     word.startsWith('כ') ? word.substring(1, word.length) : null,

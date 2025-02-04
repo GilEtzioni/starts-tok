@@ -1,5 +1,5 @@
 {
-  "id": "0caa93cd-d7dc-4132-9876-0ea756d4e815",
+  "id": "c6096039-e704-4baf-9229-1c94ca4590c3",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -159,8 +159,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.missingWords": {
-      "name": "missingWords",
+    "public.lesson": {
+      "name": "lesson",
       "schema": "",
       "columns": {
         "courseId": {
@@ -209,9 +209,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "missingWords_courseId_courses_courseId_fk": {
-          "name": "missingWords_courseId_courses_courseId_fk",
-          "tableFrom": "missingWords",
+        "lesson_courseId_courses_courseId_fk": {
+          "name": "lesson_courseId_courses_courseId_fk",
+          "tableFrom": "lesson",
           "tableTo": "courses",
           "columnsFrom": [
             "courseId"
@@ -223,91 +223,7 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {
-        "missingWords_userId_courseId_missingSentenceOrder_language_pk": {
-          "name": "missingWords_userId_courseId_missingSentenceOrder_language_pk",
-          "columns": [
-            "userId",
-            "courseId",
-            "missingSentenceOrder",
-            "language"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.sentences": {
-      "name": "sentences",
-      "schema": "",
-      "columns": {
-        "courseId": {
-          "name": "courseId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "userId": {
-          "name": "userId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "courseNameEnglish": {
-          "name": "courseNameEnglish",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "sentenceOrder": {
-          "name": "sentenceOrder",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "language": {
-          "name": "language",
-          "type": "languages",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "sentence": {
-          "name": "sentence",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "sentences_courseId_courses_courseId_fk": {
-          "name": "sentences_courseId_courses_courseId_fk",
-          "tableFrom": "sentences",
-          "tableTo": "courses",
-          "columnsFrom": [
-            "courseId"
-          ],
-          "columnsTo": [
-            "courseId"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "sentences_userId_courseId_sentenceOrder_language_pk": {
-          "name": "sentences_userId_courseId_sentenceOrder_language_pk",
-          "columns": [
-            "userId",
-            "courseId",
-            "sentenceOrder",
-            "language"
-          ]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},

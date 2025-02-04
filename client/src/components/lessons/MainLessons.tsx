@@ -36,8 +36,8 @@ const MainLearn: React.FC = () => {
                 return <MainFirst />;
             case 2:
             case 5:
-                dispatch(setLessonName(LessonName.ForeignMissing));
-                return <MainThird />;
+                dispatch(setLessonName(LessonName.ForeignSentence));
+                return <MainSecond />;
             case 3:
             case 6:
                 dispatch(setLessonName(LessonName.ForeignMissing));

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../drizzle/db";
-import { CourseNames, Words, Sentences, MissingWords, Language } from "../drizzle/schema";
+import { CourseNames, Words, Lesson, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
 import { and, desc, eq, notInArray, sql } from "drizzle-orm";
 import { CourseLangauge } from "../types/seedersType";
@@ -157,50 +157,50 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
 
     const maxRandomNumber = await db
     .select()
-    .from(MissingWords)
+    .from(Lesson)
     .where(
-      eq(MissingWords.courseNameEnglish, course),
+      eq(Lesson.courseNameEnglish, course),
     )
     .orderBy(
-      desc(MissingWords.missingSentenceOrder)
+      desc(Lesson.sentenceOrder)
     )
 
-  const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].missingSentenceOrder - 1) + 1)
+  const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].sentenceOrder - 1) + 1)
 
   const currentForeignLesson = await db
     .select()
-    .from(MissingWords)
+    .from(Lesson)
     .where(
       and(
-        eq(MissingWords.courseNameEnglish, course),
-        eq(MissingWords.userId, userId),
-        eq(MissingWords.language, language),
-        eq(MissingWords.missingSentenceOrder, randomNumber)
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.userId, userId),
+        eq(Lesson.language, language),
+        eq(Lesson.sentenceOrder, randomNumber)
       )
     );
 
   const currentHebrewLesson = await db
     .select()
-    .from(MissingWords)
+    .from(Lesson)
     .where(
       and(
-        eq(MissingWords.courseNameEnglish, course),
-        eq(MissingWords.userId, userId),
-        eq(MissingWords.language, CourseLangauge.Hebrew),
-        eq(MissingWords.missingSentenceOrder, randomNumber)
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.userId, userId),
+        eq(Lesson.language, CourseLangauge.Hebrew),
+        eq(Lesson.sentenceOrder, randomNumber)
       )
     );
-    const translatedArray = await processSentence(currentHebrewLesson[0]?.missingSentence ?? "", language)
+    const translatedArray = await processSentence(currentHebrewLesson[0]?.sentence ?? "", language)
 
     const { firstPart: firstPartForeign, secondPart: secondPartForeign } = splitTheSentence(
-      currentForeignLesson[0]?.missingSentence ?? "", 
+      currentForeignLesson[0]?.sentence ?? "", 
       currentForeignLesson[0]?.missingWord ?? ""
     );
     
     const result = {
-      hebrewSentence: currentHebrewLesson[0]?.missingSentence,
+      hebrewSentence: currentHebrewLesson[0]?.sentence,
       hebrewWord: currentHebrewLesson[0]?.missingWord,
-      foreignSentence: currentForeignLesson[0]?.missingSentence,
+      foreignSentence: currentForeignLesson[0]?.sentence,
       foreignWord: currentForeignLesson[0]?.missingWord,
       translatedArray,
       firstPartForeign,
@@ -244,27 +244,27 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
   // get random lesson
   const maxRandomNumber = await db
     .select()
-    .from(Sentences)
+    .from(Lesson)
     .where(
-      eq(Sentences.courseNameEnglish, course),
+      eq(Lesson.courseNameEnglish, course),
     )
     .orderBy(
-      desc(Sentences.senteceOrder)
+      desc(Lesson.sentenceOrder)
     )
     .limit(1);
 
-  const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].senteceOrder - 1) + 1)
+  const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].sentenceOrder - 1) + 1)
 
   // get the lesson's words
   const currentLesson = await db
     .select()
-    .from(Sentences)
+    .from(Lesson)
     .where(
       and(
-        eq(Sentences.courseNameEnglish, course),
-        eq(Sentences.senteceOrder, randomNumber),
-        eq(Sentences.userId, userId),
-        eq(Sentences.language, language),
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.sentenceOrder, randomNumber),
+        eq(Lesson.userId, userId),
+        eq(Lesson.language, language),
       )
     )
     .limit(1);
@@ -304,25 +304,25 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     // get lesson's sentence
     const currentForeignSentence = await db
     .select()
-    .from(Sentences)
+    .from(Lesson)
     .where(
       and(
-        eq(Sentences.courseNameEnglish, course),
-        eq(Sentences.userId, userId),
-        eq(Sentences.senteceOrder, randomNumber),
-        eq(Sentences.language, language)
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.userId, userId),
+        eq(Lesson.sentenceOrder, randomNumber),
+        eq(Lesson.language, language)
       )
     );
 
   const currentHebrewSentence = await db
     .select()
-    .from(Sentences)
+    .from(Lesson)
     .where(
       and(
-        eq(Sentences.courseNameEnglish, course),
-        eq(Sentences.userId, userId),
-        eq(Sentences.senteceOrder, randomNumber),
-        eq(Sentences.language, CourseLangauge.Hebrew),
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.userId, userId),
+        eq(Lesson.sentenceOrder, randomNumber),
+        eq(Lesson.language, CourseLangauge.Hebrew),
       )
     );
 

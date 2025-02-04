@@ -16,7 +16,7 @@
   "description": "",
   "devDependencies": {
     "@types/cors": "^2.8.17",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.13.0",
     "@types/pg": "^8.11.10",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
