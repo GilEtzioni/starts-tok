@@ -22,7 +22,7 @@ interface useHandleTimerProps {
     setHebrewArray: (array: speedGameType[]) => void; 
     dispatch: ReturnType<typeof useDispatch>;
     wrongCounter: number;
-    currentMode: SpeedGameMode;
+    speedGameMode: SpeedGameMode;
 }
 
 
@@ -64,14 +64,14 @@ export const useHandleTimer = ({
     setHebrewArray,
     dispatch,
     wrongCounter,
-    currentMode
+    speedGameMode
 }: useHandleTimerProps) => {
     const intervalDurationRef = useRef(2000); // start with 3 sec
     const roundCounterRef = useRef(1); 
 
     useEffect(() => {
         if (
-            currentMode === SpeedGameMode.Loading ||
+            speedGameMode === SpeedGameMode.Loading ||
             wrongCounter === germanArray.length ||
             wordsCoppy === undefined ||
             wordsCoppy.length === 0

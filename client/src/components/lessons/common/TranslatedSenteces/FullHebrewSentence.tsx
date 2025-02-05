@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Tooltip } from 'antd';
-import { TranslatedArray } from '../types/SecondLessonType';
+import { TranslatedArray } from '../../types/SecondLessonType';
 const classNames = require('classnames');
 
 interface HebrewSentenceProps {
     TranslatedWords: TranslatedArray[];
 }
 
-const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) => {
+const FullHebrewSentence: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
@@ -78,4 +78,4 @@ const HebrewSentenceTwo: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) =
     );
 }
 
-export default HebrewSentenceTwo;
+export default FullHebrewSentence;

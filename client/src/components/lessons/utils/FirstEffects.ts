@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSuccess, setFailure } from "../slices/LessonsSlice";
-import { FirstLessonCard, IsSelected } from '../types/FirstLessonType';
+import { FirstLessonCardType, IsSelected } from '../types/FirstLessonType';
 
 interface UseCardEffectsProps {
     order: number;
     foreignId: number;
     hebrewId: number;
-    foreignArray: FirstLessonCard[];
-    hebrewArray: FirstLessonCard[];
+    foreignArray: FirstLessonCardType[];
+    hebrewArray: FirstLessonCardType[];
     counter: number;
     setForeignID: (id: number) => void;
     setHebrewId: (id: number) => void;
     setCounter: (value: React.SetStateAction<number>) => void;
-    setForeignArray: (array: FirstLessonCard[]) => void;
-    setHebrewArray: (array: FirstLessonCard[]) => void;
+    setForeignArray: (array: FirstLessonCardType[]) => void;
+    setHebrewArray: (array: FirstLessonCardType[]) => void;
     dispatch: ReturnType<typeof useDispatch>;
     status: string;
 }

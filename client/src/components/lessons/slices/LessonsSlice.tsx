@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LessonName, LessonStatus } from '../types/LessonType';
 
 const generateShuffledNumbers = () => {
-  const numbers = [1, 2, 3, 4, 5, 6];
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
   for (let i = numbers.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [numbers[i], numbers[j]] = [numbers[j], numbers[i]];

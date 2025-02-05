@@ -7,11 +7,11 @@ import { useParams } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../app/store';
-import { resetOrder, resetPoints } from '../slices/LessonsSlice';
+import { RootState } from '../../../../app/store';
+import { resetOrder, resetPoints } from '../../slices/LessonsSlice';
 
-import { useAddNewPoints } from '../requests/addPointsMutate';
-import { usePatchFinishLesson } from '../requests/finishLessonMutate';
+import { useAddNewPoints } from '../../requests/addPointsMutate';
+import { usePatchFinishLesson } from '../../requests/finishLessonMutate';
 
 const FinishLessonMessage: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);

@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { db } from "../drizzle/db";
 import { CourseNames, Words, Lesson, Language } from "../drizzle/schema";
 import { getAuth } from "@clerk/express";
-import { and, desc, eq, notInArray, sql } from "drizzle-orm";
-import { CourseLangauge } from "../types/seedersType";
+import { and, desc, eq, ne, notInArray, sql } from "drizzle-orm";
+import { CourseLangauge, ForthLessonCards, IsSelected } from "../types/seedersType";
 import { shuffleArray } from "../seeders/utils/helpingSeeders";
 import { processSentence, splitTheSentence } from "../seeders/utils/helperSentece";
 
@@ -141,6 +141,121 @@ export const getLevelLessons = async (req: Request, res: Response): Promise<void
       res.status(500).json({ message: "An error occurred while ", error });
     }
 }
+
+
+/* ------------------------------------------------------------------------------------ */
+
+export const getForthLesson = async (req: Request, res: Response): Promise<void> => {
+  const { userId } = getAuth(req);
+
+  if (!userId) {
+      res.status(401).json({ error: "Unauthorized: User ID is missing" });
+      return;
+  }
+
+  try {
+      const course = req.params.course;
+
+      const userLanguage = await db
+      .select()
+      .from(Language)
+      .where(
+        eq(Language.userId, userId)
+      )
+      .limit(1);
+
+    if (userLanguage.length === 0) {
+      res.status(404).json({ error: "User language not found" });
+      return;
+    }
+    const language = userLanguage[0].language;
+
+    const maxRandomNumber = await db
+    .select()
+    .from(Lesson)
+    .where(
+      eq(Lesson.courseNameEnglish, course),
+    )
+    .orderBy(
+      desc(Lesson.sentenceOrder)
+    )
+
+  const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].sentenceOrder - 1) + 1)
+
+  const currentForeignLesson = await db
+    .select()
+    .from(Lesson)
+    .where(
+      and(
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.userId, userId),
+        eq(Lesson.language, language),
+        eq(Lesson.sentenceOrder, randomNumber)
+      )
+    );
+
+  const currentHebrewLesson = await db
+    .select()
+    .from(Lesson)
+    .where(
+      and(
+        eq(Lesson.courseNameEnglish, course),
+        eq(Lesson.userId, userId),
+        eq(Lesson.language, CourseLangauge.Hebrew),
+        eq(Lesson.sentenceOrder, randomNumber)
+      )
+    );
+    const translatedArray = await processSentence(currentHebrewLesson[0]?.sentence ?? "", language)
+
+    const { firstPart: firstPartForeign, secondPart: secondPartForeign } = splitTheSentence(
+      currentForeignLesson[0]?.sentence ?? "", 
+      currentForeignLesson[0]?.missingWord ?? ""
+    );
+    
+    const currentSimillarWords: ForthLessonCards[] = (await db
+      .select({ foreignWord: Words.foreignWord })
+      .from(Words)
+      .where(
+        and(
+          eq(Words.courseNameEnglish, course),
+          eq(Words.userId, userId),
+          eq(Words.language, language),
+          ne(Words.foreignWord, currentForeignLesson[0]?.missingWord),
+          ne(Words.hebrewWord, currentHebrewLesson[0]?.missingWord)
+        )
+      )
+      .limit(3)).map((item) => ({
+        foreignWord: item.foreignWord ?? "",
+        isRightWord: false,
+        isSelected: IsSelected.NotSelected,
+      }));
+    
+    currentSimillarWords.unshift({
+      foreignWord: currentForeignLesson[0]?.missingWord ?? "",
+      isRightWord: true,
+      isSelected: IsSelected.NotSelected,
+    });
+
+    const shuffleWords = shuffleArray(currentSimillarWords)
+
+    const result = {
+      hebrewSentence: currentHebrewLesson[0]?.sentence,
+      hebrewWord: currentHebrewLesson[0]?.missingWord,
+      foreignSentence: currentForeignLesson[0]?.sentence,
+      foreignWord: currentForeignLesson[0]?.missingWord,
+      gameWords: shuffleWords,
+      translatedArray,
+      firstPartForeign,
+      secondPartForeign
+    };
+    
+    
+    res.json(result);
+  
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred on forth lesson data while ", error });
+  }
+};
 
 /* ------------------------------------------------------------------------------------ */
 

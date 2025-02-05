@@ -26,10 +26,7 @@ import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
 
 const MainSpeedGame: React.FC = () => {
-
-    const wrongCounter = useSelector((state: RootState) => state.speedGame.wrongCounter);
-    const currentMode = useSelector((state: RootState) => state.speedGame.speedGameMode);
-    const successCounter = useSelector((state: RootState) => state.speedGame.succcessCounter);
+  const { wrongCounter, speedGameMode, succcessCounter} = useSelector((state: RootState) => state.speedGame);
     const dispatch = useDispatch();
     
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
@@ -61,7 +58,7 @@ const MainSpeedGame: React.FC = () => {
     );
 
     useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
-    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter, currentMode });
+    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter, speedGameMode });
 
     const handleClick = (card: speedGameType[], id: number) => {
         if (card[id].language === Language.GermanWord) {
@@ -88,14 +85,14 @@ const MainSpeedGame: React.FC = () => {
     const { Title } = Typography;
     return (
       <>
-        {isLoading || currentMode === SpeedGameMode.Loading ? (
+        {isLoading || speedGameMode === SpeedGameMode.Loading ? (
           <LoadingPage />
         ) : wrongCounter === germanArray.length ? (
           <FinishedGameMesssage
             onBack={handleBack}
             onRestart={restartGame}
             title='!כל הכבוד'
-            description={`הצלחת למצוא ${successCounter} זוגות`}
+            description={`הצלחת למצוא ${succcessCounter} זוגות`}
           />
         ) : (
           <div className="flex flex-col min-h-screen">

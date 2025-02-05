@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../app/store';
-import { setRunning, addOneOrder, resetClicks, setLessonName, addOneClick } from "../slices/LessonsSlice";
+import { RootState } from '../../../../app/store';
+import { setRunning, addOneOrder, resetClicks, setLessonName, addOneClick } from "../../slices/LessonsSlice";
 import { Card, Typography } from 'antd';
-import { LessonName } from '../types/LessonType';
+import { LessonName } from '../../types/LessonType';
 import { useQueryClient } from '@tanstack/react-query';
-import { setClicks } from '../../games/wordle/slices/WordleSlice';
+import { setClicks } from '../../../games/wordle/slices/WordleSlice';
 
 const FailureMessage: React.FC = () => {
     const rightAnswer = useSelector((state: RootState) => state.lessons.anwser);

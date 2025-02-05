@@ -1,3 +1,4 @@
+import { IsSelected } from "../../components/lessons/types/FirstLessonType";
 import { CardType, TranslatedArray } from "../../components/lessons/types/SecondLessonType";
 
 export enum EnglishLevel {
@@ -33,6 +34,17 @@ export enum HebrewLevel {
     translatedArray: TranslatedArray[];
     firstPartForeign: string,
     secondPartForeign: string,
+  }
+
+  export type MissingWordCard = {
+    hebrewSentence: string,
+    hebrewWord: string,
+    foreignSentence: string,
+    foreignWord: string,
+    translatedArray: TranslatedArray[];
+    firstPartForeign: string,
+    secondPartForeign: string,
+    gameWords: ForthLessonCards[],
   }
 
   export type CourseType = {
@@ -107,4 +119,10 @@ export type UserTableType = {
   userName: string,
   totalPoints: number,
   language: CourseLangauge 
+}
+
+export interface ForthLessonCards {
+  foreignWord: string;
+  isRightWord: boolean;
+  isSelected: IsSelected;
 }

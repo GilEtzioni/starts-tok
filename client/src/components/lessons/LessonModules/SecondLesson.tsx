@@ -10,7 +10,7 @@ import { RootState } from "../../../app/store";
 // components
 import { findMaxIndex } from '../utils/lessonsHelper';
 import { useHandleNext} from "../utils/SecondEffects";
-import HebrewSentenceTwo from "./HebrewSentenceTwo";
+import FullHebrewSentence from "../common/TranslatedSenteces/FullHebrewSentence";
 import { CardType, TranslatedArray } from '../types/SecondLessonType';
 import { LessonStatus } from '../types/LessonType';
 import { CardContainer } from '../types/SecondLessonType';
@@ -22,14 +22,11 @@ import { SECOND_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
 
-const MainSecond: React.FC = () => {
+const SecondLesson: React.FC = () => {
 
     const { name, lesson } = useParams<{ name: string;  lesson?: string }>();
     const { Title } = Typography;
-
-    const order = useSelector((state: RootState) => state.lessons.order);
-    const clicks = useSelector((state: RootState) => state.lessons.clicks);
-    const status = useSelector((state: RootState) => state.lessons.status);
+    const { status, order, clicks } = useSelector((state: RootState) => state.lessons);
     const dispatch = useDispatch();
 
     const [foreignArray, setForeignArray] = useState<CardType[]>([]);
@@ -90,7 +87,7 @@ const MainSecond: React.FC = () => {
             <Title level={3} className="text-center">תרגמו את המשפט</Title>
         </Row>
 
-        <HebrewSentenceTwo TranslatedWords={TranslatedWords} />
+        <FullHebrewSentence TranslatedWords={TranslatedWords} />
     
         {/* up container */}
         <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
@@ -139,4 +136,4 @@ const MainSecond: React.FC = () => {
     );
 }    
 
-export default MainSecond;
+export default SecondLesson;

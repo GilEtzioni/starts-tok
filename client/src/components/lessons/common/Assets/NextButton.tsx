@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Card } from "antd"; 
 
 // Redux slices
-import { addOneClick } from "../slices/LessonsSlice";
-import { RootState } from "../../../app/store";
-import { LessonName } from '../types/LessonType';
+import { addOneClick } from "../../slices/LessonsSlice";
+import { RootState } from "../../../../app/store";
+import { LessonName } from '../../types/LessonType';
 
 const NextButton: React.FC = () => {
 
@@ -17,7 +17,7 @@ const NextButton: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center p-6">
-      {(lessonName !== LessonName.MatchPairs) && (
+      {(lessonName !== LessonName.MatchPairs && lessonName !== LessonName.MissingCards) && (
         <Card
           className="!flex !items-center !justify-center h-8 !w-44
           bg-green-500 text-white border-green-600 border-b-4 border-0 hover:!bg-green-600 hover:!cursor-pointer

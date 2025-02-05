@@ -1,9 +1,9 @@
 import { Card } from "antd";
-import { IsSelected } from "../types/FirstLessonType";
+import { IsSelected } from "../../types/FirstLessonType";
 import classNames from "classnames";
-import { LanguageType } from "../../../api/common/types";
+import { LanguageType } from "../../../../api/common/types";
 
-interface FirstCardProps {
+interface LessonCardProps {
   language: LanguageType;
   word: string;
   id: number;
@@ -11,7 +11,7 @@ interface FirstCardProps {
   onClick: (id: number, language: string) => void; 
 }
 
-const FirstCard: React.FC<FirstCardProps> = ({ language, word, id, isSelected, onClick }) => {
+const FirstLessonCard: React.FC<LessonCardProps> = ({ language, word, id, isSelected, onClick }) => {
   return (
     <div>
       <Card
@@ -33,4 +33,4 @@ const FirstCard: React.FC<FirstCardProps> = ({ language, word, id, isSelected, o
   );
 };
 
-export default FirstCard;
+export default FirstLessonCard;

@@ -7,9 +7,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../../app/store";
 
 // components + functions
-import FirstCard from "./FirstCard"
+import FirstLessonCard from '../common/Assets/FirstLessonCard';
 import { useHandleClick} from '../utils/FirstEffects';
-import { FirstLessonCard, IsSelected } from "../types/FirstLessonType";
+import {  FirstLessonCardType, IsSelected } from "../types/FirstLessonType";
 import { LessonStatus } from '../types/LessonType';
 import { LanguageType } from '../../../api/common/types';
 
@@ -21,20 +21,17 @@ import { FIRST_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useWithAuth } from '../../../api/common/withAuth';
 import { resetClick } from '../../dictionary/slices/DictionarySlice';
 
-const MainFirst: React.FC = () => {
+const FirstLesson: React.FC = () => {
 
     const { name, lesson } = useParams<{ name: string; lesson?: string  }>();
-
-    const status = useSelector((state: RootState) => state.lessons.status);
-    const order = useSelector((state: RootState) => state.lessons.order);
-    const clicks = useSelector((state: RootState) => state.lessons.clicks);
+    const { status, order, clicks } = useSelector((state: RootState) => state.lessons);
     const dispatch = useDispatch();
     
     const [foreignId, setForeignID] = useState(0);
     const [hebrewId, setHebrewId] = useState(0);
     const [counter, setCounter] = useState(0);
-    const [foreignArray, setForeignArray] = useState<FirstLessonCard[]>([]);
-    const [hebrewArray, setHebrewArray] = useState<FirstLessonCard[]>([]);
+    const [foreignArray, setForeignArray] = useState<FirstLessonCardType[]>([]);
+    const [hebrewArray, setHebrewArray] = useState<FirstLessonCardType[]>([]);
 
     const { Title } = Typography;
 
@@ -150,7 +147,7 @@ const MainFirst: React.FC = () => {
                   return (
                     <>
                       <Col key={`foreign-${foreignItem.coupleId}`} span={12}>
-                        <FirstCard
+                        <FirstLessonCard
                           language={LanguageType.Foreign}
                           word={foreignItem.word}
                           id={foreignItem.coupleId}
@@ -159,7 +156,7 @@ const MainFirst: React.FC = () => {
                         />
                       </Col>
                       <Col key={`hebrew-${hebrewItem.coupleId}`} span={12}>
-                        <FirstCard
+                        <FirstLessonCard
                           language={LanguageType.Hebrew}
                           word={hebrewItem.word}
                           id={hebrewItem.coupleId}
@@ -175,4 +172,4 @@ const MainFirst: React.FC = () => {
       );
     };
     
-export default MainFirst;
+export default FirstLesson;

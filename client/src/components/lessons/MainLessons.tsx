@@ -3,17 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../app/store";
 
 // lessons components
-import MainFirst from "./FirstLesson/MainFirst";
-import MainSecond from './SecondLesson/MainSecond';
-import MainThird from './ThirdLesson/MainThird';
+import FirstLesson from "./LessonModules/FirstLesson";
+import SecondLesson from './LessonModules/SecondLesson';
+import ThirdLesson from './LessonModules/ThirdLesson';
+import ForthLesson from "./LessonModules/ForthLesson";
 
 // common
-import NextButton from "./common/NextButton"
+import NextButton from "./common/Assets/NextButton"
 import BackButton from '../../common/BackButton';
-import ProgressBar from './common/ProgressBar'; 
-import FailureMessage from './common/FailureMessage';
-import SuccessMessage from './common/SuccessMessage';
-import FinishLessonMessage from './common/FinishLessonMessage';
+import ProgressBar from './common/Assets/ProgressBar'; 
+import FailureMessage from './common/Messages/FailureMessage';
+import SuccessMessage from './common/Messages/SuccessMessage';
+import FinishLessonMessage from './common/Messages/FinishLessonMessage';
 import { LessonName, LessonStatus } from './types/LessonType';
 import { resetOrder, setLessonName, setRunning } from './slices/LessonsSlice';
 
@@ -27,36 +28,42 @@ const MainLearn: React.FC = () => {
         component: null,
         key: 0,
     });
+    const randomOrderArray = [1, 2, 3, 4, 5, 6, 7, 8]
 
     const getLessonComponent = (order: number): ReactElement | null => {
-        switch (order) {
-            case 1:
-            case 4:
-                dispatch(setLessonName(LessonName.MatchPairs));
-                return <MainFirst />;
-            case 2:
-            case 5:
-                dispatch(setLessonName(LessonName.ForeignSentence));
-                return <MainSecond />;
-            case 3:
-            case 6:
-                dispatch(setLessonName(LessonName.ForeignMissing));
-                return <MainThird />;
-            default:
-                return null;
+      // Using if/else to check which lesson to return based on order
+      if (randomOrderArray.includes(order)) {
+        if (order === 1 || order === 2) {
+          dispatch(setLessonName(LessonName.MatchPairs));
+          return <FirstLesson />;
         }
+        if (order === 3 || order === 4) {
+          dispatch(setLessonName(LessonName.sentece));
+          return <SecondLesson />;
+        }
+        if (order === 5 || order === 6) {
+          dispatch(setLessonName(LessonName.MissingWriting));
+          return <ThirdLesson />;
+        }
+        if (order === 7 || order === 8) {
+          dispatch(setLessonName(LessonName.MissingCards));
+          return <ForthLesson />;
+        }
+      }
+      
+      return null;
     };
-
+    
     useEffect(() => {
         setCurrentLesson(prev => ({
             component: getLessonComponent(randomOrder),
             key: prev.key + 1,
         }));
-    }, [randomOrder, dispatch]);
+    }, [randomOrder]);
 
-    const handleBack = () => {
+    const handleBack =  () => {
         dispatch(resetOrder());
-        dispatch(setRunning());
+        dispatch(setLessonName(LessonName.Loading))
     }
 
     return (
@@ -71,7 +78,7 @@ const MainLearn: React.FC = () => {
             </div>
         </div>
       
-        <div>{order === 7 ? <FinishLessonMessage /> : <div key={currentLesson.key}>{currentLesson.component}</div>}</div> 
+        <div>{order === 9 ? <FinishLessonMessage /> : <div key={currentLesson.key}>{currentLesson.component}</div>}</div> 
 
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             {status === LessonStatus.Failure && <FailureMessage />}

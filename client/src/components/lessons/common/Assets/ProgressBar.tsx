@@ -7,8 +7,9 @@ type ProgressBarProps = {
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ num }) => {
-  const percentage = Math.min((num - 1) * 20, 100);
-
+  const NUMBER_OF_LESSONS = 8;
+  const percentage = Math.min(((num - 1) / NUMBER_OF_LESSONS) * 100, 100);
+  
   return (
     <ConfigProvider direction="rtl" locale={heIL}>
       <div className="progress-container" >

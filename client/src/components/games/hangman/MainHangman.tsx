@@ -33,10 +33,8 @@ const MainHangman: React.FC = () => {
     const [lettersArray, setLettersArray] = useState<HangmanType[]>([]);
     const [gameArray, setGameArray] = useState<HangmanType[]>([]);
 
-    const successCounter = useSelector((state: RootState) => state.hangman.successGamesCounter);
-    const wrongLettersCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
+    const { successGamesCounter, wrongLettersCounter, selectedWord} = useSelector((state: RootState) => state.hangman);
     const dispatch = useDispatch();
-    const selectedWord = useSelector((state: RootState) => state.hangman.selectedWord);
 
     const withAuth = useWithAuth();
     const fetchGameWords = () => withAuth((token) => fetchWords(token));
@@ -113,7 +111,7 @@ const MainHangman: React.FC = () => {
         <Col span={10} className="h-screen flex flex-col">
           <div className="flex justify-between items-center p-5">
             <Title level={3} className="text-xl font-semibold antialiased ml-40">
-              הצלחת {successCounter} משחקים ברצף
+              הצלחת {successGamesCounter} משחקים ברצף
             </Title>
             <BackButton onBack={handleBack} />
           </div>

@@ -113,7 +113,6 @@ export const processSentence = async (
   const sentence_one = "הרכבל מטפס על הר";
   const language = CourseLangauge.English;
   const processedSentenceOne = await processSentence(sentence_one, language);
-  console.log("processedSentenceOne", processedSentenceOne)
 })();
 
 

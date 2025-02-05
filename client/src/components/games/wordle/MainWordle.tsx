@@ -29,9 +29,7 @@ import { useWithAuth } from '../../../api/common/withAuth';
 const MainWordle: React.FC = () => {
 
     const { Title } = Typography;
-    const currentMode = useSelector((state: RootState) => state.wordel.currentMode);
-    const succesCounter = useSelector((state: RootState) => state.wordel.successCounter);
-    const clicksCounter = useSelector((state: RootState) => state.wordel.clicksCounter);
+    const { currentMode, successCounter, clicksCounter} = useSelector((state: RootState) => state.wordel);
 
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
@@ -105,7 +103,7 @@ const MainWordle: React.FC = () => {
       <div className="relative flex items-center mt-5">
         <div className="absolute inset-0 flex justify-center">
           <Title level={3} className="text-center">
-            הצלחת {succesCounter} משחקים ברצף
+            הצלחת {successCounter} משחקים ברצף
           </Title>
         </div>
 

@@ -47,3 +47,16 @@ export enum EnglishLevel {
   export type englishLevelType = {
     englishLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'userWords' | string;
   }
+
+  export interface ForthLessonCards {
+    foreignWord: string;
+    isRightWord: boolean;
+    isSelected: IsSelected
+  }
+
+  export enum IsSelected {
+    True = "true",
+    False = "false",
+    Clicked = "clicked",
+    NotSelected = "notSelected",
+  }

@@ -5,13 +5,13 @@ export enum IsSelected {
     NotSelected = "notSelected",
   }
 
-  export interface FirstLessonCard {
+  export interface FirstLessonCardType {
     coupleId: number, 
     word: string, 
     isSelected: IsSelected,
   }
 
   export type FirstLesson = {
-    hebrew: FirstLessonCard[],
-    foreign: FirstLessonCard[]
+    hebrew: FirstLessonCardType[],
+    foreign: FirstLessonCardType[]
   }

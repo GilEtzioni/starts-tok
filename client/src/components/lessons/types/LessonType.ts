@@ -13,6 +13,7 @@ export type LessonSentenceType = {
 export enum LessonName {
   Loading = "loading",
   MatchPairs = "matchPairs",
-  ForeignSentence = "foreignSentence",
-  ForeignMissing = "foreignMissing"
+  sentece = "sentece",
+  MissingWriting = "missingWriting",
+  MissingCards = "missingCards"
 }

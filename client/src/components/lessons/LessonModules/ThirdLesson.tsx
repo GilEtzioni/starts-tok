@@ -10,7 +10,7 @@ import { RootState } from "../../../app/store";
 
 // components + utils
 import {useHandleInput} from "../utils/ThirdEffects";
-import HebrewSentenceThird from './HebrewSentenceThird';
+import MissingHebrewSentence from '../common/TranslatedSenteces/MissingHebrewSentence';
 import { TranslatedArray } from '../types/SecondLessonType';
 
 // fetch
@@ -19,7 +19,7 @@ import { THIRD_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
 
-const MainThird: React.FC = () => {
+const ThirdLesson: React.FC = () => {
 
   const { name, lesson } = useParams<{ name: string; lesson?: string }>();
 
@@ -74,7 +74,7 @@ const MainThird: React.FC = () => {
       <Button block />
       </div>  
       :
-      <HebrewSentenceThird translatedWords={translatedWords} />
+      <MissingHebrewSentence translatedWords={translatedWords} />
     }
 
       {/* foreign */}
@@ -103,4 +103,4 @@ const MainThird: React.FC = () => {
     );
   }
 
-export default MainThird;
+export default ThirdLesson;

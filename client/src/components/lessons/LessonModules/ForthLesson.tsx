@@ -1,0 +1,149 @@
+// react + antd
+import React, { useState } from 'react';
+import { Row, Typography, Skeleton, Col } from 'antd';
+import { useParams } from 'react-router-dom';
+
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setRightAnswer, resetClicks, setSuccess } from "../slices/LessonsSlice";
+import { RootState } from "../../../app/store";
+
+// components + utils
+import MissingHebrewSentence from '../common/TranslatedSenteces/MissingHebrewSentence';
+import { TranslatedArray } from '../types/SecondLessonType';
+import ForthLessonCard from '../common/Assets/ForthLessonCard';
+
+// fetch
+import { fetchForthLesson } from '../../../api/lessons';
+import { FORTH_LESSON_QUERY_KEY } from '../requests/queryKeys';
+import { useQuery } from '@tanstack/react-query';
+import { useWithAuth } from '../../../api/common/withAuth';
+import { ForthLessonCards } from '../../../api/common/types';
+import { IsSelected } from '../types/FirstLessonType';
+
+const ForthLesson: React.FC = () => {
+
+  const { name, lesson } = useParams<{ name: string; lesson?: string }>();
+  const clicks = useSelector((state: RootState) => state.lessons.clicks);
+  const dispatch = useDispatch();
+
+  const [foreignWord, setForeignWord] = useState<string>("");
+  const [firstPartForeign, setFirstPartForeign] = useState<string>("");
+  const [secondPartForeign, setSecondPartForeign] = useState<string>("");
+  const [translatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
+  const [foreignArray, setForeignArray] = useState<ForthLessonCards[]>([]);
+
+  const [inputValue, setInputValue] = useState<string>("");
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
+    
+  const withAuth = useWithAuth();
+  const forthLesson = async () => withAuth((token) => fetchForthLesson(lesson ?? "", token));
+
+  const { data: lessonsData, isLoading } = useQuery(
+    [FORTH_LESSON_QUERY_KEY, name, lesson, clicks === 2],
+    forthLesson,
+    {
+      staleTime: Infinity, 
+      cacheTime: Infinity,
+      onSuccess: (lessonsData) => { 
+        if(!lessonsData) return;
+        dispatch(resetClicks())
+        dispatch(setRightAnswer(lessonsData.foreignWord));
+        setTranslatedWords(lessonsData.translatedArray)
+        setFirstPartForeign(lessonsData.firstPartForeign)
+        setSecondPartForeign(lessonsData.secondPartForeign)
+        setForeignWord(lessonsData.foreignWord)
+        setForeignArray(lessonsData.gameWords)
+      },
+    }
+  );
+
+    const handleClick = (isRightWord: boolean, foreignWord: string) => {
+        const updatedForeignArray = foreignArray.map((item) => {
+        if (item.foreignWord === foreignWord) {
+            return {
+            ...item,
+            isSelected: isRightWord ? IsSelected.True : IsSelected.False
+            };
+        }
+        return item;
+        });
+        
+        setForeignArray(updatedForeignArray);
+    }
+  
+  const { Paragraph } = Typography;
+  const { Title } = Typography;
+  const { Button } = Skeleton
+
+  return (
+    <div className="text-center h-[400px]">
+      {/* first section */}
+      <Row className="flex justify-center">
+        <Title level={3} className="text-center">לחצו על המילה המתאימה</Title>
+      </Row>
+
+      {/* second section */}
+      {isLoading ? (
+        <div className="text-center my-5 !font-medium w-1/2 mx-auto">
+          <Button block />
+        </div>  
+      ) : (
+        <MissingHebrewSentence translatedWords={translatedWords} />
+      )}
+
+      {/* third section */}
+      {isLoading ? (
+        <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">
+          <Button block className='mt-1'/>
+        </div>
+      ) : (
+        <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">
+          <Paragraph className="p-2 text-lg">
+            {firstPartForeign}
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0 text-lg"
+              style={{ width: `${foreignWord.length * 10 }px` }}
+              placeholder=" "
+            />
+            {secondPartForeign}
+          </Paragraph>
+        </div>
+      )}
+
+    {/* forth section */}
+    <div className="flex flex-col justify-center items-center text-center mt-5">
+    {isLoading
+        ? Array.from({ length: 4 }).map((_, index) => (
+            <React.Fragment key={`skeleton-${index}`}>
+            <Col span={8} className="w-full">
+                <Button
+                block
+                className="w-full h-12"
+                size="large"
+                />
+            </Col>
+            </React.Fragment>
+        ))
+        : foreignArray.map((item, index) => (
+            <React.Fragment key={`foreign-item-${index}`}>
+            <Col span={8} className="w-full mb-2 mt-2`">
+                <ForthLessonCard
+                isSelected={item.isSelected}
+                isRightWord={item.isRightWord} 
+                word={item.foreignWord} 
+                onClick={() => handleClick(item.isRightWord, item.foreignWord)} 
+                />
+            </Col>
+            </React.Fragment>
+        ))
+        }
+        </div>
+    </div>
+  );
+};
+
+export default ForthLesson;

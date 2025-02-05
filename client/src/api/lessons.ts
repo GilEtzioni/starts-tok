@@ -1,6 +1,6 @@
 import axiosInstance from "./common/axiosInstance";
 import { FirstLesson } from "../components/lessons/types/FirstLessonType";
-import { MissingWordType, SenteceType, WordsType } from "./common/types";
+import { MissingWordCard, MissingWordType, SenteceType, WordsType } from "./common/types";
 
 export const fetchFirstLesson = async (
   lesson: string,
@@ -45,6 +45,23 @@ export const fetchThirdLesson = async (
   }
 
   const { data } = await axiosInstance.get(`/main/thirdLesson/${lesson}`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  return data;
+};
+
+export const fetchForthLesson = async (
+  lesson: string,
+  token?: string
+): Promise<MissingWordCard> => {
+  if (!token) {
+    throw new Error("No authentication token found.");
+  }
+
+  const { data } = await axiosInstance.get(`/main/forthLesson/${lesson}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }

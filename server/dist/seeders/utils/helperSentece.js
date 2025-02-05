@@ -81,7 +81,6 @@ exports.processSentence = processSentence;
     const sentence_one = "הרכבל מטפס על הר";
     const language = seedersType_1.CourseLangauge.English;
     const processedSentenceOne = await (0, exports.processSentence)(sentence_one, language);
-    console.log("processedSentenceOne", processedSentenceOne);
 })();
 /* ------------------------------------------------------------ */
 const getTwoWordVariations = (word1, word2) => {
