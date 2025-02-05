@@ -27,7 +27,7 @@ const getAllWords = async (req, res) => {
         const allWords = await db_1.db
             .select()
             .from(schema_1.Words)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Words.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Words.language, language)))
+            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Words.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Words.language, language), (0, drizzle_orm_1.isNotNull)(schema_1.Words.knowledge)))
             .orderBy(schema_1.Words.wordOrder);
         res.json(allWords);
     }
@@ -64,6 +64,7 @@ const getFilterWords = async (req, res) => {
         const filters = [
             (0, drizzle_orm_1.eq)(schema_1.Words.userId, userId),
             (0, drizzle_orm_1.eq)(schema_1.Words.language, language),
+            (0, drizzle_orm_1.isNotNull)(schema_1.Words.knowledge)
         ];
         if (parsedKnowledgeArray.length > 0) {
             filters.push((0, drizzle_orm_1.inArray)(schema_1.Words.knowledge, parsedKnowledgeArray));
@@ -124,6 +125,7 @@ const addNewWord = async (req, res) => {
             hebrewWord,
             foreignWord,
             language,
+            knowledge: dictionaryType_1.DictionaryKnowledgeType.Ex,
         });
         const insertedWord = await db_1.db
             .select()

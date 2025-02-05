@@ -11,4 +11,5 @@ router.post("/addPoints", (0, express_2.requireAuth)(), usersController_1.addPoi
 router.get("/:day/getOneDayPoints", (0, express_2.requireAuth)(), usersController_1.getOneDayPoints);
 router.get("/userLanguage", (0, express_2.requireAuth)(), usersController_1.getUserLanguage);
 router.patch("/changeLanguage", (0, express_2.requireAuth)(), usersController_1.changeLanguage);
+router.post("/create-db", (0, express_2.requireAuth)(), usersController_1.createDataBase);
 exports.default = router;

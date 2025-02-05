@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = require("pg");
+const dotenv_1 = __importDefault(require("dotenv"));
 const node_postgres_1 = require("drizzle-orm/node-postgres");
 const migrator_1 = require("drizzle-orm/node-postgres/migrator");
 dotenv_1.default.config();
@@ -15,15 +15,9 @@ const dbCredentials = {
     port: parseInt(process.env.DB_PORT || "5432", 10),
     database: process.env.DB_NAME,
 };
+const connectionString = `postgresql://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
 const pool = new pg_1.Pool({
-    user: dbCredentials.user,
-    password: dbCredentials.password,
-    host: dbCredentials.host,
-    port: dbCredentials.port,
-    database: dbCredentials.database,
-    ssl: {
-        rejectUnauthorized: false,
-    },
+    connectionString: connectionString,
 });
 async function main() {
     console.log("Migration started...");

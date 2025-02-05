@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getBestUsers = exports.genericUsersData = exports.getUserLanguage = exports.changeLanguage = exports.getOneDayPoints = exports.addPoints = exports.getLastWeekPoints = exports.getAllPoints = void 0;
+exports.createDataBase = exports.getBestUsers = exports.genericUsersData = exports.getUserLanguage = exports.changeLanguage = exports.getOneDayPoints = exports.addPoints = exports.getLastWeekPoints = exports.getAllPoints = void 0;
 const db_1 = require("../drizzle/db");
 const schema_1 = require("../drizzle/schema");
 const express_1 = require("@clerk/express");
@@ -8,6 +8,7 @@ const drizzle_orm_1 = require("drizzle-orm");
 const userType_1 = require("../types/userType");
 const userHelper_1 = require("../utils/userHelper");
 const seedersType_1 = require("../types/seedersType");
+const mainSeeder_1 = require("../seeders/mainSeeder");
 const getAllPoints = async (req, res) => {
     const { userId } = (0, express_1.getAuth)(req);
     if (!userId) {
@@ -248,3 +249,21 @@ const getBestUsers = async (req, res) => {
     }
 };
 exports.getBestUsers = getBestUsers;
+/* ------------------------------------------------------------------------------------ */
+const createDataBase = async (req, res) => {
+    try {
+        const { userId } = (0, express_1.getAuth)(req);
+        if (!userId) {
+            res.status(401).json({ error: "Unauthorized" });
+            return;
+        }
+        console.log(`Seeding database for user: ${userId}`);
+        await (0, mainSeeder_1.mainSeeder)(userId);
+        res.status(200).json({ message: "Database seeded successfully" });
+    }
+    catch (error) {
+        console.error("Error seeding database:", error);
+        res.status(500).json({ error: "Failed to seed database" });
+    }
+};
+exports.createDataBase = createDataBase;

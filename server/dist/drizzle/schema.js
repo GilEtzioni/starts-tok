@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Language = exports.Users = exports.Games = exports.Words = exports.MissingWords = exports.Sentences = exports.CourseNames = exports.languagesEnum = exports.gameNameEnum = exports.levelHebrewEnum = exports.levelEnglishEnum = void 0;
+exports.Language = exports.Users = exports.Games = exports.Words = exports.Lesson = exports.CourseNames = exports.languagesEnum = exports.gameNameEnum = exports.levelHebrewEnum = exports.levelEnglishEnum = void 0;
 const pg_core_1 = require("drizzle-orm/pg-core");
 // enums
 exports.levelEnglishEnum = (0, pg_core_1.pgEnum)("levelEnglish", ["A1", "A2", "B1", "B2", "C1", "C2", "userWords"]);
@@ -19,27 +19,15 @@ exports.CourseNames = (0, pg_core_1.pgTable)("courses", {
     courseOrder: (0, pg_core_1.integer)("courseOrder"),
     language: (0, exports.languagesEnum)("language"),
 });
-exports.Sentences = (0, pg_core_1.pgTable)("sentences", {
+exports.Lesson = (0, pg_core_1.pgTable)("lesson", {
     courseId: (0, pg_core_1.text)("courseId").notNull().references(() => exports.CourseNames.courseId),
     userId: (0, pg_core_1.text)("userId").notNull(),
     courseNameEnglish: (0, pg_core_1.text)("courseNameEnglish"),
-    senteceOrder: (0, pg_core_1.integer)("senteceOrder").notNull(),
+    sentenceOrder: (0, pg_core_1.integer)("missingSentenceOrder").notNull(),
     language: (0, exports.languagesEnum)("language").notNull(),
-    sentence: (0, pg_core_1.text)("sentence").notNull(),
-}, (table) => ({
-// compositePrimaryKey: primaryKey(table.userId, table.courseId, table.senteceOrder, table.language),
-}));
-exports.MissingWords = (0, pg_core_1.pgTable)("missingWords", {
-    courseId: (0, pg_core_1.text)("courseId").notNull().references(() => exports.CourseNames.courseId),
-    userId: (0, pg_core_1.text)("userId").notNull(),
-    courseNameEnglish: (0, pg_core_1.text)("courseNameEnglish"),
-    missingSentenceOrder: (0, pg_core_1.integer)("missingSentenceOrder").notNull(),
-    language: (0, exports.languagesEnum)("language").notNull(),
-    missingSentence: (0, pg_core_1.text)("missingSentence").notNull(),
+    sentence: (0, pg_core_1.text)("missingSentence").notNull(),
     missingWord: (0, pg_core_1.text)("missingWord").notNull(),
-}, (table) => ({
-// compositePrimaryKey: primaryKey(table.userId, table.courseId, table.missingSentenceOrder, table.language),
-}));
+});
 exports.Words = (0, pg_core_1.pgTable)("words", {
     userId: (0, pg_core_1.text)("userId").notNull(),
     wordId: (0, pg_core_1.text)("wordId"),

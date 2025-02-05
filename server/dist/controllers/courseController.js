@@ -7,6 +7,7 @@ const express_1 = require("@clerk/express");
 const drizzle_orm_1 = require("drizzle-orm");
 const seedersType_1 = require("../types/seedersType");
 const helpingSeeders_1 = require("../seeders/utils/helpingSeeders");
+const helperSentece_1 = require("../seeders/utils/helperSentece");
 const getCourses = async (req, res) => {
     const { userId } = (0, express_1.getAuth)(req);
     if (!userId) {
@@ -76,6 +77,7 @@ exports.getFinishedCourses = getFinishedCourses;
 /* ------------------------------------------------------------------------------------ */
 const getLevelLessons = async (req, res) => {
     const { userId } = (0, express_1.getAuth)(req);
+    const userLevel = req.params.userLevel;
     if (!userId) {
         res.status(401).json({ error: "Unauthorized: User ID is missing" });
         return;
@@ -91,7 +93,6 @@ const getLevelLessons = async (req, res) => {
             return;
         }
         const language = userLanguage[0].language;
-        const userLevel = req.params.userLevel;
         const coursesSubjects = await db_1.db
             .select()
             .from(schema_1.CourseNames)
@@ -125,23 +126,28 @@ const getThirdLesson = async (req, res) => {
         const language = userLanguage[0].language;
         const maxRandomNumber = await db_1.db
             .select()
-            .from(schema_1.MissingWords)
-            .where((0, drizzle_orm_1.eq)(schema_1.MissingWords.courseNameEnglish, course))
-            .orderBy((0, drizzle_orm_1.desc)(schema_1.MissingWords.missingSentenceOrder));
-        const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].missingSentenceOrder - 1) + 1);
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course))
+            .orderBy((0, drizzle_orm_1.desc)(schema_1.Lesson.sentenceOrder));
+        const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].sentenceOrder - 1) + 1);
         const currentForeignLesson = await db_1.db
             .select()
-            .from(schema_1.MissingWords)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.MissingWords.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.MissingWords.userId, userId), (0, drizzle_orm_1.eq)(schema_1.MissingWords.language, language), (0, drizzle_orm_1.eq)(schema_1.MissingWords.missingSentenceOrder, randomNumber)));
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Lesson.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Lesson.language, language), (0, drizzle_orm_1.eq)(schema_1.Lesson.sentenceOrder, randomNumber)));
         const currentHebrewLesson = await db_1.db
             .select()
-            .from(schema_1.MissingWords)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.MissingWords.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.MissingWords.userId, userId), (0, drizzle_orm_1.eq)(schema_1.MissingWords.language, seedersType_1.CourseLangauge.Hebrew), (0, drizzle_orm_1.eq)(schema_1.MissingWords.missingSentenceOrder, randomNumber)));
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Lesson.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Lesson.language, seedersType_1.CourseLangauge.Hebrew), (0, drizzle_orm_1.eq)(schema_1.Lesson.sentenceOrder, randomNumber)));
+        const translatedArray = await (0, helperSentece_1.processSentence)(currentHebrewLesson[0]?.sentence ?? "", language);
+        const { firstPart: firstPartForeign, secondPart: secondPartForeign } = (0, helperSentece_1.splitTheSentence)(currentForeignLesson[0]?.sentence ?? "", currentForeignLesson[0]?.missingWord ?? "");
         const result = {
-            hebrewSentence: currentHebrewLesson[0]?.missingSentence,
+            hebrewSentence: currentHebrewLesson[0]?.sentence,
             hebrewWord: currentHebrewLesson[0]?.missingWord,
-            foreignSentence: currentForeignLesson[0]?.missingSentence,
-            foreignWord: currentForeignLesson[0]?.missingWord
+            foreignSentence: currentForeignLesson[0]?.sentence,
+            foreignWord: currentForeignLesson[0]?.missingWord,
+            translatedArray,
+            firstPartForeign,
+            secondPartForeign
         };
         res.json(result);
     }
@@ -173,16 +179,16 @@ const getSecondLesson = async (req, res) => {
         // get random lesson
         const maxRandomNumber = await db_1.db
             .select()
-            .from(schema_1.Sentences)
-            .where((0, drizzle_orm_1.eq)(schema_1.Sentences.courseNameEnglish, course))
-            .orderBy((0, drizzle_orm_1.desc)(schema_1.Sentences.senteceOrder))
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course))
+            .orderBy((0, drizzle_orm_1.desc)(schema_1.Lesson.sentenceOrder))
             .limit(1);
-        const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].senteceOrder - 1) + 1);
+        const randomNumber = Math.floor(Math.random() * (maxRandomNumber[0].sentenceOrder - 1) + 1);
         // get the lesson's words
         const currentLesson = await db_1.db
             .select()
-            .from(schema_1.Sentences)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Sentences.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Sentences.senteceOrder, randomNumber), (0, drizzle_orm_1.eq)(schema_1.Sentences.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Sentences.language, language)))
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Lesson.sentenceOrder, randomNumber), (0, drizzle_orm_1.eq)(schema_1.Lesson.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Lesson.language, language)))
             .limit(1);
         const correctLessonWords = currentLesson[0].sentence.split(" ");
         const FAILURE_WORDS = Math.max(12 - correctLessonWords.length, 0);
@@ -190,6 +196,7 @@ const getSecondLesson = async (req, res) => {
             .select()
             .from(schema_1.Words)
             .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.notInArray)(schema_1.Words.foreignWord, correctLessonWords), (0, drizzle_orm_1.eq)(schema_1.Words.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Words.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Words.language, language)))
+            .orderBy((0, drizzle_orm_1.sql) `RANDOM()`)
             .limit(FAILURE_WORDS);
         const failureLessonWordsArray = failureLessonWords.map((item) => item.foreignWord);
         const flatWords = [...correctLessonWords, failureLessonWordsArray].flat();
@@ -202,23 +209,22 @@ const getSecondLesson = async (req, res) => {
                 container: "down",
             });
         });
+        const shuffleWords = (0, helpingSeeders_1.shuffleArray)(WordsResult);
         // get lesson's sentence
         const currentForeignSentence = await db_1.db
             .select()
-            .from(schema_1.Sentences)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Sentences.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Sentences.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Sentences.senteceOrder, randomNumber), (0, drizzle_orm_1.eq)(schema_1.Sentences.language, language)));
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Lesson.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Lesson.sentenceOrder, randomNumber), (0, drizzle_orm_1.eq)(schema_1.Lesson.language, language)));
         const currentHebrewSentence = await db_1.db
             .select()
-            .from(schema_1.Sentences)
-            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Sentences.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Sentences.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Sentences.senteceOrder, randomNumber), (0, drizzle_orm_1.eq)(schema_1.Sentences.language, seedersType_1.CourseLangauge.Hebrew)));
-        const SentecncesResult = {
+            .from(schema_1.Lesson)
+            .where((0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.Lesson.courseNameEnglish, course), (0, drizzle_orm_1.eq)(schema_1.Lesson.userId, userId), (0, drizzle_orm_1.eq)(schema_1.Lesson.sentenceOrder, randomNumber), (0, drizzle_orm_1.eq)(schema_1.Lesson.language, seedersType_1.CourseLangauge.Hebrew)));
+        const translatedArray = await (0, helperSentece_1.processSentence)(currentHebrewSentence[0]?.sentence ?? "", language);
+        const result = {
+            words: shuffleWords,
             hebrewSentence: currentHebrewSentence[0]?.sentence,
             foreignSentence: currentForeignSentence[0]?.sentence,
-        };
-        const result = {
-            words: WordsResult,
-            hebrewSentence: SentecncesResult.hebrewSentence,
-            foreignSentence: SentecncesResult.foreignSentence
+            translatedArray,
         };
         res.json(result);
     }
