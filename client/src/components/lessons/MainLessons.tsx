@@ -29,30 +29,29 @@ const MainLearn: React.FC = () => {
         component: null,
         key: 0,
     });
-    const randomOrderArray = [1, 2, 3, 4, 5, 6, 7, 8]
 
-    const getLessonComponent = (order: number): ReactElement | null => {
-      if (randomOrderArray.includes(order)) {
-        if (order === 1 || order === 2) {
+    const getLessonComponent = (order: number, randomOrder: number): ReactElement | null => {
+        if (order === 9) {
+          return <FinishLessonMessage />;
+        }
+        if (randomOrder === 1 || randomOrder === 2) {
           dispatch(setLessonName(LessonName.MatchPairs));
           return <FirstLesson />;
         }
-        if (order === 3 || order === 4) {
+        if (randomOrder === 3 || randomOrder === 4) {
           dispatch(setLessonName(LessonName.sentece));
-          return <FirstLesson />;
+          return <SecondLesson />;
         }
-        if (order === 5 || order === 6) {
+        if (randomOrder === 5 || randomOrder === 6) {
           dispatch(setLessonName(LessonName.MissingWriting));
-          return <FirstLesson />;
+          return <ThirdLesson />;
         }
-        if (order === 7 || order === 8) {
+        if (randomOrder === 7 || randomOrder === 8) {
           dispatch(setLessonName(LessonName.MissingCards));
-          return <FirstLesson />;
+          return <ForthLesson />;
         }
+        return <FinishLessonMessage />;
       }
-      
-      return <FinishLessonMessage />;
-    };
   
 
     const handleBack = async () => {
@@ -65,13 +64,12 @@ const MainLearn: React.FC = () => {
             <div className="flex-grow text-center ml-10">
                 <ProgressBar num={order} />
             </div>
-
             <div className='mr-10'>
                 <BackButton onBack={handleBack} />
             </div>
         </div>
       
-        <div> { getLessonComponent(order) } </div>
+        <div> { getLessonComponent(order, randomOrder) } </div>
 
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             {status === LessonStatus.Failure && <FailureMessage />}

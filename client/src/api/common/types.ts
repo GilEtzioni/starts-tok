@@ -34,6 +34,7 @@ export enum HebrewLevel {
     translatedArray: TranslatedArray[];
     firstPartForeign: string,
     secondPartForeign: string,
+    letters: string[] | null
   }
 
   export type MissingWordCard = {

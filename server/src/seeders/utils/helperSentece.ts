@@ -8,7 +8,7 @@ export const processSentence = async (
   language: "german" | "italian" | "spanish" | "french" | "english" | "hebrew"
 ): Promise<{ hebrewWord: string; foreignWord: [string] }[]> => {
 
-  const wordArray = inputSentence.toLowerCase().split(' ');
+  const wordArray = inputSentence.toLowerCase().replace(/[.,!?…]/g, '').split(' ');
   const resultArray: Array<{ hebrewWord: string, foreignWord: [string] }> = [];
   const processedWords = new Set<string>();
 
@@ -106,11 +106,27 @@ export const processSentence = async (
   // step 4: arrange the words in the correct order
   resultArray.sort((a, b) => wordArray.indexOf(a.hebrewWord) - wordArray.indexOf(b.hebrewWord));
 
+  // step 5: add , . ! ? 
+inputSentence.split(' ').forEach((word) => {
+  const match = word.match(/([.,!?…]+)$/);
+  
+  if (match) {
+    const mark = match[0];
+
+    const cleanWord = word.slice(0, -mark.length);
+    const wordEntry = resultArray.find(entry => entry.hebrewWord === cleanWord);
+    
+    if (wordEntry) {
+      wordEntry.hebrewWord = mark + wordEntry.hebrewWord;
+    }
+  }
+});
+
   return resultArray;
 };
 
 (async () => {
-  const sentence_one = "הרכבל מטפס על הר";
+  const sentence_one = "שלום חברים!"; // example input
   const language = CourseLangauge.English;
   const processedSentenceOne = await processSentence(sentence_one, language);
 })();

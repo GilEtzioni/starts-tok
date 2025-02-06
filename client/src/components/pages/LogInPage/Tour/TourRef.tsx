@@ -26,7 +26,7 @@ export const getTourSteps = (refs: TourStepsProps): TourProps["steps"] => {
     },
     {
       title: "שפה",
-      description: "בלחציה על המשתמש תוכלו להחליף שפה ושם משתמש",
+      description: "בלחיצה על המשתמש תוכלו להחליף שפה ושם משתמש",
       target: () => refs.languageRef?.current,
     },
     {
@@ -61,7 +61,7 @@ export const getTourSteps = (refs: TourStepsProps): TourProps["steps"] => {
     },
     {
       title: "המובילים השבוע",
-      description: "האבלה מציגה את השחקנים מובילים השבוע",
+      description: "הטבלה מציגה את השחקנים מובילים השבוע",
       target: () => refs.tableRef?.current,
     },
   ];

@@ -24,7 +24,7 @@ import { IsSelected } from '../types/FirstLessonType';
 const ForthLesson: React.FC = () => {
 
   const { name, lesson } = useParams<{ name: string; lesson?: string }>();
-  const clicks = useSelector((state: RootState) => state.lessons.clicks);
+  const { order, clicks } = useSelector((state: RootState) => state.lessons);
   const dispatch = useDispatch();
 
   const [foreignWord, setForeignWord] = useState<string>("");
@@ -99,19 +99,17 @@ const ForthLesson: React.FC = () => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">
-          <Paragraph className="p-2 text-lg">
-            {firstPartForeign}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-              className="border-0 border-b-2 border-black outline-none text-[16px] text-center mx-2 placeholder-transparent focus:border-black focus:ring-0 text-lg"
-              style={{ width: `${foreignWord.length * 10 }px` }}
-              placeholder=" "
-            />
-            {secondPartForeign}
-          </Paragraph>
-        </div>
+        <Paragraph className="p-2 text-lg">
+          {firstPartForeign}
+          <span
+            className="border-0 border-b-2 border-black text-[16px] text-center mx-2 text-lg inline-block"
+            style={{ width: `${foreignWord.length * 10}px` }}
+          >
+            &nbsp;
+          </span>
+          {secondPartForeign}
+        </Paragraph>
+      </div>
       )}
 
     {/* forth section */}
