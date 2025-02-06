@@ -4,7 +4,7 @@ import { SelectedCard, speedGameType } from "../types/speedGameTypes";
 import { addOneWrongCounter, addOneSuccesssCounter } from "../slices/SpeedGameSlice";
 import { WordsType } from "../../../../api/common/types"
 import { useDispatch } from "react-redux";
-import { SpeedGameMode } from "../types/speedGameTypes"
+import { SPEED_GAME_FINISHED_NUMBER } from "../../common/consts";
 
 interface useHandleCouplesProps {
     hebrewArray: speedGameType[];
@@ -22,7 +22,6 @@ interface useHandleTimerProps {
     setHebrewArray: (array: speedGameType[]) => void; 
     dispatch: ReturnType<typeof useDispatch>;
     wrongCounter: number;
-    speedGameMode: SpeedGameMode;
 }
 
 
@@ -64,15 +63,14 @@ export const useHandleTimer = ({
     setHebrewArray,
     dispatch,
     wrongCounter,
-    speedGameMode
 }: useHandleTimerProps) => {
     const intervalDurationRef = useRef(2000); // start with 3 sec
     const roundCounterRef = useRef(1); 
 
     useEffect(() => {
         if (
-            speedGameMode === SpeedGameMode.Loading ||
-            wrongCounter === germanArray.length ||
+            // speedGameMode === SpeedGameMode.Loading ||
+            wrongCounter === SPEED_GAME_FINISHED_NUMBER ||
             wordsCoppy === undefined ||
             wordsCoppy.length === 0
         ) {

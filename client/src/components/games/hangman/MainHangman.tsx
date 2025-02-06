@@ -18,16 +18,18 @@ import MainMessages from './common/MainMessages';
 // functions + types
 import { HangmanType } from './types/hangmanType'; 
 import { WordsType } from "../../../api/common/types";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
 import { fetchWords, fetchKeyboard } from '../../../api/games';
 import { createGameArray, createLettersArray, getRandomWord } from './utils/hangHelp';
-import { resetSuccesssCounter, resetWrongCounter, setNumberWrongCounter, setSelectedWord } from './slices/HangmanSlice';
+import { resetWrongCounter, setNumberWrongCounter, setSelectedWord } from './slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
 
 const MainHangman: React.FC = () => {
+
+    const queryClient = useQueryClient();
 
     const [randomWord, setRandomWord] = useState<WordsType[]>([]);
     const [lettersArray, setLettersArray] = useState<HangmanType[]>([]);
@@ -41,14 +43,14 @@ const MainHangman: React.FC = () => {
     const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
 
     const { data: keyboard } = useQuery(
-      [ KEYBOARD_LETTERS ,wrongLettersCounter === HANGMAN_FINISHED_NUMBER],
+      [ KEYBOARD_LETTERS ],
       fetchGameKeyboard, {
         staleTime: Infinity, 
         cacheTime: Infinity,
       })
 
     const {  data: words, isLoading } = useQuery(
-      [DICTIONARY_ALL_WORDS, wrongLettersCounter === HANGMAN_FINISHED_NUMBER],
+      [ DICTIONARY_ALL_WORDS ],
       fetchGameWords,
       {
         staleTime: Infinity, 
@@ -71,13 +73,11 @@ const MainHangman: React.FC = () => {
       }
   );
 
-    const handleBack = () => {
+    const handleBack = async () => {
       if (!words) return;
-      const selectedWord = getRandomWord(words);
-      dispatch(resetSuccesssCounter());
-      dispatch(setNumberWrongCounter(HANGMAN_FINISHED_NUMBER))
+      await queryClient.removeQueries([KEYBOARD_LETTERS, DICTIONARY_ALL_WORDS]); 
     };
-
+  
     const { Title } = Typography;
     
     return (

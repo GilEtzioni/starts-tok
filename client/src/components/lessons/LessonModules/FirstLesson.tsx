@@ -39,7 +39,7 @@ const FirstLesson: React.FC = () => {
     const firstLesson = () => withAuth((token) => fetchFirstLesson(lesson ?? "", token));  
 
     const { data: lessons, isLoading } = useQuery(
-        [FIRST_LESSON_QUERY_KEY, name, lesson, clicks === 2],
+        [ FIRST_LESSON_QUERY_KEY ],
         firstLesson,
         {
           staleTime: Infinity, 

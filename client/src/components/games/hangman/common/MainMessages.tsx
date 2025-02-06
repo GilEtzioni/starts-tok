@@ -2,12 +2,17 @@ import React from 'react';
 import FinishedGameMesssage from '../../common/FinishedGameMesssage';
 import { HangmanType, SelectedLetter } from "../types/hangmanType";
 import { WordsType } from "../../../../api/common/types";
-import useHangmanActions from '../utils/messageHelper';
 
 // redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../../../../app/store";
 import { getSelectedWord } from '../utils/hangHelp';
+import { useAddNewScore } from '../../requests/addScoreMutate';
+import { useQueryClient } from '@tanstack/react-query';
+import { addOneSuccesssCounter, resetSuccesssCounter, setNumberWrongCounter } from '../slices/HangmanSlice';
+import { HANGMAN_FINISHED_NUMBER } from '../../common/consts';
+import { GameNameEnum } from '../../../pages/MainPage/common/GamesCards/types/mainPageTypes';
+import { KEYBOARD_LETTERS } from '../../requests/queryKeys';
 
 interface MainMessagesProps {
     randomWord: WordsType[];
@@ -17,8 +22,26 @@ interface MainMessagesProps {
 }
 
 const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, words, selectedWord }) => {
-    const { restartGameFail, restartGameSuccess, handleBack } = useHangmanActions();
-    const wrongCounter = useSelector((state: RootState) => state.hangman.wrongLettersCounter);
+    const { wrongLettersCounter, successGamesCounter } = useSelector((state: RootState) => state.hangman);
+    const dispatch = useDispatch();
+    const newScore = useAddNewScore(GameNameEnum.Hangman);
+    const queryClient = useQueryClient();
+    const payload = { score: successGamesCounter + 1 };
+  
+    const restartGameFail = async (words: WordsType[]) => {
+        await queryClient.removeQueries([ KEYBOARD_LETTERS, KEYBOARD_LETTERS ]); 
+      dispatch(setNumberWrongCounter(HANGMAN_FINISHED_NUMBER), resetSuccesssCounter());
+    };
+  
+    const restartGameSuccess = async () => {
+      await queryClient.removeQueries([ KEYBOARD_LETTERS, KEYBOARD_LETTERS ]); 
+      dispatch(setNumberWrongCounter(HANGMAN_FINISHED_NUMBER), addOneSuccesssCounter());
+    };
+  
+    const handleBack = async () => {
+      await newScore.mutate(payload);
+      await queryClient.removeQueries(); 
+    };
 
     const renderEndGameMessage = () => {
         const uniqueLettersLength = randomWord[0]?.foreignWord
@@ -27,7 +50,7 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
             .filter((value, index, self) => self.indexOf(value) === index) // unique letters
             .length;
 
-        if (wrongCounter === 6 && words) {
+        if (wrongLettersCounter === 6 && words) {
             return (
                 <FinishedGameMesssage
                     onBack={handleBack}

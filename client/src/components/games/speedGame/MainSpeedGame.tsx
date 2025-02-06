@@ -1,65 +1,67 @@
 // react + antd
-import React, { useEffect, useState } from 'react';
-import { Spin, Row, Col, Typography } from 'antd';
+import React, { useState } from 'react';
+import { Row, Col, Typography } from 'antd';
 
 // fetch data + components
 import GameCard from './common/SpeedGameCard';
 import BackButton from '../../../common/BackButton';
 import FinishedGameMesssage from '../common/FinishedGameMesssage';
-import useSpeedGameActions from './utils/messageHelper';
 
 // functions + types
 import { useHandleCouples, useHandleTimer } from "./utils/SpeedGameEffects";
-import { speedGameType, Language, SelectedCard, SpeedGameMode } from "./types/speedGameTypes";
+import { speedGameType, Language, SelectedCard } from "./types/speedGameTypes";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../../app/store";
 import { WordsType } from '../../../api/common/types';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchWords } from '../../../api/games';
 import { DICTIONARY_ALL_WORDS } from '../requests/queryKeys';
 import { createGameArray, shuffleAllWords } from './utils/speedHelper';
-import { resetWrongCounter, setSpeedGameMode } from './slices/SpeedGameSlice';
-import { SPEED_GAME_FINISHED_NUMBER } from '../common/consts';
+import { resetSuccesssCounter, resetWrongCounter } from './slices/SpeedGameSlice';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
+import { useAddNewScore } from '../requests/addScoreMutate';
+import { GameNameEnum } from '../../pages/MainPage/common/GamesCards/types/mainPageTypes';
+import { SPEED_GAME_FINISHED_NUMBER } from '../common/consts';
 
 const MainSpeedGame: React.FC = () => {
-  const { wrongCounter, speedGameMode, succcessCounter} = useSelector((state: RootState) => state.speedGame);
+
+  const { wrongCounter, succcessCounter} = useSelector((state: RootState) => state.speedGame);
     const dispatch = useDispatch();
-    
+    const queryClient = useQueryClient();
+
+    const newScore = useAddNewScore(GameNameEnum.SpeedGame)
     const [germanArray, setGermanArray] = useState<speedGameType[]>([]);
     const [hebrewArray, setHebrewArray] = useState<speedGameType[]>([]);
     const [wordsCoppy, setWordsCoppy]  = useState<WordsType[] | undefined>([]);
-    const { handleBack, restartGame } = useSpeedGameActions();
 
     const withAuth = useWithAuth();
     const fetchGameWords = () => withAuth((token) => fetchWords(token));
-    const {  data: words, isLoading, error } = useQuery(
-        [DICTIONARY_ALL_WORDS, wrongCounter === SPEED_GAME_FINISHED_NUMBER],
-        () => fetchWords(),
-        {
+    const {  data: words, isLoading } = useQuery(
+      [ DICTIONARY_ALL_WORDS ],
+      fetchGameWords,
+      {
         staleTime: Infinity, 
         cacheTime: Infinity,
-        onSuccess: (words) => {
-            const validWords = words ?? []; 
+        onSuccess: (data) => {
+          const validWords = data ?? []; 
     
-            const shuffledArray = shuffleAllWords(validWords);
-            const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
+          const shuffledArray = shuffleAllWords(validWords);
+          const { shuffledGermanArray, shuffledHebrewArray } = createGameArray(shuffledArray);
     
-            setGermanArray(shuffledGermanArray ?? []); 
-            setHebrewArray(shuffledHebrewArray ?? []); 
-            setWordsCoppy(shuffledArray);
-            dispatch(resetWrongCounter());
-            dispatch(setSpeedGameMode(SpeedGameMode.Running))
+          setGermanArray(shuffledGermanArray ?? []); 
+          setHebrewArray(shuffledHebrewArray ?? []); 
+          setWordsCoppy(shuffledArray);
+          dispatch(resetWrongCounter());
         }
       }
     );
 
     useHandleCouples({ hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch });
-    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter, speedGameMode });
-
+    useHandleTimer({wordsCoppy, hebrewArray, germanArray, setGermanArray, setHebrewArray, dispatch, wrongCounter });
+    
     const handleClick = (card: speedGameType[], id: number) => {
         if (card[id].language === Language.GermanWord) {
             const updatedGermanArray = germanArray.map((item, index) => {
@@ -82,12 +84,26 @@ const MainSpeedGame: React.FC = () => {
         }
     }
 
+    const payload = { score: succcessCounter };
+
+    const handleBack = async () => {
+      await newScore.mutate(payload);
+      await queryClient.invalidateQueries([ DICTIONARY_ALL_WORDS ]);
+    };
+
+
+    const restartGame = async () => {
+      await newScore.mutate(payload);
+      dispatch(resetSuccesssCounter(), resetWrongCounter());
+      await queryClient.invalidateQueries([ DICTIONARY_ALL_WORDS ]); 
+    };
+
     const { Title } = Typography;
     return (
       <>
-        {isLoading || speedGameMode === SpeedGameMode.Loading ? (
+        {isLoading ? (
           <LoadingPage />
-        ) : wrongCounter === germanArray.length ? (
+        ) : wrongCounter === SPEED_GAME_FINISHED_NUMBER ? (
           <FinishedGameMesssage
             onBack={handleBack}
             onRestart={restartGame}

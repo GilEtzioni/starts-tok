@@ -17,8 +17,3 @@ export type speedGameType = {
     isSelected: SelectedCard;
     index: number
 }
-
-export enum SpeedGameMode {
-    Running = "running",
-    Loading = "loading",
-}

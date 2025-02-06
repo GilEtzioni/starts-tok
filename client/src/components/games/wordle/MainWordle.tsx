@@ -11,45 +11,49 @@ import { wordleType } from './ types/WordelType';
 import FinishedGameMesssage from '../common/FinishedGameMesssage';
 import NotWordMessage from './common/Messages/NotWordMessage';
 import TooShortMessage from './common/Messages/TooShortMessage';
-import { useWordleActions } from "./utilts/messageHelper";
+import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { CurrentMode } from './ types/WordelType';
 import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
-import { fetchKeyboard, fetchWords } from '../../../api/games';
-import { useQuery } from '@tanstack/react-query';
-import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wordleHelper';
-import { resetClicks, resetSuccess, setCurrentMode } from './slices/WordleSlice';
-import { WORDLE_FINISHED_NUMBER } from '../common/consts';
-import { useWithAuth } from '../../../api/common/withAuth';
+import { resetClicks, setCurrentMode, resetSuccess, setClicks } from './slices/WordleSlice';
 
+// fetch
+import { fetchKeyboard, fetchWords } from '../../../api/games';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useWithAuth } from '../../../api/common/withAuth';
+import { useAddNewScore } from '../requests/addScoreMutate'; 
+import { GameNameEnum } from '../../pages/MainPage/common/GamesCards/types/mainPageTypes';
+import { WORDLE_FINISHED_NUMBER } from '../common/consts';
 
 const MainWordle: React.FC = () => {
 
+    const queryClient = useQueryClient();
+    const newScore = useAddNewScore(GameNameEnum.Wordle);
+
     const { Title } = Typography;
-    const { currentMode, successCounter, clicksCounter} = useSelector((state: RootState) => state.wordel);
+    const { currentMode, successCounter} = useSelector((state: RootState) => state.wordel);
 
     const [correctAnswer, setCorrectAnswer] = useState<wordleType[]>([]);
     const [gridAnswer, setGridAnswer] = useState<wordleType[][]>([]);
     const [gridLetters, setGridLetters] = useState<wordleType[]>([]);
     const dispatch = useDispatch();
-    const { restartGameFail, handleBack, restartGameSuccess } = useWordleActions();
 
     const withAuth = useWithAuth();
     const fetchGameWords = () => withAuth((token) => fetchWords(token));
     const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
 
     const { data: keyboard } = useQuery(
-      [KEYBOARD_LETTERS, currentMode === CurrentMode.Loading],
+      [ KEYBOARD_LETTERS ],
       fetchGameKeyboard, {
         staleTime: Infinity, 
         cacheTime: Infinity,
       })
 
     const {  data: words, isLoading } = useQuery(
-      [DICTIONARY_ALL_WORDS, currentMode === CurrentMode.Loading],
+      [ DICTIONARY_ALL_WORDS ],
       fetchGameWords,
     {
       staleTime: Infinity, 
@@ -78,13 +82,34 @@ const MainWordle: React.FC = () => {
       }
   );
 
+  const handleBack = async () => {
+    await newScore.mutate(payload);
+    await queryClient.removeQueries([DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS]); 
+  };
+
+  const restartGameFail = async () => {
+    await newScore.mutate(payload);
+    dispatch(setCurrentMode(CurrentMode.Loading), setClicks(WORDLE_FINISHED_NUMBER));
+    await queryClient.removeQueries([KEYBOARD_LETTERS, DICTIONARY_ALL_WORDS]); 
+  };
+
+  const restartGameSuccess = async () => {
+    await newScore.mutate(payload);
+    dispatch(setCurrentMode(CurrentMode.Loading), setClicks(WORDLE_FINISHED_NUMBER));
+    await queryClient.removeQueries([KEYBOARD_LETTERS, DICTIONARY_ALL_WORDS]); 
+  };
+
+  const payload = { score: successCounter };
+
   const Message = () => {
     switch (currentMode) {
       case CurrentMode.Running:
         return null;
       case CurrentMode.Failure:
+        newScore.mutate(payload);
         return <FinishedGameMesssage onBack={handleBack} onRestart={restartGameFail} title='המשחק נגמר'/>;
       case CurrentMode.Success:
+        newScore.mutate(payload);
         return <FinishedGameMesssage onBack={handleBack} onRestart={restartGameSuccess}  title='!כל הכבוד'/>
       case CurrentMode.NotInDictionary:
         return <NotWordMessage />;

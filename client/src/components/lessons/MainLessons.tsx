@@ -17,11 +17,12 @@ import SuccessMessage from './common/Messages/SuccessMessage';
 import FinishLessonMessage from './common/Messages/FinishLessonMessage';
 import { LessonName, LessonStatus } from './types/LessonType';
 import { resetOrder, setLessonName, setRunning } from './slices/LessonsSlice';
+import { FIRST_LESSON_QUERY_KEY, SECOND_LESSON_QUERY_KEY, THIRD_LESSON_QUERY_KEY } from "./requests/queryKeys";
+import { useQueryClient } from "@tanstack/react-query";
 
 const MainLearn: React.FC = () => {
-    const status = useSelector((state: RootState) => state.lessons.status);
-    const randomOrder = useSelector((state: RootState) => state.lessons.randomOrder);
-    const order = useSelector((state: RootState) => state.lessons.order);
+    const queryClient = useQueryClient();
+    const { status, randomOrder, order } = useSelector((state: RootState) => state.lessons);
     const dispatch = useDispatch();
 
     const [currentLesson, setCurrentLesson] = useState<{ component: ReactElement | null, key: number }>({
@@ -31,7 +32,6 @@ const MainLearn: React.FC = () => {
     const randomOrderArray = [1, 2, 3, 4, 5, 6, 7, 8]
 
     const getLessonComponent = (order: number): ReactElement | null => {
-      // Using if/else to check which lesson to return based on order
       if (randomOrderArray.includes(order)) {
         if (order === 1 || order === 2) {
           dispatch(setLessonName(LessonName.MatchPairs));
@@ -39,31 +39,24 @@ const MainLearn: React.FC = () => {
         }
         if (order === 3 || order === 4) {
           dispatch(setLessonName(LessonName.sentece));
-          return <SecondLesson />;
+          return <FirstLesson />;
         }
         if (order === 5 || order === 6) {
           dispatch(setLessonName(LessonName.MissingWriting));
-          return <ThirdLesson />;
+          return <FirstLesson />;
         }
         if (order === 7 || order === 8) {
           dispatch(setLessonName(LessonName.MissingCards));
-          return <ForthLesson />;
+          return <FirstLesson />;
         }
       }
       
-      return null;
+      return <FinishLessonMessage />;
     };
-    
-    useEffect(() => {
-        setCurrentLesson(prev => ({
-            component: getLessonComponent(randomOrder),
-            key: prev.key + 1,
-        }));
-    }, [randomOrder]);
+  
 
-    const handleBack =  () => {
-        dispatch(resetOrder());
-        dispatch(setLessonName(LessonName.Loading))
+    const handleBack = async () => {
+        await queryClient.removeQueries([ FIRST_LESSON_QUERY_KEY ]);
     }
 
     return (
@@ -78,7 +71,7 @@ const MainLearn: React.FC = () => {
             </div>
         </div>
       
-        <div>{order === 9 ? <FinishLessonMessage /> : <div key={currentLesson.key}>{currentLesson.component}</div>}</div> 
+        <div> { getLessonComponent(order) } </div>
 
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             {status === LessonStatus.Failure && <FailureMessage />}

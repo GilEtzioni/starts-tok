@@ -1,13 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SPEED_GAME_FINISHED_NUMBER } from '../../common/consts';
-import { SpeedGameMode } from '../types/speedGameTypes';
 
 export const hangmanSlice = createSlice({
   name: 'speedGame',
   initialState: {
-    wrongCounter: SPEED_GAME_FINISHED_NUMBER,
+    wrongCounter: 0,
     succcessCounter: 0,
-    speedGameMode: SpeedGameMode.Loading,
   },
 
   reducers: {
@@ -29,11 +26,6 @@ export const hangmanSlice = createSlice({
     resetSuccesssCounter: (state) => {
       state.succcessCounter = 0;
     },
-
-    /* hangman node */
-    setSpeedGameMode: (state, action: PayloadAction<SpeedGameMode>) => {
-      state.speedGameMode = action.payload;
-    },
   },
 });
 
@@ -43,7 +35,6 @@ export const {
   addOneSuccesssCounter, 
   resetSuccesssCounter,
   setNumberWrongCounter,
-  setSpeedGameMode
 } = hangmanSlice.actions;
 
 export default hangmanSlice.reducer;
