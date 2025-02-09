@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setRightAnswer, resetClicks, setSuccess } from "../slices/LessonsSlice";
+import { setRightAnswer, resetClicks } from "../slices/LessonsSlice";
 import { RootState } from "../../../app/store";
 
 // components + utils
@@ -57,7 +57,7 @@ const ForthLesson: React.FC = () => {
       },
     }
   );
-
+  
     const handleClick = (isRightWord: boolean, foreignWord: string) => {
         const updatedForeignArray = foreignArray.map((item) => {
         if (item.foreignWord === foreignWord) {

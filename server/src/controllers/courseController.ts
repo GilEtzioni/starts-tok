@@ -6,6 +6,7 @@ import { and, desc, eq, ne, notInArray, sql } from "drizzle-orm";
 import { CourseLangauge, ForthLessonCards, IsSelected } from "../types/seedersType";
 import { shuffleArray } from "../seeders/utils/helpingSeeders";
 import { processSentence, splitTheSentence } from "../seeders/utils/helperSentece";
+import { languageLetters } from "../utils/userHelper";
 
 export const getCourses = async (req: Request, res: Response): Promise<void> => {
   const { userId } = getAuth(req);
@@ -325,6 +326,17 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
       currentForeignLesson[0]?.sentence ?? "", 
       currentForeignLesson[0]?.missingWord ?? ""
     );
+
+    const letters = 
+    language === CourseLangauge.French
+      ? languageLetters.french
+      : language === CourseLangauge.Italian
+      ? languageLetters.italian
+      : language === CourseLangauge.Spanish
+      ? languageLetters.spanish
+      : language === CourseLangauge.German
+      ? languageLetters.german
+      : languageLetters.english
     
     const result = {
       hebrewSentence: currentHebrewLesson[0]?.sentence,
@@ -333,7 +345,8 @@ export const getThirdLesson = async (req: Request, res: Response): Promise<void>
       foreignWord: currentForeignLesson[0]?.missingWord,
       translatedArray,
       firstPartForeign,
-      secondPartForeign
+      secondPartForeign,
+      letters
     };
     
     

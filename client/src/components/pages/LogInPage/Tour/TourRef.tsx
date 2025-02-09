@@ -26,7 +26,7 @@ export const getTourSteps = (refs: TourStepsProps): TourProps["steps"] => {
     },
     {
       title: "שפה",
-      description: "בלחיצה על המשתמש תוכלו להחליף שפה ושם משתמש",
+      description: "בלחיצה על המשתמש תוכלו להחליף שפה ואת השם שלכם",
       target: () => refs.languageRef?.current,
     },
     {

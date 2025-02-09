@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Layout, Badge, Avatar, Image, Modal, Skeleton } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { USER_FLAG, USER_POINTS } from './requests/queryKeys';
 import { fetchAllPoints, fetchUserFlag } from '../../api/layout';
 import { useWithAuth } from '../../api/common/withAuth';
+import { useUser } from "@clerk/clerk-react";
 
 const { Header } = Layout;
 interface MainLayoutProps {
@@ -31,7 +32,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   dictionaryRef,
   homeRef
 }) => {
-
+  const { user } = useUser()
   const withAuth = useWithAuth();
   const allPoints = () => withAuth((token) => fetchAllPoints(token));
   const userFlag = () => withAuth((token) => fetchUserFlag(token));
@@ -40,22 +41,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     [USER_FLAG],
     userFlag)
 
-  const { data: user, isLoading: pointsLoading, isError: pointsError } = useQuery(
+  const { data: userPoints, isLoading: pointsLoading, isError: pointsError } = useQuery(
     [USER_POINTS],
     allPoints)
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { getToken, isLoaded, signOut } = useAuth();
-
-  useEffect(() => {
-    const fetchToken = async () => {
-      const token = await getToken();
-      console.log("Token: ", token);
-    };
-
-    fetchToken();
-  }, [getToken]);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -74,7 +66,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   };
 
   const isLoading = userFlagLoading || pointsLoading;
-  
     return (
       <Layout>
         <Header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-50 to-gray-100 shadow-md z-50 flex justify-between items-center px-6 py-4 border-b border-gray-200">
@@ -94,7 +85,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             {isLoading ? (
               <Skeleton.Button active size="small" />
             ) : (
-              <span>{user?.points}</span>
+              <span>{userPoints?.points}</span>
             )}
             <i className="fas fa-star"></i>
           </div>
@@ -103,7 +94,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             {isLoading ? (
               <Skeleton.Button active size="small" className="mt-3" />
             ) : (
-              <span className="hidden lg:block text-gray-500 text-lg">{user?.userName}</span>
+              <span className="hidden lg:block text-gray-500 text-lg">{`${user?.firstName} ${user?.lastName}`}</span>
             )}
             {!isLoading && (
               <Badge

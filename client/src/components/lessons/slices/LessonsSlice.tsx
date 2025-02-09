@@ -22,6 +22,7 @@ export const lessonsSlice = createSlice({
     anwser: "",
     points: 0,
     lessonName: LessonName.Loading,
+    time: new Date().getTime(),
   },
 
   reducers: {

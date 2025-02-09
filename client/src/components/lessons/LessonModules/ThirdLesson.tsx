@@ -60,7 +60,6 @@ const ThirdLesson: React.FC = () => {
       },
     }
   );
-
   useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue });
 
   const { Paragraph, Title } = Typography;

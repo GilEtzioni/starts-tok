@@ -51,7 +51,7 @@ const FailureMessage: React.FC = () => {
                     <Card
                         onClick={handleClick}
                         bordered={false}
-                        className="mt-4 flex items-center justify-center bg-red-500 text-white border-red-600 border-b-4 hover:bg-red-600 cursor-pointer w-64 h-8 mr-2"
+                        className="transition-all duration-300 ease-in-out mt-4 flex items-center justify-center bg-red-500 text-white border-red-600 border-b-4 hover:bg-red-600 cursor-pointer w-64 h-8 mr-2"
                     >
                         <span className="font-semibold w-full text-center">
                             המשך

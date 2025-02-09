@@ -19,7 +19,7 @@ const NextButton: React.FC = () => {
     <div className="flex justify-center items-center p-6">
       {(lessonName !== LessonName.MatchPairs && lessonName !== LessonName.MissingCards) && (
         <Card
-          className="!flex !items-center !justify-center h-8 !w-44
+          className="transition-all duration-300 ease-in-out !flex !items-center !justify-center h-8 !w-44
           bg-green-500 text-white border-green-600 border-b-4 border-0 hover:!bg-green-600 hover:!cursor-pointer
           font-semibold !text-white !text-center !m-0 !font-medium"
           onClick={() => dispatch(addOneClick())}

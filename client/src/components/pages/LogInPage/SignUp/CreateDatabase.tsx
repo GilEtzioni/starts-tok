@@ -3,8 +3,7 @@ import { useAuth } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { Spin, Typography } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { useCreateDataBase } from "../../requests/createDataBase";
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 const CreateDatabase: React.FC = () => {
   const { Paragraph } = Typography;

@@ -27,8 +27,6 @@ const CreateDatabase: React.FC = () => {
       if (!response.ok) {
         throw new Error("Failed to create database");
       }
-
-      console.log("Database successfully created");
     },
     onSuccess: () => {
       navigate("/main");

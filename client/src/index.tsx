@@ -4,6 +4,7 @@ import App from './App';
 import { store } from "./app/store";
 import { Provider } from 'react-redux';
 import { ClerkProvider } from "@clerk/clerk-react";
+import { heIL } from '@clerk/localizations';
 
 const frontendApi = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "";
 
@@ -13,7 +14,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ClerkProvider publishableKey={frontendApi}>
+    <ClerkProvider publishableKey={frontendApi} localization={heIL}>
       <Provider store={store}>
         <App />
       </Provider>
