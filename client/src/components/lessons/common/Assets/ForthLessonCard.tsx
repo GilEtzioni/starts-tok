@@ -1,8 +1,9 @@
 import { Card } from "antd";
 import { IsSelected } from "../../types/FirstLessonType";
 import classNames from "classnames";
-import { setSuccess, setFailure } from "../../slices/LessonsSlice";
-import { useDispatch } from "react-redux";
+import { setSuccess, setFailure, resetClicks } from "../../slices/LessonsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../app/store";
 
 interface LessonCardProps {
   word: string;
@@ -13,11 +14,15 @@ interface LessonCardProps {
 
 const ForthLessonCard: React.FC<LessonCardProps> = ({ word, isSelected, isRightWord, onClick }) => {
   const dispatch = useDispatch();
-  if (isRightWord && isSelected !== IsSelected.NotSelected) {
+  const { clicks } = useSelector((state: RootState) => state.lessons);
+  
+  if (isRightWord && isSelected !== IsSelected.NotSelected && clicks === 1) {
     dispatch(setSuccess());
+    dispatch(resetClicks());
   }
-  else if (!isRightWord && isSelected !== IsSelected.NotSelected) {
+  else if (!isRightWord && isSelected !== IsSelected.NotSelected && clicks === 1) {
     dispatch(setFailure());
+    dispatch(resetClicks());
   }
 
   return (

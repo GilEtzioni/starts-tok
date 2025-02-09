@@ -17,9 +17,9 @@ import { RootState } from "../../../app/store";
 import { WordsType } from '../../../api/common/types';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchWords } from '../../../api/games';
-import { DICTIONARY_ALL_WORDS } from '../requests/queryKeys';
+import { SPEED_GAME_WORDS } from '../requests/queryKeys';
 import { createGameArray, shuffleAllWords } from './utils/speedHelper';
-import { resetSuccesssCounter, resetWrongCounter } from './slices/SpeedGameSlice';
+import { resetSpeedGame, resetSuccesssCounter, resetWrongCounter } from './slices/SpeedGameSlice';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
 import { useAddNewScore } from '../requests/addScoreMutate';
@@ -40,11 +40,12 @@ const MainSpeedGame: React.FC = () => {
     const withAuth = useWithAuth();
     const fetchGameWords = () => withAuth((token) => fetchWords(token));
     const {  data: words, isLoading } = useQuery(
-      [ DICTIONARY_ALL_WORDS ],
+      [ SPEED_GAME_WORDS ],
       fetchGameWords,
       {
         staleTime: Infinity, 
         cacheTime: Infinity,
+        refetchOnMount: true,
         onSuccess: (data) => {
           const validWords = data ?? []; 
     
@@ -87,15 +88,14 @@ const MainSpeedGame: React.FC = () => {
     const payload = { score: succcessCounter };
 
     const handleBack = async () => {
-      await newScore.mutate(payload);
-      await queryClient.invalidateQueries([ DICTIONARY_ALL_WORDS ]);
+      queryClient.removeQueries();
+      dispatch(resetSpeedGame());
     };
-
 
     const restartGame = async () => {
       await newScore.mutate(payload);
       dispatch(resetSuccesssCounter(), resetWrongCounter());
-      await queryClient.invalidateQueries([ DICTIONARY_ALL_WORDS ]); 
+      await queryClient.invalidateQueries([ SPEED_GAME_WORDS ]); 
     };
 
     const { Title } = Typography;

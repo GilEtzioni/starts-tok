@@ -1,15 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CurrentMode } from '../ types/WordelType';
 
+const initialState = {
+  clicksCounter: 0,
+  successCounter: 0,
+  currentMode: CurrentMode.Loading,
+};
+
 export const WordleSlice = createSlice({
   name: 'wordel',
-  initialState: {
-    clicksCounter: 0,
-    successCounter: 0,
-    currentMode: CurrentMode.Loading,
-  },
-
+  initialState,
   reducers: {
+    /* reset */
+    resetWordle: (state) => {
+      Object.assign(state, initialState);
+    },
+
     /* clicks counter */
     addOneClick: (state) => {
       state.clicksCounter += 1;
@@ -31,6 +37,7 @@ export const WordleSlice = createSlice({
     addOneSuccess: (state) => {
       state.successCounter += 1;
     },
+    
     resetSuccess: (state) => {
       state.successCounter = 0;
     },
@@ -49,7 +56,8 @@ export const {
   resetSuccess,
   setCurrentMode,
   minusOneClick,
-  setClicks
+  setClicks,
+  resetWordle
 } = WordleSlice.actions;
 
 export default WordleSlice.reducer;

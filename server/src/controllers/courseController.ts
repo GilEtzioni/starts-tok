@@ -411,22 +411,27 @@ export const getSecondLesson = async (req: Request, res: Response): Promise<void
     )
     .limit(1);
 
-    const correctLessonWords = currentLesson[0].sentence.split(" ");
+    const correctLessonWords = currentLesson[0].sentence.toLowerCase().split(" ");
     const FAILURE_WORDS = Math.max(12 - correctLessonWords.length, 0);
     
     const failureLessonWords = await db
-      .select()
+      .select({
+        foreignWord: sql<string>`LOWER(${Words.foreignWord})`.as("foreignWord"),
+      })
       .from(Words)
       .where(
         and(
-          notInArray(Words.foreignWord, correctLessonWords),
+          notInArray(
+            sql<string>`LOWER(${Words.foreignWord})`,
+            correctLessonWords
+          ),
           eq(Words.courseNameEnglish, course),
           eq(Words.userId, userId),
           eq(Words.language, language)
         )
       )
       .orderBy(sql`RANDOM()`)
-      .limit(FAILURE_WORDS);
+      .limit(FAILURE_WORDS);    
 
     const failureLessonWordsArray = failureLessonWords.map((item) => item.foreignWord);
     const flatWords =[...correctLessonWords, failureLessonWordsArray].flat();
@@ -606,18 +611,24 @@ export const getFirstLessonWords = async (req: Request, res: Response): Promise<
       }
       const language = userLanguage[0].language;
   
-        const currentLesson = await db
-        .select()
-        .from(Words)
-        .where(
-          and(
-            eq(Words.courseNameEnglish, course),
-            eq(Words.userId, userId),
-            eq(Words.language, language),
-          )
+      const currentLesson = await db
+      .select({
+        hebrewWord: Words.hebrewWord,
+        foreignWord: sql<string>`LOWER(${Words.foreignWord})`.as("word"),
+        courseNameEnglish: Words.courseNameEnglish,
+        userId: Words.userId,
+        language: Words.language,
+      })
+      .from(Words)
+      .where(
+        and(
+          eq(Words.courseNameEnglish, course),
+          eq(Words.userId, userId),
+          eq(Words.language, language),
         )
-        .orderBy(sql`RANDOM()`)
-        .limit(6)
+      )
+      .orderBy(sql`RANDOM()`)
+      .limit(6);
 
         const hebrewResult: Array<{word: string, coupleId: number, isSelected: string}> = [];
         const foreignResult: Array<{word: string, coupleId: number, isSelected: string}> = [];

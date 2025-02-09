@@ -8,12 +8,15 @@ import { useParams } from 'react-router-dom';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../app/store';
-import { resetOrder, resetPoints } from '../../slices/LessonsSlice';
+import { resetLesson } from '../../slices/LessonsSlice';
 
+// fetch
 import { useAddNewPoints } from '../../requests/addPointsMutate';
 import { usePatchFinishLesson } from '../../requests/finishLessonMutate';
+import { useQueryClient } from '@tanstack/react-query';
 
 const FinishLessonMessage: React.FC = () => {
+  const queryClient = useQueryClient();
   const [isModalVisible, setIsModalVisible] = useState(true);
   const [lessonTime, setLessontime] = useState("");
   const navigate = useNavigate();
@@ -28,24 +31,27 @@ const FinishLessonMessage: React.FC = () => {
   const myLevel = name ?? 'default-level';     
 
   useEffect(() => {
+    queryClient.removeQueries();
     const now = new Date().getTime();
     const distance = time - now;
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     if (minutes === -1) {
       minutes = 0
     }
+    else {
+      minutes = minutes * -1;
+    }
     const seconds = Math.floor((distance % (1000 * 60)) / 1000) * -1;
   
     setLessontime(`${minutes}:${seconds}`);
   }, [time]);
 
-  const goToHomePage = () => {
-    addNewPoints({ newPoints: points });
-    finishLesson({ name: myLevel, lesson: myLesson });
-
-    dispatch(resetOrder());
-    dispatch(resetPoints());
-    navigate(`/main/course/${myLevel}`);
+  const goToHomePage = async () => {
+    await addNewPoints({ newPoints: points });
+    await finishLesson({ name: myLevel, lesson: myLesson });
+    dispatch(resetLesson());
+    navigate(-1);
+    await queryClient.removeQueries();
   }
 
   const { Title, Paragraph } = Typography;

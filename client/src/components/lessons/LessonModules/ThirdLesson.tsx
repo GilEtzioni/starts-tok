@@ -1,5 +1,5 @@
 // react + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Typography, Skeleton, Card, Button } from 'antd';
 import { useParams } from 'react-router-dom';
 
@@ -47,6 +47,7 @@ const ThirdLesson: React.FC = () => {
     {
       staleTime: Infinity, 
       cacheTime: Infinity,
+      // refetchOnMount: true,
       onSuccess: (lessonsData) => { 
         if (!lessonsData) return;
         dispatch(resetClicks());
@@ -60,6 +61,7 @@ const ThirdLesson: React.FC = () => {
       },
     }
   );
+
   useHandleInput({ lessonsData, order, dispatch, resetClicks, setSuccess, foreignWord, clicks, inputValue });
 
   const { Paragraph, Title } = Typography;
@@ -78,7 +80,7 @@ const ThirdLesson: React.FC = () => {
   
       {isLoading ? (
         <div className="text-center my-5 !font-medium w-1/2 mx-auto">
-          <Skeleton.Button block />
+          <Button block />
         </div>  
       ) : (
         <MissingHebrewSentence translatedWords={translatedWords} />
@@ -87,7 +89,7 @@ const ThirdLesson: React.FC = () => {
     {/* foreign */}
       {isLoading ? (
         <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[100%]">
-          <Skeleton.Button block className="mt-1" />
+          <Button block className="mt-1" />
         </div>
       ) : (
         <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">

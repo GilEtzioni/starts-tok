@@ -41,6 +41,7 @@ const SecondLesson: React.FC = () => {
         {
             staleTime: Infinity, 
             cacheTime: Infinity,
+            // refetchOnMount: true,
             onSuccess: (lessonData) => {     
                 if (!lessonData) return;
                 dispatch(resetClicks());

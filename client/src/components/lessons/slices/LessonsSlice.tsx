@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LessonName, LessonStatus } from '../types/LessonType';
 
 const generateShuffledNumbers = () => {
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+  const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8 ];
   for (let i = numbers.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
@@ -10,22 +10,36 @@ const generateShuffledNumbers = () => {
   return numbers;
 };
 
+const initialState = {
+  status: LessonStatus.Running,
+  order: 1,
+  randomOrder: 1,
+  randomOrderList: generateShuffledNumbers(),
+  randomIndex: 0,
+  clicks: 0,
+  anwser: "",
+  points: 0,
+  lessonName: LessonName.Loading,
+  time: new Date().getTime(),
+};
+
 export const lessonsSlice = createSlice({
   name: 'lessons',
-  initialState: {
-    status: LessonStatus.Running,
-    order: 1,
-    randomOrder: 1,
-    randomOrderList: generateShuffledNumbers(),
-    randomIndex: 0,
-    clicks: 0,
-    anwser: "",
-    points: 0,
-    lessonName: LessonName.Loading,
-    time: new Date().getTime(),
-  },
-
+  initialState,
   reducers: {
+    resetLesson: (state) => {
+      Object.assign(state, initialState);
+    },
+
+    /* time */
+    resetTime: (state) => {
+      state.time = initialState.time;
+    },
+
+    startNewTime: (state) => {
+      state.time = new Date().getTime();
+    },
+
     /* status */
     setRunning: (state) => {
       state.status = LessonStatus.Running;
@@ -49,17 +63,14 @@ export const lessonsSlice = createSlice({
 
     addOneOrder: (state) => {
       state.order += 1;
-      
-      if (state.randomIndex >= state.randomOrderList.length - 1) {
+      state.randomIndex += 1;
+      if (state.randomIndex >= state.randomOrderList.length) {
         state.randomOrderList = generateShuffledNumbers();
         state.randomIndex = 0;
-      } else {
-        state.randomIndex += 1;
       }
-      
       state.randomOrder = state.randomOrderList[state.randomIndex];
-    },
-
+    },       
+    
     changeOrder: (state, action: PayloadAction<number>) => {
       state.order = action.payload;
     },
@@ -111,7 +122,10 @@ export const {
   resetAnswer,
   resetPoints,
   addOnePoint,
-  setLessonName
+  setLessonName,
+  resetLesson,
+  resetTime,
+  startNewTime
 } = lessonsSlice.actions;
 
 export default lessonsSlice.reducer;

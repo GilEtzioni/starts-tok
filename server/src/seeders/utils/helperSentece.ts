@@ -3,6 +3,7 @@ import { Words } from "../../drizzle/schema";
 import { and, eq, sql } from "drizzle-orm";
 import { CourseLangauge } from "../../types/seedersType";
 import { helperWords } from "./helperWords";
+import { generateLessonsWordsJson, lessonExample } from "./helpingSeeders";
 
 export const processSentence = async ( 
   inputSentence: string, 
@@ -17,61 +18,6 @@ export const processSentence = async (
 
   // step 1: helper words
   const remainingWords = [...wordArray];
-
-  const twoWordVariations: string[] = [];
-  const threeWordVariations: string[] = [];
-  const fourWordVariations: string[] = [];
-  const oneWordVariations: string[] = [];
-  
-  for (let i = 0; i < remainingWords.length; i++) {
-    oneWordVariations.push(remainingWords[i]);
-  
-    if (i < remainingWords.length - 1) {
-      twoWordVariations.push(`${remainingWords[i]} ${remainingWords[i + 1]}`);
-    }
-    
-    if (i < remainingWords.length - 2) {
-      threeWordVariations.push(`${remainingWords[i]} ${remainingWords[i + 1]} ${remainingWords[i + 2]}`);
-    }
-  
-    if (i < remainingWords.length - 3) {
-      fourWordVariations.push(`${remainingWords[i]} ${remainingWords[i + 1]} ${remainingWords[i + 2]} ${remainingWords[i + 3]}`);
-    }
-  }
-
-  const allVariations = [
-    ...fourWordVariations,
-    ...threeWordVariations,
-    ...twoWordVariations,
-    ...oneWordVariations
-  ];
-
-  for (const variation of allVariations) {
-    const helperWord = getHelperWords(helperWords, language, variation as string);
-  
-    if (helperWord !== null) {
-      const wordCount = variation.split(" ").length;
-      const index = remainingWords.indexOf(variation.split(" ")[0]); 
-  
-      if (index !== -1) {
-        remainingWords.splice(index, wordCount);
-      }
-  
-      if (helperWord.foreignWord.includes('/')) {
-        resultArray.push({
-          hebrewWord: helperWord.hebrew,
-          foreignWord: [helperWord.foreignWord.split('/').map(word => word.trim()).join(', ')],
-        });
-      } else {
-        resultArray.push({
-          hebrewWord: helperWord.hebrew,
-          foreignWord: [helperWord.foreignWord.toLowerCase()],
-        });
-      }
-  
-      processedWords.add(variation);
-    }
-  }  
 
   ///////////////////////////////////////////////////////////////////////////
 
@@ -312,6 +258,61 @@ export const processSentence = async (
       }
     }
   }
+
+  const twoWordVariations: string[] = [];
+  const threeWordVariations: string[] = [];
+  const fourWordVariations: string[] = [];
+  const oneWordVariations: string[] = [];
+  
+  for (let i = 0; i < remainingWords.length; i++) {
+    oneWordVariations.push(remainingWords[i]);
+  
+    if (i < remainingWords.length - 1) {
+      twoWordVariations.push(`${remainingWords[i]} ${remainingWords[i + 1]}`);
+    }
+    
+    if (i < remainingWords.length - 2) {
+      threeWordVariations.push(`${remainingWords[i]} ${remainingWords[i + 1]} ${remainingWords[i + 2]}`);
+    }
+  
+    if (i < remainingWords.length - 3) {
+      fourWordVariations.push(`${remainingWords[i]} ${remainingWords[i + 1]} ${remainingWords[i + 2]} ${remainingWords[i + 3]}`);
+    }
+  }
+
+  const allVariations = [
+    ...fourWordVariations,
+    ...threeWordVariations,
+    ...twoWordVariations,
+    ...oneWordVariations
+  ];
+
+  for (const variation of allVariations) {
+    const helperWord = getHelperWords(helperWords, language, variation as string);
+  
+    if (helperWord !== null) {
+      const wordCount = variation.split(" ").length;
+      const index = remainingWords.indexOf(variation.split(" ")[0]); 
+  
+      if (index !== -1) {
+        remainingWords.splice(index, wordCount);
+      }
+  
+      if (helperWord.foreignWord.includes('/')) {
+        resultArray.push({
+          hebrewWord: helperWord.hebrew,
+          foreignWord: [helperWord.foreignWord.split('/').map(word => word.trim()).join(', ')],
+        });
+      } else {
+        resultArray.push({
+          hebrewWord: helperWord.hebrew,
+          foreignWord: [helperWord.foreignWord.toLowerCase()],
+        });
+      }
+  
+      processedWords.add(variation);
+    }
+  }
   
   // step 6: add missing word
   remainingWords.forEach(word => {
@@ -354,19 +355,19 @@ inputSentence.split(' ').forEach((word) => {
 
 (async () => {
   const language = CourseLangauge.English;
-  // const lessons = generateLessonsWordsJso(lessonExample);
+  const lessons = generateLessonsWordsJson(lessonExample);
   
-  // for (const lesson of lessons) {
-  //   const currentLeson = await processSentence(lesson.hebrew, language);
+  for (const lesson of lessons) {
+    const currentLeson = await processSentence(lesson.hebrew, language);
     
-  //   if (currentLeson.some((item) => 
-  //     Array.isArray(item.foreignWord) 
-  //       ? item.foreignWord.includes('המילה לא נמצאת במילון') 
-  //       : item.foreignWord === 'המילה לא נמצאת במילון'
-  //   )) {
-  //     console.log(currentLeson);
-  //   }
-  // }
+    if (currentLeson.some((item) => 
+      Array.isArray(item.foreignWord) 
+        ? item.foreignWord.includes('המילה לא נמצאת במילון') 
+        : item.foreignWord === 'המילה לא נמצאת במילון'
+    )) {
+      // console.log(currentLeson);
+    }
+  }
 })();
 
 
@@ -488,27 +489,27 @@ const getOneWordVariations = (word: string): string[] => {
 const endSuffixesArray = (word: string): string[] => {
   return [
       word,
-      word.endsWith('ה') ? word.substring(0, word.length - 1): null,
-      word.endsWith('ך') ? word.substring(0, word.length - 1) + 'כם' : null,
-      word.endsWith('ך') ? word.substring(0, word.length - 1) + 'כן' : null,
-      word.endsWith('ם') ? word.substring(0, word.length - 1) + 'מים' : null,
-      word.endsWith('ם') ? word.substring(0, word.length - 1) + 'מות' : null,
-      word.endsWith('ן') ? word.substring(0, word.length - 1) + 'נות' : null,
-      word.endsWith('ן') ? word.substring(0, word.length - 1) + 'נים' : null,
-      word.endsWith('ץ') ? word.substring(0, word.length - 1) + 'צות' : null,
-      word.endsWith('ץ') ? word.substring(0, word.length - 1) + 'צים' : null,
-      word.endsWith('כם') ? word.substring(0, word.length - 2) + 'ך' : null,
-      word.endsWith('מה') ? word.substring(0, word.length - 2) + 'ם' : null,
-      word.endsWith('כם') ? word.substring(0, word.length - 2) + 'ך' : null,
-      word.endsWith('כן') ? word.substring(0, word.length - 2) + 'ך' : null,
-      word.endsWith('מים') ? word.substring(0, word.length - 3) + 'ם' : null,
-      word.endsWith('מות') ? word.substring(0, word.length - 3) + 'ם' : null,
-      word.endsWith('נות') ? word.substring(0, word.length - 3) + 'ן' : null,
-      word.endsWith('נים') ? word.substring(0, word.length - 3) + 'ן' : null,
-      word.endsWith('צות') ? word.substring(0, word.length - 3) + 'ץ' : null,
-      word.endsWith('צים') ? word.substring(0, word.length - 3) + 'ץ' : null,
-      word.endsWith('ים') ? word.substring(0, word.length - 2) : null,
-      word.endsWith('ות') ? word.substring(0, word.length - 2) : null,
+      // word.endsWith('ה') ? word.substring(0, word.length - 1): null,
+      // word.endsWith('ך') ? word.substring(0, word.length - 1) + 'כם' : null,
+      // word.endsWith('ך') ? word.substring(0, word.length - 1) + 'כן' : null,
+      // word.endsWith('ם') ? word.substring(0, word.length - 1) + 'מים' : null,
+      // word.endsWith('ם') ? word.substring(0, word.length - 1) + 'מות' : null,
+      // word.endsWith('ן') ? word.substring(0, word.length - 1) + 'נות' : null,
+      // word.endsWith('ן') ? word.substring(0, word.length - 1) + 'נים' : null,
+      // word.endsWith('ץ') ? word.substring(0, word.length - 1) + 'צות' : null,
+      // word.endsWith('ץ') ? word.substring(0, word.length - 1) + 'צים' : null,
+      // word.endsWith('כם') ? word.substring(0, word.length - 2) + 'ך' : null,
+      // word.endsWith('מה') ? word.substring(0, word.length - 2) + 'ם' : null,
+      // word.endsWith('כם') ? word.substring(0, word.length - 2) + 'ך' : null,
+      // word.endsWith('כן') ? word.substring(0, word.length - 2) + 'ך' : null,
+      // word.endsWith('מים') ? word.substring(0, word.length - 3) + 'ם' : null,
+      // word.endsWith('מות') ? word.substring(0, word.length - 3) + 'ם' : null,
+      // word.endsWith('נות') ? word.substring(0, word.length - 3) + 'ן' : null,
+      // word.endsWith('נים') ? word.substring(0, word.length - 3) + 'ן' : null,
+      // word.endsWith('צות') ? word.substring(0, word.length - 3) + 'ץ' : null,
+      // word.endsWith('צים') ? word.substring(0, word.length - 3) + 'ץ' : null,
+      // word.endsWith('ים') ? word.substring(0, word.length - 2) : null,
+      // word.endsWith('ות') ? word.substring(0, word.length - 2) : null,
   ].filter((w): w is string => w !== null);
 };
 
@@ -517,9 +518,9 @@ const addSuffixesArray = (word: string): string[] => {
     word.startsWith('ה') ? word.substring(1, word.length) : null,
     word.startsWith('ו') ? word.substring(1, word.length) : null,
     word.startsWith('ב') ? word.substring(1, word.length) : null,
-    word.startsWith('כ') ? word.substring(1, word.length) : null,
-    word.startsWith('וב') ? word.substring(1, word.length) : null,
-    word.startsWith('כש') ? word.substring(1, word.length) : null,
+    // word.startsWith('כ') ? word.substring(1, word.length) : null,
+    // word.startsWith('וב') ? word.substring(1, word.length) : null,
+    // word.startsWith('כש') ? word.substring(1, word.length) : null,
     word === ('אחד') ? "אחת" : null,
     word === ('אחת') ? "אחד" : null,
     word === ('שתיים') ? "שניים" : null,

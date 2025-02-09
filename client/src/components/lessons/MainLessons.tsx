@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../app/store";
 
@@ -16,47 +16,47 @@ import FailureMessage from './common/Messages/FailureMessage';
 import SuccessMessage from './common/Messages/SuccessMessage';
 import FinishLessonMessage from './common/Messages/FinishLessonMessage';
 import { LessonName, LessonStatus } from './types/LessonType';
-import { resetOrder, setLessonName, setRunning } from './slices/LessonsSlice';
-import { FIRST_LESSON_QUERY_KEY, SECOND_LESSON_QUERY_KEY, THIRD_LESSON_QUERY_KEY } from "./requests/queryKeys";
+import { resetClicks, resetOrder, setLessonName, setRunning, startNewTime } from './slices/LessonsSlice';
 import { useQueryClient } from "@tanstack/react-query";
 
 const MainLearn: React.FC = () => {
-    const queryClient = useQueryClient();
     const { status, randomOrder, order } = useSelector((state: RootState) => state.lessons);
     const dispatch = useDispatch();
-
-    const [currentLesson, setCurrentLesson] = useState<{ component: ReactElement | null, key: number }>({
-        component: null,
-        key: 0,
-    });
+    const queryClient = useQueryClient();
 
     const getLessonComponent = (order: number, randomOrder: number): ReactElement | null => {
-        if (order === 9) {
-          return <FinishLessonMessage />;
-        }
-        if (randomOrder === 1 || randomOrder === 2) {
-          dispatch(setLessonName(LessonName.MatchPairs));
-          return <FirstLesson />;
-        }
-        if (randomOrder === 3 || randomOrder === 4) {
-          dispatch(setLessonName(LessonName.sentece));
-          return <SecondLesson />;
-        }
-        if (randomOrder === 5 || randomOrder === 6) {
-          dispatch(setLessonName(LessonName.MissingWriting));
-          return <ThirdLesson />;
-        }
-        if (randomOrder === 7 || randomOrder === 8) {
-          dispatch(setLessonName(LessonName.MissingCards));
-          return <ForthLesson />;
-        }
+      if (order === 9) {
         return <FinishLessonMessage />;
       }
-  
-
-    const handleBack = async () => {
-        await queryClient.removeQueries([ FIRST_LESSON_QUERY_KEY ]);
+      if (randomOrder === 1 || randomOrder === 2) {
+        dispatch(setLessonName(LessonName.MatchPairs));
+        return <FirstLesson />;
+      }
+      if (randomOrder === 3 || randomOrder === 4) {
+        dispatch(setLessonName(LessonName.sentece));
+        return <SecondLesson />;
+      }
+      if (randomOrder === 5 || randomOrder === 6) {
+        dispatch(setLessonName(LessonName.MissingWriting));
+        return <ThirdLesson />;
+      }
+      if (randomOrder === 7 || randomOrder === 8) {
+        dispatch(setLessonName(LessonName.MissingCards));
+        return <ForthLesson />;
+      }
+      return <FinishLessonMessage />;
     }
+  
+    const handleBack = async () => {
+      dispatch(resetOrder())
+      dispatch(resetClicks())
+      dispatch(setRunning())
+    }
+
+    useEffect(() => {
+      dispatch(startNewTime())
+      queryClient.removeQueries();
+    },[])
 
     return (
         <>

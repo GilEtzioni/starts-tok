@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { setRightAnswer, resetClicks } from "../slices/LessonsSlice";
+import { setRightAnswer, resetClicks, addOneClick } from "../slices/LessonsSlice";
 import { RootState } from "../../../app/store";
 
 // components + utils
@@ -20,11 +20,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
 import { ForthLessonCards } from '../../../api/common/types';
 import { IsSelected } from '../types/FirstLessonType';
+import { LessonStatus } from '../types/LessonType';
 
 const ForthLesson: React.FC = () => {
 
   const { name, lesson } = useParams<{ name: string; lesson?: string }>();
-  const { order, clicks } = useSelector((state: RootState) => state.lessons);
+  const { clicks, status } = useSelector((state: RootState) => state.lessons);
   const dispatch = useDispatch();
 
   const [foreignWord, setForeignWord] = useState<string>("");
@@ -33,9 +34,6 @@ const ForthLesson: React.FC = () => {
   const [translatedWords, setTranslatedWords] = useState<TranslatedArray[]>([]);
   const [foreignArray, setForeignArray] = useState<ForthLessonCards[]>([]);
 
-  const [inputValue, setInputValue] = useState<string>("");
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => { setInputValue(e.target.value) };
-    
   const withAuth = useWithAuth();
   const forthLesson = async () => withAuth((token) => fetchForthLesson(lesson ?? "", token));
 
@@ -46,34 +44,34 @@ const ForthLesson: React.FC = () => {
       staleTime: Infinity, 
       cacheTime: Infinity,
       onSuccess: (lessonsData) => { 
-        if(!lessonsData) return;
-        dispatch(resetClicks())
+        if (!lessonsData) return;
+        setForeignArray(lessonsData.gameWords);
+        setForeignWord(lessonsData.foreignWord);
+        dispatch(resetClicks());
         dispatch(setRightAnswer(lessonsData.foreignWord));
-        setTranslatedWords(lessonsData.translatedArray)
-        setFirstPartForeign(lessonsData.firstPartForeign)
-        setSecondPartForeign(lessonsData.secondPartForeign)
-        setForeignWord(lessonsData.foreignWord)
-        setForeignArray(lessonsData.gameWords)
-      },
+        setTranslatedWords(lessonsData.translatedArray);
+        setFirstPartForeign(lessonsData.firstPartForeign);
+        setSecondPartForeign(lessonsData.secondPartForeign);
+      }      
     }
   );
-  
-    const handleClick = (isRightWord: boolean, foreignWord: string) => {
-        const updatedForeignArray = foreignArray.map((item) => {
-        if (item.foreignWord === foreignWord) {
-            return {
-            ...item,
-            isSelected: isRightWord ? IsSelected.True : IsSelected.False
-            };
-        }
-        return item;
-        });
-        
-        setForeignArray(updatedForeignArray);
+
+  const handleClick = async (isRightWord: boolean, foreignWord: string) => {
+    if (status !== LessonStatus.Running) return;
+    dispatch(addOneClick())
+    const updatedForeignArray = foreignArray.map((item) => {
+    if (item.foreignWord.toLowerCase() === foreignWord.toLowerCase()) {
+      return {
+      ...item,
+      isSelected: isRightWord ? IsSelected.True : IsSelected.False
+      };
     }
+    return item;
+    });
+    setForeignArray(updatedForeignArray);
+  }
   
-  const { Paragraph } = Typography;
-  const { Title } = Typography;
+  const { Paragraph, Title } = Typography;
   const { Button } = Skeleton
 
   return (
@@ -129,12 +127,12 @@ const ForthLesson: React.FC = () => {
         : foreignArray.map((item, index) => (
             <React.Fragment key={`foreign-item-${index}`}>
             <Col span={8} className="w-full mb-2 mt-2`">
-                <ForthLessonCard
+              <ForthLessonCard
                 isSelected={item.isSelected}
                 isRightWord={item.isRightWord} 
                 word={item.foreignWord} 
                 onClick={() => handleClick(item.isRightWord, item.foreignWord)} 
-                />
+              />
             </Col>
             </React.Fragment>
         ))

@@ -1,5 +1,5 @@
 // react + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Typography } from 'antd';
 
 //redux
@@ -19,10 +19,10 @@ import MainMessages from './common/MainMessages';
 import { HangmanType } from './types/hangmanType'; 
 import { WordsType } from "../../../api/common/types";
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
+import { HANGMAN_WORDS, HANGMAN_LETTERS } from '../requests/queryKeys';
 import { fetchWords, fetchKeyboard } from '../../../api/games';
 import { createGameArray, createLettersArray, getRandomWord } from './utils/hangHelp';
-import { resetWrongCounter, setNumberWrongCounter, setSelectedWord } from './slices/HangmanSlice';
+import { resetHangman, resetWrongCounter, setSelectedWord } from './slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
@@ -43,14 +43,15 @@ const MainHangman: React.FC = () => {
     const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
 
     const { data: keyboard } = useQuery(
-      [ KEYBOARD_LETTERS ],
+      [ HANGMAN_LETTERS ],
       fetchGameKeyboard, {
         staleTime: Infinity, 
         cacheTime: Infinity,
+        refetchOnMount: true,
       })
 
     const {  data: words, isLoading } = useQuery(
-      [ DICTIONARY_ALL_WORDS ],
+      [ HANGMAN_WORDS ],
       fetchGameWords,
       {
         staleTime: Infinity, 
@@ -74,11 +75,16 @@ const MainHangman: React.FC = () => {
   );
 
     const handleBack = async () => {
-      if (!words) return;
-      await queryClient.removeQueries([KEYBOARD_LETTERS, DICTIONARY_ALL_WORDS]); 
+      dispatch(resetHangman())
+      await queryClient.removeQueries(); 
     };
   
     const { Title } = Typography;
+
+    useEffect(() => {
+      queryClient.invalidateQueries([HANGMAN_LETTERS]);
+      queryClient.invalidateQueries([HANGMAN_WORDS]);
+  }, [queryClient]); 
     
     return (
       <>

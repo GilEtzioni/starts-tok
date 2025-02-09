@@ -6,13 +6,11 @@ import { WordsType } from "../../../../api/common/types";
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../../../../app/store";
-import { getSelectedWord } from '../utils/hangHelp';
 import { useAddNewScore } from '../../requests/addScoreMutate';
 import { useQueryClient } from '@tanstack/react-query';
 import { addOneSuccesssCounter, resetSuccesssCounter, setNumberWrongCounter } from '../slices/HangmanSlice';
 import { HANGMAN_FINISHED_NUMBER } from '../../common/consts';
 import { GameNameEnum } from '../../../pages/MainPage/common/GamesCards/types/mainPageTypes';
-import { KEYBOARD_LETTERS } from '../../requests/queryKeys';
 
 interface MainMessagesProps {
     randomWord: WordsType[];
@@ -29,12 +27,12 @@ const MainMessages: React.FC<MainMessagesProps> = ({ randomWord, lettersArray, w
     const payload = { score: successGamesCounter + 1 };
   
     const restartGameFail = async (words: WordsType[]) => {
-        await queryClient.removeQueries([ KEYBOARD_LETTERS, KEYBOARD_LETTERS ]); 
+        await queryClient.removeQueries(); 
       dispatch(setNumberWrongCounter(HANGMAN_FINISHED_NUMBER), resetSuccesssCounter());
     };
   
     const restartGameSuccess = async () => {
-      await queryClient.removeQueries([ KEYBOARD_LETTERS, KEYBOARD_LETTERS ]); 
+      await queryClient.removeQueries(); 
       dispatch(setNumberWrongCounter(HANGMAN_FINISHED_NUMBER), addOneSuccesssCounter());
     };
   

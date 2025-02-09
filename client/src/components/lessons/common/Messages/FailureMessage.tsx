@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../app/store';
-import { setRunning, addOneOrder, resetClicks, setLessonName, addOneClick } from "../../slices/LessonsSlice";
+import { setRunning, addOneOrder, setLessonName, resetAnswer } from "../../slices/LessonsSlice";
 import { Card, Typography } from 'antd';
 import { LessonName } from '../../types/LessonType';
 import { useQueryClient } from '@tanstack/react-query';
@@ -14,15 +14,16 @@ const FailureMessage: React.FC = () => {
     const queryClient = useQueryClient();
 
     const handleClick = async() => {
+        await queryClient.removeQueries();
+        dispatch(resetAnswer());
         dispatch(setClicks(2))
         dispatch(addOneOrder());
         dispatch(setRunning());
-        dispatch(setLessonName(LessonName.Loading))
-        await queryClient.removeQueries();
+        dispatch(setLessonName(LessonName.Loading))     
     };
 
     const { Paragraph } = Typography;
-
+    
     return (
         <div className="flex justify-center items-center">
             <Card

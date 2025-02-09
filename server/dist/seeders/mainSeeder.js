@@ -33,7 +33,7 @@ const mainSeeder = async (userId) => {
     console.log("\nstart seeding CurrentLanguage...");
     await db_1.db.insert(schema_1.Language).values({
         userId,
-        language: seedersType_1.CourseLangauge.Italian,
+        language: seedersType_1.CourseLangauge.English,
     });
     console.log("CurrentLanguage seeded\n");
     console.log("\n\n---- seeding completed successfully ----\n\n");

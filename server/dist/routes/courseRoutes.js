@@ -10,5 +10,6 @@ router.get("/main/course/:userLevel/", (0, express_2.requireAuth)(), courseContr
 router.get("/main/firstLesson/:course", (0, express_2.requireAuth)(), courseController_1.getFirstLessonWords);
 router.get("/main/secondLesson/:course", (0, express_2.requireAuth)(), courseController_1.getSecondLesson);
 router.get("/main/thirdLesson/:course", (0, express_2.requireAuth)(), courseController_1.getThirdLesson);
+router.get("/main/forthLesson/:course", (0, express_2.requireAuth)(), courseController_1.getForthLesson);
 router.patch("/main/course/:userLevel/:course", (0, express_2.requireAuth)(), courseController_1.updateLesson);
 exports.default = router;

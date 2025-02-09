@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CourseLangauge = exports.EnglishLevel = exports.HebrewLevel = void 0;
+exports.IsSelected = exports.CourseLangauge = exports.EnglishLevel = exports.HebrewLevel = void 0;
 var HebrewLevel;
 (function (HebrewLevel) {
     HebrewLevel["A1"] = "\u05DE\u05D1\u05D5\u05D0";
@@ -30,3 +30,10 @@ var CourseLangauge;
     CourseLangauge["English"] = "english";
     CourseLangauge["Hebrew"] = "hebrew";
 })(CourseLangauge || (exports.CourseLangauge = CourseLangauge = {}));
+var IsSelected;
+(function (IsSelected) {
+    IsSelected["True"] = "true";
+    IsSelected["False"] = "false";
+    IsSelected["Clicked"] = "clicked";
+    IsSelected["NotSelected"] = "notSelected";
+})(IsSelected || (exports.IsSelected = IsSelected = {}));

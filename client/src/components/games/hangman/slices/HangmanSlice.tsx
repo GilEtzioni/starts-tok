@@ -2,18 +2,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { WordsType } from '../../../../api/common/types';
 import { HANGMAN_FINISHED_NUMBER } from '../../common/consts';
 
+const initialState = {
+  wrongLettersCounter: HANGMAN_FINISHED_NUMBER,
+  successGamesCounter: 0,
+  selectedWord: "",
+};
+
 export const hangmanSlice = createSlice({
   name: 'hangman',
-  initialState: {
-    wrongLettersCounter: HANGMAN_FINISHED_NUMBER,
-    successGamesCounter: 0,
-    selectedWord: "",
-  },
+  initialState,
   reducers: {
+    /* reset */
+    resetHangman: (state) => {
+      Object.assign(state, initialState);
+    },
+
     /* wrong counter */
     addOneWrongCounter: (state) => {
       state.wrongLettersCounter += 1;
     },
+  
     resetWrongCounter: (state) => {
       state.wrongLettersCounter = 0;
     },
@@ -26,6 +34,7 @@ export const hangmanSlice = createSlice({
     addOneSuccesssCounter: (state) => {
       state.successGamesCounter += 1;
     },
+    
     resetSuccesssCounter: (state) => {
       state.successGamesCounter = 0;
     },
@@ -43,7 +52,8 @@ export const {
   addOneSuccesssCounter, 
   resetSuccesssCounter, 
   setSelectedWord,
-  setNumberWrongCounter
+  setNumberWrongCounter,
+  resetHangman
 } = hangmanSlice.actions;
 
 export default hangmanSlice.reducer;

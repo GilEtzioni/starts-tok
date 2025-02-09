@@ -16,9 +16,9 @@ const CardContainer: React.FC = () => {
   const course = () => withAuth((token) => fetchLessonPage(token));
 
   const { data: coursesData, isLoading } = useQuery(
-    [LESSONS_PAGE],
-    course);
-
+    [LESSONS_PAGE], 
+    course); 
+    
   const finished: number[] | undefined = getNumberOfLessonsCompleted(coursesData);
 
   const totalCards = 6;

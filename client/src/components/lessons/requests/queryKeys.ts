@@ -5,3 +5,4 @@ export const FORTH_LESSON_QUERY_KEY = "forthLesson";
 export const ALL_WORDS = "lessonsAllWords"
 export const FINISHED_LESSON_QUERY_KEY = "finishedLesson"
 export const ADD_NEW_POINTS = "newPoints"
+export const MAIN_LEARN = "mainLearn"

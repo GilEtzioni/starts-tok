@@ -1,5 +1,5 @@
 // react + antd
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 
 // components
@@ -17,8 +17,8 @@ import { createLettersGrid, getRandomWord, randomWordsArray } from './utilts/wor
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { CurrentMode } from './ types/WordelType';
-import { DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS } from '../requests/queryKeys';
-import { resetClicks, setCurrentMode, resetSuccess, setClicks } from './slices/WordleSlice';
+import { WORDLE_WORDS, WORDLE_LETTERS } from '../requests/queryKeys';
+import { resetClicks, setCurrentMode, setClicks, resetWordle } from './slices/WordleSlice';
 
 // fetch
 import { fetchKeyboard, fetchWords } from '../../../api/games';
@@ -46,18 +46,20 @@ const MainWordle: React.FC = () => {
     const fetchGameKeyboard = () => withAuth((token) => fetchKeyboard(token));
 
     const { data: keyboard } = useQuery(
-      [ KEYBOARD_LETTERS ],
+      [ WORDLE_LETTERS ],
       fetchGameKeyboard, {
         staleTime: Infinity, 
         cacheTime: Infinity,
+        refetchOnMount: true,
       })
 
     const {  data: words, isLoading } = useQuery(
-      [ DICTIONARY_ALL_WORDS ],
+      [ WORDLE_WORDS ],
       fetchGameWords,
     {
       staleTime: Infinity, 
       cacheTime: Infinity,
+      refetchOnMount: true,
       enabled: !!keyboard,
       onSuccess: (words) => {
         if (!words) return;
@@ -82,24 +84,29 @@ const MainWordle: React.FC = () => {
       }
   );
 
+    useEffect(() => {
+      queryClient.invalidateQueries([WORDLE_WORDS]);
+      queryClient.invalidateQueries([WORDLE_LETTERS]);
+  }, [queryClient]); 
+
+  const payload = { score: successCounter };
+
   const handleBack = async () => {
-    await newScore.mutate(payload);
-    await queryClient.removeQueries([DICTIONARY_ALL_WORDS, KEYBOARD_LETTERS]); 
+    dispatch(resetWordle())
+    await queryClient.removeQueries(); 
   };
 
   const restartGameFail = async () => {
     await newScore.mutate(payload);
     dispatch(setCurrentMode(CurrentMode.Loading), setClicks(WORDLE_FINISHED_NUMBER));
-    await queryClient.removeQueries([KEYBOARD_LETTERS, DICTIONARY_ALL_WORDS]); 
+    await queryClient.removeQueries(); 
   };
 
   const restartGameSuccess = async () => {
     await newScore.mutate(payload);
     dispatch(setCurrentMode(CurrentMode.Loading), setClicks(WORDLE_FINISHED_NUMBER));
-    await queryClient.removeQueries([KEYBOARD_LETTERS, DICTIONARY_ALL_WORDS]); 
+    await queryClient.removeQueries(); 
   };
-
-  const payload = { score: successCounter };
 
   const Message = () => {
     switch (currentMode) {

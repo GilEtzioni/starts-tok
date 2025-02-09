@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.languageDictionaries = exports.convertDateToDay = exports.generateEmptyWeekPoints = exports.getDayDate = exports.getLastWeekDate = exports.getTodayDate = void 0;
+exports.languageLetters = exports.languageDictionaries = exports.convertDateToDay = exports.generateEmptyWeekPoints = exports.getDayDate = exports.getLastWeekDate = exports.getTodayDate = void 0;
 const userType_1 = require("../types/userType");
 const getTodayDate = () => {
     const today = new Date();
@@ -58,17 +58,28 @@ const convertDateToDay = (dateString) => {
     return days[date.getDay()];
 };
 exports.convertDateToDay = convertDateToDay;
-const lettersEnglish = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+const keyboardEnglish = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-const lettersGerman = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+const keyboardGerman = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß'];
-const lettersSpanish = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+const keyboardSpanish = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'á', 'é', 'í', 'ñ', 'ó', 'ú'];
-const lettersFrench = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+const keyboardFrench = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'à', 'â', 'ç', 'é', 'è', 'ê', 'ë', 'î', 'ï', 'ô', 'ù', 'û', 'ÿ'];
-const lettersItalian = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z', 'à', 'è', 'é', 'ì', 'ò', 'ù'];
+const keyboardItalian = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z', 'à', 'è', 'é', 'ì', 'ò', 'ù'];
 exports.languageDictionaries = {
-    english: lettersEnglish,
+    english: keyboardEnglish,
+    german: keyboardGerman,
+    spanish: keyboardSpanish,
+    french: keyboardFrench,
+    italian: keyboardItalian
+};
+const lettersGerman = ['ä', 'ö', 'ü', 'ß'];
+const lettersSpanish = ['á', 'é', 'í', 'ñ', 'ó', 'ú'];
+const lettersFrench = ['à', 'â', 'ç', 'é', 'è', 'ê', 'ë', 'î', 'ï', 'ô', 'ù', 'û', 'ÿ'];
+const lettersItalian = ['à', 'è', 'é', 'ì', 'ò', 'ù'];
+exports.languageLetters = {
+    english: null,
     german: lettersGerman,
     spanish: lettersSpanish,
     french: lettersFrench,
