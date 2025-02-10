@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Image } from 'antd';
+import { Badge, Grid, Image } from 'antd';
 import { Link } from 'react-router-dom';
 
 // images
@@ -7,7 +7,7 @@ import image1 from "../images/image1.png";
 import image2 from "../images/image2.png";
 import image3 from "../images/image3.png"
 import image4 from "../images/image4.png"
-
+import classNames from 'classnames';
 
 const cardColors = [
   "bg-gradient-to-r from-teal-200 to-cyan-400",
@@ -37,6 +37,10 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ game, link, number, score}) => {
 
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md; 
+
   const [bubbles, setBubbles] = useState<{ size: number; top: number; left: number; opacity: number }[]>([]);
 
   useEffect(() => {
@@ -52,8 +56,11 @@ const GameCard: React.FC<GameCardProps> = ({ game, link, number, score}) => {
 
   return (
     <Link to={link}>
-    <div
-        className={`relative w-[320px] h-[240px] p-6 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`}
+      <div
+        className={classNames(
+          `relative p-4 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`,
+          isMobile ? "mx-auto min-w-[calc(38vw-1px)] h-[140px]" : "w-[320px] h-[240px]"
+        )}
       >
         {bubbles.map((bubble, index) => (
           <div
@@ -79,23 +86,25 @@ const GameCard: React.FC<GameCardProps> = ({ game, link, number, score}) => {
             }
             className="bg-transparent shadow-none"
           />
-          <span className="text-sm text-white">{number === 1 ? "מילים שסיימתי" : "השיא שלי"}</span>
+          <span className={classNames("text-white text-right", isMobile ? "mr-2 text-[10px]" : "text-sm")}>
+            {number === 1 ? "מילים שסיימתי" : "השיא שלי"}
+            </span>
         </div>
 
-        <div className="absolute right-4 bottom-8 text-center">
-          <div className="text-2xl font-bold text-white">{ game }</div>
+        <div className={classNames("absolute right-4 text-center", isMobile ? "bottom-10" : "bottom-16")}>
+          <div className={classNames("font-bold text-white", isMobile ? "text-[10px]" : "text-2xl")}>
+            {game} 
+          </div>
         </div>
 
         <div className="fixed -bottom-0 left-0">
           <Image
-          width={200}
+          width={isMobile ? 90 : 200}
           src={imageMap[number]}
           preview={false}
           />
-      </div>
-
-
         </div>
+      </div>
     </Link>
   );
 };

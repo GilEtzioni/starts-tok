@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Tooltip } from 'antd';
+import { Grid, Tooltip } from 'antd';
 import { TranslatedArray } from '../../types/SecondLessonType';
+import classNames from 'classnames';
 
 interface HebrewSentenceProps {
     translatedWords: TranslatedArray[];
@@ -8,6 +9,10 @@ interface HebrewSentenceProps {
 const MissingHebrewSentence: React.FC<HebrewSentenceProps> = ({ translatedWords }) => {
 
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    const { useBreakpoint } = Grid;
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
     
     return (
         <div className="flex justify-center items-center text-center my-5 !font-medium">
@@ -58,11 +63,14 @@ const MissingHebrewSentence: React.FC<HebrewSentenceProps> = ({ translatedWords 
                                 {item.hebrewWord}
                             </span>
                             {Array.isArray(item.foreignWord) && item.foreignWord[0] !== null && (
-                                <div
-                                    className={`border-t-2 w-full absolute top-4 left-0 ${
-                                        hoveredIndex === index ? 'border-black' : 'border-dashed border-black'
-                                    }`}
-                                ></div>
+                            <div
+                                className={classNames(
+                                    isMobile ? 'top-5' :'top-4',
+                                    "border-t-2 w-full absolute left-0",
+                                    hoveredIndex === index ? "border-black" : "border-dashed border-black"
+                                )}
+                            >
+                            </div>
                             )}
                         </span>
                     </Tooltip>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tooltip } from 'antd';
+import { Grid, Tooltip } from 'antd';
 import { TranslatedArray } from '../../types/SecondLessonType';
 const classNames = require('classnames');
 
@@ -9,6 +9,10 @@ interface HebrewSentenceProps {
 
 const FullHebrewSentence: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    const { useBreakpoint } = Grid;
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
 
     return (
         <div className="text-center my-5 !font-medium">
@@ -62,7 +66,7 @@ const FullHebrewSentence: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) 
                                 {Array.isArray(item.foreignWord) && item.foreignWord[0] !== null && (
                                     <div
                                         className={classNames(
-                                            'border-t-2 w-full absolute top-4 left-0',
+                                            'border-t-2 w-full absolute top-5 left-0',
                                             {
                                                 'border-black': hoveredIndex === index,
                                                 'border-dashed border-black': hoveredIndex !== index,

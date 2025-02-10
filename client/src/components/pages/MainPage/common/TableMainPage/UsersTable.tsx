@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableProps, Typography, Row } from 'antd';
+import { Table, TableProps, Typography, Row, Grid } from 'antd';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBestUsers } from '../../../../../api/pages';
 import { BEST_USERS_TABLE } from '../../../requests/queryKeys';
@@ -7,6 +7,7 @@ import { getLanguge } from './useUsersTableImages';
 import SkeltonPoints from '../Skeleton/SkeltonPoints';
 import { useWithAuth } from '../../../../../api/common/withAuth';
 import { UserTableType } from '../../../../../api/common/types';
+import classNames from 'classnames';
 
 const UsersTable: React.FC = () => {
   const columns: TableProps<UserTableType>['columns'] = [
@@ -35,24 +36,33 @@ const UsersTable: React.FC = () => {
 
   const { Title } = Typography;
 
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
+  const tableWidth = isMobile ? 320 : 660;
+
+
   return (
     <div>
-      <Row className="mt-2 mr-16 flex justify-end">
+      <Row className={classNames("mt-2 flex justify-end", isMobile ? "mr-8" : "mr-16")}>
         <Title level={3} className="text-right">המובילים השבוע</Title>
       </Row>
-
-      <div className="w-[660px] rounded-lg bg-white">
+  
+      <div className={classNames("rounded-lg bg-white", isMobile ? "w-[320px]" : "w-[660px]")}>
         {isLoading ? (
           <div className="flex justify-center items-center">
-            <SkeltonPoints width={660} height={380} />
+            <SkeltonPoints width={tableWidth} height={isMobile ? 200 : 380} />
           </div>
         ) : (
-          <Table
-            columns={columns}
-            dataSource={usersScore}
-            pagination={false}
-            className="rounded-lg overflow-hidden"
-          />
+        <Table
+          columns={columns}
+          dataSource={usersScore}
+          pagination={false}
+          className={classNames(
+            "rounded-lg overflow-hidden",
+            isMobile ? "w-[320px]" : "w-[660px]"
+          )}
+        />
         )}
       </div>
     </div>

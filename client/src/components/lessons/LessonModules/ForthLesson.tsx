@@ -1,6 +1,6 @@
 // react + antd
 import React, { useState } from 'react';
-import { Row, Typography, Skeleton, Col } from 'antd';
+import { Row, Typography, Skeleton, Col, Grid } from 'antd';
 import { useParams } from 'react-router-dom';
 
 // redux
@@ -21,8 +21,13 @@ import { useWithAuth } from '../../../api/common/withAuth';
 import { ForthLessonCards } from '../../../api/common/types';
 import { IsSelected } from '../types/FirstLessonType';
 import { LessonStatus } from '../types/LessonType';
+import classNames from 'classnames';
 
 const ForthLesson: React.FC = () => {
+
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
 
   const { name, lesson } = useParams<{ name: string; lesson?: string }>();
   const { clicks, status } = useSelector((state: RootState) => state.lessons);
@@ -96,7 +101,11 @@ const ForthLesson: React.FC = () => {
           <Button block className='mt-1'/>
         </div>
       ) : (
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">
+        <div 
+        className={classNames(
+            "flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
+            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2h-[70px]"
+         )} >
         <Paragraph className="p-2 text-lg">
           {firstPartForeign}
           <span

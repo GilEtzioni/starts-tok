@@ -5,17 +5,23 @@ import italyPNG from "../../pages/MainPage/images/italyIcon.png";
 import spainPNG from "../../pages/MainPage/images/spainIcon.png";
 import usaPNG from "../../pages/MainPage/images/usaIcon.png";
 import { CourseLangauge } from '../../../api/common/types';
-import { Image, Col, Row, Typography, Input, message, Card, Space } from 'antd';
+import { Image, Col, Row, Typography, Input, message, Card, Space, Grid } from 'antd';
 import { useChangeLanguage } from '../requests/changeLanguageMutate'; 
 import { useUser } from '@clerk/clerk-react';
+import classNames from 'classnames';
 
 interface FlagsProps {
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Flags: React.FC<FlagsProps> = ({ setIsModalVisible }) => {
-  const changeLanguage = useChangeLanguage();
+
   const { Title } = Typography;
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
+
+  const changeLanguage = useChangeLanguage();
   const { user } = useUser();
   const [firstName, setFirstName] = useState(user?.firstName || '');
   const [lastName, setLastName] = useState(user?.lastName || '');
@@ -63,7 +69,11 @@ const Flags: React.FC<FlagsProps> = ({ setIsModalVisible }) => {
       </div>
 
       <Col>
-        <Row justify="center" gutter={[32, 32]} className="gap-10">
+        <Row 
+          justify="center" 
+          gutter={[isMobile ? 16 : 32, isMobile ? 16 : 32]} 
+          className={classNames(isMobile ? 'gap-1' : 'gap-10')}
+          >
           {icons.map((icon, index) => (
             <Col
               key={index}
@@ -79,7 +89,7 @@ const Flags: React.FC<FlagsProps> = ({ setIsModalVisible }) => {
                     }
                     setIsModalVisible(false);
                   }}
-                  width={100}
+                  width={isMobile ? 40 : 100}
                   preview={false}
                   className="rounded-sm transform transition-all duration-300 group-hover:scale-110"
                   src={icon.src}

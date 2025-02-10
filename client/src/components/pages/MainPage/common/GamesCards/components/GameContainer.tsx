@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import GameCard from './GameCard';
 import SkeletonCard from '../../Skeleton/SkeletonCard';
-import { Typography, Row } from 'antd';
+import { Typography, Row, Grid } from 'antd';
 import { GameNameEnum } from '../types/mainPageTypes';
 import { useQuery } from '@tanstack/react-query';
 import { WORDS_COUNTER, WORDLE_MAX_SCORE, HANGMAN_MAX_SCORE, SPEED_GAME_MAX_SCORE } from '../../../../requests/queryKeys';
 import { fetchMaxPoints, fetchWordsCounter } from '../../../../../../api/pages';
 import { useWithAuth } from '../../../../../../api/common/withAuth';
+import classNames from 'classnames';
 
 const GameContainer: React.FC = () => {
 
@@ -56,23 +57,38 @@ const GameContainer: React.FC = () => {
   };
 
   const { Title } = Typography;
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md; 
 
   const isLoading = isLoadingHangman || isLoadingWordle || isLoadingSpeed;
 
   return (
-    <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
-      <Row className="mr-16 flex justify-end">
-        <Title level={3} className="text-right">תרגול</Title>
-      </Row>
-      <div className="flex items-center justify-center w-full gap-4 box-border">
-        <div className="relative flex items-center justify-center group">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[calc(100%+10px)] h-[240px] bg-gray-200 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
-          <LeftOutlined onClick={handleBackwardClick} className="cursor-pointer relative z-10" />
-        </div>
+      <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
+        <Row className={classNames("flex justify-end", isMobile ? "mr-12" : "mr-16")}>
+          <Title level={3} className={classNames("text-right", isMobile ? "text-lg" : "text-2xl")}>
+            תרגול
+          </Title>
+        </Row>
 
-        {isLoading
-          ? [...Array(4)].map((_, index) => <SkeletonCard key={index} />)
-          : visibleCards.map((card) => (
+        <div className="flex items-center justify-center w-full gap-4 box-border">
+        <div
+            className={classNames(
+              isMobile 
+              ?  "ml-10"
+              : "relative flex items-center justify-center group ml-10"
+            )}
+          >
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-[calc(100%+10px)] h-[240px] bg-gray-200 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+            <LeftOutlined
+              onClick={handleBackwardClick}
+              className="cursor-pointer relative z-10"
+            />
+          </div>
+            
+          {isLoading
+            ? [...Array(isMobile ? 2 : 4)].map((_, index) => <SkeletonCard key={index} />)
+            : visibleCards.slice(0, isMobile ? 2 : 4).map((card: number) => (
               <GameCard
                 key={card}
                 game={cardNames[card - 1]}
@@ -82,12 +98,22 @@ const GameContainer: React.FC = () => {
               />
             ))}
 
-        <div className="relative flex items-center justify-center group">
+        <div
+            className={classNames(
+              
+              isMobile
+                ? "mr-10"
+                : "relative flex items-center justify-center group mr-10"
+            )}
+          >
           <div className="absolute left-1/2 transform -translate-x-1/2 w-[calc(100%+10px)] h-[240px] bg-gray-200 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
-          <RightOutlined onClick={handleForwardClick} className="cursor-pointer relative z-10" />
+          <RightOutlined
+            onClick={handleForwardClick}
+            className="cursor-pointer relative z-10"
+          />
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Row, Typography } from 'antd';
+import { Grid, Row, Typography } from 'antd';
 import { useQuery } from '@tanstack/react-query';
 import { fetchOneDayUser } from '../../../../../api/pages';
 import { fillMissingWeekDays } from '../../utils/userGraphHelper';
 import { weekPointsType } from '../../../../../api/common/types';
 import { WEEKLY_POINTS } from '../../../requests/queryKeys';
 import { useWithAuth } from '../../../../../api/common/withAuth';
+import classNames from 'classnames';
 
 const UsersGraph: React.FC = () => {
   const { Title } = Typography;
@@ -29,10 +30,14 @@ const UsersGraph: React.FC = () => {
     }
   );
 
-  const width = 650;
-  const height = 380;
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
+  
+  const width = isMobile ? 320 : 650;
+  const height = isMobile ? 200 : 380;
   const padding = 30;
-
+  
   const maxPoints = pointsArray.reduce((max, item) => item.points > max ? item.points : max, 0);
   let maxValue;
   if (maxPoints === 0) maxValue = 1;
@@ -50,15 +55,15 @@ const UsersGraph: React.FC = () => {
 
   return (
     <div className="flex flex-col items-end">
-      <Row className="mt-2 mr-18 flex justify-end">
+      <Row className={classNames("mt-2 flex justify-end", isMobile ? "mr-8" : "mr-16")}>
         <Title level={3} className="text-right"> הניקוד השבועי שלי </Title>
       </Row>
-      <div className="w-[660px] bg-white flex justify-center items-center">
-        <svg
-          width={width}
-          height={height}
-          className="text-black"
-        >
+      <div className={classNames("bg-white flex justify-center items-center", isMobile ? "w-[320px]" : "w-[660px]")}>
+        <svg 
+        width={width} 
+        height={height} 
+        className="text-black">
+
           <line
             x1={padding}
             y1={height - padding}

@@ -1,6 +1,6 @@
 // react + antd
 import React, { useEffect, useState } from 'react';
-import { Row, Typography, Skeleton, Card, Button } from 'antd';
+import { Row, Typography, Skeleton, Card, Button, Grid } from 'antd';
 import { useParams } from 'react-router-dom';
 
 // redux
@@ -18,8 +18,13 @@ import { fetchThirdLesson } from '../../../api/lessons';
 import { THIRD_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
+import classNames from 'classnames';
 
 const ThirdLesson: React.FC = () => {
+
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
 
   const { name, lesson } = useParams<{ name: string; lesson?: string }>();
 
@@ -47,7 +52,6 @@ const ThirdLesson: React.FC = () => {
     {
       staleTime: Infinity, 
       cacheTime: Infinity,
-      // refetchOnMount: true,
       onSuccess: (lessonsData) => { 
         if (!lessonsData) return;
         dispatch(resetClicks());
@@ -92,7 +96,11 @@ const ThirdLesson: React.FC = () => {
           <Button block className="mt-1" />
         </div>
       ) : (
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">
+        <div 
+        className={classNames(
+            "flex flex-wrap justify-center items-start m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
+            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2h-[70px]"
+         )} >
           <Paragraph className="p-2 text-lg">
             {firstPartForeign}
             <input

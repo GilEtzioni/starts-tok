@@ -1,6 +1,6 @@
 // react  + antd
 import React, { useState } from 'react';
-import { Row, Card, Typography, Skeleton } from 'antd';
+import { Row, Card, Typography, Skeleton, Grid } from 'antd';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,8 +21,13 @@ import { fetchSecondLesson } from '../../../api/lessons';
 import { SECOND_LESSON_QUERY_KEY } from '../requests/queryKeys';
 import { useQuery } from '@tanstack/react-query';
 import { useWithAuth } from '../../../api/common/withAuth';
+import classNames from 'classnames';
 
 const SecondLesson: React.FC = () => {
+
+    const { useBreakpoint } = Grid;
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
 
     const { name, lesson } = useParams<{ name: string;  lesson?: string }>();
     const { Title } = Typography;
@@ -41,7 +46,6 @@ const SecondLesson: React.FC = () => {
         {
             staleTime: Infinity, 
             cacheTime: Infinity,
-            // refetchOnMount: true,
             onSuccess: (lessonData) => {     
                 if (!lessonData) return;
                 dispatch(resetClicks());
@@ -91,12 +95,17 @@ const SecondLesson: React.FC = () => {
         <FullHebrewSentence TranslatedWords={TranslatedWords} />
     
         {/* up container */}
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none">
+        <div 
+         className={classNames(
+            "flex flex-wrap justify-center items-start h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border-none",
+            isMobile ? "w-[90%]" : "w-1/2"
+          )} >
+        
             {foreignArray
                 .filter(item => item.container === CardContainer.Up)
                 .sort((a, b) => a.containerOrder - b.containerOrder)
                 .map(item => (
-                    <div className="h-[50px]">
+                    <div className={classNames(isMobile ? "min-h-8 h-auto" : "h-[50px]")} >
                         <Card
                             bodyStyle={{ padding: '12px' }}
                             key={item.containerOrder}
@@ -117,7 +126,11 @@ const SecondLesson: React.FC = () => {
             ))}
         </div>
         :
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
+        <div 
+        className={classNames(
+            "flex flex-wrap items-center justify-center m-2.5 mx-auto overflow-auto box-border border border-gray-300 rounded-lg mt-5 gap-2.5 p-2.5",
+            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2 h-[150px]"
+         )} >
             {foreignArray
                 .filter(item => item.container === CardContainer.Down)
                 .sort()

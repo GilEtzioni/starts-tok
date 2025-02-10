@@ -1,5 +1,5 @@
 // react + antd
-import { Card, Col, Modal, Row, Typography } from 'antd';
+import { Card, Col, Grid, Modal, Row, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,10 @@ import { usePatchFinishLesson } from '../../requests/finishLessonMutate';
 import { useQueryClient } from '@tanstack/react-query';
 
 const FinishLessonMessage: React.FC = () => {
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
+
   const queryClient = useQueryClient();
   const [isModalVisible, setIsModalVisible] = useState(true);
   const [lessonTime, setLessontime] = useState("");
@@ -71,46 +75,79 @@ const FinishLessonMessage: React.FC = () => {
               !כל הכבוד
             </Title>
 
-            <Row gutter={[16, 16]} justify="center">
-              <Col flex="1 1 100px">
-                <Card className="relative h-24 w-full transition-all bg-white text-red-500 border border-red-500 border-2 text-center flex flex-col justify-center items-center">
-                  <div className="absolute top-0 left-0 w-full bg-red-500 text-white p-1 text-base font-bold text-center">
-                    ניקוד
-                  </div>
-                  <div className="mt-2 flex flex-col justify-center items-center h-full pt-4">
-                    <Paragraph className="!text-red-500 text-xl !text-center !m-0 font-semibold flex items-center">
-                      {points} <i className="fas fa-star ml-1"></i>
-                    </Paragraph>
-                  </div>
-                </Card>
-              </Col>
+            <Row
+            gutter={[16, 16]}
+            justify="center"
+            className={classNames(isMobile ? "grid grid-cols-3 gap-[6px] w-full" : "flex gap-4")}>
 
-              <Col flex="1 1 100px">
-                <Card className="relative h-24 w-full transition-all bg-white text-blue-500 border border-blue-500 border-2 text-center flex flex-col justify-center items-center">
-                  <div className="absolute top-0 left-0 w-full bg-blue-500 text-white p-1 text-base font-bold text-center">
-                    זמן
-                  </div>
-                  <div className="mt-2 flex flex-col justify-center items-center h-full pt-4">
-                    <Paragraph className="!text-blue-500 text-xl !text-center !m-0 font-semibold flex items-center">
-                      {lessonTime} <i className="fa-solid fa-clock ml-1"></i>
-                    </Paragraph>
-                  </div>
-                </Card>
-              </Col>
+            <Col flex="1 1 100px">
+              <Card 
+                className={classNames(
+                  "relative h-24 transition-all bg-white text-red-500 border border-red-500 border-2 text-center flex flex-col justify-center items-center p-0",
+                  isMobile ? "w-[130%]" : "w-full"
+                )}
+              >
+                <div className="absolute top-0 left-0 w-full bg-red-500 text-white p-1 text-base font-bold text-center">
+                  ניקוד
+                </div>
+                <div className="mt-2 flex flex-col justify-center items-center h-full pt-4">
+                  <Paragraph className="!text-red-500 text-sm md:text-xl !text-center !m-0 font-semibold flex items-center">
+                    {points} <i className="fas fa-star ml-1"></i>
+                  </Paragraph>
+                </div>
+              </Card>
+            </Col>
 
-              <Col flex="1 1 100px">
-                <Card className="relative h-24 w-full transition-all bg-white text-green-500 border border-green-500 border-2 text-center flex flex-col justify-center items-center">
-                  <div className="absolute top-0 left-0 w-full bg-green-500 text-white p-1 text-base font-bold text-center">
-                    הצלחה
-                  </div>
-                  <div className="mt-2 flex flex-col justify-center items-center h-full pt-4">
-                    <Paragraph className="!text-green-500 text-xl !text-center !m-0 font-semibold flex items-center">
-                    {((points / 8) * 100).toFixed(0)}%  <i className="fa-solid fa-square-check ml-1"></i>
-                    </Paragraph>
-                  </div>
-                </Card>
-              </Col>
-            </Row>
+            <Col flex="1 1 100px">
+            <Card 
+                className={classNames(
+                  "relative h-24 transition-all bg-white text-blue-500 border border-blue-500 border-2 text-center flex flex-col justify-center items-center",
+                  isMobile ? "w-[130%]" : "w-full"
+                )}
+              >
+                <div className="absolute top-0 left-0 w-full bg-blue-500 text-white p-1 text-base font-bold text-center">
+                  זמן
+                </div>
+                <div className="mt-2 flex flex-col justify-center items-center h-full pt-4">
+                <Paragraph 
+                  className={classNames(
+                    "!text-blue-500 !text-center !m-0 font-semibold flex flex-row items-center gap-1 whitespace-nowrap",
+                    isMobile ? "text-sm" : "text-xl"
+                  )}
+                >
+                  {lessonTime}  
+                  <span className="leading-none">
+                    <i className="fa-solid fa-clock"></i>
+                  </span>
+                </Paragraph>
+
+                </div>
+              </Card>
+            </Col>
+
+            <Col flex="1 1 100px">
+            <Card 
+              className={classNames(
+                "relative h-24 transition-all bg-white text-green-500 border border-green-500 border-2 text-center flex flex-col justify-center items-center p-0 overflow-hidden",
+                isMobile ? "w-[130%]" : "w-full"
+              )}
+            >
+              <div className="absolute top-0 inset-x-0 bg-green-500 text-white p-1 text-base font-bold text-center">
+                הצלחה
+              </div>
+              <div className="mt-2 flex flex-col justify-center items-center h-full pt-4">
+              <Paragraph 
+                  className="!text-green-500 text-sm md:text-xl !text-center !m-0 font-semibold flex items-center gap-1 whitespace-nowrap"
+                >
+                  {((points / 8) * 100).toFixed(0)}%  
+                  <span className="leading-none">
+                    <i className="fa-solid fa-square-check"></i>
+                  </span>
+                </Paragraph>
+              </div>
+            </Card>
+          </Col>
+          </Row>
 
             <div className="flex items-center justify-center">
               <Card
