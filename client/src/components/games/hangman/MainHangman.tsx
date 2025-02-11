@@ -106,10 +106,14 @@ const MainHangman: React.FC = () => {
             </div>
 
             <div className={isMobile ? "absolute top-2 left-1/2 transform -translate-x-1/2 text-center" : "fixed top-5 right-52 z-50"}>
-              <Title level={isMobile ? 4 : 3} className="text-xl font-semibold antialiased">
+              <Title 
+                level={isMobile ? 4 : 3} 
+                className="text-xl font-semibold antialiased whitespace-nowrap"
+              >
                 הצלחת {successGamesCounter} משחקים ברצף
               </Title>
             </div>
+
 
             <div className="absolute">
               <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} selectedWord={selectedWord} />
@@ -117,13 +121,16 @@ const MainHangman: React.FC = () => {
 
             <div className={classNames( 
               "flex flex-col items-center justify-center gap-5",
-              isMobile ? " mt-10" : "-mt-5 z-50")}>
+              isMobile ? "mt-10" : "-mt-5 z-50"
+            )}>
               <CourseName randomWord={randomWord} />
-              <div className="w-full text-center">
+              <div className="w-[140px] text-center mx-auto flex flex-col items-center justify-center">
                 <WordsLines gameArray={gameArray} />
                 {isMobile && <PhotosHang />}
               </div>
             </div>
+
+
 
             <div className={isMobile ? "w-full mt-5" : "absolute top-[50%] left-1/2 -translate-x-1/2 w-auto"}>
               <WordsGrid
@@ -136,7 +143,7 @@ const MainHangman: React.FC = () => {
           </Col>
 
           {!isMobile && (
-            <Col span={10} className="h-screen flex flex-col">
+            <Col span={10} className="h-[screen] flex flex-col">
               <div className="flex-grow flex flex-col items-center justify-center">
                 <PhotosHang />
               </div>

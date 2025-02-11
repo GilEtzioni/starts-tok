@@ -92,7 +92,13 @@ const SecondLesson: React.FC = () => {
             <Title level={3} className="text-center">תרגמו את המשפט</Title>
         </Row>
 
+        {isLoading ? (
+        <div className="text-center my-5 !font-medium w-1/2 mx-auto">
+          <Button block />
+        </div>  
+        ) : (
         <FullHebrewSentence TranslatedWords={TranslatedWords} />
+        )}
     
         {/* up container */}
         <div 
@@ -120,7 +126,10 @@ const SecondLesson: React.FC = () => {
 
         {/* down container */}
         {isLoading ?
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5">
+        <div className={classNames(
+        "flex flex-wrap justify-center items-start h-[150px] m-2.5 mx-auto gap-2.5 overflow-auto p-2.5 box-border border border-gray-300 rounded-lg mt-5",
+        isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2"
+        )}>
             {[...Array(3)].map((_, index) => (
             <Button key={index} block active />
             ))}

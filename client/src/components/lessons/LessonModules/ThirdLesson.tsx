@@ -92,14 +92,16 @@ const ThirdLesson: React.FC = () => {
   
     {/* foreign */}
       {isLoading ? (
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[100%]">
+        <div className={classNames(
+          "flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg absolute left-1/2 transform -translate-x-1/2 -translate-y-[100%]",
+          isMobile ? "w-[90%] min-h-20 h-auto top-[30%]" : "w-1/2 h-[70px] top-1/2"
+         )} >
           <Button block className="mt-1" />
         </div>
       ) : (
-        <div 
-        className={classNames(
-            "flex flex-wrap justify-center items-start m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
-            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2 h-[70px]"
+        <div className={classNames(
+          "flex flex-wrap justify-center items-start m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
+          isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2 h-[70px]"
          )} >
           <Paragraph className="p-2 text-lg">
             {firstPartForeign}

@@ -25,9 +25,9 @@ const MainPage: React.FC<MainPagePros> = ({ cardRef, gameRef, graphRef, tableRef
   return (
     <div className="w-full relative">
 
-      <ConfigProvider direction="rtl" locale={heIL}>
-        <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
-      </ConfigProvider>
+    <ConfigProvider direction="rtl" locale={heIL}>
+      {!isMobile && <Tour open={open} onClose={() => setOpen(false)} steps={steps} />}
+    </ConfigProvider>
 
       <div className="w-full">
         <div ref={cardRef}>

@@ -97,14 +97,16 @@ const ForthLesson: React.FC = () => {
 
       {/* third section */}
       {isLoading ? (
-        <div className="flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg">
+        <div className={classNames("flex flex-wrap justify-center items-start m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
+          isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2 h-[70px]"
+        )}>
           <Button block className='mt-1'/>
         </div>
       ) : (
         <div 
         className={classNames(
-            "flex flex-wrap justify-center items-start w-1/2 h-[70px] m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
-            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2h-[70px]"
+            "flex flex-wrap justify-center items-start w-1/2 m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
+            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2 h-[70px]"
          )} >
         <Paragraph className="p-2 text-lg">
           {firstPartForeign}
