@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Spin, Typography } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useMutation } from '@tanstack/react-query';
+import classNames from "classnames";
 
 const CreateDatabase: React.FC = () => {
   const { Paragraph } = Typography;
@@ -42,7 +43,11 @@ const CreateDatabase: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-12 bg-[hsl(210,40%,96.1%)]">
-      <div className="text-8xl font-extrabold tracking-wide relative inline-block mb-12">
+      <div
+        className={classNames(
+          "font-extrabold tracking-wide relative inline-block mb-12",
+          "text-6xl md:text-8xl"
+        )}>
         <span className="bg-gradient-to-r from-[hsl(142.1,76.2%,36.3%)] to-[hsl(142.1,70.6%,45.3%)] bg-clip-text text-transparent">
           Starts
         </span>

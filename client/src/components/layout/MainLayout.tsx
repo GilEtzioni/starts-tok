@@ -91,10 +91,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                 isMobile ? "absolute top-1/2 !right-20 -translate-y-1/2 flex-row items-center text-sm gap-2" : "text-lg gap-1"
               )}
             >
+
               {isLoading ? (
                 <Skeleton.Button active size="small" />
               ) : (
-                <span className={classNames("flex items-center gap-1", { "text-base": !isMobile, "text-sm": isMobile })}>
+                <span className={classNames(
+                  "flex items-center gap-1",
+                  isMobile ? "text-sm" : "text-base" )}>
                   {userPoints?.points}
                   <i className="fas fa-star"></i>
                 </span>
@@ -110,12 +113,17 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             >
 
           {isLoading ? (
-            <Skeleton.Button active size="small" className="mt-3" />
+            <Skeleton.Button 
+            active 
+            size="small" 
+            className={classNames(
+              isMobile ? "mt-0 mr-3" :  "mt-3"
+            )}/>
           ) : (
-            <span className={classNames("text-gray-500", { 
-              "text-lg hidden lg:block": !isMobile,
-              "text-sm": isMobile
-            })}>
+            <span className={classNames(
+              "text-gray-500",
+              isMobile ? "text-sm" :  "text-lg hidden lg:block"
+            )}>
               {isMobile ? user?.firstName : `${user?.firstName} ${user?.lastName}`}
             </span>
           )}
