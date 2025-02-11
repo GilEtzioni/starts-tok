@@ -31,7 +31,7 @@ const CourseProgressBar: React.FC<CourseProgressBarProps> = ({ num }) => {
 
       <Paragraph
         className={classNames(
-          "absolute w-full text-center text-gray-500/80 m-0 -translate-y-1/2",
+          "absolute w-full text-center text-gray-500/80 mb-1 -translate-y-1/2",
           isMobile
             ? "font-medium top-[12px] text-[10px]"
             : "font-bold top-1/3 text-[12px]"
