@@ -99,7 +99,7 @@ const ThirdLesson: React.FC = () => {
         <div 
         className={classNames(
             "flex flex-wrap justify-center items-start m-2.5 mx-auto gap-2.5 p-2.5 box-border border border-gray-300 rounded-lg",
-            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2h-[70px]"
+            isMobile ? "w-[90%] min-h-20 h-auto" : "w-1/2 h-[70px]"
          )} >
           <Paragraph className="p-2 text-lg">
             {firstPartForeign}

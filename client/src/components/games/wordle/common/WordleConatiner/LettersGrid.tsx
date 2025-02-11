@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'antd';
+import { Button, Card, Grid } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../../app/store';
 import { addOneClick } from '../../slices/WordleSlice';
@@ -94,26 +94,31 @@ const LettersGrid: React.FC<WordsGridProps> = ({
 
   useEnterClick({ clicksCounter, setGridAnswer, gridAnswer, dispatch, correctAnswer, words, gridLetters, setGridLetters });
 
+    const { useBreakpoint } = Grid;
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
+
   return (
     <>
       <div className="grid grid-cols-10 gap-2">
         {gridLetters?.map((item) => (
-        <Card
+          <Card
           key={item?.letter}
           className={classNames(
-            'text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear', 
+            "text-center flex justify-center items-center h-12 transition-all duration-200 ease-linear",
+            isMobile ? "w-6 text-sm" : "w-10 text-base",
             {
               "hover:bg-gray-100 hover:cursor-pointer border border-gray-100 border-b-4 border-1 duration-300 ease-in-out hover:-translate-y-0.5":
                 item?.selected === LetterSeleceted.NotSelected || item?.selected === LetterSeleceted.Clicked,
 
               "hover:bg-green-500 bg-green-500 text-white border border-green-600 border-b-4 border-0 duration-300 ease-in-out hover:-translate-y-0.5":
-                item?.selected !== LetterSeleceted.NotSelected &&  item?.color === LetterColor.Green,
+                item?.selected !== LetterSeleceted.NotSelected && item?.color === LetterColor.Green,
 
-                "hover:bg-yellow-500 bg-yellow-500 text-white border border-yellow-600 border-b-4 border-0 duration-300 ease-in-out hover:-translate-y-0.5":
-                item?.selected !== LetterSeleceted.NotSelected &&  item?.color === LetterColor.Yellow,
+              "hover:bg-yellow-500 bg-yellow-500 text-white border border-yellow-600 border-b-4 border-0 duration-300 ease-in-out hover:-translate-y-0.5":
+                item?.selected !== LetterSeleceted.NotSelected && item?.color === LetterColor.Yellow,
 
-                "hover:bg-gray-500  bg-gray-500 text-white border border-gray-600 border-b-4 border-0":
-                item?.selected !== LetterSeleceted.NotSelected &&  item?.color === LetterColor.Gray,
+              "hover:bg-gray-500 bg-gray-500 text-white border border-gray-600 border-b-4 border-0":
+                item?.selected !== LetterSeleceted.NotSelected && item?.color === LetterColor.Gray,
             }
           )}
           onClick={() => handleLetterClick(item?.letter, item)}

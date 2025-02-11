@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'antd';
+import { Grid, Image } from 'antd';
 
 // images
 import image0 from "../images/hangman0.png"
@@ -13,6 +13,7 @@ import image6 from '../images/hangman6.png';
 // redux
 import { useSelector } from 'react-redux';
 import { RootState } from "../../../../app/store";
+import classNames from 'classnames';
 
 const PhotosHang: React.FC = () => {
 
@@ -28,9 +29,12 @@ const PhotosHang: React.FC = () => {
   };
 
   const currImage = imageMap[wrongCounter] || image6;
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
 
   return (
-    <div>
+    <div className={classNames(isMobile ? "mt-6" : "")}>
       <Image src={currImage} alt="Hangman"/>
     </div>
   );

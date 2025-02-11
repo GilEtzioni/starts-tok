@@ -1,6 +1,6 @@
 // react + antd
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Typography } from 'antd';
+import { Col, Grid, Row, Typography } from 'antd';
 
 //redux
 import { useDispatch } from 'react-redux';
@@ -26,6 +26,7 @@ import { resetHangman, resetWrongCounter, setSelectedWord } from './slices/Hangm
 import { HANGMAN_FINISHED_NUMBER } from '../common/consts';
 import LoadingPage from '../../../common/LoadingPage';
 import { useWithAuth } from '../../../api/common/withAuth';
+import classNames from 'classnames';
 
 const MainHangman: React.FC = () => {
 
@@ -79,57 +80,72 @@ const MainHangman: React.FC = () => {
       await queryClient.removeQueries(); 
     };
   
-    const { Title } = Typography;
 
     useEffect(() => {
       queryClient.invalidateQueries([HANGMAN_LETTERS]);
       queryClient.invalidateQueries([HANGMAN_WORDS]);
   }, [queryClient]); 
-    
-    return (
-      <>
-        {isLoading || wrongLettersCounter === HANGMAN_FINISHED_NUMBER ? 
+
+  const { Title } = Typography;
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
+
+  return (
+    <>
+      {isLoading || wrongLettersCounter === HANGMAN_FINISHED_NUMBER ? (
         <LoadingPage />
-          :
-          <Row>
-            <Col span={14} className="h-screen p-10 relative">
-              <div className="absolute">
-                <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} selectedWord={selectedWord}/>
+      ) : (
+        <Row className={isMobile ? "flex flex-col" : "flex"}>
+          <Col
+            span={isMobile ? 24 : 14}
+            className={isMobile ? "min-h-screen p-10 relative flex flex-col" : "h-screen p-10 relative"}
+          >
+            <div className={isMobile ? "absolute top-2 right-5" : "fixed top-5 right-5 z-50"}>
+              <BackButton onBack={handleBack} />
+            </div>
+
+            <div className={isMobile ? "absolute top-2 left-1/2 transform -translate-x-1/2 text-center" : "fixed top-5 right-52 z-50"}>
+              <Title level={isMobile ? 4 : 3} className="text-xl font-semibold antialiased">
+                הצלחת {successGamesCounter} משחקים ברצף
+              </Title>
+            </div>
+
+            <div className="absolute">
+              <MainMessages randomWord={randomWord} lettersArray={lettersArray} words={words} selectedWord={selectedWord} />
+            </div>
+
+            <div className={classNames( 
+              "flex flex-col items-center justify-center gap-5",
+              isMobile ? " mt-10" : "-mt-5 z-50")}>
+              <CourseName randomWord={randomWord} />
+              <div className="w-full text-center">
+                <WordsLines gameArray={gameArray} />
+                {isMobile && <PhotosHang />}
               </div>
-    
-              <div className="flex flex-col items-center justify-center gap-5 h-0 mt-10">
-                <CourseName randomWord={randomWord} />
-                <div className="w-full text-center">
-                  <WordsLines gameArray={gameArray} />
-                </div>
-              </div>
-    
-              <div className="absolute top-[50%] left-1/2 -translate-x-1/2 w-auto">
-                <WordsGrid
-                  lettersArray={lettersArray}
-                  setLettersArray={setLettersArray}
-                  gameArray={gameArray}
-                  setGameArray={setGameArray}
-                />
+            </div>
+
+            <div className={isMobile ? "w-full mt-5" : "absolute top-[50%] left-1/2 -translate-x-1/2 w-auto"}>
+              <WordsGrid
+                lettersArray={lettersArray}
+                setLettersArray={setLettersArray}
+                gameArray={gameArray}
+                setGameArray={setGameArray}
+              />
+            </div>
+          </Col>
+
+          {!isMobile && (
+            <Col span={10} className="h-screen flex flex-col">
+              <div className="flex-grow flex flex-col items-center justify-center">
+                <PhotosHang />
               </div>
             </Col>
-    
-        <Col span={10} className="h-screen flex flex-col">
-          <div className="flex justify-between items-center p-5">
-            <Title level={3} className="text-xl font-semibold antialiased ml-40">
-              הצלחת {successGamesCounter} משחקים ברצף
-            </Title>
-            <BackButton onBack={handleBack} />
-          </div>
+          )}
+        </Row>
+      )}
+    </>
+  );
+};
 
-          <div className="flex-grow flex flex-col items-center justify-center">
-            <PhotosHang />
-          </div>
-        </Col>
-          </Row>
-    }
-      </>
-    );    
-  } 
-  
-  export default MainHangman;
+export default MainHangman;

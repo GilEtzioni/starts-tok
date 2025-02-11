@@ -1,6 +1,6 @@
 // react + antd
 import React, { useState } from 'react';
-import { Row, Col, Typography } from 'antd';
+import { Row, Col, Typography, Grid } from 'antd';
 
 // fetch data + components
 import GameCard from './common/SpeedGameCard';
@@ -88,6 +88,7 @@ const MainSpeedGame: React.FC = () => {
     const payload = { score: succcessCounter };
 
     const handleBack = async () => {
+      await newScore.mutate(payload);
       queryClient.removeQueries();
       dispatch(resetSpeedGame());
     };
@@ -99,6 +100,10 @@ const MainSpeedGame: React.FC = () => {
     };
 
     const { Title } = Typography;
+    const { useBreakpoint } = Grid;
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
+
     return (
       <>
         {isLoading ? (
@@ -114,7 +119,7 @@ const MainSpeedGame: React.FC = () => {
           <div className="flex flex-col min-h-screen">
             <div className="relative flex items-center justify-between mt-5 px-5">
               <div className="absolute inset-0 flex justify-center">
-                <Title level={3} className="text-center">
+                <Title level={ isMobile ? 4 : 3 } className="text-center">
                   התאימו את הזוגות
                 </Title>
               </div>

@@ -50,14 +50,14 @@ const FullHebrewSentence: React.FC<HebrewSentenceProps> = ({ TranslatedWords }) 
                             <span
                                 className={`inline-block text-center relative ${
                                     !Array.isArray(item.foreignWord) || item.foreignWord[0] === null
-                                        ? '' // no margin or hover for null
+                                        ? ''
                                         : 'mr-2'
                                 }`}
                             >
                                 <span
                                     className={`block ${
                                         !Array.isArray(item.foreignWord) || item.foreignWord[0] === null
-                                            ? '' // disable hover behavior
+                                            ? ''
                                             : 'hover:cursor-pointer'
                                     }`}
                                 >

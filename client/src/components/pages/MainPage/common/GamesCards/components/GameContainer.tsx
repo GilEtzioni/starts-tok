@@ -64,9 +64,9 @@ const GameContainer: React.FC = () => {
   const isLoading = isLoadingHangman || isLoadingWordle || isLoadingSpeed;
 
   return (
-      <div className="flex flex-col justify-between items-end gap-2 mt-5 w-full box-border">
-        <Row className={classNames("flex justify-end", isMobile ? "mr-12" : "mr-16")}>
-          <Title level={3} className={classNames("text-right", isMobile ? "text-lg" : "text-2xl")}>
+      <div className="flex flex-col justify-between items-end w-full box-border">
+        <Row className={classNames("flex justify-end", isMobile ? "mr-12 mt-2" : "mr-16 gap-2 mt-5")}>
+          <Title level={ isMobile ? 4 : 3 } className={classNames("text-right", isMobile ? "text-lg" : "text-2xl")}>
             תרגול
           </Title>
         </Row>

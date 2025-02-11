@@ -65,8 +65,7 @@ const MissingHebrewSentence: React.FC<HebrewSentenceProps> = ({ translatedWords 
                             {Array.isArray(item.foreignWord) && item.foreignWord[0] !== null && (
                             <div
                                 className={classNames(
-                                    isMobile ? 'top-5' :'top-4',
-                                    "border-t-2 w-full absolute left-0",
+                                    "border-t-2 w-full absolute left-0 top-5",
                                     hoveredIndex === index ? "border-black" : "border-dashed border-black"
                                 )}
                             >

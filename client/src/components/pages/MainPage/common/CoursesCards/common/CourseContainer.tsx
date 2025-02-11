@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { getNumberOfLessonsCompleted } from "./courseCardHelper";
 import CourseCard from "./CourseCard";
@@ -23,10 +23,16 @@ const CardContainer: React.FC = () => {
   const { data: coursesData, isLoading } = useQuery([LESSONS_PAGE], course);
 
   const finished: number[] | undefined = getNumberOfLessonsCompleted(coursesData);
-
   const totalCards = 6;
-  const initialCards = [4, 3, 2, 1];
+
+  const initialCards: number[] = isMobile ? [2, 1] : [4, 3, 2, 1];
+  
   const [visibleCards, setVisibleCards] = useState<number[]>(initialCards);
+  
+  useEffect(() => {
+    setVisibleCards(isMobile ? [2, 1] : [4, 3, 2, 1]);
+  }, [isMobile]);
+  
 
   const cardNamesHebrew = [
     "קורס ראשון - מבוא",

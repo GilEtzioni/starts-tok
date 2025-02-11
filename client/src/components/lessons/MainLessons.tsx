@@ -18,6 +18,8 @@ import FinishLessonMessage from './common/Messages/FinishLessonMessage';
 import { LessonName, LessonStatus } from './types/LessonType';
 import { resetClicks, resetOrder, setLessonName, setRunning, startNewTime } from './slices/LessonsSlice';
 import { useQueryClient } from "@tanstack/react-query";
+import { Grid } from "antd";
+import classNames from "classnames";
 
 const MainLearn: React.FC = () => {
     const { status, randomOrder, order } = useSelector((state: RootState) => state.lessons);
@@ -58,13 +60,17 @@ const MainLearn: React.FC = () => {
       queryClient.removeQueries();
     },[])
 
+    const { useBreakpoint } = Grid;
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
+
     return (
         <>
         <div className="flex items-center justify-between mt-5">
             <div className="flex-grow text-center ml-10">
                 <ProgressBar num={order} />
             </div>
-            <div className='mr-10'>
+            <div className={classNames(isMobile ? "mr-2" : "mr-10")}>
                 <BackButton onBack={handleBack} />
             </div>
         </div>

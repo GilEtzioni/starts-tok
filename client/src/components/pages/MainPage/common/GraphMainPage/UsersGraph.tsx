@@ -56,7 +56,7 @@ const UsersGraph: React.FC = () => {
   return (
     <div className="flex flex-col items-end">
       <Row className={classNames("mt-2 flex justify-end", isMobile ? "mr-8" : "mr-16")}>
-        <Title level={3} className="text-right"> הניקוד השבועי שלי </Title>
+        <Title level={ isMobile ? 4 : 3 } className="text-right"> הניקוד השבועי שלי </Title>
       </Row>
       <div className={classNames("bg-white flex justify-center items-center", isMobile ? "w-[320px]" : "w-[660px]")}>
         <svg 

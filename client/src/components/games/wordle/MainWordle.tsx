@@ -1,6 +1,6 @@
 // react + antd
 import React, { useEffect, useState } from 'react';
-import { Typography } from 'antd';
+import { Grid, Typography } from 'antd';
 
 // components
 import BackButton from '../../../common/BackButton';
@@ -27,6 +27,7 @@ import { useWithAuth } from '../../../api/common/withAuth';
 import { useAddNewScore } from '../requests/addScoreMutate'; 
 import { GameNameEnum } from '../../pages/MainPage/common/GamesCards/types/mainPageTypes';
 import { WORDLE_FINISHED_NUMBER } from '../common/consts';
+import classNames from 'classnames';
 
 const MainWordle: React.FC = () => {
 
@@ -127,6 +128,10 @@ const MainWordle: React.FC = () => {
     }
   };
 
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const isMobile = !screens.md;
+
   return (
     <>
     {isLoading || currentMode === CurrentMode.Loading ?
@@ -134,19 +139,23 @@ const MainWordle: React.FC = () => {
     : ( <div className="flex flex-col min-h-screen">
       <div className="relative flex items-center mt-5">
         <div className="absolute inset-0 flex justify-center">
-          <Title level={3} className="text-center">
+          <Title level={ isMobile ? 4 : 3 } className="text-center">
             הצלחת {successCounter} משחקים ברצף
           </Title>
         </div>
 
-        <div className="ml-auto mr-5">
-          <BackButton onBack={handleBack}/>
-        </div>
+      <div className={classNames("ml-auto", isMobile ? "mr-1" : "mr-5" )}>
+        <BackButton onBack={handleBack}/>
+      </div>
     </div>
   
       {Message()}
   
-      <div className="flex-grow flex flex-col items-center justify-center">
+      <div className={classNames(
+        "flex-grow flex flex-col items-center justify-center",
+        isMobile ? "mb-20" : "gap-4" 
+      )}>
+
         <AnswerGrid gridAnswer={gridAnswer} />
   
         <LettersGrid

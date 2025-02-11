@@ -28,10 +28,11 @@ const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content,
 
   return (
     <Link to={link}>
-      <div
-        className={classNames(
-          `relative p-4 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`,
-          isMobile ? "mx-auto min-w-[calc(38vw-1px)] h-[140px]" : "w-[320px] h-[240px]"
+      <div className={classNames(
+        `relative p-6 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`,
+        isMobile
+        ? "mx-auto min-w-[calc(38vw-1px)] h-[140px]"
+        : "w-[320px] min-h-[240px] max-h-[240px] h-[240px]"
         )}
       >
 
@@ -71,20 +72,25 @@ const CourseCard: React.FC<OneCardProps> = ({ levelHebrew, levelGerman, content,
           </div>
         </div>
 
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-[85%] text-center">
-          <div className="relative w-full">
+        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-[85%] text-center" >
+          <div
+            className={classNames(
+              "relative w-full flex flex-col justify-center items-center",
+              isMobile ? "h-[40px]" : "h-[50px] min-h-[50px] max-h-[50px]" 
+            )}
+          >
             <Progress
               percent={(parseInt(content.toString()) / 25) * 100}
               strokeColor="white"
               trailColor="rgba(255, 255, 255, 0.2)"
-              strokeWidth={isMobile ? 8 : 16} 
+              strokeWidth={isMobile ? 6 : 16}
               showInfo={false}
               className="w-full"
             />
             <Paragraph
               className={classNames(
-                "absolute w-full text-center font-bold text-gray-500/80 m-0 -translate-y-1/2",
-                isMobile ? "top-[10px] text-[10px]" : "top-1/3 text-[12px]"
+                "absolute left-1/2 transform -translate-x-1/2 text-center font-bold text-gray-500/80",
+                isMobile ? "top-[40%] text-[8px]" : "top-[25%] text-[12px]" 
               )}
             >
               {content} / 25

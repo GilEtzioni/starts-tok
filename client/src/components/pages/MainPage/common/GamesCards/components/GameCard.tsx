@@ -58,8 +58,10 @@ const GameCard: React.FC<GameCardProps> = ({ game, link, number, score}) => {
     <Link to={link}>
       <div
         className={classNames(
-          `relative p-4 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`,
-          isMobile ? "mx-auto min-w-[calc(38vw-1px)] h-[140px]" : "w-[320px] h-[240px]"
+          `relative p-6 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${cardColors[number - 1]}`,
+          isMobile
+            ? "mx-auto min-w-[calc(38vw-1px)] h-[140px]"
+            : "w-[320px] min-h-[240px] max-h-[240px] h-[240px]"
         )}
       >
         {bubbles.map((bubble, index) => (
