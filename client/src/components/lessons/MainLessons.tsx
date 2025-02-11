@@ -32,15 +32,15 @@ const MainLearn: React.FC = () => {
       }
       if (randomOrder === 1 || randomOrder === 2) {
         dispatch(setLessonName(LessonName.MatchPairs));
-        return <ForthLesson />;
+        return <FirstLesson />;
       }
       if (randomOrder === 3 || randomOrder === 4) {
         dispatch(setLessonName(LessonName.sentece));
-        return <ForthLesson />;
+        return <SecondLesson />;
       }
       if (randomOrder === 5 || randomOrder === 6) {
         dispatch(setLessonName(LessonName.MissingWriting));
-        return <ForthLesson />;
+        return <ThirdLesson />;
       }
       if (randomOrder === 7 || randomOrder === 8) {
         dispatch(setLessonName(LessonName.MissingCards));
