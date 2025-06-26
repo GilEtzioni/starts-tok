@@ -15,9 +15,13 @@ The platform helps users learn new languages interactively with structured lesso
 ![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/3-select-lesson.jpg?raw=true)
 
 # Each Lesson Has 4 Different Types of Games
+Find Matching Pairs
 ![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/4-lesson-1.jpg?raw=true)
+Click on the Correct Answer
 ![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/5-lesson-2.jpg?raw=true)
+Type the Correct Answer
 ![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/6-lesson-3.jpg?raw=true)
+Type Words On The Cards To Create The Valid Sentences
 ![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/7-lesson-4.jpg?raw=true)
 
 # Finish the Lesson
