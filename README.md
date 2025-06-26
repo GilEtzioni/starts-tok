@@ -5,6 +5,36 @@ The platform helps users learn new languages interactively with structured lesso
 
 🔗 **Live Website:** [StartStok.com](https://www.startstok.com/)
 
+# Home Page
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/1-home-page.jpg?raw=true)
+
+# Change Language
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/2-change-language.jpg?raw=true)
+
+# Select a Lesson (There are 150 lessons for each language, with 6 levels per lesson)
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/3-select-lesson.jpg?raw=true)
+
+# Each Lesson Has 4 Different Types of Games
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/4-lesson-1.jpg?raw=true)
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/5-lesson-2.jpg?raw=true)
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/6-lesson-3.jpg?raw=true)
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/7-lesson-4.jpg?raw=true)
+
+# Finish the Lesson
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/8-end-lesson.jpg?raw=true)
+
+# Dictionary
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/7-dictionary.jpg?raw=true)
+
+# Game 1 - HangMan
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/9-hangman.jpg?raw=true)
+
+# Game 2 - Speed Game
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/10-speed-game.jpg?raw=true)
+
+# Game 3 - Wordle
+![image alt](https://github.com/GilEtzioni/starts-tok/blob/main/images/11-wordle.jpg?raw=true)
+
 ## ✨ Features
 - 📖 **Dictionary** to help learn new words and phrases in multiple languages  
 - 🌍 **5 languages**, each with **150 lessons**  
