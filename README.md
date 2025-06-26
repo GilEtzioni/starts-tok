@@ -62,8 +62,3 @@ The platform helps users learn new languages interactively with structured lesso
 
 ### **User Authentication**  
 ![Clerk](https://img.shields.io/badge/Clerk-302E42?style=for-the-badge)  
-
-## 🎯 Future Enhancements
-- 📱 **Mobile app version**  
-- 🔢 **Gamification elements** (XP, streaks, badges)  
-- 🎤 **Speech recognition** for pronunciation practice  
